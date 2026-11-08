@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "operationId": "smal-compute-capacity-20261108-01",
+  "subscriptionId": "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+  "tenantId": "c6e67968-af25-4557-ab8b-06b693048d3b",
+  "hostId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+  "hostVmId": "627c8b3f-0a90-41cb-b707-12ba9d9ddad4",
+  "beforeSize": "Standard_E32s_v6",
+  "targetSize": "Standard_E64s_v6",
+  "targetLogicalProcessors": 64,
+  "targetPhysicalCores": 32,
+  "targetMemoryBytes": 549755813888,
+  "guestIds": {
+    "LB-DC01": "f94c71f1-6854-48b9-a9f1-8238c99366d0",
+    "LB-NODE01": "3adff629-2f67-449b-ab32-8a8748c46f34",
+    "LB-NODE02": "12a44e0c-cc08-4c4c-a812-fa0b56efdbc3",
+    "LB-NODE03": "5b6eba15-fa82-4e12-9e45-5ffbcd48c8a9"
+  },
+  "targetNodeCpu": 16,
+  "targetNodeMemoryBytes": 137438953472,
+  "dcCpu": 2,
+  "dcMemoryBytes": 4294967296,
+  "privateIp": "10.200.16.4",
+  "storageTier": "Standard_LRS",
+  "infrastructureVmId": "4c6ca5cc-8c9a-499b-8ffe-c029bbfd3522",
+  "initialAks": {"cpu": 24, "memoryBytes": 94489280512},
+  "maintenanceAks": {"cpu": 32, "memoryBytes": 128849018880},
+  "minimumOuterFreeMemoryBytes": 68719476736,
+  "maximumEvidenceAgeSeconds": 600,
+  "baseline": null,
+  "admission": null,
+  "executionApproval": null
+}
