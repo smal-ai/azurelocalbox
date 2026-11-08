@@ -5,8 +5,10 @@ Never put secrets in a script, argument or output. The private key stays local.
 """
 import argparse
 import base64
+from datetime import datetime, timezone
 import json
 import hashlib
+import fnmatch
 import os
 from pathlib import Path
 import re
@@ -23,6 +25,50 @@ H = runpy.run_path(str(ROOT / 'scripts/enable-smal-private-ssh.py'), run_name='s
 BASE = H['H']
 OUT = H['OUT']
 VM_ID = f"/subscriptions/{BASE['SUB']}/resourceGroups/{BASE['RG']}/providers/Microsoft.Compute/virtualMachines/{BASE['VM']}"
+INITIAL_READS = {'scripts/read-smal-initial-host-20261108.ps1', 'scripts/read-smal-initial-storage-20261108.ps1',
+                 'scripts/read-smal-initial-discovery-20261108.ps1', 'scripts/read-smal-initial-routes-20261108.ps1'}
+
+
+def initial_read_binding():
+    relative = 'docs/deployment-2026-11-08-initial-admission/operator-binding.json'
+    data = (ROOT / relative).read_bytes()
+    if data != subprocess.check_output(['git', 'show', 'HEAD:' + relative], cwd=ROOT):
+        raise RuntimeError('Current read-only operator binding differs from HEAD')
+    binding = json.loads(data)
+    expected = {'executionId': 'exec_smal_localbox_initial_admission_20261108',
+                'scope': 'current-initial-three-VM-read-only-base-admission-handoff',
+                'operatorObjectId': 'fab70700-36e8-4cf5-ba5d-86ed49003fcf',
+                'tenantId': BASE['TENANT'], 'subscriptionId': BASE['SUB'],
+                'infrastructureMutationAuthorised': False, 'cutoffUtc': '2026-11-08T22:00:00Z'}
+    if any(binding.get(k) != v for k, v in expected.items()):
+        raise RuntimeError('Current read-only identity/scope differs')
+    remaining = datetime.fromisoformat(binding['cutoffUtc'].replace('Z', '+00:00')) - datetime.now(timezone.utc)
+    if datetime.now(timezone.utc) < datetime.fromisoformat(binding['notBeforeUtc'].replace('Z', '+00:00')) or remaining.total_seconds() <= 300:
+        raise RuntimeError('Outside bounded initial-admission observation window')
+    def bounded_read(args):
+        if (datetime.fromisoformat(binding['cutoffUtc'].replace('Z', '+00:00')) - datetime.now(timezone.utc)).total_seconds() <= 120:
+            raise RuntimeError('Outside bounded initial-admission observation window')
+        return BASE['read_az'](args)
+    identity = bounded_read(['account', 'show', '--subscription', BASE['SUB'], '--query', '{id:id,tenantId:tenantId}'])
+    caller = bounded_read(['ad', 'signed-in-user', 'show', '--query', '{id:id}'])
+    if identity != {'id': BASE['SUB'], 'tenantId': BASE['TENANT']} or caller != {'id': binding['operatorObjectId']}:
+        raise RuntimeError('Current read-only operator changed')
+    entitlement = []
+    for subscription, scope, actions in [
+        (BASE['SUB'], f"/subscriptions/{BASE['SUB']}/resourceGroups/{BASE['RG']}", ['Microsoft.Compute/virtualMachines/read', 'Microsoft.Network/networkInterfaces/read']),
+        ('702382d0-3722-4630-8983-5580b92f0c1a', '/subscriptions/702382d0-3722-4630-8983-5580b92f0c1a/resourceGroups/rg-bastion-san-1/providers/Microsoft.Network/bastionHosts/bas-test-san-1', ['Microsoft.Network/bastionHosts/read']),
+    ]:
+        began = datetime.now(timezone.utc).isoformat()
+        result = bounded_read(['rest', '--method', 'get', '--subscription', subscription, '--url', 'https://management.azure.com' + scope + '/providers/Microsoft.Authorization/permissions?api-version=2022-04-01'])
+        if result.get('nextLink'):
+            raise RuntimeError('Fresh initial read entitlement traversal incomplete')
+        rows = result.get('value', [])
+        match = lambda action, pattern: fnmatch.fnmatchcase(action.lower(), pattern.lower())
+        if any(not any(any(match(action, a) for a in row.get('actions', [])) and not any(match(action, a) for a in row.get('notActions', [])) for row in rows) for action in actions):
+            raise RuntimeError('Fresh initial read entitlement absent at ' + scope)
+        entitlement.append({'scope': scope, 'beganAtUtc': began, 'finishedAtUtc': datetime.now(timezone.utc).isoformat(),
+                            'count': len(rows), 'pages': 1, 'complete': True, 'requiredReadActions': actions, 'permissionRows': rows})
+    return {'bindingSha256': hashlib.sha256(data).hexdigest(), 'operatorObjectId': binding['operatorObjectId'], 'entitlement': entitlement}
 
 
 def ssh_args(port, admin, encoded, stream_source=False):
@@ -156,6 +202,19 @@ def main(script, name, envelope_key=None, three_node_context=None, capacity_cont
     remote = subprocess.check_output(['git', 'ls-remote', '--heads', 'origin', 'refs/heads/' + branch], cwd=ROOT, text=True).split()
     if not remote or remote[0] != head:
         raise RuntimeError('Exact command source must be pushed')
+    initial_binding_sha = None
+    if relative in INITIAL_READS:
+        initial_binding_sha = initial_read_binding()
+        helpers = ['scripts/smal-initial-read-functions.ps1']
+        if relative != 'scripts/read-smal-initial-host-20261108.ps1':
+            helpers.insert(0, 'scripts/smal-compute-capacity-20261108-common.ps1')
+        prefix = "$ComputeCapacityLibraryOnly=$true\n"
+        for helper in helpers:
+            data = (ROOT / helper).read_bytes()
+            if data != subprocess.check_output(['git', 'show', 'HEAD:' + helper], cwd=ROOT):
+                raise RuntimeError('Initial read helper differs from HEAD')
+            prefix += data.decode('utf-8') + '\n'
+        source = prefix.encode('utf-8') + source
     capacity_scripts = {'scripts/prepare-smal-capacity-expansion.ps1','scripts/format-smal-capacity-disk.ps1','scripts/add-smal-capacity-vhds.ps1','scripts/inspect-smal-capacity-interruption.ps1'}
     if relative in capacity_scripts:
         guard = runpy.run_path(str(ROOT / 'scripts/smal-capacity-expansion.py'),run_name='capacity_transport_guard')
@@ -433,6 +492,11 @@ def main(script, name, envelope_key=None, three_node_context=None, capacity_cont
                      'scripts/inspect-smal-guest-inputs.ps1': 300,
                      'scripts/stage-smal-2610-image.ps1': 1500}.get(relative, 90)
     record['guestCommandTimeoutSeconds'] = guest_timeout
+    if initial_binding_sha:
+        record['initialReadOperatorBindingSha256'] = initial_binding_sha['bindingSha256']
+        record['initialReadOperatorEntitlement'] = initial_binding_sha
+        if (datetime.fromisoformat('2026-11-08T22:00:00+00:00') - datetime.now(timezone.utc)).total_seconds() <= guest_timeout + 100:
+            raise RuntimeError('Cutoff too close for the bounded tunnel and command')
     with target.open('x') as stream:
         stream.write(json.dumps(record, indent=2) + '\n')
     command = ['az', 'network', 'bastion', 'tunnel', '--subscription', '702382d0-3722-4630-8983-5580b92f0c1a',
@@ -454,6 +518,8 @@ def main(script, name, envelope_key=None, three_node_context=None, capacity_cont
         else:
             raise RuntimeError('Private Bastion tunnel not ready')
         io = {'input': source.decode('utf-8')} if stream_source else {'stdin': subprocess.DEVNULL}
+        if initial_binding_sha and (datetime.fromisoformat('2026-11-08T22:00:00+00:00') - datetime.now(timezone.utc)).total_seconds() <= guest_timeout + 15:
+            raise RuntimeError('Cutoff too close for the remaining bounded command')
         result = subprocess.run(ssh_args(port, setup['result']['adminUser'], encoded, stream_source), **io, capture_output=True, text=True, encoding='utf-8', timeout=guest_timeout)
         record['sshExitCode'] = result.returncode
         record['sshDiagnostics'] = {label: label in result.stderr for label in ['Server accepts key', 'Authenticated to', 'Sending command:', 'Exit status']}
