@@ -90,7 +90,17 @@ class InitialObserverTests(unittest.TestCase):
 
     def test_signature_projection_omits_sensitive_names(self):
         body = ". '" + str(HELPER) + "';function Get-Example([string]$Name,[securestring]$Password){};Read-InitialCommand (Get-Command Get-Example) | ConvertTo-Json -Depth 10 -Compress"
-        self.assertNotIn('password', self.powershell(body).lower())
+        output = self.powershell(body)
+        self.assertNotIn('password', output.lower())
+        row = json.loads(output)
+        self.assertEqual(row['parameterSets'][0]['parametersOmittedCount'], 1)
+        self.assertFalse(row['parameterSets'][0]['signatureComplete'])
+
+    def test_pagination_signature_names_are_retained(self):
+        body = ". '" + str(HELPER) + "';function Get-Paged([string]$ContinuationToken){};Read-InitialCommand (Get-Command Get-Paged) | ConvertTo-Json -Depth 10 -Compress"
+        row = json.loads(self.powershell(body))
+        self.assertEqual(row['parameterSets'][0]['parameters'][0]['name'], 'ContinuationToken')
+        self.assertTrue(row['parameterSets'][0]['signatureComplete'])
 
     def test_no_forbidden_active_operations(self):
         for relative in sorted(T['INITIAL_READS']):

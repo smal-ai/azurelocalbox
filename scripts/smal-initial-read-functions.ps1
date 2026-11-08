@@ -25,8 +25,11 @@ function Read-InitialQuery([string]$name, [scriptblock]$query) {
 function Read-InitialCommand($command) {
     if ($null -eq $command) { return $null }
     return @{ name = $command.Name; module = $command.ModuleName; version = $(if ($command.Module) { $command.Module.Version.ToString() } else { $null })
+        outputTypes = @($command.OutputType | ForEach-Object { $_.Name })
         parameterSets = @($command.ParameterSets | ForEach-Object {
-            @{ name = $_.Name; isDefault = $_.IsDefault; parameters = @($_.Parameters | Where-Object Name -NotMatch '(?i)password|credential|token|secret|certificate|kube|config|key' | ForEach-Object {
+            $safe = @($_.Parameters | Where-Object { $_.Name -notmatch '(?i)password|credential|token|secret|certificate|kube|config|key' -or $_.Name -match '^(ContinuationToken|NextPageToken|PageToken|SkipToken)$' })
+            $omitted = @($_.Parameters | Where-Object { $_.Name -notin @($safe.Name) })
+            @{ name = $_.Name; isDefault = $_.IsDefault; signatureComplete = $omitted.Count -eq 0; parametersOmittedCount = $omitted.Count; mandatoryParametersOmittedCount = @($omitted | Where-Object IsMandatory).Count; parameters = @($safe | ForEach-Object {
                 @{ name = $_.Name; type = $_.ParameterType.FullName; mandatory = $_.IsMandatory; position = $_.Position; valueFromPipeline = $_.ValueFromPipeline; valueFromPipelineByPropertyName = $_.ValueFromPipelineByPropertyName }
             }) }
         }) }

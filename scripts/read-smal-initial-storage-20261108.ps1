@@ -12,6 +12,15 @@ try {
         Assert-InitialNode 'LB-NODE01'
         $queries = @()
         $queries += Read-InitialQuery 'osBuild' { Get-CimInstance Win32_OperatingSystem | ForEach-Object { Select-InitialFields $_ @('Version','BuildNumber','LastBootUpTime') } }
+        $queries += Read-InitialQuery 'currentPoolBytes' {
+            $pools = @(Get-StoragePool | Where-Object IsPrimordial -EQ $false)
+            if ($pools.Count -ne 1 -or $pools[0].UniqueId -ine '{923c0194-3ed4-449a-ae14-0f62861e0ec8}') { throw 'Exact deployed S2D pool differs' }
+            $pool = $pools[0]
+            @{ id = $pool.UniqueId; sizeBytes = $pool.Size; allocatedBytes = $pool.AllocatedSize; unallocatedBytes = $pool.Size - $pool.AllocatedSize; health = $pool.HealthStatus.ToString()
+                members = @($pool | Get-PhysicalDisk | ForEach-Object { @{ id = $_.UniqueId; sizeBytes = $_.Size; mediaType = $_.MediaType.ToString(); health = $_.HealthStatus.ToString() } }) }
+        }
+        $queries += Read-InitialQuery 'activeStorageJobs' { Get-StorageJob | Where-Object JobState -NE Completed | ForEach-Object { @{ name = $_.Name; state = $_.JobState.ToString(); percentComplete = $_.PercentComplete } } }
+        $queries += Read-InitialQuery 'currentClusterNodeStates' { Get-ClusterNode -Cluster smal-localbox01 | ForEach-Object { @{ name = $_.Name; state = $_.State.ToString() } } }
         $virtualDisks = @{ rows = @() }
         $queries += Read-InitialQuery 'virtualDisks' { Get-VirtualDisk | ForEach-Object { $virtualDisks.rows += $_; @{ id = $_.UniqueId; name = $_.FriendlyName; sizeBytes = $_.Size; footprintOnPoolBytes = $_.FootprintOnPool; provisioningType = $_.ProvisioningType.ToString(); resiliency = $_.ResiliencySettingName; copies = $_.NumberOfDataCopies; health = $_.HealthStatus.ToString() } } }
         $queries += Read-InitialQuery 'csvNativePartitions' { Get-ClusterSharedVolume -Cluster smal-localbox01 | ForEach-Object { $csv = $_; foreach ($info in $_.SharedVolumeInfo) { @{ csvId = $csv.Id.ToString(); csvName = $csv.Name; state = $csv.State.ToString(); ownerNode = $csv.OwnerNode.Name; path = $info.FriendlyVolumeName; partition = Select-InitialFields $info.Partition @('Name','Size','FreeSpace','FileSystem','PartitionNumber') } } } }
