@@ -27,16 +27,26 @@ OUT = H['OUT']
 VM_ID = f"/subscriptions/{BASE['SUB']}/resourceGroups/{BASE['RG']}/providers/Microsoft.Compute/virtualMachines/{BASE['VM']}"
 INITIAL_READS = {'scripts/read-smal-initial-host-20261108.ps1', 'scripts/read-smal-initial-storage-20261108.ps1',
                  'scripts/read-smal-initial-discovery-20261108.ps1', 'scripts/read-smal-initial-routes-20261108.ps1'}
+GUEST_TRANSPORT_READS = {'scripts/read-smal-guest-transport-metadata-20261108.ps1'}
 
 
-def initial_read_binding():
-    relative = 'docs/deployment-2026-11-08-initial-admission/operator-binding.json'
+def initial_read_binding(script=None):
+    if script in GUEST_TRANSPORT_READS:
+        relative = 'docs/deployment-2026-11-08-guest-transport/operator-binding.json'
+        execution = 'exec_smal_localbox_guest_transport_reconcile_20261108'
+        scope = 'bounded-read-only-guest-profile-and-transport-reconciliation'
+    elif script is None or script in INITIAL_READS:
+        relative = 'docs/deployment-2026-11-08-initial-admission/operator-binding.json'
+        execution = 'exec_smal_localbox_initial_admission_20261108'
+        scope = 'current-initial-three-VM-read-only-base-admission-handoff'
+    else:
+        raise RuntimeError('Unknown read-only observer scope')
     data = (ROOT / relative).read_bytes()
     if data != subprocess.check_output(['git', 'show', 'HEAD:' + relative], cwd=ROOT):
         raise RuntimeError('Current read-only operator binding differs from HEAD')
     binding = json.loads(data)
-    expected = {'executionId': 'exec_smal_localbox_initial_admission_20261108',
-                'scope': 'current-initial-three-VM-read-only-base-admission-handoff',
+    expected = {'executionId': execution,
+                'scope': scope,
                 'operatorObjectId': 'fab70700-36e8-4cf5-ba5d-86ed49003fcf',
                 'tenantId': BASE['TENANT'], 'subscriptionId': BASE['SUB'],
                 'infrastructureMutationAuthorised': False, 'cutoffUtc': '2026-11-08T22:00:00Z'}
@@ -203,10 +213,10 @@ def main(script, name, envelope_key=None, three_node_context=None, capacity_cont
     if not remote or remote[0] != head:
         raise RuntimeError('Exact command source must be pushed')
     initial_binding_sha = None
-    if relative in INITIAL_READS:
-        initial_binding_sha = initial_read_binding()
+    if relative in INITIAL_READS or relative in GUEST_TRANSPORT_READS:
+        initial_binding_sha = initial_read_binding(relative)
         helpers = ['scripts/smal-initial-read-functions.ps1']
-        if relative != 'scripts/read-smal-initial-host-20261108.ps1':
+        if relative in INITIAL_READS and relative != 'scripts/read-smal-initial-host-20261108.ps1':
             helpers.insert(0, 'scripts/smal-compute-capacity-20261108-common.ps1')
         prefix = "$ComputeCapacityLibraryOnly=$true\n"
         for helper in helpers:

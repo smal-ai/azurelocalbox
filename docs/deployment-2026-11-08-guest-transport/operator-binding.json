@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "executionId": "exec_smal_localbox_guest_transport_reconcile_20261108",
+  "taskId": "task_smal_localbox_guest_transport_reconcile_20261108",
+  "taskReference": "REL-348",
+  "scope": "bounded-read-only-guest-profile-and-transport-reconciliation",
+  "operatorObjectId": "fab70700-36e8-4cf5-ba5d-86ed49003fcf",
+  "tenantId": "c6e67968-af25-4557-ab8b-06b693048d3b",
+  "subscriptionId": "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+  "transportSubscriptionId": "702382d0-3722-4630-8983-5580b92f0c1a",
+  "notBeforeUtc": "2026-11-08T17:51:04Z",
+  "cutoffUtc": "2026-11-08T22:00:00Z",
+  "authority": "accepted-Relay-read-only-assignment-and-current-human-continuation",
+  "originAgentId": "agent_69adfb79657510a6ee716091244953d6d564a506481324c5aa5dee4917fdf376",
+  "baseSourceCommit": "db4b753b68fa86c0430079f35a5528ff354407ec",
+  "baseHandoffSha256": "6c9e2072420259140f58e69e8cd9a7cc5fc204526b75b2b03a1067eddd977223",
+  "baseEvidenceManifestSha256": "0f9e22469a3d25a804a986a42551254de422077fe1bc0053d7b984676b130731",
+  "existingOperatorBindingSha256": "18a4302cf8105d54d169c5bce4e322645ed8cbc7001748d67f89f51099ba08b4",
+  "entitlement": "fresh-effective-permission-checks-required-before-authenticated-observations",
+  "infrastructureMutationAuthorised": false,
+  "backupsAuthorised": false,
+  "profileProposalIsEffectAuthority": false
+}
