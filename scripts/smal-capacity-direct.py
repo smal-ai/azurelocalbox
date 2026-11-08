@@ -5,6 +5,7 @@ Effects require an exact committed/pushed plan, real direct-human authority and 
 independent technical source review. Read, render and execution are separate routes.
 """
 import argparse
+import base64
 import copy
 import hashlib
 import json
@@ -236,6 +237,17 @@ def authorise_transport(ctx, head):
 
 def render_context(ctx, head):
     require(ctx == context(ctx['plan'], ctx['stage'], ctx['mode'], ctx['settlements'], ctx['directive']), 'Direct renderer context differs')
+    if ctx['mode'] == 'snapshot':
+        # A read must not upload all mutation workers and recovery contracts.
+        plan = ctx['plan']
+        minimal = {f: plan[f] for f in ('route', 'operationId', 'guestIds')}
+        minimal['transitionContract'] = {'deviceOwners': {}}
+        public = base64.b64encode(json.dumps(minimal, sort_keys=True, separators=(',', ':')).encode()).decode()
+        prefix = "$ErrorActionPreference='Stop'\n$ComputeCapacityLibraryOnly=$true\n$sourceCommit='" + head + "'\n$planSha='" + sha(plan) + "'\n"
+        prefix += "$plan=([Text.Encoding]::UTF8.GetString([Convert]::FromBase64String('" + public + "'))|ConvertFrom-Json)\n$entry=[pscustomobject]@{node=$null}\n"
+        common = (ROOT / 'scripts/smal-compute-capacity-20261108-common.ps1').read_text()
+        body = "\n@{status='complete';mutationPerformed=$false;atUtc=[datetime]::UtcNow.ToString('o');operationId=$plan.operationId;sourceCommit=$sourceCommit;stage='direct-cluster-stop';key='direct-cluster-stop';planSha256=$planSha;snapshot=(Read-ComputeSnapshot)}|ForEach-Object{ConvertTo-ComputeJson $_}\n"
+        return (prefix + common + body).encode()
     return R['render_validated_context'](ctx, head, effects_enabled=ctx['mode'] != 'snapshot')
 
 

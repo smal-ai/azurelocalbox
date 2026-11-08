@@ -293,6 +293,14 @@ class DirectTests(unittest.TestCase):
         self.assertIn(b'$CapacityEffectsEnabled=$false',data)
         self.assertIsNone(p['directHumanApproval']);self.assertIsNone(p['executionApproval'])
 
+    def test_snapshot_does_not_ship_mutation_workers_or_unused_contracts(self):
+        pending = json.loads(D['PENDING'].read_text())
+        data = D['render_context'](D['context'](pending, 'direct-cluster-stop', 'snapshot'), HEAD)
+        self.assertLess(len(data), 64 * 1024)
+        self.assertNotIn(b'$workerBase64=', data)
+        self.assertNotIn(b'Start-Process', data)
+        self.assertIn(b'snapshot=(Read-ComputeSnapshot)', data)
+
     def test_no_autostart_policy_is_a_precondition_not_a_configuration_change(self):
         p=copy.deepcopy(self.plan);p['baseline']['guestsStatic'][1]['automaticStart']='Start'
         with self.assertRaisesRegex(ValueError,'no-autostart'):D['validate'](p,False)
