@@ -178,8 +178,8 @@ function Read-ComputeSnapshot([bool]$readCluster = $true) {
             $drainEvidence = if ($selectedNode -and (Test-Path ($capacityRoot + '\drain-proof-' + $selectedNode + '.json'))) {
                 Get-Content ($capacityRoot + '\drain-proof-' + $selectedNode + '.json') -Raw | ConvertFrom-Json
             } else { $null }
-            $cluster = Invoke-Command -Session $session -ArgumentList $plan.transitionContract.deviceOwners, $selectedNode, $selectedOff, $drainEvidence -ErrorAction Stop -ScriptBlock {
-                param($FrozenOwners, $SelectedNode, $SelectedOff, $DrainEvidence)
+            $cluster = Invoke-Command -Session $session -ArgumentList $plan.transitionContract.deviceOwners, $selectedNode, $selectedOff, $drainEvidence, ($plan.route -ceq 'direct-full-outage-v1') -ErrorAction Stop -ScriptBlock {
+                param($FrozenOwners, $SelectedNode, $SelectedOff, $DrainEvidence, [bool]$FullOutage)
                 $admin = Get-LocalUser -Name ASBuiltInAdmin
                 if (-not $admin.Enabled -or -not $admin.SID.Value.EndsWith('-500') -or [Security.Principal.WindowsIdentity]::GetCurrent().User.Value -cne $admin.SID.Value) { throw 'RID 500 binding differs' }
                 $c = Get-Cluster -Name smal-localbox01 -ErrorAction Stop
@@ -189,6 +189,7 @@ function Read-ComputeSnapshot([bool]$readCluster = $true) {
                 $pool = $pools[0]; $csv = @(Get-ClusterSharedVolume -Cluster $c); $vd = @(Get-VirtualDisk)
                 $members = @($pool | Get-PhysicalDisk)
                 $ownerMap = @{}
+                if (-not $FullOutage) {
                 foreach ($storageNode in @(Get-StorageNode)) {
                     $ownerName = ([string]$storageNode.Name).Split('.')[0].ToUpperInvariant()
                     if ($ownerName -cnotin @('LB-NODE01', 'LB-NODE02', 'LB-NODE03')) { continue }
@@ -205,6 +206,7 @@ function Read-ComputeSnapshot([bool]$readCluster = $true) {
                         if ($FrozenOwners.PSObject.Properties[$device.UniqueId].Value -cne $SelectedNode -or $device.UniqueId -cnotin $DrainEvidence.deviceIds) { throw 'Missing device not owned selected-node maintenance' }
                         $ownerMap[$device.UniqueId] = $SelectedNode
                     }
+                }
                 }
                 $nodes = @(Get-ClusterNode -Cluster $c)
                 $vmResources = @(Get-ClusterResource -Cluster $c | Where-Object ResourceType -EQ 'Virtual Machine')

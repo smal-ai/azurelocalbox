@@ -117,7 +117,7 @@ def validate(plan, approved=False):
     require(bridge['cpu'] == 4 and bridge['memory'] == 8 * 1024**3
             and len(bridge['adapters']) == 1 and bridge['adapters'][0]['mac'].upper() == '02EC000B0000', 'Exact infrastructure VM profile/MAC missing')
     require(all(g.get('automaticStart') == 'Nothing' and g.get('automaticStop') == 'ShutDown' for g in plan['baseline']['guestsStatic']), 'Preserved no-autostart/graceful-stop policies required; never change them to bypass the OOM guard')
-    require(len(plan['deviceOwners']) == 24 and all(list(plan['deviceOwners'].values()).count(n) == 8 for n in C['NODES']), 'Exact device ownership missing')
+    require(plan['deviceOwners'] == {}, 'Full-cluster outage does not admit inferred per-node device ownership')
     if approved:
         approval = plan.get('directHumanApproval'); unsigned = copy.deepcopy(plan); unsigned['directHumanApproval'] = None
         require(isinstance(approval, dict) and set(approval) == {'quotedRequest', 'unsignedPlanSha256', 'approvedEffects', 'authorityProfile'}, 'Actual direct-human approval required')
@@ -158,6 +158,17 @@ def entry(plan, stage):
     return plan['transitionContract']['stages'][stage]
 
 
+def strict_health(s, plan):
+    baseline = plan['baseline']['clusterStatic']; h = s['clusterHealth']
+    require(s['clusterStatic'] == baseline, 'Exact cluster/storage/infrastructure identity drift')
+    require(len(h['nodeStates']) == 3 and {n['name']: n['state'] for n in h['nodeStates']} == {n: 'Up' for n in C['NODES']}, 'All three nodes Up required')
+    require(h['quorumType'] == 'Majority' and h['witness'] is None and h['unrelatedFailures'] == [] and h['activeStorageJobs'] == [], 'Quorum/failure/repair gate failed')
+    require(h['poolHealth'] == 'Healthy' and h['poolOperational'] == ['OK'] and h['physicalFreeBytes'] >= plan['admission']['requiredPhysicalFreeBytes'] + plan['admission']['repairReserveBytes'], 'Healthy physical pool/headroom required')
+    require(len(h['devices']) == 24 and {d['id'] for d in h['devices']} == {d['id'] for d in baseline['members']} and all(d['health'] == 'Healthy' and d['operational'] == ['OK'] and d['maintenance'] is False for d in h['devices']), 'Exact 24 Healthy/OK devices required')
+    require(len(h['virtualDiskStates']) == 5 and {v['id'] for v in h['virtualDiskStates']} == {v['id'] for v in baseline['virtualDisks']} and all(v['copies'] == 3 and v['health'] == 'Healthy' and v['operational'] == ['OK'] for v in h['virtualDiskStates']), 'Exact five healthy mirrors required')
+    require(len(h['csvStates']) == 4 and {v['id'] for v in h['csvStates']} == {v['id'] for v in baseline['csv']} and all(v['state'] == 'Online' and v['accessible'] is True for v in h['csvStates']), 'Exact four accessible Online CSVs required')
+
+
 def verify_snapshot(s, plan, e, head, after=False, strict=True, capacity_refusal=False):
     fresh(s); require(s.get('sourceCommit') == head, 'Direct snapshot source differs')
     profiles = e['afterProfiles' if after else 'beforeProfiles']; states = e['afterStates' if after else 'beforeStates']
@@ -173,7 +184,7 @@ def verify_snapshot(s, plan, e, head, after=False, strict=True, capacity_refusal
     if health_profile == 'strict' and strict:
         policy, _, _ = infrastructure_policy(s['clusterStatic'], plan['infrastructureVmId'])
         require(policy == plan['baseline']['clusterStatic']['vmLifecyclePolicies'][0], 'Cluster VM resource/OfflineAction policy drift')
-        R['health'](s, plan)
+        strict_health(s, plan)
         require(set(s['nodeCapacity']) == set(C['NODES']), 'All three actual node capacities required')
         for n, c in s['nodeCapacity'].items():
             require(c['logicalProcessors'] == profiles[n]['cpu'] and c['memoryBytes'] >= profiles[n]['memory'] - 8 * 1024**3, 'Actual direct guest CPU/RAM differs')
@@ -377,7 +388,7 @@ def prepare(observation):
     plan = json.loads(PENDING.read_text())
     plan['baseline'] = dict(cloud=observation['cloud']['projection'], **{f: s[f] for f in ('hostStatic', 'guestsStatic', 'clusterStatic', 'volumesStatic')})
     infrastructure_policy(plan['baseline']['clusterStatic'], plan['infrastructureVmId'])
-    plan['deviceOwners'] = {d['id']: d['owner'] for d in s['clusterHealth']['devices']}
+    plan['deviceOwners'] = {}  # Serial-node physical ownership is unnecessary for a whole-cluster outage.
     placements = [(n,v) for n,c in s['nodeCapacity'].items() for v in c['bridgePlacement']]
     require(len(placements) == 1 and placements[0][1]['id'] == plan['infrastructureVmId'], 'Exact infrastructure owner required')
     owner = placements[0][0]; others = [n for n in C['NODES'] if n != owner]

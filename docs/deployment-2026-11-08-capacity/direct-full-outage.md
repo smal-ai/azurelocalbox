@@ -55,6 +55,10 @@ catalogue success, AKS capacity or patch selection is inferred.
    the global infrastructure VM restored by cluster lifecycle. Final completion has
    its own durable source/process/snapshot certificate and settlement.
 
+The whole-cluster route checks all 24 device IDs, sizes and Healthy/OK states without
+the expensive physical-owner scan required for serial node maintenance. No device
+ownership is inferred. The initial over-budget read remains retained as a timeout.
+
 No serial drain, Resume, storage maintenance enable/disable, storage-tier change or
 automatic schedule change is part of this route. The
 [Stop-Cluster reference](https://learn.microsoft.com/en-us/powershell/module/failoverclusters/stop-cluster?view=windowsserver2025-ps)

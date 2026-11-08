@@ -78,8 +78,12 @@ function Assert-R2Snapshot($snapshot, $profiles, $states, $maintenanceProof = $n
         Assert-Compute ($h.poolHealth -ceq 'Healthy' -and @($h.nodeStates | Where-Object state -CNE 'Up').Count -eq 0 -and @($h.virtualDiskStates | Where-Object { $_.copies -ne 3 -or $_.health -cne 'Healthy' }).Count -eq 0) 'Actual pool/node/mirror health differs'
         Assert-Compute ($h.allNodesUp -and $h.allCsvOnline -and $h.allMirrorsHealthy -and $h.poolHealthy -and $h.quorumType -ceq 'Majority' -and $null -eq $h.witness -and $h.activeStorageJobs.Count -eq 0 -and $h.unrelatedFailures.Count -eq 0) 'Full health/no jobs required'
         Assert-Compute (@($h.devices | Where-Object { $_.health -cne 'Healthy' -or ($_.operational -join '|') -cne 'OK' -or $_.maintenance }).Count -eq 0 -and ($h.poolOperational -join '|') -ceq 'OK' -and @($h.virtualDiskStates | Where-Object { ($_.operational -join '|') -cne 'OK' }).Count -eq 0 -and @($h.csvStates | Where-Object accessible -NE $true).Count -eq 0) 'Healthy alone does not prove OK/accessibility'
-        Assert-ComputeEqual @($h.devices.id | Sort-Object) @($plan.transitionContract.deviceOwners.PSObject.Properties.Name | Sort-Object) 'Exact devices differ'
-        foreach ($d in $h.devices) { Assert-Compute ($plan.transitionContract.deviceOwners.PSObject.Properties[$d.id].Value -ceq $d.owner) 'Device ownership differs' }
+        if ($plan.route -ceq 'direct-full-outage-v1') {
+            Assert-ComputeEqual @($h.devices.id | Sort-Object) @($plan.baseline.clusterStatic.members.id | Sort-Object) 'Exact devices differ'
+        } else {
+            Assert-ComputeEqual @($h.devices.id | Sort-Object) @($plan.transitionContract.deviceOwners.PSObject.Properties.Name | Sort-Object) 'Exact devices differ'
+            foreach ($d in $h.devices) { Assert-Compute ($plan.transitionContract.deviceOwners.PSObject.Properties[$d.id].Value -ceq $d.owner) 'Device ownership differs' }
+        }
         Assert-Compute ($h.physicalFreeBytes -ge ($plan.admission.requiredPhysicalFreeBytes + $plan.admission.repairReserveBytes)) 'Physical reserve violated'
     } elseif ($healthProfile -ceq 'maintenance') {
         $proof = if ($null -ne $maintenanceProof) { $maintenanceProof } else { Get-Content (Join-Path $capacityRoot ('drain-proof-' + $entry.node + '.json')) -Raw | ConvertFrom-Json }

@@ -24,7 +24,7 @@ RESOURCE_ID = 'aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee'
 def fixture():
     p, _ = F['T']['fixture']()
     owners = p['transitionContract']['deviceOwners']
-    p.update(route=D['ROUTE'], executionApproval=None, deviceOwners=owners, directHumanApproval=None,
+    p.update(route=D['ROUTE'], executionApproval=None, deviceOwners={}, directHumanApproval=None,
              technicalReview=dict(decision='accept-direct-full-outage-source-and-plan', reviewer='independent-test-only', sourceFileMapSha256='a' * 64),
              quiescence=dict(catalogueState='Pending', catalogueRefreshReplay=False, interruptibleControlPlaneOperationDisclosed=True,
                              exclusiveHardwareWriter=True, nightlyScheduleConflictChecked=True, clusterLifecycleResourceQuiescenceConfirmed=True))
@@ -135,6 +135,14 @@ class DirectTests(unittest.TestCase):
         self.assertEqual(sum(p['memory'] for p in profiles.values()), 388 * 1024**3)
         for e in stages.values():
             if e['effect'] in ('memory','cpu','startup-grant'): self.assertEqual(set(e['beforeStates'].values()), {'Off'})
+
+    def test_whole_cluster_health_checks_ids_without_serial_owner_scan(self):
+        s = snapshot(self.plan, 'direct-cluster-stop')
+        for device in s['clusterHealth']['devices']: device['owner'] = None
+        D['verify_snapshot'](s, self.plan, self.plan['transitionContract']['stages']['direct-cluster-stop'], HEAD)
+        s['clusterHealth']['devices'][0]['id'] = 'unexpected-device'
+        with self.assertRaisesRegex(ValueError, '24 Healthy'):
+            D['verify_snapshot'](s, self.plan, self.plan['transitionContract']['stages']['direct-cluster-stop'], HEAD)
 
     def test_entire_mocked_full_outage_and_final_certificate(self):
         self.reach('complete'); o = self.observed('complete')
