@@ -15,7 +15,7 @@
             "value": "${JS_WINDOWS_ADMIN_PASSWORD}"
         },
         "vmSize": {
-            "value": "${JS_VM_SIZE=Standard_E32s_v6}"
+            "value": "${JS_VM_SIZE=Standard_E64s_v6}"
         },
         "nodesResourceGroupName": {
             "value": "${JS_NODES_RG=rg-localbox-nodes-san-1}"

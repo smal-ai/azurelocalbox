@@ -5,8 +5,9 @@ param vmName string = 'LocalBox-Client'
 @allowed([
   'Standard_E32s_v5'
   'Standard_E32s_v6'
+  'Standard_E64s_v6'
 ])
-param vmSize string = 'Standard_E32s_v5'
+param vmSize string = 'Standard_E64s_v6'
 
 @description('Username for the Virtual Machine')
 param windowsAdminUsername string = 'arcdemo'

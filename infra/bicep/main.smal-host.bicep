@@ -15,8 +15,8 @@ param adminPassword string
 @allowed(['26100.33674.261024'])
 param imageVersion string
 
-@allowed(['Standard_E32s_v6'])
-param vmSize string = 'Standard_E32s_v6'
+@allowed(['Standard_E32s_v6', 'Standard_E64s_v6'])
+param vmSize string = 'Standard_E64s_v6'
 
 @allowed(['southafricanorth'])
 param location string = 'southafricanorth'
