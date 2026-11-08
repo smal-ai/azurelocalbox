@@ -28,6 +28,7 @@ GUESTS = {'LB-DC01': 'f94c71f1-6854-48b9-a9f1-8238c99366d0',
           'LB-NODE03': '5b6eba15-fa82-4e12-9e45-5ffbcd48c8a9'}
 OUT = ROOT / 'docs/deployment-2026-10-29'
 VPN = 'entlz-san-cert'
+START_LOCK = Path('/tmp/opencode/smal-localbox-start.lock')
 
 
 def az(args, timeout=90):
@@ -48,13 +49,15 @@ def verify_account(account):
 
 def verify_source():
     head = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
-    for path in ['scripts/start-smal-localbox.py', 'scripts/start-smal-existing-guests.ps1', 'scripts/smal-private-powershell.py', 'docs/deployment-2026-10-29/node03-local-completion.json']:
+    for path in ['scripts/start-smal-localbox.py', 'scripts/start-smal-existing-guests.ps1', 'scripts/smal-private-powershell.py', 'scripts/smal-capacity-interlock.py', 'scripts/smal-capacity-startup-interlock.ps1', 'scripts/smal-localbox-references.py', 'docs/deployment-2026-11-08-capacity/runtime-references.json']:
         if (ROOT / path).read_bytes() != subprocess.check_output(['git', 'show', 'HEAD:' + path], cwd=ROOT):
             raise RuntimeError('Startup source differs from HEAD. Commit and push before use.')
     branch = subprocess.check_output(['git', 'branch', '--show-current'], cwd=ROOT, text=True).strip()
     remote = subprocess.check_output(['git', 'ls-remote', '--heads', 'origin', 'refs/heads/' + branch], cwd=ROOT, text=True).split()
     if not remote or remote[0] != head:
         raise RuntimeError('Exact startup source must be pushed before use.')
+    references = runpy.run_path(str(ROOT / 'scripts/smal-localbox-references.py'), run_name='startup_original_references')
+    references['original_bytes']('docs/deployment-2026-10-29/node03-local-completion.json')
     return head
 
 
@@ -154,9 +157,9 @@ def verify_guest_result(receipt):
         raise RuntimeError('Startup-only operation boundary differs.')
 
 
-def main(host_timeout=900):
+def main(host_timeout=900, capacity_handover=None):
     # One local operator at a time. Lock contains no credentials.
-    lock_path = Path('/tmp/opencode/smal-localbox-start.lock')
+    lock_path = START_LOCK
     with lock_path.open('a') as lock:
         try:
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
@@ -176,15 +179,31 @@ def main(host_timeout=900):
             stream.write(json.dumps(record, indent=2) + '\n')
         try:
             record['sourceCommit'] = verify_source()
+            gate = runpy.run_path(str(ROOT / 'scripts/smal-capacity-interlock.py'), run_name='canonical_capacity_gate')
+            state, _, _ = gate['history']()
+            if state is not None and not (ROOT / 'docs/deployment-2026-11-08-capacity/completion-r2.json').exists():
+                controller = runpy.run_path(str(ROOT / 'scripts/smal-capacity-r2.py'), run_name='canonical_capacity_release_guard')
+                controller['source_guard'](json.loads((controller['OUT'] / 'plan.sealed.json').read_text()))
+            capacity = gate['authorise_startup'](capacity_handover, record['sourceCommit'])
+            record['capacityInterlock'] = None if capacity is None else {'key': capacity['key'], 'settlementRequired': True}
+            save()
             ensure_private_vpn(record, save)
             verify_account(az(['account', 'show', '--subscription', SUB]))
+            if capacity is not None:
+                controller = runpy.run_path(str(ROOT / 'scripts/smal-capacity-r2.py'), run_name='canonical_capacity_identity')
+                sealed = json.loads((controller['OUT'] / capacity['handover']['planFile']).read_text())
+                controller['source_guard'](sealed)
+                observed = controller['C']['get_cloud']()
+                controller['C']['verify_cloud'](observed, sealed)
+                if observed['size'] != sealed['targetSize']:
+                    raise RuntimeError('Exact capacity host model differs before canonical startup.')
             ensure_host(host_state(), host_timeout, record, save)
             record['status'] = 'starting-and-checking-nested-guests'
             record['privateGuestReceipt'] = 'docs/deployment-2026-10-27/private-ssh-' + run + '.json'
             save()
             helper = runpy.run_path(str(ROOT / 'scripts/smal-private-powershell.py'), run_name='localbox_start_transport')
             # No automatic repeat after a failed/uncertain remote command.
-            code = helper['main']('scripts/start-smal-existing-guests.ps1', run)
+            code = helper['main']('scripts/start-smal-existing-guests.ps1', run, startup_context=capacity)
             guest_receipt = json.loads((ROOT / record['privateGuestReceipt']).read_text())
             if code != 0:
                 raise RuntimeError('Nested startup incomplete. Inspect the private transport receipt. Do not blindly retry.')
@@ -210,7 +229,8 @@ def main(host_timeout=900):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--host-timeout', type=int, default=900, help='Host readiness limit in seconds (60–3600).')
+    parser.add_argument('--capacity-handover', type=Path, help='Exact one-use capacity handover. Not an approval flag.')
     args = parser.parse_args()
     if not 60 <= args.host_timeout <= 3600:
         parser.error('--host-timeout must be between 60 and 3600')
-    sys.exit(main(args.host_timeout))
+    sys.exit(main(args.host_timeout, args.capacity_handover))

@@ -1,5 +1,12 @@
 # Existing AzureLocalBox compute-capacity operation
 
+> **R2 preparation supersedes the executable instructions below.** The legacy
+> multi-effect executor and renderer are retired. Physical disruption is HELD and
+> R2 operational entry points are source-disabled. Read
+> [R2 preparation and reconciliation](r2-preparation.md) before reviewing this
+> historical design. Old hardware/source decisions and unsigned candidates do not
+> approve R2. Kubernetes catalogue continuation remains Pending.
+
 Date: 2026-11-08. **Prepared source, not applied capacity.**
 
 The owner approves E64s_v6 and exactly three existing HCI guests at fixed 128 GiB /

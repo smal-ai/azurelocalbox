@@ -264,8 +264,7 @@ def build_candidate(host_receipt, nodes_receipt):
 
 
 def render(plan):
-    validate_plan(plan, approved=True)
-    return render_files(plan, PRIVATE_STAGES)
+    raise ValueError("Legacy stage rendering retired. Use sealed R2 controller rendering")
 
 
 def render_files(plan, stages):
@@ -279,11 +278,14 @@ def render_files(plan, stages):
 
 
 def source_guard(plan, inventory=False):
+    references = runpy.run_path(str(ROOT / 'scripts/smal-localbox-references.py'), run_name='capacity_original_origin_guard')
+    references['verify_origin']()
     names = ["scripts/smal-compute-capacity-20261108.py", "scripts/smal-compute-capacity-20261108-common.ps1",
              "scripts/smal-compute-capacity-20261108-stage.ps1", "scripts/test_smal_compute_capacity_20261108.py",
              "docs/deployment-2026-11-08-capacity/plan.pending.json",
              "scripts/smal-private-powershell.py", "scripts/start-smal-localbox.py", "scripts/start-smal-existing-guests.ps1"]
     names.extend(INVENTORY.values())
+    names.extend(['scripts/smal-localbox-references.py', 'docs/deployment-2026-11-08-capacity/runtime-references.json'])
     if inventory:
         require(plan == json.loads((OUT / "plan.pending.json").read_text()), "Inventory must use exact pending fixed plan")
         rendered = {}
@@ -364,6 +366,8 @@ def completed(stage, plan_sha):
 
 
 def execute(stage, key, plan, expected_sha, evidence=None):
+    if stage not in (*INVENTORY, "inspect", "verify"):
+        raise ValueError("Legacy multi-effect executor retired. Use reviewed R2; no mutation requested")
     if stage not in INVENTORY:
         validate_plan(plan, approved=True)
     require(expected_sha == digest(plan), "Parent reviewed plan differs")
@@ -455,6 +459,7 @@ def main():
     with Path("/tmp/opencode/smal-localbox-start.lock").open("a") as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         if args.action == "reconcile-cloud":
+            raise ValueError("Legacy reconciliation retired. Retain original history; use exact R2 reconciliation")
             validate_plan(plan, approved=True); head = source_guard(plan)
             require(args.expected_plan_sha256 == digest(plan), "Reviewed plan differs")
             require(args.receipt and args.receipt.parent.resolve() == OUT.resolve(), "Exact owned receipt required")

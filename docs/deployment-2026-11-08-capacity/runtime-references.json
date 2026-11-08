@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "repositoryOrigin": "https://github.com/smal-ai/azurelocalbox",
+  "historicalRoot": "/home/quintin/play/azurelocalbox",
+  "historicalSourceCommit": "f28ff52bfc31a3b2da7fbdc0d2f4c8c7b56a46c5",
+  "references": {
+    "docs/deployment-2026-10-27/private-ssh-setup-resume1.json": "69ecb2755bdceaa4a19fbb4052951a07648e2bb8ccd9bc008f0ffab468f0e728",
+    "docs/deployment-2026-10-29/node03-local-completion.json": "6de78ea8a3b7e41e11512019d3bd5cda7f0bb624e58032677d316c68b2c18faf",
+    "docs/deployment-2026-11-08-capacity/candidate-reference.json": "36d5691ad1d7f696000953f458e91a641846358871302adf45f67e9cdabbfb33",
+    "docs/deployment-2026-11-08/aks-customlocation-binding-run-smal-aks-binding-preresize-20261108-01.json": "06ac23f8cb72a6e13c679086f66bf0aac624ddce77e8230df22bf14bc4e27732"
+  },
+  "privateMaterialCopied": false,
+  "effectAuthority": null
+}

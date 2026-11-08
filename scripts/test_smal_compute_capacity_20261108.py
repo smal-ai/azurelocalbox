@@ -158,28 +158,22 @@ class CapacityTests(unittest.TestCase):
             azure = Mock(); transport = Mock()
             with patch.dict(G, OUT=out, source_guard=Mock(return_value="commit"), validate_plan=Mock(), get_cloud=azure, private=transport):
                 with self.assertRaisesRegex(ValueError, "receipt"):
-                    H["execute"]("shutdown", "fixed", self.plan, H["digest"](self.plan))
+                    H["execute"]("inspect", "fixed", self.plan, H["digest"](self.plan))
             azure.assert_not_called(); transport.assert_not_called()
 
-    def test_uncertain_guest_effect_retains_pending_receipt_and_never_retries(self):
+    def test_legacy_guest_effect_cannot_bypass_r2_barrier(self):
         row = {"projection": self.plan["baseline"]["cloud"], "size": self.plan["beforeSize"], "power": "PowerState/running"}
         with tempfile.TemporaryDirectory(dir="/tmp/opencode") as d:
             transport = Mock(side_effect=subprocess.TimeoutExpired("approved-transport", 90))
             with patch.dict(G, OUT=Path(d), source_guard=Mock(return_value="commit"), validate_plan=Mock(), get_cloud=Mock(return_value=row), private=transport):
-                with self.assertRaises(subprocess.TimeoutExpired):
+                with self.assertRaisesRegex(ValueError, 'retired'):
                     H["execute"]("shutdown", "fixed", self.plan, H["digest"](self.plan))
-            receipt = json.loads((Path(d) / "operation-fixed.json").read_text())
-            self.assertEqual(receipt["status"], "uncertain-inspect-before-continuation")
-            self.assertTrue(receipt["mutationRequested"]); self.assertEqual(transport.call_count, 1)
+            self.assertFalse((Path(d) / "operation-fixed.json").exists())
+            transport.assert_not_called()
 
     def test_generated_stage_digest_and_scope(self):
-        files = H["render"](self.plan)
-        self.assertEqual(len(files), 11)
-        for text in files.values():
-            self.assertIn(H["digest"](self.plan), text)
-            self.assertIn("$ComputeCapacityLibraryOnly=$true", text)
-            for forbidden in ("Start-VM ", "Remove-VM ", "Move-VMStorage", "Resize-VHD", "Format-Volume", "Clear-Disk", "-TurnOff"):
-                self.assertNotIn(forbidden, text)
+        with self.assertRaisesRegex(ValueError, 'retired'):
+            H['render'](self.plan)
 
     def test_powershell_parse_and_recursive_preservation_comparator(self):
         common = ROOT / "scripts/smal-compute-capacity-20261108-common.ps1"

@@ -110,7 +110,7 @@ def render_node03_console(installer, console, proof, approval, commit):
             .replace('__NODE03_CONSOLE_SHA256__', hashlib.sha256(console).hexdigest().upper()).encode())
 
 
-def main(script, name, envelope_key=None, three_node_context=None, capacity_context=None):
+def main(script, name, envelope_key=None, three_node_context=None, capacity_context=None, compute_context=None, startup_context=None):
     if not re.fullmatch(r'[a-z][a-z0-9-]{0,63}', name):
         raise RuntimeError('Invalid receipt name')
     target = OUT / f'private-ssh-{name}.json'
@@ -120,6 +120,10 @@ def main(script, name, envelope_key=None, three_node_context=None, capacity_cont
     if not path.is_relative_to(ROOT / 'scripts') or path.suffix != '.ps1':
         raise RuntimeError('Only reviewed scripts under repository scripts/ are accepted')
     relative = str(path.relative_to(ROOT))
+    if relative == 'scripts/smal-compute-capacity-20261108-stage.ps1' or (relative.startswith('scripts/smal-compute-capacity-20261108-') and relative not in {
+            'scripts/smal-compute-capacity-20261108-common.ps1', 'scripts/smal-compute-capacity-20261108-nodes.ps1',
+            'scripts/smal-compute-capacity-20261108-dc.ps1', 'scripts/smal-compute-capacity-20261108-topology.ps1'}):
+        raise RuntimeError('Legacy/generated compute executor and direct worker invocation refused')
     if relative == 'scripts/stage-smal-2610-image.ps1':
         approval = json.loads((OUT / 'current-2610-image-approval.json').read_text())
         if (approval.get('downloadAndChecksumVerificationApproved') is not True
@@ -156,6 +160,54 @@ def main(script, name, envelope_key=None, three_node_context=None, capacity_cont
     remote = subprocess.check_output(['git', 'ls-remote', '--heads', 'origin', 'refs/heads/' + branch], cwd=ROOT, text=True).split()
     if not remote or remote[0] != head:
         raise RuntimeError('Exact command source must be pushed')
+    if relative in {'scripts/smal-compute-capacity-20261108-common.ps1', 'scripts/smal-compute-capacity-20261108-nodes.ps1',
+                    'scripts/smal-compute-capacity-20261108-dc.ps1', 'scripts/smal-compute-capacity-20261108-topology.ps1'}:
+        # The existing source guard proves HEAD before this deterministic public prefix.
+        # Host-only Read-ComputeSnapshot must not emit an unbound/null sourceCommit.
+        source = ("$sourceCommit='" + head + "';\n").encode() + source
+    for dependency in ('scripts/smal-localbox-references.py', 'docs/deployment-2026-11-08-capacity/runtime-references.json'):
+        if (ROOT / dependency).read_bytes() != subprocess.check_output(['git', 'show', 'HEAD:' + dependency], cwd=ROOT):
+            raise RuntimeError('Original runtime reference source differs from HEAD')
+    if relative == 'scripts/start-smal-existing-guests.ps1':
+        gate = runpy.run_path(str(ROOT / 'scripts/smal-capacity-interlock.py'), run_name='direct_canonical_capacity_guard')
+        state, _, settled = gate['history']()
+        if state is not None and startup_context is None:
+            gate['authorise_startup'](expected_source=head)
+            if 'complete' not in settled:
+                raise RuntimeError('Active capacity operation requires canonical one-use handover')
+            public_complete = base64.b64encode(json.dumps(settled['complete'], sort_keys=True, separators=(',', ':')).encode()).decode()
+            source = ("$CapacityCompletionSettlement=([Text.Encoding]::UTF8.GetString([Convert]::FromBase64String('" + public_complete + "'))|ConvertFrom-Json);\n").encode() + source
+        common = (ROOT / 'scripts/smal-compute-capacity-20261108-common.ps1').read_bytes()
+        helper_bytes = b'$ComputeCapacityLibraryOnly=$true\n' + common + b'\n' + (ROOT / 'scripts/smal-capacity-startup-interlock.ps1').read_bytes()
+        for dependency in ('scripts/smal-compute-capacity-20261108-common.ps1', 'scripts/smal-capacity-startup-interlock.ps1'):
+            if (ROOT / dependency).read_bytes() != subprocess.check_output(['git', 'show', 'HEAD:' + dependency], cwd=ROOT):
+                raise RuntimeError('Canonical interlock dependency differs from HEAD')
+        source = ("$CapacityExpectedHelperSha256='" + hashlib.sha256(helper_bytes).hexdigest().upper() + "';\n").encode() + source
+    if relative == 'scripts/smal-capacity-dispatch-r2.ps1':
+        if not isinstance(compute_context, dict):
+            raise RuntimeError('Exact R2 controller context required')
+        controller = runpy.run_path(str(ROOT / 'scripts/smal-capacity-r2.py'), run_name='r2_transport_guard')
+        if controller['source_guard'](compute_context['plan']) != head:
+            raise RuntimeError('R2 source fence differs')
+        controller['authorise_transport'](compute_context, head)
+        source = controller['render_context'](compute_context, head)
+    elif compute_context is not None:
+        raise RuntimeError('R2 context accepted only by sealed dispatcher')
+    if startup_context is not None:
+        if relative != 'scripts/start-smal-existing-guests.ps1':
+            raise RuntimeError('Startup context accepted only by canonical startup')
+        interlock = runpy.run_path(str(ROOT / 'scripts/smal-capacity-interlock.py'), run_name='startup_transport_guard')
+        state, effects, settled = interlock['history']()
+        key = startup_context['key']
+        if effects.get(key) != startup_context['intent'] or key in settled or state['sourceCommit'] != head:
+            raise RuntimeError('Exact original startup intent/source absent')
+        handover = startup_context['handover']
+        if interlock['sha'](handover) != startup_context['intent']['requestSha256']:
+            raise RuntimeError('Original startup handover changed')
+        controller = runpy.run_path(str(ROOT / 'scripts/smal-capacity-r2.py'), run_name='startup_settlement_projection')
+        public = base64.b64encode(json.dumps(controller['settlement_projection'](settled), sort_keys=True, separators=(',', ':')).encode()).decode()
+        grant = base64.b64encode(json.dumps(handover['remoteGrant'], sort_keys=True, separators=(',', ':')).encode()).decode()
+        source = ("$CapacityStartupKey='" + key + "';$CapacityPlanSha='" + handover['planSha256'] + "';$CapacitySourceCommit='" + head + "';$CapacityRemoteGrant=([Text.Encoding]::UTF8.GetString([Convert]::FromBase64String('" + grant + "'))|ConvertFrom-Json);$CapacitySettlements=([Text.Encoding]::UTF8.GetString([Convert]::FromBase64String('" + public + "'))|ConvertFrom-Json);\n" + source.decode()).encode()
     capacity_scripts = {'scripts/prepare-smal-capacity-expansion.ps1','scripts/format-smal-capacity-disk.ps1','scripts/add-smal-capacity-vhds.ps1','scripts/inspect-smal-capacity-interruption.ps1'}
     if relative in capacity_scripts:
         guard = runpy.run_path(str(ROOT / 'scripts/smal-capacity-expansion.py'),run_name='capacity_transport_guard')
@@ -382,10 +434,9 @@ def main(script, name, envelope_key=None, three_node_context=None, capacity_cont
         helpers = {name: exact_bootstrap_bytes('scripts/' + name) for name in [
             'smal-guest-secret-functions.ps1', 'smal-guest-direct-functions.ps1']}
         source = render_guest_bootstrap_installer(source, exact_bootstrap_bytes('scripts/smal-guest-bootstrap-worker.ps1'), manifest, helpers, head)
-    setup_path = OUT / 'private-ssh-setup-resume1.json'
-    if not setup_path.exists():
-        raise RuntimeError('Successful reconciled setup receipt missing')
-    setup = json.loads(setup_path.read_text())
+    references = runpy.run_path(str(ROOT / 'scripts/smal-localbox-references.py'), run_name='transport_original_references')
+    references['verify_origin']()
+    setup = json.loads(references['original_bytes']('docs/deployment-2026-10-27/private-ssh-setup-resume1.json'))
     if setup.get('status') != 'complete-host-key-pinned-login-not-yet-tested':
         raise RuntimeError('Successful setup evidence missing')
     if not H['KNOWN'].is_file() or H['KNOWN'].is_symlink() or stat.S_IMODE(H['KEY'].stat().st_mode) != 0o600:

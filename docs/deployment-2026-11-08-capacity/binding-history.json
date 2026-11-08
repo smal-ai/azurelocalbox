@@ -1,0 +1,16 @@
+{
+  "status": "sanitised-historical-evidence-not-live-readiness",
+  "sourceCommit": "f28ff52bfc31a3b2da7fbdc0d2f4c8c7b56a46c5",
+  "sourceFile": "scripts/smal-aks-customlocation-binding.py",
+  "sourceSha256": "e3e6af1bc5a7b5b4a561a52f5df22504cefc37cf16a5c4dbd6057e485c9a7ee8",
+  "originalRoot": "/home/quintin/play/azurelocalbox",
+  "originalKey": "smal-aks-binding-preresize-20261108-01",
+  "originalReceiptSha256": "06ac23f8cb72a6e13c679086f66bf0aac624ddce77e8230df22bf14bc4e27732",
+  "retainedVmApiTypeTuples": 240,
+  "addedAksApiTypeTuples": 60,
+  "preservedResourceBindings": 4,
+  "requiredAksApiVersion": "2024-01-01",
+  "historicalBridge": "Running/Succeeded",
+  "patchReexecutionAllowed": false,
+  "executionApproval": null
+}

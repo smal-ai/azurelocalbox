@@ -8,16 +8,18 @@ function Get-ComputeKeys($value) {
     return @($value.PSObject.Properties.Name | Sort-Object)
 }
 function Get-ComputeField($value, [string]$key) {
-    if ($value -is [Collections.IDictionary]) { return $value[$key] }
-    return $value.PSObject.Properties[$key].Value
+    if ($value -is [Collections.IDictionary]) { return ,($value[$key]) }
+    return ,($value.PSObject.Properties[$key].Value)
 }
 function Assert-ComputeEqual($actual, $expected, [string]$label) {
     if ($null -eq $actual -or $null -eq $expected) {
         Assert-Compute (($null -eq $actual) -and ($null -eq $expected)) $label
         return
     }
-    $aObject = ($actual -is [Collections.IDictionary] -or $actual -is [pscustomobject])
-    $eObject = ($expected -is [Collections.IDictionary] -or $expected -is [pscustomobject])
+    # Pipeline-decorated native strings can satisfy -is [pscustomobject]. Compare
+    # their actual CLR type, otherwise identical sorted identity arrays are refused.
+    $aObject = ($actual -is [Collections.IDictionary] -or $actual.GetType() -eq [System.Management.Automation.PSCustomObject])
+    $eObject = ($expected -is [Collections.IDictionary] -or $expected.GetType() -eq [System.Management.Automation.PSCustomObject])
     if ($aObject -or $eObject) {
         Assert-Compute ($aObject -and $eObject) $label
         $aKeys = @(Get-ComputeKeys $actual); $eKeys = @(Get-ComputeKeys $expected)
@@ -29,6 +31,44 @@ function Assert-ComputeEqual($actual, $expected, [string]$label) {
     } else {
         Assert-Compute ([string]$actual -ceq [string]$expected) $label
     }
+}
+function Assert-ComputeJsonDepth($value, [int]$depth = 0) {
+    # Windows PowerShell can silently stringify truncated objects. Check structure
+    # before serialising, independently of version-specific truncation warnings.
+    if ($null -eq $value) { return }
+    $type = $value.GetType()
+    if ($value -is [string] -or $type.IsPrimitive -or $type.IsEnum -or $value -is [decimal] -or $value -is [datetime] -or $value -is [datetimeoffset] -or $value -is [guid]) { return }
+    Assert-Compute ($depth -lt 40) 'JSON nesting exceeds the bounded certificate depth'
+    if ($value -is [Collections.IDictionary]) {
+        foreach ($key in $value.Keys) { Assert-ComputeJsonDepth $value[$key] ($depth + 1) }
+    } elseif ($value -is [Collections.IList]) {
+        foreach ($item in $value) { Assert-ComputeJsonDepth $item ($depth + 1) }
+    } elseif ($value.GetType() -eq [System.Management.Automation.PSCustomObject]) {
+        foreach ($property in $value.PSObject.Properties) { Assert-ComputeJsonDepth $property.Value ($depth + 1) }
+    } else { throw 'Unsupported certificate object type. Capture explicit primitive fields' }
+}
+function ConvertTo-ComputeJson($record) {
+    Assert-ComputeJsonDepth $record
+    $json = ConvertTo-Json -InputObject $record -Depth 40 -Compress -WarningAction Stop -ErrorAction Stop
+    Assert-Compute ([Text.UTF8Encoding]::new($false).GetByteCount($json) -le 2MB) 'JSON certificate exceeds the byte cap'
+    return $json
+}
+function Write-ComputeNewJson([string]$path, $record) {
+    # Serialisation must finish successfully before even creating the immutable file.
+    $bytes = [Text.UTF8Encoding]::new($false).GetBytes((ConvertTo-ComputeJson $record))
+    $stream = [IO.File]::Open($path, [IO.FileMode]::CreateNew, [IO.FileAccess]::Write, [IO.FileShare]::Read)
+    try { $stream.Write($bytes, 0, $bytes.Length); $stream.Flush($true) } finally { $stream.Dispose() }
+}
+function Get-ComputeUtcStamp($value) {
+    # ConvertFrom-Json can turn ISO strings into DateTime. String coercion would
+    # falsely report a still-live original process as absent after reading its event.
+    if ($value -is [datetime]) {
+        Assert-Compute ($value.Kind -ne [DateTimeKind]::Unspecified) 'Process timestamp timezone missing'
+        return $value.ToUniversalTime().ToString('o')
+    }
+    if ($value -is [datetimeoffset]) { return $value.UtcDateTime.ToString('o') }
+    Assert-Compute ($value -is [string] -and $value -match '(Z|[+-][0-9]{2}:[0-9]{2})$') 'Process timestamp timezone missing'
+    return ([datetimeoffset]$value).UtcDateTime.ToString('o')
 }
 function Read-ComputeGuestStatic($vm) {
     $processor = Get-VMProcessor -VM $vm
@@ -112,6 +152,7 @@ function Read-ComputeSnapshot([bool]$readCluster = $true) {
         nat = @(Get-NetNat | Sort-Object Name | ForEach-Object { @{ name = $_.Name; prefix = $_.InternalIPInterfaceAddressPrefix } })
     }
     $snapshot = @{ atUtc = [datetime]::UtcNow.ToString('o'); mutationPerformed = $false
+        sourceCommit = $sourceCommit
         hostStatic = $hostStatic; hostCapacity = $hostCapacity; guestsStatic = $guests; states = $states; volumes = $volumes
         volumesStatic = @($volumes | ForEach-Object { @{ letter = $_.letter; uniqueId = $_.uniqueId; size = $_.size } })
         clusterStatic = $null; clusterHealth = $null; nodeCapacity = @{} }
@@ -120,7 +161,13 @@ function Read-ComputeSnapshot([bool]$readCluster = $true) {
         Assert-Compute ($running.Count -ge 2) 'Two surviving nodes required for cluster observation'
         $session = New-ComputeSession $running[0].Name
         try {
-            $cluster = Invoke-Command -Session $session -ErrorAction Stop -ScriptBlock {
+            $selectedNode = if ($entry) { $entry.node } else { $null }
+            $selectedOff = ($selectedNode -and $states[$selectedNode] -ceq 'Off')
+            $drainEvidence = if ($selectedNode -and (Test-Path ($capacityRoot + '\drain-proof-' + $selectedNode + '.json'))) {
+                Get-Content ($capacityRoot + '\drain-proof-' + $selectedNode + '.json') -Raw | ConvertFrom-Json
+            } else { $null }
+            $cluster = Invoke-Command -Session $session -ArgumentList $plan.transitionContract.deviceOwners, $selectedNode, $selectedOff, $drainEvidence -ErrorAction Stop -ScriptBlock {
+                param($FrozenOwners, $SelectedNode, $SelectedOff, $DrainEvidence)
                 $admin = Get-LocalUser -Name ASBuiltInAdmin
                 if (-not $admin.Enabled -or -not $admin.SID.Value.EndsWith('-500') -or [Security.Principal.WindowsIdentity]::GetCurrent().User.Value -cne $admin.SID.Value) { throw 'RID 500 binding differs' }
                 $c = Get-Cluster -Name smal-localbox01 -ErrorAction Stop
@@ -129,18 +176,57 @@ function Read-ComputeSnapshot([bool]$readCluster = $true) {
                 if ($pools.Count -ne 1) { throw 'One deployed pool required' }
                 $pool = $pools[0]; $csv = @(Get-ClusterSharedVolume -Cluster $c); $vd = @(Get-VirtualDisk)
                 $members = @($pool | Get-PhysicalDisk)
+                $ownerMap = @{}
+                foreach ($storageNode in @(Get-StorageNode)) {
+                    $ownerName = ([string]$storageNode.Name).Split('.')[0].ToUpperInvariant()
+                    if ($ownerName -cnotin @('LB-NODE01', 'LB-NODE02', 'LB-NODE03')) { continue }
+                    foreach ($device in @(Get-PhysicalDisk -StorageNode $storageNode -PhysicallyConnected)) {
+                        if ($device.UniqueId -notin @($members.UniqueId)) { continue }
+                        if ($ownerMap.ContainsKey($device.UniqueId)) { throw 'Ambiguous physical-device ownership' }
+                        $ownerMap[$device.UniqueId] = $ownerName
+                    }
+                }
+                if ($ownerMap.Count -ne 24) {
+                    $missing = @($members | Where-Object { -not $ownerMap.ContainsKey($_.UniqueId) })
+                    if (-not $SelectedOff -or $missing.Count -ne 8 -or $DrainEvidence.selectedNode -cne $SelectedNode -or $DrainEvidence.rpcReturned -ne $true -or $DrainEvidence.eightDevicesMaintenanceVerified -ne $true) { throw 'Complete device ownership unproved' }
+                    foreach ($device in $missing) {
+                        if ($FrozenOwners.PSObject.Properties[$device.UniqueId].Value -cne $SelectedNode -or $device.UniqueId -cnotin $DrainEvidence.deviceIds) { throw 'Missing device not owned selected-node maintenance' }
+                        $ownerMap[$device.UniqueId] = $SelectedNode
+                    }
+                }
                 $nodes = @(Get-ClusterNode -Cluster $c)
                 @{ static = @{ name = $c.Name; poolId = $pool.UniqueId; poolSize = $pool.Size
                         members = @($members | Sort-Object UniqueId | ForEach-Object { @{ id = $_.UniqueId; size = $_.Size } })
                         virtualDisks = @($vd | Sort-Object UniqueId | ForEach-Object { @{ id = $_.UniqueId; size = $_.Size; copies = $_.NumberOfDataCopies; resiliency = $_.ResiliencySettingName } })
                         csv = @($csv | Sort-Object Name | ForEach-Object { @{ name = $_.Name; id = $_.Id.ToString(); volumes = @($_.SharedVolumeInfo | ForEach-Object { @{ path = $_.FriendlyVolumeName; size = $_.Partition.Size } }) } }) }
                    health = @{ allNodesUp = @($nodes | Where-Object State -NE Up).Count -eq 0
-                        nodeStates = @($nodes | Sort-Object Name | ForEach-Object { @{ name = $_.Name; state = $_.State.ToString() } })
+                         nodeStates = @($nodes | Sort-Object Name | ForEach-Object { @{ name = $_.Name; state = $_.State.ToString() } })
+                         poolHealth = $pool.HealthStatus.ToString(); poolOperational = @($pool.OperationalStatus | ForEach-Object ToString)
+                         devices = @($members | Sort-Object UniqueId | ForEach-Object {
+                             $ops = @($_.OperationalStatus | ForEach-Object ToString)
+                             @{ id = $_.UniqueId; owner = $ownerMap[$_.UniqueId]; health = $_.HealthStatus.ToString(); operational = $ops
+                                maintenance = @($ops | Where-Object { $_ -cin @('In Maintenance Mode', 'InMaintenanceMode', 'Starting Maintenance Mode', 'StartingMaintenanceMode') }).Count -gt 0 }
+                         })
+                         virtualDiskStates = @($vd | Sort-Object UniqueId | ForEach-Object { @{ id = $_.UniqueId; health = $_.HealthStatus.ToString(); operational = @($_.OperationalStatus | ForEach-Object ToString); copies = $_.NumberOfDataCopies } })
+                         csvStates = @($csv | Sort-Object Name | ForEach-Object { @{ id = $_.Id.ToString(); state = $_.State.ToString(); accessible = $_.SharedVolumeInfo.Count -gt 0 -and @($_.SharedVolumeInfo | Where-Object { -not (Test-Path -LiteralPath $_.FriendlyVolumeName) }).Count -eq 0 } })
+                         unrelatedFailures = @(Get-ClusterResource -Cluster $c | Where-Object { $_.State.ToString() -ceq 'Failed' } | ForEach-Object { $_.Id.ToString() })
+                         vmResources = @(Get-ClusterResource -Cluster $c | Where-Object ResourceType -EQ 'Virtual Machine' | ForEach-Object {
+                             @{ id = $_.Id.ToString(); ownerNode = $_.OwnerNode.Name; state = $_.State.ToString()
+                                vmIds = @($_ | Get-ClusterParameter -Name VmId -ErrorAction Stop | ForEach-Object { [string]$_.Value }) }
+                         })
                         allCsvOnline = $csv.Count -eq 4 -and @($csv | Where-Object State -NE Online).Count -eq 0
                         allMirrorsHealthy = $vd.Count -eq 5 -and @($vd | Where-Object { $_.HealthStatus.ToString() -cne 'Healthy' -or $_.NumberOfDataCopies -ne 3 }).Count -eq 0
                         poolHealthy = $pool.HealthStatus.ToString() -ceq 'Healthy' -and $members.Count -eq 24 -and @($members | Where-Object HealthStatus -NE Healthy).Count -eq 0
                         quorumType = $q.QuorumType.ToString(); witness = $(if ($q.QuorumResource) { $q.QuorumResource.Name } else { $null })
-                        activeStorageJobs = @(Get-StorageJob | Where-Object JobState -NE Completed | ForEach-Object { @{ name = $_.Name; state = [string]$_.JobState } })
+                         activeStorageJobs = @(Get-StorageJob | Where-Object { [string]$_.JobState -cnotin @('Completed', '7') } | ForEach-Object {
+                             $job = $_
+                             $vds = @(Get-CimAssociatedInstance -InputObject $job -ResultClassName MSFT_VirtualDisk -ErrorAction Stop)
+                             $pds = @(Get-CimAssociatedInstance -InputObject $job -ResultClassName MSFT_PhysicalDisk -ErrorAction Stop)
+                             $pools = @(Get-CimAssociatedInstance -InputObject $job -ResultClassName MSFT_StoragePool -ErrorAction Stop)
+                             @{ name = $job.Name; state = [string]$job.JobState; percentComplete = $job.PercentComplete
+                                poolId = $(if ($pools.Count -eq 1) { $pools[0].UniqueId } else { $null })
+                                affectedVirtualDiskIds = @($vds.UniqueId); affectedDeviceIds = @($pds.UniqueId) }
+                         })
                         physicalFreeBytes = $pool.Size - $pool.AllocatedSize }
                 }
             }
@@ -251,7 +337,7 @@ if ($ComputeCapacityLibraryOnly -ne $true) {
         }
         $snapshot.observerPart = 'host-only'
         $snapshot.powershellProcesses = @(Get-Process -Name powershell -ErrorAction SilentlyContinue | Select-Object Id, StartTime, CPU, WorkingSet64)
-        @{ status = 'complete'; mutationPerformed = $false; snapshot = $snapshot } | ConvertTo-Json -Depth 30 -Compress
+        @{ status = 'complete'; mutationPerformed = $false; snapshot = $snapshot } | ForEach-Object { ConvertTo-ComputeJson $_ }
     } catch {
         @{ status = 'failed-read-only'; mutationPerformed = $false; errorType = $_.Exception.GetType().Name; errorLine = $_.InvocationInfo.ScriptLineNumber } | ConvertTo-Json -Compress
     }
@@ -292,13 +378,44 @@ function Assert-ComputeSnapshot($snapshot, [string[]]$off = @(), [bool]$clusterH
         Assert-Compute ($h.physicalFreeBytes -ge ($plan.admission.requiredPhysicalFreeBytes + $plan.admission.repairReserveBytes)) 'Physical S2D headroom insufficient'
     }
 }
-function Assert-ComputeMaintenanceHealth($snapshot, [string]$node) {
+function Assert-ComputeMaintenanceHealth($snapshot, [string]$node, $drainProof, [bool]$compensating = $false) {
     Assert-ComputeEqual $snapshot.clusterStatic $plan.baseline.clusterStatic 'Maintenance pool/CSV/VD/bridge identity drift'
     $h = $snapshot.clusterHealth
+    Assert-ComputeEqual @($h.nodeStates.name | Sort-Object) @('LB-NODE01', 'LB-NODE02', 'LB-NODE03') 'Exact three cluster nodes required'
+    Assert-Compute ($null -ne $h.activeStorageJobs -and $null -ne $h.unrelatedFailures) 'Complete job/failure observation required'
     $survivors = @($h.nodeStates | Where-Object name -CNE $node)
     Assert-Compute ($survivors.Count -eq 2 -and @($survivors | Where-Object state -CNE 'Up').Count -eq 0) 'Two Up survivors required'
     $current = @($h.nodeStates | Where-Object name -CEQ $node)
-    Assert-Compute ($current.Count -eq 1 -and $current[0].state -cin @('Down', 'Paused')) 'Expected maintenance node state differs'
-    Assert-Compute ($h.allCsvOnline -and $h.allMirrorsHealthy -and $h.poolHealthy -and $h.quorumType -ceq 'Majority' -and $null -eq $h.witness -and $h.activeStorageJobs.Count -eq 0) 'Unhealthy/active storage or quorum during maintenance'
+    Assert-Compute ($current.Count -eq 1 -and $current[0].state -cin @('Down', 'Paused', 'Up')) 'Expected maintenance node state differs'
+    Assert-Compute ($h.quorumType -ceq 'Majority' -and $null -eq $h.witness -and $h.unrelatedFailures.Count -eq 0) 'Unrelated failure/quorum drift'
+    $owners = $plan.transitionContract.deviceOwners
+    Assert-ComputeEqual @($h.devices.id | Sort-Object) @($owners.PSObject.Properties.Name | Sort-Object) 'Exact device identity differs'
+    Assert-Compute ($h.devices.Count -eq 24 -and @($h.devices.id | Select-Object -Unique).Count -eq 24) 'Distinct 24 devices required'
+    foreach ($n in @('LB-NODE01', 'LB-NODE02', 'LB-NODE03')) {
+        Assert-Compute (@($owners.PSObject.Properties | Where-Object Value -CEQ $n).Count -eq 8) 'Eight devices per node required'
+    }
+    $expected = @($owners.PSObject.Properties | Where-Object Value -CEQ $node | ForEach-Object Name | Sort-Object)
+    Assert-Compute ($expected.Count -eq 8 -and $drainProof.selectedNode -ceq $node -and $drainProof.rpcReturned -eq $true -and $drainProof.eightDevicesMaintenanceVerified -eq $true -and $drainProof.planSha256 -ceq $planSha -and $drainProof.sourceCommit -ceq $sourceCommit) 'Original settled drain proof/source required'
+    Assert-ComputeEqual $expected @($drainProof.deviceIds | Sort-Object) 'Drain device identity differs'
+    Assert-ComputeEqual @($h.csvStates.id | Sort-Object) @($plan.baseline.clusterStatic.csv.id | Sort-Object) 'CSV identity differs'
+    Assert-Compute ($h.csvStates.Count -eq 4 -and @($h.csvStates | Where-Object { $_.state -cne 'Online' -or $_.accessible -ne $true }).Count -eq 0) 'CSV inaccessible'
+    $volumeOps = @('OK', 'Degraded', 'Incomplete', 'InService', 'In Service')
+    Assert-Compute ($h.poolHealth -cin @('Healthy', 'Warning') -and $h.poolOperational.Count -gt 0 -and @($h.poolOperational | Where-Object { $_ -cnotin $volumeOps }).Count -eq 0) 'Unknown pool failure'
+    foreach ($device in $h.devices) {
+        Assert-Compute ($owners.PSObject.Properties[$device.id].Value -ceq $device.owner) 'Device owner drift'
+        if ($device.owner -cne $node) {
+            Assert-Compute ($device.health -ceq 'Healthy' -and ($device.operational -join '|') -ceq 'OK' -and -not $device.maintenance) 'Survivor degradation not planned maintenance'
+        } else {
+            $ops = @('OK', 'In Maintenance Mode', 'InMaintenanceMode', 'Starting Maintenance Mode', 'StartingMaintenanceMode', 'Lost Communication', 'LostCommunication')
+            Assert-Compute ($device.health -cin @('Healthy', 'Warning') -and $device.operational.Count -gt 0 -and @($device.operational | Where-Object { $_ -cnotin $ops }).Count -eq 0) 'Unknown selected-device failure'
+            Assert-Compute ($device.maintenance -or @($device.operational | Where-Object { $_ -cnotin @('OK', 'Lost Communication', 'LostCommunication') }).Count -eq 0) 'Selected maintenance unproved'
+        }
+    }
+    Assert-ComputeEqual @($h.virtualDiskStates.id | Sort-Object) @($plan.baseline.clusterStatic.virtualDisks.id | Sort-Object) 'Mirror identity differs'
+    Assert-Compute ($h.virtualDiskStates.Count -eq 5 -and @($h.virtualDiskStates | Where-Object { $_.copies -ne 3 -or $_.health -cnotin @('Healthy', 'Warning') -or $_.operational.Count -eq 0 -or @($_.operational | Where-Object { $_ -cnotin $volumeOps }).Count -gt 0 }).Count -eq 0) 'Unknown mirror failure'
+    foreach ($job in $h.activeStorageJobs) {
+        Assert-Compute ($compensating -and $job.name -ceq 'Repair' -and $job.poolId -ceq $plan.baseline.clusterStatic.poolId -and $job.affectedVirtualDiskIds.Count -gt 0 -and $job.affectedDeviceIds.Count -gt 0) 'Unassociated/unrelated repair job'
+        Assert-Compute (@($job.affectedDeviceIds | Where-Object { $_ -cnotin $expected }).Count -eq 0 -and @($job.affectedVirtualDiskIds | Where-Object { $_ -cnotin $plan.baseline.clusterStatic.virtualDisks.id }).Count -eq 0) 'Repair outside selected-node identity set'
+    }
     Assert-Compute ($h.physicalFreeBytes -ge ($plan.admission.requiredPhysicalFreeBytes + $plan.admission.repairReserveBytes)) 'Maintenance physical headroom insufficient'
 }

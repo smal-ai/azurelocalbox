@@ -1,5 +1,27 @@
 # Start LocalBox after the nightly shutdown
 
+## R2 source migration hold
+
+The new checkout `/home/quintin/play/smal-ai-azurelocalbox` is a **preparation
+candidate**, not a published operational replacement. Do not run either checkout's
+startup during the current capacity/catalogue disruption hold. The original
+checkout, receipts and protected material remain unchanged and read-only here.
+
+The candidate adds an operation-wide capacity barrier before VPN or Azure start,
+and a hash-pinned remote interlock before guest starts. Active capacity requires an
+exact one-use handover and independently observed settlement. A timeout, dead PID,
+closed tunnel or completion marker alone cannot authorise another start. The normal
+guest IDs, VPN/authentication, trust/source checks and transport limits are retained.
+
+Named public receipts are referenced by committed hashes, not copied into new
+approvals. Existing SSH material stays at
+`/home/quintin/.local/state/azurelocalbox/ssh`. Missing or changed references fail
+closed. [R2 preparation](../deployment-2026-11-08-capacity/r2-preparation.md) specifies
+the disabled routes, reconciliation predicates and independent release requirements.
+
+The commands below describe the original historical startup mechanism. They do not
+release the current hold or authorise execution of the new candidate.
+
 ## Current operational handover
 
 The cluster is deployed. Current storage is **24 S2D data VHDXs**, eight per node,
