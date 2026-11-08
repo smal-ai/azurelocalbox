@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "kind": "storage-failed-01",
+  "owner": "AzureLocalBox",
+  "sourceCommit": "e49c11aad1753defb1b7cd2c903267b9b69edeec",
+  "observer": "scripts/read-smal-initial-storage-20261108.ps1",
+  "observerSha256": "c8387ed7a91948d71e590611551040d8d8455e43453313d1659e3a03d09e7d22",
+  "renderedObserverSha256": "388a906534d9e0ffc24c0d543e0a280622515c9d12f7f275e856ac8eef94a143",
+  "captureIntervalUtc": {
+    "began": "2026-11-08T15:24:43.943570+00:00",
+    "finished": "2026-11-08T15:24:55.864824+00:00"
+  },
+  "originalPrivateReceipt": "docs/deployment-2026-10-27/private-ssh-initial-storage-20261108-01.json",
+  "originalPrivateReceiptSha256": "54705741ac279ee74a9ad9aa55a15151d41b5ecb2b96c3b149132ed34f034fd9",
+  "transportStatus": "failed-do-not-automatically-repeat",
+  "queryStatus": null,
+  "error": {
+    "type": "PSRemotingDataStructureException",
+    "line": 88
+  },
+  "data": null,
+  "qualification": "Measured projection only. Transport/query completeness does not establish workload admission."
+}

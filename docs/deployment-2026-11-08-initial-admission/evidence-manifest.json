@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "executionId": "exec_smal_localbox_initial_admission_20261108",
+  "status": "partial-observations-with-concrete-blockers",
+  "workloadAdmitted": false,
+  "infrastructureMutationPerformed": false,
+  "observerSourceCommit": "e49c11aad1753defb1b7cd2c903267b9b69edeec",
+  "independentSourceReviewDigest": "1c3d897a758200ef816ca27067157fcaca362495b3d7d57f5736a37f76b3fa62",
+  "operatorBindingSha256": "18a4302cf8105d54d169c5bce4e322645ed8cbc7001748d67f89f51099ba08b4",
+  "rendererSha256": "e4a4f6a14fa5364f948ebcfb7a85418cf08da493120f396a1eb212f53e9d2763",
+  "artifacts": [
+    {
+      "path": "docs/deployment-2026-11-08-initial-admission/observations/host.json",
+      "sha256": "d54a3e1576017dc4fb41535e1c30ba3ab93d4fb8e6ae5c21f4d0ad507f99f601",
+      "originalReceipt": "docs/deployment-2026-10-27/private-ssh-initial-host-20261108-01.json",
+      "originalReceiptSha256": "19a1d99646c4655bd98ca81614736b0cbf4d13e41d678219c26d6a7af50cb377"
+    },
+    {
+      "path": "docs/deployment-2026-11-08-initial-admission/observations/base-nodes.json",
+      "sha256": "e0d60a7032ccda75c595edcc862e14c21b21f74947b8b42788174d40d92a1566",
+      "originalReceipt": "docs/deployment-2026-10-27/private-ssh-compute-initial-admission-nodes-20261108-01.json",
+      "originalReceiptSha256": "77aa92df7b60c0813e4319f48ba3a9ca51c55a903146f327367cfaf29848ab3c"
+    },
+    {
+      "path": "docs/deployment-2026-11-08-initial-admission/observations/getter-discovery.json",
+      "sha256": "ad31b189ff42fb8c44f48092ac84300753a3bd9c6ca727b2bbaf14640863ee59",
+      "originalReceipt": "docs/deployment-2026-10-27/private-ssh-initial-discovery-20261108-01.json",
+      "originalReceiptSha256": "6546ccabf4adcd838455608440370a525a8fbbc95e64b9c152190e3e46029529"
+    },
+    {
+      "path": "docs/deployment-2026-11-08-initial-admission/observations/storage-failed-01.json",
+      "sha256": "d585e4114ac74df7370cd57f83cbb02778e1929ecdb4780c7c0ecb58007e7b11",
+      "originalReceipt": "docs/deployment-2026-10-27/private-ssh-initial-storage-20261108-01.json",
+      "originalReceiptSha256": "54705741ac279ee74a9ad9aa55a15151d41b5ecb2b96c3b149132ed34f034fd9"
+    },
+    {
+      "path": "docs/deployment-2026-11-08-initial-admission/observations/storage-failed-02.json",
+      "sha256": "a324e24362b5557d2ff17add171c258d82e5cdce373fe1bf23300e15ba6adfd8",
+      "originalReceipt": "docs/deployment-2026-10-27/private-ssh-initial-storage-20261108-02.json",
+      "originalReceiptSha256": "0cb2f612c5c5eb8794320da708b1041f33cf005eaf8f42819ba92939d831092b"
+    },
+    {
+      "path": "docs/deployment-2026-11-08-initial-admission/observations/routes-failed-01.json",
+      "sha256": "2194db07bae38bff7b6454e83f6b6c28d8896157ec7bba65930b5dfdc70d2557",
+      "originalReceipt": "docs/deployment-2026-10-27/private-ssh-initial-routes-20261108-01.json",
+      "originalReceiptSha256": "46fdeae2860b9c95328bd854b2878ebda0d2bb852bd6b0b434951d35f712775b"
+    },
+    {
+      "path": "docs/deployment-2026-11-08-initial-admission/observations/routes-failed-02.json",
+      "sha256": "fccc168f22a743021a9ebaa2dc2e85375bb7564297330bc584e16a8d545ad731",
+      "originalReceipt": "docs/deployment-2026-10-27/private-ssh-initial-routes-20261108-02.json",
+      "originalReceiptSha256": "70705d3946aac59229c9d6b700fcaff774cf3ce4aefbe6bef7042c524cb5f222"
+    },
+    {
+      "path": "docs/deployment-2026-11-08-initial-admission/observations/arm-base.json",
+      "sha256": "5371e62a85e2a18b7793b33e712d91d6e68ef8f238b4536bf6057981cd27caa0",
+      "originalReceipt": "/tmp/opencode/localbox-initial-arm-20261108-01.json",
+      "originalReceiptSha256": "45484cf44557a63ecaf6db8276743733473b43d3c20941c24ac54ce902b864ae"
+    }
+  ]
+}

@@ -1,0 +1,1449 @@
+{
+  "schemaVersion": 1,
+  "kind": "base-nodes",
+  "owner": "AzureLocalBox",
+  "sourceCommit": "38f8ad28d2c0025e1b7a384d5881b1118bdb8140",
+  "observer": "scripts/smal-compute-capacity-20261108-nodes.ps1",
+  "observerSha256": "170083d70f585cf04ea376757d489477b5e83f61f9edbb9568a4a214342bbabd",
+  "renderedObserverSha256": "170083d70f585cf04ea376757d489477b5e83f61f9edbb9568a4a214342bbabd",
+  "captureIntervalUtc": {
+    "began": "2026-11-08T14:36:34.778824+00:00",
+    "finished": "2026-11-08T14:37:34.274486+00:00"
+  },
+  "originalPrivateReceipt": "docs/deployment-2026-10-27/private-ssh-compute-initial-admission-nodes-20261108-01.json",
+  "originalPrivateReceiptSha256": "77aa92df7b60c0813e4319f48ba3a9ca51c55a903146f327367cfaf29848ab3c",
+  "transportStatus": "complete",
+  "queryStatus": "complete",
+  "error": null,
+  "data": {
+    "status": "complete",
+    "atUtc": "2026-11-08T14:37:33.9401565Z",
+    "nodes": {
+      "LB-NODE03": {
+        "logicalProcessors": 8,
+        "memoryBytes": 68718317568,
+        "freeMemoryBytes": 61606223872,
+        "switches": [
+          {
+            "Name": "ConvergedSwitch(managementcompute)",
+            "Id": "ae41b936-7d4f-4655-bc51-7cd909b75901",
+            "SwitchType": {
+              "value": 2,
+              "Value": "External"
+            },
+            "NetAdapterInterfaceDescription": "Teamed-Interface"
+          }
+        ],
+        "managementAdapters": [
+          {
+            "mode": "Untagged",
+            "switchName": "ConvergedSwitch(managementcompute)",
+            "accessVlanId": 0,
+            "name": "vManagement(managementcompute)",
+            "nativeVlanId": 0
+          }
+        ],
+        "adapters": [
+          {
+            "InterfaceIndex": 12,
+            "Name": "STORAGEB",
+            "Status": "Up",
+            "MacAddress": "00-15-5D-10-04-0D",
+            "InterfaceDescription": "Microsoft Hyper-V Network Adapter #2",
+            "LinkSpeed": "10 Gbps"
+          },
+          {
+            "InterfaceIndex": 11,
+            "Name": "MGMT1",
+            "Status": "Up",
+            "MacAddress": "00-15-5D-10-04-0A",
+            "InterfaceDescription": "Microsoft Hyper-V Network Adapter",
+            "LinkSpeed": "10 Gbps"
+          },
+          {
+            "InterfaceIndex": 7,
+            "Name": "STORAGEA",
+            "Status": "Up",
+            "MacAddress": "00-15-5D-10-04-0C",
+            "InterfaceDescription": "Microsoft Hyper-V Network Adapter #4",
+            "LinkSpeed": "10 Gbps"
+          },
+          {
+            "InterfaceIndex": 5,
+            "Name": "MGMT2",
+            "Status": "Up",
+            "MacAddress": "00-15-5D-10-04-0B",
+            "InterfaceDescription": "Microsoft Hyper-V Network Adapter #3",
+            "LinkSpeed": "10 Gbps"
+          },
+          {
+            "InterfaceIndex": 4,
+            "Name": "vManagement(managementcompute)",
+            "Status": "Up",
+            "MacAddress": "00-15-5D-10-04-0A",
+            "InterfaceDescription": "Hyper-V Virtual Ethernet Adapter",
+            "LinkSpeed": "10 Gbps"
+          }
+        ],
+        "ipv4": [
+          {
+            "InterfaceIndex": 4,
+            "InterfaceAlias": "vManagement(managementcompute)",
+            "IPAddress": "10.64.0.20",
+            "PrefixLength": 24,
+            "AddressState": {
+              "value": 4,
+              "Value": "Preferred"
+            }
+          },
+          {
+            "InterfaceIndex": 4,
+            "InterfaceAlias": "vManagement(managementcompute)",
+            "IPAddress": "10.64.0.13",
+            "PrefixLength": 24,
+            "AddressState": {
+              "value": 4,
+              "Value": "Preferred"
+            }
+          },
+          {
+            "InterfaceIndex": 7,
+            "InterfaceAlias": "STORAGEA",
+            "IPAddress": "10.64.4.13",
+            "PrefixLength": 24,
+            "AddressState": {
+              "value": 4,
+              "Value": "Preferred"
+            }
+          },
+          {
+            "InterfaceIndex": 12,
+            "InterfaceAlias": "STORAGEB",
+            "IPAddress": "10.64.5.13",
+            "PrefixLength": 24,
+            "AddressState": {
+              "value": 4,
+              "Value": "Preferred"
+            }
+          },
+          {
+            "InterfaceIndex": 6,
+            "InterfaceAlias": "Local Area Connection* 1",
+            "IPAddress": "169.254.3.165",
+            "PrefixLength": 16,
+            "AddressState": {
+              "value": 4,
+              "Value": "Preferred"
+            }
+          },
+          {
+            "InterfaceIndex": 1,
+            "InterfaceAlias": "Loopback Pseudo-Interface 1",
+            "IPAddress": "127.0.0.1",
+            "PrefixLength": 8,
+            "AddressState": {
+              "value": 4,
+              "Value": "Preferred"
+            }
+          }
+        ],
+        "routes": [
+          {
+            "InterfaceIndex": 7,
+            "DestinationPrefix": "255.255.255.255/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 12,
+            "DestinationPrefix": "255.255.255.255/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 6,
+            "DestinationPrefix": "255.255.255.255/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 4,
+            "DestinationPrefix": "255.255.255.255/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 1,
+            "DestinationPrefix": "255.255.255.255/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 7,
+            "DestinationPrefix": "224.0.0.0/4",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 12,
+            "DestinationPrefix": "224.0.0.0/4",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 6,
+            "DestinationPrefix": "224.0.0.0/4",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 4,
+            "DestinationPrefix": "224.0.0.0/4",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 1,
+            "DestinationPrefix": "224.0.0.0/4",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 6,
+            "DestinationPrefix": "169.254.255.255/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 6,
+            "DestinationPrefix": "169.254.3.165/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 6,
+            "DestinationPrefix": "169.254.0.0/16",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 1,
+            "DestinationPrefix": "127.255.255.255/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 1,
+            "DestinationPrefix": "127.0.0.1/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 1,
+            "DestinationPrefix": "127.0.0.0/8",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 12,
+            "DestinationPrefix": "10.64.5.255/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 12,
+            "DestinationPrefix": "10.64.5.13/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 12,
+            "DestinationPrefix": "10.64.5.0/24",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 7,
+            "DestinationPrefix": "10.64.4.255/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 7,
+            "DestinationPrefix": "10.64.4.13/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 7,
+            "DestinationPrefix": "10.64.4.0/24",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 4,
+            "DestinationPrefix": "10.64.0.255/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 4,
+            "DestinationPrefix": "10.64.0.20/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 4,
+            "DestinationPrefix": "10.64.0.13/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 4,
+            "DestinationPrefix": "10.64.0.0/24",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 4,
+            "DestinationPrefix": "0.0.0.0/0",
+            "NextHop": "10.64.0.1",
+            "RouteMetric": 256
+          }
+        ],
+        "dns": [
+          {
+            "InterfaceIndex": 12,
+            "ServerAddresses": []
+          },
+          {
+            "InterfaceIndex": 7,
+            "ServerAddresses": []
+          },
+          {
+            "InterfaceIndex": 4,
+            "ServerAddresses": [
+              "10.64.0.10"
+            ]
+          },
+          {
+            "InterfaceIndex": 6,
+            "ServerAddresses": []
+          },
+          {
+            "InterfaceIndex": 1,
+            "ServerAddresses": []
+          }
+        ],
+        "services": [
+          {
+            "Name": "clussvc",
+            "Status": {
+              "value": 4,
+              "Value": "Running"
+            }
+          },
+          {
+            "Name": "ExtensionService",
+            "Status": {
+              "value": 4,
+              "Value": "Running"
+            }
+          },
+          {
+            "Name": "GCArcService",
+            "Status": {
+              "value": 4,
+              "Value": "Running"
+            }
+          },
+          {
+            "Name": "himds",
+            "Status": {
+              "value": 4,
+              "Value": "Running"
+            }
+          },
+          {
+            "Name": "vmms",
+            "Status": {
+              "value": 4,
+              "Value": "Running"
+            }
+          }
+        ],
+        "nestedVms": [],
+        "placement": [],
+        "cluster": null
+      },
+      "LB-NODE01": {
+        "logicalProcessors": 8,
+        "memoryBytes": 68718317568,
+        "freeMemoryBytes": 53657706496,
+        "switches": [
+          {
+            "Name": "ConvergedSwitch(managementcompute)",
+            "Id": "fab21ec6-01c0-4b29-a80a-f3cd26b40736",
+            "SwitchType": {
+              "value": 2,
+              "Value": "External"
+            },
+            "NetAdapterInterfaceDescription": "Teamed-Interface"
+          }
+        ],
+        "managementAdapters": [
+          {
+            "mode": "Untagged",
+            "switchName": "ConvergedSwitch(managementcompute)",
+            "accessVlanId": 0,
+            "name": "vManagement(managementcompute)",
+            "nativeVlanId": 0
+          }
+        ],
+        "adapters": [
+          {
+            "InterfaceIndex": 12,
+            "Name": "STORAGEB",
+            "Status": "Up",
+            "MacAddress": "00-15-5D-10-04-05",
+            "InterfaceDescription": "Microsoft Hyper-V Network Adapter #2",
+            "LinkSpeed": "10 Gbps"
+          },
+          {
+            "InterfaceIndex": 11,
+            "Name": "vManagement(managementcompute)",
+            "Status": "Up",
+            "MacAddress": "00-15-5D-10-04-02",
+            "InterfaceDescription": "Hyper-V Virtual Ethernet Adapter",
+            "LinkSpeed": "10 Gbps"
+          },
+          {
+            "InterfaceIndex": 8,
+            "Name": "MGMT1",
+            "Status": "Up",
+            "MacAddress": "00-15-5D-10-04-02",
+            "InterfaceDescription": "Microsoft Hyper-V Network Adapter #4",
+            "LinkSpeed": "10 Gbps"
+          },
+          {
+            "InterfaceIndex": 6,
+            "Name": "MGMT2",
+            "Status": "Up",
+            "MacAddress": "00-15-5D-10-04-03",
+            "InterfaceDescription": "Microsoft Hyper-V Network Adapter #3",
+            "LinkSpeed": "10 Gbps"
+          },
+          {
+            "InterfaceIndex": 5,
+            "Name": "STORAGEA",
+            "Status": "Up",
+            "MacAddress": "00-15-5D-10-04-04",
+            "InterfaceDescription": "Microsoft Hyper-V Network Adapter",
+            "LinkSpeed": "10 Gbps"
+          }
+        ],
+        "ipv4": [
+          {
+            "InterfaceIndex": 11,
+            "InterfaceAlias": "vManagement(managementcompute)",
+            "IPAddress": "10.64.0.11",
+            "PrefixLength": 24,
+            "AddressState": {
+              "value": 4,
+              "Value": "Preferred"
+            }
+          },
+          {
+            "InterfaceIndex": 12,
+            "InterfaceAlias": "STORAGEB",
+            "IPAddress": "10.64.5.11",
+            "PrefixLength": 24,
+            "AddressState": {
+              "value": 4,
+              "Value": "Preferred"
+            }
+          },
+          {
+            "InterfaceIndex": 9,
+            "InterfaceAlias": "Local Area Connection* 1",
+            "IPAddress": "169.254.1.248",
+            "PrefixLength": 16,
+            "AddressState": {
+              "value": 4,
+              "Value": "Preferred"
+            }
+          },
+          {
+            "InterfaceIndex": 5,
+            "InterfaceAlias": "STORAGEA",
+            "IPAddress": "10.64.4.11",
+            "PrefixLength": 24,
+            "AddressState": {
+              "value": 4,
+              "Value": "Preferred"
+            }
+          },
+          {
+            "InterfaceIndex": 1,
+            "InterfaceAlias": "Loopback Pseudo-Interface 1",
+            "IPAddress": "127.0.0.1",
+            "PrefixLength": 8,
+            "AddressState": {
+              "value": 4,
+              "Value": "Preferred"
+            }
+          }
+        ],
+        "routes": [
+          {
+            "InterfaceIndex": 5,
+            "DestinationPrefix": "255.255.255.255/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 12,
+            "DestinationPrefix": "255.255.255.255/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 9,
+            "DestinationPrefix": "255.255.255.255/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 11,
+            "DestinationPrefix": "255.255.255.255/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 1,
+            "DestinationPrefix": "255.255.255.255/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 5,
+            "DestinationPrefix": "224.0.0.0/4",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 12,
+            "DestinationPrefix": "224.0.0.0/4",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 9,
+            "DestinationPrefix": "224.0.0.0/4",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 11,
+            "DestinationPrefix": "224.0.0.0/4",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 1,
+            "DestinationPrefix": "224.0.0.0/4",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 9,
+            "DestinationPrefix": "169.254.255.255/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 9,
+            "DestinationPrefix": "169.254.1.248/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 9,
+            "DestinationPrefix": "169.254.0.0/16",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 1,
+            "DestinationPrefix": "127.255.255.255/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 1,
+            "DestinationPrefix": "127.0.0.1/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 1,
+            "DestinationPrefix": "127.0.0.0/8",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 12,
+            "DestinationPrefix": "10.64.5.255/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 12,
+            "DestinationPrefix": "10.64.5.11/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 12,
+            "DestinationPrefix": "10.64.5.0/24",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 5,
+            "DestinationPrefix": "10.64.4.255/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 5,
+            "DestinationPrefix": "10.64.4.11/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 5,
+            "DestinationPrefix": "10.64.4.0/24",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 11,
+            "DestinationPrefix": "10.64.0.255/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 11,
+            "DestinationPrefix": "10.64.0.11/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 11,
+            "DestinationPrefix": "10.64.0.0/24",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 11,
+            "DestinationPrefix": "0.0.0.0/0",
+            "NextHop": "10.64.0.1",
+            "RouteMetric": 256
+          }
+        ],
+        "dns": [
+          {
+            "InterfaceIndex": 5,
+            "ServerAddresses": []
+          },
+          {
+            "InterfaceIndex": 12,
+            "ServerAddresses": []
+          },
+          {
+            "InterfaceIndex": 11,
+            "ServerAddresses": [
+              "10.64.0.10"
+            ]
+          },
+          {
+            "InterfaceIndex": 9,
+            "ServerAddresses": []
+          },
+          {
+            "InterfaceIndex": 1,
+            "ServerAddresses": []
+          }
+        ],
+        "services": [
+          {
+            "Name": "clussvc",
+            "Status": {
+              "value": 4,
+              "Value": "Running"
+            }
+          },
+          {
+            "Name": "ExtensionService",
+            "Status": {
+              "value": 4,
+              "Value": "Running"
+            }
+          },
+          {
+            "Name": "GCArcService",
+            "Status": {
+              "value": 4,
+              "Value": "Running"
+            }
+          },
+          {
+            "Name": "himds",
+            "Status": {
+              "value": 4,
+              "Value": "Running"
+            }
+          },
+          {
+            "Name": "vmms",
+            "Status": {
+              "value": 4,
+              "Value": "Running"
+            }
+          }
+        ],
+        "nestedVms": [
+          {
+            "processor": {
+              "weight": 100,
+              "nested": false,
+              "reserve": 0,
+              "maximum": 100
+            },
+            "automaticStart": "Nothing",
+            "memory": 8589934592,
+            "name": "32c9b21328b3df180e0d814a8afe5134fa140c2909569-control-plane-0-17b02de3",
+            "version": "12.0",
+            "generation": 2,
+            "disks": [
+              {
+                "lun": 0,
+                "path": "C:\\ClusterStorage\\Infrastructure_1\\Shares\\SU1_Infrastructure_1\\MocArb\\WorkingDirectory\\ImageStore\\e65a4d61375e055\\32c9b21328b3df180e0d814a8afe5134fa140c2909569-control-plane-0-OSDisk-6fca989c.vhdx",
+                "id": "BCD6C798-1FED-3042-B945-958CE748A5A2",
+                "size": 107374182400,
+                "controller": 0
+              }
+            ],
+            "configurationLocation": "C:\\ClusterStorage\\Infrastructure_1\\Shares\\SU1_Infrastructure_1\\MocArb\\WorkingDirectory\\ImageStore\\e65a4d61375e055",
+            "adapters": [
+              {
+                "dynamicMac": false,
+                "vlan": "Untagged",
+                "nativeVlanId": 0,
+                "mac": "02EC000B0000",
+                "accessVlanId": 0,
+                "name": "32c9b21328b3df180e0d814a8afe5134fa140c2909569-control-plane-0-nic-e4b3afad",
+                "switchName": "ConvergedSwitch(managementcompute)"
+              }
+            ],
+            "automaticStop": "ShutDown",
+            "id": "4c6ca5cc-8c9a-499b-8ffe-c029bbfd3522",
+            "dynamicMemory": false,
+            "path": "C:\\ClusterStorage\\Infrastructure_1\\Shares\\SU1_Infrastructure_1\\MocArb\\WorkingDirectory\\ImageStore\\e65a4d61375e055",
+            "cpu": 4
+          }
+        ],
+        "placement": [
+          {
+            "hciNode": "LB-NODE01",
+            "heartbeat": "OkApplicationsUnknown",
+            "id": "4c6ca5cc-8c9a-499b-8ffe-c029bbfd3522",
+            "ipv4": [
+              "10.64.0.22",
+              "10.64.0.21",
+              "fe80::ec:ff:fe0b:0"
+            ],
+            "state": "Running"
+          }
+        ],
+        "cluster": {
+          "csv": [
+            {
+              "state": "Online",
+              "name": "Cluster Virtual Disk (Infrastructure_1)",
+              "volumes": [
+                {
+                  "path": "C:\\ClusterStorage\\Infrastructure_1",
+                  "free": 225401851904,
+                  "size": 270515830784
+                }
+              ],
+              "id": "0cf94881-3223-43a9-883f-c65ce0f779fd"
+            },
+            {
+              "state": "Online",
+              "name": "Cluster Virtual Disk (UserStorage_1)",
+              "volumes": [
+                {
+                  "path": "C:\\ClusterStorage\\UserStorage_1",
+                  "free": 285591822336,
+                  "size": 304875569152
+                }
+              ],
+              "id": "0590f6c7-bec3-4141-bfff-d8a3c820d4df"
+            },
+            {
+              "state": "Online",
+              "name": "Cluster Virtual Disk (UserStorage_2)",
+              "volumes": [
+                {
+                  "path": "C:\\ClusterStorage\\UserStorage_2",
+                  "free": 301216014336,
+                  "size": 304875569152
+                }
+              ],
+              "id": "769bb62a-f822-4672-869e-958e785817e1"
+            },
+            {
+              "state": "Online",
+              "name": "Cluster Virtual Disk (UserStorage_3)",
+              "volumes": [
+                {
+                  "path": "C:\\ClusterStorage\\UserStorage_3",
+                  "free": 301216014336,
+                  "size": 304875569152
+                }
+              ],
+              "id": "944155b7-0adb-4492-a3e0-0e6d59629b80"
+            }
+          ],
+          "quorumType": "Majority",
+          "witness": null,
+          "name": "smal-localbox01",
+          "poolId": "{923c0194-3ed4-449a-ae14-0f62861e0ec8}",
+          "members": [
+            {
+              "health": "Healthy",
+              "id": "6002248007513A9F9FD6A09C2C934609",
+              "size": 182536110080
+            },
+            {
+              "health": "Healthy",
+              "id": "6002248018A9EA3E37A91804553ABFEE",
+              "size": 182536110080
+            },
+            {
+              "health": "Healthy",
+              "id": "600224801933BE540257E4937DA41512",
+              "size": 182536110080
+            },
+            {
+              "health": "Healthy",
+              "id": "600224801E3FB24517D8C5F2124F7E30",
+              "size": 182536110080
+            },
+            {
+              "health": "Healthy",
+              "id": "600224802DF5A6C7E8F6062832A93BAC",
+              "size": 182536110080
+            },
+            {
+              "health": "Healthy",
+              "id": "600224802F65BE3E670733600EC131EF",
+              "size": 182536110080
+            },
+            {
+              "health": "Healthy",
+              "id": "600224802FE5FC3B31A2A11084AE319B",
+              "size": 182536110080
+            },
+            {
+              "health": "Healthy",
+              "id": "60022480333C4CF1EF75B7CA8C7973A3",
+              "size": 182536110080
+            },
+            {
+              "health": "Healthy",
+              "id": "6002248037A2A230372B3EC87A9D3377",
+              "size": 182536110080
+            },
+            {
+              "health": "Healthy",
+              "id": "600224803C86DE5E74F32EB919731AE6",
+              "size": 182536110080
+            },
+            {
+              "health": "Healthy",
+              "id": "600224804F5CAE95A07EC785BB316F9E",
+              "size": 182536110080
+            },
+            {
+              "health": "Healthy",
+              "id": "600224805454A96E242F3C38305128AC",
+              "size": 182536110080
+            },
+            {
+              "health": "Healthy",
+              "id": "600224805E81159EEE2C32758D9E8643",
+              "size": 182536110080
+            },
+            {
+              "health": "Healthy",
+              "id": "6002248065ACD99B54C87E76586527CA",
+              "size": 182536110080
+            },
+            {
+              "health": "Healthy",
+              "id": "600224807121ACBD5E35A4142D2F7A56",
+              "size": 182536110080
+            },
+            {
+              "health": "Healthy",
+              "id": "6002248077E67117E58560DB2E2F2135",
+              "size": 182536110080
+            },
+            {
+              "health": "Healthy",
+              "id": "60022480909BA09EED480D5E9A7AAE9E",
+              "size": 182536110080
+            },
+            {
+              "health": "Healthy",
+              "id": "60022480B25DB49F18CA0B5A7F55FAF2",
+              "size": 182536110080
+            },
+            {
+              "health": "Healthy",
+              "id": "60022480BFE050F9BC84F138E55CD318",
+              "size": 182536110080
+            },
+            {
+              "health": "Healthy",
+              "id": "60022480D47B1977B201A09A9AD85C7E",
+              "size": 182536110080
+            },
+            {
+              "health": "Healthy",
+              "id": "60022480E2FEC6B0962F5C15638F2E97",
+              "size": 182536110080
+            },
+            {
+              "health": "Healthy",
+              "id": "60022480F1883A655718A83EB381308E",
+              "size": 182536110080
+            },
+            {
+              "health": "Healthy",
+              "id": "60022480F2760AED6C58DF123F3F68C6",
+              "size": 182536110080
+            },
+            {
+              "health": "Healthy",
+              "id": "60022480F2EB46231B6D090E25B7E955",
+              "size": 182536110080
+            }
+          ],
+          "groups": [
+            {
+              "ownerNode": "LB-NODE01",
+              "name": "32c9b21328b3df180e0d814a8afe5134fa140c2909569-control-plane-0-17b02de3",
+              "type": "VirtualMachine",
+              "state": "Online"
+            },
+            {
+              "ownerNode": "LB-NODE02",
+              "name": "923c0194-3ed4-449a-ae14-0f62861e0ec8",
+              "type": "ClusterStoragePool",
+              "state": "Online"
+            },
+            {
+              "ownerNode": "LB-NODE01",
+              "name": "Available Storage",
+              "type": "AvailableStorage",
+              "state": "Offline"
+            },
+            {
+              "ownerNode": "LB-NODE01",
+              "name": "Azure Stack HCI Download Service Cluster Group",
+              "type": "Unknown",
+              "state": "Online"
+            },
+            {
+              "ownerNode": "LB-NODE02",
+              "name": "Azure Stack HCI Health Service Cluster Group",
+              "type": "Unknown",
+              "state": "Online"
+            },
+            {
+              "ownerNode": "LB-NODE03",
+              "name": "Azure Stack HCI Orchestrator Service Cluster Group",
+              "type": "Unknown",
+              "state": "Online"
+            },
+            {
+              "ownerNode": "LB-NODE02",
+              "name": "Azure Stack HCI Update Service Cluster Group",
+              "type": "Unknown",
+              "state": "Online"
+            },
+            {
+              "ownerNode": "LB-NODE03",
+              "name": "ca-17cc5c78-7615-4d09-b56a-d1fa327f869c",
+              "type": "GenericService",
+              "state": "Online"
+            },
+            {
+              "ownerNode": "LB-NODE03",
+              "name": "Cloud Management",
+              "type": "Unknown",
+              "state": "Online"
+            },
+            {
+              "ownerNode": "LB-NODE03",
+              "name": "Cluster Group",
+              "type": "Cluster",
+              "state": "Online"
+            },
+            {
+              "ownerNode": "LB-NODE02",
+              "name": "SDDC Group",
+              "type": "CoreSddc",
+              "state": "Online"
+            }
+          ],
+          "jobs": [],
+          "health": "Healthy",
+          "operationalStatus": [
+            "OK"
+          ],
+          "virtualDisks": [
+            {
+              "size": 304942678016,
+              "health": "Healthy",
+              "copies": 3,
+              "resiliency": "Mirror",
+              "id": "4C06845FA8C574499A937BD3EB57736A"
+            },
+            {
+              "size": 304942678016,
+              "health": "Healthy",
+              "copies": 3,
+              "resiliency": "Mirror",
+              "id": "7C7DA96B2870124CADF176559F3F64F7"
+            },
+            {
+              "size": 25769803776,
+              "health": "Healthy",
+              "copies": 3,
+              "resiliency": "Mirror",
+              "id": "97F0D5071BB7314E9F51102237F77085"
+            },
+            {
+              "size": 270582939648,
+              "health": "Healthy",
+              "copies": 3,
+              "resiliency": "Mirror",
+              "id": "9E5467C0BAC8834987723430C063E2C3"
+            },
+            {
+              "size": 304942678016,
+              "health": "Healthy",
+              "copies": 3,
+              "resiliency": "Mirror",
+              "id": "D82EEC019A25474789543A1796B552BB"
+            }
+          ],
+          "allocated": 1199906488320,
+          "poolSize": 4355071672320,
+          "nodes": [
+            {
+              "Name": "LB-NODE01",
+              "State": {
+                "value": 0,
+                "Value": "Up"
+              },
+              "NodeWeight": 1,
+              "DynamicWeight": 1
+            },
+            {
+              "Name": "LB-NODE02",
+              "State": {
+                "value": 0,
+                "Value": "Up"
+              },
+              "NodeWeight": 1,
+              "DynamicWeight": 1
+            },
+            {
+              "Name": "LB-NODE03",
+              "State": {
+                "value": 0,
+                "Value": "Up"
+              },
+              "NodeWeight": 1,
+              "DynamicWeight": 1
+            }
+          ],
+          "vmResources": [
+            {
+              "ownerGroup": "32c9b21328b3df180e0d814a8afe5134fa140c2909569-control-plane-0-17b02de3",
+              "name": "Virtual Machine 32c9b21328b3df180e0d814a8afe5134fa140c2909569-control-plane-0-17b02de3",
+              "vmIdentity": [
+                {
+                  "Name": "VmID",
+                  "Value": "4C6CA5CC-8C9A-499B-8FFE-C029BBFD3522"
+                }
+              ],
+              "ownerNode": "LB-NODE01",
+              "state": "Online"
+            }
+          ]
+        }
+      },
+      "LB-NODE02": {
+        "logicalProcessors": 8,
+        "memoryBytes": 68718317568,
+        "freeMemoryBytes": 62308884480,
+        "switches": [
+          {
+            "Name": "ConvergedSwitch(managementcompute)",
+            "Id": "0fc9dc9e-4d63-463c-8504-f60b6a151172",
+            "SwitchType": {
+              "value": 2,
+              "Value": "External"
+            },
+            "NetAdapterInterfaceDescription": "Teamed-Interface"
+          }
+        ],
+        "managementAdapters": [
+          {
+            "mode": "Untagged",
+            "switchName": "ConvergedSwitch(managementcompute)",
+            "accessVlanId": 0,
+            "name": "vManagement(managementcompute)",
+            "nativeVlanId": 0
+          }
+        ],
+        "adapters": [
+          {
+            "InterfaceIndex": 12,
+            "Name": "STORAGEA",
+            "Status": "Up",
+            "MacAddress": "00-15-5D-10-04-08",
+            "InterfaceDescription": "Microsoft Hyper-V Network Adapter #4",
+            "LinkSpeed": "10 Gbps"
+          },
+          {
+            "InterfaceIndex": 11,
+            "Name": "MGMT2",
+            "Status": "Up",
+            "MacAddress": "00-15-5D-10-04-07",
+            "InterfaceDescription": "Microsoft Hyper-V Network Adapter",
+            "LinkSpeed": "10 Gbps"
+          },
+          {
+            "InterfaceIndex": 9,
+            "Name": "MGMT1",
+            "Status": "Up",
+            "MacAddress": "00-15-5D-10-04-06",
+            "InterfaceDescription": "Microsoft Hyper-V Network Adapter #3",
+            "LinkSpeed": "10 Gbps"
+          },
+          {
+            "InterfaceIndex": 8,
+            "Name": "vManagement(managementcompute)",
+            "Status": "Up",
+            "MacAddress": "00-15-5D-10-04-06",
+            "InterfaceDescription": "Hyper-V Virtual Ethernet Adapter",
+            "LinkSpeed": "10 Gbps"
+          },
+          {
+            "InterfaceIndex": 6,
+            "Name": "STORAGEB",
+            "Status": "Up",
+            "MacAddress": "00-15-5D-10-04-09",
+            "InterfaceDescription": "Microsoft Hyper-V Network Adapter #2",
+            "LinkSpeed": "10 Gbps"
+          }
+        ],
+        "ipv4": [
+          {
+            "InterfaceIndex": 8,
+            "InterfaceAlias": "vManagement(managementcompute)",
+            "IPAddress": "10.64.0.12",
+            "PrefixLength": 24,
+            "AddressState": {
+              "value": 4,
+              "Value": "Preferred"
+            }
+          },
+          {
+            "InterfaceIndex": 12,
+            "InterfaceAlias": "STORAGEA",
+            "IPAddress": "10.64.4.12",
+            "PrefixLength": 24,
+            "AddressState": {
+              "value": 4,
+              "Value": "Preferred"
+            }
+          },
+          {
+            "InterfaceIndex": 6,
+            "InterfaceAlias": "STORAGEB",
+            "IPAddress": "10.64.5.12",
+            "PrefixLength": 24,
+            "AddressState": {
+              "value": 4,
+              "Value": "Preferred"
+            }
+          },
+          {
+            "InterfaceIndex": 10,
+            "InterfaceAlias": "Local Area Connection* 1",
+            "IPAddress": "169.254.2.177",
+            "PrefixLength": 16,
+            "AddressState": {
+              "value": 4,
+              "Value": "Preferred"
+            }
+          },
+          {
+            "InterfaceIndex": 1,
+            "InterfaceAlias": "Loopback Pseudo-Interface 1",
+            "IPAddress": "127.0.0.1",
+            "PrefixLength": 8,
+            "AddressState": {
+              "value": 4,
+              "Value": "Preferred"
+            }
+          }
+        ],
+        "routes": [
+          {
+            "InterfaceIndex": 12,
+            "DestinationPrefix": "255.255.255.255/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 6,
+            "DestinationPrefix": "255.255.255.255/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 10,
+            "DestinationPrefix": "255.255.255.255/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 8,
+            "DestinationPrefix": "255.255.255.255/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 1,
+            "DestinationPrefix": "255.255.255.255/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 12,
+            "DestinationPrefix": "224.0.0.0/4",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 6,
+            "DestinationPrefix": "224.0.0.0/4",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 10,
+            "DestinationPrefix": "224.0.0.0/4",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 8,
+            "DestinationPrefix": "224.0.0.0/4",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 1,
+            "DestinationPrefix": "224.0.0.0/4",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 10,
+            "DestinationPrefix": "169.254.255.255/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 10,
+            "DestinationPrefix": "169.254.2.177/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 10,
+            "DestinationPrefix": "169.254.0.0/16",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 1,
+            "DestinationPrefix": "127.255.255.255/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 1,
+            "DestinationPrefix": "127.0.0.1/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 1,
+            "DestinationPrefix": "127.0.0.0/8",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 6,
+            "DestinationPrefix": "10.64.5.255/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 6,
+            "DestinationPrefix": "10.64.5.12/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 6,
+            "DestinationPrefix": "10.64.5.0/24",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 12,
+            "DestinationPrefix": "10.64.4.255/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 12,
+            "DestinationPrefix": "10.64.4.12/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 12,
+            "DestinationPrefix": "10.64.4.0/24",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 8,
+            "DestinationPrefix": "10.64.0.255/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 8,
+            "DestinationPrefix": "10.64.0.12/32",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 8,
+            "DestinationPrefix": "10.64.0.0/24",
+            "NextHop": "0.0.0.0",
+            "RouteMetric": 256
+          },
+          {
+            "InterfaceIndex": 8,
+            "DestinationPrefix": "0.0.0.0/0",
+            "NextHop": "10.64.0.1",
+            "RouteMetric": 256
+          }
+        ],
+        "dns": [
+          {
+            "InterfaceIndex": 6,
+            "ServerAddresses": []
+          },
+          {
+            "InterfaceIndex": 12,
+            "ServerAddresses": []
+          },
+          {
+            "InterfaceIndex": 8,
+            "ServerAddresses": [
+              "10.64.0.10"
+            ]
+          },
+          {
+            "InterfaceIndex": 10,
+            "ServerAddresses": []
+          },
+          {
+            "InterfaceIndex": 1,
+            "ServerAddresses": []
+          }
+        ],
+        "services": [
+          {
+            "Name": "clussvc",
+            "Status": {
+              "value": 4,
+              "Value": "Running"
+            }
+          },
+          {
+            "Name": "ExtensionService",
+            "Status": {
+              "value": 4,
+              "Value": "Running"
+            }
+          },
+          {
+            "Name": "GCArcService",
+            "Status": {
+              "value": 4,
+              "Value": "Running"
+            }
+          },
+          {
+            "Name": "himds",
+            "Status": {
+              "value": 4,
+              "Value": "Running"
+            }
+          },
+          {
+            "Name": "vmms",
+            "Status": {
+              "value": 4,
+              "Value": "Running"
+            }
+          }
+        ],
+        "nestedVms": [],
+        "placement": [],
+        "cluster": null
+      }
+    },
+    "qualification": "One complete three-node observer at16:36\u201316:37SAST. Per-cmdlet intervals were not captured by this legacy observer."
+  },
+  "qualification": "Measured projection only. Transport/query completeness does not establish workload admission."
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "kind": "routes-failed-01",
+  "owner": "AzureLocalBox",
+  "sourceCommit": "e49c11aad1753defb1b7cd2c903267b9b69edeec",
+  "observer": "scripts/read-smal-initial-routes-20261108.ps1",
+  "observerSha256": "2abec24408db5fd6441f528dfa4d5d5f17e8a5cb0c2968db52b493d17900d93d",
+  "renderedObserverSha256": "c6d25d862c303be0ab70f2c3533d7530fad700fa1494983bfbdc3b1cb5184baa",
+  "captureIntervalUtc": {
+    "began": "2026-11-08T15:24:50.722310+00:00",
+    "finished": "2026-11-08T15:24:58.330302+00:00"
+  },
+  "originalPrivateReceipt": "docs/deployment-2026-10-27/private-ssh-initial-routes-20261108-01.json",
+  "originalPrivateReceiptSha256": "46fdeae2860b9c95328bd854b2878ebda0d2bb852bd6b0b434951d35f712775b",
+  "transportStatus": "failed-do-not-automatically-repeat",
+  "queryStatus": null,
+  "error": {
+    "type": "PSDirectException",
+    "line": 88
+  },
+  "data": null,
+  "qualification": "Measured projection only. Transport/query completeness does not establish workload admission."
+}

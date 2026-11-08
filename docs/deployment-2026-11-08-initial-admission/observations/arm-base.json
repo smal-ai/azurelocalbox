@@ -1,0 +1,520 @@
+{
+  "schemaVersion": 1,
+  "kind": "arm-base",
+  "owner": "AzureLocalBox",
+  "originalPrivateReceipt": "/tmp/opencode/localbox-initial-arm-20261108-01.json",
+  "originalPrivateReceiptSha256": "45484cf44557a63ecaf6db8276743733473b43d3c20941c24ac54ce902b864ae",
+  "data": {
+    "status": "partial-inspect-exact-query-no-automatic-retry",
+    "beganAtUtc": "2026-11-08T15:16:18.999891+00:00",
+    "queries": {
+      "host": {
+        "beganAtUtc": "2026-11-08T15:16:19.001316+00:00",
+        "argv": [
+          "vm",
+          "show",
+          "--subscription",
+          "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+          "-g",
+          "rg-localbox-nodes-san-1",
+          "-n",
+          "LocalBox-Client",
+          "--show-details",
+          "--query",
+          "{id:id,vmId:vmId,size:hardwareProfile.vmSize,powerState:powerState,securityProfile:securityProfile,nicIds:networkProfile.networkInterfaces[].id,osDiskId:storageProfile.osDisk.managedDisk.id,dataDisks:storageProfile.dataDisks[].{id:managedDisk.id,name:name,lun:lun}}"
+        ],
+        "complete": true,
+        "result": {
+          "dataDisks": [
+            {
+              "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_0",
+              "lun": 0,
+              "name": "LocalBox-Client-DataDisk_0"
+            },
+            {
+              "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_1",
+              "lun": 1,
+              "name": "LocalBox-Client-DataDisk_1"
+            },
+            {
+              "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_2",
+              "lun": 2,
+              "name": "LocalBox-Client-DataDisk_2"
+            },
+            {
+              "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_3",
+              "lun": 3,
+              "name": "LocalBox-Client-DataDisk_3"
+            },
+            {
+              "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_4",
+              "lun": 4,
+              "name": "LocalBox-Client-DataDisk_4"
+            },
+            {
+              "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_5",
+              "lun": 5,
+              "name": "LocalBox-Client-DataDisk_5"
+            },
+            {
+              "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_6",
+              "lun": 6,
+              "name": "LocalBox-Client-DataDisk_6"
+            },
+            {
+              "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_7",
+              "lun": 7,
+              "name": "LocalBox-Client-DataDisk_7"
+            },
+            {
+              "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-Node03-SSD-20261029",
+              "lun": 8,
+              "name": "LocalBox-Client-Node03-SSD-20261029"
+            },
+            {
+              "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-Capacity-20261030",
+              "lun": 9,
+              "name": "LocalBox-Client-Capacity-20261030"
+            }
+          ],
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+          "nicIds": [
+            "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Network/networkInterfaces/LocalBox-Client-NIC"
+          ],
+          "osDiskId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-OSDisk",
+          "powerState": "VM running",
+          "securityProfile": {
+            "securityType": "Standard"
+          },
+          "size": "Standard_E64s_v6",
+          "vmId": "627c8b3f-0a90-41cb-b707-12ba9d9ddad4"
+        },
+        "exitCode": 0,
+        "count": 1,
+        "pages": 1,
+        "paginationQualification": "Raw REST envelope or single-resource GET",
+        "finishedAtUtc": "2026-11-08T15:16:22.484492+00:00"
+      },
+      "disk0": {
+        "beganAtUtc": "2026-11-08T15:16:22.484707+00:00",
+        "argv": [
+          "disk",
+          "show",
+          "--subscription",
+          "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+          "--ids",
+          "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-OSDisk",
+          "--query",
+          "{id:id,uniqueId:uniqueId,diskSizeGB:diskSizeGB,sku:sku.name,managedBy:managedBy}"
+        ],
+        "complete": true,
+        "result": {
+          "diskSizeGB": 1024,
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-OSDisk",
+          "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+          "sku": "Standard_LRS",
+          "uniqueId": "95424e39-60c1-459b-b7f3-d127d679ea88"
+        },
+        "exitCode": 0,
+        "count": 1,
+        "pages": 1,
+        "paginationQualification": "Raw REST envelope or single-resource GET",
+        "finishedAtUtc": "2026-11-08T15:16:24.232555+00:00"
+      },
+      "disk1": {
+        "beganAtUtc": "2026-11-08T15:16:24.232758+00:00",
+        "argv": [
+          "disk",
+          "show",
+          "--subscription",
+          "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+          "--ids",
+          "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_0",
+          "--query",
+          "{id:id,uniqueId:uniqueId,diskSizeGB:diskSizeGB,sku:sku.name,managedBy:managedBy}"
+        ],
+        "complete": true,
+        "result": {
+          "diskSizeGB": 256,
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_0",
+          "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+          "sku": "Standard_LRS",
+          "uniqueId": "57aeb75f-b0f0-49c3-9a12-3757392e496f"
+        },
+        "exitCode": 0,
+        "count": 1,
+        "pages": 1,
+        "paginationQualification": "Raw REST envelope or single-resource GET",
+        "finishedAtUtc": "2026-11-08T15:16:28.529717+00:00"
+      },
+      "disk2": {
+        "beganAtUtc": "2026-11-08T15:16:28.529943+00:00",
+        "argv": [
+          "disk",
+          "show",
+          "--subscription",
+          "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+          "--ids",
+          "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_1",
+          "--query",
+          "{id:id,uniqueId:uniqueId,diskSizeGB:diskSizeGB,sku:sku.name,managedBy:managedBy}"
+        ],
+        "complete": true,
+        "result": {
+          "diskSizeGB": 256,
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_1",
+          "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+          "sku": "Standard_LRS",
+          "uniqueId": "af455474-8a07-435c-b964-b5d4febe16ae"
+        },
+        "exitCode": 0,
+        "count": 1,
+        "pages": 1,
+        "paginationQualification": "Raw REST envelope or single-resource GET",
+        "finishedAtUtc": "2026-11-08T15:16:30.848000+00:00"
+      },
+      "disk3": {
+        "beganAtUtc": "2026-11-08T15:16:30.848226+00:00",
+        "argv": [
+          "disk",
+          "show",
+          "--subscription",
+          "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+          "--ids",
+          "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_2",
+          "--query",
+          "{id:id,uniqueId:uniqueId,diskSizeGB:diskSizeGB,sku:sku.name,managedBy:managedBy}"
+        ],
+        "complete": true,
+        "result": {
+          "diskSizeGB": 256,
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_2",
+          "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+          "sku": "Standard_LRS",
+          "uniqueId": "49b38c02-59cf-4198-af4c-d4397d2ebfe3"
+        },
+        "exitCode": 0,
+        "count": 1,
+        "pages": 1,
+        "paginationQualification": "Raw REST envelope or single-resource GET",
+        "finishedAtUtc": "2026-11-08T15:16:32.519189+00:00"
+      },
+      "disk4": {
+        "beganAtUtc": "2026-11-08T15:16:32.519362+00:00",
+        "argv": [
+          "disk",
+          "show",
+          "--subscription",
+          "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+          "--ids",
+          "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_3",
+          "--query",
+          "{id:id,uniqueId:uniqueId,diskSizeGB:diskSizeGB,sku:sku.name,managedBy:managedBy}"
+        ],
+        "complete": true,
+        "result": {
+          "diskSizeGB": 256,
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_3",
+          "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+          "sku": "Standard_LRS",
+          "uniqueId": "84fd8226-1aa8-4294-b872-10276168aa1a"
+        },
+        "exitCode": 0,
+        "count": 1,
+        "pages": 1,
+        "paginationQualification": "Raw REST envelope or single-resource GET",
+        "finishedAtUtc": "2026-11-08T15:16:33.821977+00:00"
+      },
+      "disk5": {
+        "beganAtUtc": "2026-11-08T15:16:33.822168+00:00",
+        "argv": [
+          "disk",
+          "show",
+          "--subscription",
+          "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+          "--ids",
+          "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_4",
+          "--query",
+          "{id:id,uniqueId:uniqueId,diskSizeGB:diskSizeGB,sku:sku.name,managedBy:managedBy}"
+        ],
+        "complete": true,
+        "result": {
+          "diskSizeGB": 256,
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_4",
+          "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+          "sku": "Standard_LRS",
+          "uniqueId": "9d86dc52-0d98-4c4d-948e-2edcf666626b"
+        },
+        "exitCode": 0,
+        "count": 1,
+        "pages": 1,
+        "paginationQualification": "Raw REST envelope or single-resource GET",
+        "finishedAtUtc": "2026-11-08T15:16:35.654666+00:00"
+      },
+      "disk6": {
+        "beganAtUtc": "2026-11-08T15:16:35.654888+00:00",
+        "argv": [
+          "disk",
+          "show",
+          "--subscription",
+          "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+          "--ids",
+          "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_5",
+          "--query",
+          "{id:id,uniqueId:uniqueId,diskSizeGB:diskSizeGB,sku:sku.name,managedBy:managedBy}"
+        ],
+        "complete": true,
+        "result": {
+          "diskSizeGB": 256,
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_5",
+          "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+          "sku": "Standard_LRS",
+          "uniqueId": "9e9ad843-050b-4fa3-9258-4d545fd4d9a5"
+        },
+        "exitCode": 0,
+        "count": 1,
+        "pages": 1,
+        "paginationQualification": "Raw REST envelope or single-resource GET",
+        "finishedAtUtc": "2026-11-08T15:16:37.165328+00:00"
+      },
+      "disk7": {
+        "beganAtUtc": "2026-11-08T15:16:37.165521+00:00",
+        "argv": [
+          "disk",
+          "show",
+          "--subscription",
+          "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+          "--ids",
+          "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_6",
+          "--query",
+          "{id:id,uniqueId:uniqueId,diskSizeGB:diskSizeGB,sku:sku.name,managedBy:managedBy}"
+        ],
+        "complete": true,
+        "result": {
+          "diskSizeGB": 256,
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_6",
+          "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+          "sku": "Standard_LRS",
+          "uniqueId": "ca978897-2089-4c3f-96ce-7cc19390737e"
+        },
+        "exitCode": 0,
+        "count": 1,
+        "pages": 1,
+        "paginationQualification": "Raw REST envelope or single-resource GET",
+        "finishedAtUtc": "2026-11-08T15:16:37.552289+00:00"
+      },
+      "disk8": {
+        "beganAtUtc": "2026-11-08T15:16:37.552576+00:00",
+        "argv": [
+          "disk",
+          "show",
+          "--subscription",
+          "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+          "--ids",
+          "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_7",
+          "--query",
+          "{id:id,uniqueId:uniqueId,diskSizeGB:diskSizeGB,sku:sku.name,managedBy:managedBy}"
+        ],
+        "complete": true,
+        "result": {
+          "diskSizeGB": 256,
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_7",
+          "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+          "sku": "Standard_LRS",
+          "uniqueId": "e9bc84ea-0a1b-4718-b723-4f1210f6dec0"
+        },
+        "exitCode": 0,
+        "count": 1,
+        "pages": 1,
+        "paginationQualification": "Raw REST envelope or single-resource GET",
+        "finishedAtUtc": "2026-11-08T15:16:38.955263+00:00"
+      },
+      "disk9": {
+        "beganAtUtc": "2026-11-08T15:16:38.955462+00:00",
+        "argv": [
+          "disk",
+          "show",
+          "--subscription",
+          "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+          "--ids",
+          "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-Node03-SSD-20261029",
+          "--query",
+          "{id:id,uniqueId:uniqueId,diskSizeGB:diskSizeGB,sku:sku.name,managedBy:managedBy}"
+        ],
+        "complete": true,
+        "result": {
+          "diskSizeGB": 2048,
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-Node03-SSD-20261029",
+          "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+          "sku": "Standard_LRS",
+          "uniqueId": "eab2d4b3-d41d-44b3-99b4-d6c1c928c97b"
+        },
+        "exitCode": 0,
+        "count": 1,
+        "pages": 1,
+        "paginationQualification": "Raw REST envelope or single-resource GET",
+        "finishedAtUtc": "2026-11-08T15:16:43.613862+00:00"
+      },
+      "disk10": {
+        "beganAtUtc": "2026-11-08T15:16:43.614071+00:00",
+        "argv": [
+          "disk",
+          "show",
+          "--subscription",
+          "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+          "--ids",
+          "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-Capacity-20261030",
+          "--query",
+          "{id:id,uniqueId:uniqueId,diskSizeGB:diskSizeGB,sku:sku.name,managedBy:managedBy}"
+        ],
+        "complete": true,
+        "result": {
+          "diskSizeGB": 4096,
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-Capacity-20261030",
+          "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+          "sku": "Standard_LRS",
+          "uniqueId": "db6882f9-8c4a-4923-b1a3-6b73dbbb9109"
+        },
+        "exitCode": 0,
+        "count": 1,
+        "pages": 1,
+        "paginationQualification": "Raw REST envelope or single-resource GET",
+        "finishedAtUtc": "2026-11-08T15:16:44.012525+00:00"
+      },
+      "nic0": {
+        "beganAtUtc": "2026-11-08T15:16:44.012799+00:00",
+        "argv": [
+          "network",
+          "nic",
+          "show",
+          "--subscription",
+          "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+          "--ids",
+          "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Network/networkInterfaces/LocalBox-Client-NIC",
+          "--query",
+          "{id:id,macAddress:macAddress,networkSecurityGroupId:networkSecurityGroup.id,ipConfigurations:ipConfigurations[].{id:id,privateIPAddress:privateIPAddress,publicIPAddressId:publicIPAddress.id,subnetId:subnet.id}}"
+        ],
+        "complete": true,
+        "result": {
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Network/networkInterfaces/LocalBox-Client-NIC",
+          "ipConfigurations": [
+            {
+              "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Network/networkInterfaces/LocalBox-Client-NIC/ipConfigurations/ipconfig1",
+              "privateIPAddress": "10.200.16.4",
+              "publicIPAddressId": null,
+              "subnetId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-smal-network-san-1/providers/Microsoft.Network/virtualNetworks/vnet-smal-san-1/subnets/snet-localbox-host"
+            }
+          ],
+          "macAddress": "60-45-BD-41-6F-55",
+          "networkSecurityGroupId": null
+        },
+        "exitCode": 0,
+        "count": 1,
+        "pages": 1,
+        "paginationQualification": "Raw REST envelope or single-resource GET",
+        "finishedAtUtc": "2026-11-08T15:16:46.556135+00:00"
+      },
+      "storageContainers": {
+        "beganAtUtc": "2026-11-08T15:16:46.556361+00:00",
+        "argv": [
+          "rest",
+          "--method",
+          "get",
+          "--subscription",
+          "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+          "--url",
+          "https://management.azure.com/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.AzureStackHCI/storageContainers?api-version=2024-01-01"
+        ],
+        "complete": true,
+        "result": {
+          "value": [
+            {
+              "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.AzureStackHCI/storageContainers/UserStorage1-a0c959f5b11340a98251977a107de6c9",
+              "name": "UserStorage1-a0c959f5b11340a98251977a107de6c9",
+              "location": "westeurope",
+              "extendedLocation": {
+                "name": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.ExtendedLocation/customLocations/cl-localbox-smal-weu-1",
+                "type": "CustomLocation"
+              },
+              "path": "C:\\ClusterStorage\\UserStorage_1\\ecd95f685e5f2e8",
+              "provisioningState": "Succeeded",
+              "status": {
+                "provisioningState": null,
+                "availableSizeMB": 272384,
+                "containerSizeMB": 290713,
+                "errorCode": ""
+              }
+            },
+            {
+              "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.AzureStackHCI/storageContainers/UserStorage2-530ec696726a42f29b1af25041c88f67",
+              "name": "UserStorage2-530ec696726a42f29b1af25041c88f67",
+              "location": "westeurope",
+              "extendedLocation": {
+                "name": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.ExtendedLocation/customLocations/cl-localbox-smal-weu-1",
+                "type": "CustomLocation"
+              },
+              "path": "C:\\ClusterStorage\\UserStorage_2\\ecf3cbc94cc3f0f",
+              "provisioningState": "Succeeded",
+              "status": {
+                "provisioningState": null,
+                "availableSizeMB": 287232,
+                "containerSizeMB": 290713,
+                "errorCode": ""
+              }
+            },
+            {
+              "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.AzureStackHCI/storageContainers/UserStorage3-174bf825e17a4352992a21b292a7342a",
+              "name": "UserStorage3-174bf825e17a4352992a21b292a7342a",
+              "location": "westeurope",
+              "extendedLocation": {
+                "name": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.ExtendedLocation/customLocations/cl-localbox-smal-weu-1",
+                "type": "CustomLocation"
+              },
+              "path": "C:\\ClusterStorage\\UserStorage_3\\e6f42131f48d5b4",
+              "provisioningState": "Succeeded",
+              "status": {
+                "provisioningState": null,
+                "availableSizeMB": 287232,
+                "containerSizeMB": 290713,
+                "errorCode": ""
+              }
+            }
+          ],
+          "nextLink": null,
+          "sizeUnitQualification": "Provider MB fields are not exact native byte evidence."
+        },
+        "exitCode": 0,
+        "count": 3,
+        "pages": 1,
+        "paginationQualification": "Raw REST envelope or single-resource GET",
+        "finishedAtUtc": "2026-11-08T15:16:47.415606+00:00"
+      },
+      "arcMachines": {
+        "beganAtUtc": "2026-11-08T15:16:47.415829+00:00",
+        "argv": [
+          "connectedmachine",
+          "list",
+          "--subscription",
+          "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+          "-g",
+          "rg-localbox-platform-weu-1",
+          "--query",
+          "[].{id:id,name:name,status:status,provisioningState:provisioningState,location:location,identity:identity,agentVersion:agentVersion,osVersion:osVersion}"
+        ],
+        "complete": false,
+        "result": null,
+        "exitCode": 2,
+        "error": "azure-read-failed-raw-diagnostics-suppressed",
+        "finishedAtUtc": "2026-11-08T15:16:47.603782+00:00"
+      }
+    },
+    "sourceCommit": "e49c11aad1753defb1b7cd2c903267b9b69edeec",
+    "observerSha256": "ccee83fe9145a414566a20d0a098c554939f185fc07d85414cb80281a332fa9b",
+    "entitlementReceipt": "/tmp/opencode/localbox-initial-entitlement-20261108-03.json",
+    "entitlementSha256": "5462d1e99cc35d69966e807ac831d854e9fe690701ed589aa95a296de1b8911d",
+    "mutationRequested": false,
+    "errorType": "RuntimeError",
+    "finishedAtUtc": "2026-11-08T15:16:47.604019+00:00"
+  },
+  "qualification": "Fourteen GET projections succeeded; connectedmachine CLI was unavailable. Provider MB fields are not native bytes."
+}

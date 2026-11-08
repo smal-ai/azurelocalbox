@@ -1,0 +1,538 @@
+{
+  "schemaVersion": 1,
+  "kind": "host",
+  "owner": "AzureLocalBox",
+  "sourceCommit": "e49c11aad1753defb1b7cd2c903267b9b69edeec",
+  "observer": "scripts/read-smal-initial-host-20261108.ps1",
+  "observerSha256": "4edf7764e65ee7daebd66700ba9beb29714b95a55706a6715a19516a31347edd",
+  "renderedObserverSha256": "351ad026b66fac3ebc678c1d05e6ad0e372dde6a2f39a3d1d482b1a2bcc66688",
+  "captureIntervalUtc": {
+    "began": "2026-11-08T15:24:44.805481+00:00",
+    "finished": "2026-11-08T15:25:03.558136+00:00"
+  },
+  "originalPrivateReceipt": "docs/deployment-2026-10-27/private-ssh-initial-host-20261108-01.json",
+  "originalPrivateReceiptSha256": "19a1d99646c4655bd98ca81614736b0cbf4d13e41d678219c26d6a7af50cb377",
+  "transportStatus": "complete",
+  "queryStatus": "complete",
+  "error": null,
+  "data": {
+    "queries": [
+      {
+        "count": 1,
+        "data": [
+          {
+            "logicalProcessors": 64,
+            "memoryBytes": 549750304768,
+            "freeMemoryBytes": 323699658752
+          }
+        ],
+        "complete": true,
+        "beganAtUtc": "2026-11-08T15:24:54.4364917Z",
+        "name": "hostCapacity",
+        "finishedAtUtc": "2026-11-08T15:24:57.3309276Z",
+        "errorType": null,
+        "pages": 1
+      },
+      {
+        "count": 4,
+        "data": [
+          {
+            "id": "f94c71f1-6854-48b9-a9f1-8238c99366d0",
+            "cpu": 2,
+            "dynamicMemory": false,
+            "adapters": [
+              {
+                "id": "Microsoft:F94C71F1-6854-48B9-A9F1-8238C99366D0\\BFDBD886-49FA-4A52-ABC8-0049F659F1AD",
+                "switchName": "LB-Fabric",
+                "nativeVlanId": 0,
+                "switchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934",
+                "accessVlanId": 0,
+                "name": "MGMT1",
+                "mac": "00155D100401",
+                "vlanMode": "Untagged"
+              }
+            ],
+            "state": "Running",
+            "name": "LB-DC01",
+            "heartbeat": "OkApplicationsUnknown",
+            "assignedMemoryBytes": 4294967296,
+            "fixedMemoryBytes": 4294967296,
+            "nestedExtensions": false
+          },
+          {
+            "id": "3adff629-2f67-449b-ab32-8a8748c46f34",
+            "cpu": 8,
+            "dynamicMemory": false,
+            "adapters": [
+              {
+                "id": "Microsoft:3ADFF629-2F67-449B-AB32-8A8748C46F34\\7D0A79DF-80CD-4E81-8B49-A90096F17343",
+                "switchName": "LB-Fabric",
+                "nativeVlanId": 0,
+                "switchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934",
+                "accessVlanId": 0,
+                "name": "MGMT1",
+                "mac": "00155D100402",
+                "vlanMode": "Trunk"
+              },
+              {
+                "id": "Microsoft:3ADFF629-2F67-449B-AB32-8A8748C46F34\\BC842DBE-F9A4-45C3-B9C8-372065DB1265",
+                "switchName": "LB-Fabric",
+                "nativeVlanId": 0,
+                "switchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934",
+                "accessVlanId": 0,
+                "name": "MGMT2",
+                "mac": "00155D100403",
+                "vlanMode": "Trunk"
+              },
+              {
+                "id": "Microsoft:3ADFF629-2F67-449B-AB32-8A8748C46F34\\E1F51C5F-7B42-402E-A050-A1143CDD9C1B",
+                "switchName": "LB-Fabric",
+                "nativeVlanId": 0,
+                "switchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934",
+                "accessVlanId": 0,
+                "name": "STORAGEA",
+                "mac": "00155D100404",
+                "vlanMode": "Trunk"
+              },
+              {
+                "id": "Microsoft:3ADFF629-2F67-449B-AB32-8A8748C46F34\\987F19DC-01DD-4C2B-ACDC-FD3A3CD94163",
+                "switchName": "LB-Fabric",
+                "nativeVlanId": 0,
+                "switchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934",
+                "accessVlanId": 0,
+                "name": "STORAGEB",
+                "mac": "00155D100405",
+                "vlanMode": "Trunk"
+              }
+            ],
+            "state": "Running",
+            "name": "LB-NODE01",
+            "heartbeat": "OkApplicationsUnknown",
+            "assignedMemoryBytes": 68719476736,
+            "fixedMemoryBytes": 68719476736,
+            "nestedExtensions": true
+          },
+          {
+            "id": "12a44e0c-cc08-4c4c-a812-fa0b56efdbc3",
+            "cpu": 8,
+            "dynamicMemory": false,
+            "adapters": [
+              {
+                "id": "Microsoft:12A44E0C-CC08-4C4C-A812-FA0B56EFDBC3\\4ADE8794-5FF7-4AB4-8D33-1B49F99DE854",
+                "switchName": "LB-Fabric",
+                "nativeVlanId": 0,
+                "switchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934",
+                "accessVlanId": 0,
+                "name": "MGMT1",
+                "mac": "00155D100406",
+                "vlanMode": "Trunk"
+              },
+              {
+                "id": "Microsoft:12A44E0C-CC08-4C4C-A812-FA0B56EFDBC3\\0285581B-7748-4DFA-9C7F-0FF167947452",
+                "switchName": "LB-Fabric",
+                "nativeVlanId": 0,
+                "switchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934",
+                "accessVlanId": 0,
+                "name": "MGMT2",
+                "mac": "00155D100407",
+                "vlanMode": "Trunk"
+              },
+              {
+                "id": "Microsoft:12A44E0C-CC08-4C4C-A812-FA0B56EFDBC3\\980402C4-2B47-4086-866E-420AC06D7E80",
+                "switchName": "LB-Fabric",
+                "nativeVlanId": 0,
+                "switchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934",
+                "accessVlanId": 0,
+                "name": "STORAGEA",
+                "mac": "00155D100408",
+                "vlanMode": "Trunk"
+              },
+              {
+                "id": "Microsoft:12A44E0C-CC08-4C4C-A812-FA0B56EFDBC3\\FC9AC1BE-17DC-4D93-80D1-6A8731FC923C",
+                "switchName": "LB-Fabric",
+                "nativeVlanId": 0,
+                "switchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934",
+                "accessVlanId": 0,
+                "name": "STORAGEB",
+                "mac": "00155D100409",
+                "vlanMode": "Trunk"
+              }
+            ],
+            "state": "Running",
+            "name": "LB-NODE02",
+            "heartbeat": "OkApplicationsUnknown",
+            "assignedMemoryBytes": 68719476736,
+            "fixedMemoryBytes": 68719476736,
+            "nestedExtensions": true
+          },
+          {
+            "id": "5b6eba15-fa82-4e12-9e45-5ffbcd48c8a9",
+            "cpu": 8,
+            "dynamicMemory": false,
+            "adapters": [
+              {
+                "id": "Microsoft:5B6EBA15-FA82-4E12-9E45-5FFBCD48C8A9\\0E28B8C7-2E83-49D8-A87E-70BBA241B66D",
+                "switchName": "LB-Fabric",
+                "nativeVlanId": 0,
+                "switchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934",
+                "accessVlanId": 0,
+                "name": "MGMT1",
+                "mac": "00155D10040A",
+                "vlanMode": "Trunk"
+              },
+              {
+                "id": "Microsoft:5B6EBA15-FA82-4E12-9E45-5FFBCD48C8A9\\D24654D0-FAC4-4CBC-A6FD-EA89310495F0",
+                "switchName": "LB-Fabric",
+                "nativeVlanId": 0,
+                "switchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934",
+                "accessVlanId": 0,
+                "name": "MGMT2",
+                "mac": "00155D10040B",
+                "vlanMode": "Trunk"
+              },
+              {
+                "id": "Microsoft:5B6EBA15-FA82-4E12-9E45-5FFBCD48C8A9\\B001ED1F-DCF0-4F56-BBFE-466E637E67C5",
+                "switchName": "LB-Fabric",
+                "nativeVlanId": 0,
+                "switchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934",
+                "accessVlanId": 0,
+                "name": "STORAGEA",
+                "mac": "00155D10040C",
+                "vlanMode": "Trunk"
+              },
+              {
+                "id": "Microsoft:5B6EBA15-FA82-4E12-9E45-5FFBCD48C8A9\\1D8BE3FB-15B5-426E-84AE-032E41185278",
+                "switchName": "LB-Fabric",
+                "nativeVlanId": 0,
+                "switchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934",
+                "accessVlanId": 0,
+                "name": "STORAGEB",
+                "mac": "00155D10040D",
+                "vlanMode": "Trunk"
+              }
+            ],
+            "state": "Running",
+            "name": "LB-NODE03",
+            "heartbeat": "OkApplicationsUnknown",
+            "assignedMemoryBytes": 68719476736,
+            "fixedMemoryBytes": 68719476736,
+            "nestedExtensions": true
+          }
+        ],
+        "complete": true,
+        "beganAtUtc": "2026-11-08T15:24:57.3333375Z",
+        "name": "fourGuestProfiles",
+        "finishedAtUtc": "2026-11-08T15:25:00.1256089Z",
+        "errorType": null,
+        "pages": 1
+      },
+      {
+        "count": 3,
+        "data": [
+          {
+            "InterfaceAlias": "vEthernet (LB-Fabric)",
+            "PrefixLength": 24,
+            "IPAddress": "10.64.0.1",
+            "InterfaceIndex": 4
+          },
+          {
+            "InterfaceAlias": "Ethernet",
+            "PrefixLength": 24,
+            "IPAddress": "10.200.16.4",
+            "InterfaceIndex": 7
+          },
+          {
+            "InterfaceAlias": "Loopback Pseudo-Interface 1",
+            "PrefixLength": 8,
+            "IPAddress": "127.0.0.1",
+            "InterfaceIndex": 1
+          }
+        ],
+        "complete": true,
+        "beganAtUtc": "2026-11-08T15:25:00.1256089Z",
+        "name": "ipv4",
+        "finishedAtUtc": "2026-11-08T15:25:00.9146805Z",
+        "errorType": null,
+        "pages": 1
+      },
+      {
+        "count": 18,
+        "data": [
+          {
+            "InterfaceAlias": "vEthernet (LB-Fabric)",
+            "RouteMetric": 256,
+            "DestinationPrefix": "255.255.255.255/32",
+            "NextHop": "0.0.0.0",
+            "InterfaceIndex": 4
+          },
+          {
+            "InterfaceAlias": "Ethernet",
+            "RouteMetric": 256,
+            "DestinationPrefix": "255.255.255.255/32",
+            "NextHop": "0.0.0.0",
+            "InterfaceIndex": 7
+          },
+          {
+            "InterfaceAlias": "Loopback Pseudo-Interface 1",
+            "RouteMetric": 256,
+            "DestinationPrefix": "255.255.255.255/32",
+            "NextHop": "0.0.0.0",
+            "InterfaceIndex": 1
+          },
+          {
+            "InterfaceAlias": "vEthernet (LB-Fabric)",
+            "RouteMetric": 256,
+            "DestinationPrefix": "224.0.0.0/4",
+            "NextHop": "0.0.0.0",
+            "InterfaceIndex": 4
+          },
+          {
+            "InterfaceAlias": "Ethernet",
+            "RouteMetric": 256,
+            "DestinationPrefix": "224.0.0.0/4",
+            "NextHop": "0.0.0.0",
+            "InterfaceIndex": 7
+          },
+          {
+            "InterfaceAlias": "Loopback Pseudo-Interface 1",
+            "RouteMetric": 256,
+            "DestinationPrefix": "224.0.0.0/4",
+            "NextHop": "0.0.0.0",
+            "InterfaceIndex": 1
+          },
+          {
+            "InterfaceAlias": "Ethernet",
+            "RouteMetric": 1,
+            "DestinationPrefix": "169.254.169.254/32",
+            "NextHop": "10.200.16.1",
+            "InterfaceIndex": 7
+          },
+          {
+            "InterfaceAlias": "Ethernet",
+            "RouteMetric": 1,
+            "DestinationPrefix": "168.63.129.16/32",
+            "NextHop": "10.200.16.1",
+            "InterfaceIndex": 7
+          },
+          {
+            "InterfaceAlias": "Loopback Pseudo-Interface 1",
+            "RouteMetric": 256,
+            "DestinationPrefix": "127.255.255.255/32",
+            "NextHop": "0.0.0.0",
+            "InterfaceIndex": 1
+          },
+          {
+            "InterfaceAlias": "Loopback Pseudo-Interface 1",
+            "RouteMetric": 256,
+            "DestinationPrefix": "127.0.0.1/32",
+            "NextHop": "0.0.0.0",
+            "InterfaceIndex": 1
+          },
+          {
+            "InterfaceAlias": "Loopback Pseudo-Interface 1",
+            "RouteMetric": 256,
+            "DestinationPrefix": "127.0.0.0/8",
+            "NextHop": "0.0.0.0",
+            "InterfaceIndex": 1
+          },
+          {
+            "InterfaceAlias": "Ethernet",
+            "RouteMetric": 256,
+            "DestinationPrefix": "10.200.16.255/32",
+            "NextHop": "0.0.0.0",
+            "InterfaceIndex": 7
+          },
+          {
+            "InterfaceAlias": "Ethernet",
+            "RouteMetric": 256,
+            "DestinationPrefix": "10.200.16.4/32",
+            "NextHop": "0.0.0.0",
+            "InterfaceIndex": 7
+          },
+          {
+            "InterfaceAlias": "Ethernet",
+            "RouteMetric": 256,
+            "DestinationPrefix": "10.200.16.0/24",
+            "NextHop": "0.0.0.0",
+            "InterfaceIndex": 7
+          },
+          {
+            "InterfaceAlias": "vEthernet (LB-Fabric)",
+            "RouteMetric": 256,
+            "DestinationPrefix": "10.64.0.255/32",
+            "NextHop": "0.0.0.0",
+            "InterfaceIndex": 4
+          },
+          {
+            "InterfaceAlias": "vEthernet (LB-Fabric)",
+            "RouteMetric": 256,
+            "DestinationPrefix": "10.64.0.1/32",
+            "NextHop": "0.0.0.0",
+            "InterfaceIndex": 4
+          },
+          {
+            "InterfaceAlias": "vEthernet (LB-Fabric)",
+            "RouteMetric": 256,
+            "DestinationPrefix": "10.64.0.0/24",
+            "NextHop": "0.0.0.0",
+            "InterfaceIndex": 4
+          },
+          {
+            "InterfaceAlias": "Ethernet",
+            "RouteMetric": 1,
+            "DestinationPrefix": "0.0.0.0/0",
+            "NextHop": "10.200.16.1",
+            "InterfaceIndex": 7
+          }
+        ],
+        "complete": true,
+        "beganAtUtc": "2026-11-08T15:25:00.9157019Z",
+        "name": "routes",
+        "finishedAtUtc": "2026-11-08T15:25:00.9714193Z",
+        "errorType": null,
+        "pages": 1
+      },
+      {
+        "count": 2,
+        "data": [
+          {
+            "InterfaceAlias": "vEthernet (LB-Fabric)",
+            "PrefixLength": 24,
+            "DestinationPrefix": null,
+            "RouteMetric": null,
+            "InterfaceIndex": 4,
+            "NextHop": null,
+            "IPAddress": "10.64.0.1"
+          },
+          {
+            "InterfaceAlias": "vEthernet (LB-Fabric)",
+            "PrefixLength": null,
+            "DestinationPrefix": "10.64.0.0/24",
+            "RouteMetric": 256,
+            "InterfaceIndex": 4,
+            "NextHop": "0.0.0.0",
+            "IPAddress": null
+          }
+        ],
+        "complete": true,
+        "beganAtUtc": "2026-11-08T15:25:00.9730691Z",
+        "name": "selectedRoute:10.64.0.100",
+        "finishedAtUtc": "2026-11-08T15:25:01.0349131Z",
+        "errorType": null,
+        "pages": 1
+      },
+      {
+        "count": 2,
+        "data": [
+          {
+            "InterfaceAlias": "vEthernet (LB-Fabric)",
+            "PrefixLength": 24,
+            "DestinationPrefix": null,
+            "RouteMetric": null,
+            "InterfaceIndex": 4,
+            "NextHop": null,
+            "IPAddress": "10.64.0.1"
+          },
+          {
+            "InterfaceAlias": "vEthernet (LB-Fabric)",
+            "PrefixLength": null,
+            "DestinationPrefix": "10.64.0.0/24",
+            "RouteMetric": 256,
+            "InterfaceIndex": 4,
+            "NextHop": "0.0.0.0",
+            "IPAddress": null
+          }
+        ],
+        "complete": true,
+        "beganAtUtc": "2026-11-08T15:25:01.0349131Z",
+        "name": "selectedRoute:10.64.0.180",
+        "finishedAtUtc": "2026-11-08T15:25:01.0481501Z",
+        "errorType": null,
+        "pages": 1
+      },
+      {
+        "count": 1,
+        "data": [
+          {
+            "Active": 1,
+            "Name": "LB-NAT",
+            "InternalIPInterfaceAddressPrefix": "10.64.0.0/20"
+          }
+        ],
+        "complete": true,
+        "beganAtUtc": "2026-11-08T15:25:01.0481501Z",
+        "name": "nat",
+        "finishedAtUtc": "2026-11-08T15:25:01.3395563Z",
+        "errorType": null,
+        "pages": 1
+      },
+      {
+        "count": 0,
+        "data": [],
+        "complete": true,
+        "beganAtUtc": "2026-11-08T15:25:01.3395563Z",
+        "name": "natStaticMappings",
+        "finishedAtUtc": "2026-11-08T15:25:01.3626286Z",
+        "errorType": null,
+        "pages": 1
+      },
+      {
+        "count": 1,
+        "data": [
+          "10.202.0.5"
+        ],
+        "complete": true,
+        "beganAtUtc": "2026-11-08T15:25:01.3629732Z",
+        "name": "currentPlatformSsh22PeerAddresses",
+        "finishedAtUtc": "2026-11-08T15:25:01.4330388Z",
+        "errorType": null,
+        "pages": 1
+      },
+      {
+        "count": 4,
+        "data": [
+          {
+            "DriveLetter": "W",
+            "SizeRemaining": 2050752643072,
+            "HealthStatus": "Healthy",
+            "UniqueId": "\\\\?\\Volume{1650d1ec-9d2f-41bf-ad56-66533a89d660}\\",
+            "Size": 2199005364224
+          },
+          {
+            "DriveLetter": "C",
+            "SizeRemaining": 1019893452800,
+            "HealthStatus": "Healthy",
+            "UniqueId": "\\\\?\\Volume{51199064-2a58-498e-81e0-1bdfd593eced}\\",
+            "Size": 1099389972480
+          },
+          {
+            "DriveLetter": "V",
+            "SizeRemaining": 1921307049984,
+            "HealthStatus": "Healthy",
+            "UniqueId": "\\\\?\\Volume{59901f77-0fb4-4ac7-b377-d820b0c1929b}\\",
+            "Size": 2181825495040
+          },
+          {
+            "DriveLetter": "X",
+            "SizeRemaining": 4269581926400,
+            "HealthStatus": "Healthy",
+            "UniqueId": "\\\\?\\Volume{eecd359b-f7c0-4a50-90de-b681b46bed51}\\",
+            "Size": 4398028619776
+          }
+        ],
+        "complete": true,
+        "beganAtUtc": "2026-11-08T15:25:01.4330388Z",
+        "name": "outerVolumes",
+        "finishedAtUtc": "2026-11-08T15:25:03.2463259Z",
+        "errorType": null,
+        "pages": 1
+      }
+    ],
+    "scope": "LocalBox-Client-only",
+    "mutationPerformed": false,
+    "finishedAtUtc": "2026-11-08T15:25:03.2498109Z",
+    "beganAtUtc": "2026-11-08T15:24:54.4282198Z",
+    "status": "complete"
+  },
+  "qualification": "Measured projection only. Transport/query completeness does not establish workload admission."
+}

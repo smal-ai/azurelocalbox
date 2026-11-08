@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "kind": "getter-discovery",
+  "owner": "AzureLocalBox",
+  "sourceCommit": "e49c11aad1753defb1b7cd2c903267b9b69edeec",
+  "observer": "scripts/read-smal-initial-discovery-20261108.ps1",
+  "observerSha256": "d3b309fb54c48e5959e323a14e8108953e6686b7b75dd42c3e9e95a32f328594",
+  "renderedObserverSha256": "f6ee393a83a452d6e1d73009d1fd74177d3f2b7c5a1643a8f28076b30dc562a4",
+  "captureIntervalUtc": {
+    "began": "2026-11-08T15:24:44.632506+00:00",
+    "finished": "2026-11-08T15:25:00.312156+00:00"
+  },
+  "originalPrivateReceipt": "docs/deployment-2026-10-27/private-ssh-initial-discovery-20261108-01.json",
+  "originalPrivateReceiptSha256": "6546ccabf4adcd838455608440370a525a8fbbc95e64b9c152190e3e46029529",
+  "transportStatus": "complete",
+  "queryStatus": "complete",
+  "error": null,
+  "data": {
+    "status": "complete",
+    "finishedAtUtc": "2026-11-08T15:24:59.9154211Z",
+    "mutationPerformed": false,
+    "beganAtUtc": "2026-11-08T15:24:52.8530133Z",
+    "data": {
+      "scope": "LB-NODE01-installed-command-metadata-only",
+      "nativeAllocationTraversalPerformed": false,
+      "queries": [
+        {
+          "name": "alreadyLoadedGetterSignatures",
+          "data": [],
+          "errorType": null,
+          "finishedAtUtc": "2026-11-08T15:24:58.5343104Z",
+          "count": 0,
+          "pages": 1,
+          "beganAtUtc": "2026-11-08T15:24:58.1296932Z",
+          "complete": true
+        },
+        {
+          "name": "alreadyLoadedVendorModules",
+          "data": [],
+          "errorType": null,
+          "finishedAtUtc": "2026-11-08T15:24:58.6052480Z",
+          "count": 0,
+          "pages": 1,
+          "beganAtUtc": "2026-11-08T15:24:58.5393382Z",
+          "complete": true
+        },
+        {
+          "name": "installedVendorModuleMetadata",
+          "data": [
+            {
+              "relevantExportedGetters": [],
+              "path": "C:\\Program Files\\WindowsPowerShell\\Modules\\ArcHci\\2.0.19\\ArcHci.psd1",
+              "version": "2.0.19",
+              "name": "ArcHci",
+              "signatureStatus": "Valid",
+              "sourceSha256": "3C0FE7AB43ED0AC587A6ECA8508784AF71E40A04DC82553CE785E49CA7B9D2E4"
+            },
+            {
+              "relevantExportedGetters": [
+                "Get-MocGalleryImage",
+                "Get-MocMacPool",
+                "Get-MocNetworkInterface",
+                "Get-MocVipPool",
+                "Get-MocVirtualMachine",
+                "Get-MocVirtualNetwork"
+              ],
+              "path": "C:\\Program Files\\WindowsPowerShell\\Modules\\Moc\\1.2.161\\Moc.psd1",
+              "version": "1.2.161",
+              "name": "Moc",
+              "signatureStatus": "Valid",
+              "sourceSha256": "B4C171ACDF6BDAF86A6751396E27B52714AF2D1410505D1F3412103CF5435C3F"
+            }
+          ],
+          "errorType": null,
+          "finishedAtUtc": "2026-11-08T15:24:59.8661693Z",
+          "count": 2,
+          "pages": 1,
+          "beganAtUtc": "2026-11-08T15:24:58.6058127Z",
+          "complete": true
+        }
+      ],
+      "imageOrControllerStateMeasured": false
+    }
+  },
+  "qualification": "Measured projection only. Transport/query completeness does not establish workload admission."
+}
