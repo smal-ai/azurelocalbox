@@ -39,7 +39,9 @@ function Assert-R2Snapshot($snapshot, $profiles, $states, $maintenanceProof = $n
         Assert-Compute ($volume.health -ceq 'Healthy' -and $volume.free -ge $budget.freeFloorBytes -and ($budget.maximumVhdBytes + $budget.runtimeBytes + $budget.metadataBytes + $budget.freeFloorBytes) -le $volume.size) 'Maximum VHD/runtime/free admission failed'
     }
     $cap = $snapshot.hostCapacity
-    Assert-Compute ($cap.logicalProcessors -eq $entry.hostCpu -and $cap.physicalCores -eq ($entry.hostCpu / 2) -and $cap.memoryBytes -ge ($entry.hostMinimumMemoryGiB * 1GB) -and $cap.numa.Count -gt 0 -and ($cap.numa | Measure-Object logicalProcessors -Sum).Sum -eq $entry.hostCpu) 'Actual host CPU/RAM/NUMA differs'
+    $expectedCpu = if ($plan.route -ceq 'direct-full-outage-v1' -and $entry.recovery -eq $true -and $cap.logicalProcessors -cin @(32,64)) { $cap.logicalProcessors } else { $entry.hostCpu }
+    $minimumMemory = if ($expectedCpu -eq 32) { 250GB } else { 500GB }
+    Assert-Compute ($cap.logicalProcessors -eq $expectedCpu -and $cap.physicalCores -eq ($expectedCpu / 2) -and $cap.memoryBytes -ge $minimumMemory -and $cap.numa.Count -gt 0 -and ($cap.numa | Measure-Object logicalProcessors -Sum).Sum -eq $expectedCpu) 'Actual host CPU/RAM/NUMA differs'
     if ($entry.hostCpu -eq 64) { Assert-Compute ($cap.freeMemoryBytes -ge $plan.minimumOuterFreeMemoryBytes) 'Actual host free RAM insufficient' }
     Assert-Compute ($snapshot.volumes.Count -eq 4 -and $snapshot.guestsStatic.Count -eq 4) 'Exactly four volumes/guests required'
     if ($healthProfile -cne 'stopped') {
@@ -93,12 +95,17 @@ try {
     $held = $mutex.WaitOne(10000)
     if (-not $held) { throw 'Remote operation mutex unavailable' }
     Save-R2Worker 'preflight'
-    Assert-Compute ($env:COMPUTERNAME -ceq 'LocalBox-Client' -and $plan.executionApproval.parentGo -eq $true -and $entry.key -ceq $effectKey) 'Exact approved worker context differs'
+    Assert-Compute ($env:COMPUTERNAME -ceq 'LocalBox-Client' -and $entry.key -ceq $effectKey) 'Exact approved worker context differs'
+    Assert-ComputeExecutionAuthority $plan
     $request = Get-Content (Join-Path $capacityRoot ('request-' + $stage + '.json')) -Raw | ConvertFrom-Json
     $operation = Get-Content (Join-Path $capacityRoot 'operation.json') -Raw | ConvertFrom-Json
     Assert-R2Context $request $operation
+    if ($entry.recovery -eq $true) { Assert-ComputeRecoveryAuthority $request.recoveryDirective $effectKey $planSha $sourceCommit }
     $before = Read-ComputeSnapshot ($entry.health -cne 'stopped')
     Assert-R2Snapshot $before $entry.beforeProfiles $entry.beforeStates
+    if ($plan.route -ceq 'direct-full-outage-v1' -and $entry.effect -cin @('memory', 'cpu', 'startup-grant')) {
+        Assert-Compute (@($before.states.Values | Where-Object { $_ -cne 'Off' }).Count -eq 0) 'Direct profile/grant effects require ALL FOUR guests Off'
+    }
     if ($entry.health -ceq 'stopped') {
         foreach ($n in @('LB-NODE01', 'LB-NODE02', 'LB-NODE03')) {
             if ($before.states[$n] -cne 'Running') { continue }
@@ -125,14 +132,18 @@ try {
             Stop-VM -VM $vm -Confirm:$false -ErrorAction Stop
         }
         'memory' {
-            $vm = Get-VM -Id $plan.guestIds.PSObject.Properties[$entry.node].Value
-            Assert-Compute ($vm.Name -ceq $entry.node -and $vm.State.ToString() -ceq 'Off') 'Exact Off guest required'
-            Set-VMMemory -VM $vm -StartupBytes 128GB -ErrorAction Stop
+            $name = if ($entry.guest) { $entry.guest } else { $entry.node }
+            $vm = Get-VM -Id $plan.guestIds.PSObject.Properties[$name].Value
+            Assert-Compute ($name -cne 'LB-DC01' -and $vm.Name -ceq $name -and $vm.State.ToString() -ceq 'Off') 'Exact Off HCI guest required'
+            $memory = if ($entry.targetMemoryBytes) { $entry.targetMemoryBytes } else { 128GB }
+            Set-VMMemory -VM $vm -StartupBytes $memory -ErrorAction Stop
         }
         'cpu' {
-            $vm = Get-VM -Id $plan.guestIds.PSObject.Properties[$entry.node].Value
-            Assert-Compute ($vm.Name -ceq $entry.node -and $vm.State.ToString() -ceq 'Off') 'Exact Off guest required'
-            Set-VMProcessor -VM $vm -Count 16 -ErrorAction Stop
+            $name = if ($entry.guest) { $entry.guest } else { $entry.node }
+            $vm = Get-VM -Id $plan.guestIds.PSObject.Properties[$name].Value
+            Assert-Compute ($name -cne 'LB-DC01' -and $vm.Name -ceq $name -and $vm.State.ToString() -ceq 'Off') 'Exact Off HCI guest required'
+            $count = if ($entry.targetCpu) { $entry.targetCpu } else { 16 }
+            Set-VMProcessor -VM $vm -Count $count -ErrorAction Stop
         }
         'drain' {
             Invoke-Command -Session $session -ArgumentList $entry.node -ErrorAction Stop -ScriptBlock { param($n) Suspend-ClusterNode -Cluster smal-localbox01 -Name $n -Drain -Wait -ErrorAction Stop | Out-Null }
@@ -153,6 +164,8 @@ try {
                 key = $entry.startupKey; stage = $entry.startupKey; grantStage = $stage; atUtc = [datetime]::UtcNow.ToString('o'); hostCpu = $(if ($entry.startupHostCpu) { $entry.startupHostCpu } else { $entry.hostCpu }); guests = $before.guestsStatic
                 hostStatic = $before.hostStatic; volumesStatic = $before.volumesStatic; profiles = $entry.beforeProfiles; states = $entry.beforeStates }
             $grant.startupEntry = $plan.transitionContract.stages.PSObject.Properties[$entry.startupKey].Value
+            $grant.capacityGuard = @{ hostCpu = $(if ($entry.startupHostCpu) { $entry.startupHostCpu } else { $entry.hostCpu }); physicalCores = $(if ($entry.startupHostCpu) { $entry.startupHostCpu / 2 } else { $entry.hostCpu / 2 })
+                minimumMemoryBytes = 500GB; minimumFreeMemoryBytes = $plan.minimumOuterFreeMemoryBytes }
             $grant.maintenanceContext = if ($entry.node) {
                 @{ baseline = @{ clusterStatic = $plan.baseline.clusterStatic }; admission = @{ requiredPhysicalFreeBytes = $plan.admission.requiredPhysicalFreeBytes; repairReserveBytes = $plan.admission.repairReserveBytes }
                    deviceOwners = $plan.transitionContract.deviceOwners }

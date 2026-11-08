@@ -22,6 +22,25 @@ function Assert-CapacityStartupSnapshot($snapshot, $grant, $maintenanceProof = $
         Assert-ComputeMaintenanceHealth $snapshot $entry.node $proof ([bool]$entry.compensating)
     } else { Assert-Compute ($entry.health -ceq 'stopped' -and $null -eq $grant.maintenanceContext) 'Unsealed startup health mode' }
 }
+function Assert-CapacityRuntime($snapshot, $grant) {
+    $guard = $grant.capacityGuard
+    $cpu = $snapshot.hostCapacity
+    Assert-Compute ($guard.hostCpu -eq 64 -and $guard.physicalCores -eq 32 -and $guard.minimumMemoryBytes -ge 500GB -and $cpu.logicalProcessors -eq 64 -and $cpu.physicalCores -eq 32 -and $cpu.memoryBytes -ge $guard.minimumMemoryBytes -and $cpu.numa.Count -gt 0 -and ($cpu.numa | Measure-Object logicalProcessors -Sum).Sum -eq 64) 'Actual E64 CPU/RAM/NUMA required before any guest start'
+    $needed = [long]$guard.minimumFreeMemoryBytes
+    foreach ($g in $snapshot.guestsStatic) {
+        $state = Get-ComputeField $snapshot.states $g.name
+        Assert-Compute ($state -cin @('Off','Running')) 'No startup from Saved/Paused/unknown state in capacity handover'
+        if ($state -ceq 'Off') { $needed += $g.memory }
+    }
+    Assert-Compute ($guard.minimumFreeMemoryBytes -ge 64GB -and $cpu.freeMemoryBytes -ge $needed) 'Actual available RAM cannot admit remaining guest starts plus host floor'
+}
+function Assert-CapacityRuntimeGate($gate) {
+    $plan = [pscustomobject]@{ guestIds = [pscustomobject]@{} }; $sourceCommit = $gate.record.sourceCommit
+    foreach ($g in $gate.grant.guests) { $plan.guestIds | Add-Member -NotePropertyName $g.name -NotePropertyValue $g.id }
+    $snapshot = Read-ComputeSnapshot $false
+    Assert-ComputeEqual $snapshot.guestsStatic $gate.grant.guests 'Capacity guest configuration changed between starts'
+    Assert-CapacityRuntime $snapshot $gate.grant
+}
 function Open-CapacityStartupGate {
     $operation = Get-Content (Join-Path $capacityRoot 'operation.json') -Raw | ConvertFrom-Json
     Assert-Compute ($operation.operationId -ceq 'smal-compute-capacity-20261108-01') 'Remote startup operation identity differs'
@@ -63,7 +82,7 @@ function Open-CapacityStartupGate {
     $grant = Get-Content (Join-Path $capacityRoot ('startup-grant-' + $CapacityStartupKey + '.json')) -Raw | ConvertFrom-Json
     Assert-ComputeEqual $grant $CapacityRemoteGrant 'Exact one-use local/remote grant differs'
     if (($grant.atUtc -as [datetime]).ToUniversalTime() -gt [datetime]::UtcNow -or ([datetime]::UtcNow - ([datetime]$grant.atUtc).ToUniversalTime()).TotalSeconds -gt 600) { throw 'Remote startup grant expired or future' }
-    if ($grant.key -cne $CapacityStartupKey -or $grant.planSha256 -cne $CapacityPlanSha -or $grant.sourceCommit -cne $CapacitySourceCommit -or (Get-VMHost).LogicalProcessorCount -ne $grant.hostCpu) { throw 'Startup grant identity/actual capacity differs' }
+    if ($grant.key -cne $CapacityStartupKey -or $grant.planSha256 -cne $CapacityPlanSha -or $grant.sourceCommit -cne $CapacitySourceCommit) { throw 'Startup grant identity differs' }
     $plan = [pscustomobject]@{ guestIds = [pscustomobject]@{} }
     foreach ($g in $grant.guests) { $plan.guestIds | Add-Member -NotePropertyName $g.name -NotePropertyValue $g.id }
     $entry = $grant.startupEntry
@@ -73,12 +92,19 @@ function Open-CapacityStartupGate {
     Assert-CapacityStartupSnapshot $snapshot $grant
     $gate = @{ operationId = $operation.operationId; planSha256 = $CapacityPlanSha; sourceCommit = $CapacitySourceCommit
         key = $CapacityStartupKey; stage = $CapacityStartupKey; pid = $PID; processStartedUtc = (Get-Process -Id $PID).StartTime.ToUniversalTime().ToString('o')
-        phase = 'begin'; sequence = 0; helperSha256 = $operation.startupHelperSha256 }
+        phase = 'begin'; sequence = 0; helperSha256 = $operation.startupHelperSha256; guestRpcInvoked = $false }
     Write-CapacityStartupEvent $gate (Join-Path $capacityRoot ('startup-begin-' + $gate.key + '.json'))
-    return @{ record = $gate; mutex = $mutex }
+    $result = @{ record = $gate; mutex = $mutex; grant = $grant }
+    try { Assert-CapacityRuntime $snapshot $grant }
+    catch {
+        $gate.refusal = 'capacity-refused-before-guests'; Set-CapacityStartupPhase $result 'returned'
+        $mutex.ReleaseMutex(); $mutex.Dispose(); throw 'Capacity refused before guest RPC. Original handover remains consumed and requires exact independent reconciliation'
+    }
+    return $result
 }
 function Set-CapacityStartupPhase($gate, [string]$phase, [string]$vmId = '') {
     $row = $gate.record; $row.sequence++; $row.phase = $phase; $row.vmId = $vmId
+    if ($phase -ceq 'rpc-pending') { $row.guestRpcInvoked = $true }
     $row.atUtc = [datetime]::UtcNow.ToString('o')
     Write-CapacityStartupEvent $row (Join-Path $capacityRoot ('startup-' + $row.key + '-event-' + $row.sequence + '.json'))
 }

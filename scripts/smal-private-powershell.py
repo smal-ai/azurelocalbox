@@ -186,8 +186,12 @@ def main(script, name, envelope_key=None, three_node_context=None, capacity_cont
     if relative == 'scripts/smal-capacity-dispatch-r2.ps1':
         if not isinstance(compute_context, dict):
             raise RuntimeError('Exact R2 controller context required')
-        controller = runpy.run_path(str(ROOT / 'scripts/smal-capacity-r2.py'), run_name='r2_transport_guard')
-        if controller['source_guard'](compute_context['plan']) != head:
+        direct = compute_context['plan'].get('route') == 'direct-full-outage-v1'
+        if compute_context['plan'].get('route') not in (None, 'direct-full-outage-v1'):
+            raise RuntimeError('Unknown capacity route; arbitrary controller paths are forbidden')
+        controller = runpy.run_path(str(ROOT / ('scripts/smal-capacity-direct.py' if direct else 'scripts/smal-capacity-r2.py')), run_name='capacity_transport_guard')
+        guarded = controller['source_guard'](compute_context['plan'], read_only=compute_context['mode'] == 'snapshot') if direct else controller['source_guard'](compute_context['plan'])
+        if guarded != head:
             raise RuntimeError('R2 source fence differs')
         controller['authorise_transport'](compute_context, head)
         source = controller['render_context'](compute_context, head)

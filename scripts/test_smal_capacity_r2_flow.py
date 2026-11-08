@@ -338,7 +338,8 @@ class FullRouteTests(unittest.TestCase):
             (private_out / ('private-ssh-' + key + '.json')).write_text(json.dumps(receipt))
             return 0
 
-        controller = dict(R, OUT=self.out, source_guard=Mock(return_value=COMMIT), C=dict(R['C'], get_cloud=Mock(return_value=evidence['cloud'])))
+        running_cloud = dict(evidence['cloud'], power='PowerState/running')
+        controller = dict(R, OUT=self.out, source_guard=Mock(return_value=COMMIT), C=dict(R['C'], get_cloud=Mock(side_effect=[evidence['cloud'], running_cloud])))
         modules = {'smal-capacity-interlock.py': I, 'smal-capacity-r2.py': controller, 'smal-private-powershell.py': {'main': private}}
         loader = Mock(run_path=lambda path, **kwargs: modules[Path(path).name])
         account = dict(id=R['C']['SUB'], tenantId=R['C']['TENANT'], state='Enabled')

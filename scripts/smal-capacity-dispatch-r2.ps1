@@ -17,10 +17,16 @@ function Read-R2Worker([string]$name) {
     for ($i = 0; $i -lt $events.Count; $i++) { if ($events[$i].sequence -ne ($i + 1)) { throw 'Remote event sequence gap' } }
     return $events[-1]
 }
-Assert-Compute ($env:COMPUTERNAME -ceq 'LocalBox-Client' -and $plan.transitionContract.version -eq 2 -and $plan.executionApproval.parentGo -eq $true) 'Exact sealed R2 context required'
+Assert-Compute ($env:COMPUTERNAME -ceq 'LocalBox-Client' -and $plan.transitionContract.version -eq 2) 'Exact host/contract context required'
+if ($mode -ceq 'snapshot') {
+    Assert-Compute ($plan.route -ceq 'direct-full-outage-v1' -and $stage -ceq 'direct-cluster-stop') 'Only the exact direct preflight snapshot route is allowed'
+    @{ status = 'complete'; mutationPerformed = $false; atUtc = [datetime]::UtcNow.ToString('o'); operationId = $plan.operationId
+        sourceCommit = $sourceCommit; stage = $stage; key = $effectKey; planSha256 = $planSha; snapshot = (Read-ComputeSnapshot) } | ForEach-Object { ConvertTo-ComputeJson $_ }
+    return
+}
+Assert-ComputeExecutionAuthority $plan
 if ($mode -ceq 'observe') {
     if ($entry.effect -cin @('canonical-startup', 'converge')) {
-        $snapshot = Read-ComputeSnapshot
         $remote = $null; $begin = $null
         if ($entry.effect -ceq 'canonical-startup') {
             $begin = Read-R2Json (Join-Path $capacityRoot ('startup-begin-' + $stage + '.json'))
@@ -30,9 +36,11 @@ if ($mode -ceq 'observe') {
             $remote = $events[-1]
             Assert-Compute ($remote.key -ceq $stage -and $remote.planSha256 -ceq $planSha -and $remote.sourceCommit -ceq $sourceCommit -and $remote.helperSha256 -ceq $startupHelperSha256) 'Exact startup identity/source differs'
         }
+        $noGuestRefusal = ($remote -and $remote.refusal -ceq 'capacity-refused-before-guests' -and $remote.guestRpcInvoked -eq $false)
+        $snapshot = Read-ComputeSnapshot ($entry.observeHealth -cne 'stopped' -and -not $noGuestRefusal)
         @{ status = 'complete'; mutationPerformed = $false; atUtc = [datetime]::UtcNow.ToString('o'); operationId = $plan.operationId
             planSha256 = $planSha; sourceCommit = $sourceCommit; stage = $stage; key = $effectKey; snapshot = $snapshot
-            remoteStartup = $remote; outcome = $(if ($remote -and $remote.phase -ceq 'returned') { 'applied' } else { 'unknown' }); dispatcherAlive = $(if ($begin) { Test-R2Alive $begin } else { $false })
+            remoteStartup = $remote; outcome = $(if ($remote -and $remote.phase -ceq 'returned' -and $remote.refusal -ceq 'capacity-refused-before-guests' -and $remote.guestRpcInvoked -eq $false) { 'not-applied' } elseif ($remote -and $remote.phase -ceq 'returned') { 'applied' } else { 'unknown' }); dispatcherAlive = $(if ($begin) { Test-R2Alive $begin } else { $false })
             workerAlive = $(if ($begin) { Test-R2Alive $begin } else { $false }); rpcPhase = $(if ($remote) { $remote.phase } else { 'read-only' })
             workerIdentityVerified = $null -ne $remote; workerSourceVerified = $null -ne $remote } | ForEach-Object { ConvertTo-ComputeJson $_ }
         return
@@ -45,23 +53,36 @@ if ($mode -ceq 'observe') {
     $notApplied = ($worker -and $worker.rpcInvoked -eq $false -and $worker.phase -ceq 'returned')
     $snapshot = Read-ComputeSnapshot ($(if ($notApplied) { $entry.health } else { $entry.observeHealth }) -cne 'stopped')
     $services = @{}
+    $lifecycle = @()
     if ($entry.effect -ceq 'cluster-stop') {
         foreach ($n in @('LB-NODE01', 'LB-NODE02', 'LB-NODE03')) {
             $s = New-ComputeSession $n
             try { $services[$n] = Invoke-Command -Session $s -ScriptBlock { (Get-Service ClusSvc -ErrorAction Stop).Status.ToString() } -ErrorAction Stop }
             finally { Remove-PSSession $s }
+            if ($plan.route -ceq 'direct-full-outage-v1') {
+                $s = New-ComputeSession $n
+                try { $lifecycle += @(Invoke-Command -Session $s -ErrorAction Stop -ScriptBlock {
+                    Get-VM | ForEach-Object {
+                        $vm = $_; $shutdown = @(Get-VMIntegrationService -VM $vm -ErrorAction SilentlyContinue | Where-Object Name -CEQ 'Shutdown')
+                        @{ id = $vm.Id.ToString(); state = $vm.State.ToString(); cpu = $vm.ProcessorCount; memory = $vm.MemoryStartup
+                           shutdownIntegrationEnabled = $(if ($shutdown.Count -eq 1) { $shutdown[0].Enabled } else { $null }) }
+                    }
+                }) }
+                finally { Remove-PSSession $s }
+            }
         }
     }
     @{ status = 'complete'; mutationPerformed = $false; atUtc = [datetime]::UtcNow.ToString('o'); operationId = $plan.operationId
        planSha256 = $planSha; sourceCommit = $sourceCommit; stage = $stage; key = $effectKey
        dispatcherAlive = Test-R2Alive $request; workerAlive = Test-R2Alive $worker; workerIdentityVerified = $null -ne $worker
        workerSourceVerified = $true; rpcPhase = $(if ($worker) { $worker.phase } else { 'unknown' })
-        worker = $worker; request = $request; snapshot = $snapshot; clusterServices = $services
+        worker = $worker; request = $request; snapshot = $snapshot; clusterServices = $services; clusterLifecycleVms = $lifecycle
         outcome = $(if ($worker -and $worker.phase -ceq 'returned' -and $worker.rpcSucceeded -eq $true) { 'applied' } elseif ($notApplied) { 'not-applied' } else { 'unknown' })
         remoteCompletion = $(if (Test-Path (Join-Path $capacityRoot 'completion.json')) { Read-R2Json (Join-Path $capacityRoot 'completion.json') } else { $null }) } | ForEach-Object { ConvertTo-ComputeJson $_ }
 } elseif ($mode -ceq 'dispatch') {
     Assert-Compute ($CapacityEffectsEnabled -eq $true) 'Remote R2 effects disabled in preparation source'
     Assert-Compute ($entry.key -ceq $effectKey) 'Sealed immutable key differs'
+    if ($entry.recovery -eq $true) { Assert-ComputeRecoveryAuthority $directRecoveryDirective $effectKey $planSha $sourceCommit }
     $mutex = [Threading.Mutex]::new($false, 'Global\AzureLocalBoxComputeCapacityR2'); $held = $false
     try {
         $held = $mutex.WaitOne(0)
@@ -96,7 +117,8 @@ if ($mode -ceq 'observe') {
             $begin = Read-R2Json $file.FullName
             $events = @(Get-ChildItem $capacityRoot -Filter ('startup-' + $begin.key + '-event-*.json') -File | ForEach-Object { Read-R2Json $_.FullName } | Sort-Object sequence)
             $resolution = $settlements.PSObject.Properties[$begin.key].Value
-            Assert-Compute ($events.Count -gt 0 -and $null -ne $resolution -and $resolution.proof.outcome -ceq 'applied' -and $events[-1].phase -ceq 'returned' -and (Test-R2Alive $begin) -eq $false -and $resolution.proof.observation.remoteStartup.sequence -eq $events[-1].sequence) 'Canonical startup unresolved'
+            $settledStartup = ($resolution.proof.outcome -ceq 'applied') -or ($plan.route -ceq 'direct-full-outage-v1' -and $entry.recovery -eq $true -and $resolution.proof.outcome -ceq 'not-applied' -and $events[-1].guestRpcInvoked -eq $false -and $events[-1].refusal -ceq 'capacity-refused-before-guests')
+            Assert-Compute ($events.Count -gt 0 -and $null -ne $resolution -and $settledStartup -and $events[-1].phase -ceq 'returned' -and (Test-R2Alive $begin) -eq $false -and $resolution.proof.observation.remoteStartup.sequence -eq $events[-1].sequence) 'Canonical startup unresolved'
             Assert-ComputeEqual $events[-1] $resolution.proof.observation.remoteStartup 'Exact original startup event changed'
             $ack = Join-Path $capacityRoot ('settlement-' + $begin.key + '.json')
             if (Test-Path $ack) { Assert-ComputeEqual (Read-R2Json $ack) $resolution 'Startup acknowledgement differs' } else { Write-R2Json $ack $resolution }
@@ -108,7 +130,7 @@ if ($mode -ceq 'observe') {
             try { Assert-Compute ([BitConverter]::ToString($h.ComputeHash($b)).Replace('-', '') -ceq $workerSha256) 'Worker bytes differ' } finally { $h.Dispose() }
             $s = [IO.File]::Open($workerFile, [IO.FileMode]::CreateNew)
             try { $s.Write($b, 0, $b.Length); $s.Flush($true) } finally { $s.Dispose() }
-            Write-R2Json (Join-Path $capacityRoot ('request-' + $stage + '.json')) @{ operationId = $plan.operationId; planSha256 = $planSha; sourceCommit = $sourceCommit; stage = $stage; key = $effectKey; pid = $PID; processStartedUtc = (Get-Process -Id $PID).StartTime.ToUniversalTime().ToString('o') }
+            Write-R2Json (Join-Path $capacityRoot ('request-' + $stage + '.json')) @{ operationId = $plan.operationId; planSha256 = $planSha; sourceCommit = $sourceCommit; stage = $stage; key = $effectKey; pid = $PID; processStartedUtc = (Get-Process -Id $PID).StartTime.ToUniversalTime().ToString('o'); recoveryDirective = $directRecoveryDirective }
             $p = Start-Process powershell.exe -ArgumentList @('-NoLogo', '-NoProfile', '-NonInteractive', '-File', $workerFile) -PassThru -WindowStyle Hidden
             Write-R2Json (Join-Path $capacityRoot ('launch-' + $stage + '.json')) @{ pid = $p.Id; stage = $stage; key = $effectKey; planSha256 = $planSha }
             @{ status = 'complete'; launchReturned = $true; effectSettled = $false; closingSshSettlesRpc = $false; key = $effectKey; planSha256 = $planSha } | ForEach-Object { ConvertTo-ComputeJson $_ }

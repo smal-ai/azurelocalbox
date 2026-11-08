@@ -325,7 +325,7 @@ def get_cloud():
     powers = [s["code"] for s in iv.get("instanceView", {}).get("statuses", []) if s["code"].startswith("PowerState/")]
     require(len(powers) == 1, "Ambiguous/missing host power state")
     return {"atUtc": now(), "projection": cloud_projection(flat, disks, nic), "size": flat["hardwareProfile"]["vmSize"],
-            "power": powers[0], "etag": vm["etag"]}
+            "power": powers[0], "etag": vm["etag"], "provisioningState": flat.get("provisioningState")}
 
 
 def private(stage, key):

@@ -195,17 +195,30 @@ def render_context(ctx, commit):
     validate(plan, approved=True)
     require(re.fullmatch('[a-f0-9]{40}', commit), 'Exact source commit required')
     require(ctx == context(plan, stage, mode, ctx['settlements']), 'Unexpected transport context')
+    return render_validated_context(ctx, commit, effects_enabled=EFFECTS_ENABLED)
+
+
+def render_validated_context(ctx, commit, *, effects_enabled):
+    """Pure shared renderer. Each hardcoded route validates its own context first.
+
+    This emits bytes, never dispatches them or changes the legacy authority profile.
+    The private transport separately enforces the route's source and original intent.
+    """
+    plan, stage, mode = ctx['plan'], ctx['stage'], ctx['mode']
     common = (ROOT / 'scripts/smal-compute-capacity-20261108-common.ps1').read_text()
     public = base64.b64encode(json.dumps(plan, sort_keys=True, separators=(',', ':')).encode()).decode()
     prefix = "$ErrorActionPreference='Stop'\n$ComputeCapacityLibraryOnly=$true\n$plan=([Text.Encoding]::UTF8.GetString([Convert]::FromBase64String('" + public + "'))|ConvertFrom-Json)\n"
     prefix += "$stage='" + stage + "'\n$effectKey='" + plan['transitionContract']['stages'][stage]['key'] + "'\n$planSha='" + sha(plan) + "'\n$sourceCommit='" + commit + "'\n"
-    prefix += '$CapacityEffectsEnabled=' + ('$true' if EFFECTS_ENABLED else '$false') + '\n'
+    prefix += '$CapacityEffectsEnabled=' + ('$true' if effects_enabled else '$false') + '\n'
     worker = (prefix + common + '\n' + (ROOT / 'scripts/smal-compute-capacity-20261108-worker.ps1').read_text()).encode()
     helper = ("$ComputeCapacityLibraryOnly=$true\n" + common + '\n' + (ROOT / 'scripts/smal-capacity-startup-interlock.ps1').read_text()).encode()
     settlements = base64.b64encode(json.dumps(settlement_projection(ctx['settlements']), sort_keys=True, separators=(',', ':')).encode()).decode()
     extra = "$mode='" + mode + "'\n$workerSha256='" + hashlib.sha256(worker).hexdigest().upper() + "'\n$workerBase64='" + base64.b64encode(worker).decode() + "'\n"
     extra += "$startupHelperSha256='" + hashlib.sha256(helper).hexdigest().upper() + "'\n$startupHelperBase64='" + base64.b64encode(helper).decode() + "'\n"
     extra += "$settlements=([Text.Encoding]::UTF8.GetString([Convert]::FromBase64String('" + settlements + "'))|ConvertFrom-Json)\n"
+    if ctx.get('directive') is not None:
+        directive = base64.b64encode(json.dumps(ctx['directive'], sort_keys=True, separators=(',', ':')).encode()).decode()
+        extra += "$directRecoveryDirective=([Text.Encoding]::UTF8.GetString([Convert]::FromBase64String('" + directive + "'))|ConvertFrom-Json)\n"
     return (prefix + extra + common + '\n' + (ROOT / 'scripts/smal-capacity-dispatch-r2.ps1').read_text()).encode()
 
 

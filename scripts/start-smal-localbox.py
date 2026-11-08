@@ -182,15 +182,23 @@ def main(host_timeout=900, capacity_handover=None):
             gate = runpy.run_path(str(ROOT / 'scripts/smal-capacity-interlock.py'), run_name='canonical_capacity_gate')
             state, _, _ = gate['history']()
             if state is not None and not (ROOT / 'docs/deployment-2026-11-08-capacity/completion-r2.json').exists():
-                controller = runpy.run_path(str(ROOT / 'scripts/smal-capacity-r2.py'), run_name='canonical_capacity_release_guard')
-                controller['source_guard'](json.loads((controller['OUT'] / 'plan.sealed.json').read_text()))
+                if capacity_handover is None:
+                    raise RuntimeError('Active capacity operation requires an exact owned handover before any VPN/start.')
+                handover_record = gate['read'](Path(capacity_handover))
+                plan_file = handover_record['planFile']
+                if plan_file not in ('plan.sealed.json', 'plan.direct.sealed.json'):
+                    raise RuntimeError('Unknown capacity plan route.')
+                module = 'scripts/smal-capacity-direct.py' if plan_file == 'plan.direct.sealed.json' else 'scripts/smal-capacity-r2.py'
+                controller = runpy.run_path(str(ROOT / module), run_name='canonical_capacity_release_guard')
+                controller['source_guard'](json.loads((controller['OUT'] / plan_file).read_text()))
             capacity = gate['authorise_startup'](capacity_handover, record['sourceCommit'])
             record['capacityInterlock'] = None if capacity is None else {'key': capacity['key'], 'settlementRequired': True}
             save()
             ensure_private_vpn(record, save)
             verify_account(az(['account', 'show', '--subscription', SUB]))
             if capacity is not None:
-                controller = runpy.run_path(str(ROOT / 'scripts/smal-capacity-r2.py'), run_name='canonical_capacity_identity')
+                module = 'scripts/smal-capacity-direct.py' if capacity['handover']['planFile'] == 'plan.direct.sealed.json' else 'scripts/smal-capacity-r2.py'
+                controller = runpy.run_path(str(ROOT / module), run_name='canonical_capacity_identity')
                 sealed = json.loads((controller['OUT'] / capacity['handover']['planFile']).read_text())
                 controller['source_guard'](sealed)
                 observed = controller['C']['get_cloud']()
@@ -198,6 +206,11 @@ def main(host_timeout=900, capacity_handover=None):
                 if observed['size'] != sealed['targetSize']:
                     raise RuntimeError('Exact capacity host model differs before canonical startup.')
             ensure_host(host_state(), host_timeout, record, save)
+            if capacity is not None:
+                allocated = controller['C']['get_cloud']()
+                controller['C']['verify_cloud'](allocated, sealed)
+                if allocated['size'] != sealed['targetSize'] or allocated['power'] != 'PowerState/running':
+                    raise RuntimeError('Allocated host model/power/private identity differs before guest transport.')
             record['status'] = 'starting-and-checking-nested-guests'
             record['privateGuestReceipt'] = 'docs/deployment-2026-10-27/private-ssh-' + run + '.json'
             save()

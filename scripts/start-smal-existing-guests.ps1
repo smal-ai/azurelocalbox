@@ -26,6 +26,7 @@ $results = @(foreach ($target in $targets) {
     $vm = Get-VM -Id $target.id
     $before = $vm.State.ToString()
     if ($before -ne 'Running') {
+        if ($capacityGate) { Assert-CapacityRuntimeGate $capacityGate }
         if ($capacityGate) { Set-CapacityStartupPhase $capacityGate 'rpc-pending' $vm.Id.ToString() }
         Start-VM -VM $vm -ErrorAction Stop
         if ($capacityGate) { Set-CapacityStartupPhase $capacityGate 'rpc-returned' $vm.Id.ToString() }

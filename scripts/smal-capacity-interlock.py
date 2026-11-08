@@ -13,12 +13,23 @@ import os
 from pathlib import Path
 import re
 import stat
+import runpy
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'docs/deployment-2026-11-08-capacity'
 LOCK = Path('/tmp/opencode/smal-capacity-state.lock')
 LEGACY = Path('/home/quintin/play/azurelocalbox/docs/deployment-2026-11-08-capacity')
 OPERATION = 'smal-compute-capacity-20261108-01'
+SCRIPTS = Path(__file__).resolve().parent
+
+
+def approved_plan(plan):
+    if plan.get('route') == 'direct-full-outage-v1':
+        controller = runpy.run_path(str(SCRIPTS / 'smal-capacity-direct.py'), run_name='direct_handover_authority')
+        controller['validate'](plan, approved=True)
+    else:
+        require(plan.get('route') is None and isinstance(plan.get('executionApproval'), dict)
+                and plan['executionApproval'].get('parentGo') is True, 'Exact legacy sealed GO absent')
 
 
 def sha(value):
@@ -186,8 +197,8 @@ def prepare_startup(plan_path, proof, remote_grant, key):
         plan_path = Path(plan_path)
         require(plan_path.parent.resolve() == OUT.resolve(), 'Exact owned sealed plan required')
         plan = read(plan_path)
-        require(sha(plan) == state['planSha256'] and isinstance(plan.get('executionApproval'), dict)
-                and plan['executionApproval']['parentGo'] is True, 'Exact sealed GO absent')
+        require(sha(plan) == state['planSha256'], 'Exact sealed plan digest absent')
+        approved_plan(plan)
         require(remote_grant['key'] == key and remote_grant['planSha256'] == state['planSha256']
                 and remote_grant['sourceCommit'] == state['sourceCommit'], 'Remote grant binding differs')
         handover = dict(state, key=key, planFile=plan_path.name, proof=proof, remoteGrant=remote_grant,
@@ -221,7 +232,8 @@ def authorise_startup(handover_path=None, expected_source=None):
         fresh(handover['proof'])
         require(handover['settlementHashes'] == {k: sha(v) for k, v in settled.items()}, 'Handover history changed')
         plan = read(OUT / handover['planFile'])
-        require(sha(plan) == state['planSha256'] and plan['executionApproval']['parentGo'] is True, 'Sealed plan changed')
+        require(sha(plan) == state['planSha256'], 'Sealed plan changed')
+        approved_plan(plan)
         key = handover['key']
         require(re.fullmatch('[a-z0-9][a-z0-9-]{0,47}', key) and key not in effects, 'Handover consumed/invalid')
         intent = dict(state, key=key, stage=key, kind='canonical-startup', requestSha256=sha(handover),

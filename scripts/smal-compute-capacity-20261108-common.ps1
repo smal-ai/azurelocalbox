@@ -70,6 +70,18 @@ function Get-ComputeUtcStamp($value) {
     Assert-Compute ($value -is [string] -and $value -match '(Z|[+-][0-9]{2}:[0-9]{2})$') 'Process timestamp timezone missing'
     return ([datetimeoffset]$value).UtcDateTime.ToString('o')
 }
+function Assert-ComputeExecutionAuthority($approvedPlan) {
+    if ($approvedPlan.route -ceq 'direct-full-outage-v1') {
+        Assert-Compute ($null -eq $approvedPlan.executionApproval -and $approvedPlan.directHumanApproval.authorityProfile -ceq 'direct-human-full-outage' -and $approvedPlan.directHumanApproval.quotedRequest -ceq "make the changes, I'm the boss here" -and $approvedPlan.technicalReview.decision -ceq 'accept-direct-full-outage-source-and-plan') 'Exact direct-human authority and independent technical review required'
+    } else {
+        Assert-Compute ($null -eq $approvedPlan.route -and $approvedPlan.executionApproval.parentGo -eq $true) 'Exact legacy parent approval required'
+    }
+}
+function Assert-ComputeRecoveryAuthority($directive, [string]$key, [string]$digest, [string]$commit) {
+    Assert-Compute ($directive.authorityProfile -ceq 'direct-human-offline-original-profile-restoration' -and $directive.stage -ceq $key -and $directive.planSha256 -ceq $digest -and $directive.sourceCommit -ceq $commit -and $directive.quotedRequest -and ($directive.approvedEffects -join '|') -ceq 'restore-original-profile-while-all-four-guests-off') 'Separate exact offline restoration direction required'
+    $age = ([datetime]::UtcNow - ([datetimeoffset]$directive.atUtc).UtcDateTime).TotalSeconds
+    Assert-Compute ($age -ge 0 -and $age -le 600) 'Offline restoration direction expired/future'
+}
 function Read-ComputeGuestStatic($vm) {
     $processor = Get-VMProcessor -VM $vm
     $memory = Get-VMMemory -VM $vm
@@ -195,7 +207,18 @@ function Read-ComputeSnapshot([bool]$readCluster = $true) {
                     }
                 }
                 $nodes = @(Get-ClusterNode -Cluster $c)
+                $vmResources = @(Get-ClusterResource -Cluster $c | Where-Object ResourceType -EQ 'Virtual Machine')
+                $vmPolicies = @($vmResources | Sort-Object Id | ForEach-Object {
+                    $resource = $_
+                    $identity = @($resource | Get-ClusterParameter -Name VmId -ErrorAction SilentlyContinue)
+                    $offline = @($resource | Get-ClusterParameter -Name OfflineAction -ErrorAction SilentlyContinue)
+                    # Expose missing/unknown values. Never infer the documented default,
+                    # coerce an unknown value to TurnOff, or write a resource parameter.
+                    @{ resourceId = $resource.Id.ToString(); vmIds = @($identity | ForEach-Object { [string]$_.Value })
+                       offlineAction = $(if ($offline.Count -eq 1) { $offline[0].Value } else { $null }) }
+                })
                 @{ static = @{ name = $c.Name; poolId = $pool.UniqueId; poolSize = $pool.Size
+                        vmLifecyclePolicies = $vmPolicies
                         members = @($members | Sort-Object UniqueId | ForEach-Object { @{ id = $_.UniqueId; size = $_.Size } })
                         virtualDisks = @($vd | Sort-Object UniqueId | ForEach-Object { @{ id = $_.UniqueId; size = $_.Size; copies = $_.NumberOfDataCopies; resiliency = $_.ResiliencySettingName } })
                         csv = @($csv | Sort-Object Name | ForEach-Object { @{ name = $_.Name; id = $_.Id.ToString(); volumes = @($_.SharedVolumeInfo | ForEach-Object { @{ path = $_.FriendlyVolumeName; size = $_.Partition.Size } }) } }) }
@@ -210,9 +233,10 @@ function Read-ComputeSnapshot([bool]$readCluster = $true) {
                          virtualDiskStates = @($vd | Sort-Object UniqueId | ForEach-Object { @{ id = $_.UniqueId; health = $_.HealthStatus.ToString(); operational = @($_.OperationalStatus | ForEach-Object ToString); copies = $_.NumberOfDataCopies } })
                          csvStates = @($csv | Sort-Object Name | ForEach-Object { @{ id = $_.Id.ToString(); state = $_.State.ToString(); accessible = $_.SharedVolumeInfo.Count -gt 0 -and @($_.SharedVolumeInfo | Where-Object { -not (Test-Path -LiteralPath $_.FriendlyVolumeName) }).Count -eq 0 } })
                          unrelatedFailures = @(Get-ClusterResource -Cluster $c | Where-Object { $_.State.ToString() -ceq 'Failed' } | ForEach-Object { $_.Id.ToString() })
-                         vmResources = @(Get-ClusterResource -Cluster $c | Where-Object ResourceType -EQ 'Virtual Machine' | ForEach-Object {
-                             @{ id = $_.Id.ToString(); ownerNode = $_.OwnerNode.Name; state = $_.State.ToString()
-                                vmIds = @($_ | Get-ClusterParameter -Name VmId -ErrorAction Stop | ForEach-Object { [string]$_.Value }) }
+                          vmResources = @($vmResources | ForEach-Object {
+                              $resource = $_; $binding = @($vmPolicies | Where-Object resourceId -CEQ $resource.Id.ToString())
+                              @{ id = $resource.Id.ToString(); ownerNode = $resource.OwnerNode.Name; state = $resource.State.ToString()
+                                 vmIds = $(if ($binding.Count -eq 1) { @($binding[0].vmIds) } else { @() }) }
                          })
                         allCsvOnline = $csv.Count -eq 4 -and @($csv | Where-Object State -NE Online).Count -eq 0
                         allMirrorsHealthy = $vd.Count -eq 5 -and @($vd | Where-Object { $_.HealthStatus.ToString() -cne 'Healthy' -or $_.NumberOfDataCopies -ne 3 }).Count -eq 0
@@ -249,9 +273,11 @@ function Read-ComputeSnapshot([bool]$readCluster = $true) {
                            neighbors = @(Get-NetNeighbor -AddressFamily IPv4 | Sort-Object InterfaceIndex, IPAddress | Select-Object InterfaceIndex, IPAddress, LinkLayerAddress, State)
                            dns = @(Get-DnsClientServerAddress -AddressFamily IPv4 | Select-Object InterfaceIndex, ServerAddresses)
                            adapterVlans = @(Get-VMNetworkAdapter -ManagementOS | ForEach-Object { $v = $_ | Get-VMNetworkAdapterVlan; @{ name = $_.Name; switchName = $_.SwitchName; mode = $v.OperationMode.ToString(); accessVlanId = $v.AccessVlanId; nativeVlanId = $v.NativeVlanId } }) }
-                       nestedVms = @(Get-VM | Sort-Object Id | ForEach-Object {
-                           $vm = $_; $p = Get-VMProcessor -VM $vm; $m = Get-VMMemory -VM $vm
-                           @{ id = $vm.Id.ToString(); name = $vm.Name; cpu = $vm.ProcessorCount; memory = $vm.MemoryStartup
+                        nestedVms = @(Get-VM | Sort-Object Id | ForEach-Object {
+                            $vm = $_; $p = Get-VMProcessor -VM $vm; $m = Get-VMMemory -VM $vm
+                            $shutdown = @(Get-VMIntegrationService -VM $vm -ErrorAction SilentlyContinue | Where-Object Name -CEQ 'Shutdown')
+                            @{ id = $vm.Id.ToString(); name = $vm.Name; cpu = $vm.ProcessorCount; memory = $vm.MemoryStartup
+                               shutdownIntegrationEnabled = $(if ($shutdown.Count -eq 1) { $shutdown[0].Enabled } else { $null })
                               generation = $vm.Generation; version = $vm.Version.ToString(); path = $vm.Path
                               configurationLocation = $vm.ConfigurationLocation; automaticStart = $vm.AutomaticStartAction.ToString(); automaticStop = $vm.AutomaticStopAction.ToString()
                               processor = @{ nested = $p.ExposeVirtualizationExtensions; reserve = $p.Reserve; maximum = $p.Maximum; weight = $p.RelativeWeight }
