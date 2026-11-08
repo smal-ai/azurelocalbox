@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "executionId": "exec_smal_localbox_initial_admission_20261108",
+  "taskReference": "REL-344",
+  "scope": "current-initial-three-VM-read-only-base-admission-handoff",
+  "operatorObjectId": "fab70700-36e8-4cf5-ba5d-86ed49003fcf",
+  "projectOwnerObjectId": "82f494a8-b9f5-46fc-b0f7-c70be0572a63",
+  "tenantId": "c6e67968-af25-4557-ab8b-06b693048d3b",
+  "subscriptionId": "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+  "transportSubscriptionId": "702382d0-3722-4630-8983-5580b92f0c1a",
+  "notBeforeUtc": "2026-11-08T14:15:00Z",
+  "cutoffUtc": "2026-11-08T22:00:00Z",
+  "entitlement": "must-be-measured-fresh-not-inferred-from-this-binding-or-historical-PIM",
+  "decision": {
+    "kind": "attributed-coordinator-answer-within-existing-delegated-programme-authority",
+    "questionId": "question_39de5e5205779f96fb1a7bd4452e9ed43f566b7c89068c9cb926f85d8746ea74",
+    "authorAgentId": "agent_69adfb79657510a6ee716091244953d6d564a506481324c5aa5dee4917fdf376",
+    "answeredAtUtc": "2026-11-08T14:30:23.164Z",
+    "disposition": "Use the existing signed-in SMAL operator for this read-only execution after fresh effective-permission checks. Preserve October authority, sign-in and trust. No role activation, identity switching, credential export or infrastructure mutation."
+  },
+  "sourceReferences": [
+    {
+      "path": "/home/quintin/play/smal-ai-infra/solution/infra/deployments/2026-11-08-aks-foundry/aks/operator.json",
+      "sha256": "fa85266f2560758670c49f0b38c687e8617dc19e06189a66655dba1eb1898b4e",
+      "qualification": "Existing nonsecret identity binding. Its PIM expiry is historical."
+    },
+    {
+      "path": "/home/quintin/play/smal-ai-infra/solution/infra/deployments/2026-11-08-aks-foundry/platform/aks-binding-result.md",
+      "sha256": "68d2162c1dde7501b47a9f89e187362a4ba1a1ceed43d7d1eb9b934a0e4a5c73",
+      "qualification": "Existing operator provenance, not permission to replay the settled PATCH."
+    },
+    {
+      "path": "docs/deployment-2026-10-27/owner-approvals.json",
+      "sha256": "11d6319e10a92b08c5dcb7c07117cba022227e852e535024e8319b8218d3f3d5",
+      "qualification": "Unchanged October deployment authority for the distinct project owner."
+    },
+    {
+      "path": "/tmp/opencode/localbox-initial-entitlement-20261108-01.json",
+      "sha256": "9a4c8ddf85762a96f989cc2539a08a2c212d726191be0df9381678e548e8cf4c",
+      "qualification": "Original mismatch receipt preserved unchanged. No entitlement was established."
+    }
+  ],
+  "infrastructureMutationAuthorised": false,
+  "workloadAdmissionAuthority": "initiating-SMAL-coordinator-not-this-observer"
+}
