@@ -1,0 +1,76 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "2.0",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "deploymentMode": {
+      "defaultValue": "Validate",
+      "type": "string",
+      "allowedValues": [
+        "Validate"
+      ],
+      "metadata": {
+        "description": "First must pass Validate prior running Deploy"
+      }
+    },
+    "arcNodeResourceIds": {
+      "defaultValue": [
+        "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE01",
+        "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE02"
+      ],
+      "type": "array",
+      "metadata": {
+        "description": "The arc for server node Ids of the hci cluster"
+      }
+    },
+    "clusterName": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 15,
+      "metadata": {
+        "description": "This name must be unique from physical node names"
+      },
+      "defaultValue": "smal-localbox-01",
+      "allowedValues": [
+        "smal-localbox-01"
+      ]
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "westeurope",
+      "allowedValues": [
+        "westeurope"
+      ]
+    }
+  },
+  "resources": {
+    "edgeDevices": {
+      "condition": "[equals(parameters('deploymentMode'), 'Validate')]",
+      "dependsOn": [],
+      "copy": {
+        "name": "edgeDeviceCopy",
+        "count": "[length(parameters('arcNodeResourceIds'))]"
+      },
+      "type": "Microsoft.AzureStackHCI/edgeDevices",
+      "apiVersion": "2025-09-15-preview",
+      "name": "default",
+      "scope": "[concat('Microsoft.HybridCompute/machines', '/', last(split(parameters('arcNodeResourceIds')[copyindex()], '/')))]",
+      "kind": "HCI",
+      "properties": {}
+    },
+    "HCICluster": {
+      "condition": "[equals(parameters('deploymentMode'), 'Validate')]",
+      "type": "Microsoft.AzureStackHCI/clusters",
+      "apiVersion": "2025-09-15-preview",
+      "name": "[parameters('clusterName')]",
+      "dependsOn": [
+        "edgeDevices"
+      ],
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "location": "[parameters('location')]",
+      "properties": {}
+    }
+  }
+}

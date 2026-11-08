@@ -1,0 +1,77 @@
+{
+  "beganAtSast": "2026-10-27T11:48:54.443618+02:00",
+  "status": "complete",
+  "section": "Network",
+  "commit": "f28c78efa48f266814d79dd8a00d962146d0173c",
+  "scriptSha256": "3ae5855e0b11d3e8f2debaf1d609239514496262a68026174b5e5564e3f7564a",
+  "administrationPath": "Azure-VM-Run-Command-SYSTEM-owner-approved-read-only",
+  "guestLoginVerified": false,
+  "bootstrapApplied": false,
+  "exitCode": 0,
+  "result": {
+    "section": "Network",
+    "atUtc": "2026-10-27T09:49:04.0180849Z",
+    "computer": "LocalBox-Client",
+    "authenticatedGuestLogin": false,
+    "web": [
+      {
+        "host": "login.microsoftonline.com",
+        "dns": true,
+        "http": 200,
+        "tlsHttpResponse": true
+      },
+      {
+        "host": "management.azure.com",
+        "dns": true,
+        "http": 400,
+        "tlsHttpResponse": true
+      },
+      {
+        "host": "www.powershellgallery.com",
+        "dns": true,
+        "http": 405,
+        "tlsHttpResponse": true
+      },
+      {
+        "host": "raw.githubusercontent.com",
+        "dns": true,
+        "http": 404,
+        "tlsHttpResponse": true
+      },
+      {
+        "host": "jumpstartprodsg.blob.core.windows.net",
+        "dns": true,
+        "http": 200,
+        "tlsHttpResponse": true
+      },
+      {
+        "host": "jumpstartprodsg.blob.core.windows.net",
+        "dns": true,
+        "http": 200,
+        "tlsHttpResponse": true
+      },
+      {
+        "host": "github.com",
+        "dns": true,
+        "http": null,
+        "tlsHttpResponse": false,
+        "error": "SendFailure"
+      },
+      {
+        "host": "release-assets.githubusercontent.com",
+        "dns": true,
+        "http": null,
+        "tlsHttpResponse": false,
+        "error": "SendFailure"
+      }
+    ],
+    "centralDns": true,
+    "ntp": {
+      "remoteIp": "104.40.149.189",
+      "clockAdjusted": false,
+      "response": true
+    },
+    "limitations": "HEAD/DNS/NTP only. No WebSocket, image pull, nested traffic, TLS inspection audit or platform readiness claim."
+  },
+  "finishedAtSast": "2026-10-27T11:49:28.826485+02:00"
+}

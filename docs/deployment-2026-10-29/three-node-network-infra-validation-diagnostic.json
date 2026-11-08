@@ -1,0 +1,186 @@
+{
+  "status": "read-only-redacted-diagnostic",
+  "clusterStatus": "ValidationFailed",
+  "mode": "Validate",
+  "provisioningState": "Failed",
+  "validation": {
+    "status": "Error",
+    "steps": [
+      {
+        "name": "Azure Local Remote Management",
+        "status": "Success",
+        "index": "0",
+        "exceptions": [],
+        "children": []
+      },
+      {
+        "name": "Azure Local Connectivity",
+        "status": "Success",
+        "index": "10",
+        "exceptions": [],
+        "children": []
+      },
+      {
+        "name": "Azure Local External Active Directory",
+        "status": "Success",
+        "index": "20",
+        "exceptions": [],
+        "children": []
+      },
+      {
+        "name": "Azure Local SBE Health",
+        "status": "Success",
+        "index": "30",
+        "exceptions": [],
+        "children": []
+      },
+      {
+        "name": "Azure Local Hardware",
+        "status": "Success",
+        "index": "40",
+        "exceptions": [],
+        "children": []
+      },
+      {
+        "name": "Azure Local Network Configuration",
+        "status": "Success",
+        "index": "50",
+        "exceptions": [],
+        "children": []
+      },
+      {
+        "name": "Azure Local Network Infra Connection",
+        "status": "Error",
+        "index": "51",
+        "exceptions": [
+          {
+            "sha256": "a082a0ca60948136f431bbf394bfd62905e5213e782796b8b954a0221891fdad",
+            "redactedExcerpt": "Type 'ValidateNetworkInfraConnection' of Role 'EnvironmentValidator' raised an exception:\n\n{\n    \"ExceptionType\":  \"json\",\n    \"ErrorMessage\":  {\n                         \"Message\":  \"NetworkInfraConnection requirements not met. Review output and remediate.\",\n                         \"Results\":  [\n                                         {\n                                             \"Name\":  \"[REDACTED_LONG_VALUE]\",\n                                             \"DisplayName\":  \"Test IP readiness on test adapter for IP from infra pool\",\n                                             \"Tags\":  {\n\n                                                      },\n                                             \"Title\":  \"Test IP readiness on test adapter for IP from infra pool\",\n                                             \"Status\":  1,\n                                             \"Severity\":  2,\n                                             \"Description\":  \"Test IP readiness on test adapter for IP from infra pool\",\n                                             \"Remediation\":  \"Make sure infra IP 10.64.0.20 is routable to your gateway 10.64.0.1, and the IP is not used by any other device or service on the network.\",\n                                             \"TargetResourceID\":  \"[REDACTED_LONG_VALUE].64.0.20\",\n                                             \"TargetResourceName\":  \"[REDACTED_LONG_VALUE].64.0.20\",\n                                             \"TargetResourceType\":  \"[REDACTED_LONG_VALUE].64.0.20\",\n                                             \"Timestamp\":  \"\\/Date(1793279074502)\\/\",\n                                             \"AdditionalData\":  {\n                                                                    \"Detail\":  \"[FAILED] Connection from 10.64.0.20 to gateway 10.64.0.1 failed. Cannot get the IP configured correctly on the test adapter.\",\n                                                                    \"Status\":  \"FAILURE\",\n                                                                    \"TimeStamp\":  \"10/29/2026 13:04:34\",\n                                                                    \"Resource\":  \"10.64.0.20\",\n                                                                    \"Source\":  \"LB-NODE01\"\n                                                                },\n                                             \"HealthCheckSource\":  \"Deployment\\\\Standard\\\\Medium\\\\NetworkInfraConnection\\\\98e415ca\"\n                                         },\n                                         {\n                                             \"Name\":  \"[REDACTED_LONG_VALUE]\",\n                                             \"DisplayName\":  \"Test IP readiness on test adapter for IP from infra pool\",\n                                             \"Tags\":  {\n\n                                                      },\n                                             \"Title\":  \"Test IP readiness on test adapter for IP from infra pool\",\n                                             \"Status\":  1,\n                                             \"Severity\":  2,\n                                             \"Description\":  \"Test IP readiness on test adapter for IP from infra pool\",\n                                             \"Remediation\":  \"Make sure infra IP 10.64.0.21 is routable to your gateway 10.64.0.1, and the IP is not used by any other device or service on the network.\",\n                                             \"TargetResourceID\":  \"[REDACTED_LONG_VALUE].64.0.21\",\n                                             \"TargetResourceName\":  \"[REDACTED_LONG_VALUE].64.0.21\",\n                                             \"TargetResourceType\":  \"[REDACTED_LONG_VALUE].64.0.21\",\n                                             \"Timestamp\":  \"\\/Date(1793279272509)\\/\",\n                                             \"AdditionalData\":  {\n                                                                    \"Detail\":  \"[FAILED] Connection from 10.64.0.21 to gateway 10.64.0.1 failed. Cannot get the IP configured correctly on the test adapter.\",\n                                                                    \"Status\":  \"FAILURE\",\n                                                                    \"TimeStamp\":  \"10/29/2026 13:07:52\",\n                                                                    \"Resource\":  \"10.64.0.21\",\n                                                                    \"Source\":  \"LB-NODE01\"\n                                                                },\n                                             \"HealthCheckSource\":  \"Deployment\\\\Standard\\\\Medium\\\\NetworkInfraConnection\\\\98e415ca\"\n                                         },\n                                         {\n                                             \"Name\":  \"[REDACTED_LONG_VALUE]\",\n                                             \"DisplayName\":  \"Test IP readiness on test adapter for IP from infra pool\",\n                                             \"Tags\":  {\n\n                                                      },\n                                             \"Title\":  \"Test IP readiness on test adapter for IP from infra pool\",\n                                             \"Status\":  1,\n                                             \"Severity\":  2,\n                                             \"Description\":  \"Test IP readiness on test adapter for IP from infra pool\",\n                                             \"Remediation\":  \"Make sure infra IP 10.64.0.22 is routable to your gateway 10.64.0.1, and the IP is not used by any other device or service on the network.\",\n                                             \"TargetResourceID\":  \"[REDACTED_LONG_VALUE].64.0.22\",\n                                             \"TargetResourceName\":  \"[REDACTED_LONG_VALUE].64.0.22\",\n                                             \"TargetResourceType\":  \"[REDACTED_LONG_VALUE].64.0.22\",\n                                             \"Timestamp\":  \"\\/Date(1793279470493)\\/\",\n                                             \"AdditionalData\":  {\n                                                                    \"Detail\":  \"[FAILED] Connection from 10.64.0.22 to gateway 10.64.0.1 failed. Cannot get the IP configured correctly on the test adapter.\",\n                                                                    \"Status\":  \"FAILURE\",\n                                                                    \"TimeStamp\":  \"10/29/2026 13:11:10\",\n                                                                    \"Resource\":  \"10.64.0.22\",\n                                                                    \"Source\":  \"LB-NODE01\"\n                                                                },\n                                             \"HealthCheckSource\":  \"Deployment\\\\Standard\\\\Medium\\\\NetworkInfraConnection\\\\98e415ca\"\n                                         },\n                                         {\n                                             \"Name\":  \"[REDACTED_LONG_VALUE]\",\n                                             \"DisplayName\":  \"Test IP readiness on test adapter for IP from infra pool\",\n                                             \"Tags\":  {\n\n                                                      },\n                                             \"Title\":  \"Test IP readiness on test adapter for IP from infra pool\",\n                                             \"Status\":  1,\n                                             \"Severity\":  2,\n                                             \"Description\":  \"Test IP readiness on test adapter for IP from infra pool\",\n                                             \"Remediation\":  \"Make sure infra IP 10.64.0.23 is routable to your gateway 10.64.0.1, and the IP is not used by any other device or service on the network.\",\n                                             \"TargetResourceID\":  \"[REDACTED_LONG_VALUE].64.0.23\",\n                                             \"TargetResourceName\":  \"[REDACTED_LONG_VALUE].64.0.23\",\n                                             \"TargetResourceType\":  \"[REDACTED_LONG_VALUE].64.0.23\",\n                                             \"Timestamp\":  \"\\/Date(1793279668495)\\/\",\n                                             \"AdditionalData\":  {\n                                                                    \"Detail\":  \"[FAILED] Connection from 10.64.0.23 to gateway 10.64.0.1 failed. Cannot get the IP configured correctly on the test adapter.\",\n                                                                    \"Status\":  \"FAILURE\",\n                                                                    \"TimeStamp\":  \"10/29/2026 13:14:28\",\n                                                                    \"Resource\":  \"10.64.0.23\",\n                                                                    \"Source\":  \"LB-NODE01\"\n                                                                },\n                                             \"HealthCheckSource\":  \"Deployment\\\\Standard\\\\Medium\\\\NetworkInfraConnection\\\\98e415ca\"\n                                         },\n                                         {\n                                             \"Name\":  \"[REDACTED_LONG_VALUE]\",\n                                             \"DisplayName\":  \"Test IP readiness on test adapter for IP from infra pool\",\n                                             \"Tags\":  {\n\n                                                      },\n                                             \"Title\":  \"Test IP readiness on test adapter for IP from infra pool\",\n                                             \"Status\":  1,\n                                             \"Severity\":  2,\n                                             \"Description\":  \"Test IP readiness on test adapter for IP from infra pool\",\n                                             \"Remediation\":  \"Make sure infra IP 10.64.0.24 is routable to your gateway 10.64.0.1, and the IP is not used by any other device or service on the network.\",\n                                             \"TargetResourceID\":  \"[REDACTED_LONG_VALUE].64.0.24\",\n                                             \"TargetResourceName\":  \"[REDACTED_LONG_VALUE].64.0.24\",\n                                             \"TargetResourceType\":  \"[REDACTED_LONG_VALUE].64.0.24\",\n                                             \"Timestamp\":  \"\\/Date(1793279866501)\\/\",\n                                             \"AdditionalData\":  {\n                                                                    \"Detail\":  \"[FAILED] Connection from 10.64.0.24 to gateway 10.64.0.1 failed. Cannot get the IP configured correctly on the test adapter.\",\n                                                                    \"Status\":  \"FAILURE\",\n                                                                    \"TimeStamp\":  \"10/29/2026 13:17:46\",\n                                                                    \"Resource\":  \"10.64.0.24\",\n                                                                    \"Source\":  \"LB-NODE01\"\n                                                                },\n                                             \"HealthCheckSource\":  \"Deployment\\\\Standard\\\\Medium\\\\NetworkInfraConnection\\\\98e415ca\"\n                                         },\n                                         {\n                                             \"Name\":  \"[REDACTED_LONG_VALUE]\",\n                                             \"DisplayName\":  \"Test IP readiness on test adapter for IP from infra pool\",\n                                             \"Tags\":  {\n\n                                                      },\n                                             \"Title\":  \"Test IP readiness on test adapter for IP from infra pool\",\n                                             \"Status\":  1,\n                                             \"Severity\":  2,\n                                             \"Description\":  \"Test IP readiness on test adapter for IP from infra pool\",\n                                             \"Remediation\":  \"Make sure infra IP 10.64.0.25 is routable to your gateway 10.64.0.1, and the IP is not used by any other device or service on the network.\",\n                                             \"TargetResourceID\":  \"[REDACTED_LONG_VALUE].64.0.25\",\n                                             \"TargetResourceName\":  \"[REDACTED_LONG_VALUE].64.0.25\",\n                                             \"TargetResourceType\":  \"[REDACTED_LONG_VALUE].64.0.25\",\n                                             \"Timestamp\":  \"\\/Date(1793280064506)\\/\",\n                                             \"AdditionalData\":  {\n                                                                    \"Detail\":  \"[FAILED] Connection from 10.64.0.25 to gateway 10.64.0.1 failed. Cannot get the IP configured correctly on the test adapter.\",\n                                                                    \"Status\":  \"FAILURE\",\n                                                                    \"TimeStamp\":  \"10/29/2026 13:21:04\",\n                                                                    \"Resource\":  \"10.64.0.25\",\n                                                                    \"Source\":  \"LB-NODE01\"\n                                                                },\n                                             \"HealthCheckSource\":  \"Deployment\\\\Standard\\\\Medium\\\\NetworkInfraConnection\\\\98e415ca\"\n                                         },\n                                         {\n                                             \"Name\":  \"[REDACTED_LONG_VALUE]\",\n                                             \"DisplayName\":  \"Test IP readiness on test adapter for IP from infra pool\",\n                                             \"Tags\":  {\n\n                                                      },\n                                             \"Title\":  \"Test IP readiness on test adapter for IP from infra pool\",\n                             "
+          }
+        ],
+        "children": []
+      },
+      {
+        "name": "Azure Local Network Storage Connection",
+        "status": null,
+        "index": "52",
+        "exceptions": [],
+        "children": []
+      },
+      {
+        "name": "Azure Local Observability",
+        "status": null,
+        "index": "60",
+        "exceptions": [],
+        "children": []
+      },
+      {
+        "name": "Azure Local Software",
+        "status": null,
+        "index": "70",
+        "exceptions": [],
+        "children": []
+      },
+      {
+        "name": "Azure Local MOC Stack",
+        "status": null,
+        "index": "80",
+        "exceptions": [],
+        "children": []
+      },
+      {
+        "name": "Azure Local Arc Integration",
+        "status": null,
+        "index": "90",
+        "exceptions": [],
+        "children": []
+      },
+      {
+        "name": "Azure Local Cluster Witness",
+        "status": null,
+        "index": "100",
+        "exceptions": [],
+        "children": []
+      },
+      {
+        "name": "Azure Local OS Image Recipe Validation",
+        "status": null,
+        "index": "110",
+        "exceptions": [],
+        "children": []
+      },
+      {
+        "name": "Azure Local Local Identity Validation",
+        "status": null,
+        "index": "120",
+        "exceptions": [],
+        "children": []
+      },
+      {
+        "name": "Azure Local ARB Stack",
+        "status": null,
+        "index": "130",
+        "exceptions": [],
+        "children": []
+      },
+      {
+        "name": "Azure Local Cloud Validation",
+        "status": null,
+        "index": "140",
+        "exceptions": [],
+        "children": []
+      },
+      {
+        "name": "Add hosts to domain and create cluster object.",
+        "status": null,
+        "index": "150",
+        "exceptions": [],
+        "children": []
+      },
+      {
+        "name": "Azure Stack HCI GroupPolicy",
+        "status": null,
+        "index": "151",
+        "exceptions": [],
+        "children": []
+      },
+      {
+        "name": "Azure Local DNS",
+        "status": null,
+        "index": "160",
+        "exceptions": [],
+        "children": []
+      },
+      {
+        "name": "Azure Local NTP",
+        "status": null,
+        "index": "161",
+        "exceptions": [],
+        "children": []
+      },
+      {
+        "name": "Azure Local Cluster Validation",
+        "status": null,
+        "index": "170",
+        "exceptions": [],
+        "children": []
+      },
+      {
+        "name": "Azure Local Network LLDP Validation",
+        "status": null,
+        "index": "180",
+        "exceptions": [],
+        "children": []
+      },
+      {
+        "name": "Azure Local Storage Validation",
+        "status": null,
+        "index": "190",
+        "exceptions": [],
+        "children": []
+      }
+    ]
+  },
+  "azureMutationPerformed": false,
+  "deploySubmitted": false
+}

@@ -1,0 +1,27 @@
+{
+  "observedOn": "2026-10-28",
+  "url": "https://learn.microsoft.com/en-us/azure/azure-local/deploy/deployment-arc-register-server-permissions?view=azloc-2610",
+  "sourceUpdatedOn": "2026-07-13",
+  "bodySha256": "c476c5cc5b66f0395aa44e18f7e0bc939251ab80d67f2403fe4c28bd63a80a4e",
+  "capturePath": "/tmp/opencode/localbox-20261028-arc-onboarding-doc.json",
+  "retrieval": {
+    "method": "single-page scrape, not crawl or link traversal",
+    "status": 200,
+    "targets": 1,
+    "served": 1,
+    "attempts": 1,
+    "toolReportedCredits": 0.9996681666666666,
+    "creditsAreNotCurrencyInvoice": true
+  },
+  "documentedProviderNamespaces": ["Microsoft.HybridCompute", "Microsoft.GuestConfiguration", "Microsoft.HybridConnectivity", "Microsoft.AzureStackHCI", "Microsoft.Kubernetes", "Microsoft.KubernetesConfiguration", "Microsoft.ExtendedLocation", "Microsoft.ResourceConnector", "Microsoft.HybridContainerService", "Microsoft.Attestation", "Microsoft.Storage", "Microsoft.Insights", "Microsoft.KeyVault"],
+  "arcOnboardingRequirement": "Resource group owner OR Azure Connected Machine Onboarding plus Azure Connected Machine Resource Administrator at the registration resource group",
+  "documentedDeploymentRoles": ["Azure Stack HCI Administrator", "Reader", "Key Vault Data Access Administrator", "Key Vault Secrets Officer", "Key Vault Contributor", "Storage Account Contributor"],
+  "insightsRequirement": "Diagnostic account and vault audit logging validation depend on Microsoft.Insights registration",
+  "policyChecksRequired": ["extension installation", "resource types", "locations"],
+  "subscriptionChangeAfterDeployment": "The guide says changing the selected subscription requires cluster redeployment",
+  "documentationIsNotMutationAuthority": true,
+  "providerRegistrationPerformed": false,
+  "roleAssignmentPerformed": false,
+  "exactEffectivePermissionsStillRequireInspection": true,
+  "cloudResourceCostAcceptanceStillRequired": true
+}

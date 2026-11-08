@@ -1,0 +1,176 @@
+{
+  "beganAtUtc": "2026-10-29T09:08:46.111673+00:00",
+  "sourceCommit": "81b105ef2bc621d9524fc6d003427c054396fef7",
+  "status": "failed-inspect-before-resume",
+  "phase": "format-only-admitted-new-windows-disk",
+  "deploymentName": "localbox-node03-disk-20261029",
+  "existingDiskSkuConversionRepeated": false,
+  "existingPoolOrVolumeFormatRequested": false,
+  "nodeCreationRequested": false,
+  "vmBefore": {
+    "data": [
+      {
+        "caching": "None",
+        "deleteOption": "Detach",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_0",
+        "lun": 0,
+        "size": 256,
+        "sku": "Premium_LRS"
+      },
+      {
+        "caching": "None",
+        "deleteOption": "Detach",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_1",
+        "lun": 1,
+        "size": 256,
+        "sku": "Premium_LRS"
+      },
+      {
+        "caching": "None",
+        "deleteOption": "Detach",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_2",
+        "lun": 2,
+        "size": 256,
+        "sku": "Premium_LRS"
+      },
+      {
+        "caching": "None",
+        "deleteOption": "Detach",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_3",
+        "lun": 3,
+        "size": 256,
+        "sku": "Premium_LRS"
+      },
+      {
+        "caching": "None",
+        "deleteOption": "Detach",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_4",
+        "lun": 4,
+        "size": 256,
+        "sku": "Premium_LRS"
+      },
+      {
+        "caching": "None",
+        "deleteOption": "Detach",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_5",
+        "lun": 5,
+        "size": 256,
+        "sku": "Premium_LRS"
+      },
+      {
+        "caching": "None",
+        "deleteOption": "Detach",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_6",
+        "lun": 6,
+        "size": 256,
+        "sku": "Premium_LRS"
+      },
+      {
+        "caching": "None",
+        "deleteOption": "Detach",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_7",
+        "lun": 7,
+        "size": 256,
+        "sku": "Premium_LRS"
+      }
+    ],
+    "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+    "osId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-OSDisk",
+    "sku": "Standard_E32s_v6"
+  },
+  "deploymentId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Resources/deployments/localbox-node03-disk-20261029",
+  "newDisk": {
+    "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-Node03-SSD-20261029",
+    "uniqueId": "eab2d4b3-d41d-44b3-99b4-d6c1c928c97b",
+    "diskSizeGB": 2048,
+    "sku": {
+      "name": "Premium_LRS",
+      "tier": "Premium"
+    },
+    "networkAccessPolicy": "DenyAll",
+    "publicNetworkAccess": "Disabled",
+    "burstingEnabled": null
+  },
+  "vmAfter": {
+    "data": [
+      {
+        "caching": "None",
+        "deleteOption": "Detach",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_0",
+        "lun": 0,
+        "size": 256,
+        "sku": "Premium_LRS"
+      },
+      {
+        "caching": "None",
+        "deleteOption": "Detach",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_1",
+        "lun": 1,
+        "size": 256,
+        "sku": "Premium_LRS"
+      },
+      {
+        "caching": "None",
+        "deleteOption": "Detach",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_2",
+        "lun": 2,
+        "size": 256,
+        "sku": "Premium_LRS"
+      },
+      {
+        "caching": "None",
+        "deleteOption": "Detach",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_3",
+        "lun": 3,
+        "size": 256,
+        "sku": "Premium_LRS"
+      },
+      {
+        "caching": "None",
+        "deleteOption": "Detach",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_4",
+        "lun": 4,
+        "size": 256,
+        "sku": "Premium_LRS"
+      },
+      {
+        "caching": "None",
+        "deleteOption": "Detach",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_5",
+        "lun": 5,
+        "size": 256,
+        "sku": "Premium_LRS"
+      },
+      {
+        "caching": "None",
+        "deleteOption": "Detach",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_6",
+        "lun": 6,
+        "size": 256,
+        "sku": "Premium_LRS"
+      },
+      {
+        "caching": "None",
+        "deleteOption": "Detach",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_7",
+        "lun": 7,
+        "size": 256,
+        "sku": "Premium_LRS"
+      },
+      {
+        "caching": "None",
+        "deleteOption": "Detach",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-Node03-SSD-20261029",
+        "lun": 8,
+        "size": 2048,
+        "sku": "Premium_LRS"
+      }
+    ],
+    "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+    "osId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-OSDisk",
+    "sku": "Standard_E32s_v6"
+  },
+  "errorType": "RuntimeError",
+  "error": "New-disk format incomplete. Inspect marker; do not repeat.",
+  "finishedAtUtc": "2026-10-29T09:10:51.295566+00:00"
+}

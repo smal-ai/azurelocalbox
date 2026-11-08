@@ -1,0 +1,48 @@
+{
+  "runId": "start-20261029-065230-91ec0efb",
+  "beganAtUtc": "2026-10-29T06:52:30.550999+00:00",
+  "status": "complete-host-and-three-guests-running-heartbeats-healthy",
+  "hostId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+  "shutdownAutomationChanged": false,
+  "roleActivationRequested": false,
+  "registrationInvoked": false,
+  "platformReadinessVerified": false,
+  "sourceCommit": "e5efa54ac8de4121eb0511f696e8c8292df203b0",
+  "hostBefore": {
+    "power": "PowerState/running",
+    "agentReady": true
+  },
+  "hostStartRequested": false,
+  "hostLastObserved": {
+    "power": "PowerState/running",
+    "agentReady": true
+  },
+  "privateGuestReceipt": "docs/deployment-2026-10-27/private-ssh-start-20261029-065230-91ec0efb.json",
+  "guests": [
+    {
+      "id": "f94c71f1-6854-48b9-a9f1-8238c99366d0",
+      "name": "LB-DC01",
+      "startRequested": false,
+      "heartbeatReady": true,
+      "after": "Running",
+      "before": "Running"
+    },
+    {
+      "id": "3adff629-2f67-449b-ab32-8a8748c46f34",
+      "name": "LB-NODE01",
+      "startRequested": false,
+      "heartbeatReady": true,
+      "after": "Running",
+      "before": "Running"
+    },
+    {
+      "id": "12a44e0c-cc08-4c4c-a812-fa0b56efdbc3",
+      "name": "LB-NODE02",
+      "startRequested": false,
+      "heartbeatReady": true,
+      "after": "Running",
+      "before": "Running"
+    }
+  ],
+  "finishedAtUtc": "2026-10-29T06:52:48.583708+00:00"
+}

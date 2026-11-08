@@ -1,0 +1,102 @@
+{
+  "beganAtSast": "2026-10-27T12:34:39.400125+02:00",
+  "status": "complete",
+  "commit": "ec3c81d7fcb6ddaff86ac8b425c5e3a664e6233f",
+  "script": "scripts/inspect-smal-hyperv.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 50985,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "computer": "LocalBox-Client",
+    "atUtc": "2026-10-27T10:34:46.1365481Z",
+    "lastBootUtc": "2026-10-27T10:34:09.5000000Z",
+    "user": "LocalBox-Client\\arcdemo",
+    "administrator": true,
+    "sshConnection": "10.202.0.5 34468 10.200.16.4 22",
+    "hyperV": "Installed",
+    "hyperVPowerShell": "Installed",
+    "vmms": "Running",
+    "sshd": "Running",
+    "defenderRealTimeProtection": true,
+    "pendingReboot": false,
+    "hyperVHostQuerySucceeded": true,
+    "hyperVHost": {
+      "logicalProcessors": 32,
+      "memoryGiB": 256
+    },
+    "nestedVmCount": 0,
+    "virtualSwitchCount": 0,
+    "netNatCount": 0,
+    "hyperVManagementServiceCount": 1,
+    "hyperVManagementHealth": [
+      5
+    ],
+    "dataDisks": [
+      {
+        "number": 1,
+        "style": "RAW",
+        "sizeGiB": 256
+      },
+      {
+        "number": 2,
+        "style": "RAW",
+        "sizeGiB": 256
+      },
+      {
+        "number": 3,
+        "style": "RAW",
+        "sizeGiB": 256
+      },
+      {
+        "number": 4,
+        "style": "RAW",
+        "sizeGiB": 256
+      },
+      {
+        "number": 5,
+        "style": "RAW",
+        "sizeGiB": 256
+      },
+      {
+        "number": 6,
+        "style": "RAW",
+        "sizeGiB": 256
+      },
+      {
+        "number": 7,
+        "style": "RAW",
+        "sizeGiB": 256
+      },
+      {
+        "number": 8,
+        "style": "RAW",
+        "sizeGiB": 256
+      }
+    ],
+    "dns": [
+      {
+        "interface": "Ethernet",
+        "servers": [
+          "10.204.0.4"
+        ]
+      }
+    ],
+    "platformDeploymentAttempted": false,
+    "nestedVmBootTestPerformed": false,
+    "inspectionSucceeded": true
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-27T12:36:11.013775+02:00"
+}

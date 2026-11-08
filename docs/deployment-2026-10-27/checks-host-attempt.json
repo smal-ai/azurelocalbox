@@ -1,0 +1,25 @@
+{
+  "atSast": "2026-10-27T10:51:10.696938+02:00",
+  "regressionTests": {
+    "passed": 13,
+    "failed": 0
+  },
+  "armValidation": "Succeeded-but-did-not-detect-feature-gate",
+  "whatIf": "Succeeded-host-creates-only",
+  "apply": "Failed-Standard-security-feature-not-registered",
+  "reconciliation": {
+    "nic": "Succeeded-unattached-private10.200.16.4",
+    "vm": "not-created",
+    "disks": [],
+    "vmComputeStarted": false,
+    "featureState": "NotRegistered"
+  },
+  "noAutomaticRetry": true,
+  "subscriptionFeatureRegistered": false,
+  "securityTypeChangedToWorkAroundFailure": false,
+  "bootstrapRun": false,
+  "costCentreReviewDateTags": "omitted-per-owner-lab-instruction",
+  "sourceCommitApplied": "74168e5f98da08466be870134617040ae378c64c",
+  "credentialValuesExported": false,
+  "credentialStorage": "owner-only0600-local-state-outside-repository-not-encrypted-keyring"
+}

@@ -1,0 +1,32 @@
+{
+  "observedOn": "2026-10-28",
+  "subscriptionId": "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+  "method": "read-only Azure provider metadata through the existing authenticated Azure CLI",
+  "queries": [
+    "az provider show --namespace Microsoft.AzureStackHCI --subscription 8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea --query \"{registrationState:registrationState,clusters:resourceTypes[?resourceType=='clusters'].{locations:locations,apiVersions:apiVersions}}\"",
+    "az provider show --namespace Microsoft.ResourceConnector --subscription 8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea --query \"{registrationState:registrationState,appliances:resourceTypes[?resourceType=='appliances'].{locations:locations,apiVersions:apiVersions}}\""
+  ],
+  "azureStackHci": {
+    "registrationState": "Registered",
+    "clusterLocations": ["Australia East", "South Central US", "East US", "UK South", "UK West", "Germany West Central", "West Europe", "Southeast Asia", "Canada Central", "Japan East", "Central India"]
+  },
+  "resourceConnector": {
+    "registrationState": "Registered",
+    "applianceLocations": ["East US", "West Europe", "UK South", "Australia East", "Southeast Asia", "Canada Central", "East US 2", "West US 2", "West US 3", "South Central US", "North Europe", "Sweden Central", "Central US", "Japan East", "East Asia", "Central India", "UK West", "Australia Southeast", "North Central US", "Italy North", "Germany West Central"]
+  },
+  "westEuropeAdvertisedByBoth": true,
+  "southAfricaNorthAdvertisedByEither": false,
+  "registrationRegionApproved": false,
+  "solutionSpecificServiceAdmissionVerified": false,
+  "apiVersionSelectedByThisRead": false,
+  "providerRegistrationPerformed": false,
+  "resourcesCreated": 0,
+  "outerNicReadback": {
+    "name": "LocalBox-Client-NIC",
+    "privateIps": ["10.200.16.4"],
+    "publicIpIds": [],
+    "ipForwarding": false,
+    "subnetId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-smal-network-san-1/providers/Microsoft.Network/virtualNetworks/vnet-smal-san-1/subnets/snet-localbox-host"
+  },
+  "platformReadinessVerified": false
+}

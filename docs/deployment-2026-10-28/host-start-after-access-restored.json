@@ -1,0 +1,30 @@
+{
+  "key": "smal-host-start-restored-20261028-v1",
+  "beganAtUtc": "2026-10-28T06:16:24.577694+00:00",
+  "status": "start-action-acknowledged-needs-readback",
+  "priorReceipt": "host-start-action.json",
+  "humanAnswer": "Approved access restored",
+  "principalChanged": false,
+  "roleOrPimChangeByAgent": false,
+  "automaticShutdownControlsChanged": false,
+  "automaticRetryPermitted": false,
+  "beforePower": [
+    "ProvisioningState/succeeded",
+    "PowerState/deallocated"
+  ],
+  "command": [
+    "az",
+    "vm",
+    "start",
+    "--subscription",
+    "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+    "-g",
+    "rg-localbox-nodes-san-1",
+    "-n",
+    "LocalBox-Client",
+    "--only-show-errors"
+  ],
+  "exitCode": 0,
+  "errorCodes": [],
+  "finishedAtUtc": "2026-10-28T06:19:12.448739+00:00"
+}

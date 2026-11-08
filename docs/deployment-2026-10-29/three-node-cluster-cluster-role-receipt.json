@@ -1,0 +1,36 @@
+{
+  "beganAtUtc": "2026-10-29T12:04:42.623538+00:00",
+  "sourceCommit": "3664ff3504f78d19a016e54cecd511066f0cb119",
+  "stage": "cluster-role",
+  "deploymentName": "localbox-three-node-cluster-role-20261029",
+  "status": "complete",
+  "witnessKeyReadOrUpload": false,
+  "publicAccessChangeRequested": false,
+  "sharedKeyChangeRequested": false,
+  "subscriptionWideGrantRequested": false,
+  "platformReadinessVerified": false,
+  "inspectedClusterIdentity": {
+    "principalId": "8c44672b-b729-4d3f-ad38-a0ac815ea265",
+    "tenantId": "c6e67968-af25-4557-ab8b-06b693048d3b",
+    "type": "SystemAssigned"
+  },
+  "previewChanges": [
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.KeyVault/vaults/kv-lbox-weu-4766ea/providers/Microsoft.Authorization/roleAssignments/ed765137-fed5-50a8-9219-654f21905668",
+      "changeType": "Create"
+    }
+  ],
+  "templateSha256": "a689c24174def38b408e0ceb0627c34f72ccebc1c166a78de0391e4adfdc0985",
+  "deploymentId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.Resources/deployments/localbox-three-node-cluster-role-20261029",
+  "deploymentState": "Succeeded",
+  "deploymentErrorCode": null,
+  "clusterVaultRole": {
+    "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/rg-localbox-platform-weu-1/providers/Microsoft.KeyVault/vaults/kv-lbox-weu-4766ea/providers/Microsoft.Authorization/roleAssignments/ed765137-fed5-50a8-9219-654f21905668",
+    "principalId": "8c44672b-b729-4d3f-ad38-a0ac815ea265",
+    "principalType": "ServicePrincipal",
+    "roleDefinitionId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/providers/Microsoft.Authorization/roleDefinitions/4633458b-17de-408a-b874-0445c86b69e6",
+    "scope": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/rg-localbox-platform-weu-1/providers/Microsoft.KeyVault/vaults/kv-lbox-weu-4766ea"
+  },
+  "vaultPublicAccessAfter": "Disabled",
+  "finishedAtUtc": "2026-10-29T12:06:26.365857+00:00"
+}

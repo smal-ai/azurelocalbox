@@ -1,0 +1,58 @@
+{
+  "atUtc": "2026-10-28T06:34:31.410476+00:00",
+  "command": [
+    "az",
+    "vm",
+    "show",
+    "--subscription",
+    "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+    "-g",
+    "rg-localbox-nodes-san-1",
+    "-n",
+    "LocalBox-Client",
+    "--query",
+    "{id:id,controller:storageProfile.diskControllerType,dataDisks:storageProfile.dataDisks[].{id:managedDisk.id,lun:lun},osDisk:storageProfile.osDisk.managedDisk.id}",
+    "-o",
+    "json",
+    "--only-show-errors"
+  ],
+  "result": {
+    "controller": "NVMe",
+    "dataDisks": [
+      {
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_0",
+        "lun": 0
+      },
+      {
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_1",
+        "lun": 1
+      },
+      {
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_2",
+        "lun": 2
+      },
+      {
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_3",
+        "lun": 3
+      },
+      {
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_4",
+        "lun": 4
+      },
+      {
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_5",
+        "lun": 5
+      },
+      {
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_6",
+        "lun": 6
+      },
+      {
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_7",
+        "lun": 7
+      }
+    ],
+    "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+    "osDisk": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-OSDisk"
+  }
+}

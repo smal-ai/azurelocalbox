@@ -1,0 +1,467 @@
+{
+  "beganAtUtc": "2026-10-30T12:26:22.387942+00:00",
+  "sourceCommit": "c2b093e2ff32c032c68f6e4524167f4504c21e73",
+  "stage": "deploy",
+  "deploymentName": "localbox-three-node-deploy-20261029",
+  "status": "complete",
+  "templateSha256": "114525f39b6e38cec58e01284bbcc82f764d108e7925c27eecb96d9faf830c65",
+  "originalTimeoutRetained": true,
+  "originalTimeoutReceiptSha256": "c667e05e6b6f1ec099780bd260dd75f9aee48bb57f35a95484bdcef3611e78a5",
+  "azureMutationPerformed": false,
+  "validateSubmitted": false,
+  "deploySubmitted": false,
+  "platformReadinessVerified": false,
+  "priorObservationRetained": true,
+  "priorObservationSha256": "3f69ae648f7af122ae93d31417a5f4db14e6a2122360e581215406fb1becb97a",
+  "clusterStatus": "ConnectedRecently",
+  "deploymentId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.Resources/deployments/localbox-three-node-deploy-20261029",
+  "deploymentState": "Succeeded",
+  "deploymentErrorCode": null,
+  "serviceResult": {
+    "provisioningState": "Succeeded",
+    "mode": "Deploy",
+    "adConfigurationVerified": true,
+    "action": {
+      "status": "Success",
+      "steps": [
+        {
+          "name": "Deploy Azure Stack HCI",
+          "status": "Success",
+          "index": "0",
+          "exceptionCount": 0,
+          "children": [
+            {
+              "name": "Check and resolve requirements",
+              "status": "Success",
+              "index": "0.1",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Validate environment",
+              "status": "Success",
+              "index": "0.2",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Resolve requirement",
+              "status": "Success",
+              "index": "0.3",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Install OpenSSH Client",
+              "status": "Success",
+              "index": "0.4",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Clean up after update",
+              "status": "Success",
+              "index": "0.5",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Evaluate proxy configuration",
+              "status": "Success",
+              "index": "0.6",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Configure required proxy bypass list",
+              "status": "Success",
+              "index": "0.7",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Adjust the number of infrastructure VMs",
+              "status": "Success",
+              "index": "0.8",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Place Cluster Registration Infrastructure",
+              "status": "Success",
+              "index": "0.9",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Start Cluster Registration Services",
+              "status": "Success",
+              "index": "0.10",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Configure DNS if identity provider is Local with Key Vault",
+              "status": "Success",
+              "index": "0.11",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Set up certificates",
+              "status": "Success",
+              "index": "0.12",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Reload certificate",
+              "status": "Success",
+              "index": "0.13",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Install ECE Agent",
+              "status": "Success",
+              "index": "0.14",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Install bootstrap agents",
+              "status": "Success",
+              "index": "0.15",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Validate network settings for servers",
+              "status": "Success",
+              "index": "0.16",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Configure settings on servers",
+              "status": "Success",
+              "index": "0.17",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Set Azure cloud for AzureLocal",
+              "status": "Success",
+              "index": "0.18",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Create the cluster",
+              "status": "Success",
+              "index": "0.19",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Configure networking",
+              "status": "Success",
+              "index": "0.20",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Starts Integrity Security Scan",
+              "status": "Success",
+              "index": "0.21",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Configure Cloud Management",
+              "status": "Success",
+              "index": "0.22",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Register with Azure",
+              "status": "Success",
+              "index": "0.23",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Set up observability",
+              "status": "Success",
+              "index": "0.24",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Unlock virtual disks",
+              "status": "Success",
+              "index": "0.25",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Config storage",
+              "status": "Success",
+              "index": "0.26",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Repair key protectors",
+              "status": "Success",
+              "index": "0.27",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Encrypt CSVs",
+              "status": "Success",
+              "index": "0.28",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Encrypt the OS volume",
+              "status": "Success",
+              "index": "0.29",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Set permissions on file share",
+              "status": "Success",
+              "index": "0.30",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Copy and prepare files",
+              "status": "Success",
+              "index": "0.31",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Refresh Active Directory permissions",
+              "status": "Success",
+              "index": "0.32",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Set observability to listen mode",
+              "status": "Success",
+              "index": "0.33",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Install ECE",
+              "status": "Success",
+              "index": "0.34",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Install additional agents",
+              "status": "Success",
+              "index": "0.35",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Create additional infrastructure subnets",
+              "status": "Success",
+              "index": "0.36",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Reserve IPs for the Arc infrastructure",
+              "status": "Success",
+              "index": "0.37",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Cluster the deployment orchestrator",
+              "status": "Success",
+              "index": "0.38",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Stage hardware updates via Solution Builder Extension (SBE)",
+              "status": "Success",
+              "index": "0.39",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Apply security policies",
+              "status": "Success",
+              "index": "0.40",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Install hardware updates via Solution Builder Extension (SBE)",
+              "status": "Success",
+              "index": "0.41",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Reserve and migrate Network Controller REST IP address",
+              "status": "Success",
+              "index": "0.42",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Verify Cluster DNS Resolution",
+              "status": "Success",
+              "index": "0.43",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Deploy Arc infrastructure components",
+              "status": "Success",
+              "index": "0.44",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Install OpenHCL",
+              "status": "Success",
+              "index": "0.45",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Log environment validation results",
+              "status": "Success",
+              "index": "0.46",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Send telemetry",
+              "status": "Success",
+              "index": "0.47",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Turn on SMB encryption",
+              "status": "Success",
+              "index": "0.48",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Migrate deployment orchestrator service",
+              "status": "Success",
+              "index": "0.49",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Create MAA endpoint",
+              "status": "Success",
+              "index": "0.50",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Set up trusted launch for VMs",
+              "status": "Success",
+              "index": "0.51",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Create MAA policy",
+              "status": "Success",
+              "index": "0.52",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Register the updates extension",
+              "status": "Success",
+              "index": "0.53",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Update ECE Proxy Configuration",
+              "status": "Success",
+              "index": "0.54",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Add custom cloud VMs to cluster",
+              "status": "Success",
+              "index": "0.55",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Configure custom cloud CLI tooling",
+              "status": "Success",
+              "index": "0.56",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Finalize security",
+              "status": "Success",
+              "index": "0.57",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Finalize encryption",
+              "status": "Success",
+              "index": "0.58",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Collect Azure Local instance information",
+              "status": "Success",
+              "index": "0.59",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Clean up temporary content",
+              "status": "Success",
+              "index": "0.60",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Stops Integrity Security Scan",
+              "status": "Success",
+              "index": "0.61",
+              "exceptionCount": 0,
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "lastObservedAtUtc": "2026-10-30T12:44:27.332252+00:00",
+  "finishedAtUtc": "2026-10-30T12:44:27.332515+00:00"
+}

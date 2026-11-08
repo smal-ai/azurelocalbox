@@ -1,0 +1,33 @@
+{
+  "atSast": "2026-10-27T11:15:10.581351+02:00",
+  "identity": {
+    "id": "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+    "tenantId": "c6e67968-af25-4557-ab8b-06b693048d3b"
+  },
+  "principal": {
+    "id": "82f494a8-b9f5-46fc-b0f7-c70be0572a63"
+  },
+  "feature": {
+    "state": "Registered"
+  },
+  "resources": [
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Network/networkInterfaces/LocalBox-Client-NIC",
+      "type": "Microsoft.Network/networkInterfaces"
+    }
+  ],
+  "disks": [],
+  "nic": {
+    "forwarding": false,
+    "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Network/networkInterfaces/LocalBox-Client-NIC",
+    "ips": [
+      {
+        "ip": "10.200.16.4",
+        "publicIp": null,
+        "subnet": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-smal-network-san-1/providers/Microsoft.Network/virtualNetworks/vnet-smal-san-1/subnets/snet-localbox-host"
+      }
+    ],
+    "state": "Succeeded",
+    "vm": null
+  }
+}

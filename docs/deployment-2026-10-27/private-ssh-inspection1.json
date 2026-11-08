@@ -1,0 +1,43 @@
+{
+  "beganAtSast": "2026-10-27T11:55:12.571544+02:00",
+  "status": "complete-read-only-inspection",
+  "commit": "579f760f90aa4f67b7621f3e6d99b41c4c4d03bd",
+  "scriptSha256": "75a8f14cef6bc845bf2d500ea6fafe6393f7e704569623f3b40addcd14312039",
+  "publicKeySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "privateKeyValueExported": false,
+  "bootstrapApplied": false,
+  "exitCode": 0,
+  "result": {
+    "computer": "LocalBox-Client",
+    "atUtc": "2026-10-27T09:55:19.1106752Z",
+    "configSha256": "FB46B8F386771448755C9D220B49FC3AE6EF1447CCCBB568B0BFE766DA1E54FE",
+    "activeConfiguration": [
+      {
+        "value": "AuthorizedKeysFile .ssh/authorized_keys",
+        "directive": "AuthorizedKeysFile"
+      },
+      {
+        "value": "Subsystem sftp sftp-server.exe",
+        "directive": "Subsystem"
+      },
+      {
+        "value": "custom-value-redacted",
+        "directive": "AllowGroups"
+      },
+      {
+        "value": "Match Group administrators",
+        "directive": "Match"
+      },
+      {
+        "value": "AuthorizedKeysFile __PROGRAMDATA__/ssh/administrators_authorized_keys",
+        "directive": "AuthorizedKeysFile"
+      }
+    ],
+    "setupMarkerExists": false,
+    "backupExists": false,
+    "adminKeysExist": false,
+    "service": "Running",
+    "readOnly": true
+  },
+  "finishedAtSast": "2026-10-27T11:55:47.924555+02:00"
+}

@@ -1,0 +1,123 @@
+{
+  "beganAtSast": "2026-10-28T11:19:38.692576+02:00",
+  "status": "complete",
+  "commit": "41eac3ac4bb7c09c78e7eb66209719a7f3fd1c77",
+  "script": "scripts/inspect-smal-guest-bootstrap-failure.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 59521,
+  "scriptTransport": "encoded-command",
+  "renderedSourceSha256": "c2e443eb3181d57041bc388cac6373c46f2182debd03b3b2f62806cb9e0c11f9",
+  "renderedSourceByteLength": 4201,
+  "unstreamedEncodedLength": 11204,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "hostAdapters": [
+      {
+        "Name": "MGMT1",
+        "MacAddress": "00155D100401"
+      }
+    ],
+    "atUtc": "2026-10-28T09:20:02.7758205Z",
+    "mutationPerformed": false,
+    "guest": {
+      "addressArgument": "10.64.0.10",
+      "profilesRejectedByOriginalGuard": 0,
+      "requiredCount": 1,
+      "domainRole": 2,
+      "adServiceExists": false,
+      "defaults": [],
+      "firewallProfiles": [
+        {
+          "Name": "Domain",
+          "Enabled": {
+            "value": 1,
+            "Value": "True"
+          }
+        },
+        {
+          "Name": "Private",
+          "Enabled": {
+            "value": 1,
+            "Value": "True"
+          }
+        },
+        {
+          "Name": "Public",
+          "Enabled": {
+            "value": 1,
+            "Value": "True"
+          }
+        }
+      ],
+      "profileDifferenceErrorType": null,
+      "expectedNameArgument": "LB-DC01",
+      "mappingCount": 1,
+      "computer": "LB-DC01",
+      "adapters": [
+        {
+          "Name": "Ethernet",
+          "InterfaceIndex": 6,
+          "MacAddress": "00-15-5D-10-04-01",
+          "HardwareInterface": true,
+          "Status": "Up"
+        }
+      ],
+      "mappingNames": [
+        "MGMT1"
+      ],
+      "protection": {
+        "RealTimeProtectionEnabled": true,
+        "AMServiceEnabled": true,
+        "AntivirusEnabled": true,
+        "AMProductVersion": "4.18.25080.5"
+      },
+      "protectionErrorType": null,
+      "clusterBootstrapComplete": false,
+      "mappingType": "System.Collections.ArrayList",
+      "requiredType": "System.String",
+      "ipv4": [
+        {
+          "InterfaceAlias": "Ethernet",
+          "InterfaceIndex": 6,
+          "IPAddress": "169.254.168.255",
+          "PrefixLength": 16,
+          "AddressState": {
+            "value": 4,
+            "Value": "Preferred"
+          }
+        },
+        {
+          "InterfaceAlias": "Loopback Pseudo-Interface 1",
+          "InterfaceIndex": 1,
+          "IPAddress": "127.0.0.1",
+          "PrefixLength": 8,
+          "AddressState": {
+            "value": 4,
+            "Value": "Preferred"
+          }
+        }
+      ],
+      "setup": "IMAGE_STATE_COMPLETE",
+      "profileDifferenceCount": 0,
+      "PSComputerName": "LB-DC01",
+      "RunspaceId": "503afc4f-70e2-453b-af34-5367f6a916ba",
+      "PSShowComputerName": true
+    },
+    "vmId": "f94c71f1-6854-48b9-a9f1-8238c99366d0",
+    "credentialValueExported": false
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-28T11:20:03.116737+02:00"
+}

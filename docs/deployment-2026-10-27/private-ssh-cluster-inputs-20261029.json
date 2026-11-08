@@ -1,0 +1,412 @@
+{
+  "beganAtSast": "2026-10-29T09:25:52.406845+02:00",
+  "status": "complete",
+  "commit": "828823d3e1474e865063387d5f3845ecb09a9de3",
+  "script": "scripts/inspect-smal-cluster-inputs.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 40253,
+  "scriptTransport": "encoded-command",
+  "renderedSourceSha256": "6cf4aaf22a7caaf2bf859f288dc615d3de5a4912d554a493ad36378bc0991245",
+  "renderedSourceByteLength": 5018,
+  "unstreamedEncodedLength": 13384,
+  "guestCommandTimeoutSeconds": 240,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "mutationPerformed": false,
+    "atUtc": "2026-10-29T07:26:47.4119376Z",
+    "ad": {
+      "inheritanceBlocked": true,
+      "ou": "OU=SMAL01,OU=AzureLocal,DC=ad,DC=localbox,DC=test",
+      "domain": "ad.localbox.test",
+      "lcm": {
+        "enabled": true,
+        "groupCount": 0,
+        "expiryFileTime": "134412901479809486",
+        "dn": "CN=lboxdeploy,OU=SMAL01,OU=AzureLocal,DC=ad,DC=localbox,DC=test",
+        "neverExpires": false,
+        "expired": false,
+        "user": "lboxdeploy"
+      },
+      "PSComputerName": "LB-DC01",
+      "RunspaceId": "0515994e-efc4-4bd4-ac78-04e36fd43cc1",
+      "PSShowComputerName": true
+    },
+    "nodes": [
+      {
+        "vmId": "3adff629-2f67-449b-ab32-8a8748c46f34",
+        "guest": {
+          "nonPrimordialPoolCount": 0,
+          "ipv4": [
+            {
+              "InterfaceAlias": "MGMT1",
+              "IPAddress": "10.64.0.11",
+              "PrefixLength": 24
+            },
+            {
+              "InterfaceAlias": "MGMT2",
+              "IPAddress": "169.254.92.61",
+              "PrefixLength": 16
+            },
+            {
+              "InterfaceAlias": "STORAGEB",
+              "IPAddress": "169.254.190.101",
+              "PrefixLength": 16
+            },
+            {
+              "InterfaceAlias": "Local Area Connection* 1",
+              "IPAddress": "169.254.243.192",
+              "PrefixLength": 16
+            },
+            {
+              "InterfaceAlias": "STORAGEA",
+              "IPAddress": "169.254.195.101",
+              "PrefixLength": 16
+            },
+            {
+              "InterfaceAlias": "Loopback Pseudo-Interface 1",
+              "IPAddress": "127.0.0.1",
+              "PrefixLength": 8
+            }
+          ],
+          "adapters": [
+            {
+              "Name": "STORAGEB",
+              "InterfaceDescription": "Microsoft Hyper-V Network Adapter #2",
+              "Status": "Up",
+              "LinkSpeed": "10 Gbps",
+              "MacAddress": "00-15-5D-10-04-05"
+            },
+            {
+              "Name": "MGMT1",
+              "InterfaceDescription": "Microsoft Hyper-V Network Adapter #4",
+              "Status": "Up",
+              "LinkSpeed": "10 Gbps",
+              "MacAddress": "00-15-5D-10-04-02"
+            },
+            {
+              "Name": "MGMT2",
+              "InterfaceDescription": "Microsoft Hyper-V Network Adapter #3",
+              "Status": "Up",
+              "LinkSpeed": "10 Gbps",
+              "MacAddress": "00-15-5D-10-04-03"
+            },
+            {
+              "Name": "STORAGEA",
+              "InterfaceDescription": "Microsoft Hyper-V Network Adapter",
+              "Status": "Up",
+              "LinkSpeed": "10 Gbps",
+              "MacAddress": "00-15-5D-10-04-04"
+            }
+          ],
+          "build": "26100.33650",
+          "bootstrap": "Succeeded",
+          "name": "LB-NODE01",
+          "disks": [
+            {
+              "uniqueId": "600224802C243E85B50464E0D80BC634",
+              "partitionStyle": "GPT",
+              "size": 137438953472,
+              "isBoot": true,
+              "number": 0,
+              "scsiTarget": 0,
+              "scsiPort": 1,
+              "isSystem": true,
+              "lun": 0
+            },
+            {
+              "uniqueId": "6002248018A9EA3E37A91804553ABFEE",
+              "partitionStyle": "RAW",
+              "size": 182536110080,
+              "isBoot": false,
+              "number": 1,
+              "scsiTarget": 0,
+              "scsiPort": 1,
+              "isSystem": false,
+              "lun": 1
+            },
+            {
+              "uniqueId": "60022480D47B1977B201A09A9AD85C7E",
+              "partitionStyle": "RAW",
+              "size": 182536110080,
+              "isBoot": false,
+              "number": 2,
+              "scsiTarget": 0,
+              "scsiPort": 1,
+              "isSystem": false,
+              "lun": 2
+            },
+            {
+              "uniqueId": "600224805454A96E242F3C38305128AC",
+              "partitionStyle": "RAW",
+              "size": 182536110080,
+              "isBoot": false,
+              "number": 3,
+              "scsiTarget": 0,
+              "scsiPort": 1,
+              "isSystem": false,
+              "lun": 3
+            },
+            {
+              "uniqueId": "600224801E3FB24517D8C5F2124F7E30",
+              "partitionStyle": "RAW",
+              "size": 182536110080,
+              "isBoot": false,
+              "number": 4,
+              "scsiTarget": 0,
+              "scsiPort": 1,
+              "isSystem": false,
+              "lun": 4
+            }
+          ],
+          "domainRole": 2,
+          "defenderEnabled": true,
+          "PSComputerName": "LB-NODE01",
+          "RunspaceId": "7574dcfa-09ff-4382-912c-0004ab68abdf",
+          "PSShowComputerName": true
+        },
+        "name": "LB-NODE01",
+        "backing": [
+          {
+            "size": 137438953472,
+            "diskId": "853E242C-04B5-422E-A649-64E0D80BC634",
+            "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE01\\OS.vhdx",
+            "controllerNumber": 0,
+            "controllerType": "SCSI",
+            "parentPath": "",
+            "lun": 0
+          },
+          {
+            "size": 182536110080,
+            "diskId": "3EEAA918-A937-4F75-B9D0-1804553ABFEE",
+            "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE01\\S2D-1.vhdx",
+            "controllerNumber": 0,
+            "controllerType": "SCSI",
+            "parentPath": "",
+            "lun": 1
+          },
+          {
+            "size": 182536110080,
+            "diskId": "77197BD4-01B2-4D57-9AC5-A09A9AD85C7E",
+            "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE01\\S2D-2.vhdx",
+            "controllerNumber": 0,
+            "controllerType": "SCSI",
+            "parentPath": "",
+            "lun": 2
+          },
+          {
+            "size": 182536110080,
+            "diskId": "6EA95454-2F24-442E-9FD8-3C38305128AC",
+            "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE01\\S2D-3.vhdx",
+            "controllerNumber": 0,
+            "controllerType": "SCSI",
+            "parentPath": "",
+            "lun": 3
+          },
+          {
+            "size": 182536110080,
+            "diskId": "45B23F1E-D817-4DE0-A84A-C5F2124F7E30",
+            "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE01\\S2D-4.vhdx",
+            "controllerNumber": 0,
+            "controllerType": "SCSI",
+            "parentPath": "",
+            "lun": 4
+          }
+        ]
+      },
+      {
+        "vmId": "12a44e0c-cc08-4c4c-a812-fa0b56efdbc3",
+        "guest": {
+          "nonPrimordialPoolCount": 0,
+          "ipv4": [
+            {
+              "InterfaceAlias": "STORAGEA",
+              "IPAddress": "169.254.222.158",
+              "PrefixLength": 16
+            },
+            {
+              "InterfaceAlias": "MGMT1",
+              "IPAddress": "10.64.0.12",
+              "PrefixLength": 24
+            },
+            {
+              "InterfaceAlias": "STORAGEB",
+              "IPAddress": "169.254.191.89",
+              "PrefixLength": 16
+            },
+            {
+              "InterfaceAlias": "Local Area Connection* 1",
+              "IPAddress": "169.254.201.208",
+              "PrefixLength": 16
+            },
+            {
+              "InterfaceAlias": "MGMT2",
+              "IPAddress": "169.254.201.154",
+              "PrefixLength": 16
+            },
+            {
+              "InterfaceAlias": "Loopback Pseudo-Interface 1",
+              "IPAddress": "127.0.0.1",
+              "PrefixLength": 8
+            }
+          ],
+          "adapters": [
+            {
+              "Name": "STORAGEA",
+              "InterfaceDescription": "Microsoft Hyper-V Network Adapter #4",
+              "Status": "Up",
+              "LinkSpeed": "10 Gbps",
+              "MacAddress": "00-15-5D-10-04-08"
+            },
+            {
+              "Name": "MGMT2",
+              "InterfaceDescription": "Microsoft Hyper-V Network Adapter",
+              "Status": "Up",
+              "LinkSpeed": "10 Gbps",
+              "MacAddress": "00-15-5D-10-04-07"
+            },
+            {
+              "Name": "MGMT1",
+              "InterfaceDescription": "Microsoft Hyper-V Network Adapter #3",
+              "Status": "Up",
+              "LinkSpeed": "10 Gbps",
+              "MacAddress": "00-15-5D-10-04-06"
+            },
+            {
+              "Name": "STORAGEB",
+              "InterfaceDescription": "Microsoft Hyper-V Network Adapter #2",
+              "Status": "Up",
+              "LinkSpeed": "10 Gbps",
+              "MacAddress": "00-15-5D-10-04-09"
+            }
+          ],
+          "build": "26100.33650",
+          "bootstrap": "Succeeded",
+          "name": "LB-NODE02",
+          "disks": [
+            {
+              "uniqueId": "60022480232ACEB031BB14739AF3844B",
+              "partitionStyle": "GPT",
+              "size": 137438953472,
+              "isBoot": true,
+              "number": 0,
+              "scsiTarget": 0,
+              "scsiPort": 1,
+              "isSystem": true,
+              "lun": 0
+            },
+            {
+              "uniqueId": "6002248065ACD99B54C87E76586527CA",
+              "partitionStyle": "RAW",
+              "size": 182536110080,
+              "isBoot": false,
+              "number": 1,
+              "scsiTarget": 0,
+              "scsiPort": 1,
+              "isSystem": false,
+              "lun": 1
+            },
+            {
+              "uniqueId": "600224801933BE540257E4937DA41512",
+              "partitionStyle": "RAW",
+              "size": 182536110080,
+              "isBoot": false,
+              "number": 2,
+              "scsiTarget": 0,
+              "scsiPort": 1,
+              "isSystem": false,
+              "lun": 2
+            },
+            {
+              "uniqueId": "6002248037A2A230372B3EC87A9D3377",
+              "partitionStyle": "RAW",
+              "size": 182536110080,
+              "isBoot": false,
+              "number": 3,
+              "scsiTarget": 0,
+              "scsiPort": 1,
+              "isSystem": false,
+              "lun": 3
+            },
+            {
+              "uniqueId": "600224802DF5A6C7E8F6062832A93BAC",
+              "partitionStyle": "RAW",
+              "size": 182536110080,
+              "isBoot": false,
+              "number": 4,
+              "scsiTarget": 0,
+              "scsiPort": 1,
+              "isSystem": false,
+              "lun": 4
+            }
+          ],
+          "domainRole": 2,
+          "defenderEnabled": true,
+          "PSComputerName": "LB-NODE02",
+          "RunspaceId": "620c56a3-f3f7-4f9d-9281-300779f037e5",
+          "PSShowComputerName": true
+        },
+        "name": "LB-NODE02",
+        "backing": [
+          {
+            "size": 137438953472,
+            "diskId": "B0CE2A23-BB31-4239-9197-14739AF3844B",
+            "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE02\\OS.vhdx",
+            "controllerNumber": 0,
+            "controllerType": "SCSI",
+            "parentPath": "",
+            "lun": 0
+          },
+          {
+            "size": 182536110080,
+            "diskId": "9BD9AC65-C854-427A-917E-7E76586527CA",
+            "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE02\\S2D-1.vhdx",
+            "controllerNumber": 0,
+            "controllerType": "SCSI",
+            "parentPath": "",
+            "lun": 1
+          },
+          {
+            "size": 182536110080,
+            "diskId": "54BE3319-5702-47BC-844C-E4937DA41512",
+            "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE02\\S2D-2.vhdx",
+            "controllerNumber": 0,
+            "controllerType": "SCSI",
+            "parentPath": "",
+            "lun": 2
+          },
+          {
+            "size": 182536110080,
+            "diskId": "30A2A237-2B37-45E1-B506-3EC87A9D3377",
+            "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE02\\S2D-3.vhdx",
+            "controllerNumber": 0,
+            "controllerType": "SCSI",
+            "parentPath": "",
+            "lun": 3
+          },
+          {
+            "size": 182536110080,
+            "diskId": "C7A6F52D-F6E8-4BD8-96F4-062832A93BAC",
+            "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE02\\S2D-4.vhdx",
+            "controllerNumber": 0,
+            "controllerType": "SCSI",
+            "parentPath": "",
+            "lun": 4
+          }
+        ]
+      }
+    ]
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-29T09:26:47.785249+02:00"
+}

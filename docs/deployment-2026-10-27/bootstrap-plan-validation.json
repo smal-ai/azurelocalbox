@@ -1,0 +1,32 @@
+{
+  "executionId": "occurrence_bbe0e9ccab4a3537fb6b2b84e624a5124526c9fced3145445452b83987ffca9f",
+  "nativeRunId": "run_a1de2fa4b131a604498ecdad6cb78c35eb2cf2015871aba97990cd791ecf08c9",
+  "checkedAtUtc": "2026-10-27T12:20:28.000884+00:00",
+  "milestone": "execution-plan-validator",
+  "validatorSourceSha256": "2997bc78600fe70d61ff4d72c3f0cad11c9c9e14efbd499a534e9230c187580f",
+  "exitCode": 2,
+  "expectedBlockedDraft": true,
+  "result": {
+    "schemaVersion": 1,
+    "status": "blocked",
+    "errors": [
+      "connected-estate-review-incomplete",
+      "exact-bound-storage-and-network-receipts-required",
+      "exact-lun-missing",
+      "guest-disk-identity-missing-or-not-literal",
+      "inventory-disk-not-confirmed-unused-attached-data-disk",
+      "inventory-guest-identity-or-lun-unverified"
+    ],
+    "planSha256": "572a3da14445f59bcc62822fecb6fa4b74de32deb7d2dfc745d02670f08fa084",
+    "inventorySha256": "23fffc620515d8eb30152802beb688c2c6b09a5ec92bf6d0626031b2266c4760",
+    "approvalReferencesAuthenticated": false,
+    "liveInventoryVerified": false,
+    "automaticApplyPermitted": false,
+    "resourceActionsPerformed": false
+  },
+  "newTestsPassed": 17,
+  "allRegressionTestsPassed": 60,
+  "liveGuestOrAzureInspectionPerformed": false,
+  "resourceChangesPerformed": false,
+  "credentialsRead": false
+}

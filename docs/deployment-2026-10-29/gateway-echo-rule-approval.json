@@ -1,0 +1,16 @@
+{
+  "approved": true,
+  "humanAnswer": "Approve scoped echo rule",
+  "host": "LocalBox-Client",
+  "ruleName": "AzureLocalBox-InternalGateway-Echo-v4",
+  "direction": "Inbound",
+  "action": "Allow",
+  "protocol": "ICMPv4",
+  "icmpType": 8,
+  "interfaceAlias": "vEthernet (LB-Fabric)",
+  "localAddress": "10.64.0.1",
+  "remoteAddress": ["10.64.0.11-10.64.0.13", "10.64.0.20-10.64.0.30"],
+  "existingRulesOrFirewallProfilesMayChange": false,
+  "outerInterfaceOrSharedAzureNetworkingMayChange": false,
+  "continueApprovedDeploymentAfterVerifiedConnectivityAndValidationGates": true
+}

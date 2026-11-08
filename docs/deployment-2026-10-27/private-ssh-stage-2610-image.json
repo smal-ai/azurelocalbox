@@ -1,0 +1,38 @@
+{
+  "beganAtSast": "2026-10-27T13:32:13.217948+02:00",
+  "status": "complete",
+  "commit": "200670ba2acdac26107627e76cf42644be0a4e59",
+  "script": "scripts/stage-smal-2610-image.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 47759,
+  "guestCommandTimeoutSeconds": 1500,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "computer": "LocalBox-Client",
+    "atUtc": "2026-10-27T11:37:31.6660553Z",
+    "stagingStatus": "complete-sha256-verified",
+    "downloadedThisOperation": true,
+    "solutionVersion": "12.2610.1004.41",
+    "composedImageVersion": "12.2610.0.3098",
+    "iso": "C:\\ProgramData\\AzureLocalBox\\Artifacts\\2610\\AzureLocal24H2.26100.32230.LCM.12.2610.0.3098.x64.en-us.iso",
+    "bytes": 7491864576,
+    "sha256": "317330754A6DAC6F42C1BE40EB780E0959C6C3F7670B33D94556964CDCBC9E89",
+    "dataDiskInventoryUnchanged": true,
+    "mountedOrExecuted": false,
+    "nestedVmCreated": false,
+    "platformRegistrationPerformed": false
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-27T13:37:31.964561+02:00"
+}

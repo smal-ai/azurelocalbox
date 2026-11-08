@@ -1,0 +1,38 @@
+{
+  "beganAtSast": "2026-10-27T12:17:44.520590+02:00",
+  "status": "complete",
+  "commit": "075e04a0b67933385ec92b4e21ba4eb7c11e073e",
+  "script": "scripts/prepare-smal-host-hyperv.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 60725,
+  "guestCommandTimeoutSeconds": 600,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "computer": "LocalBox-Client",
+    "atUtc": "2026-10-27T10:19:44.2382011Z",
+    "roleInstallApplied": true,
+    "hyperV": "Installed",
+    "hyperVPowerShell": "Installed",
+    "restartNeeded": "Yes",
+    "rebootPerformed": false,
+    "lastBootUtc": "2026-10-27T09:21:23.6797000Z",
+    "defenderRealTimeProtection": true,
+    "manualDefenderExclusionsAdded": false,
+    "nestedNetworkConfigured": false,
+    "disksFormatted": false,
+    "azureLocalDeployed": false
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-27T12:19:45.056344+02:00"
+}

@@ -1,0 +1,114 @@
+{
+  "beganAtSast": "2026-10-29T11:20:28.866282+02:00",
+  "status": "complete",
+  "commit": "4835eb6d2b03b7141365ca9001f3eea64865bd60",
+  "script": "scripts/resize-smal-existing-nodes.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 60135,
+  "scriptTransport": "sha256-length-framed-utf8-stdin",
+  "renderedSourceSha256": "72588f350e2bab7a77079ca75c152d99e748d6fe235b9826b1cc697acfa4841a",
+  "renderedSourceByteLength": 33204,
+  "unstreamedEncodedLength": 88544,
+  "guestCommandTimeoutSeconds": 1500,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "registrationInvoked": false,
+    "sourceCommit": "4835eb6d2b03b7141365ca9001f3eea64865bd60",
+    "atUtc": "2026-10-29T09:28:43.0078544Z",
+    "nodes": {
+      "LB-NODE02": {
+        "vmId": "12a44e0c-cc08-4c4c-a812-fa0b56efdbc3",
+        "guest": {
+          "logicalProcessors": 8,
+          "memoryBytes": 68718317568,
+          "name": "LB-NODE02",
+          "disks": [
+            {
+              "style": "RAW",
+              "uniqueId": "6002248065ACD99B54C87E76586527CA",
+              "size": 182536110080
+            },
+            {
+              "style": "RAW",
+              "uniqueId": "600224801933BE540257E4937DA41512",
+              "size": 182536110080
+            },
+            {
+              "style": "RAW",
+              "uniqueId": "6002248037A2A230372B3EC87A9D3377",
+              "size": 182536110080
+            },
+            {
+              "style": "RAW",
+              "uniqueId": "600224802DF5A6C7E8F6062832A93BAC",
+              "size": 182536110080
+            }
+          ],
+          "bootstrap": "Succeeded",
+          "PSComputerName": "LB-NODE02",
+          "RunspaceId": "60b766f2-7196-4abc-8acd-dcf98aa51efd",
+          "PSShowComputerName": true
+        },
+        "memoryBytes": 68719476736,
+        "processors": 8,
+        "originalDataIdsPreserved": true
+      },
+      "LB-NODE01": {
+        "vmId": "3adff629-2f67-449b-ab32-8a8748c46f34",
+        "guest": {
+          "logicalProcessors": 8,
+          "memoryBytes": 68718317568,
+          "name": "LB-NODE01",
+          "disks": [
+            {
+              "style": "RAW",
+              "uniqueId": "6002248018A9EA3E37A91804553ABFEE",
+              "size": 182536110080
+            },
+            {
+              "style": "RAW",
+              "uniqueId": "60022480D47B1977B201A09A9AD85C7E",
+              "size": 182536110080
+            },
+            {
+              "style": "RAW",
+              "uniqueId": "600224805454A96E242F3C38305128AC",
+              "size": 182536110080
+            },
+            {
+              "style": "RAW",
+              "uniqueId": "600224801E3FB24517D8C5F2124F7E30",
+              "size": 182536110080
+            }
+          ],
+          "bootstrap": "Succeeded",
+          "PSComputerName": "LB-NODE01",
+          "RunspaceId": "7ae724f1-1618-4a28-b8f4-6a74eddac8bb",
+          "PSShowComputerName": true
+        },
+        "memoryBytes": 68719476736,
+        "processors": 8,
+        "originalDataIdsPreserved": true
+      }
+    },
+    "osReinstallPerformed": false,
+    "dataFormattingPerformed": false,
+    "status": "complete-existing-nodes-64gib-8vcpu-and-one-vhd-relocated",
+    "dcChanged": false,
+    "phase": "existing-identity-and-storage-preserved",
+    "relocationSourceSha256": "0E8E418BBE8B39FB21643BE74A47ABDB6B696D054140E9E71592DD79C33AFBDB"
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-29T11:28:43.334644+02:00"
+}

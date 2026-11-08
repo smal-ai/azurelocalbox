@@ -1,0 +1,32 @@
+{
+  "beganAtSast": "2026-10-27T12:20:43.677849+02:00",
+  "status": "complete",
+  "commit": "075e04a0b67933385ec92b4e21ba4eb7c11e073e",
+  "script": "scripts/verify-smal-private-powershell.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 41875,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "atUtc": "2026-10-27T10:20:48.3519975Z",
+    "computer": "LocalBox-Client",
+    "user": "LocalBox-Client\\arcdemo",
+    "administrator": true,
+    "powershell": "5.1.26100.33648",
+    "sshConnection": "10.202.0.5 51000 10.200.16.4 22",
+    "bootstrapApplied": false
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-27T12:20:48.653907+02:00"
+}

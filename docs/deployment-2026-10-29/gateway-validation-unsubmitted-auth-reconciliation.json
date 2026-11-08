@@ -1,0 +1,13 @@
+{
+  "observedAtUtc": "2026-10-29T14:19:59.072942+00:00",
+  "status": "read-only-reconciled-before-submission-authorization-refusal",
+  "clusterStatus": "ValidationFailed",
+  "settingsMode": "Validate",
+  "settingsProvisioningState": "Failed",
+  "reportedValidationStatus": "Error",
+  "gatewayRetryOrDeployArmRecords": [],
+  "deniedAction": "Microsoft.Resources/deployments/whatIf/action",
+  "errorCode": "AuthorizationFailed",
+  "azureMutationPerformed": false,
+  "privilegeActivationAttempted": false
+}

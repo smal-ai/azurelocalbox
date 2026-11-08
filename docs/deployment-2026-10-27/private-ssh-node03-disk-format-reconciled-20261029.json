@@ -1,0 +1,42 @@
+{
+  "beganAtSast": "2026-10-29T11:13:05.861689+02:00",
+  "status": "complete",
+  "commit": "b8a4964b55ef2be4fd39c9dc31b052efa09c5e82",
+  "script": "scripts/format-smal-node03-disk.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 54885,
+  "scriptTransport": "sha256-length-framed-utf8-stdin",
+  "renderedSourceSha256": "4baa54177771202e3dc74d02a16ac06eadd130485768732e639dba05ca66d587",
+  "renderedSourceByteLength": 26958,
+  "unstreamedEncodedLength": 71888,
+  "guestCommandTimeoutSeconds": 240,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "size": 2199023255552,
+    "sourceCommit": "b8a4964b55ef2be4fd39c9dc31b052efa09c5e82",
+    "atUtc": "2026-10-29T09:13:16.9073348Z",
+    "osDiskChanged": false,
+    "lun": 8,
+    "azureDiskUniqueId": "eab2d4b3-d41d-44b3-99b4-d6c1c928c97b",
+    "windowsUniqueId": "eui.977A2C37B7C846F087268B8452F57C01",
+    "existingPoolChanged": false,
+    "status": "complete-new-lun8-only-formatted-w",
+    "azureDiskId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-Node03-SSD-20261029",
+    "windowsDiskNumber": 10,
+    "volumeId": "\\\\?\\Volume{1650d1ec-9d2f-41bf-ad56-66533a89d660}\\",
+    "volumeSize": 2199005364224
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-29T11:13:17.209508+02:00"
+}

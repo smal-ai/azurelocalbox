@@ -1,0 +1,12 @@
+{
+  "atSast": "2026-10-27T13:28:00.818723+02:00",
+  "solutionVersion": "12.2610.1004.41",
+  "composedImageVersion": "12.2610.0.3098",
+  "url": "https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/Hci24H2/ComposedImage/Deploy/12.2610.0.3098/AzureLocal24H2.26100.32230.LCM.12.2610.0.3098.x64.en-us.iso",
+  "publisherSha256": "317330754A6DAC6F42C1BE40EB780E0959C6C3F7670B33D94556964CDCBC9E89",
+  "contentLength": 7491864576,
+  "etag": "\"0xFC8DB909792CCF30973111607E1F86D3CFB3ED60AC1E9879D6614872E59150EC\"",
+  "lastModified": "Sat, 17 Oct 2026 07:06:12 GMT",
+  "httpStatus": 200,
+  "imageBytesDownloaded": 0
+}

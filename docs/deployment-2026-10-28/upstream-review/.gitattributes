@@ -1,0 +1,3 @@
+# Preserve signed upstream module bytes verbatim. These are audited captures,
+# not executable project dependencies. Do not normalise their line endings.
+ad-module-* -text -whitespace

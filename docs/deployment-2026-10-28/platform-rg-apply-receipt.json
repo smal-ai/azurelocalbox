@@ -1,0 +1,11 @@
+{
+  "beganAtUtc": "2026-10-28T11:42:17.237239+00:00",
+  "status": "failed-inspect-before-resume",
+  "sourceCommit": "587d2d1416d85881a2d1b3c4d340eb4e85ca5053",
+  "deploymentName": "localbox-platform-rg-20261028",
+  "scope": "one-new-owned-platform-rg-only",
+  "resourceGroupId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1",
+  "errorType": "JSONDecodeError",
+  "finishedAtUtc": "2026-10-28T11:43:01.895255+00:00",
+  "arcOrClusterOrRolesExplicitlyRequestedByTemplate": false
+}

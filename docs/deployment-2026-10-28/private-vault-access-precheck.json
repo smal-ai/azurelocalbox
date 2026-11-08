@@ -1,0 +1,18 @@
+{
+  "observedOn": "2026-10-28",
+  "vault": "kv-lbox-weu-4766ea",
+  "normalDnsAddress": "10.200.17.11",
+  "publicNetworkAccess": "Disabled",
+  "authenticatedMetadataListSucceeded": false,
+  "responseCode": "Forbidden",
+  "innerCode": "ForbiddenByRbac",
+  "action": "Microsoft.KeyVault/vaults/secrets/readMetadata/action",
+  "principalId": "82f494a8-b9f5-46fc-b0f7-c70be0572a63",
+  "matchingDataRoleAssignment": "not found",
+  "inheritedRolesObserved": ["Owner for user", "Reader through group"],
+  "privateVaultRequestReachedAuthorization": true,
+  "networkDenialDemonstrated": false,
+  "approvedConditionalGrantNeeded": "Key Vault Secrets Officer, new dedicated vault only",
+  "roleGrantPerformedByThisObservation": false,
+  "secretValueReadOrExported": false
+}

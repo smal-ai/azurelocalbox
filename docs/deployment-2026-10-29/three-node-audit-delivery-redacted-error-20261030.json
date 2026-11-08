@@ -1,0 +1,10 @@
+{
+  "observedAtUtc": "2026-10-30T13:03:36.306851+00:00",
+  "operation": "read-only-audit-blob-metadata",
+  "authMode": "login",
+  "exitCode": 1,
+  "redactedError": "ERROR: \nYou do not have the required permissions needed to perform this operation.\nDepending on your operation, you may need to be assigned one of the following roles:\n    \"Storage Blob Data Owner\"\n    \"Storage Blob Data Contributor\"\n    \"Storage Blob Data Reader\"\n    \"Storage Queue Data Contributor\"\n    \"Storage Queue Data Reader\"\n    \"Storage Table Data Contributor\"\n    \"Storage Table Data Reader\"\n\nIf you want to use the old authentication method and allow querying for the right account key, please use the \"--auth-mode\" parameter and \"key\" value.\n                    \n",
+  "stderrSha256": "88bf37b9ee27adfa1db2cd5de101a3848e6d730a9b56625af51d9adbff0fe416",
+  "sharedKeyFallback": false,
+  "newGrantRequested": false
+}

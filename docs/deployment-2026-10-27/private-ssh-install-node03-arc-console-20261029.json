@@ -1,0 +1,37 @@
+{
+  "beganAtSast": "2026-10-29T12:24:13.060913+02:00",
+  "status": "complete",
+  "commit": "23ce407826f5a6867f1319308fc2309e88ffb9e2",
+  "script": "scripts/install-smal-node03-arc-console.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 54277,
+  "scriptTransport": "sha256-length-framed-utf8-stdin",
+  "renderedSourceSha256": "98343d6ee45f6ce3db5ce8fd406d911e1e7392432b64d8b4fbdd91ca68b553b8",
+  "renderedSourceByteLength": 31313,
+  "unstreamedEncodedLength": 83504,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "humanDeviceAuthenticationRequired": true,
+    "sourceCommit": "23ce407826f5a6867f1319308fc2309e88ffb9e2",
+    "vmId": "5b6eba15-fa82-4e12-9e45-5ffbcd48c8a9",
+    "status": "installed-not-invoked",
+    "scriptSha256": "1B1A1ECC40A4B83C7CDFB600862A0EB12EFDF7D9614F538509FBC2783CC39A81",
+    "consoleOutputCaptured": false,
+    "scriptPath": "C:\\ProgramData\\AzureLocalBox\\Bootstrap\\arc-node03-console-20261029-01\\Register-Node03.ps1",
+    "registrationPerformed": false
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-29T12:24:21.010102+02:00"
+}

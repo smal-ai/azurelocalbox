@@ -1,0 +1,34 @@
+{
+  "beganAtUtc": "2026-10-30T13:51:40.446750+00:00",
+  "sourceCommit": "8134fe9b707f42d8998de26f7a0c3110c13c104a",
+  "status": "complete-capacity-doubled-existing-data-preserved",
+  "azureMutationPerformed": false,
+  "newDiskOrVhdOperationRequested": false,
+  "platformReadinessVerified": false,
+  "originalEarlyObservationRetained": true,
+  "originalEarlyReceiptSha256": "13df049954c6191d91d50b25381e4991a0aca575ae34d3bb621c449fc5cd5c62",
+  "observations": [
+    "docs/deployment-2026-10-27/private-ssh-capacity-convergence-20261030-0.json"
+  ],
+  "result": {
+    "oldMembersPreserved": 12,
+    "newMembersVerified": 12,
+    "totalMembers": 24,
+    "poolSizeGiB": 4055.98,
+    "poolIdentityPreserved": true,
+    "existingVirtualDiskSizesAndIdsPreserved": true,
+    "activeStorageJobs": [],
+    "completedJobRecordsObserved": 0,
+    "optimizationFullyCompletedProven": false,
+    "platformReadinessVerified": false
+  },
+  "outerVolumes": {
+    "originalCvwPreserved": true,
+    "newXHealthyAndIdentityVerified": true,
+    "newXFreeGiB": 4094.7,
+    "outerPoolPreserved": true
+  },
+  "azureDataCapacityGiB": 8192,
+  "allElevenHostDisksStandardLrs": true,
+  "finishedAtUtc": "2026-10-30T13:53:01.362152+00:00"
+}

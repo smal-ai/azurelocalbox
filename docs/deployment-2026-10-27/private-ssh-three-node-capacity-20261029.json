@@ -1,0 +1,285 @@
+{
+  "beganAtSast": "2026-10-29T09:44:42.700879+02:00",
+  "status": "complete",
+  "commit": "ea62ae926734b1f7d586459c2d651e75c04735b0",
+  "script": "scripts/inspect-smal-three-node-capacity.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 45391,
+  "scriptTransport": "encoded-command",
+  "renderedSourceSha256": "22948eba00d41c82e2cbded082b010b5eb4be858a26a0739bea2d15f2496fbbd",
+  "renderedSourceByteLength": 3130,
+  "unstreamedEncodedLength": 8348,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "proposedWDrivePresent": false,
+    "volumes": [
+      {
+        "fileSystem": "NTFS",
+        "sizeBytes": 1099389972480,
+        "health": "Healthy",
+        "letter": "C",
+        "freeBytes": 1024597389312
+      },
+      {
+        "fileSystem": "NTFS",
+        "sizeBytes": 2181825495040,
+        "health": "Healthy",
+        "letter": "V",
+        "freeBytes": 2121018834944
+      }
+    ],
+    "atUtc": "2026-10-29T07:44:53.2511526Z",
+    "guests": [
+      {
+        "automaticStopAction": "ShutDown",
+        "nonVhdFiles": [
+          {
+            "extension": ".log",
+            "fileBytes": 50,
+            "count": 1
+          },
+          {
+            "extension": ".vmcx",
+            "fileBytes": 73728,
+            "count": 1
+          },
+          {
+            "extension": ".vmgs",
+            "fileBytes": 4194816,
+            "count": 1
+          },
+          {
+            "extension": ".VMRS",
+            "fileBytes": 135168,
+            "count": 1
+          }
+        ],
+        "state": "Running",
+        "processors": 2,
+        "dynamicMemory": false,
+        "name": "LB-DC01",
+        "vmId": "f94c71f1-6854-48b9-a9f1-8238c99366d0",
+        "automaticStartAction": "Nothing",
+        "disks": [
+          {
+            "virtualSizeBytes": 85899345920,
+            "parentPath": "",
+            "controller": 0,
+            "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-DC01\\OS.vhdx",
+            "lun": 0,
+            "diskId": "0F9DF905-4D21-4E18-AAE2-4B1F1BBCB6E2",
+            "allocatedFileBytes": 21680357376
+          }
+        ],
+        "memoryAssignedBytes": 4294967296,
+        "configurationLocation": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-DC01\\LB-DC01",
+        "smartPagingPath": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-DC01\\LB-DC01",
+        "memoryStartupBytes": 4294967296
+      },
+      {
+        "automaticStopAction": "ShutDown",
+        "nonVhdFiles": [
+          {
+            "extension": ".log",
+            "fileBytes": 50,
+            "count": 1
+          },
+          {
+            "extension": ".vmcx",
+            "fileBytes": 94208,
+            "count": 1
+          },
+          {
+            "extension": ".vmgs",
+            "fileBytes": 4194816,
+            "count": 1
+          },
+          {
+            "extension": ".VMRS",
+            "fileBytes": 159744,
+            "count": 1
+          }
+        ],
+        "state": "Running",
+        "processors": 12,
+        "dynamicMemory": false,
+        "name": "LB-NODE01",
+        "vmId": "3adff629-2f67-449b-ab32-8a8748c46f34",
+        "automaticStartAction": "Nothing",
+        "disks": [
+          {
+            "virtualSizeBytes": 137438953472,
+            "parentPath": "",
+            "controller": 0,
+            "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE01\\OS.vhdx",
+            "lun": 0,
+            "diskId": "853E242C-04B5-422E-A649-64E0D80BC634",
+            "allocatedFileBytes": 19398656000
+          },
+          {
+            "virtualSizeBytes": 182536110080,
+            "parentPath": "",
+            "controller": 0,
+            "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE01\\S2D-1.vhdx",
+            "lun": 1,
+            "diskId": "3EEAA918-A937-4F75-B9D0-1804553ABFEE",
+            "allocatedFileBytes": 4194304
+          },
+          {
+            "virtualSizeBytes": 182536110080,
+            "parentPath": "",
+            "controller": 0,
+            "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE01\\S2D-2.vhdx",
+            "lun": 2,
+            "diskId": "77197BD4-01B2-4D57-9AC5-A09A9AD85C7E",
+            "allocatedFileBytes": 4194304
+          },
+          {
+            "virtualSizeBytes": 182536110080,
+            "parentPath": "",
+            "controller": 0,
+            "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE01\\S2D-3.vhdx",
+            "lun": 3,
+            "diskId": "6EA95454-2F24-442E-9FD8-3C38305128AC",
+            "allocatedFileBytes": 4194304
+          },
+          {
+            "virtualSizeBytes": 182536110080,
+            "parentPath": "",
+            "controller": 0,
+            "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE01\\S2D-4.vhdx",
+            "lun": 4,
+            "diskId": "45B23F1E-D817-4DE0-A84A-C5F2124F7E30",
+            "allocatedFileBytes": 4194304
+          }
+        ],
+        "memoryAssignedBytes": 103079215104,
+        "configurationLocation": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE01\\LB-NODE01",
+        "smartPagingPath": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE01\\LB-NODE01",
+        "memoryStartupBytes": 103079215104
+      },
+      {
+        "automaticStopAction": "ShutDown",
+        "nonVhdFiles": [
+          {
+            "extension": ".log",
+            "fileBytes": 50,
+            "count": 1
+          },
+          {
+            "extension": ".vmcx",
+            "fileBytes": 94208,
+            "count": 1
+          },
+          {
+            "extension": ".vmgs",
+            "fileBytes": 4194816,
+            "count": 1
+          },
+          {
+            "extension": ".VMRS",
+            "fileBytes": 159744,
+            "count": 1
+          }
+        ],
+        "state": "Running",
+        "processors": 12,
+        "dynamicMemory": false,
+        "name": "LB-NODE02",
+        "vmId": "12a44e0c-cc08-4c4c-a812-fa0b56efdbc3",
+        "automaticStartAction": "Nothing",
+        "disks": [
+          {
+            "virtualSizeBytes": 137438953472,
+            "parentPath": "",
+            "controller": 0,
+            "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE02\\OS.vhdx",
+            "lun": 0,
+            "diskId": "B0CE2A23-BB31-4239-9197-14739AF3844B",
+            "allocatedFileBytes": 19566428160
+          },
+          {
+            "virtualSizeBytes": 182536110080,
+            "parentPath": "",
+            "controller": 0,
+            "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE02\\S2D-1.vhdx",
+            "lun": 1,
+            "diskId": "9BD9AC65-C854-427A-917E-7E76586527CA",
+            "allocatedFileBytes": 4194304
+          },
+          {
+            "virtualSizeBytes": 182536110080,
+            "parentPath": "",
+            "controller": 0,
+            "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE02\\S2D-2.vhdx",
+            "lun": 2,
+            "diskId": "54BE3319-5702-47BC-844C-E4937DA41512",
+            "allocatedFileBytes": 4194304
+          },
+          {
+            "virtualSizeBytes": 182536110080,
+            "parentPath": "",
+            "controller": 0,
+            "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE02\\S2D-3.vhdx",
+            "lun": 3,
+            "diskId": "30A2A237-2B37-45E1-B506-3EC87A9D3377",
+            "allocatedFileBytes": 4194304
+          },
+          {
+            "virtualSizeBytes": 182536110080,
+            "parentPath": "",
+            "controller": 0,
+            "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE02\\S2D-4.vhdx",
+            "lun": 4,
+            "diskId": "C7A6F52D-F6E8-4BD8-96F4-062832A93BAC",
+            "allocatedFileBytes": 4194304
+          }
+        ],
+        "memoryAssignedBytes": 103079215104,
+        "configurationLocation": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE02\\LB-NODE02",
+        "smartPagingPath": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE02\\LB-NODE02",
+        "memoryStartupBytes": 103079215104
+      }
+    ],
+    "logicalProcessors": 32,
+    "freePhysicalBytes": 54905282560,
+    "allVmNames": [
+      "LB-DC01",
+      "LB-NODE01",
+      "LB-NODE02"
+    ],
+    "mutationPerformed": false,
+    "hostMemoryBytes": 274872397824,
+    "virtualDisk": {
+      "provisioning": "Fixed",
+      "columns": 8,
+      "resiliency": "Simple",
+      "uniqueId": "D0CDB2F96D0E244E8B532E096F97FBBF",
+      "health": "Healthy",
+      "sizeBytes": 2181843386368
+    },
+    "pool": {
+      "memberCount": 8,
+      "sizeBytes": 2194585681920,
+      "allocatedBytes": 2186138353664,
+      "health": "Healthy",
+      "uniqueId": "{b8174816-65a9-46f7-87c1-b189be0b90e5}"
+    },
+    "thirdNodeNamePresent": false,
+    "computer": "LocalBox-Client"
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-29T09:44:55.236076+02:00"
+}

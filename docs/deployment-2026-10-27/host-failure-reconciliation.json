@@ -1,0 +1,252 @@
+{
+  "resources": {
+    "atSast": "2026-10-27T10:48:42.962234+02:00",
+    "command": [
+      "az",
+      "resource",
+      "list",
+      "-g",
+      "rg-localbox-nodes-san-1",
+      "--query",
+      "[].{id:id,name:name,type:type,location:location}",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 0,
+    "result": [
+      {
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Network/networkInterfaces/LocalBox-Client-NIC",
+        "location": "southafricanorth",
+        "name": "LocalBox-Client-NIC",
+        "type": "Microsoft.Network/networkInterfaces"
+      }
+    ],
+    "error": null
+  },
+  "deployment": {
+    "atSast": "2026-10-27T10:48:43.597899+02:00",
+    "command": [
+      "az",
+      "deployment",
+      "group",
+      "show",
+      "-g",
+      "rg-localbox-nodes-san-1",
+      "-n",
+      "smal-host-20261027",
+      "--query",
+      "{id:id,state:properties.provisioningState,timestamp:properties.timestamp,correlationId:properties.correlationId,error:properties.error}",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 0,
+    "result": {
+      "correlationId": "d8ac6496-fd78-4108-a0c8-e9047b8e6636",
+      "error": {
+        "additionalInfo": null,
+        "code": "DeploymentFailed",
+        "details": [
+          {
+            "additionalInfo": null,
+            "code": "BadRequest",
+            "details": null,
+            "message": "The value 'Standard' is not available for property 'securityType' until the feature Microsoft.Compute/UseStandardSecurityType is registered on subscription '8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea'. Please register the feature and retry. For more details, visit disable Trusted Launch for a new VM deployment in FAQ page at https://aka.ms/TrustedLaunch-FAQ.",
+            "target": null
+          }
+        ],
+        "message": "At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-deployment-operations for usage details.",
+        "target": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Resources/deployments/smal-host-20261027"
+      },
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Resources/deployments/smal-host-20261027",
+      "state": "Failed",
+      "timestamp": "2026-10-27T08:47:36.623820+00:00"
+    },
+    "error": null
+  },
+  "operations": {
+    "atSast": "2026-10-27T10:48:45.353896+02:00",
+    "command": [
+      "az",
+      "deployment",
+      "operation",
+      "group",
+      "list",
+      "-g",
+      "rg-localbox-nodes-san-1",
+      "-n",
+      "smal-host-20261027",
+      "--query",
+      "[].{id:operationId,target:properties.targetResource,state:properties.provisioningState,code:properties.statusCode,error:properties.statusMessage.error}",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 0,
+    "result": [
+      {
+        "code": "BadRequest",
+        "error": {
+          "additionalInfo": null,
+          "code": "BadRequest",
+          "details": null,
+          "message": "The value 'Standard' is not available for property 'securityType' until the feature Microsoft.Compute/UseStandardSecurityType is registered on subscription '8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea'. Please register the feature and retry. For more details, visit disable Trusted Launch for a new VM deployment in FAQ page at https://aka.ms/TrustedLaunch-FAQ.",
+          "target": null
+        },
+        "id": "B782AAD41B860E01",
+        "state": "Failed",
+        "target": {
+          "apiVersion": null,
+          "extension": null,
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+          "identifiers": null,
+          "resourceGroup": "rg-localbox-nodes-san-1",
+          "resourceName": "LocalBox-Client",
+          "resourceType": "Microsoft.Compute/virtualMachines",
+          "symbolicName": null
+        }
+      },
+      {
+        "code": "OK",
+        "error": null,
+        "id": "F776AB5B036B476F",
+        "state": "Succeeded",
+        "target": {
+          "apiVersion": "2024-05-01",
+          "extension": null,
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Network/networkInterfaces/LocalBox-Client-NIC",
+          "identifiers": null,
+          "resourceGroup": "rg-localbox-nodes-san-1",
+          "resourceName": "LocalBox-Client-NIC",
+          "resourceType": "Microsoft.Network/networkInterfaces",
+          "symbolicName": null
+        }
+      },
+      {
+        "code": "Created",
+        "error": null,
+        "id": "30312283A2D10DF9",
+        "state": "Succeeded",
+        "target": {
+          "apiVersion": null,
+          "extension": null,
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Network/networkInterfaces/LocalBox-Client-NIC",
+          "identifiers": null,
+          "resourceGroup": "rg-localbox-nodes-san-1",
+          "resourceName": "LocalBox-Client-NIC",
+          "resourceType": "Microsoft.Network/networkInterfaces",
+          "symbolicName": null
+        }
+      }
+    ],
+    "error": null
+  },
+  "vmPower": {
+    "atSast": "2026-10-27T10:48:47.104392+02:00",
+    "command": [
+      "az",
+      "vm",
+      "get-instance-view",
+      "-g",
+      "rg-localbox-nodes-san-1",
+      "-n",
+      "LocalBox-Client",
+      "--query",
+      "{id:id,state:provisioningState,statuses:instanceView.statuses}",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 3,
+    "result": null,
+    "error": "ERROR: (ResourceNotFound) The Resource 'Microsoft.Compute/virtualMachines/LocalBox-Client' under resource group 'rg-localbox-nodes-san-1' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\nCode: ResourceNotFound\nMessage: The Resource 'Microsoft.Compute/virtualMachines/LocalBox-Client' under resource group 'rg-localbox-nodes-san-1' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix"
+  },
+  "nic": {
+    "atSast": "2026-10-27T10:48:49.355775+02:00",
+    "command": [
+      "az",
+      "network",
+      "nic",
+      "show",
+      "-g",
+      "rg-localbox-nodes-san-1",
+      "-n",
+      "LocalBox-Client-NIC",
+      "--query",
+      "{id:id,state:provisioningState,vm:virtualMachine.id,ips:ipConfigurations[].{ip:privateIPAddress,subnet:subnet.id,publicIp:publicIPAddress.id}}",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 0,
+    "result": {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Network/networkInterfaces/LocalBox-Client-NIC",
+      "ips": [
+        {
+          "ip": "10.200.16.4",
+          "publicIp": null,
+          "subnet": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-smal-network-san-1/providers/Microsoft.Network/virtualNetworks/vnet-smal-san-1/subnets/snet-localbox-host"
+        }
+      ],
+      "state": "Succeeded",
+      "vm": null
+    },
+    "error": null
+  },
+  "disks": {
+    "atSast": "2026-10-27T10:48:51.072539+02:00",
+    "command": [
+      "az",
+      "disk",
+      "list",
+      "-g",
+      "rg-localbox-nodes-san-1",
+      "--query",
+      "[].{id:id,name:name,sizeGiB:diskSizeGb,state:diskState,managedBy:managedBy}",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 0,
+    "result": [],
+    "error": null
+  },
+  "standardSecurityFeature": {
+    "atSast": "2026-10-27T10:48:51.681102+02:00",
+    "command": [
+      "az",
+      "feature",
+      "show",
+      "--namespace",
+      "Microsoft.Compute",
+      "--name",
+      "UseStandardSecurityType",
+      "--query",
+      "{id:id,state:properties.state}",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 0,
+    "result": {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/providers/Microsoft.Features/providers/Microsoft.Compute/features/UseStandardSecurityType",
+      "state": "NotRegistered"
+    },
+    "error": null
+  }
+}

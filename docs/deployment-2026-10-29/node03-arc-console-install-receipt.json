@@ -1,0 +1,17 @@
+{
+  "beganAtUtc": "2026-10-29T10:24:09.462045+00:00",
+  "sourceCommit": "23ce407826f5a6867f1319308fc2309e88ffb9e2",
+  "status": "complete-installed-human-authentication-not-invoked",
+  "registrationInvoked": false,
+  "result": {
+    "humanDeviceAuthenticationRequired": true,
+    "sourceCommit": "23ce407826f5a6867f1319308fc2309e88ffb9e2",
+    "vmId": "5b6eba15-fa82-4e12-9e45-5ffbcd48c8a9",
+    "status": "installed-not-invoked",
+    "scriptSha256": "1B1A1ECC40A4B83C7CDFB600862A0EB12EFDF7D9614F538509FBC2783CC39A81",
+    "consoleOutputCaptured": false,
+    "scriptPath": "C:\\ProgramData\\AzureLocalBox\\Bootstrap\\arc-node03-console-20261029-01\\Register-Node03.ps1",
+    "registrationPerformed": false
+  },
+  "finishedAtUtc": "2026-10-29T10:24:21.010580+00:00"
+}

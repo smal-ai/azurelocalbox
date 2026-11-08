@@ -1,0 +1,51 @@
+{
+  "beganAtSast": "2026-10-29T11:54:35.205793+02:00",
+  "status": "complete",
+  "commit": "b3a9af22efa0bb3f1ef78c3173855fdca1c2a30b",
+  "script": "scripts/read-smal-node03-job.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 45945,
+  "scriptTransport": "encoded-command",
+  "renderedSourceSha256": "7d8d4a7e433c2e7564e1ee59f465c6dd83880f83477db612a1ecf330d2e34d4e",
+  "renderedSourceByteLength": 1119,
+  "unstreamedEncodedLength": 2984,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "bundleSha256": "D1568DE10404A25A5961C4088940C1F7EF18EA8E757ED3D32C3DAD419FE65789",
+    "state": {
+      "clusterDeploymentPerformed": false,
+      "cleanup": null,
+      "commonCredentialLoginVerified": false,
+      "sourceCommit": "4835eb6d2b03b7141365ca9001f3eea64865bd60",
+      "phase": "verify-pinned-iso-before-read-only-mount",
+      "vm": null,
+      "atUtc": "2026-10-29T09:29:20.4705633Z",
+      "azureRegistrationPerformed": false,
+      "status": "running"
+    },
+    "workerSha256": "DFDA8903EE400DB2453C21EB076D02E5D9D991D1917A1480AA81F457C357E485",
+    "registrationInvokedByReader": false,
+    "heartbeat": {
+      "atUtc": "2026-10-29T09:54:36.2670164Z"
+    },
+    "atUtc": "2026-10-29T09:54:39.1877300Z",
+    "actualTriggerCount": 0,
+    "principal": "SYSTEM",
+    "taskState": "Running",
+    "lastTaskResult": 267009
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-29T11:54:39.782861+02:00"
+}

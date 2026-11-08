@@ -1,0 +1,35 @@
+{
+  "beganAtUtc": "2026-10-29T12:50:59.861332+00:00",
+  "sourceCommit": "95c231b6ee64824c24ca82a31afa332bdf167a5c",
+  "status": "uncertain-or-still-running-inspect-do-not-repeat",
+  "stage": "validate",
+  "deploymentName": "localbox-three-node-validate-lcm-format-20261029",
+  "initialValidationOnly": true,
+  "deploySubmitted": false,
+  "clusterReapplied": false,
+  "rolesOrSecretsReapplied": false,
+  "platformReadinessVerified": false,
+  "terminalInitialValidationProof": {
+    "clusterStatus": "ValidationFailed",
+    "mode": "Validate",
+    "provisioningState": "Failed",
+    "validationStatus": "Error",
+    "deploymentStatus": null,
+    "deployArmRecords": [],
+    "knownLcmFormatErrorMatched": true
+  },
+  "privateInputsReceipt": "docs/deployment-2026-10-27/private-ssh-three-cluster-inputs-validate-lcm-format-fix-20261029.json",
+  "originalFailedReceiptSha256": "997c2a14561b00c20e3ddc8f4d87cda64ac1172c4f02044cca66af1d72d931fc",
+  "templateSha256": "114525f39b6e38cec58e01284bbcc82f764d108e7925c27eecb96d9faf830c65",
+  "correctedLcmVersionId": "https://kv-lbox-weu-4766ea.vault.azure.net/secrets/smal-localbox01-AzureStackLCMUserCredential/6960763ffad243efa172ad4b4d9079fb",
+  "previewChanges": [
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/microsoft.azurestackhci/clusters/smal-localbox01/deploymentSettings/default",
+      "changeType": "NoChange"
+    }
+  ],
+  "deploymentId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.Resources/deployments/localbox-three-node-validate-lcm-format-20261029",
+  "deploymentState": "Running",
+  "deploymentErrorCode": null,
+  "finishedAtUtc": "2026-10-29T13:22:58.917934+00:00"
+}

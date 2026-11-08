@@ -1,0 +1,78 @@
+{
+  "task": "REL-287",
+  "status": "preparation-only-no-azure-apply",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "45adf1db40fb5cbc4e0f59405a7edec4600ab99f5269546e35e70be84a719c44"
+    },
+    {
+      "path": "docs/deployment-2026-10-27/README.md",
+      "sha256": "0f03578f9278d3eae2a2d9c283af3d7832e48423ef46afe363dea9d81bd54544"
+    },
+    {
+      "path": "docs/deployment-2026-10-27/address-overlap.json",
+      "sha256": "fa17371e079587d9e0d8efdb252b365b52f2dabdb494f70ec60a423c86aef9b5"
+    },
+    {
+      "path": "docs/deployment-2026-10-27/checks.json",
+      "sha256": "a451a9f7699f116b6ff875751069749886a9408ca048ced6e98544975b34a5f2"
+    },
+    {
+      "path": "docs/deployment-2026-10-27/dns-probe.json",
+      "sha256": "bcadfac68c95fbe75c56524c70fa8562455273ca4363ab0b3d6ceb32f22f4b95"
+    },
+    {
+      "path": "docs/deployment-2026-10-27/egress-regional-source.json",
+      "sha256": "088dee68dd4a8674b25a63749e76620242f84f3252555b19635c85972eaef1ee"
+    },
+    {
+      "path": "docs/deployment-2026-10-27/egress-review-baseline.json",
+      "sha256": "f04a415cfbcf5e023cb0edd0e71cb8cafe11a621106662b13e66bfa5e66f98d4"
+    },
+    {
+      "path": "docs/deployment-2026-10-27/final-readback.json",
+      "sha256": "a09441437192ed03cf77806d0d26759e986aae758f43a28f844ffec5e9b5cb1a"
+    },
+    {
+      "path": "docs/deployment-2026-10-27/network-request.json",
+      "sha256": "d864e20e916af4393f2d58bf5386f500deac0483b7ab0b21587e228312d8f4c8"
+    },
+    {
+      "path": "docs/deployment-2026-10-27/plan.json",
+      "sha256": "efa434e5319ceeaf83366bd836d4dc4a1fea50ea5308fb6b89cc9e17e7b59b13"
+    },
+    {
+      "path": "docs/deployment-2026-10-27/policy-definitions.json",
+      "sha256": "47b4bd695f371bc35a5697a121866ef11a8f0a7a11a1641659bd565f7858adfe"
+    },
+    {
+      "path": "docs/deployment-2026-10-27/preflight.json",
+      "sha256": "2645f1259ed257d5db4656df9c305ebd8732700cfbaa7477e54669e50470485b"
+    },
+    {
+      "path": "docs/deployment-2026-10-27/pricing.json",
+      "sha256": "82945ca7724589647393cc95a0163a443c9003e98e02c9553867ca1920dddf68"
+    },
+    {
+      "path": "docs/deployment-2026-10-27/supplemental.json",
+      "sha256": "8741fe4cab019aa353221d382029c546b855c92496600695818e88a03f6e3bce"
+    },
+    {
+      "path": "infra/bicep/main.smal-host.bicep",
+      "sha256": "b78b98f419e6782946f6d15dee06b096cb0112ff68243910b4dcf3c7c96c71bd"
+    },
+    {
+      "path": "infra/hooks/preprovision.sh",
+      "sha256": "03b90fea3a9f0a5c678baa061260e8bb674dcb71da003d43b7da0f267c67eacd"
+    },
+    {
+      "path": "scripts/preflight-smal-20261027.py",
+      "sha256": "90c743fa79051762784ae8cec8daeeab905a47bb1cb410d8e84c579c894571c2"
+    },
+    {
+      "path": "scripts/test_smal_host.py",
+      "sha256": "a26ff7ac0ec048a469150f63b08cfeab71daedda1e07c352b9587759b39fcd31"
+    }
+  ]
+}

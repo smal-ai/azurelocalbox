@@ -1,0 +1,56 @@
+{
+  "beganAtSast": "2026-10-29T10:00:20.191857+02:00",
+  "status": "complete",
+  "commit": "867dbe115796e70008d0dc22559c3a9e5769a51d",
+  "script": "scripts/stop-smal-guests-for-premium.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 55563,
+  "scriptTransport": "encoded-command",
+  "renderedSourceSha256": "ae467451892d968d222363c616809d5d3a5f0a9b9525812d7c44da653587296b",
+  "renderedSourceByteLength": 1684,
+  "unstreamedEncodedLength": 4492,
+  "guestCommandTimeoutSeconds": 240,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "registrationInvoked": false,
+    "atUtc": "2026-10-29T08:01:39.6188193Z",
+    "configurationOrStorageChanged": false,
+    "forcedPowerOffRequested": false,
+    "guests": [
+      {
+        "before": "Running",
+        "name": "LB-NODE02",
+        "id": "12a44e0c-cc08-4c4c-a812-fa0b56efdbc3",
+        "gracefulStopRequested": true,
+        "after": "Off"
+      },
+      {
+        "before": "Running",
+        "name": "LB-NODE01",
+        "id": "3adff629-2f67-449b-ab32-8a8748c46f34",
+        "gracefulStopRequested": true,
+        "after": "Off"
+      },
+      {
+        "before": "Running",
+        "name": "LB-DC01",
+        "id": "f94c71f1-6854-48b9-a9f1-8238c99366d0",
+        "gracefulStopRequested": true,
+        "after": "Off"
+      }
+    ]
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-29T10:01:39.965585+02:00"
+}

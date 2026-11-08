@@ -1,0 +1,949 @@
+{
+  "identity": {
+    "observedAtSast": "2026-10-27T10:04:23.922102+02:00",
+    "command": [
+      "az",
+      "account",
+      "show",
+      "--query",
+      "{id:id,tenantId:tenantId,state:state,userType:user.type}",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 0,
+    "result": {
+      "id": "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "state": "Enabled",
+      "tenantId": "c6e67968-af25-4557-ab8b-06b693048d3b",
+      "userType": "user"
+    },
+    "error": null
+  },
+  "operatorObjectId": {
+    "observedAtSast": "2026-10-27T10:04:23.891253+02:00",
+    "command": [
+      "az",
+      "ad",
+      "signed-in-user",
+      "show",
+      "--query",
+      "{id:id}",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 2,
+    "result": null,
+    "error": "ERROR: unrecognized arguments: --subscription 8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea\n\nhttps://aka.ms/cli_ref\nRead more about the command in reference docs"
+  },
+  "hostGroup": {
+    "observedAtSast": "2026-10-27T10:04:25.216543+02:00",
+    "command": [
+      "az",
+      "group",
+      "show",
+      "-n",
+      "rg-localbox-nodes-san-1",
+      "--query",
+      "{id:id,location:location,tags:tags}",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 0,
+    "result": {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1",
+      "location": "southafricanorth",
+      "tags": {
+        "environment": "lab",
+        "owner": "quintindekok",
+        "project": "smal-ai",
+        "purpose": "smal-localbox-foundation"
+      }
+    },
+    "error": null
+  },
+  "hostResources": {
+    "observedAtSast": "2026-10-27T10:04:24.674652+02:00",
+    "command": [
+      "az",
+      "resource",
+      "list",
+      "-g",
+      "rg-localbox-nodes-san-1",
+      "--query",
+      "[].{id:id,name:name,type:type,location:location}",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 0,
+    "result": [],
+    "error": null
+  },
+  "localPlatformResources": {
+    "observedAtSast": "2026-10-27T10:04:25.865300+02:00",
+    "command": [
+      "az",
+      "resource",
+      "list",
+      "--query",
+      "[?type=='Microsoft.AzureStackHCI/clusters' || type=='Microsoft.ResourceConnector/appliances' || type=='Microsoft.Kubernetes/connectedClusters' || type=='Microsoft.HybridContainerService/provisionedClusters'].{id:id,name:name,type:type,location:location}",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 0,
+    "result": [],
+    "error": null
+  },
+  "vnets": {
+    "observedAtSast": "2026-10-27T10:04:25.595775+02:00",
+    "command": [
+      "az",
+      "network",
+      "vnet",
+      "list",
+      "--query",
+      "[].{id:id,name:name,region:location,prefixes:addressSpace.addressPrefixes,dns:dhcpOptions.dnsServers}",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 0,
+    "result": [
+      {
+        "dns": [
+          "10.204.0.4"
+        ],
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-az-fabrti-san-1/providers/Microsoft.Network/virtualNetworks/vnet-az-fabrti-san-1",
+        "name": "vnet-az-fabrti-san-1",
+        "prefixes": [
+          "10.205.0.0/22"
+        ],
+        "region": "southafricanorth"
+      },
+      {
+        "dns": [
+          "10.204.0.4"
+        ],
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-smal-network-san-1/providers/Microsoft.Network/virtualNetworks/vnet-smal-san-1",
+        "name": "vnet-smal-san-1",
+        "prefixes": [
+          "10.200.16.0/22"
+        ],
+        "region": "southafricanorth"
+      }
+    ],
+    "error": null
+  },
+  "network": {
+    "observedAtSast": "2026-10-27T10:04:26.548831+02:00",
+    "command": [
+      "az",
+      "network",
+      "vnet",
+      "show",
+      "-g",
+      "rg-smal-network-san-1",
+      "-n",
+      "vnet-smal-san-1",
+      "--query",
+      "{id:id,state:provisioningState,prefixes:addressSpace.addressPrefixes,dns:dhcpOptions.dnsServers,subnets:subnets[].{id:id,prefix:addressPrefix,nsg:networkSecurityGroup.id,routeTable:routeTable.id,allocations:length(ipConfigurations || `[]`),outbound:defaultOutboundAccess}}",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 0,
+    "result": {
+      "dns": [
+        "10.204.0.4"
+      ],
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-smal-network-san-1/providers/Microsoft.Network/virtualNetworks/vnet-smal-san-1",
+      "prefixes": [
+        "10.200.16.0/22"
+      ],
+      "state": "Succeeded",
+      "subnets": [
+        {
+          "allocations": 0,
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-smal-network-san-1/providers/Microsoft.Network/virtualNetworks/vnet-smal-san-1/subnets/snet-localbox-host",
+          "nsg": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-smal-network-san-1/providers/Microsoft.Network/networkSecurityGroups/nsg-smal-localbox-san-1",
+          "outbound": false,
+          "prefix": "10.200.16.0/24",
+          "routeTable": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-smal-network-san-1/providers/Microsoft.Network/routeTables/rt-smal-san-1"
+        },
+        {
+          "allocations": 0,
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-smal-network-san-1/providers/Microsoft.Network/virtualNetworks/vnet-smal-san-1/subnets/snet-private-endpoints",
+          "nsg": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-smal-network-san-1/providers/Microsoft.Network/networkSecurityGroups/nsg-smal-pe-san-1",
+          "outbound": false,
+          "prefix": "10.200.17.0/26",
+          "routeTable": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-smal-network-san-1/providers/Microsoft.Network/routeTables/rt-smal-san-1"
+        }
+      ]
+    },
+    "error": null
+  },
+  "hostNsg": {
+    "observedAtSast": "2026-10-27T10:04:26.952270+02:00",
+    "command": [
+      "az",
+      "network",
+      "nsg",
+      "show",
+      "-g",
+      "rg-smal-network-san-1",
+      "-n",
+      "nsg-smal-localbox-san-1",
+      "--query",
+      "{id:id,rules:securityRules[].{name:name,priority:priority,access:access,direction:direction,protocol:protocol,source:sourceAddressPrefix,destination:destinationAddressPrefix,sourcePorts:sourcePortRange,destinationPorts:destinationPortRange,destinationPortRanges:destinationPortRanges}}",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 0,
+    "result": {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-smal-network-san-1/providers/Microsoft.Network/networkSecurityGroups/nsg-smal-localbox-san-1",
+      "rules": [
+        {
+          "access": "Allow",
+          "destination": "10.200.16.0/24",
+          "destinationPortRanges": [
+            "22",
+            "3389"
+          ],
+          "destinationPorts": "",
+          "direction": "Inbound",
+          "name": "Allow-Bastion-Administration",
+          "priority": 100,
+          "protocol": "Tcp",
+          "source": "10.202.0.0/26",
+          "sourcePorts": "*"
+        },
+        {
+          "access": "Deny",
+          "destination": "*",
+          "destinationPortRanges": [],
+          "destinationPorts": "*",
+          "direction": "Inbound",
+          "name": "Deny-Other-Inbound",
+          "priority": 4000,
+          "protocol": "*",
+          "source": "*",
+          "sourcePorts": "*"
+        },
+        {
+          "access": "Deny",
+          "destination": "Internet",
+          "destinationPortRanges": [],
+          "destinationPorts": "*",
+          "direction": "Outbound",
+          "name": "Deny-Internet-Pending-Platform-Allowlist",
+          "priority": 4000,
+          "protocol": "*",
+          "source": "*",
+          "sourcePorts": "*"
+        }
+      ]
+    },
+    "error": null
+  },
+  "routeTable": {
+    "observedAtSast": "2026-10-27T10:04:26.756576+02:00",
+    "command": [
+      "az",
+      "network",
+      "route-table",
+      "show",
+      "-g",
+      "rg-smal-network-san-1",
+      "-n",
+      "rt-smal-san-1",
+      "--query",
+      "{id:id,bgpDisabled:disableBgpRoutePropagation,routes:routes[].{name:name,prefix:addressPrefix,nextHop:nextHopType,ip:nextHopIpAddress}}",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 0,
+    "result": {
+      "bgpDisabled": false,
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-smal-network-san-1/providers/Microsoft.Network/routeTables/rt-smal-san-1",
+      "routes": [
+        {
+          "ip": "10.200.0.132",
+          "name": "default-to-platform-firewall",
+          "nextHop": "VirtualAppliance",
+          "prefix": "0.0.0.0/0"
+        }
+      ]
+    },
+    "error": null
+  },
+  "sku": {
+    "observedAtSast": "2026-10-27T10:05:54.803870+02:00",
+    "command": [
+      "az",
+      "vm",
+      "list-skus",
+      "-l",
+      "southafricanorth",
+      "--size",
+      "Standard_E32s_v6",
+      "--all",
+      "--query",
+      "[?resourceType=='virtualMachines'].{name:name,family:family,restrictions:restrictions,capabilities:capabilities}",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 0,
+    "result": [
+      {
+        "capabilities": [
+          {
+            "name": "MaxResourceVolumeMB",
+            "value": "0"
+          },
+          {
+            "name": "OSVhdSizeMB",
+            "value": "1047552"
+          },
+          {
+            "name": "vCPUs",
+            "value": "32"
+          },
+          {
+            "name": "MemoryPreservingMaintenanceSupported",
+            "value": "True"
+          },
+          {
+            "name": "HyperVGenerations",
+            "value": "V2"
+          },
+          {
+            "name": "DiskControllerTypes",
+            "value": "NVMe"
+          },
+          {
+            "name": "SupportedCapacityReservationTypes",
+            "value": "Open,Targeted"
+          },
+          {
+            "name": "MemoryGB",
+            "value": "256"
+          },
+          {
+            "name": "MaxDataDiskCount",
+            "value": "64"
+          },
+          {
+            "name": "CpuArchitectureType",
+            "value": "x64"
+          },
+          {
+            "name": "LowPriorityCapable",
+            "value": "True"
+          },
+          {
+            "name": "PremiumIO",
+            "value": "True"
+          },
+          {
+            "name": "VMDeploymentTypes",
+            "value": "IaaS"
+          },
+          {
+            "name": "vCPUsConstraintsAllowed",
+            "value": "1, 2, 4, 8, 16, 20, 32, 6, 12, 24, 10, 30, 15, 18, 28"
+          },
+          {
+            "name": "vCPUsAvailable",
+            "value": "32"
+          },
+          {
+            "name": "vCPUsPerCore",
+            "value": "2"
+          },
+          {
+            "name": "CombinedTempDiskAndCachedIOPS",
+            "value": "144000"
+          },
+          {
+            "name": "CombinedTempDiskAndCachedReadBytesPerSecond",
+            "value": "2000000000"
+          },
+          {
+            "name": "CombinedTempDiskAndCachedWriteBytesPerSecond",
+            "value": "2000000000"
+          },
+          {
+            "name": "UncachedDiskIOPS",
+            "value": "51200"
+          },
+          {
+            "name": "UncachedDiskBytesPerSecond",
+            "value": "1696000000"
+          },
+          {
+            "name": "EphemeralOSDiskSupported",
+            "value": "False"
+          },
+          {
+            "name": "EncryptionAtHostSupported",
+            "value": "True"
+          },
+          {
+            "name": "CapacityReservationSupported",
+            "value": "True"
+          },
+          {
+            "name": "AcceleratedNetworkingEnabled",
+            "value": "True"
+          },
+          {
+            "name": "RdmaEnabled",
+            "value": "False"
+          },
+          {
+            "name": "MaxNetworkInterfaces",
+            "value": "8"
+          }
+        ],
+        "family": "StandardEsv6Family",
+        "name": "Standard_E32s_v6",
+        "restrictions": []
+      }
+    ],
+    "error": null
+  },
+  "quota": {
+    "observedAtSast": "2026-10-27T10:04:28.175626+02:00",
+    "command": [
+      "az",
+      "vm",
+      "list-usage",
+      "-l",
+      "southafricanorth",
+      "--query",
+      "[].{name:name.value,current:currentValue,limit:limit}",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 0,
+    "result": [
+      {
+        "current": "0",
+        "limit": "100",
+        "name": "cores"
+      },
+      {
+        "current": "0",
+        "limit": "100",
+        "name": "StandardEsv6Family"
+      }
+    ],
+    "error": null
+  },
+  "windowsImages": {
+    "observedAtSast": "2026-10-27T10:04:35.603551+02:00",
+    "command": [
+      "az",
+      "vm",
+      "image",
+      "list",
+      "-l",
+      "southafricanorth",
+      "--publisher",
+      "MicrosoftWindowsServer",
+      "--offer",
+      "WindowsServer",
+      "--sku",
+      "2025-datacenter-g2",
+      "--all",
+      "--query",
+      "[-3:].{urn:urn,version:version}",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 0,
+    "result": [
+      {
+        "urn": "MicrosoftWindowsServer:WindowsServer:2025-datacenter-g2:26100.33438.260905",
+        "version": "26100.33438.260905"
+      },
+      {
+        "urn": "MicrosoftWindowsServer:WindowsServer:2025-datacenter-g2:26100.33650.261013",
+        "version": "26100.33650.261013"
+      },
+      {
+        "urn": "MicrosoftWindowsServer:WindowsServer:2025-datacenter-g2:26100.33674.261024",
+        "version": "26100.33674.261024"
+      }
+    ],
+    "error": null
+  },
+  "hciLocations": {
+    "observedAtSast": "2026-10-27T10:04:27.590126+02:00",
+    "command": [
+      "az",
+      "provider",
+      "show",
+      "-n",
+      "Microsoft.AzureStackHCI",
+      "--query",
+      "{state:registrationState,types:resourceTypes[?resourceType=='clusters'].{type:resourceType,locations:locations,apiVersions:apiVersions}}",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 0,
+    "result": {
+      "state": "Registered",
+      "types": [
+        {
+          "apiVersions": [
+            "2026-11-01-preview",
+            "2026-10-15-preview",
+            "2026-10-01",
+            "2026-05-01-preview",
+            "2026-04-30",
+            "2026-04-01-preview",
+            "2026-03-01-preview",
+            "2026-02-15-preview",
+            "2026-02-01",
+            "2025-12-01-preview",
+            "2025-10-01",
+            "2025-09-15-preview",
+            "2025-02-01-preview",
+            "2024-12-01-preview",
+            "2024-09-01-preview",
+            "2024-04-01",
+            "2024-02-15-preview",
+            "2024-01-01",
+            "2023-11-01-preview",
+            "2023-08-01-preview",
+            "2023-08-01",
+            "2023-06-01",
+            "2023-03-01",
+            "2023-02-01",
+            "2022-12-01",
+            "2022-10-01",
+            "2022-09-01",
+            "2022-05-01",
+            "2022-03-01",
+            "2022-01-01",
+            "2021-09-01",
+            "2021-01-01-preview",
+            "2020-10-01"
+          ],
+          "locations": [
+            "Australia East",
+            "South Central US",
+            "East US",
+            "UK South",
+            "UK West",
+            "Germany West Central",
+            "West Europe",
+            "Southeast Asia",
+            "Canada Central",
+            "Japan East",
+            "Central India"
+          ],
+          "type": "clusters"
+        }
+      ]
+    },
+    "error": null
+  },
+  "hostLocks": {
+    "observedAtSast": "2026-10-27T10:04:29.329090+02:00",
+    "command": [
+      "az",
+      "lock",
+      "list",
+      "-g",
+      "rg-localbox-nodes-san-1",
+      "--query",
+      "[].{id:id,name:name,level:level}",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 0,
+    "result": [],
+    "error": null
+  },
+  "hostPolicies": {
+    "observedAtSast": "2026-10-27T10:04:29.210163+02:00",
+    "command": [
+      "az",
+      "policy",
+      "assignment",
+      "list",
+      "--scope",
+      "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1",
+      "--filter",
+      "atScope()",
+      "--query",
+      "[].{id:id,name:name,displayName:displayName,scope:scope,definitionId:policyDefinitionId,enforcementMode:enforcementMode}",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 0,
+    "result": [
+      {
+        "definitionId": "/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8",
+        "displayName": "Azure Security Baseline",
+        "enforcementMode": "Default",
+        "id": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policyAssignments/Azure_Security_Baseline",
+        "name": "Azure_Security_Baseline",
+        "scope": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b"
+      },
+      {
+        "definitionId": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policySetDefinitions/MCAPSGovAuditPolicies",
+        "displayName": "MCAPSGov Audit Policies",
+        "enforcementMode": "Default",
+        "id": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policyAssignments/MCAPSGovAuditPolicies",
+        "name": "MCAPSGovAuditPolicies",
+        "scope": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b"
+      },
+      {
+        "definitionId": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policySetDefinitions/MCAPSGovDenyPolicies",
+        "displayName": "MCAPSGov Deny Policies",
+        "enforcementMode": "Default",
+        "id": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policyAssignments/MCAPSGovDenyPolicies",
+        "name": "MCAPSGovDenyPolicies",
+        "scope": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b"
+      },
+      {
+        "definitionId": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policySetDefinitions/MCAPSGovDeployPolicies",
+        "displayName": "MCAPSGov Deploy and Modify Policies",
+        "enforcementMode": "Default",
+        "id": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policyAssignments/MCAPSGovDeployPolicies",
+        "name": "MCAPSGovDeployPolicies",
+        "scope": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b"
+      },
+      {
+        "definitionId": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policyDefinitions/53af45c4-1cae-4e79-8b83-43189d6c6e2c",
+        "displayName": "Block Azure RM Resource Creation",
+        "enforcementMode": "Default",
+        "id": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policyAssignments/023ce42e86eb4aad99a91252",
+        "name": "023ce42e86eb4aad99a91252",
+        "scope": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b"
+      },
+      {
+        "definitionId": "/providers/Microsoft.Authorization/policySetDefinitions/9cb3cc7a-b39b-4b82-bc89-e5a5d9ff7b97",
+        "displayName": "ASC DataProtection (subscription: 8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea)",
+        "enforcementMode": "Default",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/providers/Microsoft.Authorization/policyAssignments/DataProtectionSecurityCenter",
+        "name": "DataProtectionSecurityCenter",
+        "scope": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea"
+      },
+      {
+        "definitionId": "/providers/Microsoft.Authorization/policySetDefinitions/e77fc0b3-f7e9-4c58-bc13-cb753ed8e46e",
+        "displayName": "ASC OpenSourceRelationalDatabasesProtection (subscription: 8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea)",
+        "enforcementMode": "Default",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/providers/Microsoft.Authorization/policyAssignments/OpenSourceRelationalDatabasesProtectionSecurityCenter",
+        "name": "OpenSourceRelationalDatabasesProtectionSecurityCenter",
+        "scope": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea"
+      },
+      {
+        "definitionId": "/providers/Microsoft.Authorization/policySetDefinitions/c1529623-9fc2-45bc-b84b-b14cd0b7484e",
+        "displayName": "Defender for SQL Servers on Machines provisioning (subscription: 8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea)",
+        "enforcementMode": "Default",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/providers/Microsoft.Authorization/policyAssignments/SqlVmAndArcSqlServersProtection",
+        "name": "SqlVmAndArcSqlServersProtection",
+        "scope": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea"
+      }
+    ],
+    "error": null
+  },
+  "networkPolicies": {
+    "observedAtSast": "2026-10-27T10:04:29.686189+02:00",
+    "command": [
+      "az",
+      "policy",
+      "assignment",
+      "list",
+      "--scope",
+      "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-smal-network-san-1",
+      "--filter",
+      "atScope()",
+      "--query",
+      "[].{id:id,name:name,displayName:displayName,scope:scope,definitionId:policyDefinitionId,enforcementMode:enforcementMode}",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 0,
+    "result": [
+      {
+        "definitionId": "/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8",
+        "displayName": "Azure Security Baseline",
+        "enforcementMode": "Default",
+        "id": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policyAssignments/Azure_Security_Baseline",
+        "name": "Azure_Security_Baseline",
+        "scope": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b"
+      },
+      {
+        "definitionId": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policySetDefinitions/MCAPSGovAuditPolicies",
+        "displayName": "MCAPSGov Audit Policies",
+        "enforcementMode": "Default",
+        "id": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policyAssignments/MCAPSGovAuditPolicies",
+        "name": "MCAPSGovAuditPolicies",
+        "scope": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b"
+      },
+      {
+        "definitionId": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policySetDefinitions/MCAPSGovDenyPolicies",
+        "displayName": "MCAPSGov Deny Policies",
+        "enforcementMode": "Default",
+        "id": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policyAssignments/MCAPSGovDenyPolicies",
+        "name": "MCAPSGovDenyPolicies",
+        "scope": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b"
+      },
+      {
+        "definitionId": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policySetDefinitions/MCAPSGovDeployPolicies",
+        "displayName": "MCAPSGov Deploy and Modify Policies",
+        "enforcementMode": "Default",
+        "id": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policyAssignments/MCAPSGovDeployPolicies",
+        "name": "MCAPSGovDeployPolicies",
+        "scope": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b"
+      },
+      {
+        "definitionId": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policyDefinitions/53af45c4-1cae-4e79-8b83-43189d6c6e2c",
+        "displayName": "Block Azure RM Resource Creation",
+        "enforcementMode": "Default",
+        "id": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policyAssignments/023ce42e86eb4aad99a91252",
+        "name": "023ce42e86eb4aad99a91252",
+        "scope": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b"
+      },
+      {
+        "definitionId": "/providers/Microsoft.Authorization/policySetDefinitions/9cb3cc7a-b39b-4b82-bc89-e5a5d9ff7b97",
+        "displayName": "ASC DataProtection (subscription: 8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea)",
+        "enforcementMode": "Default",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/providers/Microsoft.Authorization/policyAssignments/DataProtectionSecurityCenter",
+        "name": "DataProtectionSecurityCenter",
+        "scope": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea"
+      },
+      {
+        "definitionId": "/providers/Microsoft.Authorization/policySetDefinitions/e77fc0b3-f7e9-4c58-bc13-cb753ed8e46e",
+        "displayName": "ASC OpenSourceRelationalDatabasesProtection (subscription: 8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea)",
+        "enforcementMode": "Default",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/providers/Microsoft.Authorization/policyAssignments/OpenSourceRelationalDatabasesProtectionSecurityCenter",
+        "name": "OpenSourceRelationalDatabasesProtectionSecurityCenter",
+        "scope": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea"
+      },
+      {
+        "definitionId": "/providers/Microsoft.Authorization/policySetDefinitions/c1529623-9fc2-45bc-b84b-b14cd0b7484e",
+        "displayName": "Defender for SQL Servers on Machines provisioning (subscription: 8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea)",
+        "enforcementMode": "Default",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/providers/Microsoft.Authorization/policyAssignments/SqlVmAndArcSqlServersProtection",
+        "name": "SqlVmAndArcSqlServersProtection",
+        "scope": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea"
+      }
+    ],
+    "error": null
+  },
+  "operatorHostPermissions": {
+    "observedAtSast": "2026-10-27T10:04:30.024536+02:00",
+    "command": [
+      "az",
+      "rest",
+      "--method",
+      "get",
+      "--url",
+      "https://management.azure.com/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Authorization/permissions?api-version=2022-04-01",
+      "--query",
+      "value[].{actions:actions,notActions:notActions,dataActions:dataActions,notDataActions:notDataActions}",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 0,
+    "result": [
+      {
+        "actions": [
+          "*/read"
+        ],
+        "dataActions": [],
+        "notActions": [],
+        "notDataActions": []
+      },
+      {
+        "actions": [
+          "*"
+        ],
+        "dataActions": [],
+        "notActions": [],
+        "notDataActions": []
+      }
+    ],
+    "error": null
+  },
+  "operatorSubnetPermissions": {
+    "observedAtSast": "2026-10-27T10:04:30.157315+02:00",
+    "command": [
+      "az",
+      "rest",
+      "--method",
+      "get",
+      "--url",
+      "https://management.azure.com/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-smal-network-san-1/providers/Microsoft.Network/virtualNetworks/vnet-smal-san-1/subnets/snet-localbox-host/providers/Microsoft.Authorization/permissions?api-version=2022-04-01",
+      "--query",
+      "value[].{actions:actions,notActions:notActions,dataActions:dataActions,notDataActions:notDataActions}",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 0,
+    "result": [
+      {
+        "actions": [
+          "*/read"
+        ],
+        "dataActions": [],
+        "notActions": [],
+        "notDataActions": []
+      },
+      {
+        "actions": [
+          "*"
+        ],
+        "dataActions": [],
+        "notActions": [],
+        "notDataActions": []
+      }
+    ],
+    "error": null
+  },
+  "infraVnets": {
+    "observedAtSast": "2026-10-27T10:05:57.701177+02:00",
+    "command": [
+      "az",
+      "network",
+      "vnet",
+      "list",
+      "--query",
+      "[].{id:id,prefixes:addressSpace.addressPrefixes}",
+      "--subscription",
+      "702382d0-3722-4630-8983-5580b92f0c1a",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 0,
+    "result": [
+      {
+        "id": "/subscriptions/702382d0-3722-4630-8983-5580b92f0c1a/resourceGroups/rg-bastion-san-1/providers/Microsoft.Network/virtualNetworks/vnet-bastion-san-1",
+        "prefixes": [
+          "10.202.0.0/24"
+        ]
+      },
+      {
+        "id": "/subscriptions/702382d0-3722-4630-8983-5580b92f0c1a/resourceGroups/rg-dns-san-1/providers/Microsoft.Network/virtualNetworks/vnet-dns-san-1",
+        "prefixes": [
+          "10.204.0.0/22"
+        ]
+      }
+    ],
+    "error": null
+  },
+  "bastion": {
+    "observedAtSast": "2026-10-27T10:06:11.773088+02:00",
+    "command": [
+      "az",
+      "network",
+      "bastion",
+      "show",
+      "-g",
+      "rg-bastion-san-1",
+      "-n",
+      "bas-test-san-1",
+      "--query",
+      "{id:id,state:provisioningState,sku:sku.name,dnsName:dnsName,privateOnly:enablePrivateOnly,tunneling:enableTunneling}",
+      "--subscription",
+      "702382d0-3722-4630-8983-5580b92f0c1a",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 0,
+    "result": {
+      "dnsName": "bst-45a6180a-b682-48ae-8933-5908a275c8f3.bastion.azure.com",
+      "id": "/subscriptions/702382d0-3722-4630-8983-5580b92f0c1a/resourceGroups/rg-bastion-san-1/providers/Microsoft.Network/bastionHosts/bas-test-san-1",
+      "privateOnly": null,
+      "sku": "Premium",
+      "state": "Succeeded",
+      "tunneling": true
+    },
+    "error": null
+  },
+  "actualDeploymentHost": {
+    "10.204.0.4": [
+      {
+        "dst": "10.204.0.4",
+        "gateway": "172.16.0.129",
+        "dev": "tun0",
+        "prefsrc": "172.16.0.130",
+        "flags": [],
+        "uid": 1000,
+        "cache": []
+      }
+    ],
+    "10.200.16.4": [
+      {
+        "dst": "10.200.16.4",
+        "gateway": "172.16.0.129",
+        "dev": "tun0",
+        "prefsrc": "172.16.0.130",
+        "flags": [],
+        "uid": 1000,
+        "cache": []
+      }
+    ],
+    "resolverTcp53": "reachable",
+    "host": "Gerard-EVO-X2"
+  }
+}

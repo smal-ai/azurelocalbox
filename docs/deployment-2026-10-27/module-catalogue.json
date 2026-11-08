@@ -1,0 +1,115 @@
+{
+  "url": "https://www.powershellgallery.com/api/v2/FindPackagesById()?id='Azure.Arc.Jumpstart.LocalBox'",
+  "packages": [
+    {
+      "Id": "Azure.Arc.Jumpstart.LocalBox",
+      "Version": "1.0.1",
+      "Published": "2025-05-28T20:15:58.643",
+      "IsLatestVersion": "false",
+      "IsAbsoluteLatestVersion": "false",
+      "Dependencies": null,
+      "PackageHash": "yF/m0b3sTWklaUiFPHPSJt66FU1eLgQ2aO5IxyPbQ3lx+iG3OJNGwjDXlsShycV4romve/oxkZjzE/qUdP9zAQ==",
+      "PackageHashAlgorithm": "SHA512",
+      "ProjectUrl": null,
+      "PackageSize": "21969"
+    },
+    {
+      "Id": "Azure.Arc.Jumpstart.LocalBox",
+      "Version": "1.0.2",
+      "Published": "2025-05-28T21:52:09.523",
+      "IsLatestVersion": "false",
+      "IsAbsoluteLatestVersion": "false",
+      "Dependencies": null,
+      "PackageHash": "2AlFm9QQWeDwpxv6nmfnN9oQKz5isV5iP62+rcCwytz/K7kNQvWfNitOgZ+6gI3OPQnN5rd2Z6hbRnUQaA0sdQ==",
+      "PackageHashAlgorithm": "SHA512",
+      "ProjectUrl": null,
+      "PackageSize": "22052"
+    },
+    {
+      "Id": "Azure.Arc.Jumpstart.LocalBox",
+      "Version": "1.0.3",
+      "Published": "2025-05-29T12:45:57.74",
+      "IsLatestVersion": "false",
+      "IsAbsoluteLatestVersion": "false",
+      "Dependencies": null,
+      "PackageHash": "Qvvyq4erQxsyBdPQ2kHxs2y3k0zWzrprrLL2JDME0KsIM/VOaxzCrtRPXiQaPCL/1qdBRXZt0cnI5dm4wt6tFQ==",
+      "PackageHashAlgorithm": "SHA512",
+      "ProjectUrl": null,
+      "PackageSize": "21796"
+    },
+    {
+      "Id": "Azure.Arc.Jumpstart.LocalBox",
+      "Version": "1.0.4",
+      "Published": "2025-05-29T17:34:14",
+      "IsLatestVersion": "false",
+      "IsAbsoluteLatestVersion": "false",
+      "Dependencies": null,
+      "PackageHash": "bJxg/Zp6CAadMdnVzJ2c88sGCyGJIWVCLhwGWTQbNQxuTSagkc5yP2N6VZlcCf38O+bW3MFcbe3jhVFs20l7FA==",
+      "PackageHashAlgorithm": "SHA512",
+      "ProjectUrl": null,
+      "PackageSize": "21794"
+    },
+    {
+      "Id": "Azure.Arc.Jumpstart.LocalBox",
+      "Version": "1.0.5",
+      "Published": "2025-05-30T14:07:49.03",
+      "IsLatestVersion": "false",
+      "IsAbsoluteLatestVersion": "false",
+      "Dependencies": null,
+      "PackageHash": "82RM8szkyyclIHqqEEmussmL5wy73YzmUfZEbvS5a6Twqv6FYTqU3VpBuC3h3WChpjIdnBg7NPjsQKXDdg01Mw==",
+      "PackageHashAlgorithm": "SHA512",
+      "ProjectUrl": null,
+      "PackageSize": "21796"
+    },
+    {
+      "Id": "Azure.Arc.Jumpstart.LocalBox",
+      "Version": "1.0.6",
+      "Published": "2025-07-03T20:19:12.18",
+      "IsLatestVersion": "false",
+      "IsAbsoluteLatestVersion": "false",
+      "Dependencies": null,
+      "PackageHash": "UkDSmybhi2r94NLZcWO059cwIAFdKXsalLgAv0/gg4yuCZ8o0Slta4ykw0g0lpyucyHZ5foR4oFvDe6iByM65g==",
+      "PackageHashAlgorithm": "SHA512",
+      "ProjectUrl": null,
+      "PackageSize": "22100"
+    },
+    {
+      "Id": "Azure.Arc.Jumpstart.LocalBox",
+      "Version": "1.0.7",
+      "Published": "2025-07-04T13:08:43.303",
+      "IsLatestVersion": "false",
+      "IsAbsoluteLatestVersion": "false",
+      "Dependencies": null,
+      "PackageHash": "cLywCQs95FTEDvSMJmX5Nud69+GSj5Q5QdLN1uAE6FVIShRFJo8eWEHodBNasQdscGVojKCReCwn/pj4sng9Gg==",
+      "PackageHashAlgorithm": "SHA512",
+      "ProjectUrl": null,
+      "PackageSize": "22223"
+    },
+    {
+      "Id": "Azure.Arc.Jumpstart.LocalBox",
+      "Version": "1.0.8",
+      "Published": "2025-10-15T16:26:45.733",
+      "IsLatestVersion": "true",
+      "IsAbsoluteLatestVersion": "false",
+      "Dependencies": null,
+      "PackageHash": "s7jz6shL3HnRi6PWzVqWwr+HpAu9ZCkEUedEqnf5gzt0ozSxUzXZrjiUEQsYE34xvpVtQBIfRjDo8+XmqTYNAg==",
+      "PackageHashAlgorithm": "SHA512",
+      "ProjectUrl": null,
+      "PackageSize": "22205"
+    },
+    {
+      "Id": "Azure.Arc.Jumpstart.LocalBox",
+      "Version": "1.1.0-preview0001",
+      "Published": "2025-07-03T20:10:25.403",
+      "IsLatestVersion": "false",
+      "IsAbsoluteLatestVersion": "true",
+      "Dependencies": null,
+      "PackageHash": "NnbWJNFE9fVqPRe50L14R4cbVm9XkGIFC9ExZJ2OREmslueNjuzp9cwZNo+0Z9uFj5Jg4bSII9GT5yql1x/r0Q==",
+      "PackageHashAlgorithm": "SHA512",
+      "ProjectUrl": null,
+      "PackageSize": "22130"
+    }
+  ],
+  "nextPages": [],
+  "status": "metadata-only-no-module-installed"
+}

@@ -1,0 +1,43 @@
+{
+  "observedAtUtc": "2026-10-30T12:58:30.311469+00:00",
+  "azureMutationPerformed": false,
+  "tokenValuesExported": false,
+  "selectedActivityIdentityMetadata": [
+    {
+      "time": "2026-10-29T22:57:26.9137566Z",
+      "caller": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "applicationId": "a1a9c5b6-7a4f-4288-89ab-6805873f65d1",
+      "managedIdentityResourceId": null,
+      "identityType": "app",
+      "objectId": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "action": "Microsoft.Compute/disks/write"
+    },
+    {
+      "time": "2026-10-29T22:57:10.0237342Z",
+      "caller": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "applicationId": "a1a9c5b6-7a4f-4288-89ab-6805873f65d1",
+      "managedIdentityResourceId": null,
+      "identityType": "app",
+      "objectId": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "action": "Microsoft.Compute/disks/write"
+    },
+    {
+      "time": "2026-10-29T22:57:05.2450879Z",
+      "caller": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "applicationId": "a1a9c5b6-7a4f-4288-89ab-6805873f65d1",
+      "managedIdentityResourceId": null,
+      "identityType": "app",
+      "objectId": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "action": "Microsoft.Compute/disks/write"
+    },
+    {
+      "time": "2026-10-29T22:57:04.2605918Z",
+      "caller": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "applicationId": "a1a9c5b6-7a4f-4288-89ab-6805873f65d1",
+      "managedIdentityResourceId": null,
+      "identityType": "app",
+      "objectId": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "action": "Microsoft.Compute/disks/write"
+    }
+  ]
+}

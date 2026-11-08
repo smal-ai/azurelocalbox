@@ -1,0 +1,268 @@
+{
+  "beganAtUtc": "2026-10-30T05:58:39.801853+00:00",
+  "sourceCommit": "d92883838d0b8426bb961747c01b88c13d4106b0",
+  "status": "uncertain-or-still-running-inspect-do-not-repeat",
+  "stage": "validate",
+  "deploymentName": "localbox-three-node-validate-gateway-echo-20261029",
+  "initialValidationOnly": true,
+  "deploySubmitted": false,
+  "clusterReapplied": false,
+  "rolesOrSecretsReapplied": false,
+  "platformReadinessVerified": false,
+  "originalUnsubmittedRefusalRetained": true,
+  "originalUnsubmittedReceiptSha256": "88ff9e9d3c6f9a4503be93a05b382a1c2263d18da581e91b9d6ecb8a2be3a112",
+  "terminalInitialValidationProof": {
+    "clusterStatus": "ValidationFailed",
+    "mode": "Validate",
+    "provisioningState": "Failed",
+    "validationStatus": "Error",
+    "deploymentStatus": null,
+    "deployArmRecords": [],
+    "knownLcmFormatErrorMatched": false,
+    "knownInfraNetworkErrorMatched": true
+  },
+  "privateInputsReceipt": "docs/deployment-2026-10-27/private-ssh-three-cluster-inputs-validate-gateway-auth-resume-20261029.json",
+  "currentGatewayEchoProof": "docs/deployment-2026-10-27/private-ssh-infra-network-before-validation-auth-resume-20261030.json",
+  "originalFailedReceiptSha256": "997c2a14561b00c20e3ddc8f4d87cda64ac1172c4f02044cca66af1d72d931fc",
+  "templateSha256": "114525f39b6e38cec58e01284bbcc82f764d108e7925c27eecb96d9faf830c65",
+  "correctedLcmVersionId": "https://kv-lbox-weu-4766ea.vault.azure.net/secrets/smal-localbox01-AzureStackLCMUserCredential/6960763ffad243efa172ad4b4d9079fb",
+  "previewChanges": [
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/microsoft.azurestackhci/clusters/smal-localbox01/deploymentSettings/default",
+      "changeType": "NoChange"
+    }
+  ],
+  "deploymentId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.Resources/deployments/localbox-three-node-validate-gateway-echo-20261029",
+  "deploymentState": "Succeeded",
+  "deploymentErrorCode": null,
+  "serviceResult": {
+    "provisioningState": "Succeeded",
+    "mode": "Validate",
+    "action": {
+      "status": "Success",
+      "steps": [
+        {
+          "name": "Azure Local Remote Management",
+          "status": "Success",
+          "index": "0",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Connectivity",
+          "status": "Success",
+          "index": "10",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local External Active Directory",
+          "status": "Success",
+          "index": "20",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local SBE Health",
+          "status": "Success",
+          "index": "30",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Hardware",
+          "status": "Success",
+          "index": "40",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Network Configuration",
+          "status": "Success",
+          "index": "50",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Network Infra Connection",
+          "status": "Success",
+          "index": "51",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Network Storage Connection",
+          "status": "Success",
+          "index": "52",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Observability",
+          "status": "Success",
+          "index": "60",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Software",
+          "status": "Success",
+          "index": "70",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local MOC Stack",
+          "status": "Success",
+          "index": "80",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Arc Integration",
+          "status": "Success",
+          "index": "90",
+          "exceptionCount": 0,
+          "children": [
+            {
+              "name": "ValidateArcIntegration",
+              "status": "Success",
+              "index": "90.0",
+              "exceptionCount": 0,
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "Azure Local Cluster Witness",
+          "status": "Success",
+          "index": "100",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local OS Image Recipe Validation",
+          "status": "Success",
+          "index": "110",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Local Identity Validation",
+          "status": "Skipped",
+          "index": "120",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local ARB Stack",
+          "status": "Success",
+          "index": "130",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Cloud Validation",
+          "status": "Success",
+          "index": "140",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Add hosts to domain and create cluster object.",
+          "status": "Success",
+          "index": "150",
+          "exceptionCount": 0,
+          "children": [
+            {
+              "name": "Evaluate domain join action.",
+              "status": "Success",
+              "index": "150.0",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Get conflicting GPO information if any.",
+              "status": "Success",
+              "index": "150.1",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Restart seed node if the current logged on user is not a domain user.",
+              "status": "Success",
+              "index": "150.2",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Create cluster object in AD if not available.",
+              "status": "Success",
+              "index": "150.3",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Allow the cluster object to create a Cluster Name Object in Active Directory.",
+              "status": "Success",
+              "index": "150.4",
+              "exceptionCount": 0,
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "Azure Stack HCI GroupPolicy",
+          "status": "Success",
+          "index": "151",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local DNS",
+          "status": "Success",
+          "index": "160",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local NTP",
+          "status": "Success",
+          "index": "161",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Cluster Validation",
+          "status": "Success",
+          "index": "170",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Network LLDP Validation",
+          "status": "Success",
+          "index": "180",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Storage Validation",
+          "status": "Success",
+          "index": "190",
+          "exceptionCount": 0,
+          "children": [
+            {
+              "name": "ValidateStorage",
+              "status": "Success",
+              "index": "190.0",
+              "exceptionCount": 0,
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "finishedAtUtc": "2026-10-30T08:01:34.632405+00:00"
+}

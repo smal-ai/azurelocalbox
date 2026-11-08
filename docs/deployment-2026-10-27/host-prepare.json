@@ -1,0 +1,11 @@
+{
+  "atSast": "2026-10-27T10:43:54.934837+02:00",
+  "templateSourceSha256": "c24301dbe6af8d7aef0ae932b0e286df05c98d749460838eff3cb6dd6409d45e",
+  "scope": "host-only",
+  "validation": "succeeded",
+  "previewAllowedHostCreatesOnly": true,
+  "credentialLocation": "/home/quintin/.local/state/azurelocalbox/credentials/smal-host-20261027.json",
+  "credentialMode": "0600-owner-only-outside-repository",
+  "credentialValueExported": false,
+  "azureResourceApplyAttempted": false
+}

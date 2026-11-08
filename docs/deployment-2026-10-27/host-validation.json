@@ -1,0 +1,156 @@
+{
+  "beganAtSast": "2026-10-27T10:43:20.318618+02:00",
+  "command": [
+    "az",
+    "deployment",
+    "group",
+    "validate",
+    "--subscription",
+    "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+    "-g",
+    "rg-localbox-nodes-san-1",
+    "--name",
+    "smal-host-20261027",
+    "--template-file",
+    "/tmp/opencode/localbox-20261027/smal-host-reviewed.json",
+    "--parameters",
+    "@/dev/stdin",
+    "-o",
+    "json",
+    "--only-show-errors"
+  ],
+  "secureParameters": "stdin-only-not-in-arguments-or-report",
+  "finishedAtSast": "2026-10-27T10:43:30.187837+02:00",
+  "exitCode": 0,
+  "status": "succeeded",
+  "result": {
+    "error": null,
+    "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Resources/deployments/smal-host-20261027",
+    "name": "smal-host-20261027",
+    "properties": {
+      "correlationId": "57b76695-e8ee-4228-b301-056710c101ba",
+      "debugSetting": null,
+      "dependencies": [
+        {
+          "dependsOn": [
+            {
+              "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Network/networkInterfaces/LocalBox-Client-NIC",
+              "resourceGroup": "rg-localbox-nodes-san-1",
+              "resourceName": "LocalBox-Client-NIC",
+              "resourceType": "Microsoft.Network/networkInterfaces"
+            }
+          ],
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+          "resourceGroup": "rg-localbox-nodes-san-1",
+          "resourceName": "LocalBox-Client",
+          "resourceType": "Microsoft.Compute/virtualMachines"
+        }
+      ],
+      "diagnostics": null,
+      "duration": "PT0S",
+      "error": null,
+      "extensions": [],
+      "mode": "Incremental",
+      "onErrorDeployment": null,
+      "outputResources": null,
+      "outputs": null,
+      "parameters": {
+        "adminPassword": "[redacted-secure-input]",
+        "adminUsername": {
+          "type": "String",
+          "value": "arcdemo"
+        },
+        "hostPlanApproved": {
+          "type": "Bool",
+          "value": true
+        },
+        "imageVersion": {
+          "type": "String",
+          "value": "26100.33674.261024"
+        },
+        "location": {
+          "type": "String",
+          "value": "southafricanorth"
+        },
+        "vmSize": {
+          "type": "String",
+          "value": "Standard_E32s_v6"
+        }
+      },
+      "parametersLink": null,
+      "providers": [
+        {
+          "id": null,
+          "namespace": "Microsoft.Network",
+          "providerAuthorizationConsentState": null,
+          "registrationPolicy": null,
+          "registrationState": null,
+          "resourceTypes": [
+            {
+              "aliases": null,
+              "apiProfiles": null,
+              "apiVersions": null,
+              "capabilities": null,
+              "defaultApiVersion": null,
+              "locationMappings": null,
+              "locations": [
+                "southafricanorth"
+              ],
+              "properties": null,
+              "resourceType": "networkInterfaces",
+              "zoneMappings": null
+            }
+          ]
+        },
+        {
+          "id": null,
+          "namespace": "Microsoft.Compute",
+          "providerAuthorizationConsentState": null,
+          "registrationPolicy": null,
+          "registrationState": null,
+          "resourceTypes": [
+            {
+              "aliases": null,
+              "apiProfiles": null,
+              "apiVersions": null,
+              "capabilities": null,
+              "defaultApiVersion": null,
+              "locationMappings": null,
+              "locations": [
+                "southafricanorth"
+              ],
+              "properties": null,
+              "resourceType": "virtualMachines",
+              "zoneMappings": null
+            }
+          ]
+        }
+      ],
+      "provisioningState": "Succeeded",
+      "templateHash": "7801220344717777306",
+      "templateLink": null,
+      "timestamp": "2026-10-27T08:43:26.782807+00:00",
+      "validatedResources": [
+        {
+          "apiVersion": null,
+          "extension": null,
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+          "identifiers": null,
+          "resourceGroup": "rg-localbox-nodes-san-1",
+          "resourceType": null
+        },
+        {
+          "apiVersion": null,
+          "extension": null,
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Network/networkInterfaces/LocalBox-Client-NIC",
+          "identifiers": null,
+          "resourceGroup": "rg-localbox-nodes-san-1",
+          "resourceType": null
+        }
+      ],
+      "validationLevel": null
+    },
+    "resourceGroup": "rg-localbox-nodes-san-1",
+    "type": "Microsoft.Resources/deployments"
+  }
+}

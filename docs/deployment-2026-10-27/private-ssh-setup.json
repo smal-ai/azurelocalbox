@@ -1,0 +1,13 @@
+{
+  "beganAtSast": "2026-10-27T11:53:23.646479+02:00",
+  "status": "failed-inspect-before-retry",
+  "commit": "8e5d6f70a8d4d39d5139e30bac8741670b3d457d",
+  "scriptSha256": "7680fc6ee424fb30aa027460e591b504d10451a2b2ea330f8b4294f628b5cc05",
+  "publicKeySha256": "7d9cfc5d0aea1cf771db46219fefd66cb5fc3f8c1acc624e8bcfaa30bb9df53d",
+  "privateKeyValueExported": false,
+  "bootstrapApplied": false,
+  "exitCode": 0,
+  "guestErrorLabel": "Active non-default SSH configuration found",
+  "errorType": "RuntimeError",
+  "finishedAtSast": "2026-10-27T11:53:54.993440+02:00"
+}

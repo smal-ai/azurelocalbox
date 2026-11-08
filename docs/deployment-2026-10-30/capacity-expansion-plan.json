@@ -1,0 +1,393 @@
+{
+  "schemaVersion": 1,
+  "observedAtUtc": "2026-10-30T13:18:16.484472+00:00",
+  "hostId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+  "vmBefore": {
+    "data": [
+      {
+        "caching": "None",
+        "deleteOption": "Detach",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_0",
+        "lun": 0
+      },
+      {
+        "caching": "None",
+        "deleteOption": "Detach",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_1",
+        "lun": 1
+      },
+      {
+        "caching": "None",
+        "deleteOption": "Detach",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_2",
+        "lun": 2
+      },
+      {
+        "caching": "None",
+        "deleteOption": "Detach",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_3",
+        "lun": 3
+      },
+      {
+        "caching": "None",
+        "deleteOption": "Detach",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_4",
+        "lun": 4
+      },
+      {
+        "caching": "None",
+        "deleteOption": "Detach",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_5",
+        "lun": 5
+      },
+      {
+        "caching": "None",
+        "deleteOption": "Detach",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_6",
+        "lun": 6
+      },
+      {
+        "caching": "None",
+        "deleteOption": "Detach",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_7",
+        "lun": 7
+      },
+      {
+        "caching": "None",
+        "deleteOption": "Detach",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-Node03-SSD-20261029",
+        "lun": 8
+      }
+    ],
+    "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+    "osId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-OSDisk",
+    "size": "Standard_E32s_v6"
+  },
+  "existingDisks": [
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_0",
+      "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+      "name": "LocalBox-Client-DataDisk_0",
+      "sizeGiB": 256,
+      "sku": "Standard_LRS",
+      "state": "Attached",
+      "uniqueId": "57aeb75f-b0f0-49c3-9a12-3757392e496f"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_1",
+      "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+      "name": "LocalBox-Client-DataDisk_1",
+      "sizeGiB": 256,
+      "sku": "Standard_LRS",
+      "state": "Attached",
+      "uniqueId": "af455474-8a07-435c-b964-b5d4febe16ae"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_2",
+      "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+      "name": "LocalBox-Client-DataDisk_2",
+      "sizeGiB": 256,
+      "sku": "Standard_LRS",
+      "state": "Attached",
+      "uniqueId": "49b38c02-59cf-4198-af4c-d4397d2ebfe3"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_3",
+      "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+      "name": "LocalBox-Client-DataDisk_3",
+      "sizeGiB": 256,
+      "sku": "Standard_LRS",
+      "state": "Attached",
+      "uniqueId": "84fd8226-1aa8-4294-b872-10276168aa1a"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_4",
+      "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+      "name": "LocalBox-Client-DataDisk_4",
+      "sizeGiB": 256,
+      "sku": "Standard_LRS",
+      "state": "Attached",
+      "uniqueId": "9d86dc52-0d98-4c4d-948e-2edcf666626b"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_5",
+      "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+      "name": "LocalBox-Client-DataDisk_5",
+      "sizeGiB": 256,
+      "sku": "Standard_LRS",
+      "state": "Attached",
+      "uniqueId": "9e9ad843-050b-4fa3-9258-4d545fd4d9a5"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_6",
+      "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+      "name": "LocalBox-Client-DataDisk_6",
+      "sizeGiB": 256,
+      "sku": "Standard_LRS",
+      "state": "Attached",
+      "uniqueId": "ca978897-2089-4c3f-96ce-7cc19390737e"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_7",
+      "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+      "name": "LocalBox-Client-DataDisk_7",
+      "sizeGiB": 256,
+      "sku": "Standard_LRS",
+      "state": "Attached",
+      "uniqueId": "e9bc84ea-0a1b-4718-b723-4f1210f6dec0"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-Node03-SSD-20261029",
+      "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+      "name": "LocalBox-Client-Node03-SSD-20261029",
+      "sizeGiB": 2048,
+      "sku": "Standard_LRS",
+      "state": "Attached",
+      "uniqueId": "eab2d4b3-d41d-44b3-99b4-d6c1c928c97b"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-OSDisk",
+      "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+      "name": "LocalBox-Client-OSDisk",
+      "sizeGiB": 1024,
+      "sku": "Standard_LRS",
+      "state": "Attached",
+      "uniqueId": "95424e39-60c1-459b-b7f3-d127d679ea88"
+    }
+  ],
+  "nodes": {
+    "LB-NODE01": {
+      "vmId": "3adff629-2f67-449b-ab32-8a8748c46f34",
+      "originalDisks": [
+        {
+          "lun": 0,
+          "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE01\\OS.vhdx",
+          "vhdId": "853E242C-04B5-422E-A649-64E0D80BC634",
+          "guestUniqueId": "600224802C243E85B50464E0D80BC634",
+          "sizeBytes": 137438953472,
+          "eligibleForS2D": false
+        },
+        {
+          "lun": 1,
+          "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE01\\S2D-1.vhdx",
+          "vhdId": "3EEAA918-A937-4F75-B9D0-1804553ABFEE",
+          "guestUniqueId": "6002248018A9EA3E37A91804553ABFEE",
+          "sizeBytes": 182536110080,
+          "eligibleForS2D": true
+        },
+        {
+          "lun": 2,
+          "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE01\\S2D-2.vhdx",
+          "vhdId": "77197BD4-01B2-4D57-9AC5-A09A9AD85C7E",
+          "guestUniqueId": "60022480D47B1977B201A09A9AD85C7E",
+          "sizeBytes": 182536110080,
+          "eligibleForS2D": true
+        },
+        {
+          "lun": 3,
+          "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE01\\S2D-3.vhdx",
+          "vhdId": "6EA95454-2F24-442E-9FD8-3C38305128AC",
+          "guestUniqueId": "600224805454A96E242F3C38305128AC",
+          "sizeBytes": 182536110080,
+          "eligibleForS2D": true
+        },
+        {
+          "lun": 4,
+          "path": "W:\\AzureLocalBox\\Relocated\\LB-NODE01\\S2D-4.vhdx",
+          "vhdId": "45B23F1E-D817-4DE0-A84A-C5F2124F7E30",
+          "guestUniqueId": "600224801E3FB24517D8C5F2124F7E30",
+          "sizeBytes": 182536110080,
+          "eligibleForS2D": true
+        }
+      ],
+      "newDisks": [
+        {
+          "lun": 5,
+          "sizeBytes": 182536110080,
+          "path": "X:\\AzureLocalBox\\CapacityExpansion-20261030-01\\LB-NODE01\\S2D-5.vhdx"
+        },
+        {
+          "lun": 6,
+          "sizeBytes": 182536110080,
+          "path": "X:\\AzureLocalBox\\CapacityExpansion-20261030-01\\LB-NODE01\\S2D-6.vhdx"
+        },
+        {
+          "lun": 7,
+          "sizeBytes": 182536110080,
+          "path": "X:\\AzureLocalBox\\CapacityExpansion-20261030-01\\LB-NODE01\\S2D-7.vhdx"
+        },
+        {
+          "lun": 8,
+          "sizeBytes": 182536110080,
+          "path": "X:\\AzureLocalBox\\CapacityExpansion-20261030-01\\LB-NODE01\\S2D-8.vhdx"
+        }
+      ]
+    },
+    "LB-NODE02": {
+      "vmId": "12a44e0c-cc08-4c4c-a812-fa0b56efdbc3",
+      "originalDisks": [
+        {
+          "lun": 0,
+          "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE02\\OS.vhdx",
+          "vhdId": "B0CE2A23-BB31-4239-9197-14739AF3844B",
+          "guestUniqueId": "60022480232ACEB031BB14739AF3844B",
+          "sizeBytes": 137438953472,
+          "eligibleForS2D": false
+        },
+        {
+          "lun": 1,
+          "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE02\\S2D-1.vhdx",
+          "vhdId": "9BD9AC65-C854-427A-917E-7E76586527CA",
+          "guestUniqueId": "6002248065ACD99B54C87E76586527CA",
+          "sizeBytes": 182536110080,
+          "eligibleForS2D": true
+        },
+        {
+          "lun": 2,
+          "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE02\\S2D-2.vhdx",
+          "vhdId": "54BE3319-5702-47BC-844C-E4937DA41512",
+          "guestUniqueId": "600224801933BE540257E4937DA41512",
+          "sizeBytes": 182536110080,
+          "eligibleForS2D": true
+        },
+        {
+          "lun": 3,
+          "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE02\\S2D-3.vhdx",
+          "vhdId": "30A2A237-2B37-45E1-B506-3EC87A9D3377",
+          "guestUniqueId": "6002248037A2A230372B3EC87A9D3377",
+          "sizeBytes": 182536110080,
+          "eligibleForS2D": true
+        },
+        {
+          "lun": 4,
+          "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE02\\S2D-4.vhdx",
+          "vhdId": "C7A6F52D-F6E8-4BD8-96F4-062832A93BAC",
+          "guestUniqueId": "600224802DF5A6C7E8F6062832A93BAC",
+          "sizeBytes": 182536110080,
+          "eligibleForS2D": true
+        }
+      ],
+      "newDisks": [
+        {
+          "lun": 5,
+          "sizeBytes": 182536110080,
+          "path": "X:\\AzureLocalBox\\CapacityExpansion-20261030-01\\LB-NODE02\\S2D-5.vhdx"
+        },
+        {
+          "lun": 6,
+          "sizeBytes": 182536110080,
+          "path": "X:\\AzureLocalBox\\CapacityExpansion-20261030-01\\LB-NODE02\\S2D-6.vhdx"
+        },
+        {
+          "lun": 7,
+          "sizeBytes": 182536110080,
+          "path": "X:\\AzureLocalBox\\CapacityExpansion-20261030-01\\LB-NODE02\\S2D-7.vhdx"
+        },
+        {
+          "lun": 8,
+          "sizeBytes": 182536110080,
+          "path": "X:\\AzureLocalBox\\CapacityExpansion-20261030-01\\LB-NODE02\\S2D-8.vhdx"
+        }
+      ]
+    },
+    "LB-NODE03": {
+      "vmId": "5b6eba15-fa82-4e12-9e45-5ffbcd48c8a9",
+      "originalDisks": [
+        {
+          "lun": 0,
+          "path": "W:\\AzureLocalBox\\Guests\\three-node-20261029-01\\LB-NODE03\\OS.vhdx",
+          "vhdId": "B1A59A04-5622-45D7-BDAD-BCCC17475830",
+          "guestUniqueId": "60022480049AA5B12256BCCC17475830",
+          "sizeBytes": 137438953472,
+          "eligibleForS2D": false
+        },
+        {
+          "lun": 1,
+          "path": "W:\\AzureLocalBox\\Guests\\three-node-20261029-01\\LB-NODE03\\S2D-1.vhdx",
+          "vhdId": "653A88F1-1857-48A2-89DD-A83EB381308E",
+          "guestUniqueId": "60022480F1883A655718A83EB381308E",
+          "sizeBytes": 182536110080,
+          "eligibleForS2D": true
+        },
+        {
+          "lun": 2,
+          "path": "W:\\AzureLocalBox\\Guests\\three-node-20261029-01\\LB-NODE03\\S2D-2.vhdx",
+          "vhdId": "F14C3C33-75EF-469E-9D9A-B7CA8C7973A3",
+          "guestUniqueId": "60022480333C4CF1EF75B7CA8C7973A3",
+          "sizeBytes": 182536110080,
+          "eligibleForS2D": true
+        },
+        {
+          "lun": 3,
+          "path": "W:\\AzureLocalBox\\Guests\\three-node-20261029-01\\LB-NODE03\\S2D-3.vhdx",
+          "vhdId": "3EBE652F-0767-48A3-B582-33600EC131EF",
+          "guestUniqueId": "600224802F65BE3E670733600EC131EF",
+          "sizeBytes": 182536110080,
+          "eligibleForS2D": true
+        },
+        {
+          "lun": 4,
+          "path": "W:\\AzureLocalBox\\Guests\\three-node-20261029-01\\LB-NODE03\\S2D-4.vhdx",
+          "vhdId": "9FB45DB2-CA18-4F8E-98B9-0B5A7F55FAF2",
+          "guestUniqueId": "60022480B25DB49F18CA0B5A7F55FAF2",
+          "sizeBytes": 182536110080,
+          "eligibleForS2D": true
+        }
+      ],
+      "newDisks": [
+        {
+          "lun": 5,
+          "sizeBytes": 182536110080,
+          "path": "X:\\AzureLocalBox\\CapacityExpansion-20261030-01\\LB-NODE03\\S2D-5.vhdx"
+        },
+        {
+          "lun": 6,
+          "sizeBytes": 182536110080,
+          "path": "X:\\AzureLocalBox\\CapacityExpansion-20261030-01\\LB-NODE03\\S2D-6.vhdx"
+        },
+        {
+          "lun": 7,
+          "sizeBytes": 182536110080,
+          "path": "X:\\AzureLocalBox\\CapacityExpansion-20261030-01\\LB-NODE03\\S2D-7.vhdx"
+        },
+        {
+          "lun": 8,
+          "sizeBytes": 182536110080,
+          "path": "X:\\AzureLocalBox\\CapacityExpansion-20261030-01\\LB-NODE03\\S2D-8.vhdx"
+        }
+      ]
+    }
+  },
+  "newDisk": {
+    "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-Capacity-20261030",
+    "name": "LocalBox-Client-Capacity-20261030",
+    "sizeGiB": 4096,
+    "sku": "Standard_LRS",
+    "location": "southafricanorth",
+    "lun": 9,
+    "driveLetter": "X",
+    "caching": "None",
+    "deleteOption": "Detach",
+    "joinOuterPool": false
+  },
+  "expectedS2dPoolId": "{923c0194-3ed4-449a-ae14-0f62861e0ec8}",
+  "oldDataDeviceCount": 12,
+  "targetDataDeviceCount": 24,
+  "originalOuterPoolId": "{b8174816-65a9-46f7-87c1-b189be0b90e5}",
+  "originalOuterVirtualDiskId": "D0CDB2F96D0E244E8B532E096F97FBBF",
+  "existingOsDisksOrDiskSizesChanged": false,
+  "csvSizesChanged": false,
+  "policyOrAutomationChanged": false,
+  "workiqRequested": false,
+  "retailReference": {
+    "sourceUrl": "https://prices.azure.com/api/retail/prices?currencyCode=USD&$filter=serviceName%20eq%20%27Storage%27%20and%20armRegionName%20eq%20%27southafricanorth%27%20and%20priceType%20eq%20%27Consumption%27%20and%20contains%28productName%2C%20%27Standard%20HDD%20Managed%20Disks%27%29",
+    "sku": "S50 LRS",
+    "capacityUsdPerMonth": 192.1,
+    "notContractPrice": true,
+    "transactionsTaxOtherChargesExcluded": true
+  },
+  "references": [
+    "https://learn.microsoft.com/en-us/windows-server/storage/storage-spaces/storage-spaces-direct-in-vm",
+    "https://learn.microsoft.com/en-us/windows-server/storage/storage-spaces/add-nodes#adding-drives"
+  ]
+}

@@ -1,0 +1,435 @@
+{
+  "observedAtUtc": "2026-10-30T12:57:49.548187+00:00",
+  "azureMutationPerformed": false,
+  "diskWriteActivity": [
+    {
+      "caller": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "correlationId": "a28ed0b7-6dee-471e-b685-1c64034bb457",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_3",
+      "status": "Succeeded",
+      "time": "2026-10-29T22:57:31.4174844Z"
+    },
+    {
+      "caller": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "correlationId": "1392daf8-285f-418d-8067-73685143055c",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_1",
+      "status": "Succeeded",
+      "time": "2026-10-29T22:57:30.8332266Z"
+    },
+    {
+      "caller": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "correlationId": "78c74703-d52c-49ed-ad1b-af3510e1b9f8",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_0",
+      "status": "Succeeded",
+      "time": "2026-10-29T22:57:30.0815489Z"
+    },
+    {
+      "caller": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "correlationId": "980dd013-0258-4660-9a89-38aa1908af98",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_2",
+      "status": "Succeeded",
+      "time": "2026-10-29T22:57:30.0519767Z"
+    },
+    {
+      "caller": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "correlationId": "6adc1254-51cd-4c82-a83e-4853d485b825",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_4",
+      "status": "Succeeded",
+      "time": "2026-10-29T22:57:29.0207301Z"
+    },
+    {
+      "caller": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "correlationId": "7b4066db-4acb-4422-afa4-824c220b949f",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-Node03-SSD-20261029",
+      "status": "Succeeded",
+      "time": "2026-10-29T22:57:26.9137566Z"
+    },
+    {
+      "caller": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "correlationId": "dc378516-73ca-4c5e-baf9-20aca9efd3c0",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-OSDisk",
+      "status": "Succeeded",
+      "time": "2026-10-29T22:57:25.5233762Z"
+    },
+    {
+      "caller": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "correlationId": "e33d3617-1480-4b5e-b863-44d3fc0e635e",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_6",
+      "status": "Succeeded",
+      "time": "2026-10-29T22:57:25.361087Z"
+    },
+    {
+      "caller": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "correlationId": "ebab34be-6a9e-408d-9715-e298a6a950fb",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_7",
+      "status": "Succeeded",
+      "time": "2026-10-29T22:57:25.2456884Z"
+    },
+    {
+      "caller": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "correlationId": "e0f25f2d-9fd9-4b80-aaaa-9762b2f71b5d",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_5",
+      "status": "Succeeded",
+      "time": "2026-10-29T22:57:24.5074064Z"
+    },
+    {
+      "caller": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "correlationId": "6adc1254-51cd-4c82-a83e-4853d485b825",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_4",
+      "status": "Accepted",
+      "time": "2026-10-29T22:57:11.913076Z"
+    },
+    {
+      "caller": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "correlationId": "a28ed0b7-6dee-471e-b685-1c64034bb457",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_3",
+      "status": "Accepted",
+      "time": "2026-10-29T22:57:11.3543154Z"
+    },
+    {
+      "caller": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "correlationId": "6adc1254-51cd-4c82-a83e-4853d485b825",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_4",
+      "status": "Started",
+      "time": "2026-10-29T22:57:11.1317785Z"
+    },
+    {
+      "caller": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "correlationId": "a28ed0b7-6dee-471e-b685-1c64034bb457",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_3",
+      "status": "Started",
+      "time": "2026-10-29T22:57:10.7293049Z"
+    },
+    {
+      "caller": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "correlationId": "980dd013-0258-4660-9a89-38aa1908af98",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_2",
+      "status": "Accepted",
+      "time": "2026-10-29T22:57:09.4104235Z"
+    },
+    {
+      "caller": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "correlationId": "1392daf8-285f-418d-8067-73685143055c",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_1",
+      "status": "Accepted",
+      "time": "2026-10-29T22:57:09.3842439Z"
+    },
+    {
+      "caller": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "correlationId": "1392daf8-285f-418d-8067-73685143055c",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_1",
+      "status": "Started",
+      "time": "2026-10-29T22:57:08.7748401Z"
+    },
+    {
+      "caller": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "correlationId": "980dd013-0258-4660-9a89-38aa1908af98",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_2",
+      "status": "Started",
+      "time": "2026-10-29T22:57:08.7697705Z"
+    },
+    {
+      "caller": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "correlationId": "78c74703-d52c-49ed-ad1b-af3510e1b9f8",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_0",
+      "status": "Accepted",
+      "time": "2026-10-29T22:57:08.6198155Z"
+    },
+    {
+      "caller": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "correlationId": "78c74703-d52c-49ed-ad1b-af3510e1b9f8",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_0",
+      "status": "Started",
+      "time": "2026-10-29T22:57:08.2135526Z"
+    },
+    {
+      "caller": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "correlationId": "7b4066db-4acb-4422-afa4-824c220b949f",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-Node03-SSD-20261029",
+      "status": "Accepted",
+      "time": "2026-10-29T22:57:05.2450879Z"
+    },
+    {
+      "caller": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "correlationId": "e0f25f2d-9fd9-4b80-aaaa-9762b2f71b5d",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_5",
+      "status": "Accepted",
+      "time": "2026-10-29T22:57:04.4266596Z"
+    },
+    {
+      "caller": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "correlationId": "e33d3617-1480-4b5e-b863-44d3fc0e635e",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_6",
+      "status": "Accepted",
+      "time": "2026-10-29T22:57:04.3797831Z"
+    },
+    {
+      "caller": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "correlationId": "dc378516-73ca-4c5e-baf9-20aca9efd3c0",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-OSDisk",
+      "status": "Accepted",
+      "time": "2026-10-29T22:57:04.2923673Z"
+    },
+    {
+      "caller": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "correlationId": "7b4066db-4acb-4422-afa4-824c220b949f",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-Node03-SSD-20261029",
+      "status": "Started",
+      "time": "2026-10-29T22:57:04.2605918Z"
+    },
+    {
+      "caller": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "correlationId": "e33d3617-1480-4b5e-b863-44d3fc0e635e",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_6",
+      "status": "Started",
+      "time": "2026-10-29T22:57:03.6298903Z"
+    },
+    {
+      "caller": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "correlationId": "e0f25f2d-9fd9-4b80-aaaa-9762b2f71b5d",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_5",
+      "status": "Started",
+      "time": "2026-10-29T22:57:03.6298903Z"
+    },
+    {
+      "caller": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "correlationId": "dc378516-73ca-4c5e-baf9-20aca9efd3c0",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-OSDisk",
+      "status": "Started",
+      "time": "2026-10-29T22:57:03.6204471Z"
+    },
+    {
+      "caller": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "correlationId": "ebab34be-6a9e-408d-9715-e298a6a950fb",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_7",
+      "status": "Accepted",
+      "time": "2026-10-29T22:57:03.4447084Z"
+    },
+    {
+      "caller": "da847d8c-ee71-44de-b462-6775e7d649a7",
+      "correlationId": "ebab34be-6a9e-408d-9715-e298a6a950fb",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_7",
+      "status": "Started",
+      "time": "2026-10-29T22:57:03.0384503Z"
+    },
+    {
+      "caller": "quintindekok@microsoft.com",
+      "correlationId": "cfae460e-dc12-42cd-87fe-6f0e0810eeba",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-Node03-SSD-20261029",
+      "status": "Succeeded",
+      "time": "2026-10-29T09:09:42.5079139Z"
+    },
+    {
+      "caller": "quintindekok@microsoft.com",
+      "correlationId": "cfae460e-dc12-42cd-87fe-6f0e0810eeba",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-Node03-SSD-20261029",
+      "status": "Accepted",
+      "time": "2026-10-29T09:09:37.4887026Z"
+    },
+    {
+      "caller": "quintindekok@microsoft.com",
+      "correlationId": "cfae460e-dc12-42cd-87fe-6f0e0810eeba",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-Node03-SSD-20261029",
+      "status": "Started",
+      "time": "2026-10-29T09:09:36.8636847Z"
+    },
+    {
+      "caller": "quintindekok@microsoft.com",
+      "correlationId": "f1ad9641-f45c-4e8b-bd87-7deb18772701",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-OSDisk",
+      "status": "Succeeded",
+      "time": "2026-10-29T08:04:48.0983004Z"
+    },
+    {
+      "caller": "quintindekok@microsoft.com",
+      "correlationId": "f1ad9641-f45c-4e8b-bd87-7deb18772701",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-OSDisk",
+      "status": "Accepted",
+      "time": "2026-10-29T08:04:44.3900939Z"
+    },
+    {
+      "caller": "quintindekok@microsoft.com",
+      "correlationId": "f1ad9641-f45c-4e8b-bd87-7deb18772701",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-OSDisk",
+      "status": "Started",
+      "time": "2026-10-29T08:04:43.9525874Z"
+    },
+    {
+      "caller": "quintindekok@microsoft.com",
+      "correlationId": "6c46ec7e-b63d-43a6-bbff-460c8933658d",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_7",
+      "status": "Succeeded",
+      "time": "2026-10-29T08:04:35.6137771Z"
+    },
+    {
+      "caller": "quintindekok@microsoft.com",
+      "correlationId": "6c46ec7e-b63d-43a6-bbff-460c8933658d",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_7",
+      "status": "Accepted",
+      "time": "2026-10-29T08:04:32.6502334Z"
+    },
+    {
+      "caller": "quintindekok@microsoft.com",
+      "correlationId": "6c46ec7e-b63d-43a6-bbff-460c8933658d",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_7",
+      "status": "Started",
+      "time": "2026-10-29T08:04:32.5408558Z"
+    },
+    {
+      "caller": "quintindekok@microsoft.com",
+      "correlationId": "c8029502-366b-41be-ac78-46832c851c72",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_6",
+      "status": "Succeeded",
+      "time": "2026-10-29T08:04:25.0991724Z"
+    },
+    {
+      "caller": "quintindekok@microsoft.com",
+      "correlationId": "c8029502-366b-41be-ac78-46832c851c72",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_6",
+      "status": "Accepted",
+      "time": "2026-10-29T08:04:21.165429Z"
+    },
+    {
+      "caller": "quintindekok@microsoft.com",
+      "correlationId": "c8029502-366b-41be-ac78-46832c851c72",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_6",
+      "status": "Started",
+      "time": "2026-10-29T08:04:20.7747892Z"
+    },
+    {
+      "caller": "quintindekok@microsoft.com",
+      "correlationId": "1506e376-79fa-4c58-8732-2099b3d683a3",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_5",
+      "status": "Succeeded",
+      "time": "2026-10-29T08:04:12.7500427Z"
+    },
+    {
+      "caller": "quintindekok@microsoft.com",
+      "correlationId": "1506e376-79fa-4c58-8732-2099b3d683a3",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_5",
+      "status": "Accepted",
+      "time": "2026-10-29T08:04:06.6011372Z"
+    },
+    {
+      "caller": "quintindekok@microsoft.com",
+      "correlationId": "1506e376-79fa-4c58-8732-2099b3d683a3",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_5",
+      "status": "Started",
+      "time": "2026-10-29T08:04:06.021082Z"
+    },
+    {
+      "caller": "quintindekok@microsoft.com",
+      "correlationId": "2595a66d-4b95-4f69-becf-4c9ae3597a06",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_4",
+      "status": "Succeeded",
+      "time": "2026-10-29T08:03:49.9309884Z"
+    },
+    {
+      "caller": "quintindekok@microsoft.com",
+      "correlationId": "2595a66d-4b95-4f69-becf-4c9ae3597a06",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_4",
+      "status": "Accepted",
+      "time": "2026-10-29T08:03:45.6470776Z"
+    },
+    {
+      "caller": "quintindekok@microsoft.com",
+      "correlationId": "2595a66d-4b95-4f69-becf-4c9ae3597a06",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_4",
+      "status": "Started",
+      "time": "2026-10-29T08:03:45.2252256Z"
+    },
+    {
+      "caller": "quintindekok@microsoft.com",
+      "correlationId": "95faf0ef-6ca7-4281-ab39-c44428a231ad",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_3",
+      "status": "Succeeded",
+      "time": "2026-10-29T08:03:34.7259076Z"
+    },
+    {
+      "caller": "quintindekok@microsoft.com",
+      "correlationId": "95faf0ef-6ca7-4281-ab39-c44428a231ad",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_3",
+      "status": "Accepted",
+      "time": "2026-10-29T08:03:32.3200657Z"
+    },
+    {
+      "caller": "quintindekok@microsoft.com",
+      "correlationId": "95faf0ef-6ca7-4281-ab39-c44428a231ad",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_3",
+      "status": "Started",
+      "time": "2026-10-29T08:03:31.7418354Z"
+    },
+    {
+      "caller": "quintindekok@microsoft.com",
+      "correlationId": "9a7e9278-21f6-4c40-89a6-c9294c2c1b52",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_2",
+      "status": "Succeeded",
+      "time": "2026-10-29T08:03:24.5378401Z"
+    },
+    {
+      "caller": "quintindekok@microsoft.com",
+      "correlationId": "9a7e9278-21f6-4c40-89a6-c9294c2c1b52",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_2",
+      "status": "Accepted",
+      "time": "2026-10-29T08:03:20.2793001Z"
+    },
+    {
+      "caller": "quintindekok@microsoft.com",
+      "correlationId": "9a7e9278-21f6-4c40-89a6-c9294c2c1b52",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_2",
+      "status": "Started",
+      "time": "2026-10-29T08:03:19.8730537Z"
+    },
+    {
+      "caller": "quintindekok@microsoft.com",
+      "correlationId": "f4f4f5d7-cc7f-4160-b5c5-890e969d6cc6",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_1",
+      "status": "Succeeded",
+      "time": "2026-10-29T08:03:09.1273727Z"
+    },
+    {
+      "caller": "quintindekok@microsoft.com",
+      "correlationId": "f4f4f5d7-cc7f-4160-b5c5-890e969d6cc6",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_1",
+      "status": "Accepted",
+      "time": "2026-10-29T08:03:06.7906551Z"
+    },
+    {
+      "caller": "quintindekok@microsoft.com",
+      "correlationId": "f4f4f5d7-cc7f-4160-b5c5-890e969d6cc6",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_1",
+      "status": "Started",
+      "time": "2026-10-29T08:03:06.290649Z"
+    },
+    {
+      "caller": "quintindekok@microsoft.com",
+      "correlationId": "1338fe9a-f003-49b9-a433-d086b0677486",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_0",
+      "status": "Succeeded",
+      "time": "2026-10-29T08:02:57.9399034Z"
+    },
+    {
+      "caller": "quintindekok@microsoft.com",
+      "correlationId": "1338fe9a-f003-49b9-a433-d086b0677486",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_0",
+      "status": "Accepted",
+      "time": "2026-10-29T08:02:54.5424296Z"
+    },
+    {
+      "caller": "quintindekok@microsoft.com",
+      "correlationId": "1338fe9a-f003-49b9-a433-d086b0677486",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_0",
+      "status": "Started",
+      "time": "2026-10-29T08:02:54.1518521Z"
+    }
+  ],
+  "eventQueryMax": 1000,
+  "independentAddedDiskReadback": {
+    "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-Node03-SSD-20261029",
+    "lastOwnershipUpdateTime": null,
+    "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+    "sizeGiB": 2048,
+    "sku": "Standard_LRS",
+    "uniqueId": "eab2d4b3-d41d-44b3-99b4-d6c1c928c97b"
+  }
+}

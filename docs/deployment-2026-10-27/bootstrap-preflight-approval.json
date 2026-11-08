@@ -1,0 +1,18 @@
+{
+  "humanRequest": "The Entlz agent added all firewall policy changes you needed. Let's see if we can continue with the local bootstrap?",
+  "question": "May I use Azure VM Run Command on LocalBox-Client for a fixed, read-only bootstrap preflight? This executes as SYSTEM through the Azure guest agent, not Bastion. It will inspect prerequisites and test public platform endpoints without credentials, installing software, formatting disks, changing networking or rebooting.",
+  "humanAnswer": "Approve read-only Run Command",
+  "runCommandReadOnlyApproved": true,
+  "targetVm": "LocalBox-Client",
+  "subscriptionId": "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+  "resourceGroup": "rg-localbox-nodes-san-1",
+  "sections": ["System", "Network"],
+  "credentialAccess": false,
+  "softwareInstall": false,
+  "diskFormatting": false,
+  "networkChanges": false,
+  "reboot": false,
+  "unrestrictedRunCommandBootstrapApproved": false,
+  "guestLoginVerificationClaimed": false,
+  "executionSideEffects": "Azure Run Command handler, guest-agent operational logs and normal DNS/HTTP/NTP traffic. Inspection payload does not change host configuration."
+}

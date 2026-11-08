@@ -1,0 +1,32 @@
+{
+  "beganAtSast": "2026-10-28T08:46:32.660510+02:00",
+  "status": "complete",
+  "commit": "8a712fd0261b3626a1c774610d9dad2b28d55e7f",
+  "script": "scripts/inspect-smal-eval-media-access.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 33011,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "method": "HEAD",
+    "host": "software-static.download.prss.microsoft.com",
+    "atUtc": "2026-10-28T06:46:39.3940626Z",
+    "error": "SendFailure",
+    "computer": "LocalBox-Client",
+    "mediaBytesDownloaded": 0,
+    "httpStatus": null
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-28T08:46:40.333912+02:00"
+}

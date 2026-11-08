@@ -1,0 +1,44 @@
+{
+  "azureLocal": {
+    "candidateNotApprovedVersion": true,
+    "vhdUrl": "https://jumpstartprodsg.blob.core.windows.net/jslocal/localbox/prod/AzLocal2604.vhdx",
+    "checksumUrl": "https://jumpstartprodsg.blob.core.windows.net/jslocal/localbox/prod/AzLocal2604.sha256",
+    "vhd": {
+      "httpStatus": 200,
+      "contentLength": "12612272128",
+      "etag": "0x8DEB50144380DA1",
+      "lastModified": "Mon, 18 May 2026 17:16:57 GMT"
+    },
+    "checksum": {
+      "httpStatus": 200,
+      "contentLength": "64",
+      "etag": "0x8DEB4F55A954AAF",
+      "lastModified": "Mon, 18 May 2026 15:51:41 GMT",
+      "publishedSha256": "03C2BD1363C21AA59BCF2A04F8266B727E1B956C7A63FC14D2FB61DFFBAF0519"
+    }
+  },
+  "management": {
+    "candidateNotApprovedVersion": true,
+    "vhdUrl": "https://jumpstartprodsg.blob.core.windows.net/hcibox23h2/WinServerApril2024.vhdx",
+    "checksumUrl": "https://jumpstartprodsg.blob.core.windows.net/hcibox23h2/WinServerApril2024.sha256",
+    "vhd": {
+      "httpStatus": 200,
+      "contentLength": "19599982592",
+      "etag": "0x8DC7F44F1981A25",
+      "lastModified": "Tue, 28 May 2024 18:35:26 GMT"
+    },
+    "checksum": {
+      "httpStatus": 200,
+      "contentLength": "64",
+      "etag": "0x8DC7F445272C9F7",
+      "lastModified": "Tue, 28 May 2024 18:30:59 GMT",
+      "publishedSha256": "33903943A337E716A1C53EA5D610EFC5D04517621B1430F2FA68F353A3B3C369"
+    }
+  },
+  "boundary": {
+    "vhdBytesDownloaded": 0,
+    "installedOrExecuted": false,
+    "checksumVerification": "published-checksum-only-not-verification-of-downloaded-image",
+    "observedAtSast": "2026-10-27T10:32:41.357117+02:00"
+  }
+}

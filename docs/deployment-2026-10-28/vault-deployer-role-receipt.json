@@ -1,0 +1,25 @@
+{
+  "beganAtUtc": "2026-10-28T13:04:09.417787+00:00",
+  "status": "failed-inspect-before-resume",
+  "sourceCommit": "921ea02da2db261659e518841c373e5df354f08b",
+  "deploymentName": "localbox-vault-deployer-role-20261028",
+  "scope": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.KeyVault/vaults/kv-lbox-weu-4766ea",
+  "principalId": "82f494a8-b9f5-46fc-b0f7-c70be0572a63",
+  "roleDefinitionId": "b86a8fe4-44ce-4948-aee5-eccb2c155cd7",
+  "publicAccessOrVaultConfigurationChangeRequested": false,
+  "subscriptionWideGrantRequested": false,
+  "effectiveAssignmentsBefore": [
+    {
+      "principalType": "Group",
+      "role": "Reader",
+      "scope": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea"
+    },
+    {
+      "principalType": "User",
+      "role": "Owner",
+      "scope": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea"
+    }
+  ],
+  "errorType": "RuntimeError",
+  "finishedAtUtc": "2026-10-28T13:04:51.408314+00:00"
+}

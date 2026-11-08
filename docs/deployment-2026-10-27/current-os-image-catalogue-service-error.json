@@ -1,0 +1,12 @@
+{
+  "purpose": "documented-schema-matches-request-but-service-rejects-read",
+  "schemaSource": "Azure/azure-rest-api-specs/StackHCI/stable/2026-10-01/hci.json",
+  "exitCode": 1,
+  "error": [
+    {
+      "code": "ParsingError",
+      "message": "Request failed due to invalid or missing solution-type query parameter. Invalid value []. Supported values are [HCI, AzureLinux]."
+    }
+  ],
+  "resourceMutationAttempted": false
+}

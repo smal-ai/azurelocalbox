@@ -1,0 +1,66 @@
+{
+  "atUtc": "2026-10-28T10:55:03.152805+00:00",
+  "status": "captured-for-static-review-not-apply",
+  "files": [
+    {
+      "path": "docs/deployment-2026-10-28/upstream-review/quickstart-commit.json",
+      "bytes": 4833,
+      "sha256": "ba12dbfac9b05b6fb8ba13f5fd7067d6049e69d5b48704c6b5d908de5daecf72"
+    },
+    {
+      "path": "docs/deployment-2026-10-28/upstream-review/azuredeploy.json",
+      "bytes": 34278,
+      "sha256": "a95bf9a734cc7433f171a31685193ea053941b24f33111bddc9552ce20195f58",
+      "url": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/b56eb9051390299afe2d913bf2d10861fef279fd/quickstarts/microsoft.azurestackhci/create-cluster/azuredeploy.json"
+    },
+    {
+      "path": "docs/deployment-2026-10-28/upstream-review/azuredeploy.parameters.json",
+      "bytes": 5951,
+      "sha256": "c09fe58be70b75db54d3d0f602672b2481ee262b18713e165a909d45f691f4e6",
+      "url": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/b56eb9051390299afe2d913bf2d10861fef279fd/quickstarts/microsoft.azurestackhci/create-cluster/azuredeploy.parameters.json"
+    },
+    {
+      "path": "docs/deployment-2026-10-28/upstream-review/azure-local-retail-rates.json",
+      "bytes": 13140,
+      "sha256": "aab09f1fe2f24e889b0477265fb10d7c3cba9484d41537c72e55b03d7b6b60d3",
+      "url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20%27Azure%20Local%27"
+    },
+    {
+      "path": "docs/deployment-2026-10-28/upstream-review/ad-module-catalogue.xml",
+      "bytes": 24221,
+      "sha256": "bbb2423fbc0ae7192b560f8ba1cd1bb53e80fa07a0e4df2f750853a55e997901",
+      "url": "https://www.powershellgallery.com/api/v2/FindPackagesById()?id=%27AsHciADArtifactsPreCreationTool%27"
+    },
+    {
+      "path": "docs/deployment-2026-10-28/upstream-review/ad-precreation.10.2402.nupkg",
+      "bytes": 27291,
+      "sha256": "70e34f131ee0d4708dfc608b9fee5ce2d212b0e4746b83fd741e644a809753ac",
+      "url": "https://www.powershellgallery.com/api/v2/package/AsHciADArtifactsPreCreationTool/10.2402.0"
+    },
+    {
+      "path": "docs/deployment-2026-10-28/upstream-review/ad-module-AsHciADArtifactsPreCreationTool.nuspec",
+      "bytes": 835,
+      "sha256": "8b57e70cb7c0bd656b272dc7a379d5f2d799040d84046b616df952f49028c2e6"
+    },
+    {
+      "path": "docs/deployment-2026-10-28/upstream-review/ad-module-AsHciADArtifactsPreCreationTool.psd1",
+      "bytes": 37552,
+      "sha256": "365caf84ec02dd9e00669d4355f4ba1a2546045f2250fd510bc94d203dc243b1"
+    },
+    {
+      "path": "docs/deployment-2026-10-28/upstream-review/ad-module-AsHciADArtifactsPreCreationTool.psm1",
+      "bytes": 26653,
+      "sha256": "17dd0dc6cd10036ee242767be30dd0b8b2a5847c213c82ca54d982109b34d663"
+    }
+  ],
+  "moduleImportedOrExecuted": false,
+  "azureApplyPerformed": false,
+  "quickstartCommit": "b56eb9051390299afe2d913bf2d10861fef279fd",
+  "adModule": {
+    "name": "AsHciADArtifactsPreCreationTool",
+    "version": "10.2402",
+    "packageSha512MatchesGallery": true,
+    "imported": false,
+    "executed": false
+  }
+}

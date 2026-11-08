@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "humanRequest": "let's go. the bootstrap is a long running process so do it asynchronously and make sure you have a way to check the progress and schedule a cron task for yourself to follow up.",
+  "asynchronousPreparationAndFollowupRequested": true,
+  "scheduleId": "smal-localbox-bootstrap-followup-20261027",
+  "cron": "*/10 * * * *",
+  "timezone": "Africa/Johannesburg",
+  "expiresAt": "2026-10-28T12:00:20.212797Z",
+  "mode": "readiness-and-offline-engineering-only-until-exact-apply-gates-pass",
+  "safeClusterEntrypoint": null,
+  "safeClusterEntrypointReviewed": false,
+  "remainingDependenciesPinned": false,
+  "requiredApplyDecisions": {
+    "storageDiskIdentityLayoutAndFormatting": "pending",
+    "nestedPrefixesSnatDnsAndReturnPath": "pending-peer-review",
+    "guestSecretGenerationDeliveryAndLifetime": "pending",
+    "registrationRegionIdentityAndExactScopes": "pending",
+    "platformCloudCostAndMandatoryExports": "pending"
+  },
+  "allowedNow": [
+    "read-existing-evidence-and-current-task-context",
+    "run-non-mutating-readiness-evaluation-asynchronously",
+    "maintain-sanitised-progress-history-and-checkpoints",
+    "continue-bounded-offline-safe-bootstrap-implementation-and-tests",
+    "read-only-host-inspection-through-existing-pinned-key-private-Bastion-path"
+  ],
+  "notAuthorisedByGenericContinuation": [
+    "unsafe-legacy-bootstrap-or-vendor-module-execution",
+    "security-control-waivers",
+    "unreviewed-data-disk-formatting-or-storage-pool-creation",
+    "unreviewed-nested-network-or-VM-application",
+    "implicit-registration-grants-cloud-costs-or-diagnostic-export-acceptance",
+    "automatic-retry-of-failed-or-uncertain-resource-operations"
+  ],
+  "clusterDeploymentStarted": false
+}

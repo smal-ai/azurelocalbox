@@ -1,0 +1,12 @@
+{
+  "atSast": "2026-10-27T13:20:46.167194+02:00",
+  "request": {
+    "method": "GET",
+    "url": "https://management.azure.com/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/providers/Microsoft.AzureStackHCI/locations/westeurope/osImages?api-version=2026-10-01"
+  },
+  "exitCode": 1,
+  "images": [],
+  "imageBytesDownloaded": 0,
+  "rawDownloadUrlsRetained": false,
+  "status": "metadata-read-failed-no-retry-or-mutation"
+}

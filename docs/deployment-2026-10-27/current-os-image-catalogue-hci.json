@@ -1,0 +1,122 @@
+{
+  "atSast": "2026-10-27T13:24:59.239682+02:00",
+  "request": {
+    "method": "GET",
+    "url": "https://management.azure.com/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/providers/Microsoft.AzureStackHCI/locations/westeurope/osImages?api-version=2026-10-01&solution-type=HCI"
+  },
+  "exitCode": 0,
+  "images": [
+    {
+      "name": null,
+      "propertyKeys": [
+        "composedImageIsoHash",
+        "composedImageIsoUrl",
+        "composedImageVersion",
+        "solutionType",
+        "validatedSolutionRecipeVersion"
+      ],
+      "validatedSolutionRecipeVersion": "12.2610.1004.41",
+      "composedImageVersion": "12.2610.0.3098",
+      "composedImageIsoHash": "317330754A6DAC6F42C1BE40EB780E0959C6C3F7670B33D94556964CDCBC9E89",
+      "solutionType": "HCI",
+      "downloadHost": "azurestackreleases.download.prss.microsoft.com",
+      "fileName": "AzureLocal24H2.26100.32230.LCM.12.2610.0.3098.x64.en-us.iso",
+      "downloadQueryPresent": false,
+      "publicDownloadUrl": "https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/Hci24H2/ComposedImage/Deploy/12.2610.0.3098/AzureLocal24H2.26100.32230.LCM.12.2610.0.3098.x64.en-us.iso"
+    },
+    {
+      "name": null,
+      "propertyKeys": [
+        "composedImageIsoHash",
+        "composedImageIsoUrl",
+        "composedImageVersion",
+        "solutionType",
+        "validatedSolutionRecipeVersion"
+      ],
+      "validatedSolutionRecipeVersion": "12.2609.1003.7",
+      "composedImageVersion": "12.2609.0.3009",
+      "composedImageIsoHash": "3940326C8CD53092C281E0FDD8DE6D1397F70E3EC4AD486690E9B588BFF94514",
+      "solutionType": "HCI",
+      "downloadHost": "azurestackreleases.download.prss.microsoft.com",
+      "fileName": "AzureLocal24H2.26100.32230.LCM.12.2609.0.3009.x64.en-us.iso",
+      "downloadQueryPresent": false,
+      "publicDownloadUrl": "https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/ComposedImage/12.2609.0.3009/AzureLocal24H2.26100.32230.LCM.12.2609.0.3009.x64.en-us.iso"
+    },
+    {
+      "name": null,
+      "propertyKeys": [
+        "composedImageIsoHash",
+        "composedImageIsoUrl",
+        "composedImageVersion",
+        "solutionType",
+        "validatedSolutionRecipeVersion"
+      ],
+      "validatedSolutionRecipeVersion": "12.2608.1003.9",
+      "composedImageVersion": "12.2608.0.3020",
+      "composedImageIsoHash": "0CA66A7A3EB6938E852915751C4E02176C3D4099C2DEBB20D53A8A63EA9A9167",
+      "solutionType": "HCI",
+      "downloadHost": "azurestackreleases.download.prss.microsoft.com",
+      "fileName": "AzureLocal24H2.26100.32230.LCM.12.2608.0.3020.x64.en-us.iso",
+      "downloadQueryPresent": false,
+      "publicDownloadUrl": "https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/ComposedImage/12.2608.0.3020/AzureLocal24H2.26100.32230.LCM.12.2608.0.3020.x64.en-us.iso"
+    },
+    {
+      "name": null,
+      "propertyKeys": [
+        "composedImageIsoHash",
+        "composedImageIsoUrl",
+        "composedImageVersion",
+        "solutionType",
+        "validatedSolutionRecipeVersion"
+      ],
+      "validatedSolutionRecipeVersion": "12.2607.1003.73",
+      "composedImageVersion": "12.2607.0.3096",
+      "composedImageIsoHash": "DE0158617BE91BC0390262A05363C50CDE1BD15D334A3AB15253FF8DD5100F02",
+      "solutionType": "HCI",
+      "downloadHost": "azurestackreleases.download.prss.microsoft.com",
+      "fileName": "AzureLocal24H2.26100.32230.LCM.12.2607.0.3096.x64.en-us.iso",
+      "downloadQueryPresent": false,
+      "publicDownloadUrl": "https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/ComposedImage/12.2607.0.3096/AzureLocal24H2.26100.32230.LCM.12.2607.0.3096.x64.en-us.iso"
+    },
+    {
+      "name": null,
+      "propertyKeys": [
+        "composedImageIsoHash",
+        "composedImageIsoUrl",
+        "composedImageVersion",
+        "solutionType",
+        "validatedSolutionRecipeVersion"
+      ],
+      "validatedSolutionRecipeVersion": "12.2606.1003.205",
+      "composedImageVersion": "12.2606.0.3008",
+      "composedImageIsoHash": "A1F3A5054393CDEECF65015C200709BC2C208A81E544391B5084A4B9FBB78207",
+      "solutionType": "HCI",
+      "downloadHost": "dvmendpoint",
+      "fileName": "AzureLocal24H2.26100.32230.LCM.12.2606.0.3008.x64.en-us.iso",
+      "downloadQueryPresent": false,
+      "publicDownloadUrl": "https://dvmendpoint/AzureLocal24H2.26100.32230.LCM.12.2606.0.3008.x64.en-us.iso"
+    },
+    {
+      "name": null,
+      "propertyKeys": [
+        "composedImageIsoHash",
+        "composedImageIsoUrl",
+        "composedImageVersion",
+        "solutionType",
+        "validatedSolutionRecipeVersion"
+      ],
+      "validatedSolutionRecipeVersion": "12.2605.1003.1003",
+      "composedImageVersion": "12.2605.1.3001",
+      "composedImageIsoHash": "FBD5247C915E8262DE2FBFC590F8B0DE80D21124BA6BE7BE635DCD5EE3389640",
+      "solutionType": "HCI",
+      "downloadHost": "dvmendpoint",
+      "fileName": "AzureLocal24H2.26100.32230.LCM.12.2605.1.3001.x64.en-us.iso",
+      "downloadQueryPresent": false,
+      "publicDownloadUrl": "https://dvmendpoint/AzureLocal24H2.26100.32230.LCM.12.2605.1.3001.x64.en-us.iso"
+    }
+  ],
+  "imageBytesDownloaded": 0,
+  "rawDownloadQueriesRetained": false,
+  "serviceRequirementEvidence": "current-os-image-catalogue-service-error.json",
+  "nextPagePresent": false
+}

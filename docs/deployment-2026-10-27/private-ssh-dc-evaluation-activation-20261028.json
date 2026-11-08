@@ -1,0 +1,51 @@
+{
+  "beganAtSast": "2026-10-28T13:22:44.834637+02:00",
+  "status": "complete",
+  "commit": "e944d0fb5985a4bf310bc2b0855c968d9d1da062",
+  "script": "scripts/activate-smal-dc-evaluation.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 50363,
+  "scriptTransport": "encoded-command",
+  "renderedSourceSha256": "91b1e028a52b2cd3aa8d5207b83f07c5b4bee30da6961765469dc6b46681c034",
+  "renderedSourceByteLength": 4078,
+  "unstreamedEncodedLength": 10876,
+  "guestCommandTimeoutSeconds": 300,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "sourceCommit": "e944d0fb5985a4bf310bc2b0855c968d9d1da062",
+    "atUtc": "2026-10-28T11:22:59.9152523Z",
+    "productKeyChanged": false,
+    "result": {
+      "beforeStatus": 2,
+      "licenceId": "753c53a2-4274-4339-8c2e-f66c0b9646c5",
+      "afterStatus": 1,
+      "keyValueExported": false,
+      "activated": false,
+      "computer": "LB-DC01",
+      "activationPerformed": true,
+      "returnCode": null,
+      "graceMinutes": 259200,
+      "PSComputerName": "LB-DC01",
+      "RunspaceId": "d961caa4-76fd-4838-ae7b-3b4b89b9a13f",
+      "PSShowComputerName": true
+    },
+    "status": "activation-not-verified-inspect-before-resume",
+    "runId": "eval-activation-20261028-01",
+    "scope": "accepted-dc-evaluation-activation-only",
+    "paidLicencePurchased": false,
+    "azureRegistrationPerformed": false
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-28T13:23:00.259292+02:00"
+}

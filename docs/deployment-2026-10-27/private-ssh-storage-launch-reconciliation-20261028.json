@@ -1,0 +1,34 @@
+{
+  "beganAtSast": "2026-10-28T09:15:06.470921+02:00",
+  "status": "complete",
+  "commit": "c49cba4cf7efc514c0a427947ef5cb4fd2bf093b",
+  "script": "scripts/read-smal-storage-job.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 33291,
+  "scriptTransport": "encoded-command",
+  "renderedSourceSha256": "51f47921c9beedc581f00bb8d0e1ba54962e0cd523b5bc528328e0314cb0b584",
+  "unstreamedEncodedLength": 3968,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "scope": "storage-only",
+    "clusterBootstrapComplete": false,
+    "startedMarkerExists": false,
+    "runId": "storage-20261028-01",
+    "taskExists": false,
+    "directoryExists": false
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-28T09:15:15.263030+02:00"
+}

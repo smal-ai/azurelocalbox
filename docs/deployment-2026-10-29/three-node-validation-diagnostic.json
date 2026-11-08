@@ -1,0 +1,89 @@
+{
+  "observedAtUtc": "2026-10-29T12:28:52.273130+00:00",
+  "status": "read-only-redacted-diagnostic",
+  "resourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/microsoft.azurestackhci/clusters/smal-localbox01/deploymentSettings/default",
+  "provisioningState": "Failed",
+  "mode": "Validate",
+  "validation": {
+    "status": "Error",
+    "steps": [
+      {
+        "name": "Download content for deployment",
+        "status": "Error",
+        "index": "0",
+        "exceptions": [
+          {
+            "sha256": "2c32e88751e7940cb5f1e3e5b998be22edc0a568b44e1e1c002ca0a3293c8643",
+            "redactedExcerpt": "Type 'InvokeEnvironmentChecker' of Role 'DeploymentService' raised an exception:\n\nMicrosoft.AzureStack.Solution.Deploy.DeploymentLauncher.Models.EceActionLaunchException: Fail to initialize cloud deployment: Domain user credential object cannot contain domain name as part of Username.\nCommand                        Arguments                                                                               \n-------                        ---------                                                                               \nInitialize-CloudDeployment.ps1 {JSONFilePath=C:\\Deployment\\Unattended.json, [REDACTED_LONG_VALUE]...\nValidateJob.ps1                {exceptionLogXml=C:\\MASLogs\\[REDACTED_LONG_VALUE].xml}      \nAt C:\\Program Files\\WindowsPowerShell\\Modules\\CloudCommon\\Tracer.psm1:63 char:9\n+         throw $Message\n+         ~~~~~~~~~~~~~~\n    + CategoryInfo          : OperationStopped: (Fail to initial...ml}      \n:String) [], RuntimeException\n    + FullyQualifiedErrorId : Fail to initialize cloud deployment: Domain user credential object cannot contain domain \n    name as part of Username.\n    Command                        Arguments                                                                           \n        \n    -------                        ---------                                                                           \n        \n    Initialize-CloudDeployment.ps1 {JSONFilePath=C:\\Deployment\\Unattended.json, RegistrationResourceGroupName=rg-local \n   bo...\n    ValidateJob.ps1                {exceptionLogXml=C:\\MASLogs\\[REDACTED_LONG_VALUE].xml}\n--- Standard output ---\n...on: 0 : Running AnswerFileJSchemaCustomResolver.GetSchemaResource for physicalnodes/physicalnode.json\npowershell.exe Information: 0 : Running AnswerFileJSchemaCustomResolver.GetSchemaResource for sdnintegration/sdnintegration.json\npowershell.exe Information: 0 : Running AnswerFileJSchemaCustomResolver.GetSchemaResource for networkcontroller/networkcontroller.json\npowershell.exe Information: 0 : Running AnswerFileJSchemaCustomResolver.GetSchemaResource for networks/network.json\npowershell.exe Information: 0 : Running AnswerFileJSchemaCustomResolver.GetSchemaResource for subnets/subnet.json\npowershell.exe Information: 0 : Running AnswerFileJSchemaCustomResolver.GetSchemaResource for ippools/namedippool.json\npowershell.exe Information: 0 : Running AnswerFileJSchemaCustomResolver.GetSchemaResource for securitysettings/securitysettings.json\npowershell.exe Information: 0 : Running AnswerFileJSchemaCustomResolver.GetSchemaResource for storage/storage.json\npowershell.exe Information: 0 : Running AnswerFileJSchemaCustomResolver.GetSchemaResource for san/san.json\npowershell.exe Information: 0 : Running AnswerFileJSchemaCustomResolver.GetSchemaResource for s2d/s2d.json\npowershell.exe Information: 0 : Running AnswerFileJSchemaCustomResolver.GetSchemaResource for [REDACTED_LONG_VALUE].json\npowershell.exe Information: 0 : Finished creating schema 'Answer File Schema'.\npowershell.exe Information: 0 : Successfully completed schema validation.\npowershell.exe Information: 0 : Validating answer file value...\npowershell.exe Information: 0 : Calling component validator InfrastructureNetworkValidator\npowershell.exe Information: 0 : Validating Gateway in infrastructurenetwork\npowershell.exe Information: 0 : Validating IPPools in infrastructurenetwork\npowershell.exe Information: 0 : Validating DNSServers in infrastructurenetwork\npowershell.exe Information: 0 : Component validator InfrastructureNetworkValidator successfully validated component.\npowershell.exe Information: 0 : Calling component validator HostNetworkValidator\npowershell.exe Information: 0 : Component validator HostNetworkValidator successfully validated component.\npowershell.exe Information: 0 : Calling component validator PhysicalNodesValidator\npowershell.exe Information: 0 : Validating IPv4Address for PhysicalNodes\npowershell.exe Information: 0 : Component validator PhysicalNodesValidator successfully validated component.\npowershell.exe Information: 0 : Calling component validator ClusterValidator\npowershell.exe Information: 0 : Component validator ClusterValidator successfully validated component.\npowershell.exe Information: 0 : Calling component validator SDNIntegrationValidator\npowershell.exe Information: 0 : Component validator SDNIntegrationValidator successfully validated component.\npowershell.exe Information: 0 : Calling component validator LocalAvailabilityZonesValidator\npowershell.exe Information: 0 : Component validator LocalAvailabilityZonesValidator successfully validated component.\npowershell.exe Information: 0 : Successfully completed value validation.\nTrue\nVERBOSE: Successfully passed Answer File Validator.\nVERBOSE: Reading deployment configuration from JSON file: C:\\Deployment\\Unattended.json\nException occurred: Fail to initialize cloud deployment: Domain user credential object cannot contain domain name as part of Username.\nCommand                        Arguments                                                                               \n-------                        ---------                                                                               \nInitialize-CloudDeployment.ps1 {JSONFilePath=C:\\Deployment\\Unattended.json, [REDACTED_LONG_VALUE]...\nValidateJob.ps1                {exceptionLogXml=C:\\MASLogs\\[REDACTED_LONG_VALUE].xml}      \n\n\n\nTranscript stopped, output file is C:\\MASLogs\\[REDACTED_LONG_VALUE].log"
+          }
+        ],
+        "children": [
+          {
+            "name": "PrepareEnvironment",
+            "status": "Success",
+            "index": "0.0",
+            "exceptions": [],
+            "children": []
+          },
+          {
+            "name": "BootstrapEnvironment",
+            "status": "Success",
+            "index": "0.10",
+            "exceptions": [],
+            "children": []
+          },
+          {
+            "name": "SetRegistrationParametersInECEForCloudDeployment",
+            "status": "Success",
+            "index": "0.20",
+            "exceptions": [],
+            "children": []
+          },
+          {
+            "name": "SetObservabilityNodeNameAndVersion",
+            "status": "Success",
+            "index": "0.30",
+            "exceptions": [],
+            "children": []
+          },
+          {
+            "name": "InitializeEceLite",
+            "status": "Success",
+            "index": "0.40",
+            "exceptions": [],
+            "children": []
+          },
+          {
+            "name": "MergeOverwriteAnswerFileProperties",
+            "status": "Success",
+            "index": "0.45",
+            "exceptions": [],
+            "children": []
+          },
+          {
+            "name": "SetAEODeviceARMResourceUriFromRuntimeParameters",
+            "status": "Success",
+            "index": "0.50",
+            "exceptions": [],
+            "children": []
+          },
+          {
+            "name": "InvokeEnvironmentChecker",
+            "status": "Error",
+            "index": "0.60",
+            "exceptions": [
+              {
+                "sha256": "2c32e88751e7940cb5f1e3e5b998be22edc0a568b44e1e1c002ca0a3293c8643",
+                "redactedExcerpt": "Type 'InvokeEnvironmentChecker' of Role 'DeploymentService' raised an exception:\n\nMicrosoft.AzureStack.Solution.Deploy.DeploymentLauncher.Models.EceActionLaunchException: Fail to initialize cloud deployment: Domain user credential object cannot contain domain name as part of Username.\nCommand                        Arguments                                                                               \n-------                        ---------                                                                               \nInitialize-CloudDeployment.ps1 {JSONFilePath=C:\\Deployment\\Unattended.json, [REDACTED_LONG_VALUE]...\nValidateJob.ps1                {exceptionLogXml=C:\\MASLogs\\[REDACTED_LONG_VALUE].xml}      \nAt C:\\Program Files\\WindowsPowerShell\\Modules\\CloudCommon\\Tracer.psm1:63 char:9\n+         throw $Message\n+         ~~~~~~~~~~~~~~\n    + CategoryInfo          : OperationStopped: (Fail to initial...ml}      \n:String) [], RuntimeException\n    + FullyQualifiedErrorId : Fail to initialize cloud deployment: Domain user credential object cannot contain domain \n    name as part of Username.\n    Command                        Arguments                                                                           \n        \n    -------                        ---------                                                                           \n        \n    Initialize-CloudDeployment.ps1 {JSONFilePath=C:\\Deployment\\Unattended.json, RegistrationResourceGroupName=rg-local \n   bo...\n    ValidateJob.ps1                {exceptionLogXml=C:\\MASLogs\\[REDACTED_LONG_VALUE].xml}\n--- Standard output ---\n...on: 0 : Running AnswerFileJSchemaCustomResolver.GetSchemaResource for physicalnodes/physicalnode.json\npowershell.exe Information: 0 : Running AnswerFileJSchemaCustomResolver.GetSchemaResource for sdnintegration/sdnintegration.json\npowershell.exe Information: 0 : Running AnswerFileJSchemaCustomResolver.GetSchemaResource for networkcontroller/networkcontroller.json\npowershell.exe Information: 0 : Running AnswerFileJSchemaCustomResolver.GetSchemaResource for networks/network.json\npowershell.exe Information: 0 : Running AnswerFileJSchemaCustomResolver.GetSchemaResource for subnets/subnet.json\npowershell.exe Information: 0 : Running AnswerFileJSchemaCustomResolver.GetSchemaResource for ippools/namedippool.json\npowershell.exe Information: 0 : Running AnswerFileJSchemaCustomResolver.GetSchemaResource for securitysettings/securitysettings.json\npowershell.exe Information: 0 : Running AnswerFileJSchemaCustomResolver.GetSchemaResource for storage/storage.json\npowershell.exe Information: 0 : Running AnswerFileJSchemaCustomResolver.GetSchemaResource for san/san.json\npowershell.exe Information: 0 : Running AnswerFileJSchemaCustomResolver.GetSchemaResource for s2d/s2d.json\npowershell.exe Information: 0 : Running AnswerFileJSchemaCustomResolver.GetSchemaResource for [REDACTED_LONG_VALUE].json\npowershell.exe Information: 0 : Finished creating schema 'Answer File Schema'.\npowershell.exe Information: 0 : Successfully completed schema validation.\npowershell.exe Information: 0 : Validating answer file value...\npowershell.exe Information: 0 : Calling component validator InfrastructureNetworkValidator\npowershell.exe Information: 0 : Validating Gateway in infrastructurenetwork\npowershell.exe Information: 0 : Validating IPPools in infrastructurenetwork\npowershell.exe Information: 0 : Validating DNSServers in infrastructurenetwork\npowershell.exe Information: 0 : Component validator InfrastructureNetworkValidator successfully validated component.\npowershell.exe Information: 0 : Calling component validator HostNetworkValidator\npowershell.exe Information: 0 : Component validator HostNetworkValidator successfully validated component.\npowershell.exe Information: 0 : Calling component validator PhysicalNodesValidator\npowershell.exe Information: 0 : Validating IPv4Address for PhysicalNodes\npowershell.exe Information: 0 : Component validator PhysicalNodesValidator successfully validated component.\npowershell.exe Information: 0 : Calling component validator ClusterValidator\npowershell.exe Information: 0 : Component validator ClusterValidator successfully validated component.\npowershell.exe Information: 0 : Calling component validator SDNIntegrationValidator\npowershell.exe Information: 0 : Component validator SDNIntegrationValidator successfully validated component.\npowershell.exe Information: 0 : Calling component validator LocalAvailabilityZonesValidator\npowershell.exe Information: 0 : Component validator LocalAvailabilityZonesValidator successfully validated component.\npowershell.exe Information: 0 : Successfully completed value validation.\nTrue\nVERBOSE: Successfully passed Answer File Validator.\nVERBOSE: Reading deployment configuration from JSON file: C:\\Deployment\\Unattended.json\nException occurred: Fail to initialize cloud deployment: Domain user credential object cannot contain domain name as part of Username.\nCommand                        Arguments                                                                               \n-------                        ---------                                                                               \nInitialize-CloudDeployment.ps1 {JSONFilePath=C:\\Deployment\\Unattended.json, [REDACTED_LONG_VALUE]...\nValidateJob.ps1                {exceptionLogXml=C:\\MASLogs\\[REDACTED_LONG_VALUE].xml}      \n\n\n\nTranscript stopped, output file is C:\\MASLogs\\[REDACTED_LONG_VALUE].log"
+              }
+            ],
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  "azureMutationPerformed": false,
+  "deploySubmitted": false,
+  "rawExceptionsRetained": false
+}

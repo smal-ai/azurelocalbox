@@ -1,0 +1,493 @@
+{
+  "beganAtSast": "2026-10-28T12:01:41.544601+02:00",
+  "status": "complete",
+  "commit": "9f363e1e29e2a9095e7cad914502bddf47ba24d1",
+  "script": "scripts/read-smal-guest-bootstrap-job.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 52093,
+  "scriptTransport": "encoded-command",
+  "renderedSourceSha256": "2841955ffe914cad1fdfc27e26e48919cd4e9fe0fa5cda6e9363689f707cbfa1",
+  "renderedSourceByteLength": 1121,
+  "unstreamedEncodedLength": 2992,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "atUtc": "2026-10-28T10:01:48.9311618Z",
+    "state": {
+      "runId": "guest-bootstrap-20261028-01",
+      "guestConfiguration": {
+        "LB-DC01": {
+          "PSComputerName": "LB-DC01",
+          "guestFirewallEnabled": true,
+          "gateway": "10.64.0.1",
+          "managementIp": "10.64.0.10",
+          "computer": "LB-DC01",
+          "adapterCount": 1,
+          "PSShowComputerName": true,
+          "RunspaceId": "925370b6-d74e-47e2-bd72-57159f557b4f",
+          "dns": "10.64.0.10",
+          "defenderEnabled": true
+        },
+        "LB-NODE01": {
+          "nestedHyperv": {
+            "guestFirewallEnabled": true,
+            "PSComputerName": "LB-NODE01",
+            "defenderEnabled": true,
+            "memoryBytes": 103078055936,
+            "RunspaceId": "a109423a-d6e9-45b7-bb9d-76d0d7d3e78f",
+            "vmmsRunning": true,
+            "PSShowComputerName": true,
+            "logicalProcessors": 12,
+            "guestReportedCores": 6
+          },
+          "PSComputerName": "LB-NODE01",
+          "guestFirewallEnabled": true,
+          "gateway": "10.64.0.1",
+          "managementIp": "10.64.0.11",
+          "computer": "LB-NODE01",
+          "adapterCount": 4,
+          "PSShowComputerName": true,
+          "RunspaceId": "a109423a-d6e9-45b7-bb9d-76d0d7d3e78f",
+          "dns": "10.64.0.10",
+          "defenderEnabled": true
+        }
+      },
+      "phase": "LB-NODE02-wait-for-setup-and-direct-session",
+      "previousSourceCommit": "e437ea1b304ac84d691d4ba26c77a360c2252b4c",
+      "azureRegistrationPerformed": false,
+      "newCredentialLoginVerified": {
+        "LB-DC01": true,
+        "LB-NODE01": true
+      },
+      "errorCode": null,
+      "guestUpdateAssessmentPerformed": false,
+      "nodeDomainJoinPerformed": false,
+      "connectivity": {
+        "LB-DC01": {
+          "publicHeadStatus": 200,
+          "transportChecksPassed": true,
+          "privateDnsNormal": true,
+          "privateHeadStatus": 404,
+          "clockAdjustedByProbe": false,
+          "computer": "LB-DC01",
+          "privateDnsTcp": true,
+          "PSShowComputerName": true,
+          "ntpResponse": true,
+          "PSComputerName": "LB-DC01",
+          "RunspaceId": "b105b810-dd91-4017-9a73-5088d66a9aac",
+          "domainSrv": true,
+          "atUtc": "2026-10-28T09:38:01.3479714Z",
+          "authenticatedPrivateDataAccessTested": false
+        },
+        "LB-NODE01": {
+          "privateDnsTcp": true,
+          "authenticatedPrivateDataAccessTested": false,
+          "ntpResponse": true,
+          "privateDnsNormal": true,
+          "privateHeadStatus": 404,
+          "atUtc": "2026-10-28T10:01:31.1672020Z",
+          "domainSrv": true,
+          "computer": "LB-NODE01",
+          "publicHeadStatus": 200,
+          "transportChecksPassed": true,
+          "clockAdjustedByProbe": false,
+          "PSComputerName": "LB-NODE01",
+          "RunspaceId": "aba17ee2-a653-4508-a85c-e94b478b6a9b",
+          "PSShowComputerName": true
+        }
+      },
+      "resumedNode01Cleanup": true,
+      "natEvidence": {
+        "LB-DC01": {
+          "captureSucceeded": true,
+          "atUtc": "2026-10-28T09:38:03.5016068Z",
+          "expectedOuterSource": "10.200.16.4",
+          "sessions": [
+            {
+              "InternalDestinationAddress": "104.40.149.189",
+              "ExternalDestinationAddress": "104.40.149.189",
+              "ExternalSourceAddress": "10.200.16.4",
+              "ExternalDestinationPort": 123,
+              "InternalSourcePort": 123,
+              "InternalSourceAddress": "10.64.0.10",
+              "ExternalSourcePort": 60329,
+              "InternalDestinationPort": 123,
+              "Protocol": 17
+            },
+            {
+              "InternalDestinationAddress": "199.7.83.42",
+              "ExternalDestinationAddress": "199.7.83.42",
+              "ExternalSourceAddress": "10.200.16.4",
+              "ExternalDestinationPort": 53,
+              "InternalSourcePort": 49483,
+              "InternalSourceAddress": "10.64.0.10",
+              "ExternalSourcePort": 60321,
+              "InternalDestinationPort": 53,
+              "Protocol": 17
+            },
+            {
+              "InternalDestinationAddress": "202.12.27.33",
+              "ExternalDestinationAddress": "202.12.27.33",
+              "ExternalSourceAddress": "10.200.16.4",
+              "ExternalDestinationPort": 53,
+              "InternalSourcePort": 49483,
+              "InternalSourceAddress": "10.64.0.10",
+              "ExternalSourcePort": 60321,
+              "InternalDestinationPort": 53,
+              "Protocol": 17
+            },
+            {
+              "InternalDestinationAddress": "192.58.128.30",
+              "ExternalDestinationAddress": "192.58.128.30",
+              "ExternalSourceAddress": "10.200.16.4",
+              "ExternalDestinationPort": 53,
+              "InternalSourcePort": 49574,
+              "InternalSourceAddress": "10.64.0.10",
+              "ExternalSourcePort": 60312,
+              "InternalDestinationPort": 53,
+              "Protocol": 17
+            },
+            {
+              "InternalDestinationAddress": "199.7.83.42",
+              "ExternalDestinationAddress": "199.7.83.42",
+              "ExternalSourceAddress": "10.200.16.4",
+              "ExternalDestinationPort": 53,
+              "InternalSourcePort": 49574,
+              "InternalSourceAddress": "10.64.0.10",
+              "ExternalSourcePort": 60312,
+              "InternalDestinationPort": 53,
+              "Protocol": 17
+            },
+            {
+              "InternalDestinationAddress": "10.204.0.4",
+              "ExternalDestinationAddress": "10.204.0.4",
+              "ExternalSourceAddress": "10.200.16.4",
+              "ExternalDestinationPort": 53,
+              "InternalSourcePort": 49778,
+              "InternalSourceAddress": "10.64.0.10",
+              "ExternalSourcePort": 60298,
+              "InternalDestinationPort": 53,
+              "Protocol": 17
+            },
+            {
+              "InternalDestinationAddress": "20.190.181.5",
+              "ExternalDestinationAddress": "20.190.181.5",
+              "ExternalSourceAddress": "10.200.16.4",
+              "ExternalDestinationPort": 443,
+              "InternalSourcePort": 57526,
+              "InternalSourceAddress": "10.64.0.10",
+              "ExternalSourcePort": 53552,
+              "InternalDestinationPort": 443,
+              "Protocol": 6
+            },
+            {
+              "InternalDestinationAddress": "10.200.17.4",
+              "ExternalDestinationAddress": "10.200.17.4",
+              "ExternalSourceAddress": "10.200.16.4",
+              "ExternalDestinationPort": 443,
+              "InternalSourcePort": 57527,
+              "InternalSourceAddress": "10.64.0.10",
+              "ExternalSourcePort": 53553,
+              "InternalDestinationPort": 443,
+              "Protocol": 6
+            },
+            {
+              "InternalDestinationAddress": "104.40.149.189",
+              "ExternalDestinationAddress": "104.40.149.189",
+              "ExternalSourceAddress": "10.200.16.4",
+              "ExternalDestinationPort": 123,
+              "InternalSourcePort": 58211,
+              "InternalSourceAddress": "10.64.0.10",
+              "ExternalSourcePort": 60303,
+              "InternalDestinationPort": 123,
+              "Protocol": 17
+            },
+            {
+              "InternalDestinationAddress": "10.204.0.4",
+              "ExternalDestinationAddress": "10.204.0.4",
+              "ExternalSourceAddress": "10.200.16.4",
+              "ExternalDestinationPort": 53,
+              "InternalSourcePort": 64003,
+              "InternalSourceAddress": "10.64.0.10",
+              "ExternalSourcePort": 60259,
+              "InternalDestinationPort": 53,
+              "Protocol": 17
+            },
+            {
+              "InternalDestinationAddress": "10.204.0.4",
+              "ExternalDestinationAddress": "10.204.0.4",
+              "ExternalSourceAddress": "10.200.16.4",
+              "ExternalDestinationPort": 53,
+              "InternalSourcePort": 64253,
+              "InternalSourceAddress": "10.64.0.10",
+              "ExternalSourcePort": 60309,
+              "InternalDestinationPort": 53,
+              "Protocol": 17
+            },
+            {
+              "InternalDestinationAddress": "199.7.83.42",
+              "ExternalDestinationAddress": "199.7.83.42",
+              "ExternalSourceAddress": "10.200.16.4",
+              "ExternalDestinationPort": 53,
+              "InternalSourcePort": 64609,
+              "InternalSourceAddress": "10.64.0.10",
+              "ExternalSourcePort": 60327,
+              "InternalDestinationPort": 53,
+              "Protocol": 17
+            },
+            {
+              "InternalDestinationAddress": "198.41.0.4",
+              "ExternalDestinationAddress": "198.41.0.4",
+              "ExternalSourceAddress": "10.200.16.4",
+              "ExternalDestinationPort": 53,
+              "InternalSourcePort": 64915,
+              "InternalSourceAddress": "10.64.0.10",
+              "ExternalSourcePort": 60313,
+              "InternalDestinationPort": 53,
+              "Protocol": 17
+            },
+            {
+              "InternalDestinationAddress": "199.7.83.42",
+              "ExternalDestinationAddress": "199.7.83.42",
+              "ExternalSourceAddress": "10.200.16.4",
+              "ExternalDestinationPort": 53,
+              "InternalSourcePort": 64915,
+              "InternalSourceAddress": "10.64.0.10",
+              "ExternalSourcePort": 60313,
+              "InternalDestinationPort": 53,
+              "Protocol": 17
+            },
+            {
+              "InternalDestinationAddress": "192.203.230.10",
+              "ExternalDestinationAddress": "192.203.230.10",
+              "ExternalSourceAddress": "10.200.16.4",
+              "ExternalDestinationPort": 53,
+              "InternalSourcePort": 64957,
+              "InternalSourceAddress": "10.64.0.10",
+              "ExternalSourcePort": 60255,
+              "InternalDestinationPort": 53,
+              "Protocol": 17
+            },
+            {
+              "InternalDestinationAddress": "199.7.83.42",
+              "ExternalDestinationAddress": "199.7.83.42",
+              "ExternalSourceAddress": "10.200.16.4",
+              "ExternalDestinationPort": 53,
+              "InternalSourcePort": 64957,
+              "InternalSourceAddress": "10.64.0.10",
+              "ExternalSourcePort": 60255,
+              "InternalDestinationPort": 53,
+              "Protocol": 17
+            },
+            {
+              "InternalDestinationAddress": "199.7.83.42",
+              "ExternalDestinationAddress": "199.7.83.42",
+              "ExternalSourceAddress": "10.200.16.4",
+              "ExternalDestinationPort": 53,
+              "InternalSourcePort": 65037,
+              "InternalSourceAddress": "10.64.0.10",
+              "ExternalSourcePort": 60317,
+              "InternalDestinationPort": 53,
+              "Protocol": 17
+            },
+            {
+              "InternalDestinationAddress": "199.7.91.13",
+              "ExternalDestinationAddress": "199.7.91.13",
+              "ExternalSourceAddress": "10.200.16.4",
+              "ExternalDestinationPort": 53,
+              "InternalSourcePort": 65037,
+              "InternalSourceAddress": "10.64.0.10",
+              "ExternalSourcePort": 60317,
+              "InternalDestinationPort": 53,
+              "Protocol": 17
+            }
+          ],
+          "observedSourceTranslation": true
+        },
+        "LB-NODE01": {
+          "captureSucceeded": true,
+          "atUtc": "2026-10-28T10:01:32.6854709Z",
+          "sessions": [
+            {
+              "Protocol": 17,
+              "InternalSourceAddress": "10.64.0.11",
+              "InternalSourcePort": 123,
+              "ExternalSourceAddress": "10.200.16.4",
+              "ExternalSourcePort": 60297,
+              "InternalDestinationAddress": "20.101.57.9",
+              "InternalDestinationPort": 123,
+              "ExternalDestinationAddress": "20.101.57.9",
+              "ExternalDestinationPort": 123
+            },
+            {
+              "Protocol": 6,
+              "InternalSourceAddress": "10.64.0.11",
+              "InternalSourcePort": 50832,
+              "ExternalSourceAddress": "10.200.16.4",
+              "ExternalSourcePort": 53522,
+              "InternalDestinationAddress": "20.190.147.0",
+              "InternalDestinationPort": 443,
+              "ExternalDestinationAddress": "20.190.147.0",
+              "ExternalDestinationPort": 443
+            },
+            {
+              "Protocol": 6,
+              "InternalSourceAddress": "10.64.0.11",
+              "InternalSourcePort": 50833,
+              "ExternalSourceAddress": "10.200.16.4",
+              "ExternalSourcePort": 53523,
+              "InternalDestinationAddress": "10.200.17.4",
+              "InternalDestinationPort": 443,
+              "ExternalDestinationAddress": "10.200.17.4",
+              "ExternalDestinationPort": 443
+            },
+            {
+              "Protocol": 6,
+              "InternalSourceAddress": "10.64.0.11",
+              "InternalSourcePort": 57150,
+              "ExternalSourceAddress": "10.200.16.4",
+              "ExternalSourcePort": 53564,
+              "InternalDestinationAddress": "20.190.177.22",
+              "InternalDestinationPort": 443,
+              "ExternalDestinationAddress": "20.190.177.22",
+              "ExternalDestinationPort": 443
+            },
+            {
+              "Protocol": 6,
+              "InternalSourceAddress": "10.64.0.11",
+              "InternalSourcePort": 57153,
+              "ExternalSourceAddress": "10.200.16.4",
+              "ExternalSourcePort": 53567,
+              "InternalDestinationAddress": "20.190.177.22",
+              "InternalDestinationPort": 443,
+              "ExternalDestinationAddress": "20.190.177.22",
+              "ExternalDestinationPort": 443
+            },
+            {
+              "Protocol": 17,
+              "InternalSourceAddress": "10.64.0.11",
+              "InternalSourcePort": 64202,
+              "ExternalSourceAddress": "10.200.16.4",
+              "ExternalSourcePort": 60326,
+              "InternalDestinationAddress": "104.40.149.189",
+              "InternalDestinationPort": 123,
+              "ExternalDestinationAddress": "104.40.149.189",
+              "ExternalDestinationPort": 123
+            }
+          ],
+          "observedSourceTranslation": true,
+          "expectedOuterSource": "10.200.16.4"
+        }
+      },
+      "resumedDcNetworkPhase": true,
+      "domain": {
+        "configuredTimePeer": "time.windows.com",
+        "PSComputerName": "LB-DC01",
+        "domainMode": "Windows2016Domain",
+        "guestFirewallEnabled": true,
+        "RunspaceId": "b105b810-dd91-4017-9a73-5088d66a9aac",
+        "timeSynchronisationProvenByConfiguration": false,
+        "forestMode": "Windows2016Forest",
+        "netbios": "LOCALBOX",
+        "PSShowComputerName": true,
+        "defenderEnabled": true,
+        "dnsForwarders": [
+          "10.204.0.4"
+        ],
+        "dnsRoot": "ad.localbox.test"
+      },
+      "cleanup": {
+        "LB-DC01": {
+          "PSComputerName": "LB-DC01",
+          "setupLogsNeedReview": false,
+          "credentialRotationRequested": true,
+          "computer": "LB-DC01",
+          "secureErasureClaimed": false,
+          "PSShowComputerName": true,
+          "ownedAnswerFilesRemoved": 1,
+          "RunspaceId": "b105b810-dd91-4017-9a73-5088d66a9aac"
+        },
+        "LB-NODE01": {
+          "unreadableSetupLogs": 0,
+          "unreadableAnswerCandidates": 0,
+          "setupLogsNeedReview": false,
+          "answerFileCleanupNeedsReview": false,
+          "credentialRotationRequested": true,
+          "computer": "LB-NODE01",
+          "secureErasureClaimed": false,
+          "ownedAnswerFilesRemoved": 0,
+          "PSComputerName": "LB-NODE01",
+          "RunspaceId": "aba17ee2-a653-4508-a85c-e94b478b6a9b",
+          "PSShowComputerName": true
+        }
+      },
+      "scope": "approved-local-guest-boot-domain-and-secret-cleanup-only",
+      "sourceCommit": "9f363e1e29e2a9095e7cad914502bddf47ba24d1",
+      "clusterBootstrapComplete": false,
+      "status": "running",
+      "clockEvidence": {
+        "LB-NODE01": {
+          "hostUtc": "2026-10-28T10:01:31.0588301Z",
+          "observedOffsetSeconds": -0.0153873,
+          "timeSource": "time.windows.com,0x8",
+          "clockManuallyAdjusted": false,
+          "timeServiceRunning": true,
+          "allowedOffsetSeconds": 60,
+          "guestUtc": "2026-10-28T10:01:31.0434428Z",
+          "selectedClockChecksPassed": true
+        }
+      },
+      "errorType": null,
+      "evaluationActivationVerified": false,
+      "errorLine": null,
+      "atUtc": "2026-10-28T10:01:36.2163768Z"
+    },
+    "clusterBootstrapComplete": false,
+    "heartbeat": {
+      "processId": 6492,
+      "atUtc": "2026-10-28T10:01:44.1380352Z"
+    },
+    "lastTaskResult": 267009,
+    "taskExists": true,
+    "virtualMachines": [
+      {
+        "Name": "LB-DC01",
+        "Id": "f94c71f1-6854-48b9-a9f1-8238c99366d0",
+        "State": 2,
+        "Generation": 2,
+        "MemoryStartup": 4294967296,
+        "ProcessorCount": 2
+      },
+      {
+        "Name": "LB-NODE01",
+        "Id": "3adff629-2f67-449b-ab32-8a8748c46f34",
+        "State": 2,
+        "Generation": 2,
+        "MemoryStartup": 103079215104,
+        "ProcessorCount": 12
+      },
+      {
+        "Name": "LB-NODE02",
+        "Id": "12a44e0c-cc08-4c4c-a812-fa0b56efdbc3",
+        "State": 2,
+        "Generation": 2,
+        "MemoryStartup": 103079215104,
+        "ProcessorCount": 12
+      }
+    ],
+    "taskState": "Running"
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-28T12:01:49.783771+02:00"
+}

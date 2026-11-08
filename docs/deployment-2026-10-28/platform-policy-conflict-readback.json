@@ -1,0 +1,8 @@
+{
+  "atUtc": "2026-10-28T12:03:02.578955+00:00",
+  "status": "failed-read-only-observation",
+  "errorType": "JSONDecodeError",
+  "failedQuery": "CLI diagnostic-settings list was an array, not a value envelope; corrected query in separate observation",
+  "mutationPerformed": false,
+  "originalStartRetained": true
+}

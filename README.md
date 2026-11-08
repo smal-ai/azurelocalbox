@@ -1,5 +1,46 @@
 # azure-localbox
 
+## Daily startup
+
+Start the existing outer host and all four nested guests (DC plus three nodes) after the nightly shutdown:
+
+```bash
+python3 -B scripts/start-smal-localbox.py
+```
+
+Requires existing Azure sign-in/PIM access and the private VPN. Safe to rerun after
+success. Waits for the host agent and guest heartbeats, without rerunning bootstrap
+or changing the shutdown automation. [Startup and recovery details](docs/operations/start-localbox.md).
+
+## Current deployment: shared SMAL landing zone, 2026-10-27
+
+The earlier LocalBox deployment was removed. Use the existing shared
+`rg-smal-network-san-1/vnet-smal-san-1/snet-localbox-host` (`10.200.16.0/24`).
+Do not reuse the archived spoke/registration IDs below or run the historical
+`azd provision` / teardown examples. Legacy preprovision now fails before mutations.
+
+Current work and approval gates: [deployment preparation](docs/deployment-2026-10-27/README.md).
+Latest apply outcome: [successful private host retry](docs/deployment-2026-10-27/host-retry.md).
+The outer host is running at `10.200.16.4`; compute charges are active. Azure Local
+bootstrap/registration, resource bridge and AKS are not deployed by this phase.
+Subsequent [guest preparation](docs/deployment-2026-10-27/private-powershell.md) verified
+key-only PowerShell over private Bastion and installed Hyper-V. The approved reboot
+completed, and Hyper-V management and private PowerShell were reverified afterwards.
+The [next bootstrap phase](docs/deployment-2026-10-27/bootstrap-next-plan.md) expanded
+C: into the existing 1 TiB OS disk and identified unsafe vendor-module helpers that
+must be replaced. The approved current 2610 ISO is downloaded and publisher-checksum
+verified, but remains unmounted and unexecuted. No nested platform has been deployed.
+[Asynchronous continuation and progress](docs/deployment-2026-10-27/bootstrap-async-control.md)
+are configured with a ten-minute follow-up cron. The initial readiness check is blocked
+on the remaining safe implementation and design/apply decisions, not a running cluster job.
+`infra/bicep/main.smal-host.bicep` is the separately approved **private outer-host phase**,
+not an approved Azure Local platform/bootstrap deployment. Host costs and the existing
+signed-in deployment identity are approved. Bootstrap, version-specific egress,
+nested ranges/routing and platform governance effects remain gated. The template
+does not deploy shared networking, bootstrap extensions, RBAC or SMAL workloads.
+
+The remainder records the **historical** deployment design, not current live state.
+
 An [Azure Developer CLI (`azd`)](https://learn.microsoft.com/azure/developer/azure-developer-cli/)
 project that deploys Jumpstart **LocalBox** (nested 2-node Azure Local + Azure Arc
 + AKS Arc) into an **enterprise-vended, firewall-governed Virtual WAN spoke** in

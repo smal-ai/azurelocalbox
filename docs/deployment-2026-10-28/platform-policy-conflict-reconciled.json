@@ -1,0 +1,218 @@
+{
+  "atUtc": "2026-10-28T12:04:19.623310+00:00",
+  "status": "confirmed-policy-modification-blocks-approved-public-vault-boundary",
+  "vault": {
+    "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.KeyVault/vaults/kv-lbox-weu-4766ea",
+    "publicNetworkAccess": "Disabled",
+    "purgeProtection": true,
+    "rbac": true,
+    "softDeleteDays": 90
+  },
+  "policyDefinition": {
+    "displayName": "SFI-NS2.2.1 Secure PaaS Resources - Key Vaults (excluding NSP configured resources)",
+    "id": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policyDefinitions/KeyVault_PublicNetwork_Modify",
+    "rule": {
+      "if": {
+        "allOf": [
+          {
+            "equals": "Microsoft.KeyVault/vaults",
+            "field": "type"
+          },
+          {
+            "field": "Microsoft.KeyVault/vaults/publicNetworkAccess",
+            "notEquals": "Disabled"
+          },
+          {
+            "field": "Microsoft.KeyVault/vaults/publicNetworkAccess",
+            "notEquals": "SecuredByPerimeter"
+          },
+          {
+            "not": {
+              "anyOf": [
+                {
+                  "equals": "[parameters('AllowedTagValue')]",
+                  "field": "[concat('tags[', parameters('AllowedTagName'), ']')]"
+                },
+                {
+                  "equals": "[parameters('AllowedTagValue')]",
+                  "value": "[resourceGroup().tags[parameters('AllowedTagName')]]"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "then": {
+        "details": {
+          "conflictEffect": "audit",
+          "operations": [
+            {
+              "condition": "[greaterOrEquals(requestContext().apiVersion, '2021-10-01')]",
+              "field": "Microsoft.KeyVault/vaults/publicNetworkAccess",
+              "operation": "addOrReplace",
+              "value": "Disabled"
+            }
+          ],
+          "roleDefinitionIds": [
+            "/providers/microsoft.authorization/roleDefinitions/f25e0fa2-a7c8-4377-a976-54943a77a395"
+          ]
+        },
+        "effect": "[parameters('effect')]"
+      }
+    }
+  },
+  "matchingModifyEvents": [
+    {
+      "atUtc": "2026-10-28T11:56:20.4087245Z",
+      "correlationId": "9ae4fe56-0173-4759-b352-f971b7030f16",
+      "definitionId": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policyDefinitions/KeyVault_PublicNetwork_Modify",
+      "assignmentId": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policyAssignments/MCAPSGovDeployPolicies",
+      "effect": "modify",
+      "modifiedFields": [
+        {
+          "operation": "AddOrReplace",
+          "field": "Microsoft.KeyVault/vaults/publicNetworkAccess",
+          "condition": "[greaterOrEquals(requestContext().apiVersion, '2021-10-01')]"
+        }
+      ],
+      "exemptionIds": []
+    },
+    {
+      "atUtc": "2026-10-28T11:56:18.0447891Z",
+      "correlationId": "9ae4fe56-0173-4759-b352-f971b7030f16",
+      "definitionId": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policyDefinitions/KeyVault_PublicNetwork_Modify",
+      "assignmentId": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policyAssignments/MCAPSGovDeployPolicies",
+      "effect": "modify",
+      "modifiedFields": [
+        {
+          "operation": "AddOrReplace",
+          "field": "Microsoft.KeyVault/vaults/publicNetworkAccess",
+          "condition": "[greaterOrEquals(requestContext().apiVersion, '2021-10-01')]"
+        }
+      ],
+      "exemptionIds": []
+    },
+    {
+      "atUtc": "2026-10-28T11:56:15.6298166Z",
+      "correlationId": "1e6c20ff-37ff-4c1f-adf0-b104d2572ead",
+      "definitionId": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policyDefinitions/KeyVault_PublicNetwork_Modify",
+      "assignmentId": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policyAssignments/MCAPSGovDeployPolicies",
+      "effect": "modify",
+      "modifiedFields": [
+        {
+          "operation": "AddOrReplace",
+          "field": "Microsoft.KeyVault/vaults/publicNetworkAccess",
+          "condition": "[greaterOrEquals(requestContext().apiVersion, '2021-10-01')]"
+        }
+      ],
+      "exemptionIds": []
+    },
+    {
+      "atUtc": "2026-10-28T11:55:55.6130603Z",
+      "correlationId": "74c01a7c-2086-4127-b7e5-08c801fa98ea",
+      "definitionId": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policyDefinitions/KeyVault_PublicNetwork_Modify",
+      "assignmentId": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policyAssignments/MCAPSGovDeployPolicies",
+      "effect": "modify",
+      "modifiedFields": [
+        {
+          "operation": "AddOrReplace",
+          "field": "Microsoft.KeyVault/vaults/publicNetworkAccess",
+          "condition": "[greaterOrEquals(requestContext().apiVersion, '2021-10-01')]"
+        }
+      ],
+      "exemptionIds": []
+    },
+    {
+      "atUtc": "2026-10-28T11:55:53.3630286Z",
+      "correlationId": "74c01a7c-2086-4127-b7e5-08c801fa98ea",
+      "definitionId": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policyDefinitions/KeyVault_PublicNetwork_Modify",
+      "assignmentId": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policyAssignments/MCAPSGovDeployPolicies",
+      "effect": "modify",
+      "modifiedFields": [
+        {
+          "operation": "AddOrReplace",
+          "field": "Microsoft.KeyVault/vaults/publicNetworkAccess",
+          "condition": "[greaterOrEquals(requestContext().apiVersion, '2021-10-01')]"
+        }
+      ],
+      "exemptionIds": []
+    }
+  ],
+  "deploymentState": "Succeeded",
+  "vaultAudit": [
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/rg-localbox-platform-weu-1/providers/microsoft.keyvault/vaults/kv-lbox-weu-4766ea/providers/microsoft.insights/diagnosticSettings/localbox-vault-audit",
+      "logs": [
+        {
+          "category": "AuditEvent",
+          "enabled": true
+        },
+        {
+          "category": "AzurePolicyEvaluationDetails",
+          "enabled": false
+        }
+      ],
+      "name": "localbox-vault-audit",
+      "storageAccountId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.Storage/storageAccounts/stlboxdiagweu4766ea"
+    }
+  ],
+  "auditLifecycle": {
+    "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.Storage/storageAccounts/stlboxdiagweu4766ea/managementPolicies/default",
+    "lastModifiedTime": "2026-10-28T11:56:50.132045+00:00",
+    "name": "DefaultManagementPolicy",
+    "policy": {
+      "rules": [
+        {
+          "definition": {
+            "actions": {
+              "baseBlob": {
+                "delete": {
+                  "daysAfterCreationGreaterThan": null,
+                  "daysAfterLastAccessTimeGreaterThan": null,
+                  "daysAfterLastTierChangeGreaterThan": null,
+                  "daysAfterModificationGreaterThan": 90.0
+                },
+                "enableAutoTierToHotFromCool": null,
+                "tierToArchive": null,
+                "tierToCold": null,
+                "tierToCool": null,
+                "tierToHot": null
+              },
+              "snapshot": null,
+              "version": null
+            },
+            "filters": {
+              "blobIndexMatch": null,
+              "blobTypes": [
+                "appendBlob",
+                "blockBlob"
+              ],
+              "prefixMatch": [
+                "insights-logs-auditevent/"
+              ]
+            }
+          },
+          "enabled": true,
+          "name": "localbox-vault-audit-90-days",
+          "type": "Lifecycle"
+        }
+      ]
+    },
+    "resourceGroup": "rg-localbox-platform-weu-1",
+    "systemData": null,
+    "type": "Microsoft.Storage/storageAccounts/managementPolicies"
+  },
+  "diagnosticLock": [
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/rg-localbox-platform-weu-1/providers/Microsoft.Storage/storageAccounts/stlboxdiagweu4766ea/providers/Microsoft.Authorization/locks/localbox-diagnostics-retain",
+      "level": "CanNotDelete",
+      "name": "localbox-diagnostics-retain"
+    }
+  ],
+  "stateQueryMayLagActivityLog": true,
+  "arcRegistrationOrClusterDeploymentPerformed": false,
+  "publicReenableOrPolicyExemptionAttempted": false,
+  "apiDowngradeToEvadePolicyAttempted": false,
+  "ignoreTagOrUnapprovedPerimeterCreated": false,
+  "originalApplyReceiptRetained": true
+}

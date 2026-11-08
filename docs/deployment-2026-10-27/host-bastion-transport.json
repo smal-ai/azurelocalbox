@@ -1,0 +1,46 @@
+{
+  "beganAtSast": "2026-10-27T11:23:50.562132+02:00",
+  "test": "private-Bastion-RDP-protocol-probe-no-guest-credential",
+  "guestAuthenticationAttempted": false,
+  "tlsTrustValidationClaimed": false,
+  "resolverRoute": [
+    {
+      "dst": "10.204.0.4",
+      "gateway": "172.16.0.129",
+      "dev": "tun0",
+      "prefsrc": "172.16.0.130",
+      "flags": [],
+      "uid": 1000,
+      "cache": []
+    }
+  ],
+  "resolverTcp53": "reachable",
+  "command": [
+    "az",
+    "network",
+    "bastion",
+    "tunnel",
+    "--subscription",
+    "702382d0-3722-4630-8983-5580b92f0c1a",
+    "-g",
+    "rg-bastion-san-1",
+    "-n",
+    "bas-test-san-1",
+    "--target-resource-id",
+    "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+    "--resource-port",
+    "3389",
+    "--port",
+    "58327",
+    "--timeout",
+    "45",
+    "--only-show-errors"
+  ],
+  "localListener": "127.0.0.1-only",
+  "rdpReplyBytes": 19,
+  "rdpTpktResponse": true,
+  "status": "private-Bastion-target-RDP-response-received",
+  "tunnelProcessExitCode": -15,
+  "localTunnelClosed": true,
+  "finishedAtSast": "2026-10-27T11:24:37.593159+02:00"
+}

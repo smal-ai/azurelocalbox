@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "runId": "eval-media-20261028-01",
+  "scope": "evaluation-media-download-only",
+  "computerName": "LocalBox-Client",
+  "azureVmResourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+  "url": "https://software-static.download.prss.microsoft.com/dbazure/998969d5-f34g-4e03-ac9d-1f9786c66749/26100.32230.260111-0550.lt_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso",
+  "etag": "\"0x60A8C190FBB54AF58E40BA049FF290D098101E0EAD343CE912A1DC685219BE85\"",
+  "lengthBytes": 8152356864,
+  "fileName": "WindowsServer2025Evaluation.26100.32230.x64.en-us.iso",
+  "publisherSha256": null,
+  "mountOrExecutionApprovedByThisJob": false
+}

@@ -1,0 +1,106 @@
+{
+  "beganAtSast": "2026-10-29T11:10:10.386129+02:00",
+  "status": "complete",
+  "commit": "81b105ef2bc621d9524fc6d003427c054396fef7",
+  "script": "scripts/prepare-smal-node03-disk.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 37691,
+  "scriptTransport": "sha256-length-framed-utf8-stdin",
+  "renderedSourceSha256": "b759ab118d72678ffae7c959831ca01eb0d1a908d2d0af73ffad1551060ad88c",
+  "renderedSourceByteLength": 24358,
+  "unstreamedEncodedLength": 64956,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "sourceCommit": "81b105ef2bc621d9524fc6d003427c054396fef7",
+    "atUtc": "2026-10-29T09:10:20.6181874Z",
+    "hostBootUtc": "2026-10-29T08:05:36.5000000Z",
+    "lun": 8,
+    "vVolumeId": "\\\\?\\Volume{59901f77-0fb4-4ac7-b377-d820b0c1929b}\\",
+    "azureDiskId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-Node03-SSD-20261029",
+    "disks": [
+      {
+        "number": 0,
+        "style": "GPT",
+        "uniqueId": "eui.73985D32631E460082CABF1E6D158801",
+        "isSystem": true,
+        "isBoot": true,
+        "size": 1099511627776
+      },
+      {
+        "number": 9,
+        "style": "GPT",
+        "uniqueId": "D0CDB2F96D0E244E8B532E096F97FBBF",
+        "isSystem": false,
+        "isBoot": false,
+        "size": 2181843386368
+      }
+    ],
+    "status": "baseline-before-azure-lun8-attachment",
+    "azureDiskUniqueId": "eab2d4b3-d41d-44b3-99b4-d6c1c928c97b",
+    "physicalDisks": [
+      {
+        "canPool": false,
+        "uniqueId": "eui.B23D67FFF2924C04B501F4D3C649D401",
+        "size": 274877906944
+      },
+      {
+        "canPool": false,
+        "uniqueId": "eui.E1B7F79BDC4445D2A5D44A4CCF715701",
+        "size": 274877906944
+      },
+      {
+        "canPool": false,
+        "uniqueId": "eui.0E8148591DA44817828F21E9C2A5BE01",
+        "size": 274877906944
+      },
+      {
+        "canPool": false,
+        "uniqueId": "eui.3C590B16F2184074A2EA009878222101",
+        "size": 274877906944
+      },
+      {
+        "canPool": false,
+        "uniqueId": "eui.160E998859144AB5B7933803A52A7701",
+        "size": 274877906944
+      },
+      {
+        "canPool": false,
+        "uniqueId": "eui.73985D32631E460082CABF1E6D158801",
+        "size": 1099511627776
+      },
+      {
+        "canPool": false,
+        "uniqueId": "eui.6804277C11C14825828E70FA4164D601",
+        "size": 274877906944
+      },
+      {
+        "canPool": false,
+        "uniqueId": "eui.6246A32C18864BFFBC3784C624C93501",
+        "size": 274877906944
+      },
+      {
+        "canPool": false,
+        "uniqueId": "eui.AC65F83297B24FC0BFD90A76C568EA01",
+        "size": 274877906944
+      }
+    ],
+    "cSize": 1099389972480,
+    "cVolumeId": "\\\\?\\Volume{51199064-2a58-498e-81e0-1bdfd593eced}\\",
+    "vSize": 2181825495040,
+    "formattingPerformed": false
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-29T11:10:20.994612+02:00"
+}

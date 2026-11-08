@@ -1,0 +1,25 @@
+{
+  "executionId": "exec_localbox_nested_network_review_20261028",
+  "taskId": "task_localbox_nested_network_review_20261028",
+  "state": "completed",
+  "revision": 3,
+  "reviewerAgentId": "agent_0d9dc96a-7986-4b84-ba98-aff323c2081e",
+  "report": "/home/quintin/play/entlz/docs/reviews/2026-10-28-localbox-network/review.md",
+  "reportSha256": "aa6f54e8e4a44c9509b269e3bbfae751fe923b0ad2fd978ee3bd4b487f7ac163",
+  "evidence": "/home/quintin/play/entlz/docs/reviews/2026-10-28-localbox-network/evidence.json",
+  "evidenceSha256": "4afaf23ac3de00976252cd1a87b77fe539b386c8f34014ce268e8a764acd95bb",
+  "hashesIndependentlyMatched": true,
+  "noOverlapInInspectedEstate": true,
+  "prefixesReservedOrApplicationApproved": false,
+  "guestReadinessOrPacketsTested": false,
+  "requiredImplementationCorrections": [
+    "Translate all off-lab destinations, including private services and DNS, to actual outer-host source",
+    "One WinNAT internal prefix, explicit switches/interfaces/addressing, no assumed DHCP/DNS",
+    "Keep storage networks without a default gateway and outer default/NIC forwarding unchanged",
+    "Define any future CNI pod-to-node then host SNAT without advertising pods/services",
+    "Check actual Dynamic outer IP instead of silently setting Static",
+    "Use authoritative lab-domain DNS forwarding non-local queries to the central resolver",
+    "Preserve actual unique vault/gateway endpoint requirements until their identities are selected"
+  ],
+  "limits": "Three visible subscriptions and connected/local observations, not tenant-wide future IPAM clearance or authority to mutate shared networks."
+}

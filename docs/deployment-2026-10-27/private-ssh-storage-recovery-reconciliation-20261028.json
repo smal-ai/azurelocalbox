@@ -1,0 +1,73 @@
+{
+  "beganAtSast": "2026-10-28T09:38:29.259725+02:00",
+  "status": "complete",
+  "commit": "5bf0dc2c7df6fec7211bc3a2a284f9a7825515de",
+  "script": "scripts/read-smal-storage-job.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 38479,
+  "scriptTransport": "encoded-command",
+  "renderedSourceSha256": "8e6e00beeee9922ce113ae58cef3dc090807424ab7f30b14c0709b2f027819f6",
+  "unstreamedEncodedLength": 15384,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "lastUpdatedAtUtc": null,
+    "atUtc": "2026-10-28T07:38:38.8919516Z",
+    "diagnostic": {
+      "poolExists": false,
+      "actionIsExpected": true,
+      "workerSha256": "8C4B65A8299101ABA4ADEC3A6513432DFA0785571FA34322D6E7929749B490B0",
+      "matchingHistoricalRecoveryProcesses": [
+        {
+          "ProcessId": 8564,
+          "ParentProcessId": 5828
+        },
+        {
+          "ProcessId": 5652,
+          "ParentProcessId": 8564
+        }
+      ],
+      "startedMarkerExists": true,
+      "poolablePhysicalDiskCount": 8,
+      "temporaryProcessExists": false,
+      "temporaryStateExists": true,
+      "actualTriggerCount": 0,
+      "taskPrincipal": "SYSTEM",
+      "manifestSha256": "5ABBFD1A83EF79FA7F28EE955FC5E644ED9371EEC8338C110B1707D89589A1C3",
+      "recoveryProofExists": false,
+      "azureVmResourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+      "temporaryStateErrorType": "MethodInvocationException",
+      "workerParseErrors": [],
+      "temporaryStatePhase": "initialising",
+      "virtualDiskExists": false,
+      "recoveryWorkerBackupExists": false,
+      "temporaryProcessId": 7264,
+      "rawDataDiskCount": 8,
+      "triggerCountIncludingNull": 1
+    },
+    "volume": null,
+    "clusterBootstrapComplete": false,
+    "phase": "not-started",
+    "heartbeatUtc": null,
+    "osDiskAndPartitionUnchanged": null,
+    "lastTaskResult": 1,
+    "status": "queued",
+    "runId": "storage-20261028-01",
+    "scope": "storage-only",
+    "errorType": null,
+    "taskState": "Ready"
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-28T09:38:39.235788+02:00"
+}

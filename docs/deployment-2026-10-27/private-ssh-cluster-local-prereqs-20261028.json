@@ -1,0 +1,100 @@
+{
+  "beganAtSast": "2026-10-28T13:42:17.178986+02:00",
+  "status": "complete",
+  "commit": "587d2d1416d85881a2d1b3c4d340eb4e85ca5053",
+  "script": "scripts/prepare-smal-cluster-prereqs.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 53691,
+  "scriptTransport": "sha256-length-framed-utf8-stdin",
+  "renderedSourceSha256": "809d15e253a480ce77655cca070d0d44a14d2d4f89ee20264db78f3cb1afb4ff",
+  "renderedSourceByteLength": 10826,
+  "unstreamedEncodedLength": 28872,
+  "guestCommandTimeoutSeconds": 600,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "runId": "cluster-prereqs-20261028-01",
+    "sourceCommit": "587d2d1416d85881a2d1b3c4d340eb4e85ca5053",
+    "scope": "approved-local-ou-and-common-node-credential-only",
+    "status": "local-cluster-prerequisites-prepared",
+    "phase": "ou-and-common-node-credential-verified",
+    "atUtc": "2026-10-28T11:42:31.7611764Z",
+    "ad": {
+      "domainAccountPolicyUnchanged": true,
+      "scopedAces": [
+        {
+          "ActiveDirectoryRights": {
+            "value": 16,
+            "Value": "ReadProperty"
+          },
+          "ObjectType": "00000000-0000-0000-0000-000000000000",
+          "InheritedObjectType": "00000000-0000-0000-0000-000000000000",
+          "InheritanceType": {
+            "value": 1,
+            "Value": "All"
+          }
+        },
+        {
+          "ActiveDirectoryRights": {
+            "value": 983551,
+            "Value": "GenericAll"
+          },
+          "ObjectType": "00000000-0000-0000-0000-000000000000",
+          "InheritedObjectType": "ea715d30-8f53-40d0-bd1e-6109186d782c",
+          "InheritanceType": {
+            "value": 1,
+            "Value": "All"
+          }
+        },
+        {
+          "ActiveDirectoryRights": {
+            "value": 3,
+            "Value": "CreateChild, DeleteChild"
+          },
+          "ObjectType": "bf967a86-0de6-11d0-a285-00aa003049e2",
+          "InheritedObjectType": "00000000-0000-0000-0000-000000000000",
+          "InheritanceType": {
+            "value": 1,
+            "Value": "All"
+          }
+        }
+      ],
+      "ou": "OU=SMAL01,OU=AzureLocal,DC=ad,DC=localbox,DC=test",
+      "inheritanceBlockedOnlyOnNewClusterOu": true,
+      "userSid": "S-1-5-21-1327678382-4109883306-945678194-1103",
+      "enforcedGpoBypassApplied": false,
+      "upn": "lboxdeploy@ad.localbox.test",
+      "normalExpiryRetained": true,
+      "user": "lboxdeploy",
+      "PSComputerName": "LB-DC01",
+      "RunspaceId": "d826da37-b674-4055-b96a-5f4421bc2706",
+      "PSShowComputerName": true
+    },
+    "nodes": {
+      "LB-NODE02": {
+        "vmId": "12a44e0c-cc08-4c4c-a812-fa0b56efdbc3",
+        "commonCredentialLoginVerified": true,
+        "legacyEncryptedRoleRetainedInactive": true
+      },
+      "LB-NODE01": {
+        "vmId": "3adff629-2f67-449b-ab32-8a8748c46f34",
+        "commonCredentialLoginVerified": true,
+        "legacyEncryptedRoleRetainedInactive": true
+      }
+    },
+    "errorType": null,
+    "azureRegistrationPerformed": false
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-28T13:42:32.085406+02:00"
+}

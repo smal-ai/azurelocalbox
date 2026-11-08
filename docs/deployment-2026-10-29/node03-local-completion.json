@@ -1,0 +1,168 @@
+{
+  "status": "complete-local-only-human-arc-authentication-next",
+  "observedAtUtc": "2026-10-29T10:18:05.9817530Z",
+  "sourceCommit": "4835eb6d2b03b7141365ca9001f3eea64865bd60",
+  "privateObservationReceipt": "docs/deployment-2026-10-27/private-ssh-node03-progress-20261029-101434-bb1b49-4.json",
+  "vm": {
+    "adapters": [
+      {
+        "Name": "MGMT1",
+        "Id": "Microsoft:5B6EBA15-FA82-4E12-9E45-5FFBCD48C8A9\\0E28B8C7-2E83-49D8-A87E-70BBA241B66D",
+        "MacAddress": "000000000000",
+        "SwitchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934"
+      },
+      {
+        "Name": "MGMT2",
+        "Id": "Microsoft:5B6EBA15-FA82-4E12-9E45-5FFBCD48C8A9\\D24654D0-FAC4-4CBC-A6FD-EA89310495F0",
+        "MacAddress": "000000000000",
+        "SwitchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934"
+      },
+      {
+        "Name": "STORAGEA",
+        "Id": "Microsoft:5B6EBA15-FA82-4E12-9E45-5FFBCD48C8A9\\B001ED1F-DCF0-4F56-BBFE-466E637E67C5",
+        "MacAddress": "000000000000",
+        "SwitchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934"
+      },
+      {
+        "Name": "STORAGEB",
+        "Id": "Microsoft:5B6EBA15-FA82-4E12-9E45-5FFBCD48C8A9\\1D8BE3FB-15B5-426E-84AE-032E41185278",
+        "MacAddress": "000000000000",
+        "SwitchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934"
+      }
+    ],
+    "memoryBytes": 68719476736,
+    "vmId": "5b6eba15-fa82-4e12-9e45-5ffbcd48c8a9",
+    "processors": 8,
+    "state": "Off",
+    "vmName": "LB-NODE03",
+    "secureBoot": true,
+    "bootstrapCleanupAndRotationRequired": true,
+    "vTpm": true
+  },
+  "hostDisks": [
+    {
+      "lun": 0,
+      "path": "W:\\AzureLocalBox\\Guests\\three-node-20261029-01\\LB-NODE03\\OS.vhdx",
+      "diskId": "B1A59A04-5622-45D7-BDAD-BCCC17475830",
+      "size": 137438953472
+    },
+    {
+      "lun": 1,
+      "path": "W:\\AzureLocalBox\\Guests\\three-node-20261029-01\\LB-NODE03\\S2D-1.vhdx",
+      "diskId": "653A88F1-1857-48A2-89DD-A83EB381308E",
+      "size": 182536110080
+    },
+    {
+      "lun": 2,
+      "path": "W:\\AzureLocalBox\\Guests\\three-node-20261029-01\\LB-NODE03\\S2D-2.vhdx",
+      "diskId": "F14C3C33-75EF-469E-9D9A-B7CA8C7973A3",
+      "size": 182536110080
+    },
+    {
+      "lun": 3,
+      "path": "W:\\AzureLocalBox\\Guests\\three-node-20261029-01\\LB-NODE03\\S2D-3.vhdx",
+      "diskId": "3EBE652F-0767-48A3-B582-33600EC131EF",
+      "size": 182536110080
+    },
+    {
+      "lun": 4,
+      "path": "W:\\AzureLocalBox\\Guests\\three-node-20261029-01\\LB-NODE03\\S2D-4.vhdx",
+      "diskId": "9FB45DB2-CA18-4F8E-98B9-0B5A7F55FAF2",
+      "size": 182536110080
+    }
+  ],
+  "guestDisks": [
+    {
+      "isBoot": true,
+      "style": "GPT",
+      "uniqueId": "60022480049AA5B12256BCCC17475830",
+      "size": 137438953472,
+      "isSystem": true,
+      "PSComputerName": "LB-NODE03",
+      "RunspaceId": "a646fe93-a3da-4c10-9ad9-2b5952698154",
+      "PSShowComputerName": true
+    },
+    {
+      "isBoot": false,
+      "style": "RAW",
+      "uniqueId": "60022480F1883A655718A83EB381308E",
+      "size": 182536110080,
+      "isSystem": false,
+      "PSComputerName": "LB-NODE03",
+      "RunspaceId": "a646fe93-a3da-4c10-9ad9-2b5952698154",
+      "PSShowComputerName": true
+    },
+    {
+      "isBoot": false,
+      "style": "RAW",
+      "uniqueId": "60022480333C4CF1EF75B7CA8C7973A3",
+      "size": 182536110080,
+      "isSystem": false,
+      "PSComputerName": "LB-NODE03",
+      "RunspaceId": "a646fe93-a3da-4c10-9ad9-2b5952698154",
+      "PSShowComputerName": true
+    },
+    {
+      "isBoot": false,
+      "style": "RAW",
+      "uniqueId": "600224802F65BE3E670733600EC131EF",
+      "size": 182536110080,
+      "isSystem": false,
+      "PSComputerName": "LB-NODE03",
+      "RunspaceId": "a646fe93-a3da-4c10-9ad9-2b5952698154",
+      "PSShowComputerName": true
+    },
+    {
+      "isBoot": false,
+      "style": "RAW",
+      "uniqueId": "60022480B25DB49F18CA0B5A7F55FAF2",
+      "size": 182536110080,
+      "isSystem": false,
+      "PSComputerName": "LB-NODE03",
+      "RunspaceId": "a646fe93-a3da-4c10-9ad9-2b5952698154",
+      "PSShowComputerName": true
+    }
+  ],
+  "cleanup": {
+    "unreadableSetupLogs": 0,
+    "unreadableAnswerCandidates": 0,
+    "setupLogsNeedReview": false,
+    "answerFileCleanupNeedsReview": false,
+    "credentialRotationRequested": true,
+    "computer": "LB-NODE03",
+    "secureErasureClaimed": false,
+    "ownedAnswerFilesRemoved": 1,
+    "PSComputerName": "LB-NODE03",
+    "RunspaceId": "9a97ada7-9ce4-43d8-9c94-d40f61e7e041",
+    "PSShowComputerName": true
+  },
+  "clock": {
+    "hostUtc": "2026-10-29T10:17:44.1114304Z",
+    "observedOffsetSeconds": -0.0122011,
+    "timeSource": "time.windows.com,0x8",
+    "clockManuallyAdjusted": false,
+    "timeServiceRunning": true,
+    "allowedOffsetSeconds": 60,
+    "guestUtc": "2026-10-29T10:17:44.0992293Z",
+    "selectedClockChecksPassed": true
+  },
+  "connectivity": {
+    "privateDnsTcp": true,
+    "authenticatedPrivateDataAccessTested": false,
+    "ntpResponse": true,
+    "privateDnsNormal": true,
+    "privateHeadStatus": 404,
+    "atUtc": "2026-10-29T10:17:44.1844765Z",
+    "domainSrv": true,
+    "computer": "LB-NODE03",
+    "publicHeadStatus": 200,
+    "transportChecksPassed": true,
+    "clockAdjustedByProbe": false,
+    "PSComputerName": "LB-NODE03",
+    "RunspaceId": "9a97ada7-9ce4-43d8-9c94-d40f61e7e041",
+    "PSShowComputerName": true
+  },
+  "commonCredentialLoginVerified": true,
+  "arcRegistrationVerified": false,
+  "clusterDeploymentVerified": false
+}

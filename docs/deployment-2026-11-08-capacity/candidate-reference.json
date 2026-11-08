@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "unsigned-candidate-parent-review-required",
+  "operationId": "smal-compute-capacity-20261108-01",
+  "candidateSha256": "dcdabe1106f42767ed030908347b3476f1dc94f86eafbf92d4147d37bb4225a5",
+  "builder": "scripts/smal-compute-capacity-20261108.py:build_candidate",
+  "evidence": [
+    {
+      "role": "host",
+      "path": "docs/deployment-2026-11-08-capacity/operation-inventory-host-20261108-02.json",
+      "sha256": "2b262082d503fb7a95304a42086b13dfa2a279f8b5d63aa6e20bd5bd7e23b4a6",
+      "sourceCommit": "6bb664a577908940bcb2e02e69f686a10762f600"
+    },
+    {
+      "role": "nodes",
+      "path": "docs/deployment-2026-11-08-capacity/operation-inventory-nodes-20261108-02.json",
+      "sha256": "3d5d0b79a143dab7aa15a0a85ddd8d4c53e4434a81312185b658ee33097d19b8",
+      "sourceCommit": "6bb664a577908940bcb2e02e69f686a10762f600"
+    },
+    {
+      "role": "dc-network",
+      "path": "docs/deployment-2026-11-08-capacity/operation-inventory-dc-20261108-02.json",
+      "sha256": "b89c2377b7fba4c33fc7f8a0e71822b7763ea164316202cb5593b2481db9091e",
+      "sourceCommit": "6bb664a577908940bcb2e02e69f686a10762f600"
+    },
+    {
+      "role": "topology",
+      "path": "docs/deployment-2026-11-08-capacity/operation-inventory-topology-20261108-03.json",
+      "sha256": "6c6e0e68df48befddb3da54cf8b3a594e1c10862165c1e37018c5ed10f59c331",
+      "sourceCommit": "3c2ae8650b7e295b2526a40cb835bad51aa01a66"
+    }
+  ],
+  "executionApproved": false,
+  "maintenanceConflictChecked": false,
+  "aksStorageAllocationAdmitted": false,
+  "networkAddressReservationVerified": false,
+  "notes": [
+    "Raw local read/transport receipts are preserved but not published in this scoped source PR.",
+    "The builder includes actual global VM/VHD/pool/CSV/NIC bindings and exact volume budgets.",
+    "Physical model-cache and repair reserves are conservative projections, not admission of unqueried AKS OS-disk defaults.",
+    "Final GO, refreshed preconditions and reviewed rendered/sealed source are required before any disruption."
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "beganAtUtc": "2026-10-29T07:17:10.912870+00:00",
+  "sourceCommit": "7bacc430d091fe21cdf37fe88837cac19f0166a2",
+  "status": "complete-seven-approved-rg-and-vault-role-bindings",
+  "deploymentName": "localbox-arc-platform-roles-20261029",
+  "subscriptionWideGrantRequested": false,
+  "vaultPublicAccessChangeRequested": false,
+  "clusterDeploymentRequested": false,
+  "platformReadinessVerified": false,
+  "arcMachines": [
+    {
+      "agentVersion": "1.67.03504.3207",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE01",
+      "identity": {
+        "principalId": "9a1205c8-6ac3-4d02-ad6d-6166827c8d9d",
+        "tenantId": "c6e67968-af25-4557-ab8b-06b693048d3b",
+        "type": "SystemAssigned"
+      },
+      "location": "westeurope",
+      "name": "LB-NODE01",
+      "osVersion": "10.0.26100.33650",
+      "provisioningState": "Succeeded",
+      "status": "Connected"
+    },
+    {
+      "agentVersion": "1.67.03504.3207",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE02",
+      "identity": {
+        "principalId": "b282b136-716d-4fa9-8e03-a4c754249a5e",
+        "tenantId": "c6e67968-af25-4557-ab8b-06b693048d3b",
+        "type": "SystemAssigned"
+      },
+      "location": "westeurope",
+      "name": "LB-NODE02",
+      "osVersion": "10.0.26100.33650",
+      "provisioningState": "Succeeded",
+      "status": "Connected"
+    }
+  ],
+  "firstPartyRp": {
+    "accountEnabled": true,
+    "appId": "1412d89f-b8a8-4111-b4fd-e82905cbd85d",
+    "id": "4606be37-a04a-4716-a214-186a08bb7745"
+  },
+  "assignmentsBefore": [
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/rg-localbox-platform-weu-1/providers/Microsoft.KeyVault/vaults/kv-lbox-weu-4766ea/providers/Microsoft.Authorization/roleAssignments/1035817d-e4b3-5276-8ede-d7926cf3cba1",
+      "principalId": "82f494a8-b9f5-46fc-b0f7-c70be0572a63",
+      "principalType": "User",
+      "roleDefinitionId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/providers/Microsoft.Authorization/roleDefinitions/b86a8fe4-44ce-4948-aee5-eccb2c155cd7",
+      "scope": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/rg-localbox-platform-weu-1/providers/Microsoft.KeyVault/vaults/kv-lbox-weu-4766ea"
+    }
+  ],
+  "whatIfSha256": "4da47a700e29612022596385a93d535ecf28b1162ad53d15ccacc6de248b0fc1",
+  "newRoleBindingCount": 7,
+  "deploymentId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.Resources/deployments/localbox-arc-platform-roles-20261029",
+  "deploymentState": "Succeeded",
+  "assignmentsReadback": [
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/rg-localbox-platform-weu-1/providers/Microsoft.Authorization/roleAssignments/9c0dffc2-a612-549d-a119-eba3eaa7fc57",
+      "principalId": "b282b136-716d-4fa9-8e03-a4c754249a5e",
+      "principalType": "ServicePrincipal",
+      "roleDefinitionId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/providers/Microsoft.Authorization/roleDefinitions/865ae368-6a45-4bd1-8fbf-0d5151f56fc1",
+      "scope": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/rg-localbox-platform-weu-1"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/rg-localbox-platform-weu-1/providers/Microsoft.Authorization/roleAssignments/cdde86d9-6417-5feb-8971-0eed5a829031",
+      "principalId": "b282b136-716d-4fa9-8e03-a4c754249a5e",
+      "principalType": "ServicePrincipal",
+      "roleDefinitionId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/providers/Microsoft.Authorization/roleDefinitions/c99c945f-8bd1-4fb1-a903-01460aae6068",
+      "scope": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/rg-localbox-platform-weu-1"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/rg-localbox-platform-weu-1/providers/Microsoft.Authorization/roleAssignments/15b97e28-314d-5890-b94c-06e0196ba52c",
+      "principalId": "9a1205c8-6ac3-4d02-ad6d-6166827c8d9d",
+      "principalType": "ServicePrincipal",
+      "roleDefinitionId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/providers/Microsoft.Authorization/roleDefinitions/c99c945f-8bd1-4fb1-a903-01460aae6068",
+      "scope": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/rg-localbox-platform-weu-1"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/rg-localbox-platform-weu-1/providers/Microsoft.Authorization/roleAssignments/9bf24384-659c-5103-b212-d57ef8b175ba",
+      "principalId": "4606be37-a04a-4716-a214-186a08bb7745",
+      "principalType": "ServicePrincipal",
+      "roleDefinitionId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/providers/Microsoft.Authorization/roleDefinitions/f5819b54-e033-4d82-ac66-4fec3cbf3f4c",
+      "scope": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/rg-localbox-platform-weu-1"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/rg-localbox-platform-weu-1/providers/Microsoft.Authorization/roleAssignments/7d09c4ce-96b8-5005-a198-b5398d78f85a",
+      "principalId": "9a1205c8-6ac3-4d02-ad6d-6166827c8d9d",
+      "principalType": "ServicePrincipal",
+      "roleDefinitionId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/providers/Microsoft.Authorization/roleDefinitions/865ae368-6a45-4bd1-8fbf-0d5151f56fc1",
+      "scope": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/rg-localbox-platform-weu-1"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/rg-localbox-platform-weu-1/providers/Microsoft.KeyVault/vaults/kv-lbox-weu-4766ea/providers/Microsoft.Authorization/roleAssignments/61dd97a0-2a84-55b1-bcbb-446e47a08a49",
+      "principalId": "b282b136-716d-4fa9-8e03-a4c754249a5e",
+      "principalType": "ServicePrincipal",
+      "roleDefinitionId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/providers/Microsoft.Authorization/roleDefinitions/4633458b-17de-408a-b874-0445c86b69e6",
+      "scope": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/rg-localbox-platform-weu-1/providers/Microsoft.KeyVault/vaults/kv-lbox-weu-4766ea"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/rg-localbox-platform-weu-1/providers/Microsoft.KeyVault/vaults/kv-lbox-weu-4766ea/providers/Microsoft.Authorization/roleAssignments/4389646a-8b5b-5a8b-97e4-21ab9c20ef81",
+      "principalId": "9a1205c8-6ac3-4d02-ad6d-6166827c8d9d",
+      "principalType": "ServicePrincipal",
+      "roleDefinitionId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/providers/Microsoft.Authorization/roleDefinitions/4633458b-17de-408a-b874-0445c86b69e6",
+      "scope": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/rg-localbox-platform-weu-1/providers/Microsoft.KeyVault/vaults/kv-lbox-weu-4766ea"
+    }
+  ],
+  "vaultPublicAccessAfter": "Disabled",
+  "finishedAtUtc": "2026-10-29T07:18:58.151541+00:00"
+}

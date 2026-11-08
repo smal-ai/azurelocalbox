@@ -1,0 +1,10 @@
+{
+  "command": [
+    "nslookup",
+    "acrentlzsan1.azurecr.io",
+    "10.204.0.4"
+  ],
+  "exitCode": 0,
+  "output": "Server:\t\t10.204.0.4\nAddress:\t10.204.0.4#53\n\nNon-authoritative answer:\nacrentlzsan1.azurecr.io\tcanonical name = acrentlzsan1.privatelink.azurecr.io.\nName:\tacrentlzsan1.privatelink.azurecr.io\nAddress: 10.200.9.5\n\n",
+  "stderr": ""
+}

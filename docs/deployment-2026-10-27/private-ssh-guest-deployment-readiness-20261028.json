@@ -1,0 +1,485 @@
+{
+  "beganAtSast": "2026-10-28T13:05:28.806817+02:00",
+  "status": "complete",
+  "commit": "098c8304fc673ff22fd5c26aaf5a45542ea7b388",
+  "script": "scripts/inspect-smal-guest-deployment-readiness.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 34461,
+  "scriptTransport": "encoded-command",
+  "renderedSourceSha256": "4021bcfb56d7865c0bff674ec72ccd0f3b66e446f3893277cb65c3c3f5914017",
+  "renderedSourceByteLength": 5717,
+  "unstreamedEncodedLength": 15248,
+  "guestCommandTimeoutSeconds": 300,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "clusterBootstrapComplete": false,
+    "registrationPerformed": false,
+    "updateInstallPerformed": false,
+    "hostUtc": "2026-10-28T11:06:08.8624897Z",
+    "guests": [
+      {
+        "commands": [
+          {
+            "parameters": {},
+            "version": null,
+            "name": "Invoke-AzStackHciArcInitialization",
+            "module": null,
+            "sourceSha256": null,
+            "available": false
+          },
+          {
+            "parameters": {},
+            "version": null,
+            "name": "Get-ArcBootstrapStatus",
+            "module": null,
+            "sourceSha256": null,
+            "available": false
+          },
+          {
+            "parameters": {},
+            "version": null,
+            "name": "Get-VMHost",
+            "module": null,
+            "sourceSha256": null,
+            "available": false
+          },
+          {
+            "parameters": {},
+            "version": null,
+            "name": "Get-NetIntent",
+            "module": null,
+            "sourceSha256": null,
+            "available": false
+          },
+          {
+            "parameters": {},
+            "version": null,
+            "name": "New-HciAdObjectsPreCreation",
+            "module": null,
+            "sourceSha256": null,
+            "available": false
+          }
+        ],
+        "name": "LB-DC01",
+        "domainRole": 5,
+        "preexistingTargetOu": [],
+        "preexistingDeploymentUser": [],
+        "updateApplicabilityAssessed": false,
+        "updatesInstalled": [
+          {
+            "HotFixID": "KB5072725",
+            "InstalledOn": "/Date(1768348800000)/"
+          },
+          {
+            "HotFixID": "KB5073379",
+            "InstalledOn": "/Date(1768348800000)/"
+          },
+          {
+            "HotFixID": "KB5066131",
+            "InstalledOn": "/Date(1768348800000)/"
+          }
+        ],
+        "useRootHints": false,
+        "licenses": [
+          {
+            "id": "753c53a2-4274-4339-8c2e-f66c0b9646c5",
+            "description": "Windows(R) Operating System, TIMEBASED_EVAL channel",
+            "name": "Windows(R), ServerStandardEval edition",
+            "statusReasonHex": "4004F00C",
+            "licenseStatus": 2,
+            "graceMinutes": 14307
+          }
+        ],
+        "defenderEnabled": true,
+        "edition": "ServerStandardEval",
+        "firewallProfilesEnabled": true,
+        "dnsForwarders": [
+          "10.204.0.4"
+        ],
+        "build": "26100.32230",
+        "product": "Windows Server 2025 Standard Evaluation",
+        "atUtc": "2026-10-28T11:05:41.4043289Z",
+        "PSComputerName": "LB-DC01",
+        "RunspaceId": "43a7d120-0ef4-4576-aa3a-8d0fb2cd6c1b",
+        "PSShowComputerName": true
+      },
+      {
+        "commands": [
+          {
+            "parameters": [
+              "AccountID",
+              "ArcGatewayID",
+              "Cloud",
+              "CloudFqdn",
+              "CustomAuthorityHost",
+              "CustomScope",
+              "Debug",
+              "ErrorAction",
+              "ErrorVariable",
+              "InformationAction",
+              "InformationVariable",
+              "LocalPlatformPackagePath",
+              "OutBuffer",
+              "OutVariable",
+              "PipelineVariable",
+              "Proxy",
+              "ProxyBypass",
+              "Region",
+              "ResourceGroup",
+              "SubscriptionID",
+              "TargetSolutionVersion",
+              "TenantID",
+              "Verbose",
+              "WarningAction",
+              "WarningVariable"
+            ],
+            "version": "1.0.0",
+            "name": "Invoke-AzStackHciArcInitialization",
+            "module": "AzureEdgeBootstrap",
+            "sourceSha256": "70B11110F8483898A5CB3667A92F26315361847437832826C58DE53320746F0F",
+            "available": true
+          },
+          {
+            "parameters": [
+              "Debug",
+              "ErrorAction",
+              "ErrorVariable",
+              "InformationAction",
+              "InformationVariable",
+              "JsonResult",
+              "OutBuffer",
+              "OutVariable",
+              "PipelineVariable",
+              "Verbose",
+              "WarningAction",
+              "WarningVariable"
+            ],
+            "version": "1.0.0",
+            "name": "Get-ArcBootstrapStatus",
+            "module": "AzureEdgeBootstrap",
+            "sourceSha256": "70B11110F8483898A5CB3667A92F26315361847437832826C58DE53320746F0F",
+            "available": true
+          },
+          {
+            "parameters": [
+              "CimSession",
+              "ComputerName",
+              "Credential",
+              "Debug",
+              "ErrorAction",
+              "ErrorVariable",
+              "InformationAction",
+              "InformationVariable",
+              "OutBuffer",
+              "OutVariable",
+              "PipelineVariable",
+              "Verbose",
+              "WarningAction",
+              "WarningVariable"
+            ],
+            "version": "2.0.0.0",
+            "name": "Get-VMHost",
+            "module": "Hyper-V",
+            "sourceSha256": "5F4568B7825FED4C960FF3D0FBCF2D847D67B8AC4D5EC2B069339F5B3B4F4978",
+            "available": true
+          },
+          {
+            "parameters": {},
+            "version": null,
+            "name": "Get-NetIntent",
+            "module": null,
+            "sourceSha256": null,
+            "available": false
+          },
+          {
+            "parameters": {},
+            "version": null,
+            "name": "New-HciAdObjectsPreCreation",
+            "module": null,
+            "sourceSha256": null,
+            "available": false
+          }
+        ],
+        "name": "LB-NODE01",
+        "domainRole": 2,
+        "updateApplicabilityAssessed": false,
+        "nonPrimordialStoragePoolCount": 0,
+        "licenses": [
+          {
+            "id": "7ca051fa-58e4-43f5-855a-5249f8409159",
+            "description": "Windows(R) Operating System, RETAIL channel",
+            "name": "Windows(R), ServerAzureStackHCICor edition",
+            "statusReasonHex": "4004FC05",
+            "licenseStatus": 1,
+            "graceMinutes": 0
+          }
+        ],
+        "disks": [
+          {
+            "Number": 0,
+            "UniqueId": "600224802C243E85B50464E0D80BC634",
+            "Size": 137438953472,
+            "IsBoot": true,
+            "IsSystem": true,
+            "PartitionStyle": "GPT"
+          },
+          {
+            "Number": 1,
+            "UniqueId": "6002248018A9EA3E37A91804553ABFEE",
+            "Size": 182536110080,
+            "IsBoot": false,
+            "IsSystem": false,
+            "PartitionStyle": "RAW"
+          },
+          {
+            "Number": 2,
+            "UniqueId": "60022480D47B1977B201A09A9AD85C7E",
+            "Size": 182536110080,
+            "IsBoot": false,
+            "IsSystem": false,
+            "PartitionStyle": "RAW"
+          },
+          {
+            "Number": 3,
+            "UniqueId": "600224805454A96E242F3C38305128AC",
+            "Size": 182536110080,
+            "IsBoot": false,
+            "IsSystem": false,
+            "PartitionStyle": "RAW"
+          },
+          {
+            "Number": 4,
+            "UniqueId": "600224801E3FB24517D8C5F2124F7E30",
+            "Size": 182536110080,
+            "IsBoot": false,
+            "IsSystem": false,
+            "PartitionStyle": "RAW"
+          }
+        ],
+        "defenderEnabled": true,
+        "edition": "ServerAzureStackHCICor",
+        "firewallProfilesEnabled": true,
+        "build": "26100.33650",
+        "product": "Azure Stack HCI",
+        "atUtc": "2026-10-28T11:05:52.4056203Z",
+        "updatesInstalled": [
+          {
+            "HotFixID": "KB5126645",
+            "InstalledOn": "/Date(1793145600000)/"
+          },
+          {
+            "HotFixID": "KB5126646",
+            "InstalledOn": "/Date(1793145600000)/"
+          },
+          {
+            "HotFixID": "KB5127690",
+            "InstalledOn": "/Date(1793145600000)/"
+          },
+          {
+            "HotFixID": "KB5072725",
+            "InstalledOn": "/Date(1768089600000)/"
+          }
+        ],
+        "PSComputerName": "LB-NODE01",
+        "RunspaceId": "20147e07-6f31-4b76-ba75-89e4f74d8c3a",
+        "PSShowComputerName": true
+      },
+      {
+        "commands": [
+          {
+            "parameters": [
+              "AccountID",
+              "ArcGatewayID",
+              "Cloud",
+              "CloudFqdn",
+              "CustomAuthorityHost",
+              "CustomScope",
+              "Debug",
+              "ErrorAction",
+              "ErrorVariable",
+              "InformationAction",
+              "InformationVariable",
+              "LocalPlatformPackagePath",
+              "OutBuffer",
+              "OutVariable",
+              "PipelineVariable",
+              "Proxy",
+              "ProxyBypass",
+              "Region",
+              "ResourceGroup",
+              "SubscriptionID",
+              "TargetSolutionVersion",
+              "TenantID",
+              "Verbose",
+              "WarningAction",
+              "WarningVariable"
+            ],
+            "version": "1.0.0",
+            "name": "Invoke-AzStackHciArcInitialization",
+            "module": "AzureEdgeBootstrap",
+            "sourceSha256": "70B11110F8483898A5CB3667A92F26315361847437832826C58DE53320746F0F",
+            "available": true
+          },
+          {
+            "parameters": [
+              "Debug",
+              "ErrorAction",
+              "ErrorVariable",
+              "InformationAction",
+              "InformationVariable",
+              "JsonResult",
+              "OutBuffer",
+              "OutVariable",
+              "PipelineVariable",
+              "Verbose",
+              "WarningAction",
+              "WarningVariable"
+            ],
+            "version": "1.0.0",
+            "name": "Get-ArcBootstrapStatus",
+            "module": "AzureEdgeBootstrap",
+            "sourceSha256": "70B11110F8483898A5CB3667A92F26315361847437832826C58DE53320746F0F",
+            "available": true
+          },
+          {
+            "parameters": [
+              "CimSession",
+              "ComputerName",
+              "Credential",
+              "Debug",
+              "ErrorAction",
+              "ErrorVariable",
+              "InformationAction",
+              "InformationVariable",
+              "OutBuffer",
+              "OutVariable",
+              "PipelineVariable",
+              "Verbose",
+              "WarningAction",
+              "WarningVariable"
+            ],
+            "version": "2.0.0.0",
+            "name": "Get-VMHost",
+            "module": "Hyper-V",
+            "sourceSha256": "5F4568B7825FED4C960FF3D0FBCF2D847D67B8AC4D5EC2B069339F5B3B4F4978",
+            "available": true
+          },
+          {
+            "parameters": {},
+            "version": null,
+            "name": "Get-NetIntent",
+            "module": null,
+            "sourceSha256": null,
+            "available": false
+          },
+          {
+            "parameters": {},
+            "version": null,
+            "name": "New-HciAdObjectsPreCreation",
+            "module": null,
+            "sourceSha256": null,
+            "available": false
+          }
+        ],
+        "name": "LB-NODE02",
+        "domainRole": 2,
+        "updateApplicabilityAssessed": false,
+        "nonPrimordialStoragePoolCount": 0,
+        "licenses": [
+          {
+            "id": "7ca051fa-58e4-43f5-855a-5249f8409159",
+            "description": "Windows(R) Operating System, RETAIL channel",
+            "name": "Windows(R), ServerAzureStackHCICor edition",
+            "statusReasonHex": "4004FC05",
+            "licenseStatus": 1,
+            "graceMinutes": 0
+          }
+        ],
+        "disks": [
+          {
+            "Number": 0,
+            "UniqueId": "60022480232ACEB031BB14739AF3844B",
+            "Size": 137438953472,
+            "IsBoot": true,
+            "IsSystem": true,
+            "PartitionStyle": "GPT"
+          },
+          {
+            "Number": 1,
+            "UniqueId": "6002248065ACD99B54C87E76586527CA",
+            "Size": 182536110080,
+            "IsBoot": false,
+            "IsSystem": false,
+            "PartitionStyle": "RAW"
+          },
+          {
+            "Number": 2,
+            "UniqueId": "600224801933BE540257E4937DA41512",
+            "Size": 182536110080,
+            "IsBoot": false,
+            "IsSystem": false,
+            "PartitionStyle": "RAW"
+          },
+          {
+            "Number": 3,
+            "UniqueId": "6002248037A2A230372B3EC87A9D3377",
+            "Size": 182536110080,
+            "IsBoot": false,
+            "IsSystem": false,
+            "PartitionStyle": "RAW"
+          },
+          {
+            "Number": 4,
+            "UniqueId": "600224802DF5A6C7E8F6062832A93BAC",
+            "Size": 182536110080,
+            "IsBoot": false,
+            "IsSystem": false,
+            "PartitionStyle": "RAW"
+          }
+        ],
+        "defenderEnabled": true,
+        "edition": "ServerAzureStackHCICor",
+        "firewallProfilesEnabled": true,
+        "build": "26100.33650",
+        "product": "Azure Stack HCI",
+        "atUtc": "2026-10-28T11:06:03.6106155Z",
+        "updatesInstalled": [
+          {
+            "HotFixID": "KB5126645",
+            "InstalledOn": "/Date(1793145600000)/"
+          },
+          {
+            "HotFixID": "KB5126646",
+            "InstalledOn": "/Date(1793145600000)/"
+          },
+          {
+            "HotFixID": "KB5127690",
+            "InstalledOn": "/Date(1793145600000)/"
+          },
+          {
+            "HotFixID": "KB5072725",
+            "InstalledOn": "/Date(1768089600000)/"
+          }
+        ],
+        "PSComputerName": "LB-NODE02",
+        "RunspaceId": "d30349b4-d211-46e3-9e15-2b87630b6dc7",
+        "PSShowComputerName": true
+      }
+    ],
+    "credentialsExported": false,
+    "activationPerformed": false
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-28T13:06:09.160263+02:00"
+}

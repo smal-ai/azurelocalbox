@@ -1,0 +1,73 @@
+{
+  "status": "legacy-bootstrap-not-approved-for-new-shared-network",
+  "observedOn": "2026-10-27",
+  "installedOrExecuted": false,
+  "findings": [
+    {
+      "source": "infra/artifacts/PowerShell/New-LocalBoxCluster.ps1",
+      "lines": [111, 115, 116],
+      "finding": "Enables remoting, sets wildcard TrustedHosts and enables client CredSSP for the lab domain.",
+      "disposition": "Do not run unchanged or infer approval from cost/identity consent. Replace with exact reviewed authentication/target design."
+    },
+    {
+      "source": "infra/artifacts/PowerShell/Bootstrap.ps1",
+      "lines": [67, 140],
+      "finding": "Optional autologon persists a password in Winlogon. Bootstrap also replaces the configuration password placeholder with the admin password on disk.",
+      "disposition": "No current credential value read. New guest bootstrap must use approved secret-delivery/lifetime controls, not silently replay old persisted credentials."
+    },
+    {
+      "source": "infra/artifacts/PowerShell/Bootstrap.ps1",
+      "lines": [102, 390, 392],
+      "finding": "Uses transcription and later rewrites the transcript.",
+      "disposition": "Review secret-safe logging before any execution. Do not remove platform audit controls or rely on post-hoc suppression."
+    },
+    {
+      "source": "infra/artifacts/PowerShell/Bootstrap.ps1",
+      "lines": [363, 374, 386],
+      "finding": "Adds broad Defender extension, path and process exclusions, including XML and Hyper-V processes.",
+      "disposition": "Do not apply silently. Keep existing controls; remove unnecessary exclusions from a reviewed replacement or obtain a specific governance decision."
+    },
+    {
+      "source": "infra/artifacts/PowerShell/Bootstrap.ps1",
+      "lines": [148, 152, 157, 197],
+      "finding": "Some prerequisite modules are pinned but another module loop and PSResourceGet installation are floating.",
+      "disposition": "A pinned top-level LocalBox module alone is not a reproducible complete bootstrap. Resolve and verify all module/artifact versions before apply."
+    }
+  ],
+  "candidateSources": {
+    "azureLocalImage": {
+      "label": "AzLocal2604",
+      "availableByHead": true,
+      "publishedSha256": "03C2BD1363C21AA59BCF2A04F8266B727E1B956C7A63FC14D2FB61DFFBAF0519",
+      "downloadedImageChecksumVerified": false,
+      "currentServiceDeploymentSupportVerified": false,
+      "evidence": "image-preflight.json"
+    },
+    "managementImage": {
+      "label": "WinServerApril2024",
+      "availableByHead": true,
+      "publishedSha256": "33903943A337E716A1C53EA5D610EFC5D04517621B1430F2FA68F353A3B3C369",
+      "downloadedImageChecksumVerified": false,
+      "patchAndEvaluationLicensingSuitability": "not-accepted-for-new-deployment",
+      "evidence": "image-preflight.json"
+    },
+    "localBoxModule": {
+      "name": "Azure.Arc.Jumpstart.LocalBox",
+      "version": "1.0.8",
+      "galleryLatestStableAtRead": true,
+      "galleryPublishedOn": "2025-10-15",
+      "packageSha256": "3eb7dba75e061031b25d7c9d46f2be490f3702ec452c299d3844848c6bf6e475",
+      "packageSha512MatchesGallery": true,
+      "installedOrImported": false,
+      "fullPlatformCompatibilityVerified": false,
+      "evidence": ["module-catalogue.json", "module-source-audit.json"]
+    }
+  },
+  "nextEngineeringWork": [
+    "Complete version-pinned safe bootstrap source and dependency review without wildcard auth changes or blanket security exclusions",
+    "Match exact version-specific endpoints and DNS/proxy requirements, plus platform diagnostic/governance requirements",
+    "Agree nested prefixes and routes/SNAT with Entlz and SMAL before applying a configuration",
+    "Validate final plan and what-if, then commit/push reviewed consequential source before resource application"
+  ],
+  "approvalInterpretation": "Host costs and current signed-in identity are approved. No security-governance waiver, new role assignment or network gate waiver follows."
+}

@@ -1,0 +1,31 @@
+{
+  "key": "smal-host-start-20261028-v1",
+  "beganAtUtc": "2026-10-28T06:05:45.884378+00:00",
+  "status": "failed-inspect-before-retry",
+  "operation": "start-existing-approved-host",
+  "command": [
+    "az",
+    "vm",
+    "start",
+    "--subscription",
+    "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+    "-g",
+    "rg-localbox-nodes-san-1",
+    "-n",
+    "LocalBox-Client",
+    "--only-show-errors"
+  ],
+  "humanRequest": "please complete the bootstrap and then deploy.",
+  "costApproval": "docs/deployment-2026-10-27/owner-approvals.json",
+  "beforePower": "deallocated",
+  "sourceCommit": "36e32ea3e1e6bada4c5f9252a5786f0dfc08e2fe",
+  "newAzureResourcesCreated": false,
+  "automaticShutdownControlsChanged": false,
+  "automaticRetryPermitted": false,
+  "exitCode": 1,
+  "errorCode": "AuthorizationFailed",
+  "deniedAction": "Microsoft.Compute/virtualMachines/start/action",
+  "reconciliation": "Independent readback remained deallocated. Exact command ERROR entry confirms authorisation failure, not an uncertain start. Original receipt retained.",
+  "humanSubsequentlyReported": "Approved access restored",
+  "finishedAtUtc": "2026-10-28T06:05:48.224501+00:00"
+}

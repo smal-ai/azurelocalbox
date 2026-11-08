@@ -1,0 +1,37 @@
+{
+  "beganAtSast": "2026-10-28T09:53:22.474538+02:00",
+  "status": "complete",
+  "commit": "64af7e038a9274f2a3e8869942e643519e6bcf0a",
+  "script": "scripts/start-smal-eval-media-job.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 46503,
+  "scriptTransport": "sha256-length-framed-utf8-stdin",
+  "renderedSourceSha256": "65fcaf8fc40392bff6960f3761af4c7b1406859dc45eaa74b14cfce1b76da72f",
+  "renderedSourceByteLength": 11391,
+  "unstreamedEncodedLength": 30376,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "sourceCommit": "64af7e038a9274f2a3e8869942e643519e6bcf0a",
+    "manifestSha256": "CCEE3A10290FE86D1E675796CDCF260C4C14E9CDC869CF5C5CFCB5C023741BB7",
+    "workerSha256": "348FC40632F2A99ED6C88D2223420E0E9141150DA66D49C0F63F35DB4FCA0B77",
+    "clusterBootstrapComplete": false,
+    "cronCreated": false,
+    "runId": "eval-media-20261028-01",
+    "startRequested": true,
+    "scope": "evaluation-media-download-only"
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-28T09:53:32.936276+02:00"
+}

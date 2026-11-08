@@ -1,0 +1,601 @@
+{
+  "beganAtSast": "2026-10-28T15:25:38.421932+02:00",
+  "status": "complete",
+  "commit": "593aaa0727ccff36996ad210dc64c3f4192fe480",
+  "script": "scripts/inspect-smal-guest-deployment-readiness.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 37111,
+  "scriptTransport": "sha256-length-framed-utf8-stdin",
+  "renderedSourceSha256": "954cb6d2fcc4cb775960f3e222c809d8e4f26c5c25177a106cfaf828506a65b3",
+  "renderedSourceByteLength": 8183,
+  "unstreamedEncodedLength": 21824,
+  "guestCommandTimeoutSeconds": 300,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "clusterBootstrapComplete": false,
+    "registrationPerformed": false,
+    "updateInstallPerformed": false,
+    "hostUtc": "2026-10-28T13:26:15.4387289Z",
+    "guests": [
+      {
+        "commands": [
+          {
+            "parameters": {},
+            "version": null,
+            "name": "Invoke-AzStackHciArcInitialization",
+            "module": null,
+            "sourceSha256": null,
+            "available": false
+          },
+          {
+            "parameters": {},
+            "version": null,
+            "name": "Get-ArcBootstrapStatus",
+            "module": null,
+            "sourceSha256": null,
+            "available": false
+          },
+          {
+            "parameters": {},
+            "version": null,
+            "name": "Get-VMHost",
+            "module": null,
+            "sourceSha256": null,
+            "available": false
+          },
+          {
+            "parameters": {},
+            "version": null,
+            "name": "Get-NetIntent",
+            "module": null,
+            "sourceSha256": null,
+            "available": false
+          },
+          {
+            "parameters": {},
+            "version": null,
+            "name": "New-HciAdObjectsPreCreation",
+            "module": null,
+            "sourceSha256": null,
+            "available": false
+          }
+        ],
+        "name": "LB-DC01",
+        "domainRole": 5,
+        "preexistingTargetOu": [
+          {
+            "Name": "AzureLocal",
+            "DistinguishedName": "OU=AzureLocal,DC=ad,DC=localbox,DC=test"
+          }
+        ],
+        "preexistingDeploymentUser": [
+          {
+            "SamAccountName": "lboxdeploy",
+            "Enabled": true,
+            "DistinguishedName": "CN=lboxdeploy,OU=SMAL01,OU=AzureLocal,DC=ad,DC=localbox,DC=test"
+          }
+        ],
+        "updateApplicabilityAssessed": false,
+        "updatesInstalled": [
+          {
+            "HotFixID": "KB5072725",
+            "InstalledOn": "/Date(1768348800000)/"
+          },
+          {
+            "HotFixID": "KB5073379",
+            "InstalledOn": "/Date(1768348800000)/"
+          },
+          {
+            "HotFixID": "KB5066131",
+            "InstalledOn": "/Date(1768348800000)/"
+          }
+        ],
+        "useRootHints": false,
+        "licenses": [
+          {
+            "id": "753c53a2-4274-4339-8c2e-f66c0b9646c5",
+            "description": "Windows(R) Operating System, TIMEBASED_EVAL channel",
+            "name": "Windows(R), ServerStandardEval edition",
+            "statusReasonHex": "4004FC04",
+            "licenseStatus": 1,
+            "graceMinutes": 259078
+          }
+        ],
+        "defenderEnabled": true,
+        "edition": "ServerStandardEval",
+        "firewallProfilesEnabled": true,
+        "dnsForwarders": [
+          "10.204.0.4"
+        ],
+        "build": "26100.32230",
+        "product": "Windows Server 2025 Standard Evaluation",
+        "atUtc": "2026-10-28T13:25:49.7694658Z",
+        "platformPrivateEndpoints": [
+          {
+            "privateDnsMatched": true,
+            "actualIps": [
+              "10.200.17.11"
+            ],
+            "httpsStatus": 404,
+            "authenticatedDataAccessTested": false,
+            "normalTlsHttpResponseVerified": true,
+            "fqdn": "kv-lbox-weu-4766ea.vault.azure.net",
+            "expectedIp": "10.200.17.11"
+          },
+          {
+            "privateDnsMatched": true,
+            "actualIps": [
+              "10.200.17.9"
+            ],
+            "httpsStatus": 400,
+            "authenticatedDataAccessTested": false,
+            "normalTlsHttpResponseVerified": true,
+            "fqdn": "stlboxdiagweu4766ea.blob.core.windows.net",
+            "expectedIp": "10.200.17.9"
+          },
+          {
+            "privateDnsMatched": true,
+            "actualIps": [
+              "10.200.17.10"
+            ],
+            "httpsStatus": 400,
+            "authenticatedDataAccessTested": false,
+            "normalTlsHttpResponseVerified": true,
+            "fqdn": "stlboxwitweu4766ea.blob.core.windows.net",
+            "expectedIp": "10.200.17.10"
+          }
+        ],
+        "PSComputerName": "LB-DC01",
+        "RunspaceId": "a8a87a37-35e0-4a81-9e9a-19a60da0911a",
+        "PSShowComputerName": true
+      },
+      {
+        "commands": [
+          {
+            "parameters": [
+              "AccountID",
+              "ArcGatewayID",
+              "Cloud",
+              "CloudFqdn",
+              "CustomAuthorityHost",
+              "CustomScope",
+              "Debug",
+              "ErrorAction",
+              "ErrorVariable",
+              "InformationAction",
+              "InformationVariable",
+              "LocalPlatformPackagePath",
+              "OutBuffer",
+              "OutVariable",
+              "PipelineVariable",
+              "Proxy",
+              "ProxyBypass",
+              "Region",
+              "ResourceGroup",
+              "SubscriptionID",
+              "TargetSolutionVersion",
+              "TenantID",
+              "Verbose",
+              "WarningAction",
+              "WarningVariable"
+            ],
+            "version": "1.0.0",
+            "name": "Invoke-AzStackHciArcInitialization",
+            "module": "AzureEdgeBootstrap",
+            "sourceSha256": "70B11110F8483898A5CB3667A92F26315361847437832826C58DE53320746F0F",
+            "available": true
+          },
+          {
+            "parameters": [
+              "Debug",
+              "ErrorAction",
+              "ErrorVariable",
+              "InformationAction",
+              "InformationVariable",
+              "JsonResult",
+              "OutBuffer",
+              "OutVariable",
+              "PipelineVariable",
+              "Verbose",
+              "WarningAction",
+              "WarningVariable"
+            ],
+            "version": "1.0.0",
+            "name": "Get-ArcBootstrapStatus",
+            "module": "AzureEdgeBootstrap",
+            "sourceSha256": "70B11110F8483898A5CB3667A92F26315361847437832826C58DE53320746F0F",
+            "available": true
+          },
+          {
+            "parameters": [
+              "CimSession",
+              "ComputerName",
+              "Credential",
+              "Debug",
+              "ErrorAction",
+              "ErrorVariable",
+              "InformationAction",
+              "InformationVariable",
+              "OutBuffer",
+              "OutVariable",
+              "PipelineVariable",
+              "Verbose",
+              "WarningAction",
+              "WarningVariable"
+            ],
+            "version": "2.0.0.0",
+            "name": "Get-VMHost",
+            "module": "Hyper-V",
+            "sourceSha256": "5F4568B7825FED4C960FF3D0FBCF2D847D67B8AC4D5EC2B069339F5B3B4F4978",
+            "available": true
+          },
+          {
+            "parameters": {},
+            "version": null,
+            "name": "Get-NetIntent",
+            "module": null,
+            "sourceSha256": null,
+            "available": false
+          },
+          {
+            "parameters": {},
+            "version": null,
+            "name": "New-HciAdObjectsPreCreation",
+            "module": null,
+            "sourceSha256": null,
+            "available": false
+          }
+        ],
+        "name": "LB-NODE01",
+        "platformPrivateEndpoints": [
+          {
+            "privateDnsMatched": true,
+            "actualIps": [
+              "10.200.17.11"
+            ],
+            "httpsStatus": 404,
+            "authenticatedDataAccessTested": false,
+            "normalTlsHttpResponseVerified": true,
+            "fqdn": "kv-lbox-weu-4766ea.vault.azure.net",
+            "expectedIp": "10.200.17.11"
+          },
+          {
+            "privateDnsMatched": true,
+            "actualIps": [
+              "10.200.17.9"
+            ],
+            "httpsStatus": 400,
+            "authenticatedDataAccessTested": false,
+            "normalTlsHttpResponseVerified": true,
+            "fqdn": "stlboxdiagweu4766ea.blob.core.windows.net",
+            "expectedIp": "10.200.17.9"
+          },
+          {
+            "privateDnsMatched": true,
+            "actualIps": [
+              "10.200.17.10"
+            ],
+            "httpsStatus": 400,
+            "authenticatedDataAccessTested": false,
+            "normalTlsHttpResponseVerified": true,
+            "fqdn": "stlboxwitweu4766ea.blob.core.windows.net",
+            "expectedIp": "10.200.17.10"
+          }
+        ],
+        "domainRole": 2,
+        "updateApplicabilityAssessed": false,
+        "nonPrimordialStoragePoolCount": 0,
+        "licenses": [
+          {
+            "id": "7ca051fa-58e4-43f5-855a-5249f8409159",
+            "description": "Windows(R) Operating System, RETAIL channel",
+            "name": "Windows(R), ServerAzureStackHCICor edition",
+            "statusReasonHex": "4004FC05",
+            "licenseStatus": 1,
+            "graceMinutes": 0
+          }
+        ],
+        "disks": [
+          {
+            "Number": 0,
+            "UniqueId": "600224802C243E85B50464E0D80BC634",
+            "Size": 137438953472,
+            "IsBoot": true,
+            "IsSystem": true,
+            "PartitionStyle": "GPT"
+          },
+          {
+            "Number": 1,
+            "UniqueId": "6002248018A9EA3E37A91804553ABFEE",
+            "Size": 182536110080,
+            "IsBoot": false,
+            "IsSystem": false,
+            "PartitionStyle": "RAW"
+          },
+          {
+            "Number": 2,
+            "UniqueId": "60022480D47B1977B201A09A9AD85C7E",
+            "Size": 182536110080,
+            "IsBoot": false,
+            "IsSystem": false,
+            "PartitionStyle": "RAW"
+          },
+          {
+            "Number": 3,
+            "UniqueId": "600224805454A96E242F3C38305128AC",
+            "Size": 182536110080,
+            "IsBoot": false,
+            "IsSystem": false,
+            "PartitionStyle": "RAW"
+          },
+          {
+            "Number": 4,
+            "UniqueId": "600224801E3FB24517D8C5F2124F7E30",
+            "Size": 182536110080,
+            "IsBoot": false,
+            "IsSystem": false,
+            "PartitionStyle": "RAW"
+          }
+        ],
+        "defenderEnabled": true,
+        "edition": "ServerAzureStackHCICor",
+        "firewallProfilesEnabled": true,
+        "build": "26100.33650",
+        "product": "Azure Stack HCI",
+        "atUtc": "2026-10-28T13:26:00.0253210Z",
+        "updatesInstalled": [
+          {
+            "HotFixID": "KB5126645",
+            "InstalledOn": "/Date(1793145600000)/"
+          },
+          {
+            "HotFixID": "KB5126646",
+            "InstalledOn": "/Date(1793145600000)/"
+          },
+          {
+            "HotFixID": "KB5127690",
+            "InstalledOn": "/Date(1793145600000)/"
+          },
+          {
+            "HotFixID": "KB5072725",
+            "InstalledOn": "/Date(1768089600000)/"
+          }
+        ],
+        "PSComputerName": "LB-NODE01",
+        "RunspaceId": "c7178037-1f40-4677-aadb-0608e2d6d3f6",
+        "PSShowComputerName": true
+      },
+      {
+        "commands": [
+          {
+            "parameters": [
+              "AccountID",
+              "ArcGatewayID",
+              "Cloud",
+              "CloudFqdn",
+              "CustomAuthorityHost",
+              "CustomScope",
+              "Debug",
+              "ErrorAction",
+              "ErrorVariable",
+              "InformationAction",
+              "InformationVariable",
+              "LocalPlatformPackagePath",
+              "OutBuffer",
+              "OutVariable",
+              "PipelineVariable",
+              "Proxy",
+              "ProxyBypass",
+              "Region",
+              "ResourceGroup",
+              "SubscriptionID",
+              "TargetSolutionVersion",
+              "TenantID",
+              "Verbose",
+              "WarningAction",
+              "WarningVariable"
+            ],
+            "version": "1.0.0",
+            "name": "Invoke-AzStackHciArcInitialization",
+            "module": "AzureEdgeBootstrap",
+            "sourceSha256": "70B11110F8483898A5CB3667A92F26315361847437832826C58DE53320746F0F",
+            "available": true
+          },
+          {
+            "parameters": [
+              "Debug",
+              "ErrorAction",
+              "ErrorVariable",
+              "InformationAction",
+              "InformationVariable",
+              "JsonResult",
+              "OutBuffer",
+              "OutVariable",
+              "PipelineVariable",
+              "Verbose",
+              "WarningAction",
+              "WarningVariable"
+            ],
+            "version": "1.0.0",
+            "name": "Get-ArcBootstrapStatus",
+            "module": "AzureEdgeBootstrap",
+            "sourceSha256": "70B11110F8483898A5CB3667A92F26315361847437832826C58DE53320746F0F",
+            "available": true
+          },
+          {
+            "parameters": [
+              "CimSession",
+              "ComputerName",
+              "Credential",
+              "Debug",
+              "ErrorAction",
+              "ErrorVariable",
+              "InformationAction",
+              "InformationVariable",
+              "OutBuffer",
+              "OutVariable",
+              "PipelineVariable",
+              "Verbose",
+              "WarningAction",
+              "WarningVariable"
+            ],
+            "version": "2.0.0.0",
+            "name": "Get-VMHost",
+            "module": "Hyper-V",
+            "sourceSha256": "5F4568B7825FED4C960FF3D0FBCF2D847D67B8AC4D5EC2B069339F5B3B4F4978",
+            "available": true
+          },
+          {
+            "parameters": {},
+            "version": null,
+            "name": "Get-NetIntent",
+            "module": null,
+            "sourceSha256": null,
+            "available": false
+          },
+          {
+            "parameters": {},
+            "version": null,
+            "name": "New-HciAdObjectsPreCreation",
+            "module": null,
+            "sourceSha256": null,
+            "available": false
+          }
+        ],
+        "name": "LB-NODE02",
+        "platformPrivateEndpoints": [
+          {
+            "privateDnsMatched": true,
+            "actualIps": [
+              "10.200.17.11"
+            ],
+            "httpsStatus": 404,
+            "authenticatedDataAccessTested": false,
+            "normalTlsHttpResponseVerified": true,
+            "fqdn": "kv-lbox-weu-4766ea.vault.azure.net",
+            "expectedIp": "10.200.17.11"
+          },
+          {
+            "privateDnsMatched": true,
+            "actualIps": [
+              "10.200.17.9"
+            ],
+            "httpsStatus": 400,
+            "authenticatedDataAccessTested": false,
+            "normalTlsHttpResponseVerified": true,
+            "fqdn": "stlboxdiagweu4766ea.blob.core.windows.net",
+            "expectedIp": "10.200.17.9"
+          },
+          {
+            "privateDnsMatched": true,
+            "actualIps": [
+              "10.200.17.10"
+            ],
+            "httpsStatus": 400,
+            "authenticatedDataAccessTested": false,
+            "normalTlsHttpResponseVerified": true,
+            "fqdn": "stlboxwitweu4766ea.blob.core.windows.net",
+            "expectedIp": "10.200.17.10"
+          }
+        ],
+        "domainRole": 2,
+        "updateApplicabilityAssessed": false,
+        "nonPrimordialStoragePoolCount": 0,
+        "licenses": [
+          {
+            "id": "7ca051fa-58e4-43f5-855a-5249f8409159",
+            "description": "Windows(R) Operating System, RETAIL channel",
+            "name": "Windows(R), ServerAzureStackHCICor edition",
+            "statusReasonHex": "4004FC05",
+            "licenseStatus": 1,
+            "graceMinutes": 0
+          }
+        ],
+        "disks": [
+          {
+            "Number": 0,
+            "UniqueId": "60022480232ACEB031BB14739AF3844B",
+            "Size": 137438953472,
+            "IsBoot": true,
+            "IsSystem": true,
+            "PartitionStyle": "GPT"
+          },
+          {
+            "Number": 1,
+            "UniqueId": "6002248065ACD99B54C87E76586527CA",
+            "Size": 182536110080,
+            "IsBoot": false,
+            "IsSystem": false,
+            "PartitionStyle": "RAW"
+          },
+          {
+            "Number": 2,
+            "UniqueId": "600224801933BE540257E4937DA41512",
+            "Size": 182536110080,
+            "IsBoot": false,
+            "IsSystem": false,
+            "PartitionStyle": "RAW"
+          },
+          {
+            "Number": 3,
+            "UniqueId": "6002248037A2A230372B3EC87A9D3377",
+            "Size": 182536110080,
+            "IsBoot": false,
+            "IsSystem": false,
+            "PartitionStyle": "RAW"
+          },
+          {
+            "Number": 4,
+            "UniqueId": "600224802DF5A6C7E8F6062832A93BAC",
+            "Size": 182536110080,
+            "IsBoot": false,
+            "IsSystem": false,
+            "PartitionStyle": "RAW"
+          }
+        ],
+        "defenderEnabled": true,
+        "edition": "ServerAzureStackHCICor",
+        "firewallProfilesEnabled": true,
+        "build": "26100.33650",
+        "product": "Azure Stack HCI",
+        "atUtc": "2026-10-28T13:26:09.3797541Z",
+        "updatesInstalled": [
+          {
+            "HotFixID": "KB5126645",
+            "InstalledOn": "/Date(1793145600000)/"
+          },
+          {
+            "HotFixID": "KB5126646",
+            "InstalledOn": "/Date(1793145600000)/"
+          },
+          {
+            "HotFixID": "KB5127690",
+            "InstalledOn": "/Date(1793145600000)/"
+          },
+          {
+            "HotFixID": "KB5072725",
+            "InstalledOn": "/Date(1768089600000)/"
+          }
+        ],
+        "PSComputerName": "LB-NODE02",
+        "RunspaceId": "9d5c9bdc-e247-4d6d-90e4-7e004701d8ec",
+        "PSShowComputerName": true
+      }
+    ],
+    "credentialsExported": false,
+    "activationPerformed": false
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-28T15:26:15.739461+02:00"
+}

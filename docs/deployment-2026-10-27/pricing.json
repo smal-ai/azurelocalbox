@@ -1,0 +1,102 @@
+{
+  "host": {
+    "url": "https://prices.azure.com/api/retail/prices?%24filter=armRegionName+eq+%27southafricanorth%27+and+armSkuName+eq+%27Standard_E32s_v6%27+and+priceType+eq+%27Consumption%27&currencyCode=USD",
+    "nextPage": null,
+    "items": [
+      {
+        "productName": "Virtual Machines Esv6 Series",
+        "skuName": "E32s v6 Spot",
+        "armSkuName": "Standard_E32s_v6",
+        "meterName": "E32s v6 Spot",
+        "retailPrice": 0.520212,
+        "unitOfMeasure": "1 Hour",
+        "currencyCode": "USD",
+        "effectiveStartDate": "2025-09-01T00:00:00Z",
+        "type": "Consumption"
+      },
+      {
+        "productName": "Virtual Machines Esv6 Series Windows",
+        "skuName": "E32s v6 Spot",
+        "armSkuName": "Standard_E32s_v6",
+        "meterName": "E32s v6 Spot",
+        "retailPrice": 0.792238,
+        "unitOfMeasure": "1 Hour",
+        "currencyCode": "USD",
+        "effectiveStartDate": "2025-09-01T00:00:00Z",
+        "type": "Consumption"
+      },
+      {
+        "productName": "Virtual Machines Esv6 Series",
+        "skuName": "E32s v6",
+        "armSkuName": "Standard_E32s_v6",
+        "meterName": "E32s v6",
+        "retailPrice": 2.815,
+        "unitOfMeasure": "1 Hour",
+        "currencyCode": "USD",
+        "effectiveStartDate": "2024-10-01T00:00:00Z",
+        "type": "Consumption"
+      },
+      {
+        "productName": "Virtual Machines Esv6 Series Windows",
+        "skuName": "E32s v6",
+        "armSkuName": "Standard_E32s_v6",
+        "meterName": "E32s v6",
+        "retailPrice": 4.287,
+        "unitOfMeasure": "1 Hour",
+        "currencyCode": "USD",
+        "effectiveStartDate": "2024-10-01T00:00:00Z",
+        "type": "Consumption"
+      }
+    ]
+  },
+  "disks": {
+    "url": "https://prices.azure.com/api/retail/prices?%24filter=armRegionName+eq+%27southafricanorth%27+and+productName+eq+%27Premium+SSD+Managed+Disks%27+and+priceType+eq+%27Consumption%27&currencyCode=USD",
+    "nextPage": null,
+    "items": [
+      {
+        "productName": "Premium SSD Managed Disks",
+        "skuName": "P30 LRS",
+        "armSkuName": "Premium_SSD_Managed_Disks_P30",
+        "meterName": "P30 LRS Disk Mount",
+        "retailPrice": 9.592,
+        "unitOfMeasure": "1/Month",
+        "currencyCode": "USD",
+        "effectiveStartDate": "2020-09-01T00:00:00Z",
+        "type": "Consumption"
+      },
+      {
+        "productName": "Premium SSD Managed Disks",
+        "skuName": "P15 LRS",
+        "armSkuName": "Premium_SSD_Managed_Disk_P15",
+        "meterName": "P15 LRS Disk Mount",
+        "retailPrice": 2.664,
+        "unitOfMeasure": "1/Month",
+        "currencyCode": "USD",
+        "effectiveStartDate": "2020-09-01T00:00:00Z",
+        "type": "Consumption"
+      },
+      {
+        "productName": "Premium SSD Managed Disks",
+        "skuName": "P15 LRS",
+        "armSkuName": "Premium_SSD_Managed_Disk_P15",
+        "meterName": "P15 LRS Disk",
+        "retailPrice": 46.31,
+        "unitOfMeasure": "1/Month",
+        "currencyCode": "USD",
+        "effectiveStartDate": "2019-02-01T00:00:00Z",
+        "type": "Consumption"
+      },
+      {
+        "productName": "Premium SSD Managed Disks",
+        "skuName": "P30 LRS",
+        "armSkuName": "Premium_SSD_Managed_Disks_P30",
+        "meterName": "P30 LRS Disk",
+        "retailPrice": 164.66,
+        "unitOfMeasure": "1/Month",
+        "currencyCode": "USD",
+        "effectiveStartDate": "2019-02-01T00:00:00Z",
+        "type": "Consumption"
+      }
+    ]
+  }
+}

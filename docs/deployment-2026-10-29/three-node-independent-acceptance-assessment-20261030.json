@@ -1,0 +1,95 @@
+{
+  "assessedAtUtc": "2026-10-30T12:59:26.435297+00:00",
+  "status": "cluster-and-cloud-checks-passed-encryption-disk-tier-and-recovery-incomplete",
+  "clusterStorage": {
+    "nodeCount": 3,
+    "approvedPoolMemberCount": 12,
+    "osDisksExcluded": true,
+    "s2dPoolId": "{923c0194-3ed4-449a-ae14-0f62861e0ec8}",
+    "noWitness": true,
+    "onlineCsvCount": 4,
+    "threeCopyMirrorsHealthy": true,
+    "activeStorageJobs": false,
+    "originalOuterPoolPreserved": true
+  },
+  "cloud": {
+    "threeArcIdentitiesConnected": true,
+    "resourceBridgeRunning": true,
+    "customLocationSucceededAndBound": true,
+    "privateAccessControlsPreserved": true,
+    "vaultAuditExportConfigured": true
+  },
+  "bootEncryptionIssues": [
+    {
+      "node": "LB-NODE01",
+      "issue": "requested-boot-volume-encryption-not-verified",
+      "observed": [
+        {
+          "volumeType": "OperatingSystem",
+          "encryptionPercentage": 0,
+          "volumeStatus": "FullyDecrypted",
+          "mountPoint": "C:",
+          "protectionStatus": "Off"
+        }
+      ]
+    },
+    {
+      "node": "LB-NODE02",
+      "issue": "requested-boot-volume-encryption-not-verified",
+      "observed": [
+        {
+          "volumeType": "OperatingSystem",
+          "encryptionPercentage": 0,
+          "volumeStatus": "FullyDecrypted",
+          "mountPoint": "C:",
+          "protectionStatus": "Off"
+        }
+      ]
+    },
+    {
+      "node": "LB-NODE03",
+      "issue": "requested-boot-volume-encryption-not-verified",
+      "observed": [
+        {
+          "volumeType": "OperatingSystem",
+          "encryptionPercentage": 0,
+          "volumeStatus": "FullyDecrypted",
+          "mountPoint": "C:",
+          "protectionStatus": "Off"
+        }
+      ]
+    }
+  ],
+  "capacity": {
+    "poolSizeGiB": 2027.99,
+    "poolAllocatedGiB": 1138.5,
+    "poolUnallocatedGiB": 889.49,
+    "nominalUserVolumeGiB": 852.0,
+    "userVolumesThinProvisioned": true,
+    "additionalThreeCopyLogicalGiBBeforeReserveAndOverhead": 296.5,
+    "warning": "Nominal thin-volume/CSV free space is not physical capacity. Preserve repair reserve and account for three copies before allocating workloads."
+  },
+  "recoveryExportAndOwnershipAccepted": false,
+  "platformReadinessVerified": false,
+  "azureMutationPerformed": false,
+  "premiumHostDisksVerified": false,
+  "auditDeliveryVerified": false,
+  "proofs": [
+    {
+      "path": "docs/deployment-2026-10-27/private-ssh-final-cluster-storage-postdeploy-identity-20261030.json",
+      "sha256": "21b803a5e30e9f7d5ca3cba66a5d25518b2699cb15b8e55b04614b3393893358"
+    },
+    {
+      "path": "docs/deployment-2026-10-29/three-node-cloud-acceptance-corrected-observer-20261030.json",
+      "sha256": "9b4238cc6cfa6137868c096bfd2ddf55d57b988c21eab00acbe2726eff777f32"
+    },
+    {
+      "path": "docs/deployment-2026-10-29/three-node-local-identity-bindings.json",
+      "sha256": "66356ad8fa603c20d92638df365cee5ec0b414d6cee8e3b2872d483bd082d20d"
+    },
+    {
+      "path": "docs/deployment-2026-10-29/three-node-disk-and-audit-export-observation-20261030.json",
+      "sha256": "aa5b1ac6d1932c30bcb1f46c3f0bf7613bbcd6ca005cce8da9636fe353c79f93"
+    }
+  ]
+}

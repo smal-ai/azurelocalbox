@@ -1,0 +1,19 @@
+{
+  "purpose": "diagnose-known-read-only-catalogue-failure-no-resource-action",
+  "originalReceipt": "current-os-image-catalogue.json",
+  "exitCode": 1,
+  "errorCodes": [],
+  "httpStatusCodes": [],
+  "rawResponseRetained": false,
+  "errorFormatIndicators": {
+    "Bad Request": true,
+    "Forbidden": false,
+    "Not Found": false,
+    "NoRegisteredProviderFound": false,
+    "InvalidApiVersionParameter": false,
+    "ResourceNotFound": false,
+    "AuthorizationFailed": false,
+    "InvalidResourceType": false,
+    "InvalidRequestUri": false
+  }
+}

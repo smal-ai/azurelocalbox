@@ -1,0 +1,15 @@
+{
+  "atSast": "2026-10-27T13:19:40.198807+02:00",
+  "officialSourceAlias": "https://aka.ms/hcireleaseimage",
+  "method": "HEAD",
+  "imageBytesDownloaded": 0,
+  "licenceTermsAccepted": false,
+  "httpStatus": 200,
+  "finalHost": "azurestackreleases.download.prss.microsoft.com",
+  "fileName": "AzureLocal23H2.25398.469.LCM.10.2503.0.3057.x64.en-us.iso",
+  "queryOrSignedUrlRetained": false,
+  "contentLength": "5196228608",
+  "contentType": "application/octet-stream",
+  "etag": "\"0x8666E62F650BF9D659CC81858A4C1AC4C21E75D387743BF9D5952954841FDA66\"",
+  "lastModified": "Sat, 29 Mar 2025 19:00:02 GMT"
+}

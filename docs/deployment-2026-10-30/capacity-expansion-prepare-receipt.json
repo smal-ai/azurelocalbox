@@ -1,0 +1,659 @@
+{
+  "beganAtUtc": "2026-10-30T13:27:44.183221+00:00",
+  "sourceCommit": "5d8fd5f50f71df09ed10fa75365987fb0a869484",
+  "stage": "prepare",
+  "status": "complete",
+  "planSha256": "3bce135c7861c80d7d840a6ae691d16bc25a404a9815e9bddcdefa24379b23e8",
+  "existingDiskResizeRequested": false,
+  "osOrCsvResizeRequested": false,
+  "policyOrAutomationChanged": false,
+  "platformReadinessVerified": false,
+  "maxDataDiskCountVerified": 64,
+  "privateReceipt": "docs/deployment-2026-10-27/private-ssh-capacity-prepare-20261030.json",
+  "result": {
+    "volumes": [
+      {
+        "size": 2199005364224,
+        "uniqueId": "\\\\?\\Volume{1650d1ec-9d2f-41bf-ad56-66533a89d660}\\",
+        "letter": "W"
+      },
+      {
+        "size": 1099389972480,
+        "uniqueId": "\\\\?\\Volume{51199064-2a58-498e-81e0-1bdfd593eced}\\",
+        "letter": "C"
+      },
+      {
+        "size": 2181825495040,
+        "uniqueId": "\\\\?\\Volume{59901f77-0fb4-4ac7-b377-d820b0c1929b}\\",
+        "letter": "V"
+      }
+    ],
+    "atUtc": "2026-10-30T13:30:17.6051458Z",
+    "azureDiskId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-Capacity-20261030",
+    "sourceCommit": "5d8fd5f50f71df09ed10fa75365987fb0a869484",
+    "storageMutationPerformed": false,
+    "hostBootUtc": "2026-10-30T05:34:02.9994220Z",
+    "planSha256": "3bce135c7861c80d7d840a6ae691d16bc25a404a9815e9bddcdefa24379b23e8",
+    "disks": [
+      {
+        "number": 0,
+        "style": "GPT",
+        "uniqueId": "eui.73985D32631E460082CABF1E6D158801",
+        "isSystem": true,
+        "isBoot": true,
+        "size": 1099511627776
+      },
+      {
+        "number": 9,
+        "style": "GPT",
+        "uniqueId": "eui.977A2C37B7C846F087268B8452F57C01",
+        "isSystem": false,
+        "isBoot": false,
+        "size": 2199023255552
+      },
+      {
+        "number": 10,
+        "style": "GPT",
+        "uniqueId": "D0CDB2F96D0E244E8B532E096F97FBBF",
+        "isSystem": false,
+        "isBoot": false,
+        "size": 2181843386368
+      }
+    ],
+    "cluster": [
+      {
+        "clusterNodes": [
+          {
+            "state": "Up",
+            "name": "LB-NODE01"
+          },
+          {
+            "state": "Up",
+            "name": "LB-NODE02"
+          },
+          {
+            "state": "Up",
+            "name": "LB-NODE03"
+          }
+        ],
+        "clusterName": "smal-localbox01",
+        "virtualDisks": [
+          {
+            "size": 304942678016,
+            "health": "Healthy",
+            "uniqueId": "D82EEC019A25474789543A1796B552BB",
+            "name": "UserStorage_1"
+          },
+          {
+            "size": 25769803776,
+            "health": "Healthy",
+            "uniqueId": "97F0D5071BB7314E9F51102237F77085",
+            "name": "ClusterPerformanceHistory"
+          },
+          {
+            "size": 304942678016,
+            "health": "Healthy",
+            "uniqueId": "4C06845FA8C574499A937BD3EB57736A",
+            "name": "UserStorage_2"
+          },
+          {
+            "size": 304942678016,
+            "health": "Healthy",
+            "uniqueId": "7C7DA96B2870124CADF176559F3F64F7",
+            "name": "UserStorage_3"
+          },
+          {
+            "size": 270582939648,
+            "health": "Healthy",
+            "uniqueId": "9E5467C0BAC8834987723430C063E2C3",
+            "name": "Infrastructure_1"
+          }
+        ],
+        "storageJobs": [],
+        "name": "LB-NODE01",
+        "members": [
+          {
+            "health": "Healthy",
+            "uniqueId": "600224805454A96E242F3C38305128AC",
+            "size": 182536110080
+          },
+          {
+            "health": "Healthy",
+            "uniqueId": "600224802DF5A6C7E8F6062832A93BAC",
+            "size": 182536110080
+          },
+          {
+            "health": "Healthy",
+            "uniqueId": "6002248018A9EA3E37A91804553ABFEE",
+            "size": 182536110080
+          },
+          {
+            "health": "Healthy",
+            "uniqueId": "6002248065ACD99B54C87E76586527CA",
+            "size": 182536110080
+          },
+          {
+            "health": "Healthy",
+            "uniqueId": "60022480B25DB49F18CA0B5A7F55FAF2",
+            "size": 182536110080
+          },
+          {
+            "health": "Healthy",
+            "uniqueId": "60022480F1883A655718A83EB381308E",
+            "size": 182536110080
+          },
+          {
+            "health": "Healthy",
+            "uniqueId": "60022480333C4CF1EF75B7CA8C7973A3",
+            "size": 182536110080
+          },
+          {
+            "health": "Healthy",
+            "uniqueId": "6002248037A2A230372B3EC87A9D3377",
+            "size": 182536110080
+          },
+          {
+            "health": "Healthy",
+            "uniqueId": "60022480D47B1977B201A09A9AD85C7E",
+            "size": 182536110080
+          },
+          {
+            "health": "Healthy",
+            "uniqueId": "600224801E3FB24517D8C5F2124F7E30",
+            "size": 182536110080
+          },
+          {
+            "health": "Healthy",
+            "uniqueId": "600224801933BE540257E4937DA41512",
+            "size": 182536110080
+          },
+          {
+            "health": "Healthy",
+            "uniqueId": "600224802F65BE3E670733600EC131EF",
+            "size": 182536110080
+          }
+        ],
+        "poolHealth": "Healthy",
+        "poolSize": 2177535836160,
+        "poolId": "{923c0194-3ed4-449a-ae14-0f62861e0ec8}",
+        "PSComputerName": "LB-NODE01",
+        "RunspaceId": "ef5c7062-0e87-44b4-aeaa-28fc159a624a",
+        "PSShowComputerName": true
+      },
+      {
+        "clusterNodes": [
+          {
+            "state": "Up",
+            "name": "LB-NODE01"
+          },
+          {
+            "state": "Up",
+            "name": "LB-NODE02"
+          },
+          {
+            "state": "Up",
+            "name": "LB-NODE03"
+          }
+        ],
+        "clusterName": "smal-localbox01",
+        "virtualDisks": [
+          {
+            "size": 304942678016,
+            "health": "Healthy",
+            "uniqueId": "D82EEC019A25474789543A1796B552BB",
+            "name": "UserStorage_1"
+          },
+          {
+            "size": 25769803776,
+            "health": "Healthy",
+            "uniqueId": "97F0D5071BB7314E9F51102237F77085",
+            "name": "ClusterPerformanceHistory"
+          },
+          {
+            "size": 304942678016,
+            "health": "Healthy",
+            "uniqueId": "4C06845FA8C574499A937BD3EB57736A",
+            "name": "UserStorage_2"
+          },
+          {
+            "size": 304942678016,
+            "health": "Healthy",
+            "uniqueId": "7C7DA96B2870124CADF176559F3F64F7",
+            "name": "UserStorage_3"
+          },
+          {
+            "size": 270582939648,
+            "health": "Healthy",
+            "uniqueId": "9E5467C0BAC8834987723430C063E2C3",
+            "name": "Infrastructure_1"
+          }
+        ],
+        "storageJobs": [],
+        "name": "LB-NODE02",
+        "members": [
+          {
+            "health": "Healthy",
+            "uniqueId": "600224805454A96E242F3C38305128AC",
+            "size": 182536110080
+          },
+          {
+            "health": "Healthy",
+            "uniqueId": "600224802DF5A6C7E8F6062832A93BAC",
+            "size": 182536110080
+          },
+          {
+            "health": "Healthy",
+            "uniqueId": "6002248018A9EA3E37A91804553ABFEE",
+            "size": 182536110080
+          },
+          {
+            "health": "Healthy",
+            "uniqueId": "6002248065ACD99B54C87E76586527CA",
+            "size": 182536110080
+          },
+          {
+            "health": "Healthy",
+            "uniqueId": "60022480B25DB49F18CA0B5A7F55FAF2",
+            "size": 182536110080
+          },
+          {
+            "health": "Healthy",
+            "uniqueId": "60022480F1883A655718A83EB381308E",
+            "size": 182536110080
+          },
+          {
+            "health": "Healthy",
+            "uniqueId": "60022480333C4CF1EF75B7CA8C7973A3",
+            "size": 182536110080
+          },
+          {
+            "health": "Healthy",
+            "uniqueId": "6002248037A2A230372B3EC87A9D3377",
+            "size": 182536110080
+          },
+          {
+            "health": "Healthy",
+            "uniqueId": "60022480D47B1977B201A09A9AD85C7E",
+            "size": 182536110080
+          },
+          {
+            "health": "Healthy",
+            "uniqueId": "600224801E3FB24517D8C5F2124F7E30",
+            "size": 182536110080
+          },
+          {
+            "health": "Healthy",
+            "uniqueId": "600224801933BE540257E4937DA41512",
+            "size": 182536110080
+          },
+          {
+            "health": "Healthy",
+            "uniqueId": "600224802F65BE3E670733600EC131EF",
+            "size": 182536110080
+          }
+        ],
+        "poolHealth": "Healthy",
+        "poolSize": 2177535836160,
+        "poolId": "{923c0194-3ed4-449a-ae14-0f62861e0ec8}",
+        "PSComputerName": "LB-NODE02",
+        "RunspaceId": "a660676b-5aaf-4a7a-9fb4-5436448e4897",
+        "PSShowComputerName": true
+      },
+      {
+        "clusterNodes": [
+          {
+            "state": "Up",
+            "name": "LB-NODE01"
+          },
+          {
+            "state": "Up",
+            "name": "LB-NODE02"
+          },
+          {
+            "state": "Up",
+            "name": "LB-NODE03"
+          }
+        ],
+        "clusterName": "smal-localbox01",
+        "virtualDisks": [
+          {
+            "size": 304942678016,
+            "health": "Healthy",
+            "uniqueId": "D82EEC019A25474789543A1796B552BB",
+            "name": "UserStorage_1"
+          },
+          {
+            "size": 25769803776,
+            "health": "Healthy",
+            "uniqueId": "97F0D5071BB7314E9F51102237F77085",
+            "name": "ClusterPerformanceHistory"
+          },
+          {
+            "size": 304942678016,
+            "health": "Healthy",
+            "uniqueId": "4C06845FA8C574499A937BD3EB57736A",
+            "name": "UserStorage_2"
+          },
+          {
+            "size": 304942678016,
+            "health": "Healthy",
+            "uniqueId": "7C7DA96B2870124CADF176559F3F64F7",
+            "name": "UserStorage_3"
+          },
+          {
+            "size": 270582939648,
+            "health": "Healthy",
+            "uniqueId": "9E5467C0BAC8834987723430C063E2C3",
+            "name": "Infrastructure_1"
+          }
+        ],
+        "storageJobs": [],
+        "name": "LB-NODE03",
+        "members": [
+          {
+            "health": "Healthy",
+            "uniqueId": "600224805454A96E242F3C38305128AC",
+            "size": 182536110080
+          },
+          {
+            "health": "Healthy",
+            "uniqueId": "600224802DF5A6C7E8F6062832A93BAC",
+            "size": 182536110080
+          },
+          {
+            "health": "Healthy",
+            "uniqueId": "6002248018A9EA3E37A91804553ABFEE",
+            "size": 182536110080
+          },
+          {
+            "health": "Healthy",
+            "uniqueId": "6002248065ACD99B54C87E76586527CA",
+            "size": 182536110080
+          },
+          {
+            "health": "Healthy",
+            "uniqueId": "60022480B25DB49F18CA0B5A7F55FAF2",
+            "size": 182536110080
+          },
+          {
+            "health": "Healthy",
+            "uniqueId": "60022480F1883A655718A83EB381308E",
+            "size": 182536110080
+          },
+          {
+            "health": "Healthy",
+            "uniqueId": "60022480333C4CF1EF75B7CA8C7973A3",
+            "size": 182536110080
+          },
+          {
+            "health": "Healthy",
+            "uniqueId": "6002248037A2A230372B3EC87A9D3377",
+            "size": 182536110080
+          },
+          {
+            "health": "Healthy",
+            "uniqueId": "60022480D47B1977B201A09A9AD85C7E",
+            "size": 182536110080
+          },
+          {
+            "health": "Healthy",
+            "uniqueId": "600224801E3FB24517D8C5F2124F7E30",
+            "size": 182536110080
+          },
+          {
+            "health": "Healthy",
+            "uniqueId": "600224801933BE540257E4937DA41512",
+            "size": 182536110080
+          },
+          {
+            "health": "Healthy",
+            "uniqueId": "600224802F65BE3E670733600EC131EF",
+            "size": 182536110080
+          }
+        ],
+        "poolHealth": "Healthy",
+        "poolSize": 2177535836160,
+        "poolId": "{923c0194-3ed4-449a-ae14-0f62861e0ec8}",
+        "PSComputerName": "LB-NODE03",
+        "RunspaceId": "b9719395-3b8e-41e2-a6e7-4aac4f937bf7",
+        "PSShowComputerName": true
+      }
+    ],
+    "status": "complete-pre-attachment-baseline",
+    "originalVhds": [
+      {
+        "logicalSectorSize": 512,
+        "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE01\\OS.vhdx",
+        "diskId": "853E242C-04B5-422E-A649-64E0D80BC634",
+        "size": 137438953472,
+        "type": "Dynamic",
+        "vmId": "3adff629-2f67-449b-ab32-8a8748c46f34",
+        "blockSize": 33554432,
+        "name": "LB-NODE01",
+        "physicalSectorSize": 4096,
+        "lun": 0
+      },
+      {
+        "logicalSectorSize": 512,
+        "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE01\\S2D-1.vhdx",
+        "diskId": "3EEAA918-A937-4F75-B9D0-1804553ABFEE",
+        "size": 182536110080,
+        "type": "Dynamic",
+        "vmId": "3adff629-2f67-449b-ab32-8a8748c46f34",
+        "blockSize": 33554432,
+        "name": "LB-NODE01",
+        "physicalSectorSize": 4096,
+        "lun": 1
+      },
+      {
+        "logicalSectorSize": 512,
+        "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE01\\S2D-2.vhdx",
+        "diskId": "77197BD4-01B2-4D57-9AC5-A09A9AD85C7E",
+        "size": 182536110080,
+        "type": "Dynamic",
+        "vmId": "3adff629-2f67-449b-ab32-8a8748c46f34",
+        "blockSize": 33554432,
+        "name": "LB-NODE01",
+        "physicalSectorSize": 4096,
+        "lun": 2
+      },
+      {
+        "logicalSectorSize": 512,
+        "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE01\\S2D-3.vhdx",
+        "diskId": "6EA95454-2F24-442E-9FD8-3C38305128AC",
+        "size": 182536110080,
+        "type": "Dynamic",
+        "vmId": "3adff629-2f67-449b-ab32-8a8748c46f34",
+        "blockSize": 33554432,
+        "name": "LB-NODE01",
+        "physicalSectorSize": 4096,
+        "lun": 3
+      },
+      {
+        "logicalSectorSize": 512,
+        "path": "W:\\AzureLocalBox\\Relocated\\LB-NODE01\\S2D-4.vhdx",
+        "diskId": "45B23F1E-D817-4DE0-A84A-C5F2124F7E30",
+        "size": 182536110080,
+        "type": "Dynamic",
+        "vmId": "3adff629-2f67-449b-ab32-8a8748c46f34",
+        "blockSize": 33554432,
+        "name": "LB-NODE01",
+        "physicalSectorSize": 4096,
+        "lun": 4
+      },
+      {
+        "logicalSectorSize": 512,
+        "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE02\\OS.vhdx",
+        "diskId": "B0CE2A23-BB31-4239-9197-14739AF3844B",
+        "size": 137438953472,
+        "type": "Dynamic",
+        "vmId": "12a44e0c-cc08-4c4c-a812-fa0b56efdbc3",
+        "blockSize": 33554432,
+        "name": "LB-NODE02",
+        "physicalSectorSize": 4096,
+        "lun": 0
+      },
+      {
+        "logicalSectorSize": 512,
+        "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE02\\S2D-1.vhdx",
+        "diskId": "9BD9AC65-C854-427A-917E-7E76586527CA",
+        "size": 182536110080,
+        "type": "Dynamic",
+        "vmId": "12a44e0c-cc08-4c4c-a812-fa0b56efdbc3",
+        "blockSize": 33554432,
+        "name": "LB-NODE02",
+        "physicalSectorSize": 4096,
+        "lun": 1
+      },
+      {
+        "logicalSectorSize": 512,
+        "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE02\\S2D-2.vhdx",
+        "diskId": "54BE3319-5702-47BC-844C-E4937DA41512",
+        "size": 182536110080,
+        "type": "Dynamic",
+        "vmId": "12a44e0c-cc08-4c4c-a812-fa0b56efdbc3",
+        "blockSize": 33554432,
+        "name": "LB-NODE02",
+        "physicalSectorSize": 4096,
+        "lun": 2
+      },
+      {
+        "logicalSectorSize": 512,
+        "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE02\\S2D-3.vhdx",
+        "diskId": "30A2A237-2B37-45E1-B506-3EC87A9D3377",
+        "size": 182536110080,
+        "type": "Dynamic",
+        "vmId": "12a44e0c-cc08-4c4c-a812-fa0b56efdbc3",
+        "blockSize": 33554432,
+        "name": "LB-NODE02",
+        "physicalSectorSize": 4096,
+        "lun": 3
+      },
+      {
+        "logicalSectorSize": 512,
+        "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE02\\S2D-4.vhdx",
+        "diskId": "C7A6F52D-F6E8-4BD8-96F4-062832A93BAC",
+        "size": 182536110080,
+        "type": "Dynamic",
+        "vmId": "12a44e0c-cc08-4c4c-a812-fa0b56efdbc3",
+        "blockSize": 33554432,
+        "name": "LB-NODE02",
+        "physicalSectorSize": 4096,
+        "lun": 4
+      },
+      {
+        "logicalSectorSize": 512,
+        "path": "W:\\AzureLocalBox\\Guests\\three-node-20261029-01\\LB-NODE03\\OS.vhdx",
+        "diskId": "B1A59A04-5622-45D7-BDAD-BCCC17475830",
+        "size": 137438953472,
+        "type": "Dynamic",
+        "vmId": "5b6eba15-fa82-4e12-9e45-5ffbcd48c8a9",
+        "blockSize": 33554432,
+        "name": "LB-NODE03",
+        "physicalSectorSize": 4096,
+        "lun": 0
+      },
+      {
+        "logicalSectorSize": 512,
+        "path": "W:\\AzureLocalBox\\Guests\\three-node-20261029-01\\LB-NODE03\\S2D-1.vhdx",
+        "diskId": "653A88F1-1857-48A2-89DD-A83EB381308E",
+        "size": 182536110080,
+        "type": "Dynamic",
+        "vmId": "5b6eba15-fa82-4e12-9e45-5ffbcd48c8a9",
+        "blockSize": 33554432,
+        "name": "LB-NODE03",
+        "physicalSectorSize": 4096,
+        "lun": 1
+      },
+      {
+        "logicalSectorSize": 512,
+        "path": "W:\\AzureLocalBox\\Guests\\three-node-20261029-01\\LB-NODE03\\S2D-2.vhdx",
+        "diskId": "F14C3C33-75EF-469E-9D9A-B7CA8C7973A3",
+        "size": 182536110080,
+        "type": "Dynamic",
+        "vmId": "5b6eba15-fa82-4e12-9e45-5ffbcd48c8a9",
+        "blockSize": 33554432,
+        "name": "LB-NODE03",
+        "physicalSectorSize": 4096,
+        "lun": 2
+      },
+      {
+        "logicalSectorSize": 512,
+        "path": "W:\\AzureLocalBox\\Guests\\three-node-20261029-01\\LB-NODE03\\S2D-3.vhdx",
+        "diskId": "3EBE652F-0767-48A3-B582-33600EC131EF",
+        "size": 182536110080,
+        "type": "Dynamic",
+        "vmId": "5b6eba15-fa82-4e12-9e45-5ffbcd48c8a9",
+        "blockSize": 33554432,
+        "name": "LB-NODE03",
+        "physicalSectorSize": 4096,
+        "lun": 3
+      },
+      {
+        "logicalSectorSize": 512,
+        "path": "W:\\AzureLocalBox\\Guests\\three-node-20261029-01\\LB-NODE03\\S2D-4.vhdx",
+        "diskId": "9FB45DB2-CA18-4F8E-98B9-0B5A7F55FAF2",
+        "size": 182536110080,
+        "type": "Dynamic",
+        "vmId": "5b6eba15-fa82-4e12-9e45-5ffbcd48c8a9",
+        "blockSize": 33554432,
+        "name": "LB-NODE03",
+        "physicalSectorSize": 4096,
+        "lun": 4
+      }
+    ],
+    "physicalDisks": [
+      {
+        "canPool": false,
+        "uniqueId": "eui.B23D67FFF2924C04B501F4D3C649D401",
+        "size": 274877906944
+      },
+      {
+        "canPool": false,
+        "uniqueId": "eui.E1B7F79BDC4445D2A5D44A4CCF715701",
+        "size": 274877906944
+      },
+      {
+        "canPool": false,
+        "uniqueId": "eui.0E8148591DA44817828F21E9C2A5BE01",
+        "size": 274877906944
+      },
+      {
+        "canPool": false,
+        "uniqueId": "eui.977A2C37B7C846F087268B8452F57C01",
+        "size": 2199023255552
+      },
+      {
+        "canPool": false,
+        "uniqueId": "eui.3C590B16F2184074A2EA009878222101",
+        "size": 274877906944
+      },
+      {
+        "canPool": false,
+        "uniqueId": "eui.160E998859144AB5B7933803A52A7701",
+        "size": 274877906944
+      },
+      {
+        "canPool": false,
+        "uniqueId": "eui.73985D32631E460082CABF1E6D158801",
+        "size": 1099511627776
+      },
+      {
+        "canPool": false,
+        "uniqueId": "eui.6804277C11C14825828E70FA4164D601",
+        "size": 274877906944
+      },
+      {
+        "canPool": false,
+        "uniqueId": "eui.6246A32C18864BFFBC3784C624C93501",
+        "size": 274877906944
+      },
+      {
+        "canPool": false,
+        "uniqueId": "eui.AC65F83297B24FC0BFD90A76C568EA01",
+        "size": 274877906944
+      }
+    ]
+  },
+  "finishedAtUtc": "2026-10-30T13:30:17.924499+00:00"
+}

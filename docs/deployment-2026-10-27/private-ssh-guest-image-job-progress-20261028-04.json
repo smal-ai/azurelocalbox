@@ -1,0 +1,79 @@
+{
+  "beganAtSast": "2026-10-28T11:06:50.196740+02:00",
+  "status": "complete",
+  "commit": "426d25bba6ebf7337ef207c0e3bbd1cf5bc9b67d",
+  "script": "scripts/read-smal-guest-image-job.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 48231,
+  "scriptTransport": "encoded-command",
+  "renderedSourceSha256": "053b91e2909772b7bfaa43b1157e24b2a916d44c1708f7e0c328de85a803c477",
+  "renderedSourceByteLength": 1215,
+  "unstreamedEncodedLength": 3240,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "virtualMachines": [],
+    "clusterBootstrapComplete": false,
+    "heartbeat": {
+      "processId": 6048,
+      "atUtc": "2026-10-28T09:06:45.9672235Z"
+    },
+    "state": {
+      "runId": "local-guests-20261028-01",
+      "sourceCommit": "0e8e0997505efdf015ba6da661608cde9ab46001",
+      "scope": "approved-local-guest-images-and-offline-vms-only",
+      "status": "running",
+      "phase": "LB-NODE02-expand-windows-image",
+      "atUtc": "2026-10-28T08:58:42.3804210Z",
+      "errorType": null,
+      "errorLine": null,
+      "images": [
+        {
+          "virtualSizeBytes": 85899345920,
+          "vhdId": "0F9DF905-4D21-4E18-AAE2-4B1F1BBCB6E2",
+          "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-DC01\\OS.vhdx",
+          "temporaryBootstrapSecretPresent": true,
+          "cleanupAndRotationRequired": true,
+          "imageIndex": 1,
+          "vmName": "LB-DC01"
+        },
+        {
+          "virtualSizeBytes": 137438953472,
+          "vhdId": "853E242C-04B5-422E-A649-64E0D80BC634",
+          "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE01\\OS.vhdx",
+          "temporaryBootstrapSecretPresent": true,
+          "cleanupAndRotationRequired": true,
+          "imageIndex": 1,
+          "vmName": "LB-NODE01"
+        }
+      ],
+      "virtualMachines": [],
+      "guardianCreated": false,
+      "secretsCreated": true,
+      "bootstrapCleanupAndRotationRequired": true,
+      "clusterBootstrapComplete": false
+    },
+    "volume": {
+      "Size": 2181825495040,
+      "SizeRemaining": 2149084692480,
+      "HealthStatus": "Healthy"
+    },
+    "atUtc": "2026-10-28T09:06:56.6770350Z",
+    "taskExists": true,
+    "taskState": "Running",
+    "lastTaskResult": 267009
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-28T11:06:58.805144+02:00"
+}

@@ -1,0 +1,41 @@
+{
+  "beganAtSast": "2026-10-28T10:13:39.968537+02:00",
+  "status": "complete",
+  "commit": "64bdfa5f606f32696ae6918463ff1807f2326e91",
+  "script": "scripts/apply-smal-local-network.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 32825,
+  "scriptTransport": "sha256-length-framed-utf8-stdin",
+  "renderedSourceSha256": "cf3d446d74df498c40a32e1432640a1f7e7fc041f01feeebc73684cdd24ac1e2",
+  "renderedSourceByteLength": 6853,
+  "unstreamedEncodedLength": 18276,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "runId": "local-network-20261028-01",
+    "sourceCommit": "64bdfa5f606f32696ae6918463ff1807f2326e91",
+    "scope": "approved-local-internal-switch-and-nat-only",
+    "status": "local-network-created",
+    "phase": "local-network-verified-no-guests",
+    "atUtc": "2026-10-28T08:13:53.1113717Z",
+    "switchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934",
+    "natInstanceId": "LB-NAT;0",
+    "errorType": null,
+    "defaultRouteAndDnsUnchanged": true,
+    "nestedTrafficVerified": false,
+    "clusterBootstrapComplete": false
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-28T10:13:53.439958+02:00"
+}

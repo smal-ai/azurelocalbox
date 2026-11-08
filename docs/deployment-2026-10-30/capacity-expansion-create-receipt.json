@@ -1,0 +1,31 @@
+{
+  "beganAtUtc": "2026-10-30T13:30:29.988351+00:00",
+  "sourceCommit": "5d8fd5f50f71df09ed10fa75365987fb0a869484",
+  "stage": "create",
+  "status": "complete",
+  "planSha256": "3bce135c7861c80d7d840a6ae691d16bc25a404a9815e9bddcdefa24379b23e8",
+  "existingDiskResizeRequested": false,
+  "osOrCsvResizeRequested": false,
+  "policyOrAutomationChanged": false,
+  "platformReadinessVerified": false,
+  "previewChanges": [
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-Capacity-20261030",
+      "changeType": "Create"
+    }
+  ],
+  "phase": "one-approved-disk-create-pending",
+  "deploymentId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Resources/deployments/localbox-capacity-disk-20261030",
+  "newDisk": {
+    "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-Capacity-20261030",
+    "uniqueId": "db6882f9-8c4a-4923-b1a3-6b73dbbb9109",
+    "diskSizeGB": 4096,
+    "sku": {
+      "name": "Standard_LRS",
+      "tier": "Standard"
+    },
+    "networkAccessPolicy": "DenyAll",
+    "publicNetworkAccess": "Disabled"
+  },
+  "finishedAtUtc": "2026-10-30T13:32:00.834583+00:00"
+}

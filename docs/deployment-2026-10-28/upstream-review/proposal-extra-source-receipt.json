@@ -1,0 +1,23 @@
+{
+  "sources": [
+    {
+      "path": "docs/deployment-2026-10-28/upstream-review/defender-retail-rates.json",
+      "bytes": 65453,
+      "sha256": "245ce0382e4ef8875044b8587fe8912095a5faf05405806ad465f14351361511",
+      "url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20%27Microsoft%20Defender%20for%20Cloud%27%20and%20armRegionName%20eq%20%27Global%27"
+    },
+    {
+      "path": "docs/deployment-2026-10-28/upstream-review/private-link-retail-rates.json",
+      "bytes": 13335,
+      "sha256": "840949f42f42d1d38d71afa6114ee468e091f0031aa27ddad513fe9b297a1f62",
+      "url": "https://prices.azure.com/api/retail/prices?$filter=productName%20eq%20%27Virtual%20Network%20Private%20Link%27%20and%20skuName%20eq%20%27Standard%27"
+    },
+    {
+      "path": "docs/deployment-2026-10-28/upstream-review/deployment-settings-schema-source.json",
+      "bytes": 56150,
+      "sha256": "2e838687774682948e15f6fa7fa1c7b3eaa02a1bee4ab2d606037b31b41f61db",
+      "url": "https://api.github.com/repos/Azure/azure-rest-api-specs/git/blobs/3748514cc8f72f93e5b308c308e5b64ab5e256e7"
+    }
+  ],
+  "executed": false
+}

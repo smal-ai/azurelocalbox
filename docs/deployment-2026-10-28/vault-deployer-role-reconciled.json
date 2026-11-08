@@ -1,0 +1,37 @@
+{
+  "beganAtUtc": "2026-10-28T13:07:22.677511+00:00",
+  "status": "complete-one-vault-only-data-role",
+  "sourceCommit": "67eaebb114531ef43d91f14b06a348ab0958d9a2",
+  "deploymentName": "localbox-vault-deployer-role-20261028",
+  "scope": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.KeyVault/vaults/kv-lbox-weu-4766ea",
+  "principalId": "82f494a8-b9f5-46fc-b0f7-c70be0572a63",
+  "roleDefinitionId": "b86a8fe4-44ce-4948-aee5-eccb2c155cd7",
+  "publicAccessOrVaultConfigurationChangeRequested": false,
+  "subscriptionWideGrantRequested": false,
+  "originalPreApplyRefusalRetained": true,
+  "originalReceiptSha256": "cd22b576a2d31ac32cc664147bee92f090379b91f181ee548e98d7807e7441a8",
+  "effectiveAssignmentsBefore": [
+    {
+      "principalType": "Group",
+      "role": "Reader",
+      "scope": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea"
+    },
+    {
+      "principalType": "User",
+      "role": "Owner",
+      "scope": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea"
+    }
+  ],
+  "previewSha256": "e8a574564fae282e9933948b1cd3830d8a6d2758fb7c4d77859c661b4deca54c",
+  "deploymentId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.Resources/deployments/localbox-vault-deployer-role-20261028",
+  "deploymentState": "Succeeded",
+  "assignment": {
+    "definition": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/providers/Microsoft.Authorization/roleDefinitions/b86a8fe4-44ce-4948-aee5-eccb2c155cd7",
+    "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/rg-localbox-platform-weu-1/providers/Microsoft.KeyVault/vaults/kv-lbox-weu-4766ea/providers/Microsoft.Authorization/roleAssignments/1035817d-e4b3-5276-8ede-d7926cf3cba1",
+    "principal": "82f494a8-b9f5-46fc-b0f7-c70be0572a63",
+    "principalType": "User",
+    "scope": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourcegroups/rg-localbox-platform-weu-1/providers/Microsoft.KeyVault/vaults/kv-lbox-weu-4766ea"
+  },
+  "vaultPublicAccessAfter": "Disabled",
+  "finishedAtUtc": "2026-10-28T13:08:48.207666+00:00"
+}

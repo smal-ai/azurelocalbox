@@ -1,0 +1,221 @@
+{
+  "beganAtSast": "2026-10-29T08:30:44.291242+02:00",
+  "status": "complete",
+  "commit": "89bdc2d69224545fa5de5c5cd311b20ddf35e1c2",
+  "script": "scripts/inspect-smal-bootstrap-inventory.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 49541,
+  "scriptTransport": "encoded-command",
+  "renderedSourceSha256": "f74e791c6b111f843c149ea2bb948d02a893aec17a633cbaf8535a801824a47d",
+  "renderedSourceByteLength": 2491,
+  "unstreamedEncodedLength": 6644,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "computer": "LocalBox-Client",
+    "atUtc": "2026-10-29T06:30:57.1052197Z",
+    "lastBootUtc": "2026-10-29T05:26:49.6774780Z",
+    "vmms": "Running",
+    "defenderRealTimeProtection": true,
+    "disks": [
+      {
+        "number": 0,
+        "uniqueId": "eui.73985D32631E460082CABF1E6D158801",
+        "serialNumber": "7398_5D32_631E_4600_82CA_BF1E_6D15_8801.",
+        "busType": "NVMe",
+        "location": "Integrated : Bus 12606208 : Device 0 : Function 0 : Adapter 0",
+        "sizeBytes": 1099511627776,
+        "isBoot": true,
+        "isSystem": true,
+        "partitionStyle": "GPT",
+        "offline": false,
+        "readOnly": false,
+        "win32": {
+          "serialNumber": "7398_5D32_631E_4600_82CA_BF1E_6D15_8801.",
+          "scsiTargetId": 0,
+          "scsiBus": 0,
+          "scsiPort": 0,
+          "scsiLogicalUnit": 0,
+          "model": "Virtual_Disk NVME Premium",
+          "index": 0
+        }
+      },
+      {
+        "number": 9,
+        "uniqueId": "D0CDB2F96D0E244E8B532E096F97FBBF",
+        "serialNumber": "{f9b2cdd0-0e6d-4e24-8b53-2e096f97fbbf}",
+        "busType": "Spaces",
+        "location": null,
+        "sizeBytes": 2181843386368,
+        "isBoot": false,
+        "isSystem": false,
+        "partitionStyle": "GPT",
+        "offline": false,
+        "readOnly": false,
+        "win32": {
+          "serialNumber": "{f9b2cdd0-0e6d-4e24-8b53-2e096f97fbbf}",
+          "scsiTargetId": 0,
+          "scsiBus": 0,
+          "scsiPort": 0,
+          "scsiLogicalUnit": 1,
+          "model": "Microsoft Storage Space Device",
+          "index": 9
+        }
+      }
+    ],
+    "physicalDisks": [
+      {
+        "serialNumber": "B23D_67FF_F292_4C04_B501_F4D3_C649_D401.",
+        "physicalLocation": "Integrated : Bus 12606208 : Device 0 : Function 0 : Adapter 0",
+        "busType": "NVMe",
+        "uniqueId": "eui.B23D67FFF2924C04B501F4D3C649D401",
+        "canPool": false,
+        "deviceId": "7",
+        "sizeBytes": 274877906944
+      },
+      {
+        "serialNumber": "E1B7_F79B_DC44_45D2_A5D4_4A4C_CF71_5701.",
+        "physicalLocation": "Integrated : Bus 12606208 : Device 0 : Function 0 : Adapter 0",
+        "busType": "NVMe",
+        "uniqueId": "eui.E1B7F79BDC4445D2A5D44A4CCF715701",
+        "canPool": false,
+        "deviceId": "3",
+        "sizeBytes": 274877906944
+      },
+      {
+        "serialNumber": "0E81_4859_1DA4_4817_828F_21E9_C2A5_BE01.",
+        "physicalLocation": "Integrated : Bus 12606208 : Device 0 : Function 0 : Adapter 0",
+        "busType": "NVMe",
+        "uniqueId": "eui.0E8148591DA44817828F21E9C2A5BE01",
+        "canPool": false,
+        "deviceId": "4",
+        "sizeBytes": 274877906944
+      },
+      {
+        "serialNumber": "3C59_0B16_F218_4074_A2EA_0098_7822_2101.",
+        "physicalLocation": "Integrated : Bus 12606208 : Device 0 : Function 0 : Adapter 0",
+        "busType": "NVMe",
+        "uniqueId": "eui.3C590B16F2184074A2EA009878222101",
+        "canPool": false,
+        "deviceId": "5",
+        "sizeBytes": 274877906944
+      },
+      {
+        "serialNumber": "160E_9988_5914_4AB5_B793_3803_A52A_7701.",
+        "physicalLocation": "Integrated : Bus 12606208 : Device 0 : Function 0 : Adapter 0",
+        "busType": "NVMe",
+        "uniqueId": "eui.160E998859144AB5B7933803A52A7701",
+        "canPool": false,
+        "deviceId": "8",
+        "sizeBytes": 274877906944
+      },
+      {
+        "serialNumber": "7398_5D32_631E_4600_82CA_BF1E_6D15_8801.",
+        "physicalLocation": "Integrated : Bus 12606208 : Device 0 : Function 0 : Adapter 0",
+        "busType": "NVMe",
+        "uniqueId": "eui.73985D32631E460082CABF1E6D158801",
+        "canPool": false,
+        "deviceId": "0",
+        "sizeBytes": 1099511627776
+      },
+      {
+        "serialNumber": "6804_277C_11C1_4825_828E_70FA_4164_D601.",
+        "physicalLocation": "Integrated : Bus 12606208 : Device 0 : Function 0 : Adapter 0",
+        "busType": "NVMe",
+        "uniqueId": "eui.6804277C11C14825828E70FA4164D601",
+        "canPool": false,
+        "deviceId": "2",
+        "sizeBytes": 274877906944
+      },
+      {
+        "serialNumber": "6246_A32C_1886_4BFF_BC37_84C6_24C9_3501.",
+        "physicalLocation": "Integrated : Bus 12606208 : Device 0 : Function 0 : Adapter 0",
+        "busType": "NVMe",
+        "uniqueId": "eui.6246A32C18864BFFBC3784C624C93501",
+        "canPool": false,
+        "deviceId": "1",
+        "sizeBytes": 274877906944
+      },
+      {
+        "serialNumber": "AC65_F832_97B2_4FC0_BFD9_0A76_C568_EA01.",
+        "physicalLocation": "Integrated : Bus 12606208 : Device 0 : Function 0 : Adapter 0",
+        "busType": "NVMe",
+        "uniqueId": "eui.AC65F83297B24FC0BFD90A76C568EA01",
+        "canPool": false,
+        "deviceId": "6",
+        "sizeBytes": 274877906944
+      }
+    ],
+    "nestedVms": [
+      {
+        "Name": "LB-DC01",
+        "Id": "f94c71f1-6854-48b9-a9f1-8238c99366d0",
+        "State": 3
+      },
+      {
+        "Name": "LB-NODE01",
+        "Id": "3adff629-2f67-449b-ab32-8a8748c46f34",
+        "State": 3
+      },
+      {
+        "Name": "LB-NODE02",
+        "Id": "12a44e0c-cc08-4c4c-a812-fa0b56efdbc3",
+        "State": 3
+      }
+    ],
+    "switches": [
+      {
+        "Name": "LB-Fabric",
+        "SwitchType": 1
+      }
+    ],
+    "nat": [
+      {
+        "Name": "LB-NAT",
+        "InternalIPInterfaceAddressPrefix": "10.64.0.0/20"
+      }
+    ],
+    "existingLocalBoxTasks": [
+      {
+        "TaskName": "LocalBox-EvalMedia-20261028-01",
+        "State": 3
+      },
+      {
+        "TaskName": "LocalBox-GuestBootstrap-20261028-01",
+        "State": 3
+      },
+      {
+        "TaskName": "LocalBox-GuestImages-20261028-01",
+        "State": 3
+      },
+      {
+        "TaskName": "LocalBox-GuestInputs-20261028-02",
+        "State": 3
+      },
+      {
+        "TaskName": "LocalBox-Storage-20261028-01",
+        "State": 3
+      }
+    ],
+    "iso": {
+      "attached": false,
+      "hashReverifiedThisInspection": false,
+      "bytes": 7491864576,
+      "lastWriteTimeUtc": "2026-10-27T11:37:13.4915540Z"
+    },
+    "inspectionReadOnly": true
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-29T08:31:00.224048+02:00"
+}

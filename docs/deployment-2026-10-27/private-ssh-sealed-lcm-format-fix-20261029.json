@@ -1,0 +1,33 @@
+{
+  "beganAtSast": "2026-10-29T14:49:20.210761+02:00",
+  "status": "complete",
+  "commit": "f1b82be6967fd2c62ff7b4ca8c2a69861ea039b9",
+  "script": "scripts/seal-smal-lcm-format-fix.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 58393,
+  "scriptTransport": "encoded-command",
+  "renderedSourceSha256": "fddb828e8640849712a5d1ffbbf11e58897ec05a59caee2c345fa0894de7860f",
+  "renderedSourceByteLength": 3360,
+  "unstreamedEncodedLength": 8960,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "scheme": "RSA4096-OAEP-SHA256",
+    "ciphertext": "GvAvgKhskt2jszOcFahIe4/gzOOzvhNamwvQcx7734eqw0RTYYINbRvweJ0tQJGnvg5/EuT3NPhT7tuSrR+HtV2WLf7fogTeGKQubtTWjQKkB2CB9miuWDoVbRmzuhnRwbsL5f+qU2p/S8oWEnnfqKE7LTdyWgelaXT35lPx4hnak4efbQ3QhiICAUmU01C9zrbAf8taVb2wq3hw5Gw0wi7Hy/aQyGlIxrlRZqtIDKN9sdRb5HSw8jOXpNvjJeyDCFvymZ/W3KRBjITY9KknBpgyLNRaz3ZIt9Spk1WNSnLKKY5/vWpF+TKNWatmUBwC4OiF9mwRLrYTqZQJpnkOKgX2Z6moZGnWGKQfLT0bemjXrL0d0rooXOtBgwWUeLdgkfBKkS2zvrTDvBFuTKAlNKWl/10TX/M61BvIva3jwHWJquLR2bjBawIReMtQJm3jBG38+8O2Xvnrb/0lpWGaR/kTuqlDMD0V8PjBj9WMx8PrPndyEbK1m4eInUGkQJs9wiDkN+BCIZuDonB4CaKzORmLetsCwh6lGa8s0CxOs++jBKlj4tLZSMJ6NgJ0udIqCylc6qLDrMlU8Q35VaP9s5khrdAAbFWfc1UHzl2/T0V5aX/cXCCbo/seWUbbXHes6k4fgTehaEePYBhhsbGvklGDm37ns1CXqgJh7Lfp8Mo=",
+    "nonce": "748970d1c3f94e8fbedf11d366d75509",
+    "clearValuesExported": false
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-29T14:49:27.123041+02:00"
+}

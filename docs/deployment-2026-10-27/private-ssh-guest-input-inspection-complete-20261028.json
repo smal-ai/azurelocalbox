@@ -1,0 +1,195 @@
+{
+  "beganAtSast": "2026-10-28T10:31:43.373452+02:00",
+  "status": "complete",
+  "commit": "66e2786dffe07d4479c3de8470c94c83ba2109b9",
+  "script": "scripts/read-smal-guest-input-job.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 59383,
+  "scriptTransport": "encoded-command",
+  "renderedSourceSha256": "ce7d205ffa5f2ffe2cc75ae6790145359447a5d5826b693b5144912deeda6f52",
+  "renderedSourceByteLength": 1295,
+  "unstreamedEncodedLength": 3456,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "manifestSha256": "A710FCC0466FF0825DABF55E8CF84675B702E4E91E4D4543B0AEAA1AE8C8EC48",
+    "clusterBootstrapComplete": false,
+    "workerProcesses": [],
+    "state": {
+      "runId": "guest-inputs-20261028-02",
+      "sourceCommit": "39986ca27b54cf969714f952450aa2a52f81b17d",
+      "scope": "approved-media-and-host-inspection-only",
+      "status": "inspection-complete",
+      "phase": "media-inspected-and-dismounted",
+      "atUtc": "2026-10-28T08:29:16.0903170Z",
+      "errorType": null,
+      "errorLine": null,
+      "hashBytesRead": 8152356864,
+      "result": {
+        "virtualMachines": [],
+        "ipv4": [
+          {
+            "InterfaceAlias": "vEthernet (LB-Fabric)",
+            "IPAddress": "10.64.0.1",
+            "PrefixLength": 24,
+            "PrefixOrigin": 1
+          },
+          {
+            "InterfaceAlias": "Ethernet",
+            "IPAddress": "10.200.16.4",
+            "PrefixLength": 24,
+            "PrefixOrigin": 3
+          },
+          {
+            "InterfaceAlias": "Loopback Pseudo-Interface 1",
+            "IPAddress": "127.0.0.1",
+            "PrefixLength": 8,
+            "PrefixOrigin": 2
+          }
+        ],
+        "media": [
+          {
+            "publisherHashAvailable": true,
+            "lengthBytes": 7491864576,
+            "sha256": "317330754A6DAC6F42C1BE40EB780E0959C6C3F7670B33D94556964CDCBC9E89",
+            "images": [
+              {
+                "version": "10.0.26100.33650",
+                "name": "Azure Stack HCI",
+                "architecture": 9,
+                "sizeBytes": 18462059987,
+                "edition": "ServerAzureStackHCICor",
+                "installationType": "Server Core",
+                "index": 1
+              }
+            ],
+            "kind": "azure-local",
+            "signatures": [
+              {
+                "signer": "CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US",
+                "path": "setup.exe",
+                "status": "Valid"
+              },
+              {
+                "signer": "CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US",
+                "path": "efi\\boot\\bootx64.efi",
+                "status": "Valid"
+              }
+            ]
+          },
+          {
+            "publisherHashAvailable": false,
+            "lengthBytes": 8152356864,
+            "sha256": "7B052573BA7894C9924E3E87BA732CCD354D18CB75A883EFA9B900EA125BFD51",
+            "images": [
+              {
+                "version": "10.0.26100.32230",
+                "name": "Windows Server 2025 Standard Evaluation",
+                "architecture": 9,
+                "sizeBytes": 11314380582,
+                "edition": "ServerStandardEval",
+                "installationType": "Server Core",
+                "index": 1
+              },
+              {
+                "version": "10.0.26100.32230",
+                "name": "Windows Server 2025 Standard Evaluation (Desktop Experience)",
+                "architecture": 9,
+                "sizeBytes": 24699866265,
+                "edition": "ServerStandardEval",
+                "installationType": "Server",
+                "index": 2
+              },
+              {
+                "version": "10.0.26100.32230",
+                "name": "Windows Server 2025 Datacenter Evaluation",
+                "architecture": 9,
+                "sizeBytes": 11313178689,
+                "edition": "ServerDatacenterEval",
+                "installationType": "Server Core",
+                "index": 3
+              },
+              {
+                "version": "10.0.26100.32230",
+                "name": "Windows Server 2025 Datacenter Evaluation (Desktop Experience)",
+                "architecture": 9,
+                "sizeBytes": 24713557217,
+                "edition": "ServerDatacenterEval",
+                "installationType": "Server",
+                "index": 4
+              }
+            ],
+            "kind": "evaluation-dc",
+            "signatures": [
+              {
+                "signer": "CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US",
+                "path": "setup.exe",
+                "status": "Valid"
+              },
+              {
+                "signer": "CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US",
+                "path": "efi\\boot\\bootx64.efi",
+                "status": "Valid"
+              }
+            ]
+          }
+        ],
+        "switches": [
+          {
+            "Name": "LB-Fabric",
+            "Id": "995f5a7a-d229-4ca0-bb2a-9b34529c6934",
+            "SwitchType": 1
+          }
+        ],
+        "defender": true,
+        "hnsQuery": {
+          "status": "failed"
+        },
+        "hnsService": [],
+        "nat": [
+          {
+            "Name": "LB-NAT",
+            "InternalIPInterfaceAddressPrefix": "10.64.0.0/20",
+            "ExternalIPInterfaceAddressPrefix": null
+          }
+        ],
+        "defaultRoutes": [
+          {
+            "InterfaceAlias": "Ethernet",
+            "NextHop": "10.200.16.1",
+            "RouteMetric": 1
+          }
+        ],
+        "hnsChildPid": 7496,
+        "volume": {
+          "DriveLetter": "V",
+          "Size": 2181825495040,
+          "SizeRemaining": 2181712248832,
+          "HealthStatus": "Healthy"
+        }
+      },
+      "clusterBootstrapComplete": false,
+      "previousSourceCommit": "609a0d624f44276760dece818cf55376bdad0fad",
+      "resumedReadOnlyHash": true
+    },
+    "atUtc": "2026-10-28T08:31:50.4157629Z",
+    "taskExists": true,
+    "actualTriggerCount": 0,
+    "workerSha256": "8C2F15AC634CEE3D9F9839913ADD36845EE0B2C09EACF82309096FB58AAD3519",
+    "taskState": "Ready",
+    "lastTaskResult": 0
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-28T10:31:50.802060+02:00"
+}

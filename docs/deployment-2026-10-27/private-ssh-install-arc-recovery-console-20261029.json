@@ -1,0 +1,38 @@
+{
+  "beganAtSast": "2026-10-29T08:58:28.980570+02:00",
+  "status": "complete",
+  "commit": "7547c40dabdc7ac2277de5fdaabf6b420e6b9a54",
+  "script": "scripts/install-smal-arc-recovery-console.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 38189,
+  "scriptTransport": "sha256-length-framed-utf8-stdin",
+  "renderedSourceSha256": "4c6959ca9cbc0f8010312e862a7cdf313ef4a29747fb4e7f1f2d06bd42694104",
+  "renderedSourceByteLength": 13307,
+  "unstreamedEncodedLength": 35488,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "scriptSha256": "6E439F563EBDAC2132D7B3DC57076B7B8098152834360B44007C519B56935F3E",
+    "scriptPath": "C:\\ProgramData\\AzureLocalBox\\Bootstrap\\arc-authz-recovery-20261029-01\\Register-LocalBoxNode.ps1",
+    "originalPackageAndMarkersPreserved": true,
+    "approvalSha256": "D9BCC2E5741789D903837E19525F9E2CAD7141593B32C564A988CDCFD3AA0107",
+    "sourceCommit": "7547c40dabdc7ac2277de5fdaabf6b420e6b9a54",
+    "humanDeviceAuthenticationRequired": true,
+    "consoleOutputCaptured": false,
+    "status": "installed-not-invoked",
+    "registrationPerformed": false
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-29T08:58:36.499910+02:00"
+}

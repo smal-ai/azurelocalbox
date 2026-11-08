@@ -1,0 +1,57 @@
+{
+  "beganAtUtc": "2026-10-28T13:13:19.844866+00:00",
+  "status": "arm-secret-write-and-private-authenticated-read-succeeded",
+  "sourceCommit": "b071a04ce94e8f656d0c76e269ac2769a5ba06f7",
+  "scope": "one-harmless-owned-vault-probe-only",
+  "actualCredentialUsedAsProbe": false,
+  "publicAccessChangeRequested": false,
+  "ownerTokenForwarded": false,
+  "purgeRequested": false,
+  "azureLocalRpFullDeploymentProven": false,
+  "before": {
+    "normalDnsAddresses": [
+      "10.200.17.11"
+    ],
+    "publicNetworkAccess": "Disabled"
+  },
+  "previewChanges": [
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.KeyVault/vaults/kv-lbox-weu-4766ea",
+      "changeType": "Ignore"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.KeyVault/vaults/kv-lbox-weu-4766ea/secrets/localbox-private-path-probe-20261028",
+      "changeType": "Create"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.Storage/storageAccounts/stlboxdiagweu4766ea",
+      "changeType": "Ignore"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.Storage/storageAccounts/stlboxwitweu4766ea",
+      "changeType": "Ignore"
+    }
+  ],
+  "deploymentId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.Resources/deployments/localbox-private-vault-probe-20261028",
+  "deploymentState": "Succeeded",
+  "afterArmWrite": {
+    "normalDnsAddresses": [
+      "10.200.17.11"
+    ],
+    "publicNetworkAccess": "Disabled"
+  },
+  "privateAuthenticatedReadbackMatched": true,
+  "probeVersionId": "https://kv-lbox-weu-4766ea.vault.azure.net/secrets/localbox-private-path-probe-20261028/76e4267e6a76431c9615c2e6aa6973ba",
+  "softDeletedProbe": {
+    "deletedDate": "2026-10-28T13:14:43+00:00",
+    "id": "https://kv-lbox-weu-4766ea.vault.azure.net/secrets/localbox-private-path-probe-20261028/76e4267e6a76431c9615c2e6aa6973ba",
+    "scheduledPurgeDate": "2027-01-26T13:14:43+00:00"
+  },
+  "after": {
+    "normalDnsAddresses": [
+      "10.200.17.11"
+    ],
+    "publicNetworkAccess": "Disabled"
+  },
+  "finishedAtUtc": "2026-10-28T13:14:46.653808+00:00"
+}

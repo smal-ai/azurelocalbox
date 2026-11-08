@@ -1,0 +1,101 @@
+{
+  "beganAtSast": "2026-10-28T11:28:14.236605+02:00",
+  "status": "complete",
+  "commit": "e437ea1b304ac84d691d4ba26c77a360c2252b4c",
+  "script": "scripts/read-smal-guest-bootstrap-job.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 49775,
+  "scriptTransport": "encoded-command",
+  "renderedSourceSha256": "2841955ffe914cad1fdfc27e26e48919cd4e9fe0fa5cda6e9363689f707cbfa1",
+  "renderedSourceByteLength": 1121,
+  "unstreamedEncodedLength": 2992,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "atUtc": "2026-10-28T09:28:20.5855985Z",
+    "state": {
+      "runId": "guest-bootstrap-20261028-01",
+      "sourceCommit": "e437ea1b304ac84d691d4ba26c77a360c2252b4c",
+      "scope": "approved-local-guest-boot-domain-and-secret-cleanup-only",
+      "status": "running",
+      "phase": "LB-DC01-create-approved-forest",
+      "atUtc": "2026-10-28T09:28:11.7455242Z",
+      "errorType": null,
+      "errorLine": null,
+      "guestConfiguration": {
+        "LB-DC01": {
+          "guestFirewallEnabled": true,
+          "gateway": "10.64.0.1",
+          "managementIp": "10.64.0.10",
+          "computer": "LB-DC01",
+          "adapterCount": 1,
+          "dns": "10.64.0.10",
+          "defenderEnabled": true,
+          "PSComputerName": "LB-DC01",
+          "RunspaceId": "925370b6-d74e-47e2-bd72-57159f557b4f",
+          "PSShowComputerName": true
+        }
+      },
+      "cleanup": {},
+      "newCredentialLoginVerified": {},
+      "connectivity": {},
+      "natEvidence": {},
+      "domain": null,
+      "guestUpdateAssessmentPerformed": false,
+      "evaluationActivationVerified": false,
+      "nodeDomainJoinPerformed": false,
+      "azureRegistrationPerformed": false,
+      "clusterBootstrapComplete": false,
+      "errorCode": null,
+      "previousSourceCommit": "426d25bba6ebf7337ef207c0e3bbd1cf5bc9b67d",
+      "resumedDcNetworkPhase": true
+    },
+    "clusterBootstrapComplete": false,
+    "heartbeat": {
+      "processId": 5860,
+      "atUtc": "2026-10-28T09:28:20.4542224Z"
+    },
+    "lastTaskResult": 267009,
+    "taskExists": true,
+    "virtualMachines": [
+      {
+        "Name": "LB-DC01",
+        "Id": "f94c71f1-6854-48b9-a9f1-8238c99366d0",
+        "State": 2,
+        "Generation": 2,
+        "MemoryStartup": 4294967296,
+        "ProcessorCount": 2
+      },
+      {
+        "Name": "LB-NODE01",
+        "Id": "3adff629-2f67-449b-ab32-8a8748c46f34",
+        "State": 3,
+        "Generation": 2,
+        "MemoryStartup": 103079215104,
+        "ProcessorCount": 12
+      },
+      {
+        "Name": "LB-NODE02",
+        "Id": "12a44e0c-cc08-4c4c-a812-fa0b56efdbc3",
+        "State": 3,
+        "Generation": 2,
+        "MemoryStartup": 103079215104,
+        "ProcessorCount": 12
+      }
+    ],
+    "taskState": "Running"
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-28T11:28:21.390079+02:00"
+}

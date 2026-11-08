@@ -1,0 +1,23 @@
+{
+  "beganAtSast": "2026-10-27T12:13:52.177657+02:00",
+  "status": "complete-service-filter-repaired-login-not-yet-tested",
+  "commit": "b500ef84ff7b9ad4e2b4ffa1e1e9d91c80fd5b4f",
+  "scriptSha256": "750b0ae660da50b6b35d4c95a359b13e86d1ec95011f5a23b1997af166c07498",
+  "publicKeySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "privateKeyValueExported": false,
+  "bootstrapApplied": false,
+  "exitCode": 0,
+  "result": {
+    "computer": "LocalBox-Client",
+    "atUtc": "2026-10-27T10:14:08.9842375Z",
+    "serviceSidNone": true,
+    "serviceFilterBefore": "sshd",
+    "serviceFilterAfter": "Any",
+    "remoteAddress": "10.202.0.0/255.255.255.192",
+    "localPort": "22",
+    "program": "C:\\Windows\\System32\\OpenSSH\\sshd.exe",
+    "defaultSshAllowRuleEnabled": "False",
+    "configSha256": "52ADEA08D10405087D4DC9091710C399328AE598C594B4CB70245B03D8FA44B4"
+  },
+  "finishedAtSast": "2026-10-27T12:14:24.497854+02:00"
+}

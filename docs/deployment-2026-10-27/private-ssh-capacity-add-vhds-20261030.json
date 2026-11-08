@@ -1,0 +1,41 @@
+{
+  "beganAtSast": "2026-10-30T15:34:10.760173+02:00",
+  "status": "complete",
+  "commit": "5d8fd5f50f71df09ed10fa75365987fb0a869484",
+  "script": "scripts/add-smal-capacity-vhds.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 48303,
+  "scriptTransport": "sha256-length-framed-utf8-stdin",
+  "renderedSourceSha256": "2e96729277e6e57a759c72ee408ddfbe8882749cccbe059367a58ca2671eff7e",
+  "renderedSourceByteLength": 45279,
+  "unstreamedEncodedLength": 120744,
+  "guestCommandTimeoutSeconds": 600,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "sourceCommit": "5d8fd5f50f71df09ed10fa75365987fb0a869484",
+    "atUtc": "2026-10-30T13:34:54.6908788Z",
+    "disks": [],
+    "existingVhdResized": false,
+    "csvResized": false,
+    "azureDiskUniqueId": "db6882f9-8c4a-4923-b1a3-6b73dbbb9109",
+    "planSha256": "3bce135c7861c80d7d840a6ae691d16bc25a404a9815e9bddcdefa24379b23e8",
+    "status": "failed-or-uncertain-inspect-do-not-repeat",
+    "azureDiskId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-Capacity-20261030",
+    "errorLine": 106,
+    "pendingPath": "X:\\AzureLocalBox\\CapacityExpansion-20261030-01\\LB-NODE01\\S2D-5.vhdx",
+    "errorType": "RuntimeException"
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-30T15:34:55.000270+02:00"
+}

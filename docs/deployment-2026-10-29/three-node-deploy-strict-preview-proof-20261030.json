@@ -1,0 +1,17 @@
+{
+  "observedAtUtc": "2026-10-30T08:18:00.200707+00:00",
+  "status": "strict-existing-settings-only-deploy-preview-passed",
+  "requestedMode": "Deploy",
+  "previewChanges": [
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/microsoft.azurestackhci/clusters/smal-localbox01/deploymentSettings/default",
+      "changeType": "NoChange",
+      "beforeMode": "Validate",
+      "afterMode": "Validate"
+    }
+  ],
+  "liveConfigurationSha256": "158e0945fd6d8afeba3b274a4613d2accbf4b1cbf99d279230abbe0f34ab8333",
+  "guardSourceSha256": "08052683041fef05ad5ae1d495c420e49afffba1b60f68547f0a3c228dce7cc6",
+  "templateSha256": "114525f39b6e38cec58e01284bbcc82f764d108e7925c27eecb96d9faf830c65",
+  "validateOrDeploySubmitted": false
+}

@@ -1,0 +1,312 @@
+{
+  "beganAtSast": "2026-10-27T11:15:29.746886+02:00",
+  "command": [
+    "az",
+    "deployment",
+    "group",
+    "what-if",
+    "--subscription",
+    "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+    "-g",
+    "rg-localbox-nodes-san-1",
+    "--name",
+    "smal-host-20261027-retry1",
+    "--template-file",
+    "/tmp/opencode/localbox-20261027/smal-host-reviewed.json",
+    "--parameters",
+    "@/dev/stdin",
+    "-o",
+    "json",
+    "--only-show-errors",
+    "--no-pretty-print",
+    "--result-format",
+    "FullResourcePayloads"
+  ],
+  "secureParameters": "stdin-only-not-in-arguments-or-report",
+  "finishedAtSast": "2026-10-27T11:15:53.738653+02:00",
+  "exitCode": 0,
+  "status": "succeeded",
+  "result": {
+    "changes": [
+      {
+        "after": {
+          "apiVersion": "2024-07-01",
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+          "identity": {
+            "type": "SystemAssigned"
+          },
+          "location": "southafricanorth",
+          "name": "LocalBox-Client",
+          "properties": {
+            "hardwareProfile": {
+              "vmSize": "Standard_E32s_v6"
+            },
+            "networkProfile": {
+              "networkInterfaces": [
+                {
+                  "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Network/networkInterfaces/LocalBox-Client-NIC",
+                  "properties": {
+                    "deleteOption": "Detach"
+                  },
+                  "resourceGroup": "rg-localbox-nodes-san-1"
+                }
+              ]
+            },
+            "osProfile": {
+              "adminPassword": "[redacted-secure-input]",
+              "adminUsername": "arcdemo",
+              "computerName": "LocalBox-Client",
+              "windowsConfiguration": {
+                "enableAutomaticUpdates": false,
+                "provisionVMAgent": true
+              }
+            },
+            "priority": "Regular",
+            "securityProfile": {
+              "securityType": "Standard"
+            },
+            "storageProfile": {
+              "dataDisks": [
+                {
+                  "caching": "None",
+                  "createOption": "Empty",
+                  "deleteOption": "Detach",
+                  "lun": 0,
+                  "name": "LocalBox-Client-DataDisk_0"
+                },
+                {
+                  "caching": "None",
+                  "createOption": "Empty",
+                  "deleteOption": "Detach",
+                  "lun": 1,
+                  "name": "LocalBox-Client-DataDisk_1"
+                },
+                {
+                  "caching": "None",
+                  "createOption": "Empty",
+                  "deleteOption": "Detach",
+                  "lun": 2,
+                  "name": "LocalBox-Client-DataDisk_2"
+                },
+                {
+                  "caching": "None",
+                  "createOption": "Empty",
+                  "deleteOption": "Detach",
+                  "lun": 3,
+                  "name": "LocalBox-Client-DataDisk_3"
+                },
+                {
+                  "caching": "None",
+                  "createOption": "Empty",
+                  "deleteOption": "Detach",
+                  "lun": 4,
+                  "name": "LocalBox-Client-DataDisk_4"
+                },
+                {
+                  "caching": "None",
+                  "createOption": "Empty",
+                  "deleteOption": "Detach",
+                  "lun": 5,
+                  "name": "LocalBox-Client-DataDisk_5"
+                },
+                {
+                  "caching": "None",
+                  "createOption": "Empty",
+                  "deleteOption": "Detach",
+                  "lun": 6,
+                  "name": "LocalBox-Client-DataDisk_6"
+                },
+                {
+                  "caching": "None",
+                  "createOption": "Empty",
+                  "deleteOption": "Detach",
+                  "lun": 7,
+                  "name": "LocalBox-Client-DataDisk_7"
+                }
+              ],
+              "imageReference": {
+                "offer": "WindowsServer",
+                "publisher": "MicrosoftWindowsServer",
+                "sku": "2025-datacenter-g2",
+                "version": "26100.33674.261024"
+              },
+              "osDisk": {
+                "caching": "ReadWrite",
+                "createOption": "FromImage",
+                "deleteOption": "Detach",
+                "diskSizeGB": 1024,
+                "name": "LocalBox-Client-OSDisk"
+              }
+            }
+          },
+          "resourceGroup": "rg-localbox-nodes-san-1",
+          "tags": {
+            "environment": "lab",
+            "owner": "quintindekok",
+            "project": "smal-ai",
+            "purpose": "localbox-host"
+          },
+          "type": "Microsoft.Compute/virtualMachines"
+        },
+        "before": null,
+        "changeType": "Create",
+        "delta": null,
+        "deploymentId": null,
+        "extension": null,
+        "identifiers": null,
+        "resourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+        "symbolicName": null,
+        "unsupportedReason": null
+      },
+      {
+        "after": {
+          "apiVersion": "2024-05-01",
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Network/networkInterfaces/LocalBox-Client-NIC",
+          "location": "southafricanorth",
+          "name": "LocalBox-Client-NIC",
+          "properties": {
+            "enableAcceleratedNetworking": false,
+            "enableIPForwarding": false,
+            "ipConfigurations": [
+              {
+                "name": "ipconfig1",
+                "properties": {
+                  "privateIPAllocationMethod": "Dynamic",
+                  "subnet": {
+                    "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-smal-network-san-1/providers/Microsoft.Network/virtualNetworks/vnet-smal-san-1/subnets/snet-localbox-host",
+                    "resourceGroup": "rg-smal-network-san-1"
+                  }
+                }
+              }
+            ],
+            "nicType": "Standard"
+          },
+          "resourceGroup": "rg-localbox-nodes-san-1",
+          "tags": {
+            "environment": "lab",
+            "owner": "quintindekok",
+            "project": "smal-ai",
+            "purpose": "localbox-host"
+          },
+          "type": "Microsoft.Network/networkInterfaces"
+        },
+        "before": {
+          "apiVersion": "2024-05-01",
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Network/networkInterfaces/LocalBox-Client-NIC",
+          "kind": "Regular",
+          "location": "southafricanorth",
+          "name": "LocalBox-Client-NIC",
+          "properties": {
+            "allowPort25Out": true,
+            "auxiliaryMode": "None",
+            "auxiliarySku": "None",
+            "disableTcpStateTracking": false,
+            "enableAcceleratedNetworking": false,
+            "enableIPForwarding": false,
+            "ipConfigurations": [
+              {
+                "name": "ipconfig1",
+                "properties": {
+                  "privateIPAddress": "10.200.16.4",
+                  "privateIPAddressVersion": "IPv4",
+                  "privateIPAllocationMethod": "Dynamic",
+                  "subnet": {
+                    "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-smal-network-san-1/providers/Microsoft.Network/virtualNetworks/vnet-smal-san-1/subnets/snet-localbox-host",
+                    "resourceGroup": "rg-smal-network-san-1"
+                  }
+                }
+              }
+            ],
+            "nicType": "Standard"
+          },
+          "resourceGroup": "rg-localbox-nodes-san-1",
+          "tags": {
+            "environment": "lab",
+            "owner": "quintindekok",
+            "project": "smal-ai",
+            "purpose": "localbox-host"
+          },
+          "type": "Microsoft.Network/networkInterfaces"
+        },
+        "changeType": "Modify",
+        "delta": [
+          {
+            "after": null,
+            "before": "Regular",
+            "children": null,
+            "path": "kind",
+            "propertyChangeType": "Delete"
+          },
+          {
+            "after": null,
+            "before": true,
+            "children": null,
+            "path": "properties.allowPort25Out",
+            "propertyChangeType": "Delete"
+          },
+          {
+            "after": null,
+            "before": "None",
+            "children": null,
+            "path": "properties.auxiliaryMode",
+            "propertyChangeType": "Delete"
+          },
+          {
+            "after": null,
+            "before": "None",
+            "children": null,
+            "path": "properties.auxiliarySku",
+            "propertyChangeType": "Delete"
+          },
+          {
+            "after": null,
+            "before": false,
+            "children": null,
+            "path": "properties.disableTcpStateTracking",
+            "propertyChangeType": "Delete"
+          },
+          {
+            "after": null,
+            "before": null,
+            "children": [
+              {
+                "after": null,
+                "before": null,
+                "children": [
+                  {
+                    "after": null,
+                    "before": "10.200.16.4",
+                    "children": null,
+                    "path": "properties.privateIPAddress",
+                    "propertyChangeType": "Delete"
+                  },
+                  {
+                    "after": null,
+                    "before": "IPv4",
+                    "children": null,
+                    "path": "properties.privateIPAddressVersion",
+                    "propertyChangeType": "Delete"
+                  }
+                ],
+                "path": "0",
+                "propertyChangeType": "Modify"
+              }
+            ],
+            "path": "properties.ipConfigurations",
+            "propertyChangeType": "Array"
+          }
+        ],
+        "deploymentId": null,
+        "extension": null,
+        "identifiers": null,
+        "resourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Network/networkInterfaces/LocalBox-Client-NIC",
+        "symbolicName": null,
+        "unsupportedReason": null
+      }
+    ],
+    "diagnostics": null,
+    "error": null,
+    "potentialChanges": null,
+    "status": "Succeeded"
+  }
+}

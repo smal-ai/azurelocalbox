@@ -1,0 +1,53 @@
+{
+  "observedAtUtc": "2026-10-30T08:16:44.505342+00:00",
+  "status": "read-only-live-versus-preview-configuration-path-differences",
+  "differences": [
+    {
+      "path": "/scaleUnits/0/deploymentData/assemblyInfo/payload/3/hash",
+      "presentInLive": true,
+      "presentInPreview": false
+    },
+    {
+      "path": "/scaleUnits/0/deploymentData/assemblyInfo/payload/3/url",
+      "presentInLive": true,
+      "presentInPreview": false
+    },
+    {
+      "path": "/scaleUnits/0/deploymentData/cluster/azureServiceEndpoint",
+      "presentInLive": true,
+      "presentInPreview": false
+    },
+    {
+      "path": "/scaleUnits/0/deploymentData/cluster/cloudAccountName",
+      "presentInLive": true,
+      "presentInPreview": false
+    },
+    {
+      "path": "/scaleUnits/0/deploymentData/cluster/hardwareClass",
+      "presentInLive": true,
+      "presentInPreview": false
+    },
+    {
+      "path": "/scaleUnits/0/deploymentData/cluster/witnessPath",
+      "presentInLive": true,
+      "presentInPreview": false
+    },
+    {
+      "path": "/scaleUnits/0/deploymentData/cluster/witnessType",
+      "presentInLive": true,
+      "presentInPreview": false
+    }
+  ],
+  "beforeAfterIdentical": true,
+  "liveArcIds": [
+    "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE01",
+    "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE02",
+    "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE03"
+  ],
+  "previewArcIds": [
+    "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE01",
+    "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE02",
+    "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE03"
+  ],
+  "deploySubmitted": false
+}

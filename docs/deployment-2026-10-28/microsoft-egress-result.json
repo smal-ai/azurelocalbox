@@ -1,0 +1,20 @@
+{
+  "executionId": "exec_localbox_microsoft_egress_20261028",
+  "reportPath": "/home/quintin/play/entlz/docs/2026-10-28-localbox-microsoft-egress.md",
+  "reportSha256": "1fe113139937de1d5712f3dc02e670459096af3c94e8e9bdeb59be07fbdaba85",
+  "receiptPath": "/home/quintin/play/entlz/workloads/smal/localbox-microsoft-egress-receipt.json",
+  "receiptSha256": "0c2bf9bfc629bd30e5aa9140f266b69cb1f239ee7a170576a3042c2b3004c732",
+  "hashesIndependentlyMatched": true,
+  "deploymentState": "Succeeded",
+  "sourcePrefix": "10.200.16.0/24",
+  "addedFqdn": "*.microsoft.com",
+  "protocol": "HTTPS-TCP443",
+  "sourceCommitBeforeApply": "eb3eeb758c4e770190ba35c63acea21623cc8299",
+  "deploymentTimestamp": "2026-10-28T07:22:11.046468Z",
+  "configurationVerifiedByEntlz": true,
+  "hostObservation": "../deployment-2026-10-27/private-ssh-eval-media-access-post-wildcard-20261028.json",
+  "hostHeadStatus": 200,
+  "hostHeadLengthAndEtagMatch": true,
+  "nestedTrafficVerified": false,
+  "platformReadinessVerified": false
+}

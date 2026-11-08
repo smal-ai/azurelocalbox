@@ -1,0 +1,11 @@
+{
+  "observedAtUtc": "2026-10-30T12:59:39.020445+00:00",
+  "operation": "read-only-audit-blob-metadata",
+  "authMode": "login",
+  "exitCode": 1,
+  "errorCategories": [],
+  "stderrSha256": "88bf37b9ee27adfa1db2cd5de101a3848e6d730a9b56625af51d9adbff0fe416",
+  "rawErrorExported": false,
+  "sharedKeyFallback": false,
+  "newGrantRequested": false
+}

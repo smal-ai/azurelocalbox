@@ -1,0 +1,68 @@
+{
+  "beganAtSast": "2026-10-29T12:22:50.113870+02:00",
+  "status": "complete",
+  "commit": "23ce407826f5a6867f1319308fc2309e88ffb9e2",
+  "script": "scripts/start-smal-existing-guests.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 45885,
+  "scriptTransport": "encoded-command",
+  "renderedSourceSha256": "3faf5fda80c2bf23358d2faf8a9314510920ce11734d5afa3d55335686a42202",
+  "renderedSourceByteLength": 2324,
+  "unstreamedEncodedLength": 6200,
+  "guestCommandTimeoutSeconds": 360,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "guestHeartbeatVerified": true,
+    "registrationMarkersChanged": false,
+    "atUtc": "2026-10-29T10:22:55.7622781Z",
+    "guests": [
+      {
+        "id": "f94c71f1-6854-48b9-a9f1-8238c99366d0",
+        "name": "LB-DC01",
+        "startRequested": false,
+        "heartbeatReady": true,
+        "after": "Running",
+        "before": "Running"
+      },
+      {
+        "id": "3adff629-2f67-449b-ab32-8a8748c46f34",
+        "name": "LB-NODE01",
+        "startRequested": false,
+        "heartbeatReady": true,
+        "after": "Running",
+        "before": "Running"
+      },
+      {
+        "id": "12a44e0c-cc08-4c4c-a812-fa0b56efdbc3",
+        "name": "LB-NODE02",
+        "startRequested": false,
+        "heartbeatReady": true,
+        "after": "Running",
+        "before": "Running"
+      },
+      {
+        "id": "5b6eba15-fa82-4e12-9e45-5ffbcd48c8a9",
+        "name": "LB-NODE03",
+        "startRequested": false,
+        "heartbeatReady": true,
+        "after": "Running",
+        "before": "Running"
+      }
+    ],
+    "guestOsReadinessVerified": false,
+    "registrationInvoked": false
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-29T12:22:56.070891+02:00"
+}

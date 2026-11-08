@@ -1,0 +1,136 @@
+{
+  "observedAtUtc": "2026-10-30T13:04:46.977262+00:00",
+  "azureMutationPerformed": false,
+  "operation": "read-only-resource-change-history-query",
+  "status": "observed",
+  "changes": [
+    {
+      "changedBy": "System",
+      "changedByType": "System",
+      "clientType": "Unspecified",
+      "newSku": "Standard_LRS",
+      "previousSku": "Premium_LRS",
+      "resourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_5",
+      "timestamp": "2026-10-29T22:57:11.752Z"
+    },
+    {
+      "changedBy": "System",
+      "changedByType": "System",
+      "clientType": "Unspecified",
+      "newSku": "Standard_LRS",
+      "previousSku": "Premium_LRS",
+      "resourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-OSDisk",
+      "timestamp": "2026-10-29T22:57:11.752Z"
+    },
+    {
+      "changedBy": "System",
+      "changedByType": "System",
+      "clientType": "Unspecified",
+      "newSku": "Standard_LRS",
+      "previousSku": "Premium_LRS",
+      "resourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_1",
+      "timestamp": "2026-10-29T22:57:23.769Z"
+    },
+    {
+      "changedBy": "System",
+      "changedByType": "System",
+      "clientType": "Unspecified",
+      "newSku": "Standard_LRS",
+      "previousSku": "Premium_LRS",
+      "resourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_2",
+      "timestamp": "2026-10-29T22:57:23.769Z"
+    },
+    {
+      "changedBy": "System",
+      "changedByType": "System",
+      "clientType": "Unspecified",
+      "newSku": "Standard_LRS",
+      "previousSku": "Premium_LRS",
+      "resourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_3",
+      "timestamp": "2026-10-29T22:57:23.775Z"
+    },
+    {
+      "changedBy": "System",
+      "changedByType": "System",
+      "clientType": "Unspecified",
+      "newSku": "Standard_LRS",
+      "previousSku": "Premium_LRS",
+      "resourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_0",
+      "timestamp": "2026-10-29T22:57:23.769Z"
+    },
+    {
+      "changedBy": "System",
+      "changedByType": "System",
+      "clientType": "Unspecified",
+      "newSku": "Standard_LRS",
+      "previousSku": "Premium_LRS",
+      "resourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_4",
+      "timestamp": "2026-10-29T22:57:23.775Z"
+    },
+    {
+      "changedBy": "a1a9c5b6-7a4f-4288-89ab-6805873f65d1",
+      "changedByType": "Application",
+      "clientType": "PowerShell",
+      "newSku": "Standard_LRS",
+      "previousSku": "Premium_LRS",
+      "resourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_4",
+      "timestamp": "2026-10-29T23:07:30.752Z"
+    },
+    {
+      "changedBy": "System",
+      "changedByType": "System",
+      "clientType": "Unspecified",
+      "newSku": "Standard_LRS",
+      "previousSku": "Premium_LRS",
+      "resourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_6",
+      "timestamp": "2026-10-29T22:57:11.752Z"
+    },
+    {
+      "changedBy": "a1a9c5b6-7a4f-4288-89ab-6805873f65d1",
+      "changedByType": "Application",
+      "clientType": "PowerShell",
+      "newSku": "Standard_LRS",
+      "previousSku": "Premium_LRS",
+      "resourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_4",
+      "timestamp": "2026-10-29T22:57:29.587Z"
+    },
+    {
+      "changedBy": "System",
+      "changedByType": "System",
+      "clientType": "Unspecified",
+      "newSku": "Standard_LRS",
+      "previousSku": "Premium_LRS",
+      "resourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_7",
+      "timestamp": "2026-10-29T22:57:11.752Z"
+    },
+    {
+      "changedBy": "a1a9c5b6-7a4f-4288-89ab-6805873f65d1",
+      "changedByType": "Application",
+      "clientType": "PowerShell",
+      "newSku": "Standard_LRS",
+      "previousSku": "Premium_LRS",
+      "resourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_5",
+      "timestamp": "2026-10-29T23:07:25.508Z"
+    },
+    {
+      "changedBy": "System",
+      "changedByType": "System",
+      "clientType": "Unspecified",
+      "newSku": "Standard_LRS",
+      "previousSku": "Premium_LRS",
+      "resourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-Node03-SSD-20261029",
+      "timestamp": "2026-10-29T22:57:23.775Z"
+    },
+    {
+      "changedBy": "a1a9c5b6-7a4f-4288-89ab-6805873f65d1",
+      "changedByType": "Application",
+      "clientType": "PowerShell",
+      "newSku": "Standard_LRS",
+      "previousSku": "Premium_LRS",
+      "resourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_5",
+      "timestamp": "2026-10-29T22:57:25.352Z"
+    }
+  ],
+  "totalRecords": 14,
+  "truncated": "false"
+}

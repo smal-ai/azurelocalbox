@@ -1,0 +1,92 @@
+{
+  "beganAtSast": "2026-10-27T12:33:03.257423+02:00",
+  "status": "complete",
+  "commit": "ec3c81d7fcb6ddaff86ac8b425c5e3a664e6233f",
+  "script": "scripts/inspect-smal-hyperv.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 48043,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "computer": "LocalBox-Client",
+    "atUtc": "2026-10-27T10:33:10.9383128Z",
+    "lastBootUtc": "2026-10-27T09:21:23.6797000Z",
+    "user": "LocalBox-Client\\arcdemo",
+    "administrator": true,
+    "sshConnection": "10.202.0.5 55754 10.200.16.4 22",
+    "hyperV": "Installed",
+    "hyperVPowerShell": "Installed",
+    "vmms": "absent-before-reboot",
+    "sshd": "Running",
+    "defenderRealTimeProtection": true,
+    "pendingReboot": true,
+    "hyperVHostQuerySucceeded": false,
+    "hyperVQueryErrorType": "CommandNotFoundException",
+    "dataDisks": [
+      {
+        "number": 1,
+        "style": "RAW",
+        "sizeGiB": 256
+      },
+      {
+        "number": 2,
+        "style": "RAW",
+        "sizeGiB": 256
+      },
+      {
+        "number": 3,
+        "style": "RAW",
+        "sizeGiB": 256
+      },
+      {
+        "number": 4,
+        "style": "RAW",
+        "sizeGiB": 256
+      },
+      {
+        "number": 5,
+        "style": "RAW",
+        "sizeGiB": 256
+      },
+      {
+        "number": 6,
+        "style": "RAW",
+        "sizeGiB": 256
+      },
+      {
+        "number": 7,
+        "style": "RAW",
+        "sizeGiB": 256
+      },
+      {
+        "number": 8,
+        "style": "RAW",
+        "sizeGiB": 256
+      }
+    ],
+    "dns": [
+      {
+        "interface": "Ethernet",
+        "servers": [
+          "10.204.0.4"
+        ]
+      }
+    ],
+    "platformDeploymentAttempted": false,
+    "nestedVmBootTestPerformed": false,
+    "inspectionSucceeded": true
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-27T12:33:13.982552+02:00"
+}

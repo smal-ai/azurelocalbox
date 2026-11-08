@@ -1,0 +1,10 @@
+{
+  "atSast": "2026-10-27T11:15:53.739198+02:00",
+  "deployment": "smal-host-20261027-retry1",
+  "templateSourceSha256": "c24301dbe6af8d7aef0ae932b0e286df05c98d749460838eff3cb6dd6409d45e",
+  "validation": "succeeded",
+  "previewVmCreateOnlyExistingNicUnchanged": false,
+  "preservedOriginalReceipt": "host-apply-receipt.json",
+  "credentialRotated": false,
+  "azureResourceApplyAttempted": false
+}

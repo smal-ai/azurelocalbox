@@ -1,0 +1,24 @@
+{
+  "atUtc": "2026-10-28T06:34:31.410476+00:00",
+  "tool": "spider-agent links",
+  "requestedTarget": "https://www.microsoft.com/en-us/evalcenter/download-windows-server-2025",
+  "requestedBudgetCredits": 3,
+  "reportedResult": {
+    "approx_tokens_in": 0,
+    "approx_tokens_out": 1155610,
+    "attempts": 1,
+    "cost_credits": 2569.743997999997,
+    "elapsed_ms": 54705,
+    "refused": 4382,
+    "returned_bytes": 4621753,
+    "served": 460,
+    "stopped": null,
+    "targets": 1,
+    "type": "report",
+    "wire_bytes": 7466614
+  },
+  "issue": "Unexpected broad traversal beyond the requested page despite budget cap. Stopped that route; no further crawl executed.",
+  "reportedCreditsAreNotACurrencyInvoice": true,
+  "userInformed": true,
+  "sensitiveUserDataSubmitted": false
+}

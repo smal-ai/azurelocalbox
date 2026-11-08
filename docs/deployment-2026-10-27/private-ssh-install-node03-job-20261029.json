@@ -1,0 +1,36 @@
+{
+  "beganAtSast": "2026-10-29T11:29:04.781332+02:00",
+  "status": "complete",
+  "commit": "4835eb6d2b03b7141365ca9001f3eea64865bd60",
+  "script": "scripts/install-smal-node03-job.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 52577,
+  "scriptTransport": "sha256-length-framed-utf8-stdin",
+  "renderedSourceSha256": "c2a2e42d04bb6ad00281ee734ad5f5c31acea63aa8afbf6306dfbb101136cf22",
+  "renderedSourceByteLength": 96253,
+  "unstreamedEncodedLength": 256676,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "workerSha256": "DFDA8903EE400DB2453C21EB076D02E5D9D991D1917A1480AA81F457C357E485",
+    "recurringTriggerCreated": false,
+    "sourceCommit": "4835eb6d2b03b7141365ca9001f3eea64865bd60",
+    "bundleSha256": "D1568DE10404A25A5961C4088940C1F7EF18EA8E757ED3D32C3DAD419FE65789",
+    "taskName": "LocalBox-Node03-20261029-01",
+    "status": "one-shot-node03-job-started",
+    "registrationInvoked": false
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-29T11:29:16.982662+02:00"
+}

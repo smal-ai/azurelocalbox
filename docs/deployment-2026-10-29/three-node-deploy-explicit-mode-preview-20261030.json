@@ -1,0 +1,16 @@
+{
+  "observedAtUtc": "2026-10-30T08:13:15.476329+00:00",
+  "requestedMode": "Deploy",
+  "parameterTransport": "explicit-non-secret-named-CLI-parameter",
+  "previewStatus": "Succeeded",
+  "changes": [
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/microsoft.azurestackhci/clusters/smal-localbox01/deploymentSettings/default",
+      "changeType": "NoChange",
+      "beforeMode": "Validate",
+      "afterMode": "Validate",
+      "delta": []
+    }
+  ],
+  "deploySubmitted": false
+}

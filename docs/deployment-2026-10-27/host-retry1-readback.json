@@ -1,0 +1,512 @@
+{
+  "deployment": {
+    "atSast": "2026-10-27T11:23:14.402561+02:00",
+    "command": [
+      "az",
+      "deployment",
+      "group",
+      "show",
+      "-g",
+      "rg-localbox-nodes-san-1",
+      "-n",
+      "smal-host-20261027-retry1",
+      "--query",
+      "{id:id,state:properties.provisioningState,timestamp:properties.timestamp,correlationId:properties.correlationId,outputs:properties.outputs,error:properties.error}",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 0,
+    "result": {
+      "correlationId": "870876ed-7c8e-4364-a8bd-3f24a208620a",
+      "error": null,
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Resources/deployments/smal-host-20261027-retry1",
+      "outputs": {
+        "bootstrapDeployed": {
+          "type": "Bool",
+          "value": false
+        },
+        "hostPlanApprovalSupplied": {
+          "type": "Bool",
+          "value": true
+        },
+        "hostSubnetResourceId": {
+          "type": "String",
+          "value": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-smal-network-san-1/providers/Microsoft.Network/virtualNetworks/vnet-smal-san-1/subnets/snet-localbox-host"
+        },
+        "managedIdentityPrincipalId": {
+          "type": "String",
+          "value": "9ed2a366-1912-4c45-b189-b60ae1b6e4ff"
+        },
+        "nicResourceId": {
+          "type": "String",
+          "value": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Network/networkInterfaces/LocalBox-Client-NIC"
+        },
+        "privateIp": {
+          "type": "String",
+          "value": ""
+        },
+        "reusedExistingNic": {
+          "type": "Bool",
+          "value": true
+        },
+        "vmResourceId": {
+          "type": "String",
+          "value": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client"
+        }
+      },
+      "state": "Succeeded",
+      "timestamp": "2026-10-27T09:21:48.794284+00:00"
+    },
+    "error": null
+  },
+  "vm": {
+    "atSast": "2026-10-27T11:23:15.116831+02:00",
+    "command": [
+      "az",
+      "vm",
+      "get-instance-view",
+      "-g",
+      "rg-localbox-nodes-san-1",
+      "-n",
+      "LocalBox-Client",
+      "--query",
+      "{id:id,location:location,size:hardwareProfile.vmSize,state:provisioningState,securityType:securityProfile.securityType,image:storageProfile.imageReference,identity:identity,statuses:instanceView.statuses,agent:instanceView.vmAgent.{version:vmAgentVersion,statuses:statuses[].{code:code,displayStatus:displayStatus,time:time}},os:instanceView.osName,osVersion:instanceView.osVersion}",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 0,
+    "result": {
+      "agent": {
+        "statuses": [
+          {
+            "code": "ProvisioningState/succeeded",
+            "displayStatus": "Ready",
+            "time": "2026-10-27T09:23:05.529+00:00"
+          }
+        ],
+        "version": "2.7.41491.1216"
+      },
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+      "identity": {
+        "principalId": "9ed2a366-1912-4c45-b189-b60ae1b6e4ff",
+        "tenantId": "c6e67968-af25-4557-ab8b-06b693048d3b",
+        "type": "SystemAssigned"
+      },
+      "image": {
+        "exactVersion": "26100.33674.261024",
+        "offer": "WindowsServer",
+        "publisher": "MicrosoftWindowsServer",
+        "sku": "2025-datacenter-g2",
+        "version": "26100.33674.261024"
+      },
+      "location": "southafricanorth",
+      "os": "Windows Server 2025 Datacenter",
+      "osVersion": "10.0.26100.33674",
+      "securityType": "Standard",
+      "size": "Standard_E32s_v6",
+      "state": "Succeeded",
+      "statuses": [
+        {
+          "code": "ProvisioningState/succeeded",
+          "displayStatus": "Provisioning succeeded",
+          "level": "Info",
+          "time": "2026-10-27T09:21:46.8482277+00:00"
+        },
+        {
+          "code": "PowerState/running",
+          "displayStatus": "VM running",
+          "level": "Info"
+        }
+      ]
+    },
+    "error": null
+  },
+  "nic": {
+    "atSast": "2026-10-27T11:23:16.018430+02:00",
+    "command": [
+      "az",
+      "network",
+      "nic",
+      "show",
+      "-g",
+      "rg-localbox-nodes-san-1",
+      "-n",
+      "LocalBox-Client-NIC",
+      "--query",
+      "{id:id,state:provisioningState,attachedTo:virtualMachine.id,forwarding:enableIPForwarding,ips:ipConfigurations[].{ip:privateIPAddress,allocation:privateIPAllocationMethod,subnet:subnet.id,publicIp:publicIPAddress.id}}",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 0,
+    "result": {
+      "attachedTo": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+      "forwarding": false,
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Network/networkInterfaces/LocalBox-Client-NIC",
+      "ips": [
+        {
+          "allocation": "Dynamic",
+          "ip": "10.200.16.4",
+          "publicIp": null,
+          "subnet": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-smal-network-san-1/providers/Microsoft.Network/virtualNetworks/vnet-smal-san-1/subnets/snet-localbox-host"
+        }
+      ],
+      "state": "Succeeded"
+    },
+    "error": null
+  },
+  "disks": {
+    "atSast": "2026-10-27T11:23:17.769004+02:00",
+    "command": [
+      "az",
+      "disk",
+      "list",
+      "-g",
+      "rg-localbox-nodes-san-1",
+      "--query",
+      "[].{id:id,name:name,sizeGiB:diskSizeGb,state:diskState,sku:sku.name,tier:tier,managedBy:managedBy}",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 0,
+    "result": [
+      {
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_0",
+        "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+        "name": "LocalBox-Client-DataDisk_0",
+        "sizeGiB": null,
+        "sku": "Premium_LRS",
+        "state": "Attached",
+        "tier": "P15"
+      },
+      {
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_1",
+        "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+        "name": "LocalBox-Client-DataDisk_1",
+        "sizeGiB": null,
+        "sku": "Premium_LRS",
+        "state": "Attached",
+        "tier": "P15"
+      },
+      {
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_2",
+        "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+        "name": "LocalBox-Client-DataDisk_2",
+        "sizeGiB": null,
+        "sku": "Premium_LRS",
+        "state": "Attached",
+        "tier": "P15"
+      },
+      {
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_3",
+        "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+        "name": "LocalBox-Client-DataDisk_3",
+        "sizeGiB": null,
+        "sku": "Premium_LRS",
+        "state": "Attached",
+        "tier": "P15"
+      },
+      {
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_4",
+        "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+        "name": "LocalBox-Client-DataDisk_4",
+        "sizeGiB": null,
+        "sku": "Premium_LRS",
+        "state": "Attached",
+        "tier": "P15"
+      },
+      {
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_5",
+        "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+        "name": "LocalBox-Client-DataDisk_5",
+        "sizeGiB": null,
+        "sku": "Premium_LRS",
+        "state": "Attached",
+        "tier": "P15"
+      },
+      {
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_6",
+        "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+        "name": "LocalBox-Client-DataDisk_6",
+        "sizeGiB": null,
+        "sku": "Premium_LRS",
+        "state": "Attached",
+        "tier": "P15"
+      },
+      {
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_7",
+        "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+        "name": "LocalBox-Client-DataDisk_7",
+        "sizeGiB": null,
+        "sku": "Premium_LRS",
+        "state": "Attached",
+        "tier": "P15"
+      },
+      {
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-OSDisk",
+        "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+        "name": "LocalBox-Client-OSDisk",
+        "sizeGiB": null,
+        "sku": "Premium_LRS",
+        "state": "Attached",
+        "tier": "P30"
+      }
+    ],
+    "error": null
+  },
+  "extensions": {
+    "atSast": "2026-10-27T11:23:18.760016+02:00",
+    "command": [
+      "az",
+      "vm",
+      "extension",
+      "list",
+      "-g",
+      "rg-localbox-nodes-san-1",
+      "--vm-name",
+      "LocalBox-Client",
+      "--query",
+      "[].{id:id,name:name,publisher:publisher,type:typePropertiesType,version:typeHandlerVersion,state:provisioningState}",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 0,
+    "result": [],
+    "error": null
+  },
+  "resources": {
+    "atSast": "2026-10-27T11:23:19.763328+02:00",
+    "command": [
+      "az",
+      "resource",
+      "list",
+      "-g",
+      "rg-localbox-nodes-san-1",
+      "--query",
+      "[].{id:id,name:name,type:type,location:location}",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 0,
+    "result": [
+      {
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Network/networkInterfaces/LocalBox-Client-NIC",
+        "location": "southafricanorth",
+        "name": "LocalBox-Client-NIC",
+        "type": "Microsoft.Network/networkInterfaces"
+      },
+      {
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+        "location": "southafricanorth",
+        "name": "LocalBox-Client",
+        "type": "Microsoft.Compute/virtualMachines"
+      },
+      {
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-OSDisk",
+        "location": "southafricanorth",
+        "name": "LocalBox-Client-OSDisk",
+        "type": "Microsoft.Compute/disks"
+      },
+      {
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_5",
+        "location": "southafricanorth",
+        "name": "LocalBox-Client-DataDisk_5",
+        "type": "Microsoft.Compute/disks"
+      },
+      {
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_3",
+        "location": "southafricanorth",
+        "name": "LocalBox-Client-DataDisk_3",
+        "type": "Microsoft.Compute/disks"
+      },
+      {
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_7",
+        "location": "southafricanorth",
+        "name": "LocalBox-Client-DataDisk_7",
+        "type": "Microsoft.Compute/disks"
+      },
+      {
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_4",
+        "location": "southafricanorth",
+        "name": "LocalBox-Client-DataDisk_4",
+        "type": "Microsoft.Compute/disks"
+      },
+      {
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_1",
+        "location": "southafricanorth",
+        "name": "LocalBox-Client-DataDisk_1",
+        "type": "Microsoft.Compute/disks"
+      },
+      {
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_2",
+        "location": "southafricanorth",
+        "name": "LocalBox-Client-DataDisk_2",
+        "type": "Microsoft.Compute/disks"
+      },
+      {
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_0",
+        "location": "southafricanorth",
+        "name": "LocalBox-Client-DataDisk_0",
+        "type": "Microsoft.Compute/disks"
+      },
+      {
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/RG-LOCALBOX-NODES-SAN-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_6",
+        "location": "southafricanorth",
+        "name": "LocalBox-Client-DataDisk_6",
+        "type": "Microsoft.Compute/disks"
+      }
+    ],
+    "error": null
+  },
+  "hostNsg": {
+    "atSast": "2026-10-27T11:23:20.658412+02:00",
+    "command": [
+      "az",
+      "network",
+      "nsg",
+      "show",
+      "-g",
+      "rg-smal-network-san-1",
+      "-n",
+      "nsg-smal-localbox-san-1",
+      "--query",
+      "{id:id,rules:securityRules[].{name:name,priority:priority,access:access,direction:direction,protocol:protocol,source:sourceAddressPrefix,destination:destinationAddressPrefix,destinationPortRanges:destinationPortRanges,destinationPortRange:destinationPortRange}}",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 0,
+    "result": {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-smal-network-san-1/providers/Microsoft.Network/networkSecurityGroups/nsg-smal-localbox-san-1",
+      "rules": [
+        {
+          "access": "Allow",
+          "destination": "10.200.16.0/24",
+          "destinationPortRange": "",
+          "destinationPortRanges": [
+            "22",
+            "3389"
+          ],
+          "direction": "Inbound",
+          "name": "Allow-Bastion-Administration",
+          "priority": 100,
+          "protocol": "Tcp",
+          "source": "10.202.0.0/26"
+        },
+        {
+          "access": "Deny",
+          "destination": "*",
+          "destinationPortRange": "*",
+          "destinationPortRanges": [],
+          "direction": "Inbound",
+          "name": "Deny-Other-Inbound",
+          "priority": 4000,
+          "protocol": "*",
+          "source": "*"
+        },
+        {
+          "access": "Deny",
+          "destination": "Internet",
+          "destinationPortRange": "*",
+          "destinationPortRanges": [],
+          "direction": "Outbound",
+          "name": "Deny-Internet-Pending-Platform-Allowlist",
+          "priority": 4000,
+          "protocol": "*",
+          "source": "*"
+        },
+        {
+          "access": "Allow",
+          "destination": "Internet",
+          "destinationPortRange": null,
+          "destinationPortRanges": [
+            "80",
+            "443",
+            "8084"
+          ],
+          "direction": "Outbound",
+          "name": "Allow-LocalBox-Platform-Web",
+          "priority": 200,
+          "protocol": "Tcp",
+          "source": "10.200.16.0/24"
+        },
+        {
+          "access": "Allow",
+          "destination": "Internet",
+          "destinationPortRange": "123",
+          "destinationPortRanges": [],
+          "direction": "Outbound",
+          "name": "Allow-LocalBox-Platform-NTP",
+          "priority": 210,
+          "protocol": "Udp",
+          "source": "10.200.16.0/24"
+        }
+      ]
+    },
+    "error": null
+  },
+  "feature": {
+    "atSast": "2026-10-27T11:23:21.257171+02:00",
+    "command": [
+      "az",
+      "feature",
+      "show",
+      "--namespace",
+      "Microsoft.Compute",
+      "--name",
+      "UseStandardSecurityType",
+      "--query",
+      "{id:id,state:properties.state}",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 0,
+    "result": {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/providers/Microsoft.Features/providers/Microsoft.Compute/features/UseStandardSecurityType",
+      "state": "Registered"
+    },
+    "error": null
+  },
+  "hostIdentityGrants": {
+    "command": [
+      "az",
+      "role",
+      "assignment",
+      "list",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "--assignee-object-id",
+      "9ed2a366-1912-4c45-b189-b60ae1b6e4ff",
+      "--all",
+      "--query",
+      "[].{id:id,scope:scope,role:roleDefinitionName}",
+      "-o",
+      "json",
+      "--only-show-errors"
+    ],
+    "exitCode": 0,
+    "result": []
+  }
+}

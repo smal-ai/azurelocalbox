@@ -1,0 +1,289 @@
+{
+  "VirtualMachine_GuestExtnforWindowsClient_Deploy": {
+    "command": [
+      "az",
+      "rest",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "--method",
+      "get",
+      "--url",
+      "https://management.azure.com/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policyDefinitions/VirtualMachine_GuestExtnforWindowsClient_Deploy?api-version=2023-04-01",
+      "--query",
+      "properties.{displayName:displayName,parameters:parameters,policyRule:policyRule}",
+      "-o",
+      "json"
+    ],
+    "exitCode": 0,
+    "result": {
+      "displayName": "AzTB - Deploy the Windows Guest Configuration extension to enable Guest Configuration assignments on Windows VMs",
+      "parameters": {},
+      "policyRule": {
+        "if": {
+          "allOf": [
+            {
+              "equals": "Microsoft.Compute/virtualMachines",
+              "field": "type"
+            },
+            {
+              "equals": "MicrosoftWindowsDesktop",
+              "field": "Microsoft.Compute/imagePublisher"
+            },
+            {
+              "field": "Microsoft.Compute/virtualMachines/storageProfile.imageReference.sku",
+              "notContains": "-evd"
+            },
+            {
+              "field": "Microsoft.Compute/virtualMachines/storageProfile.imageReference.sku",
+              "notContains": "-avd"
+            },
+            {
+              "anyOf": [
+                {
+                  "exists": "true",
+                  "field": "Microsoft.Compute/virtualMachines/osProfile.windowsConfiguration"
+                },
+                {
+                  "field": "Microsoft.Compute/virtualMachines/storageProfile.osDisk.osType",
+                  "like": "Windows*"
+                }
+              ]
+            }
+          ]
+        },
+        "then": {
+          "details": {
+            "deployment": {
+              "properties": {
+                "mode": "incremental",
+                "parameters": {
+                  "location": {
+                    "value": "[field('location')]"
+                  },
+                  "vmName": {
+                    "value": "[field('name')]"
+                  }
+                },
+                "template": {
+                  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                  "contentVersion": "1.0.0.0",
+                  "parameters": {
+                    "location": {
+                      "type": "string"
+                    },
+                    "vmName": {
+                      "type": "string"
+                    }
+                  },
+                  "resources": [
+                    {
+                      "apiVersion": "2019-07-01",
+                      "location": "[parameters('location')]",
+                      "name": "[concat(parameters('vmName'), '/AzurePolicyforWindows')]",
+                      "properties": {
+                        "autoUpgradeMinorVersion": true,
+                        "enableAutomaticUpgrade": true,
+                        "protectedSettings": {},
+                        "publisher": "Microsoft.GuestConfiguration",
+                        "settings": {},
+                        "type": "ConfigurationforWindows",
+                        "typeHandlerVersion": "1.1"
+                      },
+                      "type": "Microsoft.Compute/virtualMachines/extensions"
+                    }
+                  ]
+                }
+              }
+            },
+            "existenceCondition": {
+              "allOf": [
+                {
+                  "equals": "Microsoft.GuestConfiguration",
+                  "field": "Microsoft.Compute/virtualMachines/extensions/publisher"
+                },
+                {
+                  "equals": "ConfigurationforWindows",
+                  "field": "Microsoft.Compute/virtualMachines/extensions/type"
+                },
+                {
+                  "equals": "Succeeded",
+                  "field": "Microsoft.Compute/virtualMachines/extensions/provisioningState"
+                }
+              ]
+            },
+            "name": "AzurePolicyforWindows",
+            "roleDefinitionIds": [
+              "/providers/microsoft.authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+            ],
+            "type": "Microsoft.Compute/virtualMachines/extensions"
+          },
+          "effect": "deployIfNotExists"
+        }
+      }
+    }
+  },
+  "VirtualMachine_ManagedIdentity_Deploy": {
+    "command": [
+      "az",
+      "rest",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "--method",
+      "get",
+      "--url",
+      "https://management.azure.com/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policyDefinitions/VirtualMachine_ManagedIdentity_Deploy?api-version=2023-04-01",
+      "--query",
+      "properties.{displayName:displayName,parameters:parameters,policyRule:policyRule}",
+      "-o",
+      "json"
+    ],
+    "exitCode": 0,
+    "result": {
+      "displayName": "AzTB - Add system-assigned managed identity to enable Guest Configuration assignments on virtual machines with no identities",
+      "parameters": {},
+      "policyRule": {
+        "if": {
+          "allOf": [
+            {
+              "equals": "Microsoft.Compute/virtualMachines",
+              "field": "type"
+            },
+            {
+              "equals": "MicrosoftWindowsDesktop",
+              "field": "Microsoft.Compute/imagePublisher"
+            },
+            {
+              "field": "Microsoft.Compute/virtualMachines/storageProfile.imageReference.sku",
+              "notContains": "-evd"
+            },
+            {
+              "field": "Microsoft.Compute/virtualMachines/storageProfile.imageReference.sku",
+              "notContains": "-avd"
+            },
+            {
+              "anyOf": [
+                {
+                  "exists": "true",
+                  "field": "Microsoft.Compute/virtualMachines/osProfile.windowsConfiguration"
+                },
+                {
+                  "field": "Microsoft.Compute/virtualMachines/storageProfile.osDisk.osType",
+                  "like": "Windows*"
+                }
+              ]
+            },
+            {
+              "anyOf": [
+                {
+                  "exists": "false",
+                  "field": "identity.type"
+                },
+                {
+                  "equals": "None",
+                  "field": "identity.type"
+                }
+              ]
+            }
+          ]
+        },
+        "then": {
+          "details": {
+            "operations": [
+              {
+                "field": "identity.type",
+                "operation": "addOrReplace",
+                "value": "SystemAssigned"
+              }
+            ],
+            "roleDefinitionIds": [
+              "/providers/microsoft.authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+            ]
+          },
+          "effect": "modify"
+        }
+      }
+    }
+  },
+  "VirtualMachine_SKU_Deny": {
+    "command": [
+      "az",
+      "rest",
+      "--subscription",
+      "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "--method",
+      "get",
+      "--url",
+      "https://management.azure.com/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policyDefinitions/VirtualMachine_SKU_Deny?api-version=2023-04-01",
+      "--query",
+      "properties.{displayName:displayName,parameters:parameters,policyRule:policyRule}",
+      "-o",
+      "json"
+    ],
+    "exitCode": 0,
+    "result": {
+      "displayName": "Block VM SKU Sizes",
+      "parameters": {
+        "BlockedSKUs": {
+          "metadata": {
+            "description": "The list of VM SKUs to block",
+            "displayName": "Blocked skus"
+          },
+          "type": "array"
+        }
+      },
+      "policyRule": {
+        "if": {
+          "AllOf": [
+            {
+              "AnyOf": [
+                {
+                  "field": "type",
+                  "in": [
+                    "Microsoft.Compute/virtualMachines"
+                  ]
+                },
+                {
+                  "field": "type",
+                  "in": [
+                    "Microsoft.Compute/virtualMachineScaleSets"
+                  ]
+                }
+              ]
+            },
+            {
+              "anyOf": [
+                {
+                  "AllOf": [
+                    {
+                      "field": "Microsoft.Compute/virtualMachines/sku.name",
+                      "in": "[parameters('BlockedSKUs')]"
+                    },
+                    {
+                      "field": "Microsoft.Compute/virtualMachines/priority",
+                      "notEquals": "Spot"
+                    }
+                  ]
+                },
+                {
+                  "AllOf": [
+                    {
+                      "field": "Microsoft.Compute/virtualMachineScaleSets/sku.name",
+                      "in": "[parameters('BlockedSKUs')]"
+                    },
+                    {
+                      "field": "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.priority",
+                      "notEquals": "Spot"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "then": {
+          "effect": "Deny"
+        }
+      }
+    }
+  }
+}

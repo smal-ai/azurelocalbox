@@ -1,0 +1,16 @@
+{
+  "beganAtUtc": "2026-10-30T08:09:59.239283+00:00",
+  "sourceCommit": "e49be930187a2f585ae4613749f13adb55384b01",
+  "stage": "deploy",
+  "deploymentName": "localbox-three-node-deploy-20261029",
+  "status": "failed-inspect-before-resume",
+  "witnessKeyReadOrUpload": false,
+  "publicAccessChangeRequested": false,
+  "sharedKeyChangeRequested": false,
+  "subscriptionWideGrantRequested": false,
+  "platformReadinessVerified": false,
+  "privateInputsReceipt": "docs/deployment-2026-10-27/private-ssh-three-cluster-inputs-deploy-20261029.json",
+  "errorType": "RuntimeError",
+  "error": "Unlisted resource effect in No Witness stage: deploy",
+  "finishedAtUtc": "2026-10-30T08:11:39.712597+00:00"
+}

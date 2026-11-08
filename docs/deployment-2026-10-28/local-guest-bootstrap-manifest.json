@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "runId": "guest-bootstrap-20261028-01",
+  "scope": "approved-local-guest-boot-domain-and-secret-cleanup-only",
+  "imageSourceCommit": "0e8e0997505efdf015ba6da661608cde9ab46001",
+  "imageWorkerSha256": "962B19265ECB43D285717429561E117AEB7E8EFBF8BBAF04BF7742091A2F73FF",
+  "domain": "ad.localbox.test",
+  "netbios": "LOCALBOX",
+  "dcForwarder": "10.204.0.4",
+  "registerAzureResources": false,
+  "joinNodesToDomain": false,
+  "deployAksOrWorkloads": false
+}

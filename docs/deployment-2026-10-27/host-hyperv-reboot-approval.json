@@ -1,0 +1,15 @@
+{
+  "assistantQuestion": "Hyper-V requires a host reboot. Shall I reboot it now and verify virtualisation and remote access afterwards?",
+  "humanAnswer": "yes, do that",
+  "oneHostRebootApproved": true,
+  "target": "LocalBox-Client",
+  "subscriptionId": "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+  "resourceGroup": "rg-localbox-nodes-san-1",
+  "action": "One scoped Azure VM restart, then read-only Hyper-V and pinned-key private Bastion PowerShell verification",
+  "automaticRestartRetryApproved": false,
+  "stopOrDeallocationApproved": false,
+  "nestedVmCreationApproved": false,
+  "storageFormattingApproved": false,
+  "nestedNetworkChangesApproved": false,
+  "platformRegistrationApproved": false
+}

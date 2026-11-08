@@ -1,0 +1,28 @@
+{
+  "beganAtSast": "2026-10-28T09:54:14.063172+02:00",
+  "status": "failed-do-not-automatically-repeat",
+  "commit": "64af7e038a9274f2a3e8869942e643519e6bcf0a",
+  "script": "scripts/read-smal-eval-media-job.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 39475,
+  "scriptTransport": "encoded-command",
+  "renderedSourceSha256": "74c3661aba7cf2ea7b31e26760ac1f5985fcca23018f6ced42576ab8f7969106",
+  "renderedSourceByteLength": 1609,
+  "unstreamedEncodedLength": 4292,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 255,
+  "sshDiagnostics": {
+    "Server accepts key": false,
+    "Authenticated to": false,
+    "Sending command:": false,
+    "Exit status": false
+  },
+  "errorLabel": "Connection timed out",
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-28T09:54:31.367521+02:00"
+}

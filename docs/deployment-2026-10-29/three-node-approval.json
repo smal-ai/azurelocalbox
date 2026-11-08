@@ -1,0 +1,15 @@
+{
+  "humanAnswer": "Approved",
+  "approved": true,
+  "proposalJsonSha256": "ff5fcbcc40bcfcf3e674c1ff73c48dfc66e1d88eeae20a228df0df1c5d91c13a",
+  "proposalMarkdownSha256": "e0cf5473976a97ed7298164b0cd8872585f5319b2713e78c1aeccb610e5302e5",
+  "additionalTwoTiBPremiumDiskAndDisclosedCapacityCostsAccepted": true,
+  "onlyNewDiskFormatAndExactSingleBlankVhdMoveApproved": true,
+  "existingNodeGracefulStopsAnd64GiB8VcpuProfilesApproved": true,
+  "node03ImageTemporaryAnswerFileCleanupAndSharedClusterCredentialApproved": true,
+  "hostBoundDpapiRecoveryLimitAndNoNewExternalBackupAccepted": true,
+  "node03HumanDeviceCodeAuthenticationAndScopedRolesApproved": true,
+  "threeNodeNoWitnessDeploymentApprovedSubjectToExactIdsAndEffectChecks": true,
+  "sharedKeyPublicAccessPolicyExemptionOrBroadGrantApproved": false,
+  "aksWorkloadsModelsOrRecurringAgentJobsApproved": false
+}

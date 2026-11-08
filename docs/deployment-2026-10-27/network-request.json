@@ -1,0 +1,68 @@
+{
+  "status": "draft-for-entlz-and-smal-review-not-approval-or-address-reservation",
+  "task": "REL-287",
+  "hostSubnetId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-smal-network-san-1/providers/Microsoft.Network/virtualNetworks/vnet-smal-san-1/subnets/snet-localbox-host",
+  "hostIp": null,
+  "sourceTranslation": "proposed-nested-outbound-SNAT-to-outer-host-private-IP-not-yet-implemented-or-accepted",
+  "sourceScopedEgressReady": false,
+  "candidateNestedPrefixes": {
+    "infrastructure": "10.64.0.0/20",
+    "management": "10.64.0.0/24",
+    "provider": "10.64.1.0/24",
+    "natTransit": "10.64.2.0/24",
+    "hostInternal": "10.64.3.0/24",
+    "storageA": "10.64.4.0/24",
+    "storageB": "10.64.5.0/24",
+    "aksApiNodesAndVips": "10.64.10.0/24",
+    "nestedVmNetwork": "10.64.11.0/24",
+    "pods": "10.65.0.0/16",
+    "services": "10.66.0.0/24"
+  },
+  "nestedPrefixesApproved": false,
+  "overlapAcceptance": "pending-entire-connected-estate-other-nested-networks-and-peer-review",
+  "administration": "VPN to private Premium Bastion to outer host TCP22/3389; nested administration from authenticated host; no direct VPN-to-host rule or public endpoint",
+  "privateAksApi": "required-if-AKS-Arc-approved-and-deployed; no public endpoint; exact FQDN/IP and host-to-API route pending",
+  "routing": {
+    "azureNicIpForwarding": "off-in-host-only-template; review-separately-if-routed-design-requires-it",
+    "nestedGuestForwarding": "pending-version-specific-reviewed-platform-config",
+    "advertisedNestedPrefixes": [],
+    "hubStaticNestedRoutes": [],
+    "returnPath": "under-proposed-SNAT-use-existing-host-subnet-hub-VPN-return-path; do-not-advertise-private-pod-or-service-CIDRs-by-assumption"
+  },
+  "dns": {
+    "centralResolver": "10.204.0.4",
+    "transport": ["UDP53", "TCP53"],
+    "nestedDomain": "isolated-lab-domain-name-pending-platform-profile",
+    "privateServiceSuffixes": ["azurecr.io", "vault.azure.net", "azure-devices.net", "servicebus.windows.net"],
+    "nestedConditionalForwarding": "pending-reviewed-configuration-no-competing-private-zones",
+    "arcPublicResolutionRequired": ["*.his.arc.azure.com", "*.guestconfiguration.azure.com", "*.dp.kubernetesconfiguration.azure.com"]
+  },
+  "egress": {
+    "approved": false,
+    "keepHostInternetDenyUntilApproved": true,
+    "platformVersion": null,
+    "registrationRegion": "westeurope-candidate-only-no-old-resource-revival",
+    "httpsInspectionPermitted": false,
+    "arcPrivateLinkScopePermitted": false,
+    "destinations": [],
+    "unapprovedRegionalReviewBaseline": "egress-review-baseline.json",
+    "baselinePublishedOn": "2025-11-27",
+    "baselineRowCount": 82,
+    "whyNotAnAllowlist": "Exact Azure Local, Arc agent, resource bridge, AKS, image/bootstrap and update versions/source IP are not approved. Do not convert a general 80/443 requirement into Any-to-Any access.",
+    "bootstrapSourceCandidatesFromLegacyCode": ["raw.githubusercontent.com", "jumpstartprodsg.blob.core.windows.net", "www.powershellgallery.com"],
+    "protocolCandidates": ["TCP443", "TCP80-for-exact-documented-update-or-revocation-destinations-only"],
+    "proxyBypass": "pending-exact-version-endpoint-set-and-private-DNS-path; no-HTTPS-inspection-or-Arc-private-link-workaround",
+    "officialReferences": [
+      "https://learn.microsoft.com/en-us/azure/azure-local/concepts/firewall-requirements",
+      "https://learn.microsoft.com/en-us/azure/azure-arc/servers/network-requirements",
+      "https://learn.microsoft.com/en-us/azure/azure-arc/resource-bridge/network-requirements",
+      "https://learn.microsoft.com/en-us/azure/aks/aksarc/system-requirements-network"
+    ],
+    "retrievalLimitation": "Spider omitted consolidated endpoint content. Official GitHub source API recovered the West Europe catalogue with blob hashes. That 2025-11-27 regional baseline still needs exact-version matching, placeholder resolution and governance review."
+  },
+  "requestedReview": [
+    "Entlz and SMAL review proposed nested prefix reservation and source-translation/private-API approach before changes",
+    "Select and approve platform versions and bootstrap artefact pins, then supply exact source-IP-scoped destination/protocol/port/proxy-bypass inventory to Entlz",
+    "Confirm approved LocalBox deployment principal and host-subnet join scope; do not broaden operator or platform grants"
+  ]
+}

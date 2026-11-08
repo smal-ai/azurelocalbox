@@ -1,0 +1,72 @@
+{
+  "beganAtUtc": "2026-10-29T14:13:23.644205+00:00",
+  "sourceCommit": "f5ea3e90318bc9a6889c57a4dc83680291dfa440",
+  "status": "complete-scoped-rule-and-three-node-echo-verified",
+  "validateSubmitted": false,
+  "deploySubmitted": false,
+  "terminalValidationProof": {
+    "clusterStatus": "ValidationFailed",
+    "mode": "Validate",
+    "provisioningState": "Failed",
+    "validationStatus": "Error",
+    "deploymentStatus": null,
+    "deployArmRecords": [],
+    "knownLcmFormatErrorMatched": false,
+    "knownInfraNetworkErrorMatched": true
+  },
+  "ruleReadback": {
+    "persistent": {
+      "action": "Allow",
+      "enabled": "True",
+      "icmpType": [
+        "8"
+      ],
+      "profile": "Any",
+      "direction": "Inbound",
+      "localAddress": [
+        "10.64.0.1"
+      ],
+      "name": "AzureLocalBox-InternalGateway-Echo-v4",
+      "remoteAddress": [
+        "10.64.0.11-10.64.0.13",
+        "10.64.0.20-10.64.0.30"
+      ],
+      "interfaceAlias": [
+        "vEthernet (LB-Fabric)"
+      ],
+      "protocol": "ICMPv4"
+    },
+    "effective": {
+      "action": "Allow",
+      "enabled": "True",
+      "icmpType": [
+        "8"
+      ],
+      "profile": "Any",
+      "direction": "Inbound",
+      "localAddress": [
+        "10.64.0.1"
+      ],
+      "name": "AzureLocalBox-InternalGateway-Echo-v4",
+      "remoteAddress": [
+        "10.64.0.11-10.64.0.13",
+        "10.64.0.20-10.64.0.30"
+      ],
+      "interfaceAlias": [
+        "vEthernet (LB-Fabric)"
+      ],
+      "protocol": "ICMPv4"
+    },
+    "approvalSha256": "D65BBC1324845E8019041BD576A5C6792D629AFC920D79D9A4324F302A0CB3A2",
+    "outerOrSharedNetworkChanged": false,
+    "validationInvoked": false,
+    "created": true,
+    "atUtc": "2026-10-29T14:14:03.0399916Z",
+    "existingRuleIdentitiesPreserved": true,
+    "status": "exact-approved-echo-rule-verified",
+    "firewallProfilesChanged": false
+  },
+  "gatewayAndDcEchoVerifiedOnAllThreeNodes": true,
+  "networkProof": "docs/deployment-2026-10-27/private-ssh-infra-network-after-echo-rule-20261029.json",
+  "finishedAtUtc": "2026-10-29T14:14:36.176716+00:00"
+}

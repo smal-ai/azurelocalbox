@@ -1,0 +1,19 @@
+{
+  "observedOn": "2026-10-28",
+  "requestedPerCallBudget": 2,
+  "method": "single-page scrape, not crawl or links",
+  "calls": [
+    {"capture": "/tmp/opencode/localbox-20261028-arc-register-detail.json", "served": 0, "attempts": 1, "toolReportedCredits": 0.42588983333333336, "outcome": "no usable page, exit 5, original failed capture retained"},
+    {"capture": "/tmp/opencode/localbox-20261028-ad-prep-detail.json", "served": 1, "attempts": 1, "toolReportedCredits": 1.0538665000000003},
+    {"capture": "/tmp/opencode/localbox-20261028-hci-pricing.json", "served": 1, "attempts": 1, "toolReportedCredits": 7.3330364999999995, "reportedBudgetExceeded": true},
+    {"capture": "/tmp/opencode/localbox-20261028-arc-direct.json", "served": 1, "attempts": 1, "toolReportedCredits": 2.3197365, "reportedBudgetExceeded": true},
+    {"capture": "/tmp/opencode/localbox-20261028-arm-deploy.json", "served": 1, "attempts": 1, "toolReportedCredits": 1.4545198333333333}
+  ],
+  "allCallsSingleTarget": true,
+  "twoResponsesReportedAboveCap": true,
+  "furtherSpiderCallsStopped": true,
+  "toolReportedCreditsAreNotCurrencyInvoice": true,
+  "publicApiSourcesUsedAfterwards": ["GitHub repository content/blob API", "Azure Retail Prices JSON API"],
+  "authenticationMaterialSent": false,
+  "userInformed": true
+}

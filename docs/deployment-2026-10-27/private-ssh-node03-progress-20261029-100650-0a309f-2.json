@@ -1,0 +1,51 @@
+{
+  "beganAtSast": "2026-10-29T12:07:19.568618+02:00",
+  "status": "complete",
+  "commit": "593a0e942f938c6eda59f83c5138f2671e5df77d",
+  "script": "scripts/read-smal-node03-job.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 46397,
+  "scriptTransport": "sha256-length-framed-utf8-stdin",
+  "renderedSourceSha256": "5ce481c48eab2ed58e2e71d1a2118b1eeedd1a0329f5d4411c3d00a10a012dd6",
+  "renderedSourceByteLength": 1574,
+  "unstreamedEncodedLength": 4200,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "bundleSha256": "D1568DE10404A25A5961C4088940C1F7EF18EA8E757ED3D32C3DAD419FE65789",
+    "state": {
+      "clusterDeploymentPerformed": false,
+      "cleanup": null,
+      "commonCredentialLoginVerified": false,
+      "sourceCommit": "4835eb6d2b03b7141365ca9001f3eea64865bd60",
+      "phase": "LB-NODE03-expand-windows-image",
+      "vm": null,
+      "atUtc": "2026-10-29T09:59:54.4046792Z",
+      "azureRegistrationPerformed": false,
+      "status": "running"
+    },
+    "workerSha256": "DFDA8903EE400DB2453C21EB076D02E5D9D991D1917A1480AA81F457C357E485",
+    "registrationInvokedByReader": false,
+    "heartbeat": {
+      "atUtc": "2026-10-29T10:07:21.7560953Z"
+    },
+    "atUtc": "2026-10-29T10:07:25.1303468Z",
+    "actualTriggerCount": 0,
+    "principal": "SYSTEM",
+    "taskState": "Running",
+    "lastTaskResult": 267009
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-29T12:07:25.489967+02:00"
+}

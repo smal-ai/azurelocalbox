@@ -1,0 +1,91 @@
+{
+  "beganAtSast": "2026-10-28T10:13:58.778805+02:00",
+  "status": "complete",
+  "commit": "64bdfa5f606f32696ae6918463ff1807f2326e91",
+  "script": "scripts/read-smal-local-network.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 55619,
+  "scriptTransport": "encoded-command",
+  "renderedSourceSha256": "afeb0d50b4cd9f9c629d298ece1fb7e2a09436ccdc5d7460a528dec044edb97c",
+  "renderedSourceByteLength": 992,
+  "unstreamedEncodedLength": 2648,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "outerDns": [
+      "10.204.0.4"
+    ],
+    "switches": [
+      {
+        "Name": "LB-Fabric",
+        "Id": "995f5a7a-d229-4ca0-bb2a-9b34529c6934",
+        "SwitchType": 1
+      }
+    ],
+    "directoryExists": true,
+    "clusterBootstrapComplete": false,
+    "virtualMachines": [],
+    "state": {
+      "runId": "local-network-20261028-01",
+      "sourceCommit": "64bdfa5f606f32696ae6918463ff1807f2326e91",
+      "scope": "approved-local-internal-switch-and-nat-only",
+      "status": "local-network-created",
+      "phase": "local-network-verified-no-guests",
+      "atUtc": "2026-10-28T08:13:53.1113717Z",
+      "switchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934",
+      "natInstanceId": "LB-NAT;0",
+      "errorType": null,
+      "defaultRouteAndDnsUnchanged": true,
+      "nestedTrafficVerified": false,
+      "clusterBootstrapComplete": false
+    },
+    "atUtc": "2026-10-28T08:14:21.4533785Z",
+    "nat": [
+      {
+        "Name": "LB-NAT",
+        "InternalIPInterfaceAddressPrefix": "10.64.0.0/20"
+      }
+    ],
+    "defaultRoutes": [
+      {
+        "InterfaceIndex": 6,
+        "InterfaceAlias": "Ethernet",
+        "NextHop": "10.200.16.1",
+        "RouteMetric": 1
+      }
+    ],
+    "ipv4": [
+      {
+        "InterfaceIndex": 13,
+        "InterfaceAlias": "vEthernet (LB-Fabric)",
+        "IPAddress": "10.64.0.1",
+        "PrefixLength": 24
+      },
+      {
+        "InterfaceIndex": 6,
+        "InterfaceAlias": "Ethernet",
+        "IPAddress": "10.200.16.4",
+        "PrefixLength": 24
+      },
+      {
+        "InterfaceIndex": 1,
+        "InterfaceAlias": "Loopback Pseudo-Interface 1",
+        "IPAddress": "127.0.0.1",
+        "PrefixLength": 8
+      }
+    ]
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-28T10:14:22.742427+02:00"
+}

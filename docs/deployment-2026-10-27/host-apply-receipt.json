@@ -1,0 +1,30 @@
+{
+  "beganAtSast": "2026-10-27T10:46:52.597849+02:00",
+  "command": [
+    "az",
+    "deployment",
+    "group",
+    "create",
+    "--subscription",
+    "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+    "-g",
+    "rg-localbox-nodes-san-1",
+    "--name",
+    "smal-host-20261027",
+    "--template-file",
+    "/tmp/opencode/localbox-20261027/smal-host-reviewed.json",
+    "--parameters",
+    "@/dev/stdin",
+    "-o",
+    "json",
+    "--only-show-errors"
+  ],
+  "secureParameters": "stdin-only-not-in-arguments-or-report",
+  "finishedAtSast": "2026-10-27T10:48:02.687850+02:00",
+  "exitCode": 1,
+  "status": "failed",
+  "error": "ERROR: {\"status\":\"Failed\",\"error\":{\"code\":\"DeploymentFailed\",\"target\":\"/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Resources/deployments/smal-host-20261027\",\"message\":\"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-deployment-operations for usage details.\",\"details\":[{\"code\":\"BadRequest\",\"message\":\"The value 'Standard' is not available for property 'securityType' until the feature Microsoft.Compute/UseStandardSecurityType is registered on subscription '8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea'. Please register the feature and retry. For more details, visit disable Trusted Launch for a new VM deployment in FAQ page at https://aka.ms/TrustedLaunch-FAQ.\"}]}}\n",
+  "deployment": "smal-host-20261027",
+  "commit": "74168e5f98da08466be870134617040ae378c64c",
+  "templateSourceSha256": "c24301dbe6af8d7aef0ae932b0e286df05c98d749460838eff3cb6dd6409d45e"
+}

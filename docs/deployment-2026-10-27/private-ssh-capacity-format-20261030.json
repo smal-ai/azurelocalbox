@@ -1,0 +1,39 @@
+{
+  "beganAtSast": "2026-10-30T15:33:20.288732+02:00",
+  "status": "complete",
+  "commit": "5d8fd5f50f71df09ed10fa75365987fb0a869484",
+  "script": "scripts/format-smal-capacity-disk.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 50803,
+  "scriptTransport": "sha256-length-framed-utf8-stdin",
+  "renderedSourceSha256": "d30666e01cef0a797a79ae4567906f1b994d8c72980c29fea5bc4a8fd7bbe548",
+  "renderedSourceByteLength": 43945,
+  "unstreamedEncodedLength": 117188,
+  "guestCommandTimeoutSeconds": 300,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "volumeId": "\\\\?\\Volume{eecd359b-f7c0-4a50-90de-b681b46bed51}\\",
+    "atUtc": "2026-10-30T13:33:39.4807884Z",
+    "windowsDiskNumber": 11,
+    "azureDiskUniqueId": "db6882f9-8c4a-4923-b1a3-6b73dbbb9109",
+    "azureDiskId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-Capacity-20261030",
+    "sourceCommit": "5d8fd5f50f71df09ed10fa75365987fb0a869484",
+    "existingPoolsOrOsChanged": false,
+    "volumeSize": 4398028619776,
+    "windowsUniqueId": "eui.3CB8B8ABF5184C0C8E0A53E2CC30B401",
+    "status": "complete-new-only-4tib-x-volume"
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-30T15:33:39.836632+02:00"
+}

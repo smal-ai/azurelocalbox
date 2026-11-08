@@ -1,0 +1,23 @@
+{
+  "beganAtSast": "2026-10-27T12:33:26.738489+02:00",
+  "status": "restart-action-acknowledged-guest-verification-pending",
+  "commit": "ec3c81d7fcb6ddaff86ac8b425c5e3a664e6233f",
+  "command": [
+    "az",
+    "vm",
+    "restart",
+    "--subscription",
+    "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+    "-g",
+    "rg-localbox-nodes-san-1",
+    "-n",
+    "LocalBox-Client",
+    "--only-show-errors"
+  ],
+  "beforeLastBootUtc": "2026-10-27T09:21:23.6797000Z",
+  "preRebootInspection": "private-ssh-pre-reboot-hyperv-check2.json",
+  "approval": "host-hyperv-reboot-approval.json",
+  "automaticRetryPermitted": false,
+  "exitCode": 0,
+  "finishedAtSast": "2026-10-27T12:34:12.092383+02:00"
+}

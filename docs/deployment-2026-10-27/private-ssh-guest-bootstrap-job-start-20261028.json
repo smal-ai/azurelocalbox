@@ -1,0 +1,39 @@
+{
+  "beganAtSast": "2026-10-28T11:06:30.175270+02:00",
+  "status": "complete",
+  "commit": "426d25bba6ebf7337ef207c0e3bbd1cf5bc9b67d",
+  "script": "scripts/start-smal-guest-bootstrap-job.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 51411,
+  "scriptTransport": "sha256-length-framed-utf8-stdin",
+  "renderedSourceSha256": "dd526d4404d95893a648e9434716a404506b771b0901886e856904fb1ce165f1",
+  "renderedSourceByteLength": 61143,
+  "unstreamedEncodedLength": 163048,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "azureRegistrationIncluded": false,
+    "runId": "guest-bootstrap-20261028-01",
+    "manifestSha256": "54216053A19CCF31865F346196607F6F55252B62812F502B4DA6DE2F87909E46",
+    "clusterBootstrapComplete": false,
+    "cronCreated": false,
+    "startRequested": true,
+    "sourceCommit": "426d25bba6ebf7337ef207c0e3bbd1cf5bc9b67d",
+    "bundleSha256": "28ACF061603CF458AB89557BDFB3F1DC1554C345DBD3C86CAF495329A2115F06",
+    "dependency": "LocalBox-GuestImages-20261028-01",
+    "workerSha256": "880F2068D876507DDD0E9FC76C8D1905EAFA49A8F1CD542C42E095C4391B7E79"
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-28T11:06:41.105863+02:00"
+}

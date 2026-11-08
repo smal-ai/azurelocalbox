@@ -1,0 +1,114 @@
+{
+  "beganAtSast": "2026-10-27T11:17:49.540474+02:00",
+  "command": [
+    "az",
+    "deployment",
+    "group",
+    "validate",
+    "--subscription",
+    "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+    "-g",
+    "rg-localbox-nodes-san-1",
+    "--name",
+    "smal-host-20261027-retry1",
+    "--template-file",
+    "/tmp/opencode/localbox-20261027/smal-host-reviewed.json",
+    "--parameters",
+    "@/dev/stdin",
+    "-o",
+    "json",
+    "--only-show-errors"
+  ],
+  "secureParameters": "stdin-only-not-in-arguments-or-report",
+  "finishedAtSast": "2026-10-27T11:17:55.418516+02:00",
+  "exitCode": 0,
+  "status": "succeeded",
+  "result": {
+    "error": null,
+    "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Resources/deployments/smal-host-20261027-retry1",
+    "name": "smal-host-20261027-retry1",
+    "properties": {
+      "correlationId": "2b34783d-6423-4427-9a38-2da2886314b4",
+      "debugSetting": null,
+      "dependencies": [],
+      "diagnostics": null,
+      "duration": "PT0S",
+      "error": null,
+      "extensions": [],
+      "mode": "Incremental",
+      "onErrorDeployment": null,
+      "outputResources": null,
+      "outputs": null,
+      "parameters": {
+        "adminPassword": "[redacted-secure-input]",
+        "adminUsername": {
+          "type": "String",
+          "value": "arcdemo"
+        },
+        "hostPlanApproved": {
+          "type": "Bool",
+          "value": true
+        },
+        "imageVersion": {
+          "type": "String",
+          "value": "26100.33674.261024"
+        },
+        "location": {
+          "type": "String",
+          "value": "southafricanorth"
+        },
+        "reuseExistingNic": {
+          "type": "Bool",
+          "value": true
+        },
+        "vmSize": {
+          "type": "String",
+          "value": "Standard_E32s_v6"
+        }
+      },
+      "parametersLink": null,
+      "providers": [
+        {
+          "id": null,
+          "namespace": "Microsoft.Compute",
+          "providerAuthorizationConsentState": null,
+          "registrationPolicy": null,
+          "registrationState": null,
+          "resourceTypes": [
+            {
+              "aliases": null,
+              "apiProfiles": null,
+              "apiVersions": null,
+              "capabilities": null,
+              "defaultApiVersion": null,
+              "locationMappings": null,
+              "locations": [
+                "southafricanorth"
+              ],
+              "properties": null,
+              "resourceType": "virtualMachines",
+              "zoneMappings": null
+            }
+          ]
+        }
+      ],
+      "provisioningState": "Succeeded",
+      "templateHash": "3873419926945495903",
+      "templateLink": null,
+      "timestamp": "2026-10-27T09:17:53.602873+00:00",
+      "validatedResources": [
+        {
+          "apiVersion": null,
+          "extension": null,
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+          "identifiers": null,
+          "resourceGroup": "rg-localbox-nodes-san-1",
+          "resourceType": null
+        }
+      ],
+      "validationLevel": null
+    },
+    "resourceGroup": "rg-localbox-nodes-san-1",
+    "type": "Microsoft.Resources/deployments"
+  }
+}

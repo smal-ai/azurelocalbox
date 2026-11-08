@@ -1,0 +1,19 @@
+{
+  "beganAtUtc": "2026-10-29T09:28:56.914476+00:00",
+  "sourceCommit": "4835eb6d2b03b7141365ca9001f3eea64865bd60",
+  "stage": "install-node03",
+  "status": "complete",
+  "existingArcRegistrationRepeated": false,
+  "clusterDeploymentInvoked": false,
+  "result": {
+    "workerSha256": "DFDA8903EE400DB2453C21EB076D02E5D9D991D1917A1480AA81F457C357E485",
+    "recurringTriggerCreated": false,
+    "sourceCommit": "4835eb6d2b03b7141365ca9001f3eea64865bd60",
+    "bundleSha256": "D1568DE10404A25A5961C4088940C1F7EF18EA8E757ED3D32C3DAD419FE65789",
+    "taskName": "LocalBox-Node03-20261029-01",
+    "status": "one-shot-node03-job-started",
+    "registrationInvoked": false
+  },
+  "localNode03ReadinessVerified": false,
+  "finishedAtUtc": "2026-10-29T09:29:16.983021+00:00"
+}

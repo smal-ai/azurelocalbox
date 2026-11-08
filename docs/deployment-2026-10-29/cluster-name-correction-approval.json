@@ -1,0 +1,12 @@
+{
+  "humanAnswer": "Use smal-localbox01",
+  "approved": true,
+  "originalClusterName": "smal-localbox-01",
+  "originalLength": 16,
+  "clusterName": "smal-localbox01",
+  "maximumLength": 15,
+  "scope": "cluster resource/Windows cluster name and its two dedicated deployment-secret prefixes only",
+  "threeNodeProposalJsonSha256": "ff5fcbcc40bcfcf3e674c1ff73c48dfc66e1d88eeae20a228df0df1c5d91c13a",
+  "topologyCostsNetworkAndPermissionScopeChanged": false,
+  "clusterOrRealCredentialSecretsCreatedBeforeCorrection": false
+}

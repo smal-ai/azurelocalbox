@@ -1,0 +1,53 @@
+{
+  "beganAtSast": "2026-10-28T09:53:40.801676+02:00",
+  "status": "complete",
+  "commit": "64af7e038a9274f2a3e8869942e643519e6bcf0a",
+  "script": "scripts/read-smal-eval-media-job.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 35669,
+  "scriptTransport": "encoded-command",
+  "renderedSourceSha256": "74c3661aba7cf2ea7b31e26760ac1f5985fcca23018f6ced42576ab8f7969106",
+  "renderedSourceByteLength": 1609,
+  "unstreamedEncodedLength": 4292,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "actualTriggerCount": 0,
+    "manifestSha256": "CCEE3A10290FE86D1E675796CDCF260C4C14E9CDC869CF5C5CFCB5C023741BB7",
+    "clusterBootstrapComplete": false,
+    "startedMarkerExists": true,
+    "finalBytes": null,
+    "state": {
+      "runId": "eval-media-20261028-01",
+      "scope": "evaluation-media-download-only",
+      "sourceCommit": "64af7e038a9274f2a3e8869942e643519e6bcf0a",
+      "status": "running",
+      "phase": "downloading",
+      "bytesWritten": 0,
+      "lastUpdatedAtUtc": "2026-10-28T07:53:34.4950662Z",
+      "errorType": null,
+      "measuredSha256": null,
+      "publisherSha256Available": false,
+      "clusterBootstrapComplete": false
+    },
+    "atUtc": "2026-10-28T07:53:46.7715210Z",
+    "taskExists": true,
+    "partialBytes": 2315980802,
+    "workerSha256": "348FC40632F2A99ED6C88D2223420E0E9141150DA66D49C0F63F35DB4FCA0B77",
+    "taskState": "Running",
+    "lastTaskResult": 267009
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-28T09:53:48.156184+02:00"
+}

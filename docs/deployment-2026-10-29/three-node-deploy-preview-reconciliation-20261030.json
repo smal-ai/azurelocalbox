@@ -1,0 +1,414 @@
+{
+  "observedAtUtc": "2026-10-30T08:12:15.026488+00:00",
+  "status": "read-only-deploy-preview-reconciliation",
+  "deployArmRecords": [],
+  "previewStatus": "Succeeded",
+  "changes": [
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.AzureStackHCI/clusters/smal-localbox01",
+      "changeType": "Ignore",
+      "beforeMode": null,
+      "afterMode": null,
+      "delta": null
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/microsoft.azurestackhci/clusters/smal-localbox01/deploymentSettings/default",
+      "changeType": "NoChange",
+      "beforeMode": "Validate",
+      "afterMode": "Validate",
+      "delta": []
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.EventGrid/systemTopics/stlboxdiagweu4766ea-e7b37298-2ea4-4bbc-96eb-1305fb6d3fcf",
+      "changeType": "Ignore",
+      "beforeMode": null,
+      "afterMode": null,
+      "delta": null
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.EventGrid/systemTopics/stlboxwitweu4766ea-9d41b15a-7d57-4a41-b5a3-e6bc9ac5d247",
+      "changeType": "Ignore",
+      "beforeMode": null,
+      "afterMode": null,
+      "delta": null
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE01",
+      "changeType": "Ignore",
+      "beforeMode": null,
+      "afterMode": null,
+      "delta": null
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE01/extensions/AzureEdgeDeviceManagement",
+      "changeType": "Ignore",
+      "beforeMode": null,
+      "afterMode": null,
+      "delta": null
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE01/extensions/AzureEdgeLifecycleManager",
+      "changeType": "Ignore",
+      "beforeMode": null,
+      "afterMode": null,
+      "delta": null
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE01/extensions/AzureEdgeRemoteSupport",
+      "changeType": "Ignore",
+      "beforeMode": null,
+      "afterMode": null,
+      "delta": null
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE01/extensions/AzureEdgeTelemetryAndDiagnostics",
+      "changeType": "Ignore",
+      "beforeMode": null,
+      "afterMode": null,
+      "delta": null
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE01/extensions/MDE.Windows",
+      "changeType": "Ignore",
+      "beforeMode": null,
+      "afterMode": null,
+      "delta": null
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE02",
+      "changeType": "Ignore",
+      "beforeMode": null,
+      "afterMode": null,
+      "delta": null
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE02/extensions/AzureEdgeDeviceManagement",
+      "changeType": "Ignore",
+      "beforeMode": null,
+      "afterMode": null,
+      "delta": null
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE02/extensions/AzureEdgeLifecycleManager",
+      "changeType": "Ignore",
+      "beforeMode": null,
+      "afterMode": null,
+      "delta": null
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE02/extensions/AzureEdgeRemoteSupport",
+      "changeType": "Ignore",
+      "beforeMode": null,
+      "afterMode": null,
+      "delta": null
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE02/extensions/AzureEdgeTelemetryAndDiagnostics",
+      "changeType": "Ignore",
+      "beforeMode": null,
+      "afterMode": null,
+      "delta": null
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE02/extensions/MDE.Windows",
+      "changeType": "Ignore",
+      "beforeMode": null,
+      "afterMode": null,
+      "delta": null
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE03",
+      "changeType": "Ignore",
+      "beforeMode": null,
+      "afterMode": null,
+      "delta": null
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE03/extensions/AzureEdgeDeviceManagement",
+      "changeType": "Ignore",
+      "beforeMode": null,
+      "afterMode": null,
+      "delta": null
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE03/extensions/AzureEdgeLifecycleManager",
+      "changeType": "Ignore",
+      "beforeMode": null,
+      "afterMode": null,
+      "delta": null
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE03/extensions/AzureEdgeRemoteSupport",
+      "changeType": "Ignore",
+      "beforeMode": null,
+      "afterMode": null,
+      "delta": null
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE03/extensions/AzureEdgeTelemetryAndDiagnostics",
+      "changeType": "Ignore",
+      "beforeMode": null,
+      "afterMode": null,
+      "delta": null
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE03/extensions/MDE.Windows",
+      "changeType": "Ignore",
+      "beforeMode": null,
+      "afterMode": null,
+      "delta": null
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.KeyVault/vaults/kv-lbox-weu-4766ea",
+      "changeType": "Ignore",
+      "beforeMode": null,
+      "afterMode": null,
+      "delta": null
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.Storage/storageAccounts/stlboxdiagweu4766ea",
+      "changeType": "Ignore",
+      "beforeMode": null,
+      "afterMode": null,
+      "delta": null
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.Storage/storageAccounts/stlboxwitweu4766ea",
+      "changeType": "Ignore",
+      "beforeMode": null,
+      "afterMode": null,
+      "delta": null
+    }
+  ],
+  "serviceValidation": {
+    "provisioningState": "Succeeded",
+    "mode": "Validate",
+    "adConfigurationVerified": true,
+    "action": {
+      "status": "Success",
+      "steps": [
+        {
+          "name": "Azure Local Remote Management",
+          "status": "Success",
+          "index": "0",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Connectivity",
+          "status": "Success",
+          "index": "10",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local External Active Directory",
+          "status": "Success",
+          "index": "20",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local SBE Health",
+          "status": "Success",
+          "index": "30",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Hardware",
+          "status": "Success",
+          "index": "40",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Network Configuration",
+          "status": "Success",
+          "index": "50",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Network Infra Connection",
+          "status": "Success",
+          "index": "51",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Network Storage Connection",
+          "status": "Success",
+          "index": "52",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Observability",
+          "status": "Success",
+          "index": "60",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Software",
+          "status": "Success",
+          "index": "70",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local MOC Stack",
+          "status": "Success",
+          "index": "80",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Arc Integration",
+          "status": "Success",
+          "index": "90",
+          "exceptionCount": 0,
+          "children": [
+            {
+              "name": "ValidateArcIntegration",
+              "status": "Success",
+              "index": "90.0",
+              "exceptionCount": 0,
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "Azure Local Cluster Witness",
+          "status": "Success",
+          "index": "100",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local OS Image Recipe Validation",
+          "status": "Success",
+          "index": "110",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Local Identity Validation",
+          "status": "Skipped",
+          "index": "120",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local ARB Stack",
+          "status": "Success",
+          "index": "130",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Cloud Validation",
+          "status": "Success",
+          "index": "140",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Add hosts to domain and create cluster object.",
+          "status": "Success",
+          "index": "150",
+          "exceptionCount": 0,
+          "children": [
+            {
+              "name": "Evaluate domain join action.",
+              "status": "Success",
+              "index": "150.0",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Get conflicting GPO information if any.",
+              "status": "Success",
+              "index": "150.1",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Restart seed node if the current logged on user is not a domain user.",
+              "status": "Success",
+              "index": "150.2",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Create cluster object in AD if not available.",
+              "status": "Success",
+              "index": "150.3",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Allow the cluster object to create a Cluster Name Object in Active Directory.",
+              "status": "Success",
+              "index": "150.4",
+              "exceptionCount": 0,
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "Azure Stack HCI GroupPolicy",
+          "status": "Success",
+          "index": "151",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local DNS",
+          "status": "Success",
+          "index": "160",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local NTP",
+          "status": "Success",
+          "index": "161",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Cluster Validation",
+          "status": "Success",
+          "index": "170",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Network LLDP Validation",
+          "status": "Success",
+          "index": "180",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Storage Validation",
+          "status": "Success",
+          "index": "190",
+          "exceptionCount": 0,
+          "children": [
+            {
+              "name": "ValidateStorage",
+              "status": "Success",
+              "index": "190.0",
+              "exceptionCount": 0,
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "validateOrDeploySubmitted": false
+}

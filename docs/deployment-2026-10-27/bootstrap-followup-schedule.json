@@ -1,0 +1,22 @@
+{
+  "id": "smal-localbox-bootstrap-followup-20261027",
+  "requestKey": "smal-localbox-bootstrap-followup-20261027-v1",
+  "revision": 1,
+  "cron": "*/10 * * * *",
+  "timezone": "Africa/Johannesburg",
+  "enabled": true,
+  "reviewPolicy": "none",
+  "stateAtIndependentLocalReadback": "active",
+  "nextAtAtReadbackUtc": "2026-10-27T12:10:00.000Z",
+  "nextAtAtReadbackSast": "2026-10-27T14:10:00+02:00",
+  "expiresAtUtc": "2026-10-28T12:00:20.212797Z",
+  "expiresAtSast": "2026-10-28T14:00:20.212797+02:00",
+  "nodeId": "node_e89d751f-3336-4693-95e8-d25a72d2f0c1",
+  "targetAgentId": "agent_cca8e271-5104-4921-ac62-5c46c78fb38a",
+  "installationVerifiedBy": "relay_schedules locally_installed_agent_schedules complete readback",
+  "workScope": "bounded offline engineering and already-authorised read-only progress checks",
+  "clusterDeploymentStarted": false,
+  "unreviewedMutatingApplyOrAutomaticRetryPermitted": false,
+  "credentialsOrBackendOwnerContextCopied": false,
+  "nativeImmediateExecutionDispatched": false
+}

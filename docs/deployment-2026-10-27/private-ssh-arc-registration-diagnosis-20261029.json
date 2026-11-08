@@ -1,0 +1,313 @@
+{
+  "beganAtSast": "2026-10-29T08:55:49.730273+02:00",
+  "status": "complete",
+  "commit": "419c10b446356869294ae42a5f52b5aa33362aa9",
+  "script": "scripts/inspect-smal-arc-registration.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 43143,
+  "scriptTransport": "encoded-command",
+  "renderedSourceSha256": "bb55f30ec7f9b61a6c95760d73004990bfbcef669b5da6440db87e7fe84b205a",
+  "renderedSourceByteLength": 5390,
+  "unstreamedEncodedLength": 14376,
+  "guestCommandTimeoutSeconds": 180,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "mutationPerformed": false,
+    "atUtc": "2026-10-29T06:56:10.5005145Z",
+    "authenticationOutputCaptured": false,
+    "nodes": [
+      {
+        "services": [
+          {
+            "name": "ExtensionService",
+            "status": "Running"
+          },
+          {
+            "name": "GCArcService",
+            "status": "Running"
+          },
+          {
+            "name": "himds",
+            "status": "Running"
+          }
+        ],
+        "atUtc": "2026-10-29T06:55:59.5892870Z",
+        "name": "LB-NODE01",
+        "agentLog": {
+          "facts": [],
+          "path": "C:\\ProgramData\\AzureConnectedMachineAgent\\Log\\azcmagent.log",
+          "scannedTailLines": 986,
+          "modifiedUtc": "2026-10-28T13:38:49.9608472Z",
+          "rawLinesExported": false
+        },
+        "bootstrap": {
+          "exceptionTypes": [],
+          "status": "Succeeded",
+          "name": "Bootstrap",
+          "children": [
+            {
+              "exceptionTypes": [],
+              "status": "NotApplicable",
+              "name": "NetworkConfig",
+              "children": [],
+              "startTime": "2026-10-28T13:35:50.4291000Z",
+              "endTime": ""
+            },
+            {
+              "exceptionTypes": [],
+              "status": "NotApplicable",
+              "name": "RemoteConfig",
+              "children": [],
+              "startTime": "2026-10-28T13:35:50.4291000Z",
+              "endTime": ""
+            },
+            {
+              "exceptionTypes": [],
+              "status": "NotApplicable",
+              "name": "WebProxy",
+              "children": [],
+              "startTime": "2026-10-28T13:35:50.4291000Z",
+              "endTime": ""
+            },
+            {
+              "exceptionTypes": [],
+              "status": "NotApplicable",
+              "name": "TimeServer",
+              "children": [],
+              "startTime": "2026-10-28T13:35:50.4291000Z",
+              "endTime": ""
+            },
+            {
+              "exceptionTypes": [],
+              "status": "NotApplicable",
+              "name": "HostName",
+              "children": [],
+              "startTime": "2026-10-28T13:35:50.4291000Z",
+              "endTime": ""
+            },
+            {
+              "exceptionTypes": [],
+              "status": "Succeeded",
+              "name": "ArcConfiguration",
+              "children": [
+                {
+                  "exceptionTypes": [],
+                  "status": "NotApplicable",
+                  "name": "ArtifactsUpload",
+                  "children": [],
+                  "startTime": "2026-10-28T13:35:50.4291000Z",
+                  "endTime": ""
+                },
+                {
+                  "exceptionTypes": [],
+                  "status": "Succeeded",
+                  "name": "ConnectivityValidation",
+                  "children": [],
+                  "startTime": "2026-10-28T13:35:50.4291000Z",
+                  "endTime": ""
+                },
+                {
+                  "exceptionTypes": [],
+                  "status": "Succeeded",
+                  "name": "ArcRegistration",
+                  "children": [],
+                  "startTime": "2026-10-28T13:35:50.4291000Z",
+                  "endTime": ""
+                },
+                {
+                  "exceptionTypes": [],
+                  "status": "NotApplicable",
+                  "name": "ArcExtensionInstall",
+                  "children": [],
+                  "startTime": "2026-10-28T13:35:50.4291000Z",
+                  "endTime": ""
+                }
+              ],
+              "startTime": "2026-10-28T13:35:50.4291000Z",
+              "endTime": ""
+            }
+          ],
+          "startTime": "2026-10-28T13:35:50.4291000Z",
+          "endTime": ""
+        },
+        "PSComputerName": "LB-NODE01",
+        "RunspaceId": "525527a9-9270-4e1b-9b18-4bb3f9f54382",
+        "PSShowComputerName": true
+      },
+      {
+        "services": [
+          {
+            "name": "ExtensionService",
+            "status": "Running"
+          },
+          {
+            "name": "GCArcService",
+            "status": "Running"
+          },
+          {
+            "name": "himds",
+            "status": "Running"
+          }
+        ],
+        "atUtc": "2026-10-29T06:56:05.5877600Z",
+        "name": "LB-NODE02",
+        "agentLog": {
+          "facts": [
+            {
+              "time": "2026-10-28T16:33:11+02:00",
+              "authorizationDenied": true,
+              "actions": [
+                "Microsoft.HybridCompute/machines/LB",
+                "Microsoft.HybridCompute/machines/write"
+              ],
+              "agentCodes": [],
+              "armCodes": [
+                "AuthorizationFailed"
+              ]
+            },
+            {
+              "time": "2026-10-28T16:33:11+02:00",
+              "authorizationDenied": true,
+              "actions": [
+                "Microsoft.HybridCompute/machines/LB",
+                "Microsoft.HybridCompute/machines/write"
+              ],
+              "agentCodes": [],
+              "armCodes": [
+                "AuthorizationFailed"
+              ]
+            },
+            {
+              "time": "2026-10-28T16:33:12+02:00",
+              "authorizationDenied": true,
+              "actions": [
+                "Microsoft.HybridCompute/machines/LB",
+                "Microsoft.HybridCompute/machines/write"
+              ],
+              "agentCodes": [],
+              "armCodes": [
+                "AuthorizationFailed"
+              ]
+            }
+          ],
+          "path": "C:\\ProgramData\\AzureConnectedMachineAgent\\Log\\azcmagent.log",
+          "scannedTailLines": 711,
+          "modifiedUtc": "2026-10-28T14:33:44.9183073Z",
+          "rawLinesExported": false
+        },
+        "bootstrap": {
+          "exceptionTypes": [
+            "ArcAgentConnectionException"
+          ],
+          "status": "Failed",
+          "name": "Bootstrap",
+          "children": [
+            {
+              "exceptionTypes": [],
+              "status": "NotApplicable",
+              "name": "NetworkConfig",
+              "children": [],
+              "startTime": "2026-10-28T14:30:58.7378487Z",
+              "endTime": ""
+            },
+            {
+              "exceptionTypes": [],
+              "status": "NotApplicable",
+              "name": "RemoteConfig",
+              "children": [],
+              "startTime": "2026-10-28T14:30:58.7378487Z",
+              "endTime": ""
+            },
+            {
+              "exceptionTypes": [],
+              "status": "NotApplicable",
+              "name": "WebProxy",
+              "children": [],
+              "startTime": "2026-10-28T14:30:58.7378487Z",
+              "endTime": ""
+            },
+            {
+              "exceptionTypes": [],
+              "status": "NotApplicable",
+              "name": "TimeServer",
+              "children": [],
+              "startTime": "2026-10-28T14:30:58.7378487Z",
+              "endTime": ""
+            },
+            {
+              "exceptionTypes": [],
+              "status": "NotApplicable",
+              "name": "HostName",
+              "children": [],
+              "startTime": "2026-10-28T14:30:58.7378487Z",
+              "endTime": ""
+            },
+            {
+              "exceptionTypes": [
+                "ArcAgentConnectionException"
+              ],
+              "status": "Failed",
+              "name": "ArcConfiguration",
+              "children": [
+                {
+                  "exceptionTypes": [],
+                  "status": "NotApplicable",
+                  "name": "ArtifactsUpload",
+                  "children": [],
+                  "startTime": "2026-10-28T14:30:58.7378487Z",
+                  "endTime": ""
+                },
+                {
+                  "exceptionTypes": [],
+                  "status": "Succeeded",
+                  "name": "ConnectivityValidation",
+                  "children": [],
+                  "startTime": "2026-10-28T14:30:58.7378487Z",
+                  "endTime": ""
+                },
+                {
+                  "exceptionTypes": [
+                    "ArcAgentConnectionException"
+                  ],
+                  "status": "Failed",
+                  "name": "ArcRegistration",
+                  "children": [],
+                  "startTime": "2026-10-28T14:30:58.7378487Z",
+                  "endTime": ""
+                },
+                {
+                  "exceptionTypes": [],
+                  "status": "NotStarted",
+                  "name": "ArcExtensionInstall",
+                  "children": [],
+                  "startTime": "2026-10-28T14:30:58.7378487Z",
+                  "endTime": ""
+                }
+              ],
+              "startTime": "2026-10-28T14:30:58.7378487Z",
+              "endTime": ""
+            }
+          ],
+          "startTime": "2026-10-28T14:30:58.7378487Z",
+          "endTime": "2026-10-28T14:33:16.0135436Z"
+        },
+        "PSComputerName": "LB-NODE02",
+        "RunspaceId": "3319978d-a2a9-4b9d-9744-0f02a10493ae",
+        "PSShowComputerName": true
+      }
+    ]
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-29T08:56:10.826753+02:00"
+}

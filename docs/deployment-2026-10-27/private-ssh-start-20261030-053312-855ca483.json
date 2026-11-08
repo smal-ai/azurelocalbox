@@ -1,0 +1,68 @@
+{
+  "beganAtSast": "2026-10-30T07:35:44.613193+02:00",
+  "status": "complete",
+  "commit": "2e000a9357a42130ce2e2acc835e5619eb9881c0",
+  "script": "scripts/start-smal-existing-guests.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 43593,
+  "scriptTransport": "encoded-command",
+  "renderedSourceSha256": "3faf5fda80c2bf23358d2faf8a9314510920ce11734d5afa3d55335686a42202",
+  "renderedSourceByteLength": 2324,
+  "unstreamedEncodedLength": 6200,
+  "guestCommandTimeoutSeconds": 360,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "guestHeartbeatVerified": true,
+    "registrationMarkersChanged": false,
+    "atUtc": "2026-10-30T05:37:44.6931365Z",
+    "guests": [
+      {
+        "id": "f94c71f1-6854-48b9-a9f1-8238c99366d0",
+        "name": "LB-DC01",
+        "startRequested": true,
+        "heartbeatReady": true,
+        "after": "Running",
+        "before": "Off"
+      },
+      {
+        "id": "3adff629-2f67-449b-ab32-8a8748c46f34",
+        "name": "LB-NODE01",
+        "startRequested": true,
+        "heartbeatReady": true,
+        "after": "Running",
+        "before": "Off"
+      },
+      {
+        "id": "12a44e0c-cc08-4c4c-a812-fa0b56efdbc3",
+        "name": "LB-NODE02",
+        "startRequested": true,
+        "heartbeatReady": true,
+        "after": "Running",
+        "before": "Off"
+      },
+      {
+        "id": "5b6eba15-fa82-4e12-9e45-5ffbcd48c8a9",
+        "name": "LB-NODE03",
+        "startRequested": true,
+        "heartbeatReady": true,
+        "after": "Running",
+        "before": "Off"
+      }
+    ],
+    "guestOsReadinessVerified": false,
+    "registrationInvoked": false
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-30T07:37:45.025278+02:00"
+}

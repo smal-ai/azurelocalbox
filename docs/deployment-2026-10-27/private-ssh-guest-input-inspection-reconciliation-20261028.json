@@ -1,0 +1,58 @@
+{
+  "beganAtSast": "2026-10-28T10:07:15.975153+02:00",
+  "status": "complete",
+  "commit": "6c88252704bbecb3ae37d09c9d4edcb26600d609",
+  "script": "scripts/read-smal-guest-inspection.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 37549,
+  "scriptTransport": "sha256-length-framed-utf8-stdin",
+  "renderedSourceSha256": "c3d33660ec8a5a8b6449a37ad03bb3a7a018e41a2fc9c3fe5d5c6df11276ae25",
+  "renderedSourceByteLength": 10890,
+  "unstreamedEncodedLength": 29040,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "clusterBootstrapComplete": false,
+    "dismountedImages": false,
+    "dismProcesses": [],
+    "atUtc": "2026-10-28T08:07:26.4063635Z",
+    "stoppedProcesses": false,
+    "exactInspectionProcesses": [
+      {
+        "ProcessId": 9112,
+        "ParentProcessId": 5324,
+        "CreationDate": "/Date(1793174467533)/"
+      },
+      {
+        "ProcessId": 4660,
+        "ParentProcessId": 9112,
+        "CreationDate": "/Date(1793174467779)/"
+      }
+    ],
+    "media": [
+      {
+        "attached": false,
+        "path": "C:\\ProgramData\\AzureLocalBox\\Artifacts\\2610\\AzureLocal24H2.26100.32230.LCM.12.2610.0.3098.x64.en-us.iso",
+        "volumes": {}
+      },
+      {
+        "attached": false,
+        "path": "C:\\ProgramData\\AzureLocalBox\\Bootstrap\\eval-media-20261028-01\\WindowsServer2025Evaluation.26100.32230.x64.en-us.iso",
+        "volumes": {}
+      }
+    ]
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-28T10:07:26.786293+02:00"
+}

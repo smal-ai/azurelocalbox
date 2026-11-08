@@ -1,0 +1,51 @@
+{
+  "status": "verified-three-arc-identities-and-successful-local-bootstraps",
+  "observedAtUtc": "2026-10-29T11:12:05.385970+00:00",
+  "arcMachines": [
+    {
+      "agentVersion": "1.67.03504.3207",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE01",
+      "identity": {
+        "principalId": "9a1205c8-6ac3-4d02-ad6d-6166827c8d9d",
+        "tenantId": "c6e67968-af25-4557-ab8b-06b693048d3b",
+        "type": "SystemAssigned"
+      },
+      "location": "westeurope",
+      "name": "LB-NODE01",
+      "osVersion": "10.0.26100.33650",
+      "provisioningState": "Succeeded",
+      "status": "Connected"
+    },
+    {
+      "agentVersion": "1.67.03504.3207",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE02",
+      "identity": {
+        "principalId": "b282b136-716d-4fa9-8e03-a4c754249a5e",
+        "tenantId": "c6e67968-af25-4557-ab8b-06b693048d3b",
+        "type": "SystemAssigned"
+      },
+      "location": "westeurope",
+      "name": "LB-NODE02",
+      "osVersion": "10.0.26100.33650",
+      "provisioningState": "Succeeded",
+      "status": "Connected"
+    },
+    {
+      "agentVersion": "1.67.03504.3207",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE03",
+      "identity": {
+        "principalId": "bd9a2019-2109-4aba-9f4e-90a1d300325d",
+        "tenantId": "c6e67968-af25-4557-ab8b-06b693048d3b",
+        "type": "SystemAssigned"
+      },
+      "location": "westeurope",
+      "name": "LB-NODE03",
+      "osVersion": "10.0.26100.33650",
+      "provisioningState": "Succeeded",
+      "status": "Connected"
+    }
+  ],
+  "privateProofSha256": "07b923d548582c30dc629032c489ebdf91dbe99a5979868f58309c34286a7083",
+  "azureMutationPerformed": false,
+  "platformReadinessVerified": false
+}

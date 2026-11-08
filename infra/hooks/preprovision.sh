@@ -1,6 +1,13 @@
 #!/bin/bash
 set -euo pipefail
 
+# The old azd path registers providers, grants RBAC and immediately bootstraps the
+# archived network/profile. It is not the 2026-10-27 shared SMAL deployment path.
+# Fail BEFORE any provider, environment, credential or Azure resource operation.
+echo 'ERROR: legacy azd provisioning is disabled for the shared SMAL landing zone.' >&2
+echo 'Use the reviewed plan in docs/deployment-2026-10-27/README.md. No bootstrap is approved yet.' >&2
+exit 1
+
 # =============================================================================
 # preprovision — governed vended-spoke LocalBox
 #

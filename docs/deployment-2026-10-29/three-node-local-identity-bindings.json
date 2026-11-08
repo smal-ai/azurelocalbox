@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "status": "local-identities-verified-node03-arc-principal-not-yet-known",
+  "observedAtUtc": "2026-10-29T10:23:51.1701850Z",
+  "sourceProofSha256": "47ca491b2135963ab73963773ef4a2361713a24c6e08690235e0c6d6388a9be0",
+  "nodes": {
+    "LB-NODE01": {
+      "vmId": "3adff629-2f67-449b-ab32-8a8748c46f34",
+      "liveMacs": {
+        "MGMT1": "00155D100402",
+        "MGMT2": "00155D100403",
+        "STORAGEA": "00155D100404",
+        "STORAGEB": "00155D100405"
+      },
+      "disks": [
+        {
+          "lun": 0,
+          "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE01\\OS.vhdx",
+          "vhdId": "853E242C-04B5-422E-A649-64E0D80BC634",
+          "guestUniqueId": "600224802C243E85B50464E0D80BC634",
+          "sizeBytes": 137438953472,
+          "eligibleForS2D": false
+        },
+        {
+          "lun": 1,
+          "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE01\\S2D-1.vhdx",
+          "vhdId": "3EEAA918-A937-4F75-B9D0-1804553ABFEE",
+          "guestUniqueId": "6002248018A9EA3E37A91804553ABFEE",
+          "sizeBytes": 182536110080,
+          "eligibleForS2D": true
+        },
+        {
+          "lun": 2,
+          "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE01\\S2D-2.vhdx",
+          "vhdId": "77197BD4-01B2-4D57-9AC5-A09A9AD85C7E",
+          "guestUniqueId": "60022480D47B1977B201A09A9AD85C7E",
+          "sizeBytes": 182536110080,
+          "eligibleForS2D": true
+        },
+        {
+          "lun": 3,
+          "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE01\\S2D-3.vhdx",
+          "vhdId": "6EA95454-2F24-442E-9FD8-3C38305128AC",
+          "guestUniqueId": "600224805454A96E242F3C38305128AC",
+          "sizeBytes": 182536110080,
+          "eligibleForS2D": true
+        },
+        {
+          "lun": 4,
+          "path": "W:\\AzureLocalBox\\Relocated\\LB-NODE01\\S2D-4.vhdx",
+          "vhdId": "45B23F1E-D817-4DE0-A84A-C5F2124F7E30",
+          "guestUniqueId": "600224801E3FB24517D8C5F2124F7E30",
+          "sizeBytes": 182536110080,
+          "eligibleForS2D": true
+        }
+      ],
+      "s2dDataDeviceAllowlist": [
+        "6002248018A9EA3E37A91804553ABFEE",
+        "600224801E3FB24517D8C5F2124F7E30",
+        "600224805454A96E242F3C38305128AC",
+        "60022480D47B1977B201A09A9AD85C7E"
+      ]
+    },
+    "LB-NODE02": {
+      "vmId": "12a44e0c-cc08-4c4c-a812-fa0b56efdbc3",
+      "liveMacs": {
+        "MGMT1": "00155D100406",
+        "MGMT2": "00155D100407",
+        "STORAGEA": "00155D100408",
+        "STORAGEB": "00155D100409"
+      },
+      "disks": [
+        {
+          "lun": 0,
+          "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE02\\OS.vhdx",
+          "vhdId": "B0CE2A23-BB31-4239-9197-14739AF3844B",
+          "guestUniqueId": "60022480232ACEB031BB14739AF3844B",
+          "sizeBytes": 137438953472,
+          "eligibleForS2D": false
+        },
+        {
+          "lun": 1,
+          "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE02\\S2D-1.vhdx",
+          "vhdId": "9BD9AC65-C854-427A-917E-7E76586527CA",
+          "guestUniqueId": "6002248065ACD99B54C87E76586527CA",
+          "sizeBytes": 182536110080,
+          "eligibleForS2D": true
+        },
+        {
+          "lun": 2,
+          "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE02\\S2D-2.vhdx",
+          "vhdId": "54BE3319-5702-47BC-844C-E4937DA41512",
+          "guestUniqueId": "600224801933BE540257E4937DA41512",
+          "sizeBytes": 182536110080,
+          "eligibleForS2D": true
+        },
+        {
+          "lun": 3,
+          "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE02\\S2D-3.vhdx",
+          "vhdId": "30A2A237-2B37-45E1-B506-3EC87A9D3377",
+          "guestUniqueId": "6002248037A2A230372B3EC87A9D3377",
+          "sizeBytes": 182536110080,
+          "eligibleForS2D": true
+        },
+        {
+          "lun": 4,
+          "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE02\\S2D-4.vhdx",
+          "vhdId": "C7A6F52D-F6E8-4BD8-96F4-062832A93BAC",
+          "guestUniqueId": "600224802DF5A6C7E8F6062832A93BAC",
+          "sizeBytes": 182536110080,
+          "eligibleForS2D": true
+        }
+      ],
+      "s2dDataDeviceAllowlist": [
+        "600224801933BE540257E4937DA41512",
+        "600224802DF5A6C7E8F6062832A93BAC",
+        "6002248037A2A230372B3EC87A9D3377",
+        "6002248065ACD99B54C87E76586527CA"
+      ]
+    },
+    "LB-NODE03": {
+      "vmId": "5b6eba15-fa82-4e12-9e45-5ffbcd48c8a9",
+      "liveMacs": {
+        "MGMT1": "00155D10040A",
+        "MGMT2": "00155D10040B",
+        "STORAGEA": "00155D10040C",
+        "STORAGEB": "00155D10040D"
+      },
+      "disks": [
+        {
+          "lun": 0,
+          "path": "W:\\AzureLocalBox\\Guests\\three-node-20261029-01\\LB-NODE03\\OS.vhdx",
+          "vhdId": "B1A59A04-5622-45D7-BDAD-BCCC17475830",
+          "guestUniqueId": "60022480049AA5B12256BCCC17475830",
+          "sizeBytes": 137438953472,
+          "eligibleForS2D": false
+        },
+        {
+          "lun": 1,
+          "path": "W:\\AzureLocalBox\\Guests\\three-node-20261029-01\\LB-NODE03\\S2D-1.vhdx",
+          "vhdId": "653A88F1-1857-48A2-89DD-A83EB381308E",
+          "guestUniqueId": "60022480F1883A655718A83EB381308E",
+          "sizeBytes": 182536110080,
+          "eligibleForS2D": true
+        },
+        {
+          "lun": 2,
+          "path": "W:\\AzureLocalBox\\Guests\\three-node-20261029-01\\LB-NODE03\\S2D-2.vhdx",
+          "vhdId": "F14C3C33-75EF-469E-9D9A-B7CA8C7973A3",
+          "guestUniqueId": "60022480333C4CF1EF75B7CA8C7973A3",
+          "sizeBytes": 182536110080,
+          "eligibleForS2D": true
+        },
+        {
+          "lun": 3,
+          "path": "W:\\AzureLocalBox\\Guests\\three-node-20261029-01\\LB-NODE03\\S2D-3.vhdx",
+          "vhdId": "3EBE652F-0767-48A3-B582-33600EC131EF",
+          "guestUniqueId": "600224802F65BE3E670733600EC131EF",
+          "sizeBytes": 182536110080,
+          "eligibleForS2D": true
+        },
+        {
+          "lun": 4,
+          "path": "W:\\AzureLocalBox\\Guests\\three-node-20261029-01\\LB-NODE03\\S2D-4.vhdx",
+          "vhdId": "9FB45DB2-CA18-4F8E-98B9-0B5A7F55FAF2",
+          "guestUniqueId": "60022480B25DB49F18CA0B5A7F55FAF2",
+          "sizeBytes": 182536110080,
+          "eligibleForS2D": true
+        }
+      ],
+      "s2dDataDeviceAllowlist": [
+        "600224802F65BE3E670733600EC131EF",
+        "60022480333C4CF1EF75B7CA8C7973A3",
+        "60022480B25DB49F18CA0B5A7F55FAF2",
+        "60022480F1883A655718A83EB381308E"
+      ]
+    }
+  },
+  "witnessTypeParameter": "No Witness",
+  "serviceWitnessType": "",
+  "node03ArcPrincipalId": null,
+  "node03ArcRegistrationVerified": false,
+  "clusterDeploymentVerified": false
+}

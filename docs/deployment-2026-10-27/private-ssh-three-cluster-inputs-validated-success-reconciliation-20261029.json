@@ -1,0 +1,712 @@
+{
+  "beganAtSast": "2026-10-30T10:07:26.643757+02:00",
+  "status": "complete",
+  "commit": "7dc4c1b2906b943bf86c4f3aa4cc5a25e8227a79",
+  "script": "scripts/inspect-smal-three-node-live.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 36087,
+  "scriptTransport": "sha256-length-framed-utf8-stdin",
+  "renderedSourceSha256": "8490097d2e5be71e12aeba1293cab5f6594953b4847af595eb906b22ba6eb54e",
+  "renderedSourceByteLength": 7323,
+  "unstreamedEncodedLength": 19528,
+  "guestCommandTimeoutSeconds": 240,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "registrationInvoked": false,
+    "volumes": [
+      {
+        "size": 2199005364224,
+        "uniqueId": "\\\\?\\Volume{1650d1ec-9d2f-41bf-ad56-66533a89d660}\\",
+        "health": "Healthy",
+        "free": 2174434476032,
+        "letter": "W"
+      },
+      {
+        "size": 1099389972480,
+        "uniqueId": "\\\\?\\Volume{51199064-2a58-498e-81e0-1bdfd593eced}\\",
+        "health": "Healthy",
+        "free": 1024487092224,
+        "letter": "C"
+      },
+      {
+        "size": 2181825495040,
+        "uniqueId": "\\\\?\\Volume{59901f77-0fb4-4ac7-b377-d820b0c1929b}\\",
+        "health": "Healthy",
+        "free": 2103339909120,
+        "letter": "V"
+      }
+    ],
+    "guests": [
+      {
+        "processors": 2,
+        "memoryBytes": 4294967296,
+        "name": "LB-DC01",
+        "id": "f94c71f1-6854-48b9-a9f1-8238c99366d0",
+        "state": "Running"
+      },
+      {
+        "processors": 8,
+        "memoryBytes": 68719476736,
+        "name": "LB-NODE01",
+        "id": "3adff629-2f67-449b-ab32-8a8748c46f34",
+        "state": "Running"
+      },
+      {
+        "processors": 8,
+        "memoryBytes": 68719476736,
+        "name": "LB-NODE02",
+        "id": "12a44e0c-cc08-4c4c-a812-fa0b56efdbc3",
+        "state": "Running"
+      },
+      {
+        "processors": 8,
+        "memoryBytes": 68719476736,
+        "name": "LB-NODE03",
+        "id": "5b6eba15-fa82-4e12-9e45-5ffbcd48c8a9",
+        "state": "Running"
+      }
+    ],
+    "nodes": [
+      {
+        "guest": {
+          "bootstrapReadErrorType": null,
+          "nonPrimordialPoolCount": 0,
+          "name": "LB-NODE01",
+          "domainRole": 3,
+          "bootstrapCommand": {
+            "sha256": "70B11110F8483898A5CB3667A92F26315361847437832826C58DE53320746F0F",
+            "version": "1.0.0",
+            "available": true
+          },
+          "bootstrapStatus": "Succeeded",
+          "build": "26100.33650",
+          "platformPaths": [
+            {
+              "tlsHttpStatus": 404,
+              "expectedIp": "10.200.17.11",
+              "fqdn": "kv-lbox-weu-4766ea.vault.azure.net",
+              "addresses": [
+                "10.200.17.11"
+              ]
+            },
+            {
+              "tlsHttpStatus": 400,
+              "expectedIp": "10.200.17.9",
+              "fqdn": "stlboxdiagweu4766ea.blob.core.windows.net",
+              "addresses": [
+                "10.200.17.9"
+              ]
+            },
+            {
+              "tlsHttpStatus": 400,
+              "expectedIp": "10.200.17.10",
+              "fqdn": "stlboxwitweu4766ea.blob.core.windows.net",
+              "addresses": [
+                "10.200.17.10"
+              ]
+            }
+          ],
+          "partOfDomain": true,
+          "disks": [
+            {
+              "isBoot": true,
+              "style": "GPT",
+              "uniqueId": "600224802C243E85B50464E0D80BC634",
+              "size": 137438953472,
+              "isSystem": true
+            },
+            {
+              "isBoot": false,
+              "style": "RAW",
+              "uniqueId": "6002248018A9EA3E37A91804553ABFEE",
+              "size": 182536110080,
+              "isSystem": false
+            },
+            {
+              "isBoot": false,
+              "style": "RAW",
+              "uniqueId": "60022480D47B1977B201A09A9AD85C7E",
+              "size": 182536110080,
+              "isSystem": false
+            },
+            {
+              "isBoot": false,
+              "style": "RAW",
+              "uniqueId": "600224805454A96E242F3C38305128AC",
+              "size": 182536110080,
+              "isSystem": false
+            },
+            {
+              "isBoot": false,
+              "style": "RAW",
+              "uniqueId": "600224801E3FB24517D8C5F2124F7E30",
+              "size": 182536110080,
+              "isSystem": false
+            }
+          ],
+          "defenderEnabled": true,
+          "adapters": [
+            {
+              "Name": "STORAGEB",
+              "MacAddress": "00-15-5D-10-04-05",
+              "Status": "Up"
+            },
+            {
+              "Name": "MGMT1",
+              "MacAddress": "00-15-5D-10-04-02",
+              "Status": "Up"
+            },
+            {
+              "Name": "MGMT2",
+              "MacAddress": "00-15-5D-10-04-03",
+              "Status": "Up"
+            },
+            {
+              "Name": "STORAGEA",
+              "MacAddress": "00-15-5D-10-04-04",
+              "Status": "Up"
+            }
+          ],
+          "ipv4": [
+            {
+              "InterfaceAlias": "MGMT1",
+              "IPAddress": "10.64.0.11",
+              "PrefixLength": 24
+            },
+            {
+              "InterfaceAlias": "MGMT2",
+              "IPAddress": "169.254.92.61",
+              "PrefixLength": 16
+            },
+            {
+              "InterfaceAlias": "STORAGEB",
+              "IPAddress": "10.64.5.11",
+              "PrefixLength": 24
+            },
+            {
+              "InterfaceAlias": "Local Area Connection* 1",
+              "IPAddress": "169.254.248.215",
+              "PrefixLength": 16
+            },
+            {
+              "InterfaceAlias": "STORAGEA",
+              "IPAddress": "10.64.4.11",
+              "PrefixLength": 24
+            },
+            {
+              "InterfaceAlias": "Loopback Pseudo-Interface 1",
+              "IPAddress": "127.0.0.1",
+              "PrefixLength": 8
+            }
+          ],
+          "domain": "ad.localbox.test",
+          "firewallEnabled": true,
+          "PSComputerName": "LB-NODE01",
+          "RunspaceId": "65a70107-b8c8-4e91-b9e0-3c19d16e8644",
+          "PSShowComputerName": true
+        },
+        "state": "Running",
+        "hostAdapters": [
+          {
+            "Name": "MGMT1",
+            "MacAddress": "00155D100402",
+            "SwitchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934"
+          },
+          {
+            "Name": "MGMT2",
+            "MacAddress": "00155D100403",
+            "SwitchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934"
+          },
+          {
+            "Name": "STORAGEA",
+            "MacAddress": "00155D100404",
+            "SwitchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934"
+          },
+          {
+            "Name": "STORAGEB",
+            "MacAddress": "00155D100405",
+            "SwitchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934"
+          }
+        ],
+        "hostDisks": [
+          {
+            "lun": 0,
+            "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE01\\OS.vhdx",
+            "diskId": "853E242C-04B5-422E-A649-64E0D80BC634",
+            "parentPath": "",
+            "size": 137438953472
+          },
+          {
+            "lun": 1,
+            "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE01\\S2D-1.vhdx",
+            "diskId": "3EEAA918-A937-4F75-B9D0-1804553ABFEE",
+            "parentPath": "",
+            "size": 182536110080
+          },
+          {
+            "lun": 2,
+            "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE01\\S2D-2.vhdx",
+            "diskId": "77197BD4-01B2-4D57-9AC5-A09A9AD85C7E",
+            "parentPath": "",
+            "size": 182536110080
+          },
+          {
+            "lun": 3,
+            "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE01\\S2D-3.vhdx",
+            "diskId": "6EA95454-2F24-442E-9FD8-3C38305128AC",
+            "parentPath": "",
+            "size": 182536110080
+          },
+          {
+            "lun": 4,
+            "path": "W:\\AzureLocalBox\\Relocated\\LB-NODE01\\S2D-4.vhdx",
+            "diskId": "45B23F1E-D817-4DE0-A84A-C5F2124F7E30",
+            "parentPath": "",
+            "size": 182536110080
+          }
+        ],
+        "name": "LB-NODE01",
+        "vmId": "3adff629-2f67-449b-ab32-8a8748c46f34",
+        "memoryBytes": 68719476736,
+        "processors": 8
+      },
+      {
+        "guest": {
+          "bootstrapReadErrorType": null,
+          "nonPrimordialPoolCount": 0,
+          "name": "LB-NODE02",
+          "domainRole": 3,
+          "bootstrapCommand": {
+            "sha256": "70B11110F8483898A5CB3667A92F26315361847437832826C58DE53320746F0F",
+            "version": "1.0.0",
+            "available": true
+          },
+          "bootstrapStatus": "Succeeded",
+          "build": "26100.33650",
+          "platformPaths": [
+            {
+              "tlsHttpStatus": 404,
+              "expectedIp": "10.200.17.11",
+              "fqdn": "kv-lbox-weu-4766ea.vault.azure.net",
+              "addresses": [
+                "10.200.17.11"
+              ]
+            },
+            {
+              "tlsHttpStatus": 400,
+              "expectedIp": "10.200.17.9",
+              "fqdn": "stlboxdiagweu4766ea.blob.core.windows.net",
+              "addresses": [
+                "10.200.17.9"
+              ]
+            },
+            {
+              "tlsHttpStatus": 400,
+              "expectedIp": "10.200.17.10",
+              "fqdn": "stlboxwitweu4766ea.blob.core.windows.net",
+              "addresses": [
+                "10.200.17.10"
+              ]
+            }
+          ],
+          "partOfDomain": true,
+          "disks": [
+            {
+              "isBoot": true,
+              "style": "GPT",
+              "uniqueId": "60022480232ACEB031BB14739AF3844B",
+              "size": 137438953472,
+              "isSystem": true
+            },
+            {
+              "isBoot": false,
+              "style": "RAW",
+              "uniqueId": "6002248065ACD99B54C87E76586527CA",
+              "size": 182536110080,
+              "isSystem": false
+            },
+            {
+              "isBoot": false,
+              "style": "RAW",
+              "uniqueId": "600224801933BE540257E4937DA41512",
+              "size": 182536110080,
+              "isSystem": false
+            },
+            {
+              "isBoot": false,
+              "style": "RAW",
+              "uniqueId": "6002248037A2A230372B3EC87A9D3377",
+              "size": 182536110080,
+              "isSystem": false
+            },
+            {
+              "isBoot": false,
+              "style": "RAW",
+              "uniqueId": "600224802DF5A6C7E8F6062832A93BAC",
+              "size": 182536110080,
+              "isSystem": false
+            }
+          ],
+          "defenderEnabled": true,
+          "adapters": [
+            {
+              "Name": "STORAGEA",
+              "MacAddress": "00-15-5D-10-04-08",
+              "Status": "Up"
+            },
+            {
+              "Name": "MGMT2",
+              "MacAddress": "00-15-5D-10-04-07",
+              "Status": "Up"
+            },
+            {
+              "Name": "MGMT1",
+              "MacAddress": "00-15-5D-10-04-06",
+              "Status": "Up"
+            },
+            {
+              "Name": "STORAGEB",
+              "MacAddress": "00-15-5D-10-04-09",
+              "Status": "Up"
+            }
+          ],
+          "ipv4": [
+            {
+              "InterfaceAlias": "STORAGEA",
+              "IPAddress": "10.64.4.12",
+              "PrefixLength": 24
+            },
+            {
+              "InterfaceAlias": "MGMT1",
+              "IPAddress": "10.64.0.12",
+              "PrefixLength": 24
+            },
+            {
+              "InterfaceAlias": "STORAGEB",
+              "IPAddress": "10.64.5.12",
+              "PrefixLength": 24
+            },
+            {
+              "InterfaceAlias": "Local Area Connection* 1",
+              "IPAddress": "169.254.171.228",
+              "PrefixLength": 16
+            },
+            {
+              "InterfaceAlias": "MGMT2",
+              "IPAddress": "169.254.201.154",
+              "PrefixLength": 16
+            },
+            {
+              "InterfaceAlias": "Loopback Pseudo-Interface 1",
+              "IPAddress": "127.0.0.1",
+              "PrefixLength": 8
+            }
+          ],
+          "domain": "ad.localbox.test",
+          "firewallEnabled": true,
+          "PSComputerName": "LB-NODE02",
+          "RunspaceId": "5818f41a-acda-489c-91a9-847f85057e97",
+          "PSShowComputerName": true
+        },
+        "state": "Running",
+        "hostAdapters": [
+          {
+            "Name": "MGMT1",
+            "MacAddress": "00155D100406",
+            "SwitchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934"
+          },
+          {
+            "Name": "MGMT2",
+            "MacAddress": "00155D100407",
+            "SwitchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934"
+          },
+          {
+            "Name": "STORAGEA",
+            "MacAddress": "00155D100408",
+            "SwitchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934"
+          },
+          {
+            "Name": "STORAGEB",
+            "MacAddress": "00155D100409",
+            "SwitchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934"
+          }
+        ],
+        "hostDisks": [
+          {
+            "lun": 0,
+            "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE02\\OS.vhdx",
+            "diskId": "B0CE2A23-BB31-4239-9197-14739AF3844B",
+            "parentPath": "",
+            "size": 137438953472
+          },
+          {
+            "lun": 1,
+            "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE02\\S2D-1.vhdx",
+            "diskId": "9BD9AC65-C854-427A-917E-7E76586527CA",
+            "parentPath": "",
+            "size": 182536110080
+          },
+          {
+            "lun": 2,
+            "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE02\\S2D-2.vhdx",
+            "diskId": "54BE3319-5702-47BC-844C-E4937DA41512",
+            "parentPath": "",
+            "size": 182536110080
+          },
+          {
+            "lun": 3,
+            "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE02\\S2D-3.vhdx",
+            "diskId": "30A2A237-2B37-45E1-B506-3EC87A9D3377",
+            "parentPath": "",
+            "size": 182536110080
+          },
+          {
+            "lun": 4,
+            "path": "V:\\AzureLocalBox\\Guests\\local-guests-20261028-01\\LB-NODE02\\S2D-4.vhdx",
+            "diskId": "C7A6F52D-F6E8-4BD8-96F4-062832A93BAC",
+            "parentPath": "",
+            "size": 182536110080
+          }
+        ],
+        "name": "LB-NODE02",
+        "vmId": "12a44e0c-cc08-4c4c-a812-fa0b56efdbc3",
+        "memoryBytes": 68719476736,
+        "processors": 8
+      },
+      {
+        "guest": {
+          "bootstrapReadErrorType": null,
+          "nonPrimordialPoolCount": 0,
+          "name": "LB-NODE03",
+          "domainRole": 3,
+          "bootstrapCommand": {
+            "sha256": "70B11110F8483898A5CB3667A92F26315361847437832826C58DE53320746F0F",
+            "version": "1.0.0",
+            "available": true
+          },
+          "bootstrapStatus": "Succeeded",
+          "build": "26100.33650",
+          "platformPaths": [
+            {
+              "tlsHttpStatus": 404,
+              "expectedIp": "10.200.17.11",
+              "fqdn": "kv-lbox-weu-4766ea.vault.azure.net",
+              "addresses": [
+                "10.200.17.11"
+              ]
+            },
+            {
+              "tlsHttpStatus": 400,
+              "expectedIp": "10.200.17.9",
+              "fqdn": "stlboxdiagweu4766ea.blob.core.windows.net",
+              "addresses": [
+                "10.200.17.9"
+              ]
+            },
+            {
+              "tlsHttpStatus": 400,
+              "expectedIp": "10.200.17.10",
+              "fqdn": "stlboxwitweu4766ea.blob.core.windows.net",
+              "addresses": [
+                "10.200.17.10"
+              ]
+            }
+          ],
+          "partOfDomain": true,
+          "disks": [
+            {
+              "isBoot": true,
+              "style": "GPT",
+              "uniqueId": "60022480049AA5B12256BCCC17475830",
+              "size": 137438953472,
+              "isSystem": true
+            },
+            {
+              "isBoot": false,
+              "style": "RAW",
+              "uniqueId": "60022480F1883A655718A83EB381308E",
+              "size": 182536110080,
+              "isSystem": false
+            },
+            {
+              "isBoot": false,
+              "style": "RAW",
+              "uniqueId": "60022480333C4CF1EF75B7CA8C7973A3",
+              "size": 182536110080,
+              "isSystem": false
+            },
+            {
+              "isBoot": false,
+              "style": "RAW",
+              "uniqueId": "600224802F65BE3E670733600EC131EF",
+              "size": 182536110080,
+              "isSystem": false
+            },
+            {
+              "isBoot": false,
+              "style": "RAW",
+              "uniqueId": "60022480B25DB49F18CA0B5A7F55FAF2",
+              "size": 182536110080,
+              "isSystem": false
+            }
+          ],
+          "defenderEnabled": true,
+          "adapters": [
+            {
+              "Name": "STORAGEB",
+              "MacAddress": "00-15-5D-10-04-0D",
+              "Status": "Up"
+            },
+            {
+              "Name": "MGMT1",
+              "MacAddress": "00-15-5D-10-04-0A",
+              "Status": "Up"
+            },
+            {
+              "Name": "STORAGEA",
+              "MacAddress": "00-15-5D-10-04-0C",
+              "Status": "Up"
+            },
+            {
+              "Name": "MGMT2",
+              "MacAddress": "00-15-5D-10-04-0B",
+              "Status": "Up"
+            }
+          ],
+          "ipv4": [
+            {
+              "InterfaceAlias": "STORAGEA",
+              "IPAddress": "10.64.4.13",
+              "PrefixLength": 24
+            },
+            {
+              "InterfaceAlias": "MGMT2",
+              "IPAddress": "169.254.106.190",
+              "PrefixLength": 16
+            },
+            {
+              "InterfaceAlias": "STORAGEB",
+              "IPAddress": "10.64.5.13",
+              "PrefixLength": 24
+            },
+            {
+              "InterfaceAlias": "Local Area Connection* 1",
+              "IPAddress": "169.254.175.53",
+              "PrefixLength": 16
+            },
+            {
+              "InterfaceAlias": "MGMT1",
+              "IPAddress": "10.64.0.13",
+              "PrefixLength": 24
+            },
+            {
+              "InterfaceAlias": "Loopback Pseudo-Interface 1",
+              "IPAddress": "127.0.0.1",
+              "PrefixLength": 8
+            }
+          ],
+          "domain": "ad.localbox.test",
+          "firewallEnabled": true,
+          "PSComputerName": "LB-NODE03",
+          "RunspaceId": "3f517e52-6559-4fa4-b1cb-f8504650592a",
+          "PSShowComputerName": true
+        },
+        "state": "Running",
+        "hostAdapters": [
+          {
+            "Name": "MGMT1",
+            "MacAddress": "00155D10040A",
+            "SwitchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934"
+          },
+          {
+            "Name": "MGMT2",
+            "MacAddress": "00155D10040B",
+            "SwitchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934"
+          },
+          {
+            "Name": "STORAGEA",
+            "MacAddress": "00155D10040C",
+            "SwitchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934"
+          },
+          {
+            "Name": "STORAGEB",
+            "MacAddress": "00155D10040D",
+            "SwitchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934"
+          }
+        ],
+        "hostDisks": [
+          {
+            "lun": 0,
+            "path": "W:\\AzureLocalBox\\Guests\\three-node-20261029-01\\LB-NODE03\\OS.vhdx",
+            "diskId": "B1A59A04-5622-45D7-BDAD-BCCC17475830",
+            "parentPath": "",
+            "size": 137438953472
+          },
+          {
+            "lun": 1,
+            "path": "W:\\AzureLocalBox\\Guests\\three-node-20261029-01\\LB-NODE03\\S2D-1.vhdx",
+            "diskId": "653A88F1-1857-48A2-89DD-A83EB381308E",
+            "parentPath": "",
+            "size": 182536110080
+          },
+          {
+            "lun": 2,
+            "path": "W:\\AzureLocalBox\\Guests\\three-node-20261029-01\\LB-NODE03\\S2D-2.vhdx",
+            "diskId": "F14C3C33-75EF-469E-9D9A-B7CA8C7973A3",
+            "parentPath": "",
+            "size": 182536110080
+          },
+          {
+            "lun": 3,
+            "path": "W:\\AzureLocalBox\\Guests\\three-node-20261029-01\\LB-NODE03\\S2D-3.vhdx",
+            "diskId": "3EBE652F-0767-48A3-B582-33600EC131EF",
+            "parentPath": "",
+            "size": 182536110080
+          },
+          {
+            "lun": 4,
+            "path": "W:\\AzureLocalBox\\Guests\\three-node-20261029-01\\LB-NODE03\\S2D-4.vhdx",
+            "diskId": "9FB45DB2-CA18-4F8E-98B9-0B5A7F55FAF2",
+            "parentPath": "",
+            "size": 182536110080
+          }
+        ],
+        "name": "LB-NODE03",
+        "vmId": "5b6eba15-fa82-4e12-9e45-5ffbcd48c8a9",
+        "memoryBytes": 68719476736,
+        "processors": 8
+      }
+    ],
+    "mutationPerformed": false,
+    "platformReadinessVerified": false,
+    "ad": {
+      "inheritanceBlocked": true,
+      "ou": "OU=SMAL01,OU=AzureLocal,DC=ad,DC=localbox,DC=test",
+      "domain": "ad.localbox.test",
+      "lcm": {
+        "groupCount": 0,
+        "neverExpires": false,
+        "expired": false,
+        "user": "lboxdeploy",
+        "enabled": true
+      },
+      "PSComputerName": "LB-DC01",
+      "RunspaceId": "0d258e46-fecb-4537-9c3c-041221f14564",
+      "PSShowComputerName": true
+    },
+    "atUtc": "2026-10-30T08:08:03.2858024Z"
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-30T10:08:05.308914+02:00"
+}

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>AsHciADArtifactsPreCreationTool</id>
+    <version>10.2402.0</version>
+    <authors>Microsoft Corporation</authors>
+    <owners>Microsoft Corporation</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Tool to create active directory objects from domain admin context prior to azurestack hci deployment driver execution.</description>
+    <releaseNotes></releaseNotes>
+    <copyright>(c) 2022 Microsoft Corporation. All rights reserved.</copyright>
+    <tags>PSModule PSIncludes_Function PSFunction_New-HciAdObjectsPreCreation PSFunction_Remove-AsHciOU PSCommand_New-HciAdObjectsPreCreation PSCommand_Remove-AsHciOU</tags>
+  </metadata>
+</package>

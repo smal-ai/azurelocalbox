@@ -1,0 +1,38 @@
+{
+  "beganAtSast": "2026-10-28T09:47:43.730135+02:00",
+  "status": "complete",
+  "commit": "3a9a5e056564d18246ed22b9affe6ed3542e9e25",
+  "script": "scripts/recover-smal-storage-job.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 51097,
+  "scriptTransport": "sha256-length-framed-utf8-stdin",
+  "renderedSourceSha256": "3b9ab376b2ebc1eb78896bdedcecd94d71083b4b669faabcc3a7a3028320303a",
+  "renderedSourceByteLength": 18783,
+  "unstreamedEncodedLength": 50088,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "runId": "storage-20261028-01",
+    "priorWorkerSha256": "8C4B65A8299101ABA4ADEC3A6513432DFA0785571FA34322D6E7929749B490B0",
+    "recovery": "verified-preflight-no-storage-effects",
+    "startRequested": true,
+    "sourceCommit": "3a9a5e056564d18246ed22b9affe6ed3542e9e25",
+    "scope": "storage-only",
+    "originalMarkerRetained": true,
+    "clusterBootstrapComplete": false,
+    "workerSha256": "0A1F5B1938B352E5BC9BE422B15C4716B4E17877A645EB5B2B7F13FB0723312A"
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-28T09:47:53.028162+02:00"
+}

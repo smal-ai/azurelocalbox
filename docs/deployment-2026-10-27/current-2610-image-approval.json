@@ -1,0 +1,16 @@
+{
+  "question": "Approve Azure Local 2610 (solution 12.2610.1004.41) as the target for this educational nested lab, and accept the Azure Local licence terms/privacy notice required to download its current ISO? Microsoft does not support virtual lab deployments. This approval covers downloading and checksum-verifying the ISO only. It does not approve data-disk formatting, nested networking, registration, new cloud costs or role grants.",
+  "humanAnswer": "Approve 2610 image and terms",
+  "solutionVersionSelected": "12.2610.1004.41",
+  "licenceAndPrivacyAcceptanceForDownload": true,
+  "virtualEducationalLabSupportBoundaryAcknowledged": true,
+  "downloadAndChecksumVerificationApproved": true,
+  "mountOrExecutionApprovedByThisAnswer": false,
+  "dataDiskFormattingApprovedByThisAnswer": false,
+  "nestedNetworkingApprovedByThisAnswer": false,
+  "registrationApprovedByThisAnswer": false,
+  "newCloudCostsApprovedByThisAnswer": false,
+  "newRoleGrantsApprovedByThisAnswer": false,
+  "publisherMetadata": "current-os-image-catalogue-hci.json",
+  "exactDownloadPin": "current-os-image-2610-pin.json"
+}

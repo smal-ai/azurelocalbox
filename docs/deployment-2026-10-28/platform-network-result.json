@@ -1,0 +1,28 @@
+{
+  "executionId": "exec_localbox_platform_network_20261028",
+  "state": "completed",
+  "sourceCommit": "87858014bb751ceffe56578342316bef288669e2",
+  "sourceReport": "/home/quintin/play/entlz/docs/2026-10-28-localbox-platform-network.md",
+  "reportSha256": "5dc67168757083210b00b7c9472b09f2849646893a05d4e23a744d8133085a2c",
+  "sourceReceipt": "/home/quintin/play/entlz/workloads/smal/localbox-platform-network-receipt.json",
+  "receiptSha256": "729df4ea041dbfb74631fa34bc0383accdcce7214040faced5a5971d9073b7c1",
+  "sourceHashesIndependentlyMatched": true,
+  "deploymentState": "Succeeded",
+  "appliedAtUtc": "2026-10-28T12:06:35.041025Z",
+  "verifiedAtUtc": "2026-10-28T12:07:35.421140Z",
+  "mappings": {
+    "kv-lbox-weu-4766ea.vault.azure.net": "10.200.17.11",
+    "stlboxdiagweu4766ea.blob.core.windows.net": "10.200.17.9",
+    "stlboxwitweu4766ea.blob.core.windows.net": "10.200.17.10"
+  },
+  "privateEndpointAndZoneGroupCount": 3,
+  "deploymentHostPrivateDnsAndTlsVerified": true,
+  "nestedGuestTestsForTheseNewEndpointsByEntlz": false,
+  "authenticatedDataPlaneVerified": false,
+  "firewallOrPublicAccessChanged": false,
+  "newSharedZonesOrLinksCreated": false,
+  "privateOnlyAzureLocalDeploymentProven": false,
+  "privateOnlyAzureLocalDeploymentFailureDemonstrated": false,
+  "cloudRpSecretConfigurationPathStillRequiresVerification": true,
+  "platformReadinessVerified": false
+}

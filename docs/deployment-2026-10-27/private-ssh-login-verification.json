@@ -1,0 +1,16 @@
+{
+  "beganAtSast": "2026-10-27T12:02:45.144809+02:00",
+  "status": "uncertain-local-harness-timeout-no-login-result-retained",
+  "commit": "5d97e72289d43d855c4daceb3c07b3bce37976ee",
+  "script": "scripts/verify-smal-private-powershell.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localReconciliation": {
+    "matchingRunnerTunnelAndSshProcessesObserved": false,
+    "privateBastionTunnelListenerObserved": false,
+    "guestCommand": "fixed read-only login proof only; no bootstrap or host configuration changes",
+    "result": "No authentication success inferred. Retain this receipt. Repair bounded process cleanup and run a separate read-only verification observation."
+  }
+}

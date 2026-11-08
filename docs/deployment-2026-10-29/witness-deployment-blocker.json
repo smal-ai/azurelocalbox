@@ -1,0 +1,26 @@
+{
+  "status": "blocked-two-node-cloud-witness-authentication",
+  "observedOn": "2026-10-29",
+  "witnessAccount": "stlboxwitweu4766ea",
+  "allowSharedKeyAccess": false,
+  "publicNetworkAccess": "Disabled",
+  "readOnlySharedKeyContainerListExitCode": 1,
+  "readOnlySharedKeyContainerListErrorCode": "KeyBasedAuthenticationNotPermitted",
+  "rawKeyOrDiagnosticOutputExported": false,
+  "sharedKeyPermittedByOwnerPolicy": false,
+  "ownerStatement": "shared key will not be allowed by policy",
+  "enableSharedKeyAttempted": false,
+  "policyExemptionRequested": false,
+  "independentPolicyDenyAssignmentIdentified": false,
+  "clusterOrDeploymentSettingsCreatedByThisAttempt": false,
+  "platformCredentialsSealedOrPublishedByThisAttempt": false,
+  "noWitnessSubstitutionAuthorised": false,
+  "fileShareWitnessDeploymentSupportConfirmedForSelectedConnectedWorkflow": false,
+  "selectedSolutionVersion": "12.2610.1004.41",
+  "selectedNodeCount": 2,
+  "sources": [
+    "https://learn.microsoft.com/en-us/azure/azure-local/deploy/deployment-azure-resource-manager-template?view=azloc-2610#arm-template-parameters-reference",
+    "https://learn.microsoft.com/en-us/windows-server/failover-clustering/deploy-quorum-witness?pivots=cloud-witness"
+  ],
+  "nextGate": "Reviewed policy-compliant topology or explicitly supported alternative witness workflow; no implicit redesign"
+}

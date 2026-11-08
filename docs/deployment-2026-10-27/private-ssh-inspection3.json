@@ -1,0 +1,153 @@
+{
+  "beganAtSast": "2026-10-27T12:11:52.384809+02:00",
+  "status": "complete-read-only-inspection",
+  "commit": "112affd96d1a025854bb73dd62a42f2200cb35f3",
+  "scriptSha256": "751e4cf2384baec97ff6c4184ba36ec4dbe39d70ccae86f56b69fff363563de6",
+  "publicKeySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "privateKeyValueExported": false,
+  "bootstrapApplied": false,
+  "exitCode": 0,
+  "result": {
+    "computer": "LocalBox-Client",
+    "atUtc": "2026-10-27T10:12:06.9382129Z",
+    "configSha256": "52ADEA08D10405087D4DC9091710C399328AE598C594B4CB70245B03D8FA44B4",
+    "activeConfiguration": [
+      {
+        "value": "Port 22",
+        "directive": "Port"
+      },
+      {
+        "value": "custom-value-redacted",
+        "directive": "ListenAddress"
+      },
+      {
+        "value": "AllowUsers arcdemo",
+        "directive": "AllowUsers"
+      },
+      {
+        "value": "custom-value-redacted",
+        "directive": "AuthenticationMethods"
+      },
+      {
+        "value": "PubkeyAuthentication yes",
+        "directive": "PubkeyAuthentication"
+      },
+      {
+        "value": "PasswordAuthentication no",
+        "directive": "PasswordAuthentication"
+      },
+      {
+        "value": "custom-value-redacted",
+        "directive": "PermitEmptyPasswords"
+      },
+      {
+        "value": "AllowAgentForwarding no",
+        "directive": "AllowAgentForwarding"
+      },
+      {
+        "value": "AllowTcpForwarding no",
+        "directive": "AllowTcpForwarding"
+      },
+      {
+        "value": "custom-value-redacted",
+        "directive": "GatewayPorts"
+      },
+      {
+        "value": "custom-value-redacted",
+        "directive": "MaxAuthTries"
+      },
+      {
+        "value": "custom-value-redacted",
+        "directive": "LoginGraceTime"
+      },
+      {
+        "value": "custom-value-redacted",
+        "directive": "LogLevel"
+      },
+      {
+        "value": "AuthorizedKeysFile .ssh/authorized_keys",
+        "directive": "AuthorizedKeysFile"
+      },
+      {
+        "value": "Subsystem sftp sftp-server.exe",
+        "directive": "Subsystem"
+      },
+      {
+        "value": "custom-value-redacted",
+        "directive": "AllowGroups"
+      },
+      {
+        "value": "Match Group administrators",
+        "directive": "Match"
+      },
+      {
+        "value": "AuthorizedKeysFile __PROGRAMDATA__/ssh/administrators_authorized_keys",
+        "directive": "AuthorizedKeysFile"
+      }
+    ],
+    "setupMarkerExists": true,
+    "backupExists": true,
+    "adminKeysExist": true,
+    "service": "Running",
+    "firewall": {
+      "localPort": [
+        "22"
+      ],
+      "remoteAddress": [
+        "10.202.0.0/255.255.255.192"
+      ],
+      "action": "Allow",
+      "enabled": "True"
+    },
+    "markerStatus": "complete",
+    "defaultSshAllowRuleEnabled": [
+      "False"
+    ],
+    "servicePath": "C:\\Windows\\System32\\OpenSSH\\sshd.exe",
+    "listeners": [
+      {
+        "LocalAddress": "10.200.16.4",
+        "LocalPort": 22,
+        "OwningProcess": 5820
+      }
+    ],
+    "firewallProgram": [
+      "C:\\Windows\\System32\\OpenSSH\\sshd.exe"
+    ],
+    "firewallService": [
+      "sshd"
+    ],
+    "firewallProfiles": "Any",
+    "profileDefaults": [
+      {
+        "Name": "Domain",
+        "Enabled": 1,
+        "DefaultInboundAction": 0
+      },
+      {
+        "Name": "Private",
+        "Enabled": 1,
+        "DefaultInboundAction": 0
+      },
+      {
+        "Name": "Public",
+        "Enabled": 1,
+        "DefaultInboundAction": 0
+      }
+    ],
+    "recentSshEvents": [
+      {
+        "atUtc": "2026-10-27T10:02:21.3782916Z",
+        "id": 4,
+        "category": "listening"
+      },
+      {
+        "atUtc": "2026-10-27T09:57:42.1584297Z",
+        "id": 4,
+        "category": "listening"
+      }
+    ],
+    "readOnly": true
+  },
+  "finishedAtSast": "2026-10-27T12:12:24.745541+02:00"
+}

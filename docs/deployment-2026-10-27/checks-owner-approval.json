@@ -1,0 +1,32 @@
+{
+  "atSast": "2026-10-27T10:36:11.727986+02:00",
+  "offlineRegressionTests": {
+    "passed": 9,
+    "failed": 0
+  },
+  "offlineApplyGuard": {
+    "expectedExitCode": 2,
+    "verdict": {
+      "readyToApply": false,
+      "pending": [
+        "hostSecurityAndOperatingWindowApproval",
+        "exactPlatformAndBootstrapPins",
+        "versionMatchedSourceScopedEgressAndGovernanceAcceptance",
+        "nestedPrefixRoutingDnsAndReturnPathAgreement",
+        "finalPolicyAdmissionValidationAndWhatIf",
+        "reviewedCommitAndPushBeforeApply",
+        "costCentre",
+        "reviewOn"
+      ],
+      "azureApplyAttempted": false
+    }
+  },
+  "priorAcceptedOctoberManifest": "unchanged",
+  "pythonAstJsonWhitespace": "pass",
+  "secretPatternScan": "pass-limited-pattern-check-no-credential-values-retrieved",
+  "sourcePackageSha512": "matched-published-gallery-metadata",
+  "vhdDownloadBytes": 0,
+  "modulesInstalledImportedExecuted": false,
+  "finalHostResourceGroup": "empty",
+  "azureResourceChanges": []
+}

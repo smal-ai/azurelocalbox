@@ -1,0 +1,19 @@
+{
+  "runId": "start-20261029-080457-2347adde",
+  "beganAtUtc": "2026-10-29T08:04:57.540333+00:00",
+  "status": "failed-inspect-before-retry",
+  "hostId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+  "shutdownAutomationChanged": false,
+  "roleActivationRequested": false,
+  "registrationInvoked": false,
+  "platformReadinessVerified": false,
+  "sourceCommit": "867dbe115796e70008d0dc22559c3a9e5769a51d",
+  "hostBefore": {
+    "power": "PowerState/deallocated",
+    "agentReady": false
+  },
+  "hostStartRequested": true,
+  "errorType": "RuntimeError",
+  "error": "Outer host power state missing or ambiguous.",
+  "finishedAtUtc": "2026-10-29T08:05:11.419357+00:00"
+}

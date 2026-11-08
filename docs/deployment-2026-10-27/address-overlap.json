@@ -1,0 +1,243 @@
+{
+  "accounts": [
+    {
+      "id": "702382d0-3722-4630-8983-5580b92f0c1a",
+      "name": "quintindekok-infra",
+      "state": "Enabled"
+    },
+    {
+      "id": "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "name": "quintindekok-app",
+      "state": "Enabled"
+    },
+    {
+      "id": "2ff70f85-2b12-42a0-82c0-49c30255fd61",
+      "name": "quintindekok-data",
+      "state": "Enabled"
+    }
+  ],
+  "vnets": [
+    {
+      "subscription": "702382d0-3722-4630-8983-5580b92f0c1a",
+      "exitCode": 0,
+      "result": [
+        {
+          "id": "/subscriptions/702382d0-3722-4630-8983-5580b92f0c1a/resourceGroups/rg-bastion-san-1/providers/Microsoft.Network/virtualNetworks/vnet-bastion-san-1",
+          "prefixes": [
+            "10.202.0.0/24"
+          ]
+        },
+        {
+          "id": "/subscriptions/702382d0-3722-4630-8983-5580b92f0c1a/resourceGroups/rg-dns-san-1/providers/Microsoft.Network/virtualNetworks/vnet-dns-san-1",
+          "prefixes": [
+            "10.204.0.0/22"
+          ]
+        }
+      ]
+    },
+    {
+      "subscription": "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "exitCode": 0,
+      "result": [
+        {
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-az-fabrti-san-1/providers/Microsoft.Network/virtualNetworks/vnet-az-fabrti-san-1",
+          "prefixes": [
+            "10.205.0.0/22"
+          ]
+        },
+        {
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-smal-network-san-1/providers/Microsoft.Network/virtualNetworks/vnet-smal-san-1",
+          "prefixes": [
+            "10.200.16.0/22"
+          ]
+        }
+      ]
+    },
+    {
+      "subscription": "2ff70f85-2b12-42a0-82c0-49c30255fd61",
+      "exitCode": 0,
+      "result": [
+        {
+          "id": "/subscriptions/2ff70f85-2b12-42a0-82c0-49c30255fd61/resourceGroups/rg-apphosting-san-1/providers/Microsoft.Network/virtualNetworks/vnet-apphosting-san-1",
+          "prefixes": [
+            "10.200.8.0/22"
+          ]
+        },
+        {
+          "id": "/subscriptions/2ff70f85-2b12-42a0-82c0-49c30255fd61/resourceGroups/rg-citadel-san-1/providers/Microsoft.Network/virtualNetworks/vnet-citadel-san-1",
+          "prefixes": [
+            "10.200.4.0/22"
+          ]
+        },
+        {
+          "id": "/subscriptions/2ff70f85-2b12-42a0-82c0-49c30255fd61/resourceGroups/rg-sre-san-1/providers/Microsoft.Network/virtualNetworks/vnet-sre-san-1",
+          "prefixes": [
+            "10.200.12.0/22"
+          ]
+        },
+        {
+          "id": "/subscriptions/2ff70f85-2b12-42a0-82c0-49c30255fd61/resourceGroups/rg-citadel-foundry-sec-1/providers/Microsoft.Network/virtualNetworks/vnet-citadel-foundry-sec-1",
+          "prefixes": [
+            "10.210.28.0/22"
+          ]
+        }
+      ]
+    }
+  ],
+  "hubs": [
+    {
+      "subscription": "702382d0-3722-4630-8983-5580b92f0c1a",
+      "exitCode": 0,
+      "result": [
+        {
+          "id": "/subscriptions/702382d0-3722-4630-8983-5580b92f0c1a/resourceGroups/rg-test-con-san-1/providers/Microsoft.Network/virtualHubs/vhub-test-san-1",
+          "prefix": "10.200.0.0/23"
+        },
+        {
+          "id": "/subscriptions/702382d0-3722-4630-8983-5580b92f0c1a/resourceGroups/rg-test-con-sec-1/providers/Microsoft.Network/virtualHubs/vhub-test-sec-1",
+          "prefix": "10.210.0.0/23"
+        }
+      ]
+    },
+    {
+      "subscription": "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+      "exitCode": 0,
+      "result": []
+    },
+    {
+      "subscription": "2ff70f85-2b12-42a0-82c0-49c30255fd61",
+      "exitCode": 0,
+      "result": []
+    }
+  ],
+  "hostRoutes": [
+    {
+      "dst": "default",
+      "gateway": "10.0.0.254",
+      "dev": "wlp195s0",
+      "protocol": "dhcp",
+      "prefsrc": "10.0.0.103",
+      "metric": 600,
+      "flags": []
+    },
+    {
+      "dst": "10.0.0.0/24",
+      "dev": "wlp195s0",
+      "protocol": "kernel",
+      "scope": "link",
+      "prefsrc": "10.0.0.103",
+      "metric": 600,
+      "flags": []
+    },
+    {
+      "dst": "10.0.0.254",
+      "dev": "wlp195s0",
+      "protocol": "static",
+      "scope": "link",
+      "metric": 50,
+      "flags": []
+    },
+    {
+      "dst": "10.200.0.0/23",
+      "gateway": "172.16.0.129",
+      "dev": "tun0",
+      "protocol": "static",
+      "metric": 50,
+      "flags": []
+    },
+    {
+      "dst": "10.200.4.0/22",
+      "gateway": "172.16.0.129",
+      "dev": "tun0",
+      "protocol": "static",
+      "metric": 50,
+      "flags": []
+    },
+    {
+      "dst": "10.200.8.0/22",
+      "gateway": "172.16.0.129",
+      "dev": "tun0",
+      "protocol": "static",
+      "metric": 50,
+      "flags": []
+    },
+    {
+      "dst": "10.200.12.0/22",
+      "gateway": "172.16.0.129",
+      "dev": "tun0",
+      "protocol": "static",
+      "metric": 50,
+      "flags": []
+    },
+    {
+      "dst": "10.200.16.0/22",
+      "gateway": "172.16.0.129",
+      "dev": "tun0",
+      "protocol": "static",
+      "metric": 50,
+      "flags": []
+    },
+    {
+      "dst": "10.202.0.0/24",
+      "gateway": "172.16.0.129",
+      "dev": "tun0",
+      "protocol": "static",
+      "metric": 50,
+      "flags": []
+    },
+    {
+      "dst": "10.204.0.0/22",
+      "gateway": "172.16.0.129",
+      "dev": "tun0",
+      "protocol": "static",
+      "metric": 50,
+      "flags": []
+    },
+    {
+      "dst": "10.210.28.0/22",
+      "gateway": "172.16.0.129",
+      "dev": "tun0",
+      "protocol": "static",
+      "metric": 50,
+      "flags": []
+    },
+    {
+      "dst": "20.87.68.181",
+      "gateway": "10.0.0.254",
+      "dev": "wlp195s0",
+      "protocol": "static",
+      "metric": 50,
+      "flags": []
+    },
+    {
+      "dst": "172.16.0.0/25",
+      "gateway": "172.16.0.129",
+      "dev": "tun0",
+      "protocol": "static",
+      "metric": 50,
+      "flags": []
+    },
+    {
+      "dst": "172.16.0.128/25",
+      "dev": "tun0",
+      "protocol": "kernel",
+      "scope": "link",
+      "prefsrc": "172.16.0.130",
+      "metric": 50,
+      "flags": []
+    },
+    {
+      "dst": "172.17.0.0/16",
+      "dev": "docker0",
+      "protocol": "kernel",
+      "scope": "link",
+      "prefsrc": "172.17.0.1",
+      "flags": [
+        "linkdown"
+      ]
+    }
+  ],
+  "candidateConflictsInObservedSet": [],
+  "allAzureReadsSucceeded": true,
+  "notCompleteEstateAcceptance": "External networks, other nested labs, future reservations and peer ownership review remain unknown."
+}

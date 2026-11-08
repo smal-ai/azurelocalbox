@@ -1,0 +1,26 @@
+{
+  "beganAtSast": "2026-10-27T12:02:05.684630+02:00",
+  "status": "complete-host-key-pinned-login-not-yet-tested",
+  "commit": "5d97e72289d43d855c4daceb3c07b3bce37976ee",
+  "scriptSha256": "e4044e11bd07a6fd7d42a567de7ff3d0db3ec50aec0f06741ffb34052c89766b",
+  "publicKeySha256": "7d9cfc5d0aea1cf771db46219fefd66cb5fc3f8c1acc624e8bcfaa30bb9df53d",
+  "privateKeyValueExported": false,
+  "bootstrapApplied": false,
+  "exitCode": 0,
+  "result": {
+    "computer": "LocalBox-Client",
+    "service": "Running",
+    "adminUser": "arcdemo",
+    "passwordAuthentication": false,
+    "publicKeyAuthentication": true,
+    "forwarding": false,
+    "remoteAddress": "10.202.0.0/26",
+    "remoteAddressObserved": "10.202.0.0/255.255.255.192",
+    "defaultShell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "hostPublicKey": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOUIY2dl5ZMvvH8K1NkPCXSi3Ov5l56I8MtsklKkEULu system@WIN-BNT563U10V0",
+    "configSha256": "52ADEA08D10405087D4DC9091710C399328AE598C594B4CB70245B03D8FA44B4",
+    "rebootPerformed": false,
+    "bootstrapApplied": false
+  },
+  "finishedAtSast": "2026-10-27T12:02:39.550141+02:00"
+}

@@ -1,0 +1,21 @@
+{
+  "sources": [
+    {
+      "path": "docs/deployment-2026-10-28/upstream-review/arm-guide-source.json",
+      "bytes": 21368,
+      "sha256": "841402c289df68e9be26244045a35688e1c04a181695026e8144965df74f1584",
+      "url": "https://api.github.com/repos/MicrosoftDocs/azure-stack-docs/git/blobs/bea0e96c0203a56a0bc89de5affd8b2ea2e0b1e8",
+      "gitBlobSha": "bea0e96c0203a56a0bc89de5affd8b2ea2e0b1e8",
+      "decodedBodySha256": "7fc313b94a56f98d64961479daf8c23f38f8f344cb5ee930d4d7656fd93c395a"
+    },
+    {
+      "path": "docs/deployment-2026-10-28/upstream-review/private-endpoint-guide-source.json",
+      "bytes": 9261,
+      "sha256": "aa7069a10a96ed740af8f2bc469982a720de14d9c946c4117f4fc8ad813b4faa",
+      "url": "https://api.github.com/repos/MicrosoftDocs/azure-stack-docs/git/blobs/a90466bf3610a824fde8afbd2ef8362fb6ca12d7",
+      "gitBlobSha": "a90466bf3610a824fde8afbd2ef8362fb6ca12d7",
+      "decodedBodySha256": "7c8d47ea5b954aa96dcf6b183e36f822a585632de5c9ae62b6a7153faebe6c5d"
+    }
+  ],
+  "executed": false
+}

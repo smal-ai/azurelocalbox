@@ -1,0 +1,115 @@
+{
+  "task": "REL-287",
+  "status": "owner-cost-and-current-identity-approved-no-azure-apply",
+  "supersedesPreparationManifestSha256": "fefccc944486014c953cf5f6c3a7e243a6f20224a75b34401ad5d79415636b6b",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "45adf1db40fb5cbc4e0f59405a7edec4600ab99f5269546e35e70be84a719c44"
+    },
+    {
+      "path": "docs/deployment-2026-10-27/README.md",
+      "sha256": "8705baab27d5dbd483e1ce67b7517c87d899f8f842819369a3f547c8eccf09ba"
+    },
+    {
+      "path": "docs/deployment-2026-10-27/address-overlap.json",
+      "sha256": "fa17371e079587d9e0d8efdb252b365b52f2dabdb494f70ec60a423c86aef9b5"
+    },
+    {
+      "path": "docs/deployment-2026-10-27/bootstrap-audit.json",
+      "sha256": "6d5b1967213464a135e63ec74094a00122cfaa6460c8ac79d962291afe07972f"
+    },
+    {
+      "path": "docs/deployment-2026-10-27/checks-owner-approval.json",
+      "sha256": "a9fc5ea4c1abb5a348809633f4d8604035bdf767a8e55a5fa767fd47d585810a"
+    },
+    {
+      "path": "docs/deployment-2026-10-27/checks.json",
+      "sha256": "a451a9f7699f116b6ff875751069749886a9408ca048ced6e98544975b34a5f2"
+    },
+    {
+      "path": "docs/deployment-2026-10-27/dns-probe.json",
+      "sha256": "bcadfac68c95fbe75c56524c70fa8562455273ca4363ab0b3d6ceb32f22f4b95"
+    },
+    {
+      "path": "docs/deployment-2026-10-27/egress-regional-source.json",
+      "sha256": "088dee68dd4a8674b25a63749e76620242f84f3252555b19635c85972eaef1ee"
+    },
+    {
+      "path": "docs/deployment-2026-10-27/egress-review-baseline.json",
+      "sha256": "f04a415cfbcf5e023cb0edd0e71cb8cafe11a621106662b13e66bfa5e66f98d4"
+    },
+    {
+      "path": "docs/deployment-2026-10-27/final-readback-owner-approval.json",
+      "sha256": "b5f1d3f54b9a4a8842ba33c8b5456a816211744700404605d510a2b733cbb2e5"
+    },
+    {
+      "path": "docs/deployment-2026-10-27/final-readback.json",
+      "sha256": "a09441437192ed03cf77806d0d26759e986aae758f43a28f844ffec5e9b5cb1a"
+    },
+    {
+      "path": "docs/deployment-2026-10-27/image-preflight.json",
+      "sha256": "798fe07430f6abff727573c9d4bb13c1c92151c9c75f9eb7447b9256d0a548bf"
+    },
+    {
+      "path": "docs/deployment-2026-10-27/manifest.json",
+      "sha256": "fefccc944486014c953cf5f6c3a7e243a6f20224a75b34401ad5d79415636b6b"
+    },
+    {
+      "path": "docs/deployment-2026-10-27/module-catalogue.json",
+      "sha256": "9d58bcbb41479ad754fff0aa4b10636bfbcbe82d9eb77ce66b925700f97ff9a3"
+    },
+    {
+      "path": "docs/deployment-2026-10-27/module-source-audit.json",
+      "sha256": "36dceb1eeeaf17008cc7c979fb905cc75641ec773ad886b7b625441f0f1cf69c"
+    },
+    {
+      "path": "docs/deployment-2026-10-27/network-request.json",
+      "sha256": "d864e20e916af4393f2d58bf5386f500deac0483b7ab0b21587e228312d8f4c8"
+    },
+    {
+      "path": "docs/deployment-2026-10-27/owner-approvals.json",
+      "sha256": "ae1d76fab2d7c06dda809715532fa3999038a384f8f80990e5fe476ddd66015f"
+    },
+    {
+      "path": "docs/deployment-2026-10-27/plan.json",
+      "sha256": "dc20597f862490884777feb8363a83b5b29714a60b9b34ec364622d062bafa0d"
+    },
+    {
+      "path": "docs/deployment-2026-10-27/policy-definitions.json",
+      "sha256": "47b4bd695f371bc35a5697a121866ef11a8f0a7a11a1641659bd565f7858adfe"
+    },
+    {
+      "path": "docs/deployment-2026-10-27/preflight.json",
+      "sha256": "2645f1259ed257d5db4656df9c305ebd8732700cfbaa7477e54669e50470485b"
+    },
+    {
+      "path": "docs/deployment-2026-10-27/pricing.json",
+      "sha256": "82945ca7724589647393cc95a0163a443c9003e98e02c9553867ca1920dddf68"
+    },
+    {
+      "path": "docs/deployment-2026-10-27/supplemental.json",
+      "sha256": "8741fe4cab019aa353221d382029c546b855c92496600695818e88a03f6e3bce"
+    },
+    {
+      "path": "infra/bicep/main.smal-host.bicep",
+      "sha256": "b78b98f419e6782946f6d15dee06b096cb0112ff68243910b4dcf3c7c96c71bd"
+    },
+    {
+      "path": "infra/hooks/preprovision.sh",
+      "sha256": "03b90fea3a9f0a5c678baa061260e8bb674dcb71da003d43b7da0f267c67eacd"
+    },
+    {
+      "path": "scripts/check-smal-apply.py",
+      "sha256": "2ee0467d0359a1c1659bc93f5d5ef137cf34c8b5d87cd19f30f293e81631d64c"
+    },
+    {
+      "path": "scripts/preflight-smal-20261027.py",
+      "sha256": "90c743fa79051762784ae8cec8daeeab905a47bb1cb410d8e84c579c894571c2"
+    },
+    {
+      "path": "scripts/test_smal_host.py",
+      "sha256": "d54f9cf61589785a012ceaa1f664f0647357be0c0aabea60d88715b14d871cf9"
+    }
+  ]
+}

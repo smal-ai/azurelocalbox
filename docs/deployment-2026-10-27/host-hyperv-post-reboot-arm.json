@@ -1,0 +1,139 @@
+{
+  "atSast": "2026-10-27T12:36:32.253114+02:00",
+  "checks": {
+    "vm": {
+      "command": [
+        "az",
+        "vm",
+        "get-instance-view",
+        "-g",
+        "rg-localbox-nodes-san-1",
+        "-n",
+        "LocalBox-Client",
+        "--query",
+        "{id:id,state:provisioningState,statuses:instanceView.statuses[].code,agent:instanceView.vmAgent.statuses[].displayStatus}",
+        "--subscription",
+        "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+        "-o",
+        "json",
+        "--only-show-errors"
+      ],
+      "exitCode": 0,
+      "result": {
+        "agent": [
+          "Ready"
+        ],
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+        "state": "Succeeded",
+        "statuses": [
+          "ProvisioningState/succeeded",
+          "PowerState/running"
+        ]
+      }
+    },
+    "nic": {
+      "command": [
+        "az",
+        "network",
+        "nic",
+        "show",
+        "-g",
+        "rg-localbox-nodes-san-1",
+        "-n",
+        "LocalBox-Client-NIC",
+        "--query",
+        "{id:id,forwarding:enableIPForwarding,ips:ipConfigurations[].{ip:privateIPAddress,publicIp:publicIPAddress.id,subnet:subnet.id}}",
+        "--subscription",
+        "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+        "-o",
+        "json",
+        "--only-show-errors"
+      ],
+      "exitCode": 0,
+      "result": {
+        "forwarding": false,
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Network/networkInterfaces/LocalBox-Client-NIC",
+        "ips": [
+          {
+            "ip": "10.200.16.4",
+            "publicIp": null,
+            "subnet": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-smal-network-san-1/providers/Microsoft.Network/virtualNetworks/vnet-smal-san-1/subnets/snet-localbox-host"
+          }
+        ]
+      }
+    },
+    "disks": {
+      "command": [
+        "az",
+        "disk",
+        "list",
+        "-g",
+        "rg-localbox-nodes-san-1",
+        "--query",
+        "[].{id:id,sizeGiB:diskSizeGB,state:diskState,managedBy:managedBy}",
+        "--subscription",
+        "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+        "-o",
+        "json",
+        "--only-show-errors"
+      ],
+      "exitCode": 0,
+      "result": [
+        {
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_0",
+          "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+          "sizeGiB": 256,
+          "state": "Attached"
+        },
+        {
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_1",
+          "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+          "sizeGiB": 256,
+          "state": "Attached"
+        },
+        {
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_2",
+          "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+          "sizeGiB": 256,
+          "state": "Attached"
+        },
+        {
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_3",
+          "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+          "sizeGiB": 256,
+          "state": "Attached"
+        },
+        {
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_4",
+          "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+          "sizeGiB": 256,
+          "state": "Attached"
+        },
+        {
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_5",
+          "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+          "sizeGiB": 256,
+          "state": "Attached"
+        },
+        {
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_6",
+          "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+          "sizeGiB": 256,
+          "state": "Attached"
+        },
+        {
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_7",
+          "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+          "sizeGiB": 256,
+          "state": "Attached"
+        },
+        {
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-OSDisk",
+          "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+          "sizeGiB": 1024,
+          "state": "Attached"
+        }
+      ]
+    }
+  }
+}

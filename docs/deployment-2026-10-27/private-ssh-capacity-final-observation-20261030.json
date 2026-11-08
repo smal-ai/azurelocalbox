@@ -1,0 +1,1541 @@
+{
+  "beganAtSast": "2026-10-30T15:46:07.852697+02:00",
+  "status": "complete",
+  "commit": "53fecb7ad3b7db041759b952fe1962dfd8dee9e0",
+  "script": "scripts/inspect-smal-three-node-final.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 59455,
+  "scriptTransport": "sha256-length-framed-utf8-stdin",
+  "renderedSourceSha256": "65bbe8561db6d56b775585381ca9f157105d9b5cba165d0a26beaced4403868d",
+  "renderedSourceByteLength": 7354,
+  "unstreamedEncodedLength": 19612,
+  "guestCommandTimeoutSeconds": 300,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "volumes": [
+      {
+        "size": 2199005364224,
+        "health": "Healthy",
+        "free": 2061087408128,
+        "letter": "W"
+      },
+      {
+        "size": 1099389972480,
+        "health": "Healthy",
+        "free": 1024469385216,
+        "letter": "C"
+      },
+      {
+        "size": 2181825495040,
+        "health": "Healthy",
+        "free": 1942379298816,
+        "letter": "V"
+      }
+    ],
+    "atUtc": "2026-10-30T13:47:33.7163350Z",
+    "nodes": [
+      {
+        "vmId": "3adff629-2f67-449b-ab32-8a8748c46f34",
+        "guest": {
+          "csv": [
+            {
+              "name": "Cluster Virtual Disk (Infrastructure_1)",
+              "volumes": [
+                {
+                  "path": "C:\\ClusterStorage\\Infrastructure_1",
+                  "free": 236251893760,
+                  "size": 270515830784
+                }
+              ],
+              "owner": "LB-NODE03",
+              "state": "Online"
+            },
+            {
+              "name": "Cluster Virtual Disk (UserStorage_1)",
+              "volumes": [
+                {
+                  "path": "C:\\ClusterStorage\\UserStorage_1",
+                  "free": 285591842816,
+                  "size": 304875569152
+                }
+              ],
+              "owner": "LB-NODE03",
+              "state": "Online"
+            },
+            {
+              "name": "Cluster Virtual Disk (UserStorage_2)",
+              "volumes": [
+                {
+                  "path": "C:\\ClusterStorage\\UserStorage_2",
+                  "free": 301216034816,
+                  "size": 304875569152
+                }
+              ],
+              "owner": "LB-NODE02",
+              "state": "Online"
+            },
+            {
+              "name": "Cluster Virtual Disk (UserStorage_3)",
+              "volumes": [
+                {
+                  "path": "C:\\ClusterStorage\\UserStorage_3",
+                  "free": 301216034816,
+                  "size": 304875569152
+                }
+              ],
+              "owner": "LB-NODE01",
+              "state": "Online"
+            }
+          ],
+          "encryption": [
+            {
+              "volumeType": "OperatingSystem",
+              "encryptionPercentage": 0,
+              "volumeStatus": "FullyDecrypted",
+              "mountPoint": "C:",
+              "protectionStatus": "Off"
+            },
+            {
+              "volumeType": "Data",
+              "encryptionPercentage": 0,
+              "volumeStatus": "FullyDecrypted",
+              "mountPoint": "\\\\?\\Volume{816f7613-156d-4e1b-9fa4-005792ad59e1}\\",
+              "protectionStatus": "Off"
+            },
+            {
+              "volumeType": "Data",
+              "encryptionPercentage": 100,
+              "volumeStatus": "FullyEncrypted",
+              "mountPoint": "\\\\?\\Volume{37420f95-a9f1-4cc7-a2f0-eb334925fa13}\\",
+              "protectionStatus": "On"
+            },
+            {
+              "volumeType": "Data",
+              "encryptionPercentage": null,
+              "volumeStatus": "",
+              "mountPoint": "\\\\?\\Volume{33248915-85dd-40f1-b256-0d440c09ee72}\\",
+              "protectionStatus": "Unknown"
+            },
+            {
+              "volumeType": "Data",
+              "encryptionPercentage": null,
+              "volumeStatus": "",
+              "mountPoint": "\\\\?\\Volume{0866b1b6-6794-405f-a991-79d64b60f984}\\",
+              "protectionStatus": "Unknown"
+            },
+            {
+              "volumeType": "Data",
+              "encryptionPercentage": null,
+              "volumeStatus": "",
+              "mountPoint": "\\\\?\\Volume{58592f9e-d29a-409a-9f05-fb354c5e58c7}\\",
+              "protectionStatus": "Unknown"
+            }
+          ],
+          "defenderEnabled": true,
+          "clusterNodes": [
+            {
+              "nodeWeight": 1,
+              "name": "LB-NODE01",
+              "dynamicWeight": 1,
+              "state": "Up"
+            },
+            {
+              "nodeWeight": 1,
+              "name": "LB-NODE02",
+              "dynamicWeight": 1,
+              "state": "Up"
+            },
+            {
+              "nodeWeight": 1,
+              "name": "LB-NODE03",
+              "dynamicWeight": 1,
+              "state": "Up"
+            }
+          ],
+          "name": "LB-NODE01",
+          "services": [
+            {
+              "state": "Running",
+              "name": "clussvc"
+            },
+            {
+              "state": "Running",
+              "name": "ExtensionService"
+            },
+            {
+              "state": "Running",
+              "name": "GCArcService"
+            },
+            {
+              "state": "Running",
+              "name": "himds"
+            },
+            {
+              "state": "Running",
+              "name": "vmms"
+            }
+          ],
+          "domainRole": 3,
+          "quorumType": "Majority",
+          "observedAdmin": {
+            "sid": "S-1-5-21-119919089-2157895211-3268838741-500",
+            "name": "ASBuiltInAdmin",
+            "enabled": true
+          },
+          "clusterGroups": [
+            {
+              "name": "32c9b21328b3df180e0d814a8afe5134fa140c2909569-control-plane-0-17b02de3",
+              "owner": "LB-NODE01",
+              "state": "Online"
+            },
+            {
+              "name": "923c0194-3ed4-449a-ae14-0f62861e0ec8",
+              "owner": "LB-NODE02",
+              "state": "Online"
+            },
+            {
+              "name": "Available Storage",
+              "owner": "LB-NODE01",
+              "state": "Offline"
+            },
+            {
+              "name": "Azure Stack HCI Download Service Cluster Group",
+              "owner": "LB-NODE01",
+              "state": "Online"
+            },
+            {
+              "name": "Azure Stack HCI Health Service Cluster Group",
+              "owner": "LB-NODE01",
+              "state": "Online"
+            },
+            {
+              "name": "Azure Stack HCI Orchestrator Service Cluster Group",
+              "owner": "LB-NODE03",
+              "state": "Online"
+            },
+            {
+              "name": "Azure Stack HCI Update Service Cluster Group",
+              "owner": "LB-NODE01",
+              "state": "Online"
+            },
+            {
+              "name": "ca-17cc5c78-7615-4d09-b56a-d1fa327f869c",
+              "owner": "LB-NODE01",
+              "state": "Online"
+            },
+            {
+              "name": "Cloud Management",
+              "owner": "LB-NODE01",
+              "state": "Online"
+            },
+            {
+              "name": "Cluster Group",
+              "owner": "LB-NODE01",
+              "state": "Online"
+            },
+            {
+              "name": "SDDC Group",
+              "owner": "LB-NODE01",
+              "state": "Online"
+            }
+          ],
+          "storageJobs": [],
+          "domain": "ad.localbox.test",
+          "localDisks": [
+            {
+              "isBoot": true,
+              "uniqueId": "600224802C243E85B50464E0D80BC634",
+              "size": 137438953472,
+              "isSystem": true
+            },
+            {
+              "isBoot": false,
+              "uniqueId": "D82EEC019A25474789543A1796B552BB",
+              "size": 304942678016,
+              "isSystem": false
+            },
+            {
+              "isBoot": false,
+              "uniqueId": "97F0D5071BB7314E9F51102237F77085",
+              "size": 25769803776,
+              "isSystem": false
+            },
+            {
+              "isBoot": false,
+              "uniqueId": "4C06845FA8C574499A937BD3EB57736A",
+              "size": 304942678016,
+              "isSystem": false
+            },
+            {
+              "isBoot": false,
+              "uniqueId": "7C7DA96B2870124CADF176559F3F64F7",
+              "size": 304942678016,
+              "isSystem": false
+            },
+            {
+              "isBoot": false,
+              "uniqueId": "9E5467C0BAC8834987723430C063E2C3",
+              "size": 270582939648,
+              "isSystem": false
+            }
+          ],
+          "storageSpacesDirectState": "Enabled",
+          "quorumResourceName": null,
+          "clusterName": "smal-localbox01",
+          "storagePools": [
+            {
+              "uniqueId": "{923c0194-3ed4-449a-ae14-0f62861e0ec8}",
+              "allocated": 1222455066624,
+              "size": 2177535836160,
+              "name": "SU1_Pool",
+              "health": "Healthy",
+              "members": [
+                {
+                  "uniqueId": "600224805454A96E242F3C38305128AC",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "600224802DF5A6C7E8F6062832A93BAC",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "6002248018A9EA3E37A91804553ABFEE",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "6002248065ACD99B54C87E76586527CA",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "60022480B25DB49F18CA0B5A7F55FAF2",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "60022480F1883A655718A83EB381308E",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "60022480333C4CF1EF75B7CA8C7973A3",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "6002248037A2A230372B3EC87A9D3377",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "60022480D47B1977B201A09A9AD85C7E",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "600224801E3FB24517D8C5F2124F7E30",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "600224801933BE540257E4937DA41512",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "600224802F65BE3E670733600EC131EF",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                }
+              ],
+              "operationalStatus": [
+                "OK"
+              ]
+            }
+          ],
+          "nestedVms": [
+            {
+              "state": "Running",
+              "name": "32c9b21328b3df180e0d814a8afe5134fa140c2909569-control-plane-0-17b02de3",
+              "id": "4c6ca5cc-8c9a-499b-8ffe-c029bbfd3522",
+              "memoryBytes": 8589934592
+            }
+          ],
+          "virtualDisks": [
+            {
+              "uniqueId": "D82EEC019A25474789543A1796B552BB",
+              "provisioning": "Thin",
+              "size": 304942678016,
+              "resiliency": "Mirror",
+              "name": "UserStorage_1",
+              "health": "Healthy",
+              "dataCopies": 3,
+              "footprint": 143344533504
+            },
+            {
+              "uniqueId": "97F0D5071BB7314E9F51102237F77085",
+              "provisioning": "Fixed",
+              "size": 25769803776,
+              "resiliency": "Mirror",
+              "name": "ClusterPerformanceHistory",
+              "health": "Healthy",
+              "dataCopies": 3,
+              "footprint": 78920024064
+            },
+            {
+              "uniqueId": "4C06845FA8C574499A937BD3EB57736A",
+              "provisioning": "Thin",
+              "size": 304942678016,
+              "resiliency": "Mirror",
+              "name": "UserStorage_2",
+              "health": "Healthy",
+              "dataCopies": 3,
+              "footprint": 91804925952
+            },
+            {
+              "uniqueId": "7C7DA96B2870124CADF176559F3F64F7",
+              "provisioning": "Thin",
+              "size": 304942678016,
+              "resiliency": "Mirror",
+              "name": "UserStorage_3",
+              "health": "Healthy",
+              "dataCopies": 3,
+              "footprint": 91804925952
+            },
+            {
+              "uniqueId": "9E5467C0BAC8834987723430C063E2C3",
+              "provisioning": "Fixed",
+              "size": 270582939648,
+              "resiliency": "Mirror",
+              "name": "Infrastructure_1",
+              "health": "Healthy",
+              "dataCopies": 3,
+              "footprint": 813359431680
+            }
+          ],
+          "firewallEnabled": true,
+          "PSComputerName": "LB-NODE01",
+          "RunspaceId": "85dbde7f-ef7c-419f-9e21-238586cd5b16",
+          "PSShowComputerName": true
+        },
+        "name": "LB-NODE01",
+        "state": "Running"
+      },
+      {
+        "vmId": "12a44e0c-cc08-4c4c-a812-fa0b56efdbc3",
+        "guest": {
+          "csv": [
+            {
+              "name": "Cluster Virtual Disk (Infrastructure_1)",
+              "volumes": [
+                {
+                  "path": "C:\\ClusterStorage\\Infrastructure_1",
+                  "free": 236251860992,
+                  "size": 270515830784
+                }
+              ],
+              "owner": "LB-NODE03",
+              "state": "Online"
+            },
+            {
+              "name": "Cluster Virtual Disk (UserStorage_1)",
+              "volumes": [
+                {
+                  "path": "C:\\ClusterStorage\\UserStorage_1",
+                  "free": 285591842816,
+                  "size": 304875569152
+                }
+              ],
+              "owner": "LB-NODE03",
+              "state": "Online"
+            },
+            {
+              "name": "Cluster Virtual Disk (UserStorage_2)",
+              "volumes": [
+                {
+                  "path": "C:\\ClusterStorage\\UserStorage_2",
+                  "free": 301216034816,
+                  "size": 304875569152
+                }
+              ],
+              "owner": "LB-NODE02",
+              "state": "Online"
+            },
+            {
+              "name": "Cluster Virtual Disk (UserStorage_3)",
+              "volumes": [
+                {
+                  "path": "C:\\ClusterStorage\\UserStorage_3",
+                  "free": 301216034816,
+                  "size": 304875569152
+                }
+              ],
+              "owner": "LB-NODE01",
+              "state": "Online"
+            }
+          ],
+          "encryption": [
+            {
+              "volumeType": "OperatingSystem",
+              "encryptionPercentage": 0,
+              "volumeStatus": "FullyDecrypted",
+              "mountPoint": "C:",
+              "protectionStatus": "Off"
+            },
+            {
+              "volumeType": "Data",
+              "encryptionPercentage": null,
+              "volumeStatus": "",
+              "mountPoint": "\\\\?\\Volume{37420f95-a9f1-4cc7-a2f0-eb334925fa13}\\",
+              "protectionStatus": "Unknown"
+            },
+            {
+              "volumeType": "Data",
+              "encryptionPercentage": 100,
+              "volumeStatus": "FullyEncrypted",
+              "mountPoint": "\\\\?\\Volume{33248915-85dd-40f1-b256-0d440c09ee72}\\",
+              "protectionStatus": "On"
+            },
+            {
+              "volumeType": "Data",
+              "encryptionPercentage": null,
+              "volumeStatus": "",
+              "mountPoint": "\\\\?\\Volume{0866b1b6-6794-405f-a991-79d64b60f984}\\",
+              "protectionStatus": "Unknown"
+            },
+            {
+              "volumeType": "Data",
+              "encryptionPercentage": null,
+              "volumeStatus": "",
+              "mountPoint": "\\\\?\\Volume{58592f9e-d29a-409a-9f05-fb354c5e58c7}\\",
+              "protectionStatus": "Unknown"
+            }
+          ],
+          "defenderEnabled": true,
+          "clusterNodes": [
+            {
+              "nodeWeight": 1,
+              "name": "LB-NODE01",
+              "dynamicWeight": 1,
+              "state": "Up"
+            },
+            {
+              "nodeWeight": 1,
+              "name": "LB-NODE02",
+              "dynamicWeight": 1,
+              "state": "Up"
+            },
+            {
+              "nodeWeight": 1,
+              "name": "LB-NODE03",
+              "dynamicWeight": 1,
+              "state": "Up"
+            }
+          ],
+          "name": "LB-NODE02",
+          "services": [
+            {
+              "state": "Running",
+              "name": "clussvc"
+            },
+            {
+              "state": "Running",
+              "name": "ExtensionService"
+            },
+            {
+              "state": "Running",
+              "name": "GCArcService"
+            },
+            {
+              "state": "Running",
+              "name": "himds"
+            },
+            {
+              "state": "Running",
+              "name": "vmms"
+            }
+          ],
+          "domainRole": 3,
+          "quorumType": "Majority",
+          "observedAdmin": {
+            "sid": "S-1-5-21-1238301043-3861321143-296726168-500",
+            "name": "ASBuiltInAdmin",
+            "enabled": true
+          },
+          "clusterGroups": [
+            {
+              "name": "32c9b21328b3df180e0d814a8afe5134fa140c2909569-control-plane-0-17b02de3",
+              "owner": "LB-NODE01",
+              "state": "Online"
+            },
+            {
+              "name": "923c0194-3ed4-449a-ae14-0f62861e0ec8",
+              "owner": "LB-NODE02",
+              "state": "Online"
+            },
+            {
+              "name": "Available Storage",
+              "owner": "LB-NODE01",
+              "state": "Offline"
+            },
+            {
+              "name": "Azure Stack HCI Download Service Cluster Group",
+              "owner": "LB-NODE01",
+              "state": "Online"
+            },
+            {
+              "name": "Azure Stack HCI Health Service Cluster Group",
+              "owner": "LB-NODE01",
+              "state": "Online"
+            },
+            {
+              "name": "Azure Stack HCI Orchestrator Service Cluster Group",
+              "owner": "LB-NODE03",
+              "state": "Online"
+            },
+            {
+              "name": "Azure Stack HCI Update Service Cluster Group",
+              "owner": "LB-NODE01",
+              "state": "Online"
+            },
+            {
+              "name": "ca-17cc5c78-7615-4d09-b56a-d1fa327f869c",
+              "owner": "LB-NODE01",
+              "state": "Online"
+            },
+            {
+              "name": "Cloud Management",
+              "owner": "LB-NODE01",
+              "state": "Online"
+            },
+            {
+              "name": "Cluster Group",
+              "owner": "LB-NODE01",
+              "state": "Online"
+            },
+            {
+              "name": "SDDC Group",
+              "owner": "LB-NODE01",
+              "state": "Online"
+            }
+          ],
+          "storageJobs": [
+            {
+              "percentComplete": 100,
+              "name": "AddPhysicalDisk",
+              "state": "Completed"
+            },
+            {
+              "percentComplete": 100,
+              "name": "AddPhysicalDisk",
+              "state": "Completed"
+            },
+            {
+              "percentComplete": 100,
+              "name": "AddPhysicalDisk",
+              "state": "Completed"
+            },
+            {
+              "percentComplete": 100,
+              "name": "AddPhysicalDisk",
+              "state": "Completed"
+            },
+            {
+              "percentComplete": 100,
+              "name": "AddPhysicalDisk",
+              "state": "Completed"
+            },
+            {
+              "percentComplete": 100,
+              "name": "AddPhysicalDisk",
+              "state": "Completed"
+            },
+            {
+              "percentComplete": 100,
+              "name": "AddPhysicalDisk",
+              "state": "Completed"
+            },
+            {
+              "percentComplete": 100,
+              "name": "AddPhysicalDisk",
+              "state": "Completed"
+            },
+            {
+              "percentComplete": 100,
+              "name": "AddPhysicalDisk",
+              "state": "Completed"
+            },
+            {
+              "percentComplete": 100,
+              "name": "AddPhysicalDisk",
+              "state": "Completed"
+            }
+          ],
+          "domain": "ad.localbox.test",
+          "localDisks": [
+            {
+              "isBoot": true,
+              "uniqueId": "60022480232ACEB031BB14739AF3844B",
+              "size": 137438953472,
+              "isSystem": true
+            },
+            {
+              "isBoot": false,
+              "uniqueId": "D82EEC019A25474789543A1796B552BB",
+              "size": 304942678016,
+              "isSystem": false
+            },
+            {
+              "isBoot": false,
+              "uniqueId": "97F0D5071BB7314E9F51102237F77085",
+              "size": 25769803776,
+              "isSystem": false
+            },
+            {
+              "isBoot": false,
+              "uniqueId": "4C06845FA8C574499A937BD3EB57736A",
+              "size": 304942678016,
+              "isSystem": false
+            },
+            {
+              "isBoot": false,
+              "uniqueId": "7C7DA96B2870124CADF176559F3F64F7",
+              "size": 304942678016,
+              "isSystem": false
+            },
+            {
+              "isBoot": false,
+              "uniqueId": "9E5467C0BAC8834987723430C063E2C3",
+              "size": 270582939648,
+              "isSystem": false
+            }
+          ],
+          "storageSpacesDirectState": "Enabled",
+          "quorumResourceName": null,
+          "clusterName": "smal-localbox01",
+          "storagePools": [
+            {
+              "uniqueId": "{923c0194-3ed4-449a-ae14-0f62861e0ec8}",
+              "allocated": 1224870985728,
+              "size": 3810687713280,
+              "name": "SU1_Pool",
+              "health": "Healthy",
+              "members": [
+                {
+                  "uniqueId": "600224805454A96E242F3C38305128AC",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "600224802DF5A6C7E8F6062832A93BAC",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "6002248018A9EA3E37A91804553ABFEE",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "60022480F2EB46231B6D090E25B7E955",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "600224807121ACBD5E35A4142D2F7A56",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "6002248065ACD99B54C87E76586527CA",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "60022480B25DB49F18CA0B5A7F55FAF2",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "60022480F1883A655718A83EB381308E",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "600224802FE5FC3B31A2A11084AE319B",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "60022480333C4CF1EF75B7CA8C7973A3",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "60022480F2760AED6C58DF123F3F68C6",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "6002248037A2A230372B3EC87A9D3377",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "600224803C86DE5E74F32EB919731AE6",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "60022480BFE050F9BC84F138E55CD318",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "600224805E81159EEE2C32758D9E8643",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "6002248007513A9F9FD6A09C2C934609",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "600224804F5CAE95A07EC785BB316F9E",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "60022480D47B1977B201A09A9AD85C7E",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "600224801E3FB24517D8C5F2124F7E30",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "600224801933BE540257E4937DA41512",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "600224802F65BE3E670733600EC131EF",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                }
+              ],
+              "operationalStatus": [
+                "OK"
+              ]
+            }
+          ],
+          "nestedVms": [],
+          "virtualDisks": [
+            {
+              "uniqueId": "D82EEC019A25474789543A1796B552BB",
+              "provisioning": "Thin",
+              "size": 304942678016,
+              "resiliency": "Mirror",
+              "name": "UserStorage_1",
+              "health": "Healthy",
+              "dataCopies": 3,
+              "footprint": 143344533504
+            },
+            {
+              "uniqueId": "97F0D5071BB7314E9F51102237F77085",
+              "provisioning": "Fixed",
+              "size": 25769803776,
+              "resiliency": "Mirror",
+              "name": "ClusterPerformanceHistory",
+              "health": "Healthy",
+              "dataCopies": 3,
+              "footprint": 78920024064
+            },
+            {
+              "uniqueId": "4C06845FA8C574499A937BD3EB57736A",
+              "provisioning": "Thin",
+              "size": 304942678016,
+              "resiliency": "Mirror",
+              "name": "UserStorage_2",
+              "health": "Healthy",
+              "dataCopies": 3,
+              "footprint": 91804925952
+            },
+            {
+              "uniqueId": "7C7DA96B2870124CADF176559F3F64F7",
+              "provisioning": "Thin",
+              "size": 304942678016,
+              "resiliency": "Mirror",
+              "name": "UserStorage_3",
+              "health": "Healthy",
+              "dataCopies": 3,
+              "footprint": 91804925952
+            },
+            {
+              "uniqueId": "9E5467C0BAC8834987723430C063E2C3",
+              "provisioning": "Fixed",
+              "size": 270582939648,
+              "resiliency": "Mirror",
+              "name": "Infrastructure_1",
+              "health": "Healthy",
+              "dataCopies": 3,
+              "footprint": 813359431680
+            }
+          ],
+          "firewallEnabled": true,
+          "PSComputerName": "LB-NODE02",
+          "RunspaceId": "a6a975f7-59ec-4582-bdf9-2708a687551b",
+          "PSShowComputerName": true
+        },
+        "name": "LB-NODE02",
+        "state": "Running"
+      },
+      {
+        "vmId": "5b6eba15-fa82-4e12-9e45-5ffbcd48c8a9",
+        "guest": {
+          "csv": [
+            {
+              "name": "Cluster Virtual Disk (Infrastructure_1)",
+              "volumes": [
+                {
+                  "path": "C:\\ClusterStorage\\Infrastructure_1",
+                  "free": 236251381760,
+                  "size": 270515830784
+                }
+              ],
+              "owner": "LB-NODE03",
+              "state": "Online"
+            },
+            {
+              "name": "Cluster Virtual Disk (UserStorage_1)",
+              "volumes": [
+                {
+                  "path": "C:\\ClusterStorage\\UserStorage_1",
+                  "free": 285591842816,
+                  "size": 304875569152
+                }
+              ],
+              "owner": "LB-NODE03",
+              "state": "Online"
+            },
+            {
+              "name": "Cluster Virtual Disk (UserStorage_2)",
+              "volumes": [
+                {
+                  "path": "C:\\ClusterStorage\\UserStorage_2",
+                  "free": 301216034816,
+                  "size": 304875569152
+                }
+              ],
+              "owner": "LB-NODE02",
+              "state": "Online"
+            },
+            {
+              "name": "Cluster Virtual Disk (UserStorage_3)",
+              "volumes": [
+                {
+                  "path": "C:\\ClusterStorage\\UserStorage_3",
+                  "free": 301216034816,
+                  "size": 304875569152
+                }
+              ],
+              "owner": "LB-NODE01",
+              "state": "Online"
+            }
+          ],
+          "encryption": [
+            {
+              "volumeType": "OperatingSystem",
+              "encryptionPercentage": 0,
+              "volumeStatus": "FullyDecrypted",
+              "mountPoint": "C:",
+              "protectionStatus": "Off"
+            },
+            {
+              "volumeType": "Data",
+              "encryptionPercentage": null,
+              "volumeStatus": "",
+              "mountPoint": "\\\\?\\Volume{37420f95-a9f1-4cc7-a2f0-eb334925fa13}\\",
+              "protectionStatus": "Unknown"
+            },
+            {
+              "volumeType": "Data",
+              "encryptionPercentage": null,
+              "volumeStatus": "",
+              "mountPoint": "\\\\?\\Volume{33248915-85dd-40f1-b256-0d440c09ee72}\\",
+              "protectionStatus": "Unknown"
+            },
+            {
+              "volumeType": "Data",
+              "encryptionPercentage": 100,
+              "volumeStatus": "FullyEncrypted",
+              "mountPoint": "\\\\?\\Volume{0866b1b6-6794-405f-a991-79d64b60f984}\\",
+              "protectionStatus": "On"
+            },
+            {
+              "volumeType": "Data",
+              "encryptionPercentage": 100,
+              "volumeStatus": "FullyEncrypted",
+              "mountPoint": "\\\\?\\Volume{58592f9e-d29a-409a-9f05-fb354c5e58c7}\\",
+              "protectionStatus": "On"
+            }
+          ],
+          "defenderEnabled": true,
+          "clusterNodes": [
+            {
+              "nodeWeight": 1,
+              "name": "LB-NODE01",
+              "dynamicWeight": 1,
+              "state": "Up"
+            },
+            {
+              "nodeWeight": 1,
+              "name": "LB-NODE02",
+              "dynamicWeight": 1,
+              "state": "Up"
+            },
+            {
+              "nodeWeight": 1,
+              "name": "LB-NODE03",
+              "dynamicWeight": 1,
+              "state": "Up"
+            }
+          ],
+          "name": "LB-NODE03",
+          "services": [
+            {
+              "state": "Running",
+              "name": "clussvc"
+            },
+            {
+              "state": "Running",
+              "name": "ExtensionService"
+            },
+            {
+              "state": "Running",
+              "name": "GCArcService"
+            },
+            {
+              "state": "Running",
+              "name": "himds"
+            },
+            {
+              "state": "Running",
+              "name": "vmms"
+            }
+          ],
+          "domainRole": 3,
+          "quorumType": "Majority",
+          "observedAdmin": {
+            "sid": "S-1-5-21-1639994792-1922767114-3822509950-500",
+            "name": "ASBuiltInAdmin",
+            "enabled": true
+          },
+          "clusterGroups": [
+            {
+              "name": "32c9b21328b3df180e0d814a8afe5134fa140c2909569-control-plane-0-17b02de3",
+              "owner": "LB-NODE01",
+              "state": "Online"
+            },
+            {
+              "name": "923c0194-3ed4-449a-ae14-0f62861e0ec8",
+              "owner": "LB-NODE02",
+              "state": "Online"
+            },
+            {
+              "name": "Available Storage",
+              "owner": "LB-NODE01",
+              "state": "Offline"
+            },
+            {
+              "name": "Azure Stack HCI Download Service Cluster Group",
+              "owner": "LB-NODE01",
+              "state": "Online"
+            },
+            {
+              "name": "Azure Stack HCI Health Service Cluster Group",
+              "owner": "LB-NODE01",
+              "state": "Online"
+            },
+            {
+              "name": "Azure Stack HCI Orchestrator Service Cluster Group",
+              "owner": "LB-NODE03",
+              "state": "Online"
+            },
+            {
+              "name": "Azure Stack HCI Update Service Cluster Group",
+              "owner": "LB-NODE01",
+              "state": "Online"
+            },
+            {
+              "name": "ca-17cc5c78-7615-4d09-b56a-d1fa327f869c",
+              "owner": "LB-NODE01",
+              "state": "Online"
+            },
+            {
+              "name": "Cloud Management",
+              "owner": "LB-NODE01",
+              "state": "Online"
+            },
+            {
+              "name": "Cluster Group",
+              "owner": "LB-NODE01",
+              "state": "Online"
+            },
+            {
+              "name": "SDDC Group",
+              "owner": "LB-NODE01",
+              "state": "Online"
+            }
+          ],
+          "storageJobs": [
+            {
+              "percentComplete": 100,
+              "name": "AddPhysicalDisk",
+              "state": "Completed"
+            },
+            {
+              "percentComplete": 100,
+              "name": "AddPhysicalDisk",
+              "state": "Completed"
+            },
+            {
+              "percentComplete": 100,
+              "name": "AddPhysicalDisk",
+              "state": "Completed"
+            },
+            {
+              "percentComplete": 100,
+              "name": "AddPhysicalDisk",
+              "state": "Completed"
+            },
+            {
+              "percentComplete": 100,
+              "name": "AddPhysicalDisk",
+              "state": "Completed"
+            },
+            {
+              "percentComplete": 100,
+              "name": "AddPhysicalDisk",
+              "state": "Completed"
+            },
+            {
+              "percentComplete": 100,
+              "name": "AddPhysicalDisk",
+              "state": "Completed"
+            },
+            {
+              "percentComplete": 100,
+              "name": "AddPhysicalDisk",
+              "state": "Completed"
+            },
+            {
+              "percentComplete": 100,
+              "name": "AddPhysicalDisk",
+              "state": "Completed"
+            },
+            {
+              "percentComplete": 100,
+              "name": "Cache update",
+              "state": "Completed"
+            },
+            {
+              "percentComplete": 100,
+              "name": "AddPhysicalDisk",
+              "state": "Completed"
+            },
+            {
+              "percentComplete": 100,
+              "name": "AddPhysicalDisk",
+              "state": "Completed"
+            },
+            {
+              "percentComplete": 100,
+              "name": "AddPhysicalDisk",
+              "state": "Completed"
+            }
+          ],
+          "domain": "ad.localbox.test",
+          "localDisks": [
+            {
+              "isBoot": true,
+              "uniqueId": "60022480049AA5B12256BCCC17475830",
+              "size": 137438953472,
+              "isSystem": true
+            },
+            {
+              "isBoot": false,
+              "uniqueId": "D82EEC019A25474789543A1796B552BB",
+              "size": 304942678016,
+              "isSystem": false
+            },
+            {
+              "isBoot": false,
+              "uniqueId": "97F0D5071BB7314E9F51102237F77085",
+              "size": 25769803776,
+              "isSystem": false
+            },
+            {
+              "isBoot": false,
+              "uniqueId": "4C06845FA8C574499A937BD3EB57736A",
+              "size": 304942678016,
+              "isSystem": false
+            },
+            {
+              "isBoot": false,
+              "uniqueId": "7C7DA96B2870124CADF176559F3F64F7",
+              "size": 304942678016,
+              "isSystem": false
+            },
+            {
+              "isBoot": false,
+              "uniqueId": "9E5467C0BAC8834987723430C063E2C3",
+              "size": 270582939648,
+              "isSystem": false
+            }
+          ],
+          "storageSpacesDirectState": "Enabled",
+          "quorumResourceName": null,
+          "clusterName": "smal-localbox01",
+          "storagePools": [
+            {
+              "uniqueId": "{923c0194-3ed4-449a-ae14-0f62861e0ec8}",
+              "allocated": 1225676292096,
+              "size": 4355071672320,
+              "name": "SU1_Pool",
+              "health": "Healthy",
+              "members": [
+                {
+                  "uniqueId": "600224805454A96E242F3C38305128AC",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "600224802DF5A6C7E8F6062832A93BAC",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "6002248018A9EA3E37A91804553ABFEE",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "60022480F2EB46231B6D090E25B7E955",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "600224807121ACBD5E35A4142D2F7A56",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "6002248065ACD99B54C87E76586527CA",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "60022480B25DB49F18CA0B5A7F55FAF2",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "60022480F1883A655718A83EB381308E",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "600224802FE5FC3B31A2A11084AE319B",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "60022480333C4CF1EF75B7CA8C7973A3",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "60022480F2760AED6C58DF123F3F68C6",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "6002248037A2A230372B3EC87A9D3377",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "600224803C86DE5E74F32EB919731AE6",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "60022480BFE050F9BC84F138E55CD318",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "600224805E81159EEE2C32758D9E8643",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "6002248007513A9F9FD6A09C2C934609",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "600224804F5CAE95A07EC785BB316F9E",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "60022480D47B1977B201A09A9AD85C7E",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "60022480E2FEC6B0962F5C15638F2E97",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "600224801E3FB24517D8C5F2124F7E30",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "60022480909BA09EED480D5E9A7AAE9E",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "600224801933BE540257E4937DA41512",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "600224802F65BE3E670733600EC131EF",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                },
+                {
+                  "uniqueId": "6002248077E67117E58560DB2E2F2135",
+                  "health": "Healthy",
+                  "usage": "Auto-Select",
+                  "size": 182536110080,
+                  "mediaType": "HDD"
+                }
+              ],
+              "operationalStatus": [
+                "OK"
+              ]
+            }
+          ],
+          "nestedVms": [],
+          "virtualDisks": [
+            {
+              "uniqueId": "D82EEC019A25474789543A1796B552BB",
+              "provisioning": "Thin",
+              "size": 304942678016,
+              "resiliency": "Mirror",
+              "name": "UserStorage_1",
+              "health": "Healthy",
+              "dataCopies": 3,
+              "footprint": 143344533504
+            },
+            {
+              "uniqueId": "97F0D5071BB7314E9F51102237F77085",
+              "provisioning": "Fixed",
+              "size": 25769803776,
+              "resiliency": "Mirror",
+              "name": "ClusterPerformanceHistory",
+              "health": "Healthy",
+              "dataCopies": 3,
+              "footprint": 78920024064
+            },
+            {
+              "uniqueId": "4C06845FA8C574499A937BD3EB57736A",
+              "provisioning": "Thin",
+              "size": 304942678016,
+              "resiliency": "Mirror",
+              "name": "UserStorage_2",
+              "health": "Healthy",
+              "dataCopies": 3,
+              "footprint": 91804925952
+            },
+            {
+              "uniqueId": "7C7DA96B2870124CADF176559F3F64F7",
+              "provisioning": "Thin",
+              "size": 304942678016,
+              "resiliency": "Mirror",
+              "name": "UserStorage_3",
+              "health": "Healthy",
+              "dataCopies": 3,
+              "footprint": 91804925952
+            },
+            {
+              "uniqueId": "9E5467C0BAC8834987723430C063E2C3",
+              "provisioning": "Fixed",
+              "size": 270582939648,
+              "resiliency": "Mirror",
+              "name": "Infrastructure_1",
+              "health": "Healthy",
+              "dataCopies": 3,
+              "footprint": 813359431680
+            }
+          ],
+          "firewallEnabled": true,
+          "PSComputerName": "LB-NODE03",
+          "RunspaceId": "9ec0bf17-e1f9-4fbe-9fce-d4d9021056e3",
+          "PSShowComputerName": true
+        },
+        "name": "LB-NODE03",
+        "state": "Running"
+      }
+    ],
+    "mutationPerformed": false,
+    "platformReadinessVerified": false,
+    "observationStatus": "complete-read-only",
+    "credentialsReset": false,
+    "outerPool": [
+      {
+        "memberCount": 8,
+        "health": "Healthy",
+        "uniqueId": "{b8174816-65a9-46f7-87c1-b189be0b90e5}"
+      }
+    ]
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-30T15:47:35.663561+02:00"
+}

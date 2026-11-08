@@ -1,0 +1,50 @@
+{
+  "beganAtUtc": "2026-10-28T11:55:40.730068+00:00",
+  "status": "failed-inspect-before-resume",
+  "sourceCommit": "1ca70c134343b6224bb875b45e189f8a5316ad42",
+  "deploymentName": "localbox-platform-prereqs-20261028",
+  "scope": "six-new-owned-platform-prerequisites-only",
+  "secretsUploaded": false,
+  "rolesCreated": false,
+  "arcRegistrationPerformed": false,
+  "previewSha256": "8321e80754168af167a27a5830610d7a362436e696b01c561563529e2d88d9b0",
+  "deploymentId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.Resources/deployments/localbox-platform-prereqs-20261028",
+  "deploymentState": "Succeeded",
+  "resources": [
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.KeyVault/vaults/kv-lbox-weu-4766ea",
+      "type": "Microsoft.KeyVault/vaults"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.Storage/storageAccounts/stlboxwitweu4766ea",
+      "type": "Microsoft.Storage/storageAccounts"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.Storage/storageAccounts/stlboxdiagweu4766ea",
+      "type": "Microsoft.Storage/storageAccounts"
+    }
+  ],
+  "vault": {
+    "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.KeyVault/vaults/kv-lbox-weu-4766ea",
+    "publicNetworkAccess": "Disabled",
+    "purgeProtection": true,
+    "rbac": true,
+    "softDeleteDays": 90
+  },
+  "storage": [
+    {
+      "allowBlobPublicAccess": false,
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.Storage/storageAccounts/stlboxdiagweu4766ea",
+      "publicNetworkAccess": "Disabled",
+      "tls": "TLS1_2"
+    },
+    {
+      "allowBlobPublicAccess": false,
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.Storage/storageAccounts/stlboxwitweu4766ea",
+      "publicNetworkAccess": "Disabled",
+      "tls": "TLS1_2"
+    }
+  ],
+  "errorType": "RuntimeError",
+  "finishedAtUtc": "2026-10-28T11:57:31.357699+00:00"
+}

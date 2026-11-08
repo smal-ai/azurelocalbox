@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "runId": "local-guests-20261028-01",
+  "scope": "approved-local-guest-images-and-offline-vms-only",
+  "azureVmResourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+  "minimumFreeBytes": 214748364800,
+  "maximumVirtualDiskBytes": 1821066133504,
+  "newAzureResources": false,
+  "bootGuestsInThisPhase": false,
+  "media": [
+    {
+      "kind": "evaluation-dc",
+      "path": "C:\\ProgramData\\AzureLocalBox\\Bootstrap\\eval-media-20261028-01\\WindowsServer2025Evaluation.26100.32230.x64.en-us.iso",
+      "sha256": "7B052573BA7894C9924E3E87BA732CCD354D18CB75A883EFA9B900EA125BFD51",
+      "lengthBytes": 8152356864,
+      "edition": "ServerStandardEval",
+      "version": "10.0.26100.32230",
+      "index": 1,
+      "guests": ["LB-DC01"]
+    },
+    {
+      "kind": "azure-local",
+      "path": "C:\\ProgramData\\AzureLocalBox\\Artifacts\\2610\\AzureLocal24H2.26100.32230.LCM.12.2610.0.3098.x64.en-us.iso",
+      "sha256": "317330754A6DAC6F42C1BE40EB780E0959C6C3F7670B33D94556964CDCBC9E89",
+      "lengthBytes": 7491864576,
+      "edition": "ServerAzureStackHCICor",
+      "version": "10.0.26100.33650",
+      "index": 1,
+      "guests": ["LB-NODE01", "LB-NODE02"]
+    }
+  ]
+}

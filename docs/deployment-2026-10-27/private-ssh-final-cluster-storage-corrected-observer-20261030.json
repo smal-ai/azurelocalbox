@@ -1,0 +1,37 @@
+{
+  "beganAtSast": "2026-10-30T14:48:58.617506+02:00",
+  "status": "complete",
+  "commit": "ec50785885e972dcbc46fbe4caf061f5cdb432c9",
+  "script": "scripts/inspect-smal-three-node-final.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 37061,
+  "scriptTransport": "sha256-length-framed-utf8-stdin",
+  "renderedSourceSha256": "69a7458b13e07b0f5f67b2440ac5b5982790ddd104333c9dd2377d0934ea4b58",
+  "renderedSourceByteLength": 6957,
+  "unstreamedEncodedLength": 18552,
+  "guestCommandTimeoutSeconds": 300,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "platformReadinessVerified": false,
+    "phase": "LB-NODE01-credential-session",
+    "mutationPerformed": false,
+    "observationStatus": "failed-safe-diagnostic",
+    "sourceLine": 21,
+    "credentialsReset": false,
+    "errorType": "PSDirectException",
+    "errorCategory": "OpenError"
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-30T14:49:07.799734+02:00"
+}

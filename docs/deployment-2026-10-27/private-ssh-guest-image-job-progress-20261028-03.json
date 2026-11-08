@@ -1,0 +1,60 @@
+{
+  "beganAtSast": "2026-10-28T10:40:59.086310+02:00",
+  "status": "complete",
+  "commit": "0e8e0997505efdf015ba6da661608cde9ab46001",
+  "script": "scripts/read-smal-guest-image-job.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 34685,
+  "scriptTransport": "encoded-command",
+  "renderedSourceSha256": "053b91e2909772b7bfaa43b1157e24b2a916d44c1708f7e0c328de85a803c477",
+  "renderedSourceByteLength": 1215,
+  "unstreamedEncodedLength": 3240,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "virtualMachines": [],
+    "clusterBootstrapComplete": false,
+    "heartbeat": {
+      "processId": 6048,
+      "atUtc": "2026-10-28T08:41:00.0023740Z"
+    },
+    "state": {
+      "runId": "local-guests-20261028-01",
+      "sourceCommit": "0e8e0997505efdf015ba6da661608cde9ab46001",
+      "scope": "approved-local-guest-images-and-offline-vms-only",
+      "status": "running",
+      "phase": "LB-DC01-expand-windows-image",
+      "atUtc": "2026-10-28T08:37:33.2999334Z",
+      "errorType": null,
+      "errorLine": null,
+      "images": [],
+      "virtualMachines": [],
+      "guardianCreated": false,
+      "secretsCreated": true,
+      "bootstrapCleanupAndRotationRequired": true,
+      "clusterBootstrapComplete": false
+    },
+    "volume": {
+      "Size": 2181825495040,
+      "SizeRemaining": 2176876150784,
+      "HealthStatus": "Healthy"
+    },
+    "atUtc": "2026-10-28T08:41:05.9433189Z",
+    "taskExists": true,
+    "taskState": "Running",
+    "lastTaskResult": 267009
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-28T10:41:07.183712+02:00"
+}

@@ -1,0 +1,98 @@
+{
+  "beganAtSast": "2026-10-28T10:21:13.703242+02:00",
+  "status": "complete",
+  "commit": "256e37e2959cd7a216a52c8ec378cafae21f7f01",
+  "script": "scripts/read-smal-guest-input-job.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 47617,
+  "scriptTransport": "encoded-command",
+  "renderedSourceSha256": "ce7d205ffa5f2ffe2cc75ae6790145359447a5d5826b693b5144912deeda6f52",
+  "renderedSourceByteLength": 1295,
+  "unstreamedEncodedLength": 3456,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "manifestSha256": "A710FCC0466FF0825DABF55E8CF84675B702E4E91E4D4543B0AEAA1AE8C8EC48",
+    "clusterBootstrapComplete": false,
+    "workerProcesses": [
+      {
+        "ProcessId": 5840,
+        "ParentProcessId": 3924,
+        "ReadTransferCount": 3587451383,
+        "ReadOperationCount": 874985,
+        "KernelModeTime": 206406250,
+        "UserModeTime": 77187500,
+        "WorkingSetSize": 252862464
+      }
+    ],
+    "state": {
+      "runId": "guest-inputs-20261028-02",
+      "sourceCommit": "609a0d624f44276760dece818cf55376bdad0fad",
+      "scope": "approved-media-and-host-inspection-only",
+      "status": "running",
+      "phase": "azure-local-hash-check",
+      "atUtc": "2026-10-28T08:11:07.4845143Z",
+      "errorType": null,
+      "errorLine": null,
+      "result": {
+        "virtualMachines": [],
+        "ipv4": [
+          {
+            "InterfaceAlias": "Ethernet",
+            "IPAddress": "10.200.16.4",
+            "PrefixLength": 24,
+            "PrefixOrigin": 3
+          },
+          {
+            "InterfaceAlias": "Loopback Pseudo-Interface 1",
+            "IPAddress": "127.0.0.1",
+            "PrefixLength": 8,
+            "PrefixOrigin": 2
+          }
+        ],
+        "media": [],
+        "switches": [],
+        "defender": true,
+        "hnsQuery": {
+          "status": "failed"
+        },
+        "hnsService": [],
+        "nat": [],
+        "defaultRoutes": [
+          {
+            "InterfaceAlias": "Ethernet",
+            "NextHop": "10.200.16.1",
+            "RouteMetric": 1
+          }
+        ],
+        "hnsChildPid": 5416,
+        "volume": {
+          "DriveLetter": "V",
+          "Size": 2181825495040,
+          "SizeRemaining": 2181712248832,
+          "HealthStatus": "Healthy"
+        }
+      },
+      "clusterBootstrapComplete": false
+    },
+    "atUtc": "2026-10-28T08:21:21.4157035Z",
+    "taskExists": true,
+    "actualTriggerCount": 0,
+    "workerSha256": "2BA7C92F8F3A67E9C11CD30A79DDA851A0EC0D477684FED3B61F14447A246C5C",
+    "taskState": "Running",
+    "lastTaskResult": 267009
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-28T10:21:21.951457+02:00"
+}

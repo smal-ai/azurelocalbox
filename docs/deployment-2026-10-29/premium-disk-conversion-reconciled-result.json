@@ -1,0 +1,179 @@
+{
+  "beganAtUtc": "2026-10-29T08:13:30.489372+00:00",
+  "status": "complete-nine-existing-premium-disks-host-guests-storage-and-arc-verified",
+  "sourceCommit": "8eece46edc44301ca5a4161deecb2c714d05fda2",
+  "azureMutationPerformedByReconciliation": false,
+  "thirdNodePlanApplied": false,
+  "platformReadinessVerified": false,
+  "disks": [
+    {
+      "diskEncryptionSetId": null,
+      "diskSizeGB": 256,
+      "encryptionType": "EncryptionAtRestWithPlatformKey",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_0",
+      "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+      "name": "LocalBox-Client-DataDisk_0",
+      "securityType": null,
+      "sku": "Premium_LRS",
+      "state": "Attached",
+      "uniqueId": "57aeb75f-b0f0-49c3-9a12-3757392e496f"
+    },
+    {
+      "diskEncryptionSetId": null,
+      "diskSizeGB": 256,
+      "encryptionType": "EncryptionAtRestWithPlatformKey",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_1",
+      "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+      "name": "LocalBox-Client-DataDisk_1",
+      "securityType": null,
+      "sku": "Premium_LRS",
+      "state": "Attached",
+      "uniqueId": "af455474-8a07-435c-b964-b5d4febe16ae"
+    },
+    {
+      "diskEncryptionSetId": null,
+      "diskSizeGB": 256,
+      "encryptionType": "EncryptionAtRestWithPlatformKey",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_2",
+      "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+      "name": "LocalBox-Client-DataDisk_2",
+      "securityType": null,
+      "sku": "Premium_LRS",
+      "state": "Attached",
+      "uniqueId": "49b38c02-59cf-4198-af4c-d4397d2ebfe3"
+    },
+    {
+      "diskEncryptionSetId": null,
+      "diskSizeGB": 256,
+      "encryptionType": "EncryptionAtRestWithPlatformKey",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_3",
+      "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+      "name": "LocalBox-Client-DataDisk_3",
+      "securityType": null,
+      "sku": "Premium_LRS",
+      "state": "Attached",
+      "uniqueId": "84fd8226-1aa8-4294-b872-10276168aa1a"
+    },
+    {
+      "diskEncryptionSetId": null,
+      "diskSizeGB": 256,
+      "encryptionType": "EncryptionAtRestWithPlatformKey",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_4",
+      "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+      "name": "LocalBox-Client-DataDisk_4",
+      "securityType": null,
+      "sku": "Premium_LRS",
+      "state": "Attached",
+      "uniqueId": "9d86dc52-0d98-4c4d-948e-2edcf666626b"
+    },
+    {
+      "diskEncryptionSetId": null,
+      "diskSizeGB": 256,
+      "encryptionType": "EncryptionAtRestWithPlatformKey",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_5",
+      "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+      "name": "LocalBox-Client-DataDisk_5",
+      "securityType": null,
+      "sku": "Premium_LRS",
+      "state": "Attached",
+      "uniqueId": "9e9ad843-050b-4fa3-9258-4d545fd4d9a5"
+    },
+    {
+      "diskEncryptionSetId": null,
+      "diskSizeGB": 256,
+      "encryptionType": "EncryptionAtRestWithPlatformKey",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_6",
+      "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+      "name": "LocalBox-Client-DataDisk_6",
+      "securityType": null,
+      "sku": "Premium_LRS",
+      "state": "Attached",
+      "uniqueId": "ca978897-2089-4c3f-96ce-7cc19390737e"
+    },
+    {
+      "diskEncryptionSetId": null,
+      "diskSizeGB": 256,
+      "encryptionType": "EncryptionAtRestWithPlatformKey",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_7",
+      "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+      "name": "LocalBox-Client-DataDisk_7",
+      "securityType": null,
+      "sku": "Premium_LRS",
+      "state": "Attached",
+      "uniqueId": "e9bc84ea-0a1b-4718-b723-4f1210f6dec0"
+    },
+    {
+      "diskEncryptionSetId": null,
+      "diskSizeGB": 1024,
+      "encryptionType": "EncryptionAtRestWithPlatformKey",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-OSDisk",
+      "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+      "name": "LocalBox-Client-OSDisk",
+      "securityType": null,
+      "sku": "Premium_LRS",
+      "state": "Attached",
+      "uniqueId": "95424e39-60c1-459b-b7f3-d127d679ea88"
+    }
+  ],
+  "host": {
+    "power": "PowerState/running",
+    "agentReady": true
+  },
+  "arcMachines": [
+    {
+      "name": "LB-NODE01",
+      "principalId": "9a1205c8-6ac3-4d02-ad6d-6166827c8d9d",
+      "status": "Connected"
+    },
+    {
+      "name": "LB-NODE02",
+      "principalId": "b282b136-716d-4fa9-8e03-a4c754249a5e",
+      "status": "Connected"
+    }
+  ],
+  "pool": {
+    "memberCount": 8,
+    "sizeBytes": 2194585681920,
+    "allocatedBytes": 2186138353664,
+    "health": "Healthy",
+    "uniqueId": "{b8174816-65a9-46f7-87c1-b189be0b90e5}"
+  },
+  "virtualDisk": {
+    "provisioning": "Fixed",
+    "columns": 8,
+    "resiliency": "Simple",
+    "uniqueId": "D0CDB2F96D0E244E8B532E096F97FBBF",
+    "health": "Healthy",
+    "sizeBytes": 2181843386368
+  },
+  "guests": [
+    {
+      "name": "LB-DC01",
+      "id": "f94c71f1-6854-48b9-a9f1-8238c99366d0",
+      "state": "Running",
+      "memoryBytes": 4294967296,
+      "processors": 2
+    },
+    {
+      "name": "LB-NODE01",
+      "id": "3adff629-2f67-449b-ab32-8a8748c46f34",
+      "state": "Running",
+      "memoryBytes": 103079215104,
+      "processors": 12
+    },
+    {
+      "name": "LB-NODE02",
+      "id": "12a44e0c-cc08-4c4c-a812-fa0b56efdbc3",
+      "state": "Running",
+      "memoryBytes": 103079215104,
+      "processors": 12
+    }
+  ],
+  "originalConversionAndStartupFailuresRetained": true,
+  "proofSha256": {
+    "docs/deployment-2026-10-27/private-ssh-capacity-after-premium-20261029.json": "cc4766431c3439569a6aa12f6b897aa996005ec7d73d38ac47f5106291b79cbf",
+    "docs/deployment-2026-10-27/private-ssh-arc-service-startup-details-20261029.json": "0c67cceccaded77a312180f866d6d118a035ba60c5b9589715fca8abea4a98c9",
+    "docs/deployment-2026-10-29/start-20261029-080708-7389325a.json": "90030713553b27eede46fbc80369922524efe465381927fedd82df6964112c77"
+  },
+  "finishedAtUtc": "2026-10-29T08:13:33.969925+00:00"
+}

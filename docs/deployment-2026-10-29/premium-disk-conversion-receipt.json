@@ -1,0 +1,15 @@
+{
+  "beganAtUtc": "2026-10-29T07:57:39.241282+00:00",
+  "sourceCommit": "d289a203edf6017dc990a4516fa4b6fbac014e4a",
+  "status": "failed-inspect-before-resume",
+  "phase": "preflight",
+  "targetSku": "Premium_LRS",
+  "newDisksCreated": false,
+  "diskSizesChanged": false,
+  "guestProfilesChanged": false,
+  "policyOrShutdownAutomationChanged": false,
+  "platformReadinessVerified": false,
+  "diskEffects": [],
+  "errorType": "CalledProcessError",
+  "finishedAtUtc": "2026-10-29T07:57:39.533465+00:00"
+}

@@ -1,0 +1,224 @@
+{
+  "changes": [
+    {
+      "after": {
+        "apiVersion": "2023-07-01",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.KeyVault/vaults/kv-lbox-weu-4766ea",
+        "location": "westeurope",
+        "name": "kv-lbox-weu-4766ea",
+        "properties": {
+          "enablePurgeProtection": true,
+          "enableRbacAuthorization": true,
+          "enableSoftDelete": true,
+          "enabledForTemplateDeployment": true,
+          "publicNetworkAccess": "Enabled",
+          "sku": {
+            "family": "A",
+            "name": "standard"
+          },
+          "softDeleteRetentionInDays": 90,
+          "tenantId": "c6e67968-af25-4557-ab8b-06b693048d3b"
+        },
+        "resourceGroup": "rg-localbox-platform-weu-1",
+        "tags": {
+          "environment": "lab",
+          "owner": "quintindekok",
+          "project": "smal-ai",
+          "purpose": "localbox-platform"
+        },
+        "type": "Microsoft.KeyVault/vaults"
+      },
+      "before": null,
+      "changeType": "Create",
+      "delta": null,
+      "deploymentId": null,
+      "extension": null,
+      "identifiers": null,
+      "resourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.KeyVault/vaults/kv-lbox-weu-4766ea",
+      "symbolicName": null,
+      "unsupportedReason": null
+    },
+    {
+      "after": {
+        "apiVersion": "2021-05-01-preview",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.KeyVault/vaults/kv-lbox-weu-4766ea/providers/Microsoft.Insights/diagnosticSettings/localbox-vault-audit",
+        "name": "localbox-vault-audit",
+        "properties": {
+          "logs": [
+            {
+              "category": "AuditEvent",
+              "enabled": true
+            }
+          ],
+          "storageAccountId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.Storage/storageAccounts/stlboxdiagweu4766ea"
+        },
+        "resourceGroup": "rg-localbox-platform-weu-1",
+        "type": "Microsoft.Insights/diagnosticSettings"
+      },
+      "before": null,
+      "changeType": "Create",
+      "delta": null,
+      "deploymentId": null,
+      "extension": null,
+      "identifiers": null,
+      "resourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.KeyVault/vaults/kv-lbox-weu-4766ea/providers/Microsoft.Insights/diagnosticSettings/localbox-vault-audit",
+      "symbolicName": null,
+      "unsupportedReason": null
+    },
+    {
+      "after": {
+        "apiVersion": "2023-05-01",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.Storage/storageAccounts/stlboxdiagweu4766ea",
+        "kind": "StorageV2",
+        "location": "westeurope",
+        "name": "stlboxdiagweu4766ea",
+        "properties": {
+          "accessTier": "Hot",
+          "allowBlobPublicAccess": false,
+          "allowSharedKeyAccess": false,
+          "minimumTlsVersion": "TLS1_2",
+          "networkAcls": {
+            "bypass": "AzureServices",
+            "defaultAction": "Deny"
+          },
+          "publicNetworkAccess": "Disabled",
+          "supportsHttpsTrafficOnly": true
+        },
+        "resourceGroup": "rg-localbox-platform-weu-1",
+        "sku": {
+          "name": "Standard_LRS"
+        },
+        "tags": {
+          "environment": "lab",
+          "owner": "quintindekok",
+          "project": "smal-ai",
+          "purpose": "localbox-platform"
+        },
+        "type": "Microsoft.Storage/storageAccounts"
+      },
+      "before": null,
+      "changeType": "Create",
+      "delta": null,
+      "deploymentId": null,
+      "extension": null,
+      "identifiers": null,
+      "resourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.Storage/storageAccounts/stlboxdiagweu4766ea",
+      "symbolicName": null,
+      "unsupportedReason": null
+    },
+    {
+      "after": {
+        "apiVersion": "2023-05-01",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.Storage/storageAccounts/stlboxdiagweu4766ea/managementPolicies/default",
+        "name": "default",
+        "properties": {
+          "policy": {
+            "rules": [
+              {
+                "definition": {
+                  "actions": {
+                    "baseBlob": {
+                      "delete": {
+                        "daysAfterModificationGreaterThan": 90
+                      }
+                    }
+                  },
+                  "filters": {
+                    "blobTypes": [
+                      "appendBlob",
+                      "blockBlob"
+                    ],
+                    "prefixMatch": [
+                      "insights-logs-auditevent/"
+                    ]
+                  }
+                },
+                "enabled": true,
+                "name": "localbox-vault-audit-90-days",
+                "type": "Lifecycle"
+              }
+            ]
+          }
+        },
+        "resourceGroup": "rg-localbox-platform-weu-1",
+        "type": "Microsoft.Storage/storageAccounts/managementPolicies"
+      },
+      "before": null,
+      "changeType": "Create",
+      "delta": null,
+      "deploymentId": null,
+      "extension": null,
+      "identifiers": null,
+      "resourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.Storage/storageAccounts/stlboxdiagweu4766ea/managementPolicies/default",
+      "symbolicName": null,
+      "unsupportedReason": null
+    },
+    {
+      "after": {
+        "apiVersion": "2020-05-01",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.Storage/storageAccounts/stlboxdiagweu4766ea/providers/Microsoft.Authorization/locks/localbox-diagnostics-retain",
+        "name": "localbox-diagnostics-retain",
+        "properties": {
+          "level": "CanNotDelete",
+          "notes": "Preserve approved LocalBox deployment audit storage. Removal requires owner instruction."
+        },
+        "resourceGroup": "rg-localbox-platform-weu-1",
+        "type": "Microsoft.Authorization/locks"
+      },
+      "before": null,
+      "changeType": "Create",
+      "delta": null,
+      "deploymentId": null,
+      "extension": null,
+      "identifiers": null,
+      "resourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.Storage/storageAccounts/stlboxdiagweu4766ea/providers/Microsoft.Authorization/locks/localbox-diagnostics-retain",
+      "symbolicName": null,
+      "unsupportedReason": null
+    },
+    {
+      "after": {
+        "apiVersion": "2023-05-01",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.Storage/storageAccounts/stlboxwitweu4766ea",
+        "kind": "StorageV2",
+        "location": "westeurope",
+        "name": "stlboxwitweu4766ea",
+        "properties": {
+          "accessTier": "Hot",
+          "allowBlobPublicAccess": false,
+          "allowSharedKeyAccess": true,
+          "minimumTlsVersion": "TLS1_2",
+          "networkAcls": {
+            "bypass": "AzureServices",
+            "defaultAction": "Deny"
+          },
+          "publicNetworkAccess": "Disabled",
+          "supportsHttpsTrafficOnly": true
+        },
+        "resourceGroup": "rg-localbox-platform-weu-1",
+        "sku": {
+          "name": "Standard_LRS"
+        },
+        "tags": {
+          "environment": "lab",
+          "owner": "quintindekok",
+          "project": "smal-ai",
+          "purpose": "localbox-platform"
+        },
+        "type": "Microsoft.Storage/storageAccounts"
+      },
+      "before": null,
+      "changeType": "Create",
+      "delta": null,
+      "deploymentId": null,
+      "extension": null,
+      "identifiers": null,
+      "resourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.Storage/storageAccounts/stlboxwitweu4766ea",
+      "symbolicName": null,
+      "unsupportedReason": null
+    }
+  ],
+  "diagnostics": null,
+  "error": null,
+  "potentialChanges": null,
+  "status": "Succeeded"
+}

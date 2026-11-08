@@ -1,0 +1,32 @@
+{
+  "beganAtSast": "2026-10-29T08:32:33.505065+02:00",
+  "status": "failed-do-not-automatically-repeat",
+  "commit": "6db0bd56bab883e43b684624fa3aaa74a466690a",
+  "script": "scripts/inspect-smal-guest-deployment-readiness.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 35225,
+  "scriptTransport": "sha256-length-framed-utf8-stdin",
+  "renderedSourceSha256": "954cb6d2fcc4cb775960f3e222c809d8e4f26c5c25177a106cfaf828506a65b3",
+  "renderedSourceByteLength": 8183,
+  "unstreamedEncodedLength": 21824,
+  "guestCommandTimeoutSeconds": 300,
+  "loopbackOnly": true,
+  "sshExitCode": 1,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "reviewedSourceError": {
+    "type": "PSDirectException",
+    "line": 35
+  },
+  "errorLabel": "command-failed-raw-output-suppressed",
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-29T08:33:26.828446+02:00"
+}

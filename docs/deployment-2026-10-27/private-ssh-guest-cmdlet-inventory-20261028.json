@@ -1,0 +1,28 @@
+{
+  "beganAtSast": "2026-10-28T10:21:13.696159+02:00",
+  "status": "failed-inspect-before-retry",
+  "commit": "256e37e2959cd7a216a52c8ec378cafae21f7f01",
+  "script": "scripts/inspect-smal-guest-cmdlets.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 59493,
+  "scriptTransport": "encoded-command",
+  "renderedSourceSha256": "feb64c5d40ffb207a3eb2666f33d91e89ada105dbbaa3becd88171c4c2865c1e",
+  "renderedSourceByteLength": 1168,
+  "unstreamedEncodedLength": 3116,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "errorType": "RuntimeError",
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-28T10:21:19.877619+02:00"
+}

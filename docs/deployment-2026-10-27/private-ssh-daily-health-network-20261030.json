@@ -1,0 +1,1233 @@
+{
+  "beganAtSast": "2026-10-30T07:41:16.683616+02:00",
+  "status": "complete",
+  "commit": "2e000a9357a42130ce2e2acc835e5619eb9881c0",
+  "script": "scripts/inspect-smal-infra-network-failure.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 55319,
+  "scriptTransport": "encoded-command",
+  "renderedSourceSha256": "848cdb2d986fa7e5eeacbe719710f6154bce86bfc06ca68a7d6e83ba9cc17283",
+  "renderedSourceByteLength": 5537,
+  "unstreamedEncodedLength": 14768,
+  "guestCommandTimeoutSeconds": 240,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "hostProfiles": [
+      {
+        "Name": "Domain",
+        "Enabled": 1,
+        "DefaultInboundAction": 4,
+        "DefaultOutboundAction": 2
+      },
+      {
+        "Name": "Private",
+        "Enabled": 1,
+        "DefaultInboundAction": 4,
+        "DefaultOutboundAction": 2
+      },
+      {
+        "Name": "Public",
+        "Enabled": 1,
+        "DefaultInboundAction": 4,
+        "DefaultOutboundAction": 2
+      }
+    ],
+    "hostIpv4": [
+      {
+        "InterfaceAlias": "vEthernet (LB-Fabric)",
+        "IPAddress": "10.64.0.1",
+        "PrefixLength": 24,
+        "AddressState": 4
+      },
+      {
+        "InterfaceAlias": "Ethernet",
+        "IPAddress": "10.200.16.4",
+        "PrefixLength": 24,
+        "AddressState": 4
+      },
+      {
+        "InterfaceAlias": "Loopback Pseudo-Interface 1",
+        "IPAddress": "127.0.0.1",
+        "PrefixLength": 8,
+        "AddressState": 4
+      }
+    ],
+    "hostAdapters": [
+      {
+        "Name": "Ethernet",
+        "ifIndex": 7,
+        "MacAddress": "60-45-BD-41-6F-55",
+        "Status": "Up"
+      },
+      {
+        "Name": "Ethernet 2",
+        "ifIndex": 6,
+        "MacAddress": "60-45-BD-41-6F-55",
+        "Status": "Up"
+      },
+      {
+        "Name": "vEthernet (LB-Fabric)",
+        "ifIndex": 4,
+        "MacAddress": "00-15-5D-10-04-00",
+        "Status": "Up"
+      }
+    ],
+    "mutationPerformed": false,
+    "hostNat": [
+      {
+        "Name": "LB-NAT",
+        "InternalIPInterfaceAddressPrefix": "10.64.0.0/20",
+        "Active": 1
+      }
+    ],
+    "hostNetworkProfiles": [
+      {
+        "InterfaceAlias": "vEthernet (LB-Fabric)",
+        "NetworkCategory": 0,
+        "IPv4Connectivity": 1
+      },
+      {
+        "InterfaceAlias": "Ethernet",
+        "NetworkCategory": 0,
+        "IPv4Connectivity": 4
+      }
+    ],
+    "validationInvoked": false,
+    "atUtc": "2026-10-30T05:42:09.6098475Z",
+    "hostRoutes": [
+      {
+        "InterfaceAlias": "vEthernet (LB-Fabric)",
+        "DestinationPrefix": "10.64.0.255/32",
+        "NextHop": "0.0.0.0",
+        "RouteMetric": 256
+      },
+      {
+        "InterfaceAlias": "vEthernet (LB-Fabric)",
+        "DestinationPrefix": "10.64.0.1/32",
+        "NextHop": "0.0.0.0",
+        "RouteMetric": 256
+      },
+      {
+        "InterfaceAlias": "vEthernet (LB-Fabric)",
+        "DestinationPrefix": "10.64.0.0/24",
+        "NextHop": "0.0.0.0",
+        "RouteMetric": 256
+      },
+      {
+        "InterfaceAlias": "Ethernet",
+        "DestinationPrefix": "0.0.0.0/0",
+        "NextHop": "10.200.16.1",
+        "RouteMetric": 1
+      }
+    ],
+    "nodes": [
+      {
+        "vmId": "3adff629-2f67-449b-ab32-8a8748c46f34",
+        "adapters": [
+          {
+            "Name": "MGMT1",
+            "MacAddress": "00155D100402",
+            "SwitchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934",
+            "MacAddressSpoofing": 0,
+            "AllowTeaming": 0
+          },
+          {
+            "Name": "MGMT2",
+            "MacAddress": "00155D100403",
+            "SwitchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934",
+            "MacAddressSpoofing": 0,
+            "AllowTeaming": 0
+          },
+          {
+            "Name": "STORAGEA",
+            "MacAddress": "00155D100404",
+            "SwitchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934",
+            "MacAddressSpoofing": 0,
+            "AllowTeaming": 0
+          },
+          {
+            "Name": "STORAGEB",
+            "MacAddress": "00155D100405",
+            "SwitchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934",
+            "MacAddressSpoofing": 0,
+            "AllowTeaming": 0
+          }
+        ],
+        "guest": {
+          "switches": [],
+          "adapters": [
+            {
+              "Name": "STORAGEB",
+              "InterfaceDescription": "Microsoft Hyper-V Network Adapter #2",
+              "Status": "Up",
+              "MacAddress": "00-15-5D-10-04-05",
+              "ifIndex": 10
+            },
+            {
+              "Name": "Teredo Tunneling Pseudo-Interface",
+              "InterfaceDescription": "",
+              "Status": "Not Present",
+              "MacAddress": "",
+              "ifIndex": 9
+            },
+            {
+              "Name": "Local Area Connection* 1",
+              "InterfaceDescription": "Microsoft Failover Cluster Virtual Adapter",
+              "Status": "Disconnected",
+              "MacAddress": "02-8A-F8-08-42-C8",
+              "ifIndex": 8
+            },
+            {
+              "Name": "MGMT1",
+              "InterfaceDescription": "Microsoft Hyper-V Network Adapter #4",
+              "Status": "Up",
+              "MacAddress": "00-15-5D-10-04-02",
+              "ifIndex": 7
+            },
+            {
+              "Name": "Ethernet (Kernel Debugger)",
+              "InterfaceDescription": "Microsoft Kernel Debug Network Adapter",
+              "Status": "Not Present",
+              "MacAddress": "",
+              "ifIndex": 6
+            },
+            {
+              "Name": "MGMT2",
+              "InterfaceDescription": "Microsoft Hyper-V Network Adapter #3",
+              "Status": "Up",
+              "MacAddress": "00-15-5D-10-04-03",
+              "ifIndex": 5
+            },
+            {
+              "Name": "STORAGEA",
+              "InterfaceDescription": "Microsoft Hyper-V Network Adapter",
+              "Status": "Up",
+              "MacAddress": "00-15-5D-10-04-04",
+              "ifIndex": 4
+            },
+            {
+              "Name": "Microsoft IP-HTTPS Platform Interface",
+              "InterfaceDescription": "",
+              "Status": "Not Present",
+              "MacAddress": "",
+              "ifIndex": 3
+            },
+            {
+              "Name": "6to4 Adapter",
+              "InterfaceDescription": "",
+              "Status": "Not Present",
+              "MacAddress": "",
+              "ifIndex": 2
+            }
+          ],
+          "firewallProfiles": [
+            {
+              "Name": "Domain",
+              "Enabled": {
+                "value": 1,
+                "Value": "True"
+              },
+              "DefaultInboundAction": {
+                "value": 4,
+                "Value": "Block"
+              },
+              "DefaultOutboundAction": {
+                "value": 2,
+                "Value": "Allow"
+              }
+            },
+            {
+              "Name": "Private",
+              "Enabled": {
+                "value": 1,
+                "Value": "True"
+              },
+              "DefaultInboundAction": {
+                "value": 4,
+                "Value": "Block"
+              },
+              "DefaultOutboundAction": {
+                "value": 2,
+                "Value": "Allow"
+              }
+            },
+            {
+              "Name": "Public",
+              "Enabled": {
+                "value": 1,
+                "Value": "True"
+              },
+              "DefaultInboundAction": {
+                "value": 4,
+                "Value": "Block"
+              },
+              "DefaultOutboundAction": {
+                "value": 2,
+                "Value": "Allow"
+              }
+            }
+          ],
+          "probes": [
+            {
+              "destination": "10.64.0.1",
+              "echoReplyReceived": true,
+              "source": "10.64.0.11"
+            },
+            {
+              "destination": "10.64.0.10",
+              "echoReplyReceived": true,
+              "source": "10.64.0.11"
+            }
+          ],
+          "name": "LB-NODE01",
+          "neighbors": [
+            {
+              "InterfaceAlias": "MGMT1",
+              "IPAddress": "10.64.0.10",
+              "LinkLayerAddress": "00-15-5D-10-04-01",
+              "State": {
+                "value": 2,
+                "Value": "Probe"
+              }
+            },
+            {
+              "InterfaceAlias": "MGMT1",
+              "IPAddress": "10.64.0.1",
+              "LinkLayerAddress": "00-15-5D-10-04-00",
+              "State": {
+                "value": 5,
+                "Value": "Reachable"
+              }
+            }
+          ],
+          "routes": [
+            {
+              "InterfaceAlias": "MGMT1",
+              "DestinationPrefix": "10.64.0.255/32",
+              "NextHop": "0.0.0.0",
+              "RouteMetric": 256
+            },
+            {
+              "InterfaceAlias": "MGMT1",
+              "DestinationPrefix": "10.64.0.11/32",
+              "NextHop": "0.0.0.0",
+              "RouteMetric": 256
+            },
+            {
+              "InterfaceAlias": "MGMT1",
+              "DestinationPrefix": "10.64.0.0/24",
+              "NextHop": "0.0.0.0",
+              "RouteMetric": 256
+            },
+            {
+              "InterfaceAlias": "MGMT1",
+              "DestinationPrefix": "0.0.0.0/0",
+              "NextHop": "10.64.0.1",
+              "RouteMetric": 256
+            }
+          ],
+          "ipv4": [
+            {
+              "InterfaceAlias": "MGMT1",
+              "IPAddress": "10.64.0.11",
+              "PrefixLength": 24,
+              "AddressState": {
+                "value": 4,
+                "Value": "Preferred"
+              }
+            },
+            {
+              "InterfaceAlias": "MGMT2",
+              "IPAddress": "169.254.92.61",
+              "PrefixLength": 16,
+              "AddressState": {
+                "value": 4,
+                "Value": "Preferred"
+              }
+            },
+            {
+              "InterfaceAlias": "STORAGEB",
+              "IPAddress": "169.254.190.101",
+              "PrefixLength": 16,
+              "AddressState": {
+                "value": 4,
+                "Value": "Preferred"
+              }
+            },
+            {
+              "InterfaceAlias": "Local Area Connection* 1",
+              "IPAddress": "169.254.59.115",
+              "PrefixLength": 16,
+              "AddressState": {
+                "value": 1,
+                "Value": "Tentative"
+              }
+            },
+            {
+              "InterfaceAlias": "STORAGEA",
+              "IPAddress": "169.254.195.101",
+              "PrefixLength": 16,
+              "AddressState": {
+                "value": 4,
+                "Value": "Preferred"
+              }
+            },
+            {
+              "InterfaceAlias": "Loopback Pseudo-Interface 1",
+              "IPAddress": "127.0.0.1",
+              "PrefixLength": 8,
+              "AddressState": {
+                "value": 4,
+                "Value": "Preferred"
+              }
+            }
+          ],
+          "PSComputerName": "LB-NODE01",
+          "RunspaceId": "85b92fd7-e4da-4a9e-9ac5-0a133282271d",
+          "PSShowComputerName": true
+        },
+        "name": "LB-NODE01",
+        "vlans": [
+          {
+            "VMName": null,
+            "VMNetworkAdapterName": null,
+            "OperationMode": 2,
+            "NativeVlanId": 0,
+            "AllowedVlanIdList": [
+              0,
+              711,
+              712
+            ],
+            "AccessVlanId": 0
+          },
+          {
+            "VMName": null,
+            "VMNetworkAdapterName": null,
+            "OperationMode": 2,
+            "NativeVlanId": 0,
+            "AllowedVlanIdList": [
+              0,
+              711,
+              712
+            ],
+            "AccessVlanId": 0
+          },
+          {
+            "VMName": null,
+            "VMNetworkAdapterName": null,
+            "OperationMode": 2,
+            "NativeVlanId": 0,
+            "AllowedVlanIdList": [
+              0,
+              711,
+              712
+            ],
+            "AccessVlanId": 0
+          },
+          {
+            "VMName": null,
+            "VMNetworkAdapterName": null,
+            "OperationMode": 2,
+            "NativeVlanId": 0,
+            "AllowedVlanIdList": [
+              0,
+              711,
+              712
+            ],
+            "AccessVlanId": 0
+          }
+        ]
+      },
+      {
+        "vmId": "12a44e0c-cc08-4c4c-a812-fa0b56efdbc3",
+        "adapters": [
+          {
+            "Name": "MGMT1",
+            "MacAddress": "00155D100406",
+            "SwitchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934",
+            "MacAddressSpoofing": 0,
+            "AllowTeaming": 0
+          },
+          {
+            "Name": "MGMT2",
+            "MacAddress": "00155D100407",
+            "SwitchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934",
+            "MacAddressSpoofing": 0,
+            "AllowTeaming": 0
+          },
+          {
+            "Name": "STORAGEA",
+            "MacAddress": "00155D100408",
+            "SwitchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934",
+            "MacAddressSpoofing": 0,
+            "AllowTeaming": 0
+          },
+          {
+            "Name": "STORAGEB",
+            "MacAddress": "00155D100409",
+            "SwitchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934",
+            "MacAddressSpoofing": 0,
+            "AllowTeaming": 0
+          }
+        ],
+        "guest": {
+          "switches": [],
+          "adapters": [
+            {
+              "Name": "STORAGEA",
+              "InterfaceDescription": "Microsoft Hyper-V Network Adapter #4",
+              "Status": "Up",
+              "MacAddress": "00-15-5D-10-04-08",
+              "ifIndex": 10
+            },
+            {
+              "Name": "MGMT2",
+              "InterfaceDescription": "Microsoft Hyper-V Network Adapter",
+              "Status": "Up",
+              "MacAddress": "00-15-5D-10-04-07",
+              "ifIndex": 9
+            },
+            {
+              "Name": "Local Area Connection* 1",
+              "InterfaceDescription": "Microsoft Failover Cluster Virtual Adapter",
+              "Status": "Disconnected",
+              "MacAddress": "02-EC-0D-13-5E-D9",
+              "ifIndex": 8
+            },
+            {
+              "Name": "MGMT1",
+              "InterfaceDescription": "Microsoft Hyper-V Network Adapter #3",
+              "Status": "Up",
+              "MacAddress": "00-15-5D-10-04-06",
+              "ifIndex": 7
+            },
+            {
+              "Name": "Teredo Tunneling Pseudo-Interface",
+              "InterfaceDescription": "",
+              "Status": "Not Present",
+              "MacAddress": "",
+              "ifIndex": 6
+            },
+            {
+              "Name": "STORAGEB",
+              "InterfaceDescription": "Microsoft Hyper-V Network Adapter #2",
+              "Status": "Up",
+              "MacAddress": "00-15-5D-10-04-09",
+              "ifIndex": 5
+            },
+            {
+              "Name": "Microsoft IP-HTTPS Platform Interface",
+              "InterfaceDescription": "",
+              "Status": "Not Present",
+              "MacAddress": "",
+              "ifIndex": 4
+            },
+            {
+              "Name": "Ethernet (Kernel Debugger)",
+              "InterfaceDescription": "Microsoft Kernel Debug Network Adapter",
+              "Status": "Not Present",
+              "MacAddress": "",
+              "ifIndex": 3
+            },
+            {
+              "Name": "6to4 Adapter",
+              "InterfaceDescription": "",
+              "Status": "Not Present",
+              "MacAddress": "",
+              "ifIndex": 2
+            }
+          ],
+          "firewallProfiles": [
+            {
+              "Name": "Domain",
+              "Enabled": {
+                "value": 1,
+                "Value": "True"
+              },
+              "DefaultInboundAction": {
+                "value": 4,
+                "Value": "Block"
+              },
+              "DefaultOutboundAction": {
+                "value": 2,
+                "Value": "Allow"
+              }
+            },
+            {
+              "Name": "Private",
+              "Enabled": {
+                "value": 1,
+                "Value": "True"
+              },
+              "DefaultInboundAction": {
+                "value": 4,
+                "Value": "Block"
+              },
+              "DefaultOutboundAction": {
+                "value": 2,
+                "Value": "Allow"
+              }
+            },
+            {
+              "Name": "Public",
+              "Enabled": {
+                "value": 1,
+                "Value": "True"
+              },
+              "DefaultInboundAction": {
+                "value": 4,
+                "Value": "Block"
+              },
+              "DefaultOutboundAction": {
+                "value": 2,
+                "Value": "Allow"
+              }
+            }
+          ],
+          "probes": [
+            {
+              "destination": "10.64.0.1",
+              "echoReplyReceived": true,
+              "source": "10.64.0.12"
+            },
+            {
+              "destination": "10.64.0.10",
+              "echoReplyReceived": true,
+              "source": "10.64.0.12"
+            }
+          ],
+          "name": "LB-NODE02",
+          "neighbors": [
+            {
+              "InterfaceAlias": "MGMT1",
+              "IPAddress": "10.64.0.10",
+              "LinkLayerAddress": "00-15-5D-10-04-01",
+              "State": {
+                "value": 2,
+                "Value": "Probe"
+              }
+            },
+            {
+              "InterfaceAlias": "MGMT1",
+              "IPAddress": "10.64.0.1",
+              "LinkLayerAddress": "00-15-5D-10-04-00",
+              "State": {
+                "value": 5,
+                "Value": "Reachable"
+              }
+            }
+          ],
+          "routes": [
+            {
+              "InterfaceAlias": "MGMT1",
+              "DestinationPrefix": "10.64.0.255/32",
+              "NextHop": "0.0.0.0",
+              "RouteMetric": 256
+            },
+            {
+              "InterfaceAlias": "MGMT1",
+              "DestinationPrefix": "10.64.0.12/32",
+              "NextHop": "0.0.0.0",
+              "RouteMetric": 256
+            },
+            {
+              "InterfaceAlias": "MGMT1",
+              "DestinationPrefix": "10.64.0.0/24",
+              "NextHop": "0.0.0.0",
+              "RouteMetric": 256
+            },
+            {
+              "InterfaceAlias": "MGMT1",
+              "DestinationPrefix": "0.0.0.0/0",
+              "NextHop": "10.64.0.1",
+              "RouteMetric": 256
+            }
+          ],
+          "ipv4": [
+            {
+              "InterfaceAlias": "STORAGEA",
+              "IPAddress": "169.254.222.158",
+              "PrefixLength": 16,
+              "AddressState": {
+                "value": 4,
+                "Value": "Preferred"
+              }
+            },
+            {
+              "InterfaceAlias": "MGMT1",
+              "IPAddress": "10.64.0.12",
+              "PrefixLength": 24,
+              "AddressState": {
+                "value": 4,
+                "Value": "Preferred"
+              }
+            },
+            {
+              "InterfaceAlias": "STORAGEB",
+              "IPAddress": "169.254.191.89",
+              "PrefixLength": 16,
+              "AddressState": {
+                "value": 4,
+                "Value": "Preferred"
+              }
+            },
+            {
+              "InterfaceAlias": "Local Area Connection* 1",
+              "IPAddress": "169.254.110.41",
+              "PrefixLength": 16,
+              "AddressState": {
+                "value": 1,
+                "Value": "Tentative"
+              }
+            },
+            {
+              "InterfaceAlias": "MGMT2",
+              "IPAddress": "169.254.201.154",
+              "PrefixLength": 16,
+              "AddressState": {
+                "value": 4,
+                "Value": "Preferred"
+              }
+            },
+            {
+              "InterfaceAlias": "Loopback Pseudo-Interface 1",
+              "IPAddress": "127.0.0.1",
+              "PrefixLength": 8,
+              "AddressState": {
+                "value": 4,
+                "Value": "Preferred"
+              }
+            }
+          ],
+          "PSComputerName": "LB-NODE02",
+          "RunspaceId": "99c3438a-1901-4a38-bf8e-5aa3e84c40d6",
+          "PSShowComputerName": true
+        },
+        "name": "LB-NODE02",
+        "vlans": [
+          {
+            "VMName": null,
+            "VMNetworkAdapterName": null,
+            "OperationMode": 2,
+            "NativeVlanId": 0,
+            "AllowedVlanIdList": [
+              0,
+              711,
+              712
+            ],
+            "AccessVlanId": 0
+          },
+          {
+            "VMName": null,
+            "VMNetworkAdapterName": null,
+            "OperationMode": 2,
+            "NativeVlanId": 0,
+            "AllowedVlanIdList": [
+              0,
+              711,
+              712
+            ],
+            "AccessVlanId": 0
+          },
+          {
+            "VMName": null,
+            "VMNetworkAdapterName": null,
+            "OperationMode": 2,
+            "NativeVlanId": 0,
+            "AllowedVlanIdList": [
+              0,
+              711,
+              712
+            ],
+            "AccessVlanId": 0
+          },
+          {
+            "VMName": null,
+            "VMNetworkAdapterName": null,
+            "OperationMode": 2,
+            "NativeVlanId": 0,
+            "AllowedVlanIdList": [
+              0,
+              711,
+              712
+            ],
+            "AccessVlanId": 0
+          }
+        ]
+      },
+      {
+        "vmId": "5b6eba15-fa82-4e12-9e45-5ffbcd48c8a9",
+        "adapters": [
+          {
+            "Name": "MGMT1",
+            "MacAddress": "00155D10040A",
+            "SwitchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934",
+            "MacAddressSpoofing": 0,
+            "AllowTeaming": 0
+          },
+          {
+            "Name": "MGMT2",
+            "MacAddress": "00155D10040B",
+            "SwitchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934",
+            "MacAddressSpoofing": 0,
+            "AllowTeaming": 0
+          },
+          {
+            "Name": "STORAGEA",
+            "MacAddress": "00155D10040C",
+            "SwitchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934",
+            "MacAddressSpoofing": 0,
+            "AllowTeaming": 0
+          },
+          {
+            "Name": "STORAGEB",
+            "MacAddress": "00155D10040D",
+            "SwitchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934",
+            "MacAddressSpoofing": 0,
+            "AllowTeaming": 0
+          }
+        ],
+        "guest": {
+          "switches": [],
+          "adapters": [
+            {
+              "Name": "STORAGEB",
+              "InterfaceDescription": "Microsoft Hyper-V Network Adapter #2",
+              "Status": "Up",
+              "MacAddress": "00-15-5D-10-04-0D",
+              "ifIndex": 10
+            },
+            {
+              "Name": "MGMT1",
+              "InterfaceDescription": "Microsoft Hyper-V Network Adapter",
+              "Status": "Up",
+              "MacAddress": "00-15-5D-10-04-0A",
+              "ifIndex": 9
+            },
+            {
+              "Name": "Ethernet (Kernel Debugger)",
+              "InterfaceDescription": "Microsoft Kernel Debug Network Adapter",
+              "Status": "Not Present",
+              "MacAddress": "",
+              "ifIndex": 8
+            },
+            {
+              "Name": "Teredo Tunneling Pseudo-Interface",
+              "InterfaceDescription": "",
+              "Status": "Not Present",
+              "MacAddress": "",
+              "ifIndex": 7
+            },
+            {
+              "Name": "STORAGEA",
+              "InterfaceDescription": "Microsoft Hyper-V Network Adapter #4",
+              "Status": "Up",
+              "MacAddress": "00-15-5D-10-04-0C",
+              "ifIndex": 6
+            },
+            {
+              "Name": "Local Area Connection* 1",
+              "InterfaceDescription": "Microsoft Failover Cluster Virtual Adapter",
+              "Status": "Disconnected",
+              "MacAddress": "02-15-E6-06-0D-AD",
+              "ifIndex": 5
+            },
+            {
+              "Name": "MGMT2",
+              "InterfaceDescription": "Microsoft Hyper-V Network Adapter #3",
+              "Status": "Up",
+              "MacAddress": "00-15-5D-10-04-0B",
+              "ifIndex": 4
+            },
+            {
+              "Name": "Microsoft IP-HTTPS Platform Interface",
+              "InterfaceDescription": "",
+              "Status": "Not Present",
+              "MacAddress": "",
+              "ifIndex": 3
+            },
+            {
+              "Name": "6to4 Adapter",
+              "InterfaceDescription": "",
+              "Status": "Not Present",
+              "MacAddress": "",
+              "ifIndex": 2
+            }
+          ],
+          "firewallProfiles": [
+            {
+              "Name": "Domain",
+              "Enabled": {
+                "value": 1,
+                "Value": "True"
+              },
+              "DefaultInboundAction": {
+                "value": 4,
+                "Value": "Block"
+              },
+              "DefaultOutboundAction": {
+                "value": 2,
+                "Value": "Allow"
+              }
+            },
+            {
+              "Name": "Private",
+              "Enabled": {
+                "value": 1,
+                "Value": "True"
+              },
+              "DefaultInboundAction": {
+                "value": 4,
+                "Value": "Block"
+              },
+              "DefaultOutboundAction": {
+                "value": 2,
+                "Value": "Allow"
+              }
+            },
+            {
+              "Name": "Public",
+              "Enabled": {
+                "value": 1,
+                "Value": "True"
+              },
+              "DefaultInboundAction": {
+                "value": 4,
+                "Value": "Block"
+              },
+              "DefaultOutboundAction": {
+                "value": 2,
+                "Value": "Allow"
+              }
+            }
+          ],
+          "probes": [
+            {
+              "destination": "10.64.0.1",
+              "echoReplyReceived": true,
+              "source": "10.64.0.13"
+            },
+            {
+              "destination": "10.64.0.10",
+              "echoReplyReceived": true,
+              "source": "10.64.0.13"
+            }
+          ],
+          "name": "LB-NODE03",
+          "neighbors": [
+            {
+              "InterfaceAlias": "MGMT1",
+              "IPAddress": "10.64.0.10",
+              "LinkLayerAddress": "00-15-5D-10-04-01",
+              "State": {
+                "value": 5,
+                "Value": "Reachable"
+              }
+            },
+            {
+              "InterfaceAlias": "MGMT1",
+              "IPAddress": "10.64.0.1",
+              "LinkLayerAddress": "00-15-5D-10-04-00",
+              "State": {
+                "value": 5,
+                "Value": "Reachable"
+              }
+            }
+          ],
+          "routes": [
+            {
+              "InterfaceAlias": "MGMT1",
+              "DestinationPrefix": "10.64.0.255/32",
+              "NextHop": "0.0.0.0",
+              "RouteMetric": 256
+            },
+            {
+              "InterfaceAlias": "MGMT1",
+              "DestinationPrefix": "10.64.0.13/32",
+              "NextHop": "0.0.0.0",
+              "RouteMetric": 256
+            },
+            {
+              "InterfaceAlias": "MGMT1",
+              "DestinationPrefix": "10.64.0.0/24",
+              "NextHop": "0.0.0.0",
+              "RouteMetric": 256
+            },
+            {
+              "InterfaceAlias": "MGMT1",
+              "DestinationPrefix": "0.0.0.0/0",
+              "NextHop": "10.64.0.1",
+              "RouteMetric": 256
+            }
+          ],
+          "ipv4": [
+            {
+              "InterfaceAlias": "STORAGEA",
+              "IPAddress": "169.254.147.223",
+              "PrefixLength": 16,
+              "AddressState": {
+                "value": 4,
+                "Value": "Preferred"
+              }
+            },
+            {
+              "InterfaceAlias": "MGMT2",
+              "IPAddress": "169.254.106.190",
+              "PrefixLength": 16,
+              "AddressState": {
+                "value": 4,
+                "Value": "Preferred"
+              }
+            },
+            {
+              "InterfaceAlias": "STORAGEB",
+              "IPAddress": "169.254.54.125",
+              "PrefixLength": 16,
+              "AddressState": {
+                "value": 4,
+                "Value": "Preferred"
+              }
+            },
+            {
+              "InterfaceAlias": "Local Area Connection* 1",
+              "IPAddress": "169.254.111.66",
+              "PrefixLength": 16,
+              "AddressState": {
+                "value": 1,
+                "Value": "Tentative"
+              }
+            },
+            {
+              "InterfaceAlias": "MGMT1",
+              "IPAddress": "10.64.0.13",
+              "PrefixLength": 24,
+              "AddressState": {
+                "value": 4,
+                "Value": "Preferred"
+              }
+            },
+            {
+              "InterfaceAlias": "Loopback Pseudo-Interface 1",
+              "IPAddress": "127.0.0.1",
+              "PrefixLength": 8,
+              "AddressState": {
+                "value": 4,
+                "Value": "Preferred"
+              }
+            }
+          ],
+          "PSComputerName": "LB-NODE03",
+          "RunspaceId": "5fd97d10-dac3-400a-99ae-981b4c15fa20",
+          "PSShowComputerName": true
+        },
+        "name": "LB-NODE03",
+        "vlans": [
+          {
+            "VMName": null,
+            "VMNetworkAdapterName": null,
+            "OperationMode": 2,
+            "NativeVlanId": 0,
+            "AllowedVlanIdList": [
+              0,
+              711,
+              712
+            ],
+            "AccessVlanId": 0
+          },
+          {
+            "VMName": null,
+            "VMNetworkAdapterName": null,
+            "OperationMode": 2,
+            "NativeVlanId": 0,
+            "AllowedVlanIdList": [
+              0,
+              711,
+              712
+            ],
+            "AccessVlanId": 0
+          },
+          {
+            "VMName": null,
+            "VMNetworkAdapterName": null,
+            "OperationMode": 2,
+            "NativeVlanId": 0,
+            "AllowedVlanIdList": [
+              0,
+              711,
+              712
+            ],
+            "AccessVlanId": 0
+          },
+          {
+            "VMName": null,
+            "VMNetworkAdapterName": null,
+            "OperationMode": 2,
+            "NativeVlanId": 0,
+            "AllowedVlanIdList": [
+              0,
+              711,
+              712
+            ],
+            "AccessVlanId": 0
+          }
+        ]
+      }
+    ],
+    "hostIcmpInboundRules": [
+      {
+        "action": "Allow",
+        "enabled": "True",
+        "icmpType": [
+          "3:4"
+        ],
+        "profile": "Any",
+        "localAddress": [
+          "Any"
+        ],
+        "name": "CoreNet-ICMP4-DUFRAG-In",
+        "remoteAddress": [
+          "Any"
+        ],
+        "policySourceType": "Local",
+        "interfaceAlias": [
+          "Any"
+        ],
+        "protocol": "ICMPv4"
+      },
+      {
+        "action": "Allow",
+        "enabled": "False",
+        "icmpType": [
+          "Any"
+        ],
+        "profile": "Any",
+        "localAddress": [
+          "Any"
+        ],
+        "name": "vm-monitoring-icmpv4",
+        "remoteAddress": [
+          "Any"
+        ],
+        "policySourceType": "Local",
+        "interfaceAlias": [
+          "Any"
+        ],
+        "protocol": "ICMPv4"
+      },
+      {
+        "action": "Allow",
+        "enabled": "False",
+        "icmpType": [
+          "8"
+        ],
+        "profile": "Domain",
+        "localAddress": [
+          "Any"
+        ],
+        "name": "CoreNet-Diag-ICMP4-EchoRequest-In-NoScope",
+        "remoteAddress": [
+          "Any"
+        ],
+        "policySourceType": "Local",
+        "interfaceAlias": [
+          "Any"
+        ],
+        "protocol": "ICMPv4"
+      },
+      {
+        "action": "Allow",
+        "enabled": "False",
+        "icmpType": [
+          "8"
+        ],
+        "profile": "Private, Public",
+        "localAddress": [
+          "Any"
+        ],
+        "name": "CoreNet-Diag-ICMP4-EchoRequest-In",
+        "remoteAddress": [
+          "LocalSubnet4"
+        ],
+        "policySourceType": "Local",
+        "interfaceAlias": [
+          "Any"
+        ],
+        "protocol": "ICMPv4"
+      },
+      {
+        "action": "Allow",
+        "enabled": "False",
+        "icmpType": [
+          "8"
+        ],
+        "profile": "Any",
+        "localAddress": [
+          "Any"
+        ],
+        "name": "FPS-ICMP4-ERQ-In",
+        "remoteAddress": [
+          "Any"
+        ],
+        "policySourceType": "Local",
+        "interfaceAlias": [
+          "Any"
+        ],
+        "protocol": "ICMPv4"
+      },
+      {
+        "action": "Allow",
+        "enabled": "False",
+        "icmpType": [
+          "8"
+        ],
+        "profile": "Any",
+        "localAddress": [
+          "Any"
+        ],
+        "name": "FPS-ICMP4-ERQ-In-V2",
+        "remoteAddress": [
+          "Any"
+        ],
+        "policySourceType": "Local",
+        "interfaceAlias": [
+          "Any"
+        ],
+        "protocol": "ICMPv4"
+      },
+      {
+        "action": "Allow",
+        "enabled": "True",
+        "icmpType": [
+          "8"
+        ],
+        "profile": "Any",
+        "localAddress": [
+          "10.64.0.1"
+        ],
+        "name": "AzureLocalBox-InternalGateway-Echo-v4",
+        "remoteAddress": [
+          "10.64.0.11-10.64.0.13",
+          "10.64.0.20-10.64.0.30"
+        ],
+        "policySourceType": "Local",
+        "interfaceAlias": [
+          "vEthernet (LB-Fabric)"
+        ],
+        "protocol": "ICMPv4"
+      }
+    ]
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-30T07:42:19.475511+02:00"
+}

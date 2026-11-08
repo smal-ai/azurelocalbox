@@ -1,0 +1,37 @@
+{
+  "beganAtSast": "2026-10-28T09:44:20.854361+02:00",
+  "status": "complete",
+  "commit": "51de63908d957c5fc2e918986ae3fef7014fc4f7",
+  "script": "scripts/stop-smal-recovery-transport.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 33703,
+  "scriptTransport": "encoded-command",
+  "renderedSourceSha256": "2457dd30d7c5232b4a4abb182e91195492d16ab09af8a443713c389b6441faa7",
+  "renderedSourceByteLength": 2893,
+  "unstreamedEncodedLength": 7716,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "storageChanged": false,
+    "clusterBootstrapComplete": false,
+    "markerRemoved": false,
+    "scheduledTaskStopped": false,
+    "stoppedExactTransportPids": [
+      5652,
+      8564
+    ]
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-28T09:44:32.005541+02:00"
+}

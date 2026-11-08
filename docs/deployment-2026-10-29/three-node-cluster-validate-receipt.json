@@ -1,0 +1,26 @@
+{
+  "beganAtUtc": "2026-10-29T12:07:29.026683+00:00",
+  "sourceCommit": "3664ff3504f78d19a016e54cecd511066f0cb119",
+  "stage": "validate",
+  "deploymentName": "localbox-three-node-validate-20261029",
+  "status": "failed-inspect-before-resume",
+  "witnessKeyReadOrUpload": false,
+  "publicAccessChangeRequested": false,
+  "sharedKeyChangeRequested": false,
+  "subscriptionWideGrantRequested": false,
+  "platformReadinessVerified": false,
+  "privateInputsReceipt": "docs/deployment-2026-10-27/private-ssh-three-cluster-inputs-validate-20261029.json",
+  "previewChanges": [
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/microsoft.azurestackhci/clusters/smal-localbox01/deploymentSettings/default",
+      "changeType": "Create"
+    }
+  ],
+  "templateSha256": "114525f39b6e38cec58e01284bbcc82f764d108e7925c27eecb96d9faf830c65",
+  "deploymentId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.Resources/deployments/localbox-three-node-validate-20261029",
+  "deploymentState": "Failed",
+  "deploymentErrorCode": "DeploymentFailed",
+  "errorType": "RuntimeError",
+  "error": "ARM/service stage failed. Preserve state, do not replay.",
+  "finishedAtUtc": "2026-10-29T12:25:50.794557+00:00"
+}

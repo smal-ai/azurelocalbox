@@ -1,0 +1,150 @@
+{
+  "status": "complete",
+  "scope": "read-only-cloud-prerequisite-observation",
+  "result": {
+    "atUtc": "2026-10-28T10:08:49.549619+00:00",
+    "subscriptionId": "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+    "tenantId": "c6e67968-af25-4557-ab8b-06b693048d3b",
+    "approvedPrincipalId": "82f494a8-b9f5-46fc-b0f7-c70be0572a63",
+    "identityRechecked": true,
+    "providerStates": [
+      {
+        "namespace": "Microsoft.HybridCompute",
+        "registrationState": "Registered",
+        "registered": true
+      },
+      {
+        "namespace": "Microsoft.GuestConfiguration",
+        "registrationState": "Registered",
+        "registered": true
+      },
+      {
+        "namespace": "Microsoft.HybridConnectivity",
+        "registrationState": "Registered",
+        "registered": true
+      },
+      {
+        "namespace": "Microsoft.AzureStackHCI",
+        "registrationState": "Registered",
+        "registered": true
+      },
+      {
+        "namespace": "Microsoft.Kubernetes",
+        "registrationState": "Registered",
+        "registered": true
+      },
+      {
+        "namespace": "Microsoft.KubernetesConfiguration",
+        "registrationState": "Registered",
+        "registered": true
+      },
+      {
+        "namespace": "Microsoft.ExtendedLocation",
+        "registrationState": "Registered",
+        "registered": true
+      },
+      {
+        "namespace": "Microsoft.ResourceConnector",
+        "registrationState": "Registered",
+        "registered": true
+      },
+      {
+        "namespace": "Microsoft.HybridContainerService",
+        "registrationState": "Registered",
+        "registered": true
+      },
+      {
+        "namespace": "Microsoft.Attestation",
+        "registrationState": "Registered",
+        "registered": true
+      },
+      {
+        "namespace": "Microsoft.Storage",
+        "registrationState": "Registered",
+        "registered": true
+      },
+      {
+        "namespace": "Microsoft.Insights",
+        "registrationState": "not-returned",
+        "registered": false
+      },
+      {
+        "namespace": "Microsoft.KeyVault",
+        "registrationState": "Registered",
+        "registered": true
+      }
+    ],
+    "inheritedPolicyIdentities": [
+      {
+        "definitionId": "/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8",
+        "displayName": "Azure Security Baseline",
+        "enforcementMode": "Default",
+        "id": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policyAssignments/Azure_Security_Baseline",
+        "name": "Azure_Security_Baseline",
+        "scope": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b"
+      },
+      {
+        "definitionId": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policySetDefinitions/MCAPSGovAuditPolicies",
+        "displayName": "MCAPSGov Audit Policies",
+        "enforcementMode": "Default",
+        "id": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policyAssignments/MCAPSGovAuditPolicies",
+        "name": "MCAPSGovAuditPolicies",
+        "scope": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b"
+      },
+      {
+        "definitionId": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policySetDefinitions/MCAPSGovDenyPolicies",
+        "displayName": "MCAPSGov Deny Policies",
+        "enforcementMode": "Default",
+        "id": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policyAssignments/MCAPSGovDenyPolicies",
+        "name": "MCAPSGovDenyPolicies",
+        "scope": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b"
+      },
+      {
+        "definitionId": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policySetDefinitions/MCAPSGovDeployPolicies",
+        "displayName": "MCAPSGov Deploy and Modify Policies",
+        "enforcementMode": "Default",
+        "id": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policyAssignments/MCAPSGovDeployPolicies",
+        "name": "MCAPSGovDeployPolicies",
+        "scope": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b"
+      },
+      {
+        "definitionId": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policyDefinitions/53af45c4-1cae-4e79-8b83-43189d6c6e2c",
+        "displayName": "Block Azure RM Resource Creation",
+        "enforcementMode": "Default",
+        "id": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b/providers/Microsoft.Authorization/policyAssignments/023ce42e86eb4aad99a91252",
+        "name": "023ce42e86eb4aad99a91252",
+        "scope": "/providers/Microsoft.Management/managementGroups/c6e67968-af25-4557-ab8b-06b693048d3b"
+      },
+      {
+        "definitionId": "/providers/Microsoft.Authorization/policySetDefinitions/9cb3cc7a-b39b-4b82-bc89-e5a5d9ff7b97",
+        "displayName": "ASC DataProtection (subscription: 8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea)",
+        "enforcementMode": "Default",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/providers/Microsoft.Authorization/policyAssignments/DataProtectionSecurityCenter",
+        "name": "DataProtectionSecurityCenter",
+        "scope": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea"
+      },
+      {
+        "definitionId": "/providers/Microsoft.Authorization/policySetDefinitions/e77fc0b3-f7e9-4c58-bc13-cb753ed8e46e",
+        "displayName": "ASC OpenSourceRelationalDatabasesProtection (subscription: 8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea)",
+        "enforcementMode": "Default",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/providers/Microsoft.Authorization/policyAssignments/OpenSourceRelationalDatabasesProtectionSecurityCenter",
+        "name": "OpenSourceRelationalDatabasesProtectionSecurityCenter",
+        "scope": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea"
+      },
+      {
+        "definitionId": "/providers/Microsoft.Authorization/policySetDefinitions/c1529623-9fc2-45bc-b84b-b14cd0b7484e",
+        "displayName": "Defender for SQL Servers on Machines provisioning (subscription: 8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea)",
+        "enforcementMode": "Default",
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/providers/Microsoft.Authorization/policyAssignments/SqlVmAndArcSqlServersProtection",
+        "name": "SqlVmAndArcSqlServersProtection",
+        "scope": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea"
+      }
+    ],
+    "policyRulesAndEffectiveRolePermissionsVerified": false,
+    "providerRegistrationPerformed": false,
+    "roleAssignmentOrActivationPerformed": false,
+    "resourcesCreated": 0,
+    "registrationRegionOrCloudCostsApproved": false,
+    "platformReadinessVerified": false
+  }
+}

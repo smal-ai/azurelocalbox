@@ -1,0 +1,39 @@
+{
+  "beganAtSast": "2026-10-28T11:27:49.569062+02:00",
+  "status": "complete",
+  "commit": "e437ea1b304ac84d691d4ba26c77a360c2252b4c",
+  "script": "scripts/recover-smal-guest-bootstrap-network.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 54011,
+  "scriptTransport": "sha256-length-framed-utf8-stdin",
+  "renderedSourceSha256": "9e4c8665bf04c8ca9609bc8061ab05c85be93850f637b0ffc746cefa99075675",
+  "renderedSourceByteLength": 67753,
+  "unstreamedEncodedLength": 180676,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "azureRegistrationIncluded": false,
+    "runId": "guest-bootstrap-20261028-01",
+    "imageOrVmCreationRepeated": false,
+    "clusterBootstrapComplete": false,
+    "recovery": "verified-dc-before-network-before-directory",
+    "bundleSha256": "F8D2115030F01BCCB2A6E8C224612D91864E8684B69AB82BFAB9195FBF1F2E8E",
+    "sourceCommit": "e437ea1b304ac84d691d4ba26c77a360c2252b4c",
+    "originalMarkerAndSourceRetained": true,
+    "startRequested": true,
+    "workerSha256": "462DED0CD6F44CEF5D2882200FDF374F57CCA1FB60D8528AD59D7D3AEC3A6983"
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-28T11:28:04.995553+02:00"
+}

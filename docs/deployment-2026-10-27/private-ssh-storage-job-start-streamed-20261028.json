@@ -1,0 +1,38 @@
+{
+  "beganAtSast": "2026-10-28T09:15:44.122181+02:00",
+  "status": "complete",
+  "commit": "c49cba4cf7efc514c0a427947ef5cb4fd2bf093b",
+  "script": "scripts/start-smal-storage-job.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 39957,
+  "scriptTransport": "sha256-verified-utf8-stdin",
+  "renderedSourceSha256": "94a9b89d774f6233d64fc2f5b46bbb283fe49ddef3f42192541d9a326bc68224",
+  "unstreamedEncodedLength": 56048,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "runId": "storage-20261028-01",
+    "manifestSha256": "5ABBFD1A83EF79FA7F28EE955FC5E644ED9371EEC8338C110B1707D89589A1C3",
+    "clusterBootstrapComplete": false,
+    "cronCreated": false,
+    "statePath": "C:\\ProgramData\\AzureLocalBox\\Bootstrap\\storage-20261028-01\\state.json",
+    "sourceCommit": "c49cba4cf7efc514c0a427947ef5cb4fd2bf093b",
+    "taskName": "LocalBox-Storage-20261028-01",
+    "scope": "storage-only",
+    "startRequested": true,
+    "workerSha256": "8C4B65A8299101ABA4ADEC3A6513432DFA0785571FA34322D6E7929749B490B0"
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-28T09:15:52.832276+02:00"
+}

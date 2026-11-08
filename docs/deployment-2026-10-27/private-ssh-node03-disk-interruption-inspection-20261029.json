@@ -1,0 +1,132 @@
+{
+  "beganAtSast": "2026-10-29T11:12:41.273499+02:00",
+  "status": "complete",
+  "commit": "b8a4964b55ef2be4fd39c9dc31b052efa09c5e82",
+  "script": "scripts/inspect-smal-node03-disk.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 43393,
+  "scriptTransport": "sha256-length-framed-utf8-stdin",
+  "renderedSourceSha256": "8ebc9ed99e38bb4463c685b82bdb91ef5a72f8d08870c56aed24c95519c1dc55",
+  "renderedSourceByteLength": 23637,
+  "unstreamedEncodedLength": 63032,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "newDevices": [
+      {
+        "size": 2199023255552,
+        "readOnly": false,
+        "uniqueId": "eui.977A2C37B7C846F087268B8452F57C01",
+        "isSystem": false,
+        "offline": false,
+        "style": "RAW",
+        "number": 10,
+        "isBoot": false
+      }
+    ],
+    "formatStateExists": false,
+    "baselineBootUtc": "2026-10-29T08:05:36.5000000Z",
+    "mutationPerformed": false,
+    "formatMarkerExists": false,
+    "atUtc": "2026-10-29T09:12:51.2340263Z",
+    "disks": [
+      {
+        "size": 1099511627776,
+        "readOnly": false,
+        "uniqueId": "eui.73985D32631E460082CABF1E6D158801",
+        "isSystem": true,
+        "offline": false,
+        "style": "GPT",
+        "number": 0,
+        "isBoot": true
+      },
+      {
+        "size": 2199023255552,
+        "readOnly": false,
+        "uniqueId": "eui.977A2C37B7C846F087268B8452F57C01",
+        "isSystem": false,
+        "offline": false,
+        "style": "RAW",
+        "number": 10,
+        "isBoot": false
+      },
+      {
+        "size": 2181843386368,
+        "readOnly": false,
+        "uniqueId": "D0CDB2F96D0E244E8B532E096F97FBBF",
+        "isSystem": false,
+        "offline": false,
+        "style": "GPT",
+        "number": 9,
+        "isBoot": false
+      }
+    ],
+    "physical": [
+      {
+        "canPool": false,
+        "uniqueId": "eui.B23D67FFF2924C04B501F4D3C649D401",
+        "size": 274877906944
+      },
+      {
+        "canPool": false,
+        "uniqueId": "eui.E1B7F79BDC4445D2A5D44A4CCF715701",
+        "size": 274877906944
+      },
+      {
+        "canPool": false,
+        "uniqueId": "eui.0E8148591DA44817828F21E9C2A5BE01",
+        "size": 274877906944
+      },
+      {
+        "canPool": true,
+        "uniqueId": "eui.977A2C37B7C846F087268B8452F57C01",
+        "size": 2199023255552
+      },
+      {
+        "canPool": false,
+        "uniqueId": "eui.3C590B16F2184074A2EA009878222101",
+        "size": 274877906944
+      },
+      {
+        "canPool": false,
+        "uniqueId": "eui.160E998859144AB5B7933803A52A7701",
+        "size": 274877906944
+      },
+      {
+        "canPool": false,
+        "uniqueId": "eui.73985D32631E460082CABF1E6D158801",
+        "size": 1099511627776
+      },
+      {
+        "canPool": false,
+        "uniqueId": "eui.6804277C11C14825828E70FA4164D601",
+        "size": 274877906944
+      },
+      {
+        "canPool": false,
+        "uniqueId": "eui.6246A32C18864BFFBC3784C624C93501",
+        "size": 274877906944
+      },
+      {
+        "canPool": false,
+        "uniqueId": "eui.AC65F83297B24FC0BFD90A76C568EA01",
+        "size": 274877906944
+      }
+    ],
+    "currentBootUtc": "2026-10-29T08:05:36.5000000Z",
+    "wExists": false
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-29T11:12:52.032099+02:00"
+}

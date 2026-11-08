@@ -1,0 +1,37 @@
+{
+  "status": "blocked",
+  "phase": "apply-readiness-gates",
+  "checks": {
+    "recordedHostHyperVAndPrivateAccessPassed": true,
+    "recordedOsExpansionPassed": true,
+    "recordedCurrentIsoStagingPassed": true
+  },
+  "blockers": [
+    "safe-cluster-bootstrap-implementation-not-ready",
+    "remaining-transitive-dependencies-not-pinned",
+    "storageDiskIdentityLayoutAndFormatting",
+    "nestedPrefixesSnatDnsAndReturnPath",
+    "guestSecretGenerationDeliveryAndLifetime",
+    "registrationRegionIdentityAndExactScopes",
+    "platformCloudCostAndMandatoryExports"
+  ],
+  "liveGuestInspectionPerformed": false,
+  "clusterDeploymentStarted": false,
+  "activeGuestBootstrapJob": null,
+  "automaticApplyOrRetryPermitted": false,
+  "nextAction": "Continue safe implementation/dependency review and obtain the exact outstanding design/apply decisions. Do not execute legacy bootstrap.",
+  "evidence": [
+    "private-ssh-post-reboot-hyperv-check.json",
+    "private-ssh-os-volume-expansion.json",
+    "private-ssh-stage-2610-image.json",
+    "bootstrap-execution-contract.json"
+  ],
+  "schemaVersion": 1,
+  "runId": "readiness-20261027-01",
+  "mode": "evidence-only-preflight",
+  "startedAtUtc": "2026-10-27T12:03:47.217316+00:00",
+  "lastCheckedAtUtc": "2026-10-27T12:03:47.217662+00:00",
+  "pid": 2689212,
+  "scheduleId": "smal-localbox-bootstrap-followup-20261027",
+  "blockerFingerprint": "ed76467b6c4c19e6ead4dc36c7c9f4fe2f965e2e0c9086bca037aebd995f8cb3"
+}

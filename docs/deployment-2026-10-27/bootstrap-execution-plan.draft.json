@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "host": {
+    "vmResourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+    "subnetResourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-smal-network-san-1/providers/Microsoft.Network/virtualNetworks/vnet-smal-san-1/subnets/snet-localbox-host",
+    "privateIp": "10.200.16.4"
+  },
+  "network": {
+    "allocations": {
+      "infrastructure": "10.64.0.0/20",
+      "pods": "10.65.0.0/16",
+      "services": "10.66.0.0/24"
+    },
+    "subnets": {
+      "aksApiNodesAndVips": "10.64.10.0/24",
+      "hostInternal": "10.64.3.0/24",
+      "management": "10.64.0.0/24",
+      "natTransit": "10.64.2.0/24",
+      "nestedVmNetwork": "10.64.11.0/24",
+      "provider": "10.64.1.0/24",
+      "storageA": "10.64.4.0/24",
+      "storageB": "10.64.5.0/24"
+    },
+    "sourceTranslation": "snat-to-outer-host",
+    "translatedSourceIp": "10.200.16.4",
+    "centralResolver": "10.204.0.4",
+    "changeOuterDefaultRoute": false,
+    "azureNicIpForwarding": false,
+    "sharedNetworkWrites": false,
+    "advertisedNestedPrefixes": [],
+    "hubStaticNestedRoutes": []
+  },
+  "storage": {
+    "layout": "Simple",
+    "fileSystem": "NTFS",
+    "driveLetter": "V",
+    "allocationUnitBytes": 65536,
+    "formatRequested": true,
+    "disks": [
+      {
+        "resourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_0",
+        "guestUniqueId": null,
+        "lun": null,
+        "sizeGiB": 256
+      },
+      {
+        "resourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_1",
+        "guestUniqueId": null,
+        "lun": null,
+        "sizeGiB": 256
+      },
+      {
+        "resourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_2",
+        "guestUniqueId": null,
+        "lun": null,
+        "sizeGiB": 256
+      },
+      {
+        "resourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_3",
+        "guestUniqueId": null,
+        "lun": null,
+        "sizeGiB": 256
+      },
+      {
+        "resourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_4",
+        "guestUniqueId": null,
+        "lun": null,
+        "sizeGiB": 256
+      },
+      {
+        "resourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_5",
+        "guestUniqueId": null,
+        "lun": null,
+        "sizeGiB": 256
+      },
+      {
+        "resourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_6",
+        "guestUniqueId": null,
+        "lun": null,
+        "sizeGiB": 256
+      },
+      {
+        "resourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_7",
+        "guestUniqueId": null,
+        "lun": null,
+        "sizeGiB": 256
+      }
+    ]
+  }
+}

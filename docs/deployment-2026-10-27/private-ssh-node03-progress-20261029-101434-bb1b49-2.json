@@ -1,0 +1,95 @@
+{
+  "beganAtSast": "2026-10-29T12:15:43.091733+02:00",
+  "status": "complete",
+  "commit": "ff81cb167b21ec6341a36066f0b328269dd58fd0",
+  "script": "scripts/read-smal-node03-job.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 59097,
+  "scriptTransport": "sha256-length-framed-utf8-stdin",
+  "renderedSourceSha256": "5ce481c48eab2ed58e2e71d1a2118b1eeedd1a0329f5d4411c3d00a10a012dd6",
+  "renderedSourceByteLength": 1574,
+  "unstreamedEncodedLength": 4200,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "bundleSha256": "D1568DE10404A25A5961C4088940C1F7EF18EA8E757ED3D32C3DAD419FE65789",
+    "state": {
+      "image": {
+        "virtualSizeBytes": 137438953472,
+        "vhdId": "B1A59A04-5622-45D7-BDAD-BCCC17475830",
+        "path": "W:\\AzureLocalBox\\Guests\\three-node-20261029-01\\LB-NODE03\\OS.vhdx",
+        "temporaryBootstrapSecretPresent": true,
+        "cleanupAndRotationRequired": true,
+        "imageIndex": 1,
+        "vmName": "LB-NODE03"
+      },
+      "clusterDeploymentPerformed": false,
+      "cleanup": null,
+      "commonCredentialLoginVerified": false,
+      "sourceCommit": "4835eb6d2b03b7141365ca9001f3eea64865bd60",
+      "phase": "wait-for-node03-setup-and-map-approved-adapters",
+      "vm": {
+        "adapters": [
+          {
+            "Name": "MGMT1",
+            "Id": "Microsoft:5B6EBA15-FA82-4E12-9E45-5FFBCD48C8A9\\0E28B8C7-2E83-49D8-A87E-70BBA241B66D",
+            "MacAddress": "000000000000",
+            "SwitchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934"
+          },
+          {
+            "Name": "MGMT2",
+            "Id": "Microsoft:5B6EBA15-FA82-4E12-9E45-5FFBCD48C8A9\\D24654D0-FAC4-4CBC-A6FD-EA89310495F0",
+            "MacAddress": "000000000000",
+            "SwitchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934"
+          },
+          {
+            "Name": "STORAGEA",
+            "Id": "Microsoft:5B6EBA15-FA82-4E12-9E45-5FFBCD48C8A9\\B001ED1F-DCF0-4F56-BBFE-466E637E67C5",
+            "MacAddress": "000000000000",
+            "SwitchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934"
+          },
+          {
+            "Name": "STORAGEB",
+            "Id": "Microsoft:5B6EBA15-FA82-4E12-9E45-5FFBCD48C8A9\\1D8BE3FB-15B5-426E-84AE-032E41185278",
+            "MacAddress": "000000000000",
+            "SwitchId": "995f5a7a-d229-4ca0-bb2a-9b34529c6934"
+          }
+        ],
+        "memoryBytes": 68719476736,
+        "vmId": "5b6eba15-fa82-4e12-9e45-5ffbcd48c8a9",
+        "processors": 8,
+        "state": "Off",
+        "vmName": "LB-NODE03",
+        "secureBoot": true,
+        "bootstrapCleanupAndRotationRequired": true,
+        "vTpm": true
+      },
+      "atUtc": "2026-10-29T10:13:55.8283428Z",
+      "azureRegistrationPerformed": false,
+      "status": "running"
+    },
+    "workerSha256": "DFDA8903EE400DB2453C21EB076D02E5D9D991D1917A1480AA81F457C357E485",
+    "registrationInvokedByReader": false,
+    "heartbeat": {
+      "atUtc": "2026-10-29T10:15:37.0870750Z"
+    },
+    "atUtc": "2026-10-29T10:15:49.9673582Z",
+    "actualTriggerCount": 0,
+    "principal": "SYSTEM",
+    "taskState": "Running",
+    "lastTaskResult": 267009
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-29T12:15:50.334672+02:00"
+}

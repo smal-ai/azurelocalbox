@@ -1,0 +1,14 @@
+{
+  "runId": "start-20261030-053239-74cf19c3",
+  "beganAtUtc": "2026-10-30T05:32:39.346730+00:00",
+  "status": "failed-inspect-before-retry",
+  "hostId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+  "shutdownAutomationChanged": false,
+  "roleActivationRequested": false,
+  "registrationInvoked": false,
+  "platformReadinessVerified": false,
+  "sourceCommit": "2e000a9357a42130ce2e2acc835e5619eb9881c0",
+  "errorType": "RuntimeError",
+  "error": "Private VPN route missing. Connect entlz-san-cert before starting LocalBox.",
+  "finishedAtUtc": "2026-10-30T05:32:39.991859+00:00"
+}

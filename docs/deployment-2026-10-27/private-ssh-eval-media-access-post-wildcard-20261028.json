@@ -1,0 +1,37 @@
+{
+  "beganAtSast": "2026-10-28T09:50:59.553962+02:00",
+  "status": "complete",
+  "commit": "3a9a5e056564d18246ed22b9affe6ed3542e9e25",
+  "script": "scripts/inspect-smal-eval-media-access.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 50615,
+  "scriptTransport": "encoded-command",
+  "renderedSourceSha256": "7baaf8e46f2cf2ed069316fa27a754d01aa8c8bfe52f4b77aaf5c44e2130f912",
+  "renderedSourceByteLength": 1095,
+  "unstreamedEncodedLength": 2920,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "atUtc": "2026-10-28T07:51:06.2915360Z",
+    "etag": "\"0x60A8C190FBB54AF58E40BA049FF290D098101E0EAD343CE912A1DC685219BE85\"",
+    "method": "HEAD",
+    "host": "software-static.download.prss.microsoft.com",
+    "bytes": 8152356864,
+    "computer": "LocalBox-Client",
+    "mediaBytesDownloaded": 0,
+    "httpStatus": 200
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-28T09:51:08.392090+02:00"
+}

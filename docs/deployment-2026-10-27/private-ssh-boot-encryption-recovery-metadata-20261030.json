@@ -1,0 +1,290 @@
+{
+  "beganAtSast": "2026-10-30T15:02:01.712034+02:00",
+  "status": "complete",
+  "commit": "d6d07a2f9534dd46bbee91a684193aa629e8aa7b",
+  "script": "scripts/inspect-smal-bitlocker-gap.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 43777,
+  "scriptTransport": "sha256-length-framed-utf8-stdin",
+  "renderedSourceSha256": "068b069933ec444fe41a617ddbc775e9fa207a3f84a49806408d7327b7d714c3",
+  "renderedSourceByteLength": 7418,
+  "unstreamedEncodedLength": 19784,
+  "guestCommandTimeoutSeconds": 300,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "platformReadinessVerified": false,
+    "adRecoveryMetadata": [
+      {
+        "distinguishedName": "CN=2026-10-30T12:11:11\\+02:00{3F0E1F76-91EA-4100-B1FE-8AF485B9F5A9},CN=LB-NODE01,OU=SMAL01,OU=AzureLocal,DC=ad,DC=localbox,DC=test",
+        "objectGuid": "8f5b8df0-d986-431f-9a01-0671550f06cb",
+        "createdUtc": "2026-10-30T10:11:14.0000000Z",
+        "PSComputerName": "LB-DC01",
+        "RunspaceId": "ed4c96d6-f2e9-4ff7-a106-d42f373f690d",
+        "PSShowComputerName": true
+      },
+      {
+        "distinguishedName": "CN=2026-10-30T12:11:26\\+02:00{1BF12BBB-1664-4742-8DFA-E4A2C6BE9F60},CN=LB-NODE02,OU=SMAL01,OU=AzureLocal,DC=ad,DC=localbox,DC=test",
+        "objectGuid": "4669c609-ef18-4e11-8e60-6b51fe8e5a2b",
+        "createdUtc": "2026-10-30T10:11:33.0000000Z",
+        "PSComputerName": "LB-DC01",
+        "RunspaceId": "ed4c96d6-f2e9-4ff7-a106-d42f373f690d",
+        "PSShowComputerName": true
+      },
+      {
+        "distinguishedName": "CN=2026-10-30T12:11:26\\+02:00{470A1EB6-6BAD-429E-911C-662CEDBA340F},CN=LB-NODE03,OU=SMAL01,OU=AzureLocal,DC=ad,DC=localbox,DC=test",
+        "objectGuid": "80a27c4b-5e4e-4592-b67f-78e9255a0229",
+        "createdUtc": "2026-10-30T10:11:35.0000000Z",
+        "PSComputerName": "LB-DC01",
+        "RunspaceId": "ed4c96d6-f2e9-4ff7-a106-d42f373f690d",
+        "PSShowComputerName": true
+      },
+      {
+        "distinguishedName": "CN=2026-10-30T12:14:09\\+02:00{BC8C9402-2DE3-4829-93E2-3EEA7BF0214F},CN=LB-NODE03,OU=SMAL01,OU=AzureLocal,DC=ad,DC=localbox,DC=test",
+        "objectGuid": "b176d0b4-de7c-43e3-8cb0-84da189f9b51",
+        "createdUtc": "2026-10-30T10:14:18.0000000Z",
+        "PSComputerName": "LB-DC01",
+        "RunspaceId": "ed4c96d6-f2e9-4ff7-a106-d42f373f690d",
+        "PSShowComputerName": true
+      }
+    ],
+    "nodes": [
+      {
+        "manufacturer": "Microsoft Corporation",
+        "encryptionLogClassifications": [],
+        "name": "LB-NODE01",
+        "model": "Virtual Machine",
+        "bootVolume": {
+          "volumeStatus": "FullyDecrypted",
+          "encryptionPercentage": 0,
+          "protectorCount": 0,
+          "protectionStatus": "Off",
+          "protectorTypes": [],
+          "mountPoint": "C:"
+        },
+        "tpm": {
+          "enabled": true,
+          "present": true,
+          "ready": true,
+          "activated": true
+        },
+        "bitLockerAgent": {
+          "records": [
+            {
+              "propertyNames": [
+                "ComputerName",
+                "MountPoint",
+                "EncryptionMethod",
+                "EncryptionMethodFlags",
+                "AutoUnlockEnabled",
+                "MetadataVersion",
+                "VolumeStatus",
+                "ProtectionStatus",
+                "LockStatus",
+                "EncryptionPercentage",
+                "WipePercentage",
+                "VolumeType",
+                "CapacityGB"
+              ],
+              "enabled": null,
+              "computerName": "LB-NODE01",
+              "protectionStatus": "Off",
+              "volumeType": {
+                "value": 0,
+                "Value": "OperatingSystem"
+              },
+              "mountPoint": "C:",
+              "encryptionStatus": ""
+            }
+          ],
+          "moduleName": "AzureStackBitlockerAgent",
+          "parameters": [
+            "VolumeType",
+            "Local",
+            "PerNode",
+            "UseDefaultCsvMountPoint",
+            "Verbose",
+            "Debug",
+            "ErrorAction",
+            "WarningAction",
+            "InformationAction",
+            "ErrorVariable",
+            "WarningVariable",
+            "InformationVariable",
+            "OutVariable",
+            "OutBuffer",
+            "PipelineVariable"
+          ],
+          "observationSucceeded": true,
+          "available": true
+        },
+        "PSComputerName": "LB-NODE01",
+        "RunspaceId": "3492d7dc-c754-44eb-857b-8f4d3f63e204",
+        "PSShowComputerName": true
+      },
+      {
+        "manufacturer": "Microsoft Corporation",
+        "encryptionLogClassifications": [],
+        "name": "LB-NODE02",
+        "model": "Virtual Machine",
+        "bootVolume": {
+          "volumeStatus": "FullyDecrypted",
+          "encryptionPercentage": 0,
+          "protectorCount": 0,
+          "protectionStatus": "Off",
+          "protectorTypes": [],
+          "mountPoint": "C:"
+        },
+        "tpm": {
+          "enabled": true,
+          "present": true,
+          "ready": true,
+          "activated": true
+        },
+        "bitLockerAgent": {
+          "records": [
+            {
+              "propertyNames": [
+                "ComputerName",
+                "MountPoint",
+                "EncryptionMethod",
+                "EncryptionMethodFlags",
+                "AutoUnlockEnabled",
+                "MetadataVersion",
+                "VolumeStatus",
+                "ProtectionStatus",
+                "LockStatus",
+                "EncryptionPercentage",
+                "WipePercentage",
+                "VolumeType",
+                "CapacityGB"
+              ],
+              "enabled": null,
+              "computerName": "LB-NODE02",
+              "protectionStatus": "Off",
+              "volumeType": {
+                "value": 0,
+                "Value": "OperatingSystem"
+              },
+              "mountPoint": "C:",
+              "encryptionStatus": ""
+            }
+          ],
+          "moduleName": "AzureStackBitlockerAgent",
+          "parameters": [
+            "VolumeType",
+            "Local",
+            "PerNode",
+            "UseDefaultCsvMountPoint",
+            "Verbose",
+            "Debug",
+            "ErrorAction",
+            "WarningAction",
+            "InformationAction",
+            "ErrorVariable",
+            "WarningVariable",
+            "InformationVariable",
+            "OutVariable",
+            "OutBuffer",
+            "PipelineVariable"
+          ],
+          "observationSucceeded": true,
+          "available": true
+        },
+        "PSComputerName": "LB-NODE02",
+        "RunspaceId": "c5ef38ae-6725-4e41-9371-21e2868b279a",
+        "PSShowComputerName": true
+      },
+      {
+        "manufacturer": "Microsoft Corporation",
+        "encryptionLogClassifications": [],
+        "name": "LB-NODE03",
+        "model": "Virtual Machine",
+        "bootVolume": {
+          "volumeStatus": "FullyDecrypted",
+          "encryptionPercentage": 0,
+          "protectorCount": 0,
+          "protectionStatus": "Off",
+          "protectorTypes": [],
+          "mountPoint": "C:"
+        },
+        "tpm": {
+          "enabled": true,
+          "present": true,
+          "ready": true,
+          "activated": true
+        },
+        "bitLockerAgent": {
+          "records": [
+            {
+              "propertyNames": [
+                "ComputerName",
+                "MountPoint",
+                "EncryptionMethod",
+                "EncryptionMethodFlags",
+                "AutoUnlockEnabled",
+                "MetadataVersion",
+                "VolumeStatus",
+                "ProtectionStatus",
+                "LockStatus",
+                "EncryptionPercentage",
+                "WipePercentage",
+                "VolumeType",
+                "CapacityGB"
+              ],
+              "enabled": null,
+              "computerName": "LB-NODE03",
+              "protectionStatus": "Off",
+              "volumeType": {
+                "value": 0,
+                "Value": "OperatingSystem"
+              },
+              "mountPoint": "C:",
+              "encryptionStatus": ""
+            }
+          ],
+          "moduleName": "AzureStackBitlockerAgent",
+          "parameters": [
+            "VolumeType",
+            "Local",
+            "PerNode",
+            "UseDefaultCsvMountPoint",
+            "Verbose",
+            "Debug",
+            "ErrorAction",
+            "WarningAction",
+            "InformationAction",
+            "ErrorVariable",
+            "WarningVariable",
+            "InformationVariable",
+            "OutVariable",
+            "OutBuffer",
+            "PipelineVariable"
+          ],
+          "observationSucceeded": true,
+          "available": true
+        },
+        "PSComputerName": "LB-NODE03",
+        "RunspaceId": "43eadf65-9e5a-4f28-879a-e5f12ca80539",
+        "PSShowComputerName": true
+      }
+    ],
+    "mutationPerformed": false,
+    "observationStatus": "complete-read-only",
+    "rawLogsExported": false,
+    "atUtc": "2026-10-30T13:02:45.0474170Z",
+    "recoveryKeysExported": false
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-30T15:02:45.381374+02:00"
+}

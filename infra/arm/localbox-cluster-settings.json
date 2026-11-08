@@ -1,0 +1,505 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "2.0",
+  "contentVersion": "1.0.0.0",
+  "resources": {
+    "DeploymentSettings": {
+      "type": "microsoft.azurestackhci/clusters/deploymentSettings",
+      "apiVersion": "2025-09-15-preview",
+      "name": "[format('{0}/default', parameters('clusterName'))]",
+      "properties": {
+        "arcNodeResourceIds": "[parameters('arcNodeResourceIds')]",
+        "deploymentMode": "[parameters('deploymentMode')]",
+        "deploymentConfiguration": {
+          "version": "10.0.0.0",
+          "scaleUnits": [
+            {
+              "deploymentData": {
+                "securitySettings": {
+                  "hvciProtection": true,
+                  "drtmProtection": true,
+                  "driftControlEnforced": "[parameters('driftControlEnforced')]",
+                  "credentialGuardEnforced": "[parameters('credentialGuardEnforced')]",
+                  "smbSigningEnforced": "[parameters('smbSigningEnforced')]",
+                  "smbClusterEncryption": "[parameters('smbClusterEncryption')]",
+                  "sideChannelMitigationEnforced": true,
+                  "bitlockerBootVolume": "[parameters('bitlockerBootVolume')]",
+                  "bitlockerDataVolumes": "[parameters('bitlockerDataVolumes')]",
+                  "wdacEnforced": "[parameters('wdacEnforced')]"
+                },
+                "observability": {
+                  "streamingDataClient": "[parameters('streamingDataClient')]",
+                  "euLocation": "[parameters('euLocation')]",
+                  "episodicDataUpload": "[parameters('episodicDataUpload')]"
+                },
+                "cluster": {
+                  "name": "[parameters('clusterName')]",
+                  "witnessType": "[variables('witnessTypeVar')]",
+                  "witnessPath": "",
+                  "cloudAccountName": "[variables('clusterWitnessStorageAccountNameVar')]",
+                  "azureServiceEndpoint": "[variables('AzureServiceEndpointVar')]"
+                },
+                "storage": {
+                  "configurationMode": "[parameters('configurationMode')]"
+                },
+                "namingPrefix": "[parameters('namingPrefix')]",
+                "domainFqdn": "[parameters('domainFqdn')]",
+                "infrastructureNetwork": [
+                  {
+                    "subnetMask": "[parameters('subnetMask')]",
+                    "gateway": "[parameters('defaultGateway')]",
+                    "ipPools": [
+                      {
+                        "startingAddress": "[parameters('startingIPAddress')]",
+                        "endingAddress": "[parameters('endingIPAddress')]"
+                      }
+                    ],
+                    "dnsServers": "[parameters('dnsServers')]",
+                    "useDhcp": "[parameters('useDhcp')]"
+                  }
+                ],
+                "physicalNodes": "[parameters('physicalNodesSettings')]",
+                "hostNetwork": {
+                  "intents": "[parameters('intentList')]",
+                  "storageNetworks": "[parameters('storageNetworkList')]",
+                  "storageConnectivitySwitchless": "[parameters('storageConnectivitySwitchless')]",
+                  "enableStorageAutoIp": "[parameters('enableStorageAutoIp')]"
+                },
+                "adouPath": "[parameters('adouPath')]",
+                "secrets": "[variables('deploymentSecretsList')]",
+                "optionalServices": {
+                  "customLocation": "[parameters('customLocation')]"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "variables": {
+    "storageWitnessECEName": "WitnessStorageKey",
+    "LocalAdminCredentialECEName": "LocalAdminCredential",
+    "domainAdminCredentialECEName": "AzureStackLCMUserCredential",
+    "storageWitnessSecretName": "[concat( parameters('clusterName'), '-', 'WitnessStorageKey')]",
+    "LocalAdminCredentialSecretName": "[concat( parameters('clusterName'), '-', 'LocalAdminCredential')]",
+    "domainAdminSecretName": "[concat( parameters('clusterName'), '-', 'AzureStackLCMUserCredential')]",
+    "witnessTypeVar": "[if(equals(parameters('witnessType'), 'No Witness'), '','Cloud')]",
+    "clusterWitnessStorageAccountNameVar": "[if(equals(parameters('witnessType'), 'No Witness'), '', parameters('clusterWitnessStorageAccountName'))]",
+    "AzureServiceEndpointVar": "[if(equals(parameters('witnessType'), 'No Witness'), '', if(equals(environment().name, 'AzureCloud'), 'core.windows.net', 'core.usgovcloudapi.net'))]",
+    "KeyVaultDNS": "[if(equals(environment().name, 'AzureCloud'), 'vault.azure.net', 'vault.usgovcloudapi.net')]",
+    "deploymentSecretsList": [
+      {
+        "secretName": "[variables('storageWitnessSecretName')]",
+        "eceSecretName": "[variables('storageWitnessECEName')]",
+        "secretLocation": "[concat('https://', parameters('keyVaultName'), '.', variables('KeyVaultDNS'), '/secrets/', variables('storageWitnessSecretName'))]"
+      },
+      {
+        "secretName": "[variables('LocalAdminCredentialSecretName')]",
+        "eceSecretName": "[variables('LocalAdminCredentialECEName')]",
+        "secretLocation": "[concat('https://', parameters('keyVaultName'), '.', variables('KeyVaultDNS'), '/secrets/', variables('LocalAdminCredentialSecretName'))]"
+      },
+      {
+        "secretName": "[variables('domainAdminSecretName')]",
+        "eceSecretName": "[variables('domainAdminCredentialECEName')]",
+        "secretLocation": "[concat('https://', parameters('keyVaultName'), '.', variables('KeyVaultDNS'), '/secrets/', variables('domainAdminSecretName'))]"
+      }
+    ]
+  },
+  "parameters": {
+    "deploymentMode": {
+      "defaultValue": "Validate",
+      "type": "string",
+      "allowedValues": [
+        "Validate",
+        "Deploy"
+      ],
+      "metadata": {
+        "description": "First must pass Validate prior running Deploy"
+      }
+    },
+    "keyVaultName": {
+      "type": "string",
+      "metadata": {
+        "description": "The KeyVault name used to store the secrets."
+      },
+      "defaultValue": "kv-lbox-weu-4766ea",
+      "allowedValues": [
+        "kv-lbox-weu-4766ea"
+      ]
+    },
+    "clusterName": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 15,
+      "metadata": {
+        "description": "This name must be unique from physical node names"
+      },
+      "defaultValue": "smal-localbox-01",
+      "allowedValues": [
+        "smal-localbox-01"
+      ]
+    },
+    "witnessType": {
+      "defaultValue": "Cloud",
+      "type": "string",
+      "allowedValues": [
+        "Cloud"
+      ],
+      "metadata": {
+        "description": "Witness Type must be 'cloud' for a 2 node cluster. It can  be empty of other cluster sizes"
+      }
+    },
+    "clusterWitnessStorageAccountName": {
+      "defaultValue": "stlboxwitweu4766ea",
+      "type": "string",
+      "metadata": {
+        "description": "Storage account name to be created for the cluster witness, required when Witness Type is cloud"
+      },
+      "allowedValues": [
+        "stlboxwitweu4766ea"
+      ]
+    },
+    "arcNodeResourceIds": {
+      "defaultValue": [
+        "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE01",
+        "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE02"
+      ],
+      "type": "array",
+      "metadata": {
+        "description": "The arc for server node Ids of the hci cluster"
+      }
+    },
+    "domainFqdn": {
+      "defaultValue": "ad.localbox.test",
+      "type": "string",
+      "metadata": {
+        "description": "The domain name of the Active Directory Domain Services"
+      },
+      "allowedValues": [
+        "ad.localbox.test"
+      ]
+    },
+    "namingPrefix": {
+      "defaultValue": "SMAL01",
+      "type": "string",
+      "metadata": {
+        "description": "The object name prefix (for future use, post 2402)"
+      },
+      "allowedValues": [
+        "SMAL01"
+      ]
+    },
+    "adouPath": {
+      "defaultValue": "OU=SMAL01,OU=AzureLocal,DC=ad,DC=localbox,DC=test",
+      "type": "string",
+      "metadata": {
+        "description": "The ADDS OU path"
+      },
+      "allowedValues": [
+        "OU=SMAL01,OU=AzureLocal,DC=ad,DC=localbox,DC=test"
+      ]
+    },
+    "driftControlEnforced": {
+      "defaultValue": true,
+      "type": "bool",
+      "allowedValues": [
+        true
+      ],
+      "metadata": {
+        "description": "The security setting driftControlEnforced data for deploying a hci cluster"
+      }
+    },
+    "credentialGuardEnforced": {
+      "defaultValue": true,
+      "type": "bool",
+      "allowedValues": [
+        true
+      ],
+      "metadata": {
+        "description": "The security setting credentialGuardEnforced data for deploying a hci cluster"
+      }
+    },
+    "smbSigningEnforced": {
+      "defaultValue": true,
+      "type": "bool",
+      "allowedValues": [
+        true
+      ],
+      "metadata": {
+        "description": "The security setting smbSigningEnforced data for deploying a hci cluster"
+      }
+    },
+    "smbClusterEncryption": {
+      "defaultValue": false,
+      "type": "bool",
+      "allowedValues": [
+        false
+      ],
+      "metadata": {
+        "description": "The security setting smbClusterEncryption data for deploying a hci cluster"
+      }
+    },
+    "bitlockerBootVolume": {
+      "defaultValue": true,
+      "type": "bool",
+      "allowedValues": [
+        true
+      ],
+      "metadata": {
+        "description": "The security setting bitlockerBootVolume data for deploying a hci cluster"
+      }
+    },
+    "bitlockerDataVolumes": {
+      "defaultValue": true,
+      "type": "bool",
+      "allowedValues": [
+        true
+      ],
+      "metadata": {
+        "description": "The security setting bitlockerDataVolumes data for deploying a hci cluster"
+      }
+    },
+    "wdacEnforced": {
+      "defaultValue": true,
+      "type": "bool",
+      "allowedValues": [
+        true
+      ],
+      "metadata": {
+        "description": "The security setting wdacEnforced data for deploying a hci cluster"
+      }
+    },
+    "streamingDataClient": {
+      "defaultValue": true,
+      "type": "bool",
+      "allowedValues": [
+        true
+      ],
+      "metadata": {
+        "description": "The metrics data for deploying a hci cluster"
+      }
+    },
+    "euLocation": {
+      "defaultValue": true,
+      "type": "bool",
+      "allowedValues": [
+        true
+      ],
+      "metadata": {
+        "description": "The location data for deploying a hci cluster"
+      }
+    },
+    "episodicDataUpload": {
+      "defaultValue": true,
+      "type": "bool",
+      "allowedValues": [
+        true
+      ],
+      "metadata": {
+        "description": "The diagnostic data for deploying a hci cluster"
+      }
+    },
+    "configurationMode": {
+      "defaultValue": "Express",
+      "type": "string",
+      "allowedValues": [
+        "Express"
+      ],
+      "metadata": {
+        "description": "The storage volume configuration mode"
+      }
+    },
+    "subnetMask": {
+      "defaultValue": "255.255.255.0",
+      "type": "string",
+      "metadata": {
+        "description": "The subnet mask for deploying a hci cluster"
+      },
+      "allowedValues": [
+        "255.255.255.0"
+      ]
+    },
+    "defaultGateway": {
+      "defaultValue": "10.64.0.1",
+      "type": "string",
+      "metadata": {
+        "description": "The default gateway for deploying a hci cluster"
+      },
+      "allowedValues": [
+        "10.64.0.1"
+      ]
+    },
+    "startingIPAddress": {
+      "defaultValue": "10.64.0.20",
+      "type": "string",
+      "metadata": {
+        "description": "The starting ip address for deploying a hci cluster"
+      },
+      "allowedValues": [
+        "10.64.0.20"
+      ]
+    },
+    "endingIPAddress": {
+      "defaultValue": "10.64.0.30",
+      "type": "string",
+      "metadata": {
+        "description": "The ending ip address for deploying a hci cluster"
+      },
+      "allowedValues": [
+        "10.64.0.30"
+      ]
+    },
+    "dnsServers": {
+      "defaultValue": [
+        "10.64.0.10"
+      ],
+      "type": "array",
+      "metadata": {
+        "description": "The dns servers for deploying a hci cluster"
+      }
+    },
+    "useDhcp": {
+      "type": "bool",
+      "allowedValues": [
+        false
+      ],
+      "defaultValue": false,
+      "metadata": {
+        "description": "Allows customers to use DHCP for Hosts and Cluster IPs. If not declared, the deployment will default to static IPs. When true, GW and DNS servers are not required"
+      }
+    },
+    "physicalNodesSettings": {
+      "defaultValue": [
+        {
+          "name": "LB-NODE01",
+          "ipv4Address": "10.64.0.11"
+        },
+        {
+          "name": "LB-NODE02",
+          "ipv4Address": "10.64.0.12"
+        }
+      ],
+      "type": "array",
+      "metadata": {
+        "description": "The physical nodes settings for deploying a hci cluster"
+      }
+    },
+    "intentList": {
+      "defaultValue": [
+        {
+          "name": "ManagementCompute",
+          "trafficType": [
+            "Management",
+            "Compute"
+          ],
+          "adapter": [
+            "MGMT1",
+            "MGMT2"
+          ],
+          "overrideVirtualSwitchConfiguration": false,
+          "overrideQosPolicy": false,
+          "overrideAdapterProperty": true,
+          "adapterPropertyOverrides": {
+            "networkDirect": "Disabled",
+            "jumboPacket": "1514"
+          }
+        },
+        {
+          "name": "Storage",
+          "trafficType": [
+            "Storage"
+          ],
+          "adapter": [
+            "STORAGEA",
+            "STORAGEB"
+          ],
+          "overrideVirtualSwitchConfiguration": false,
+          "overrideQosPolicy": false,
+          "overrideAdapterProperty": true,
+          "adapterPropertyOverrides": {
+            "networkDirect": "Disabled",
+            "jumboPacket": "1514"
+          }
+        }
+      ],
+      "type": "array",
+      "metadata": {
+        "description": "The intent list for deploying a hci cluster"
+      }
+    },
+    "storageNetworkList": {
+      "defaultValue": [
+        {
+          "name": "StorageA",
+          "networkAdapterName": "STORAGEA",
+          "vlanId": "711",
+          "storageAdapterIPInfo": [
+            {
+              "physicalNode": "LB-NODE01",
+              "ipv4Address": "10.64.4.11",
+              "subnetMask": "255.255.255.0"
+            },
+            {
+              "physicalNode": "LB-NODE02",
+              "ipv4Address": "10.64.4.12",
+              "subnetMask": "255.255.255.0"
+            }
+          ]
+        },
+        {
+          "name": "StorageB",
+          "networkAdapterName": "STORAGEB",
+          "vlanId": "712",
+          "storageAdapterIPInfo": [
+            {
+              "physicalNode": "LB-NODE01",
+              "ipv4Address": "10.64.5.11",
+              "subnetMask": "255.255.255.0"
+            },
+            {
+              "physicalNode": "LB-NODE02",
+              "ipv4Address": "10.64.5.12",
+              "subnetMask": "255.255.255.0"
+            }
+          ]
+        }
+      ],
+      "type": "array",
+      "metadata": {
+        "description": "The storage network list for deploying a hci cluster"
+      }
+    },
+    "storageConnectivitySwitchless": {
+      "defaultValue": false,
+      "type": "bool",
+      "metadata": {
+        "description": "The storage connectivity switchless value for deploying a hci cluster"
+      },
+      "allowedValues": [
+        false
+      ]
+    },
+    "enableStorageAutoIp": {
+      "defaultvalue": true,
+      "type": "bool",
+      "metadata": {
+        "description": "The enable storage auto ip value for deploying a hci cluster"
+      },
+      "defaultValue": false,
+      "allowedValues": [
+        false
+      ]
+    },
+    "customLocation": {
+      "defaultValue": "cl-localbox-smal-weu-1",
+      "type": "string",
+      "metadata": {
+        "description": "The custom location for deploying a hci cluster"
+      },
+      "allowedValues": [
+        "cl-localbox-smal-weu-1"
+      ]
+    }
+  }
+}

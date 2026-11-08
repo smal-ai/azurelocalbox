@@ -1,0 +1,30 @@
+{
+  "observedOn": "2026-10-29",
+  "originalStageReceipt": "three-node-cluster-secrets-receipt.json",
+  "originalReceiptRetained": true,
+  "originalStageHadCheckedTwoSecretCreatePreview": true,
+  "originalStageArmDeploymentFound": false,
+  "credentialSealingTransportReceiptExists": false,
+  "privateVpnProfile": "entlz-san-cert",
+  "before": {
+    "profileReportedActive": true,
+    "resolverRouteDevice": "tun0",
+    "resolverTcp53": "TimeoutError",
+    "vaultIpTcp443": "TimeoutError",
+    "vaultMetadataList": "normal DNS resolution failed"
+  },
+  "recovery": {
+    "existingProfileReconnected": true,
+    "profileConfigurationOrCredentialsChanged": false,
+    "azureNetworkOrPolicyChanged": false,
+    "publicAccessEnabled": false
+  },
+  "after": {
+    "resolverTcp53": "reachable",
+    "vaultIpTcp443": "reachable",
+    "normalVaultDnsAddresses": ["10.200.17.11"],
+    "authenticatedVaultActiveSecretMetadata": []
+  },
+  "resumptionScope": "one exact unsubmitted secret stage only, with fresh checks and original deployment identity",
+  "automaticResourceReplayAuthorised": false
+}

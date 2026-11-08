@@ -1,0 +1,79 @@
+{
+  "beganAtSast": "2026-10-29T16:13:47.123073+02:00",
+  "status": "complete",
+  "commit": "f5ea3e90318bc9a6889c57a4dc83680291dfa440",
+  "script": "scripts/allow-smal-internal-gateway-echo.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 60961,
+  "scriptTransport": "sha256-length-framed-utf8-stdin",
+  "renderedSourceSha256": "07bea6cda80afc485be3889d1815e299dec9ab6d8d0b359000ff6d74f1f5e399",
+  "renderedSourceByteLength": 6125,
+  "unstreamedEncodedLength": 16336,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "persistent": {
+      "action": "Allow",
+      "enabled": "True",
+      "icmpType": [
+        "8"
+      ],
+      "profile": "Any",
+      "direction": "Inbound",
+      "localAddress": [
+        "10.64.0.1"
+      ],
+      "name": "AzureLocalBox-InternalGateway-Echo-v4",
+      "remoteAddress": [
+        "10.64.0.11-10.64.0.13",
+        "10.64.0.20-10.64.0.30"
+      ],
+      "interfaceAlias": [
+        "vEthernet (LB-Fabric)"
+      ],
+      "protocol": "ICMPv4"
+    },
+    "effective": {
+      "action": "Allow",
+      "enabled": "True",
+      "icmpType": [
+        "8"
+      ],
+      "profile": "Any",
+      "direction": "Inbound",
+      "localAddress": [
+        "10.64.0.1"
+      ],
+      "name": "AzureLocalBox-InternalGateway-Echo-v4",
+      "remoteAddress": [
+        "10.64.0.11-10.64.0.13",
+        "10.64.0.20-10.64.0.30"
+      ],
+      "interfaceAlias": [
+        "vEthernet (LB-Fabric)"
+      ],
+      "protocol": "ICMPv4"
+    },
+    "approvalSha256": "D65BBC1324845E8019041BD576A5C6792D629AFC920D79D9A4324F302A0CB3A2",
+    "outerOrSharedNetworkChanged": false,
+    "validationInvoked": false,
+    "created": true,
+    "atUtc": "2026-10-29T14:14:03.0399916Z",
+    "existingRuleIdentitiesPreserved": true,
+    "status": "exact-approved-echo-rule-verified",
+    "firewallProfilesChanged": false
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-29T16:14:03.400607+02:00"
+}

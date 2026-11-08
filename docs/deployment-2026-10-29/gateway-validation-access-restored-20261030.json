@@ -1,0 +1,23 @@
+{
+  "observedAtUtc": "2026-10-30T05:56:53.833914+00:00",
+  "status": "restored-what-if-access-exact-existing-settings-only",
+  "previewChanges": [
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/microsoft.azurestackhci/clusters/smal-localbox01/deploymentSettings/default",
+      "changeType": "NoChange"
+    }
+  ],
+  "terminalValidationProof": {
+    "clusterStatus": "ValidationFailed",
+    "mode": "Validate",
+    "provisioningState": "Failed",
+    "validationStatus": "Error",
+    "deploymentStatus": null,
+    "deployArmRecords": [],
+    "knownLcmFormatErrorMatched": false,
+    "knownInfraNetworkErrorMatched": true
+  },
+  "gatewayRetryDeploymentRecords": [],
+  "validateSubmitted": false,
+  "deploySubmitted": false
+}

@@ -1,0 +1,37 @@
+{
+  "beganAtSast": "2026-10-28T10:35:49.485957+02:00",
+  "status": "complete",
+  "commit": "0e8e0997505efdf015ba6da661608cde9ab46001",
+  "script": "scripts/start-smal-guest-image-job.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 44869,
+  "scriptTransport": "sha256-length-framed-utf8-stdin",
+  "renderedSourceSha256": "a2b5abe699b5208c3f6722d8826056df81262e070036d8d78c8733073acafc5c",
+  "renderedSourceByteLength": 48053,
+  "unstreamedEncodedLength": 128144,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "sourceCommit": "0e8e0997505efdf015ba6da661608cde9ab46001",
+    "manifestSha256": "BE562EE9306ACF07A72BF588156D3B7B1DFC9E010FD0AB046C8C35E7E004AED5",
+    "workerSha256": "962B19265ECB43D285717429561E117AEB7E8EFBF8BBAF04BF7742091A2F73FF",
+    "clusterBootstrapComplete": false,
+    "bundleSha256": "340633673EE18F91057BF691EB6A70AED9B4943EF06724805E36A69DCC36BEB5",
+    "runId": "local-guests-20261028-01",
+    "startRequested": true,
+    "bootGuestsInThisPhase": false
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-28T10:35:59.461079+02:00"
+}

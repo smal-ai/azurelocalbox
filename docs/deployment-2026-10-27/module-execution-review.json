@@ -1,0 +1,48 @@
+{
+  "status": "pinned-vendor-module-not-safe-to-execute-unchanged",
+  "package": "Azure.Arc.Jumpstart.LocalBox",
+  "version": "1.0.8",
+  "reviewedSourceSha256": "b1646f540f1703b76ca8484a907064a6fbbf9c1080e016161dd758f7459c5fff",
+  "sourceIdentityEvidence": "module-source-audit.json",
+  "installedOrImportedOnNewHost": false,
+  "findings": [
+    {
+      "function": "GenerateAnswerFile",
+      "lines": [33, 76, 77, 78, 79, 88, 102, 103, 104],
+      "behaviour": "Generates unattend XML disabling all three guest firewall profiles, includes plaintext domain join credentials and reversibly base64-encodes the local administrator password.",
+      "replacement": "Keep guest firewalls enabled. Separate per-role credentials, approved encrypted/short-lived provisioning-secret handling and cleanup. Base64 is not encryption."
+    },
+    {
+      "function": "New-DCVM",
+      "lines": [817, 827, 828, 829, 841, 842, 843, 866, 867],
+      "behaviour": "Sets domain complexity false and minimum password length zero, then configures non-expiring/non-changeable accounts.",
+      "replacement": "Preserve a strong domain policy and define credential lifecycle. Do not run this helper unchanged."
+    },
+    {
+      "function": "New-AdminCenterVM",
+      "lines": [489, 491, 492, 493, 494, 495, 596, 602, 631],
+      "behaviour": "Enables broad CredSSP delegation and runs downloaded Chocolatey code through Invoke-Expression.",
+      "replacement": "Exclude optional Admin Center/Chocolatey/UI tooling from bootstrap. Use supported PowerShell Direct for owned local Hyper-V guests with explicit guest credentials."
+    },
+    {
+      "function": "Set-FabricNetwork",
+      "lines": [1496, 1497],
+      "behaviour": "Sets wildcard TrustedHosts and enables network PowerShell remoting on management guest.",
+      "replacement": "Use PowerShell Direct where supported, no wildcard TrustedHosts, no added network remoting listener by assumption."
+    },
+    {
+      "function": "Set-AzLocalDeployPrereqs",
+      "lines": [1200, 1201, 1216, 1219, 1264],
+      "behaviour": "Installs an unpinned AD prerequisite module and forwards the current ARM token into nested nodes for Arc registration.",
+      "replacement": "Pin and inspect transitive dependencies. Approve an exact registration identity and secure token delivery/lifetime without logs, disk persistence or implicit operator credential reuse."
+    },
+    {
+      "function": "New-AzLocalNodeVM",
+      "lines": [678, 679, 682, 690, 699],
+      "behaviour": "Creates a fixed-name disk/VM set without complete repeat guards and configures automatic guest start.",
+      "replacement": "Validate existing resource identities and disk state, journal each phase, default nested automatic start off until the exact network/security design is accepted."
+    }
+  ],
+  "conclusion": "A package version/hash pin does not make the implementation safe. Replacing only the top-level Bootstrap.ps1 would leave these nested side effects in place.",
+  "noSecurityWaiverInferred": true
+}

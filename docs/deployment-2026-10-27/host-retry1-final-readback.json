@@ -1,0 +1,410 @@
+{
+  "summary": {
+    "atSast": "2026-10-27T11:25:46.642585+02:00",
+    "vmState": "running",
+    "agentReady": true,
+    "privateIp": "10.200.16.4",
+    "publicIp": null,
+    "diskCount": 9,
+    "totalDiskGiB": 3072,
+    "allDisksAttached": true,
+    "vmComputeChargesActive": true,
+    "bootstrapDeployed": false,
+    "platformReadinessPassed": false,
+    "initialReadbackProjectionCorrection": "diskSizeGB is the CLI field; earlier diskSizeGb projection returned null and its local total calculation failed. Corrected inventory explicitly verified."
+  },
+  "checks": {
+    "vm": {
+      "atSast": "2026-10-27T11:25:41.292281+02:00",
+      "command": [
+        "az",
+        "vm",
+        "get-instance-view",
+        "-g",
+        "rg-localbox-nodes-san-1",
+        "-n",
+        "LocalBox-Client",
+        "--query",
+        "{id:id,location:location,size:hardwareProfile.vmSize,state:provisioningState,securityType:securityProfile.securityType,statuses:instanceView.statuses,os:instanceView.osName,osVersion:instanceView.osVersion,agent:instanceView.vmAgent.{version:vmAgentVersion,status:statuses[].displayStatus},identity:identity}",
+        "--subscription",
+        "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+        "-o",
+        "json",
+        "--only-show-errors"
+      ],
+      "exitCode": 0,
+      "result": {
+        "agent": {
+          "status": [
+            "Ready"
+          ],
+          "version": "2.7.41491.1243"
+        },
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+        "identity": {
+          "principalId": "9ed2a366-1912-4c45-b189-b60ae1b6e4ff",
+          "tenantId": "c6e67968-af25-4557-ab8b-06b693048d3b",
+          "type": "SystemAssigned"
+        },
+        "location": "southafricanorth",
+        "os": "Windows Server 2025 Datacenter",
+        "osVersion": "10.0.26100.33674",
+        "securityType": "Standard",
+        "size": "Standard_E32s_v6",
+        "state": "Succeeded",
+        "statuses": [
+          {
+            "code": "ProvisioningState/succeeded",
+            "displayStatus": "Provisioning succeeded",
+            "level": "Info",
+            "time": "2026-10-27T09:21:46.8482277+00:00"
+          },
+          {
+            "code": "PowerState/running",
+            "displayStatus": "VM running",
+            "level": "Info"
+          }
+        ]
+      },
+      "error": null
+    },
+    "nic": {
+      "atSast": "2026-10-27T11:25:42.556817+02:00",
+      "command": [
+        "az",
+        "network",
+        "nic",
+        "show",
+        "-g",
+        "rg-localbox-nodes-san-1",
+        "-n",
+        "LocalBox-Client-NIC",
+        "--query",
+        "{id:id,vm:virtualMachine.id,forwarding:enableIPForwarding,ips:ipConfigurations[].{ip:privateIPAddress,subnet:subnet.id,publicIp:publicIPAddress.id}}",
+        "--subscription",
+        "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+        "-o",
+        "json",
+        "--only-show-errors"
+      ],
+      "exitCode": 0,
+      "result": {
+        "forwarding": false,
+        "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Network/networkInterfaces/LocalBox-Client-NIC",
+        "ips": [
+          {
+            "ip": "10.200.16.4",
+            "publicIp": null,
+            "subnet": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-smal-network-san-1/providers/Microsoft.Network/virtualNetworks/vnet-smal-san-1/subnets/snet-localbox-host"
+          }
+        ],
+        "vm": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client"
+      },
+      "error": null
+    },
+    "disks": {
+      "atSast": "2026-10-27T11:25:43.011943+02:00",
+      "command": [
+        "az",
+        "disk",
+        "list",
+        "-g",
+        "rg-localbox-nodes-san-1",
+        "--query",
+        "[].{id:id,name:name,sizeGiB:diskSizeGB,state:diskState,sku:sku.name,tier:tier,managedBy:managedBy}",
+        "--subscription",
+        "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+        "-o",
+        "json",
+        "--only-show-errors"
+      ],
+      "exitCode": 0,
+      "result": [
+        {
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_0",
+          "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+          "name": "LocalBox-Client-DataDisk_0",
+          "sizeGiB": 256,
+          "sku": "Premium_LRS",
+          "state": "Attached",
+          "tier": "P15"
+        },
+        {
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_1",
+          "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+          "name": "LocalBox-Client-DataDisk_1",
+          "sizeGiB": 256,
+          "sku": "Premium_LRS",
+          "state": "Attached",
+          "tier": "P15"
+        },
+        {
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_2",
+          "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+          "name": "LocalBox-Client-DataDisk_2",
+          "sizeGiB": 256,
+          "sku": "Premium_LRS",
+          "state": "Attached",
+          "tier": "P15"
+        },
+        {
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_3",
+          "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+          "name": "LocalBox-Client-DataDisk_3",
+          "sizeGiB": 256,
+          "sku": "Premium_LRS",
+          "state": "Attached",
+          "tier": "P15"
+        },
+        {
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_4",
+          "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+          "name": "LocalBox-Client-DataDisk_4",
+          "sizeGiB": 256,
+          "sku": "Premium_LRS",
+          "state": "Attached",
+          "tier": "P15"
+        },
+        {
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_5",
+          "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+          "name": "LocalBox-Client-DataDisk_5",
+          "sizeGiB": 256,
+          "sku": "Premium_LRS",
+          "state": "Attached",
+          "tier": "P15"
+        },
+        {
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_6",
+          "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+          "name": "LocalBox-Client-DataDisk_6",
+          "sizeGiB": 256,
+          "sku": "Premium_LRS",
+          "state": "Attached",
+          "tier": "P15"
+        },
+        {
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-DataDisk_7",
+          "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+          "name": "LocalBox-Client-DataDisk_7",
+          "sizeGiB": 256,
+          "sku": "Premium_LRS",
+          "state": "Attached",
+          "tier": "P15"
+        },
+        {
+          "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-OSDisk",
+          "managedBy": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+          "name": "LocalBox-Client-OSDisk",
+          "sizeGiB": 1024,
+          "sku": "Premium_LRS",
+          "state": "Attached",
+          "tier": "P30"
+        }
+      ],
+      "error": null
+    },
+    "extensions": {
+      "atSast": "2026-10-27T11:25:43.459714+02:00",
+      "command": [
+        "az",
+        "vm",
+        "extension",
+        "list",
+        "-g",
+        "rg-localbox-nodes-san-1",
+        "--vm-name",
+        "LocalBox-Client",
+        "--query",
+        "[].{id:id,name:name,publisher:publisher,type:typePropertiesType,version:typeHandlerVersion,state:provisioningState}",
+        "--subscription",
+        "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+        "-o",
+        "json",
+        "--only-show-errors"
+      ],
+      "exitCode": 0,
+      "result": [],
+      "error": null
+    },
+    "effectiveRoutes": {
+      "atSast": "2026-10-27T11:25:45.570391+02:00",
+      "command": [
+        "az",
+        "network",
+        "nic",
+        "show-effective-route-table",
+        "-g",
+        "rg-localbox-nodes-san-1",
+        "-n",
+        "LocalBox-Client-NIC",
+        "--query",
+        "value[].{source:source,state:state,prefixes:addressPrefix,nextHop:nextHopType,ips:nextHopIpAddress}",
+        "--subscription",
+        "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+        "-o",
+        "json",
+        "--only-show-errors"
+      ],
+      "exitCode": 0,
+      "result": [
+        {
+          "ips": [],
+          "nextHop": "VnetLocal",
+          "prefixes": [
+            "10.200.16.0/22"
+          ],
+          "source": "Default",
+          "state": "Active"
+        },
+        {
+          "ips": [],
+          "nextHop": "VNetPeering",
+          "prefixes": [
+            "10.200.0.0/23"
+          ],
+          "source": "Default",
+          "state": "Active"
+        },
+        {
+          "ips": [
+            "10.200.0.68"
+          ],
+          "nextHop": "VirtualNetworkGateway",
+          "prefixes": [
+            "10.200.12.0/22"
+          ],
+          "source": "VirtualNetworkGateway",
+          "state": "Active"
+        },
+        {
+          "ips": [
+            "10.200.0.68"
+          ],
+          "nextHop": "VirtualNetworkGateway",
+          "prefixes": [
+            "10.202.0.0/24"
+          ],
+          "source": "VirtualNetworkGateway",
+          "state": "Active"
+        },
+        {
+          "ips": [
+            "10.200.0.13"
+          ],
+          "nextHop": "VirtualNetworkGateway",
+          "prefixes": [
+            "172.16.0.128/25"
+          ],
+          "source": "VirtualNetworkGateway",
+          "state": "Active"
+        },
+        {
+          "ips": [
+            "10.200.0.12"
+          ],
+          "nextHop": "VirtualNetworkGateway",
+          "prefixes": [
+            "172.16.0.0/25"
+          ],
+          "source": "VirtualNetworkGateway",
+          "state": "Active"
+        },
+        {
+          "ips": [
+            "10.200.0.68"
+          ],
+          "nextHop": "VirtualNetworkGateway",
+          "prefixes": [
+            "10.200.4.0/22"
+          ],
+          "source": "VirtualNetworkGateway",
+          "state": "Active"
+        },
+        {
+          "ips": [
+            "10.200.0.68"
+          ],
+          "nextHop": "VirtualNetworkGateway",
+          "prefixes": [
+            "10.210.28.0/22"
+          ],
+          "source": "VirtualNetworkGateway",
+          "state": "Active"
+        },
+        {
+          "ips": [
+            "10.200.0.68"
+          ],
+          "nextHop": "VirtualNetworkGateway",
+          "prefixes": [
+            "10.200.8.0/22"
+          ],
+          "source": "VirtualNetworkGateway",
+          "state": "Active"
+        },
+        {
+          "ips": [
+            "10.200.0.68"
+          ],
+          "nextHop": "VirtualNetworkGateway",
+          "prefixes": [
+            "10.204.0.0/22"
+          ],
+          "source": "VirtualNetworkGateway",
+          "state": "Active"
+        },
+        {
+          "ips": [
+            "10.200.0.132"
+          ],
+          "nextHop": "VirtualNetworkGateway",
+          "prefixes": [
+            "0.0.0.0/0"
+          ],
+          "source": "VirtualNetworkGateway",
+          "state": "Invalid"
+        },
+        {
+          "ips": [
+            "10.200.0.132"
+          ],
+          "nextHop": "VirtualAppliance",
+          "prefixes": [
+            "0.0.0.0/0"
+          ],
+          "source": "User",
+          "state": "Active"
+        },
+        {
+          "ips": [],
+          "nextHop": "InterfaceEndpoint",
+          "prefixes": [
+            "10.200.17.4/32"
+          ],
+          "source": "Default",
+          "state": "Active"
+        }
+      ],
+      "error": null
+    },
+    "platformResources": {
+      "atSast": "2026-10-27T11:25:46.642503+02:00",
+      "command": [
+        "az",
+        "resource",
+        "list",
+        "--query",
+        "[?type=='Microsoft.AzureStackHCI/clusters' || type=='Microsoft.ResourceConnector/appliances' || type=='Microsoft.Kubernetes/connectedClusters' || type=='Microsoft.HybridContainerService/provisionedClusters'].{id:id,type:type,name:name}",
+        "--subscription",
+        "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+        "-o",
+        "json",
+        "--only-show-errors"
+      ],
+      "exitCode": 0,
+      "result": [],
+      "error": null
+    }
+  }
+}

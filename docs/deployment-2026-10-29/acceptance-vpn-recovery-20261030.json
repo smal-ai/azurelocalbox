@@ -1,0 +1,17 @@
+{
+  "beganAtUtc": "2026-10-30T12:45:18.841440+00:00",
+  "sourceCommit": "c2b093e2ff32c032c68f6e4524167f4504c21e73",
+  "initialPrivateInspectionRefusedBeforeTransport": "Actual VPN route is not present",
+  "azureMutationPerformed": false,
+  "vmStartRequested": false,
+  "vpn": {
+    "profile": "entlz-san-cert",
+    "connectRequested": true,
+    "disconnectRequested": true,
+    "profileOrCredentialsChanged": false,
+    "privatePathVerified": true,
+    "profileUuid": "868e6016-826a-4ebf-baf1-5360458d54da"
+  },
+  "status": "existing-vpn-private-path-restored",
+  "finishedAtUtc": "2026-10-30T12:45:21.220843+00:00"
+}

@@ -1,0 +1,13 @@
+{
+  "beganAtSast": "2026-10-27T11:57:13.552031+02:00",
+  "status": "failed-inspect-before-retry",
+  "commit": "4d7e82d967a3b224fbd38fc2084725a826c0f4f6",
+  "scriptSha256": "45db2e8c9c65fa77058608556bc5ad7557bcade98e051d07813878e6b24fefbf",
+  "publicKeySha256": "7d9cfc5d0aea1cf771db46219fefd66cb5fc3f8c1acc624e8bcfaa30bb9df53d",
+  "privateKeyValueExported": false,
+  "bootstrapApplied": false,
+  "exitCode": 0,
+  "guestErrorLabel": "Guest firewall scope differs",
+  "errorType": "RuntimeError",
+  "finishedAtSast": "2026-10-27T11:58:19.403403+02:00"
+}

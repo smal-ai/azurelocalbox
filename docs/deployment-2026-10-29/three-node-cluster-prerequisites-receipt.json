@@ -1,0 +1,64 @@
+{
+  "beganAtUtc": "2026-10-29T11:54:11.889851+00:00",
+  "sourceCommit": "3664ff3504f78d19a016e54cecd511066f0cb119",
+  "stage": "prerequisites",
+  "deploymentName": "localbox-three-node-prerequisites-20261029",
+  "status": "complete",
+  "witnessKeyReadOrUpload": false,
+  "publicAccessChangeRequested": false,
+  "sharedKeyChangeRequested": false,
+  "subscriptionWideGrantRequested": false,
+  "platformReadinessVerified": false,
+  "privateInputsReceipt": "docs/deployment-2026-10-27/private-ssh-three-cluster-inputs-prerequisites-20261029.json",
+  "previewChanges": [
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.AzureStackHCI/clusters/smal-localbox01",
+      "changeType": "Create"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE01/providers/Microsoft.AzureStackHCI/edgeDevices/default",
+      "changeType": "Create"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE02/providers/Microsoft.AzureStackHCI/edgeDevices/default",
+      "changeType": "Create"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE03/providers/Microsoft.AzureStackHCI/edgeDevices/default",
+      "changeType": "Create"
+    }
+  ],
+  "templateSha256": "3fb709132d769b4534d8a4f939e6dc0b32220f60ee748dfb1040465c2e6cb608",
+  "deploymentId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.Resources/deployments/localbox-three-node-prerequisites-20261029",
+  "deploymentState": "Succeeded",
+  "deploymentErrorCode": null,
+  "clusterReadback": {
+    "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.AzureStackHCI/clusters/smal-localbox01",
+    "location": "westeurope",
+    "identity": {
+      "principalId": "8c44672b-b729-4d3f-ad38-a0ac815ea265",
+      "tenantId": "c6e67968-af25-4557-ab8b-06b693048d3b",
+      "type": "SystemAssigned"
+    },
+    "provisioningState": "Succeeded"
+  },
+  "edgeDevices": [
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE01/providers/Microsoft.AzureStackHCI/edgeDevices/default",
+      "kind": "HCI",
+      "provisioningState": "Succeeded"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE02/providers/Microsoft.AzureStackHCI/edgeDevices/default",
+      "kind": "HCI",
+      "provisioningState": "Succeeded"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE03/providers/Microsoft.AzureStackHCI/edgeDevices/default",
+      "kind": "HCI",
+      "provisioningState": "Succeeded"
+    }
+  ],
+  "vaultPublicAccessAfter": "Disabled",
+  "finishedAtUtc": "2026-10-29T12:03:58.689635+00:00"
+}

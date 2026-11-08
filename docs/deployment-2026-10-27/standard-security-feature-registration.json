@@ -1,0 +1,27 @@
+{
+  "beganAtSast": "2026-10-27T11:12:04.978107+02:00",
+  "finishedAtSast": "2026-10-27T11:12:09.085660+02:00",
+  "humanApproval": "Yes, you may register Microsoft.Compute/UseStandardSecurityType",
+  "command": [
+    "az",
+    "feature",
+    "register",
+    "--subscription",
+    "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+    "--namespace",
+    "Microsoft.Compute",
+    "--name",
+    "UseStandardSecurityType",
+    "--query",
+    "{id:id,state:properties.state}",
+    "-o",
+    "json",
+    "--only-show-errors"
+  ],
+  "exitCode": 0,
+  "result": {
+    "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/providers/Microsoft.Features/providers/Microsoft.Compute/features/UseStandardSecurityType",
+    "state": "Registered"
+  },
+  "message": ""
+}

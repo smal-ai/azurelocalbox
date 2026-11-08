@@ -1,0 +1,37 @@
+{
+  "atSast": "2026-10-27T11:29:40.838691+02:00",
+  "regressionTests": {
+    "passed": 16,
+    "failed": 0
+  },
+  "feature": "Registered-owner-approved",
+  "retrySourceCommit": "2259628651a19f0e58e64a9c3d5bcd813fb32573",
+  "retryDeployment": "Succeeded",
+  "independentReadback": {
+    "atSast": "2026-10-27T11:25:46.642585+02:00",
+    "vmState": "running",
+    "agentReady": true,
+    "privateIp": "10.200.16.4",
+    "publicIp": null,
+    "diskCount": 9,
+    "totalDiskGiB": 3072,
+    "allDisksAttached": true,
+    "vmComputeChargesActive": true,
+    "bootstrapDeployed": false,
+    "platformReadinessPassed": false,
+    "initialReadbackProjectionCorrection": "diskSizeGB is the CLI field; earlier diskSizeGb projection returned null and its local total calculation failed. Corrected inventory explicitly verified."
+  },
+  "privateBastionTransport": {
+    "rdpResponse": true,
+    "loopbackOnly": true,
+    "localTunnelClosedAndSocketAbsent": true,
+    "guestLoginVerified": false,
+    "tlsTrustVerified": false
+  },
+  "originalFailurePreserved": true,
+  "credentialRotated": false,
+  "credentialsInGitOrOutput": false,
+  "sharedNetworkWritesByThisPhase": false,
+  "bootstrapDeployed": false,
+  "platformReadinessPassed": false
+}

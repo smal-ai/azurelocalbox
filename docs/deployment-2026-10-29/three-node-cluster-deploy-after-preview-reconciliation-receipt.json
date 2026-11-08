@@ -1,0 +1,29 @@
+{
+  "beganAtUtc": "2026-10-30T08:19:50.254712+00:00",
+  "sourceCommit": "44cb3d04fc0a0e4b484f3872efac8528e64d40f1",
+  "stage": "deploy",
+  "deploymentName": "localbox-three-node-deploy-20261029",
+  "status": "uncertain-or-still-running-inspect-do-not-repeat",
+  "witnessKeyReadOrUpload": false,
+  "publicAccessChangeRequested": false,
+  "sharedKeyChangeRequested": false,
+  "subscriptionWideGrantRequested": false,
+  "platformReadinessVerified": false,
+  "originalPreSubmitRefusalRetained": true,
+  "originalReceiptSha256": "1b9b0b3986d951e8cc6808b4e07c2b4b871837c9bda6f5a27de8ad1f32517a30",
+  "privateInputsReceipt": "docs/deployment-2026-10-27/private-ssh-three-cluster-inputs-deploy-pre-submit-resume-20261029.json",
+  "previewChanges": [
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/microsoft.azurestackhci/clusters/smal-localbox01/deploymentSettings/default",
+      "changeType": "NoChange",
+      "beforeMode": "Validate",
+      "afterMode": "Validate"
+    }
+  ],
+  "templateSha256": "114525f39b6e38cec58e01284bbcc82f764d108e7925c27eecb96d9faf830c65",
+  "explicitRequestedMode": "Deploy",
+  "deploymentId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.Resources/deployments/localbox-three-node-deploy-20261029",
+  "deploymentState": "Running",
+  "deploymentErrorCode": null,
+  "finishedAtUtc": "2026-10-30T10:21:49.641937+00:00"
+}

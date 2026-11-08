@@ -1,0 +1,29 @@
+{
+  "beganAtUtc": "2026-10-28T11:46:43.603312+00:00",
+  "status": "complete-one-rg-only",
+  "sourceCommit": "0cdd514b4586b9f2ea6d129230cfce857bd5a8a3",
+  "deploymentName": "localbox-platform-rg-20261028",
+  "scope": "one-new-owned-platform-rg-only",
+  "resourceGroupId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1",
+  "originalReceiptRetained": true,
+  "originalReceiptSha256": "3009e8cbbfcc3ac1c5341aa9bb98c69b45097a4eeaed900a043087758d23d17f",
+  "resumeScope": "reconciled-pre-apply-preview-rendering-only",
+  "previewSha256": "c85769e44e14cc0b7e9db13e32abac68227091dda5fbd4ee3c7dbea96110e07f",
+  "deploymentId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/providers/Microsoft.Resources/deployments/localbox-platform-rg-20261028",
+  "deploymentState": "Succeeded",
+  "result": {
+    "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1",
+    "location": "westeurope",
+    "name": "rg-localbox-platform-weu-1",
+    "state": "Succeeded",
+    "tags": {
+      "environment": "lab",
+      "owner": "quintindekok",
+      "project": "smal-ai",
+      "purpose": "localbox-platform"
+    }
+  },
+  "resourceReadback": [],
+  "finishedAtUtc": "2026-10-28T11:48:24.987867+00:00",
+  "arcOrClusterOrRolesExplicitlyRequestedByTemplate": false
+}

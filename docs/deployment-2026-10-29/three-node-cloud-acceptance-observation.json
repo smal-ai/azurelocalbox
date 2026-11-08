@@ -1,0 +1,747 @@
+{
+  "beganAtUtc": "2026-10-30T12:44:49.436085+00:00",
+  "status": "observed-cloud-state-requires-storage-recovery-and-owner-acceptance",
+  "platformReadinessVerified": false,
+  "azureMutationPerformed": false,
+  "arcMachines": [
+    {
+      "agentVersion": "1.67.03504.3207",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE01",
+      "identity": {
+        "principalId": "9a1205c8-6ac3-4d02-ad6d-6166827c8d9d",
+        "tenantId": "c6e67968-af25-4557-ab8b-06b693048d3b",
+        "type": "SystemAssigned"
+      },
+      "location": "westeurope",
+      "name": "LB-NODE01",
+      "osVersion": "10.0.26100.33650",
+      "provisioningState": "Succeeded",
+      "status": "Connected"
+    },
+    {
+      "agentVersion": "1.67.03504.3207",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE02",
+      "identity": {
+        "principalId": "b282b136-716d-4fa9-8e03-a4c754249a5e",
+        "tenantId": "c6e67968-af25-4557-ab8b-06b693048d3b",
+        "type": "SystemAssigned"
+      },
+      "location": "westeurope",
+      "name": "LB-NODE02",
+      "osVersion": "10.0.26100.33650",
+      "provisioningState": "Succeeded",
+      "status": "Connected"
+    },
+    {
+      "agentVersion": "1.67.03504.3207",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE03",
+      "identity": {
+        "principalId": "bd9a2019-2109-4aba-9f4e-90a1d300325d",
+        "tenantId": "c6e67968-af25-4557-ab8b-06b693048d3b",
+        "type": "SystemAssigned"
+      },
+      "location": "westeurope",
+      "name": "LB-NODE03",
+      "osVersion": "10.0.26100.33650",
+      "provisioningState": "Succeeded",
+      "status": "Connected"
+    }
+  ],
+  "cluster": {
+    "cloudId": "0fe09e2d-6cf0-4a67-a0d6-db846f2525aa",
+    "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.AzureStackHCI/clusters/smal-localbox01",
+    "identity": {
+      "principalId": "8c44672b-b729-4d3f-ad38-a0ac815ea265",
+      "tenantId": "c6e67968-af25-4557-ab8b-06b693048d3b",
+      "type": "SystemAssigned"
+    },
+    "lastSync": "2026-10-30T12:40:29.5089842Z",
+    "location": "westeurope",
+    "name": "smal-localbox01",
+    "provisioningState": "Succeeded",
+    "status": "ConnectedRecently"
+  },
+  "serviceDeploy": {
+    "provisioningState": "Succeeded",
+    "mode": "Deploy",
+    "adConfigurationVerified": true,
+    "action": {
+      "status": "Success",
+      "steps": [
+        {
+          "name": "Deploy Azure Stack HCI",
+          "status": "Success",
+          "index": "0",
+          "exceptionCount": 0,
+          "children": [
+            {
+              "name": "Check and resolve requirements",
+              "status": "Success",
+              "index": "0.1",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Validate environment",
+              "status": "Success",
+              "index": "0.2",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Resolve requirement",
+              "status": "Success",
+              "index": "0.3",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Install OpenSSH Client",
+              "status": "Success",
+              "index": "0.4",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Clean up after update",
+              "status": "Success",
+              "index": "0.5",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Evaluate proxy configuration",
+              "status": "Success",
+              "index": "0.6",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Configure required proxy bypass list",
+              "status": "Success",
+              "index": "0.7",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Adjust the number of infrastructure VMs",
+              "status": "Success",
+              "index": "0.8",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Place Cluster Registration Infrastructure",
+              "status": "Success",
+              "index": "0.9",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Start Cluster Registration Services",
+              "status": "Success",
+              "index": "0.10",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Configure DNS if identity provider is Local with Key Vault",
+              "status": "Success",
+              "index": "0.11",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Set up certificates",
+              "status": "Success",
+              "index": "0.12",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Reload certificate",
+              "status": "Success",
+              "index": "0.13",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Install ECE Agent",
+              "status": "Success",
+              "index": "0.14",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Install bootstrap agents",
+              "status": "Success",
+              "index": "0.15",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Validate network settings for servers",
+              "status": "Success",
+              "index": "0.16",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Configure settings on servers",
+              "status": "Success",
+              "index": "0.17",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Set Azure cloud for AzureLocal",
+              "status": "Success",
+              "index": "0.18",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Create the cluster",
+              "status": "Success",
+              "index": "0.19",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Configure networking",
+              "status": "Success",
+              "index": "0.20",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Starts Integrity Security Scan",
+              "status": "Success",
+              "index": "0.21",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Configure Cloud Management",
+              "status": "Success",
+              "index": "0.22",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Register with Azure",
+              "status": "Success",
+              "index": "0.23",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Set up observability",
+              "status": "Success",
+              "index": "0.24",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Unlock virtual disks",
+              "status": "Success",
+              "index": "0.25",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Config storage",
+              "status": "Success",
+              "index": "0.26",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Repair key protectors",
+              "status": "Success",
+              "index": "0.27",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Encrypt CSVs",
+              "status": "Success",
+              "index": "0.28",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Encrypt the OS volume",
+              "status": "Success",
+              "index": "0.29",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Set permissions on file share",
+              "status": "Success",
+              "index": "0.30",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Copy and prepare files",
+              "status": "Success",
+              "index": "0.31",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Refresh Active Directory permissions",
+              "status": "Success",
+              "index": "0.32",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Set observability to listen mode",
+              "status": "Success",
+              "index": "0.33",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Install ECE",
+              "status": "Success",
+              "index": "0.34",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Install additional agents",
+              "status": "Success",
+              "index": "0.35",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Create additional infrastructure subnets",
+              "status": "Success",
+              "index": "0.36",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Reserve IPs for the Arc infrastructure",
+              "status": "Success",
+              "index": "0.37",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Cluster the deployment orchestrator",
+              "status": "Success",
+              "index": "0.38",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Stage hardware updates via Solution Builder Extension (SBE)",
+              "status": "Success",
+              "index": "0.39",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Apply security policies",
+              "status": "Success",
+              "index": "0.40",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Install hardware updates via Solution Builder Extension (SBE)",
+              "status": "Success",
+              "index": "0.41",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Reserve and migrate Network Controller REST IP address",
+              "status": "Success",
+              "index": "0.42",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Verify Cluster DNS Resolution",
+              "status": "Success",
+              "index": "0.43",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Deploy Arc infrastructure components",
+              "status": "Success",
+              "index": "0.44",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Install OpenHCL",
+              "status": "Success",
+              "index": "0.45",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Log environment validation results",
+              "status": "Success",
+              "index": "0.46",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Send telemetry",
+              "status": "Success",
+              "index": "0.47",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Turn on SMB encryption",
+              "status": "Success",
+              "index": "0.48",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Migrate deployment orchestrator service",
+              "status": "Success",
+              "index": "0.49",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Create MAA endpoint",
+              "status": "Success",
+              "index": "0.50",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Set up trusted launch for VMs",
+              "status": "Success",
+              "index": "0.51",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Create MAA policy",
+              "status": "Success",
+              "index": "0.52",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Register the updates extension",
+              "status": "Success",
+              "index": "0.53",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Update ECE Proxy Configuration",
+              "status": "Success",
+              "index": "0.54",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Add custom cloud VMs to cluster",
+              "status": "Success",
+              "index": "0.55",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Configure custom cloud CLI tooling",
+              "status": "Success",
+              "index": "0.56",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Finalize security",
+              "status": "Success",
+              "index": "0.57",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Finalize encryption",
+              "status": "Success",
+              "index": "0.58",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Collect Azure Local instance information",
+              "status": "Success",
+              "index": "0.59",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Clean up temporary content",
+              "status": "Success",
+              "index": "0.60",
+              "exceptionCount": 0,
+              "children": []
+            },
+            {
+              "name": "Stops Integrity Security Scan",
+              "status": "Success",
+              "index": "0.61",
+              "exceptionCount": 0,
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "resources": [
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.KeyVault/vaults/kv-lbox-weu-4766ea",
+      "location": "westeurope",
+      "name": "kv-lbox-weu-4766ea",
+      "type": "Microsoft.KeyVault/vaults"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.Storage/storageAccounts/stlboxwitweu4766ea",
+      "location": "westeurope",
+      "name": "stlboxwitweu4766ea",
+      "type": "Microsoft.Storage/storageAccounts"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.Storage/storageAccounts/stlboxdiagweu4766ea",
+      "location": "westeurope",
+      "name": "stlboxdiagweu4766ea",
+      "type": "Microsoft.Storage/storageAccounts"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE01",
+      "location": "westeurope",
+      "name": "LB-NODE01",
+      "type": "Microsoft.HybridCompute/machines"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE01/extensions/MDE.Windows",
+      "location": "westeurope",
+      "name": "LB-NODE01/MDE.Windows",
+      "type": "Microsoft.HybridCompute/machines/extensions"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.EventGrid/systemTopics/stlboxwitweu4766ea-9d41b15a-7d57-4a41-b5a3-e6bc9ac5d247",
+      "location": "westeurope",
+      "name": "stlboxwitweu4766ea-9d41b15a-7d57-4a41-b5a3-e6bc9ac5d247",
+      "type": "Microsoft.EventGrid/systemTopics"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.EventGrid/systemTopics/stlboxdiagweu4766ea-e7b37298-2ea4-4bbc-96eb-1305fb6d3fcf",
+      "location": "westeurope",
+      "name": "stlboxdiagweu4766ea-e7b37298-2ea4-4bbc-96eb-1305fb6d3fcf",
+      "type": "Microsoft.EventGrid/systemTopics"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE02",
+      "location": "westeurope",
+      "name": "LB-NODE02",
+      "type": "Microsoft.HybridCompute/machines"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE02/extensions/MDE.Windows",
+      "location": "westeurope",
+      "name": "LB-NODE02/MDE.Windows",
+      "type": "Microsoft.HybridCompute/machines/extensions"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE03",
+      "location": "westeurope",
+      "name": "LB-NODE03",
+      "type": "Microsoft.HybridCompute/machines"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE03/extensions/MDE.Windows",
+      "location": "westeurope",
+      "name": "LB-NODE03/MDE.Windows",
+      "type": "Microsoft.HybridCompute/machines/extensions"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE02/extensions/AzureEdgeLifecycleManager",
+      "location": "westeurope",
+      "name": "LB-NODE02/AzureEdgeLifecycleManager",
+      "type": "Microsoft.HybridCompute/machines/extensions"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE02/extensions/AzureEdgeDeviceManagement",
+      "location": "westeurope",
+      "name": "LB-NODE02/AzureEdgeDeviceManagement",
+      "type": "Microsoft.HybridCompute/machines/extensions"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE03/extensions/AzureEdgeRemoteSupport",
+      "location": "westeurope",
+      "name": "LB-NODE03/AzureEdgeRemoteSupport",
+      "type": "Microsoft.HybridCompute/machines/extensions"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE03/extensions/AzureEdgeTelemetryAndDiagnostics",
+      "location": "westeurope",
+      "name": "LB-NODE03/AzureEdgeTelemetryAndDiagnostics",
+      "type": "Microsoft.HybridCompute/machines/extensions"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE03/extensions/AzureEdgeDeviceManagement",
+      "location": "westeurope",
+      "name": "LB-NODE03/AzureEdgeDeviceManagement",
+      "type": "Microsoft.HybridCompute/machines/extensions"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE03/extensions/AzureEdgeLifecycleManager",
+      "location": "westeurope",
+      "name": "LB-NODE03/AzureEdgeLifecycleManager",
+      "type": "Microsoft.HybridCompute/machines/extensions"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE02/extensions/AzureEdgeTelemetryAndDiagnostics",
+      "location": "westeurope",
+      "name": "LB-NODE02/AzureEdgeTelemetryAndDiagnostics",
+      "type": "Microsoft.HybridCompute/machines/extensions"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE02/extensions/AzureEdgeRemoteSupport",
+      "location": "westeurope",
+      "name": "LB-NODE02/AzureEdgeRemoteSupport",
+      "type": "Microsoft.HybridCompute/machines/extensions"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE01/extensions/AzureEdgeRemoteSupport",
+      "location": "westeurope",
+      "name": "LB-NODE01/AzureEdgeRemoteSupport",
+      "type": "Microsoft.HybridCompute/machines/extensions"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE01/extensions/AzureEdgeTelemetryAndDiagnostics",
+      "location": "westeurope",
+      "name": "LB-NODE01/AzureEdgeTelemetryAndDiagnostics",
+      "type": "Microsoft.HybridCompute/machines/extensions"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE01/extensions/AzureEdgeLifecycleManager",
+      "location": "westeurope",
+      "name": "LB-NODE01/AzureEdgeLifecycleManager",
+      "type": "Microsoft.HybridCompute/machines/extensions"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE01/extensions/AzureEdgeDeviceManagement",
+      "location": "westeurope",
+      "name": "LB-NODE01/AzureEdgeDeviceManagement",
+      "type": "Microsoft.HybridCompute/machines/extensions"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.AzureStackHCI/clusters/smal-localbox01",
+      "location": "westeurope",
+      "name": "smal-localbox01",
+      "type": "Microsoft.AzureStackHCI/clusters"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.ResourceConnector/appliances/smal-localbox01-arcbridge",
+      "location": "westeurope",
+      "name": "smal-localbox01-arcbridge",
+      "type": "Microsoft.ResourceConnector/appliances"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.ExtendedLocation/customLocations/cl-localbox-smal-weu-1",
+      "location": "westeurope",
+      "name": "cl-localbox-smal-weu-1",
+      "type": "Microsoft.ExtendedLocation/customLocations"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.AzureStackHCI/storageContainers/UserStorage1-a0c959f5b11340a98251977a107de6c9",
+      "location": "westeurope",
+      "name": "UserStorage1-a0c959f5b11340a98251977a107de6c9",
+      "type": "Microsoft.AzureStackHCI/storageContainers"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.AzureStackHCI/storageContainers/UserStorage2-530ec696726a42f29b1af25041c88f67",
+      "location": "westeurope",
+      "name": "UserStorage2-530ec696726a42f29b1af25041c88f67",
+      "type": "Microsoft.AzureStackHCI/storageContainers"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.AzureStackHCI/storageContainers/UserStorage3-174bf825e17a4352992a21b292a7342a",
+      "location": "westeurope",
+      "name": "UserStorage3-174bf825e17a4352992a21b292a7342a",
+      "type": "Microsoft.AzureStackHCI/storageContainers"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.AzureStackHCI/logicalNetworks/smal-localbox01-InfraLNET",
+      "location": "westeurope",
+      "name": "smal-localbox01-InfraLNET",
+      "type": "Microsoft.AzureStackHCI/logicalNetworks"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.Attestation/attestationProviders/smallo0fe09e2d6cf04a67",
+      "location": "westeurope",
+      "name": "smallo0fe09e2d6cf04a67",
+      "type": "Microsoft.Attestation/attestationProviders"
+    }
+  ],
+  "bridgeResources": [
+    {
+      "distribution": null,
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.ResourceConnector/appliances/smal-localbox01-arcbridge",
+      "location": "westeurope",
+      "name": "smal-localbox01-arcbridge",
+      "provisioningState": "Succeeded",
+      "status": "Running"
+    }
+  ],
+  "customLocationResources": [
+    {
+      "hostResourceId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.ResourceConnector/appliances/smal-localbox01-arcbridge",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.ExtendedLocation/customLocations/cl-localbox-smal-weu-1",
+      "location": "westeurope",
+      "name": "cl-localbox-smal-weu-1",
+      "namespace": "default",
+      "provisioningState": "Succeeded"
+    }
+  ],
+  "vault": {
+    "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.KeyVault/vaults/kv-lbox-weu-4766ea",
+    "pna": "Disabled",
+    "purgeProtection": true,
+    "rbac": true,
+    "softDeleteDays": 90
+  },
+  "vaultAudit": null,
+  "storage": [
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.Storage/storageAccounts/stlboxdiagweu4766ea",
+      "name": "stlboxdiagweu4766ea",
+      "pna": "Disabled",
+      "sharedKey": false,
+      "sku": "Standard_LRS"
+    },
+    {
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.Storage/storageAccounts/stlboxwitweu4766ea",
+      "name": "stlboxwitweu4766ea",
+      "pna": "Disabled",
+      "sharedKey": false,
+      "sku": "Standard_LRS"
+    }
+  ],
+  "defender": {
+    "freeTrialRemaining": "0:00:00",
+    "subPlan": "P2",
+    "tier": "Standard"
+  },
+  "finishedAtUtc": "2026-10-30T12:45:06.171053+00:00"
+}

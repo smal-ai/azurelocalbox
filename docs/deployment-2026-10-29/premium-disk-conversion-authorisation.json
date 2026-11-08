@@ -1,0 +1,16 @@
+{
+  "humanInstruction": "please change the disks to Premium SSD, we need it to be performant.",
+  "scope": "the nine existing managed disks attached to LocalBox-Client only",
+  "targetSku": "Premium_LRS",
+  "preserveDiskIdsContentsSizesAndEncryption": true,
+  "necessaryOperationalPrerequisitesDisclosed": ["graceful guest shutdown", "outer host stop and deallocation", "host restart and existing guest startup"],
+  "retailCapacityUsdPerMonthBefore": "176.326",
+  "retailCapacityUsdPerMonthAfter": "535.14",
+  "retailCapacityUsdPerMonthIncrease": "358.814",
+  "currency": "USD",
+  "contractQuote": false,
+  "newDiskPurchaseAuthorisedByThisInstruction": false,
+  "node03CreationOrExistingGuestResizeAuthorisedByThisInstruction": false,
+  "policyExemptionOrSharedKeyChangeAuthorised": false,
+  "newDiskAndThreeNodePlanRequireSeparateApproval": true
+}

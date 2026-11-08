@@ -1,0 +1,21 @@
+{
+  "observedOn": "2026-10-28",
+  "readOnly": true,
+  "candidateRg": {"name": "rg-localbox-platform-weu-1", "exists": false},
+  "nameAvailability": {"kv-lbox-weu-4766ea": true, "stlboxdiagweu4766ea": true, "stlboxwitweu4766ea": true, "reservationPerformed": false},
+  "hciRp": {"appId": "1412d89f-b8a8-4111-b4fd-e82905cbd85d", "objectId": "4606be37-a04a-4716-a214-186a08bb7745", "displayName": "Microsoft.AzureStackHCI Resource Provider", "createdByThisAgent": false},
+  "existingDefenderPricing": {"resource": "VirtualMachines", "pricingTier": "Standard", "subPlan": "P2", "freeTrialRemaining": "0:00:00", "agentlessVmScanningEnabled": true, "planChanged": false},
+  "roleNamesVerifiedFromLiveDefinitions": {
+    "f5819b54-e033-4d82-ac66-4fec3cbf3f4c": "Azure Connected Machine Resource Manager",
+    "865ae368-6a45-4bd1-8fbf-0d5151f56fc1": "Azure Stack HCI Device Management Role",
+    "4633458b-17de-408a-b874-0445c86b69e6": "Key Vault Secrets User",
+    "c99c945f-8bd1-4fb1-a903-01460aae6068": "Azure Stack HCI Connected InfraVMs",
+    "b86a8fe4-44ce-4948-aee5-eccb2c155cd7": "Key Vault Secrets Officer"
+  },
+  "directPolicyDefinitionInspected": {"name": "53af45c4-1cae-4e79-8b83-43189d6c6e2c", "displayName": "Block Azure RM Resource Creation", "finding": "Conditional deny targets Microsoft.Classic resource types, not a blanket deny on modern ARM resources", "fullDeploymentAdmissionProven": false},
+  "govDenyInitiativeInspected": {"name": "MCAPSGovDenyPolicies", "finding": "Contains selected VM SKU/AKS/VMSS/provisioned capacity/SQL authentication/classic resource/managed HSM restrictions; references inspected, not a full effective-policy proof"},
+  "newRoleAssignments": 0,
+  "providerRegistrations": 0,
+  "newAzureResources": 0,
+  "exemptionsOrPrivilegeActivation": false
+}

@@ -1,0 +1,18 @@
+{
+  "atSast": "2026-10-27T10:17:22.926759+02:00",
+  "bicepVersion": "0.45.15",
+  "templateBuild": "passed",
+  "offlineRegressionTests": {
+    "passed": 7,
+    "failed": 0
+  },
+  "shellSyntax": "passed",
+  "legacyHookGuardExecution": "expected-exit-1-before-mutations",
+  "pythonAstAndJson": "passed",
+  "whitespace": "passed",
+  "boundedSecretPatternScan": "passed-not-a-proof-against-every-secret-format",
+  "priorAcceptedReadinessManifest": "unchanged",
+  "azureResourceChanges": [],
+  "armValidationAndWhatIf": "not-run-pending-plan-and-input-approval",
+  "hostResourceGroupFinalReadback": "empty"
+}

@@ -1,0 +1,58 @@
+{
+  "package": "Azure.Arc.Jumpstart.LocalBox",
+  "version": "1.0.8",
+  "url": "https://www.powershellgallery.com/api/v2/package/Azure.Arc.Jumpstart.LocalBox/1.0.8",
+  "sha512MatchesGalleryMetadata": true,
+  "sha256": "3eb7dba75e061031b25d7c9d46f2be490f3702ec452c299d3844848c6bf6e475",
+  "files": [
+    {
+      "file": "Azure.Arc.Jumpstart.LocalBox.psm1",
+      "sha256": "b1646f540f1703b76ca8484a907064a6fbbf9c1080e016161dd758f7459c5fff",
+      "functions": [
+        "ConvertFrom-SecureStringToPlainText",
+        "GenerateAnswerFile",
+        "Get-FormattedWACMAC",
+        "Mount-VHDWithRetry",
+        "New-BITSRequest",
+        "Test-VMAvailable",
+        "Wait-ForVHDDetach",
+        "Invoke-AzureEdgeBootstrap",
+        "Invoke-CommandWithRetry",
+        "New-AdminCenterVM",
+        "New-AzLocalNodeVM",
+        "New-DCVM",
+        "New-InternalSwitch",
+        "New-ManagementVM",
+        "New-NATSwitch",
+        "New-RouterVM",
+        "Restart-VMs",
+        "Set-AzLocalDeployPrereqs",
+        "Set-AzLocalNodeVhdx",
+        "Set-DataDrives",
+        "Set-DHCPServerOnDC",
+        "Set-FabricNetwork",
+        "Set-HostNAT",
+        "Set-MgmtVhdx",
+        "Set-NICs",
+        "Test-AllVMsAvailable",
+        "Test-InternetConnect",
+        "Update-AzLocalCluster",
+        "Wait-AzureEdgeBootstrap"
+      ],
+      "endpoints": [
+        "http://schemas.microsoft.com/WMIConfig/2002/State",
+        "http://www.w3.org/2001/XMLSchema-instance",
+        "https://$($LocalBoxConfig.WACVMName",
+        "https://community.chocolatey.org/install.ps1"
+      ]
+    },
+    {
+      "file": "Azure.Arc.Jumpstart.LocalBox.psd1",
+      "sha256": "fc6ac75b0692b416da8f5a8a8178e58320e8b0979ac54f623a595ad08a482e6d",
+      "functions": [],
+      "endpoints": []
+    }
+  ],
+  "installed": false,
+  "importedOrExecuted": false
+}

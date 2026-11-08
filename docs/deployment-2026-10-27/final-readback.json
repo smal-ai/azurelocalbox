@@ -1,0 +1,19 @@
+{
+  "observedAtSast": "2026-10-27T10:17:22.917577+02:00",
+  "command": [
+    "az",
+    "resource",
+    "list",
+    "--subscription",
+    "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+    "-g",
+    "rg-localbox-nodes-san-1",
+    "--query",
+    "[].{id:id,name:name,type:type}",
+    "-o",
+    "json",
+    "--only-show-errors"
+  ],
+  "exitCode": 0,
+  "result": []
+}

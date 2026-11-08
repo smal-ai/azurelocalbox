@@ -1,0 +1,254 @@
+{
+  "observedAtUtc": "2026-10-30T05:37:56.606546+00:00",
+  "azureMutationPerformed": false,
+  "platformReadinessVerified": false,
+  "arcMachines": [
+    {
+      "agentVersion": "1.67.03504.3207",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE01",
+      "identity": {
+        "principalId": "9a1205c8-6ac3-4d02-ad6d-6166827c8d9d",
+        "tenantId": "c6e67968-af25-4557-ab8b-06b693048d3b",
+        "type": "SystemAssigned"
+      },
+      "location": "westeurope",
+      "name": "LB-NODE01",
+      "osVersion": "10.0.26100.33650",
+      "provisioningState": "Succeeded",
+      "status": "Disconnected"
+    },
+    {
+      "agentVersion": "1.67.03504.3207",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE02",
+      "identity": {
+        "principalId": "b282b136-716d-4fa9-8e03-a4c754249a5e",
+        "tenantId": "c6e67968-af25-4557-ab8b-06b693048d3b",
+        "type": "SystemAssigned"
+      },
+      "location": "westeurope",
+      "name": "LB-NODE02",
+      "osVersion": "10.0.26100.33650",
+      "provisioningState": "Succeeded",
+      "status": "Disconnected"
+    },
+    {
+      "agentVersion": "1.67.03504.3207",
+      "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.HybridCompute/machines/LB-NODE03",
+      "identity": {
+        "principalId": "bd9a2019-2109-4aba-9f4e-90a1d300325d",
+        "tenantId": "c6e67968-af25-4557-ab8b-06b693048d3b",
+        "type": "SystemAssigned"
+      },
+      "location": "westeurope",
+      "name": "LB-NODE03",
+      "osVersion": "10.0.26100.33650",
+      "provisioningState": "Succeeded",
+      "status": "Disconnected"
+    }
+  ],
+  "cluster": {
+    "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.AzureStackHCI/clusters/smal-localbox01",
+    "identity": {
+      "principalId": "8c44672b-b729-4d3f-ad38-a0ac815ea265",
+      "tenantId": "c6e67968-af25-4557-ab8b-06b693048d3b",
+      "type": "SystemAssigned"
+    },
+    "provisioningState": "Succeeded",
+    "status": "ValidationFailed"
+  },
+  "validation": {
+    "provisioningState": "Failed",
+    "mode": "Validate",
+    "action": {
+      "status": "Error",
+      "steps": [
+        {
+          "name": "Azure Local Remote Management",
+          "status": "Success",
+          "index": "0",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Connectivity",
+          "status": "Success",
+          "index": "10",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local External Active Directory",
+          "status": "Success",
+          "index": "20",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local SBE Health",
+          "status": "Success",
+          "index": "30",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Hardware",
+          "status": "Success",
+          "index": "40",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Network Configuration",
+          "status": "Success",
+          "index": "50",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Network Infra Connection",
+          "status": "Error",
+          "index": "51",
+          "exceptionCount": 1,
+          "children": []
+        },
+        {
+          "name": "Azure Local Network Storage Connection",
+          "status": null,
+          "index": "52",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Observability",
+          "status": null,
+          "index": "60",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Software",
+          "status": null,
+          "index": "70",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local MOC Stack",
+          "status": null,
+          "index": "80",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Arc Integration",
+          "status": null,
+          "index": "90",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Cluster Witness",
+          "status": null,
+          "index": "100",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local OS Image Recipe Validation",
+          "status": null,
+          "index": "110",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Local Identity Validation",
+          "status": null,
+          "index": "120",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local ARB Stack",
+          "status": null,
+          "index": "130",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Cloud Validation",
+          "status": null,
+          "index": "140",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Add hosts to domain and create cluster object.",
+          "status": null,
+          "index": "150",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Stack HCI GroupPolicy",
+          "status": null,
+          "index": "151",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local DNS",
+          "status": null,
+          "index": "160",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local NTP",
+          "status": null,
+          "index": "161",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Cluster Validation",
+          "status": null,
+          "index": "170",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Network LLDP Validation",
+          "status": null,
+          "index": "180",
+          "exceptionCount": 0,
+          "children": []
+        },
+        {
+          "name": "Azure Local Storage Validation",
+          "status": null,
+          "index": "190",
+          "exceptionCount": 0,
+          "children": []
+        }
+      ]
+    }
+  },
+  "gatewayRetryOrDeployRecords": [],
+  "vault": {
+    "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.KeyVault/vaults/kv-lbox-weu-4766ea",
+    "pna": "Disabled",
+    "rbac": true
+  },
+  "storage": [
+    {
+      "name": "stlboxdiagweu4766ea",
+      "pna": "Disabled",
+      "sharedKey": false
+    },
+    {
+      "name": "stlboxwitweu4766ea",
+      "pna": "Disabled",
+      "sharedKey": false
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "beganAtSast": "2026-10-28T10:23:34.507438+02:00",
+  "status": "complete",
+  "commit": "39986ca27b54cf969714f952450aa2a52f81b17d",
+  "script": "scripts/recover-smal-guest-input-hash.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 38229,
+  "scriptTransport": "sha256-length-framed-utf8-stdin",
+  "renderedSourceSha256": "934e2c4006e8afbbf4c58dfe55d476502a11e5182666210fdf7f1956f3365828",
+  "renderedSourceByteLength": 16947,
+  "unstreamedEncodedLength": 45192,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "sourceCommit": "39986ca27b54cf969714f952450aa2a52f81b17d",
+    "workerSha256": "8C2F15AC634CEE3D9F9839913ADD36845EE0B2C09EACF82309096FB58AAD3519",
+    "clusterBootstrapComplete": false,
+    "originalMarkerAndSourceRetained": true,
+    "runId": "guest-inputs-20261028-02",
+    "startRequested": true,
+    "networkOrGuestApplied": false,
+    "recovery": "read-only-hash-phase-restart"
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-28T10:23:44.127749+02:00"
+}

@@ -1,0 +1,24 @@
+{
+  "humanRequest": "Can we enable remote Powershell so you can run commands directly? That would make things alot easier in this lab.",
+  "question": "Approve a one-off Azure Run Command setup for OpenSSH Server, a dedicated local SSH key and key-only PowerShell command access through private Bastion? This extends the read-only approval. It will install the Windows SSH component if needed, configure sshd and a Bastion-subnet-only guest firewall rule. No public IP, shared-network change, password login, WinRM listener or reboot.",
+  "humanAnswer": "Approve secure SSH setup",
+  "oneOffRunCommandSshSetupApproved": true,
+  "remotePowershellViaPrivateBastionApproved": true,
+  "targetVm": "LocalBox-Client",
+  "bastionSourcePrefix": "10.202.0.0/26",
+  "hostPort": 22,
+  "passwordAuthentication": false,
+  "sshAgentAndTcpForwarding": false,
+  "publicAdministration": false,
+  "sharedNetworkWrites": false,
+  "winrmListenerChanges": false,
+  "reboot": false,
+  "keyStorage": "Dedicated unencrypted Ed25519 key in owner-only 0700 local state directory, private file 0600, outside Git. Private key never copied to guest, logs or command arguments.",
+  "hostKeyTrust": "Pin only the host PUBLIC key returned by owner-authorised Azure Run Command on the exact VM, then StrictHostKeyChecking=yes with a dedicated known_hosts file. No TOFU, ssh-keyscan or host-key bypass.",
+  "componentInstallationNeeded": false,
+  "prerequisiteEvidence": "bootstrap-preflight-system.json",
+  "officialReferences": [
+    "https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh-server-configuration",
+    "https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_keymanagement"
+  ]
+}

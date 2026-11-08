@@ -1,0 +1,94 @@
+{
+  "beganAtSast": "2026-10-28T11:52:22.154051+02:00",
+  "status": "complete",
+  "commit": "4b39eeb7b9d346a26912d2b280420604662dd0f1",
+  "script": "scripts/inspect-smal-node-cleanup-failure.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 56959,
+  "scriptTransport": "encoded-command",
+  "renderedSourceSha256": "d16c57c2e71c005723b9a9ddc3cb176132ef50729fd2e17debed3715706482cc",
+  "renderedSourceByteLength": 4808,
+  "unstreamedEncodedLength": 12824,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "credentialValueExported": false,
+    "guest": {
+      "timeSource": "time.windows.com,0x8",
+      "localAdminChangedAtUtc": "2026-10-28T07:40:52.3750270Z",
+      "timeService": "Running",
+      "computer": "LB-NODE01",
+      "timeZone": "South Africa Standard Time",
+      "utcNow": "2026-10-28T09:52:35.5358249Z",
+      "vmmsRunning": true,
+      "domainRole": 2,
+      "mutationPerformed": false,
+      "setupFiles": [
+        {
+          "normalErrorType": null,
+          "path": "C:\\Windows\\Panther\\setupact.log",
+          "ownedMarkerPresent": false,
+          "oldValuePresent": false,
+          "normalErrorHResult": null,
+          "normalReadSucceeded": true,
+          "bytes": 1881547,
+          "sharedReadSucceeded": true,
+          "sharedErrorType": null
+        },
+        {
+          "normalErrorType": null,
+          "path": "C:\\Windows\\Panther\\setuperr.log",
+          "ownedMarkerPresent": false,
+          "oldValuePresent": false,
+          "normalErrorHResult": null,
+          "normalReadSucceeded": true,
+          "bytes": 425,
+          "sharedReadSucceeded": true,
+          "sharedErrorType": null
+        },
+        {
+          "normalErrorType": null,
+          "path": "C:\\Windows\\Panther\\UnattendGC\\setupact.log",
+          "ownedMarkerPresent": false,
+          "oldValuePresent": false,
+          "normalErrorHResult": null,
+          "normalReadSucceeded": true,
+          "bytes": 36141,
+          "sharedReadSucceeded": true,
+          "sharedErrorType": null
+        },
+        {
+          "normalErrorType": null,
+          "path": "C:\\Windows\\Panther\\UnattendGC\\setuperr.log",
+          "ownedMarkerPresent": false,
+          "oldValuePresent": false,
+          "normalErrorHResult": null,
+          "normalReadSucceeded": true,
+          "bytes": 236,
+          "sharedReadSucceeded": true,
+          "sharedErrorType": null
+        }
+      ],
+      "localNow": "2026-10-28T11:52:35.5964185+02:00",
+      "PSComputerName": "LB-NODE01",
+      "RunspaceId": "9d2cc737-fdea-4277-a6d7-a9da4c5f77ef",
+      "PSShowComputerName": true
+    },
+    "hostUtc": "2026-10-28T09:52:35.9696549Z",
+    "mutationPerformed": false,
+    "originalBootstrapLoginVerified": true
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-28T11:52:36.388024+02:00"
+}

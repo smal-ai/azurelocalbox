@@ -1,0 +1,37 @@
+{
+  "beganAtSast": "2026-10-27T13:17:21.198062+02:00",
+  "status": "complete",
+  "commit": "783f637142e47429a779c1cf471090a1be67efba",
+  "script": "scripts/expand-smal-os-volume.ps1",
+  "transport": "VPN-private-Premium-Bastion-loopback-SSH22",
+  "strictPinnedHostKey": true,
+  "passwordAuthentication": false,
+  "privateKeyValueExported": false,
+  "localPort": 36375,
+  "guestCommandTimeoutSeconds": 90,
+  "loopbackOnly": true,
+  "sshExitCode": 0,
+  "sshDiagnostics": {
+    "Server accepts key": true,
+    "Authenticated to": true,
+    "Sending command:": true,
+    "Exit status": true
+  },
+  "result": {
+    "computer": "LocalBox-Client",
+    "atUtc": "2026-10-27T11:17:35.4121477Z",
+    "expansionApplied": true,
+    "bootDiskGiB": 1024,
+    "beforePartitionGiB": 126.89,
+    "afterPartitionGiB": 1023.89,
+    "freeGiB": 991.75,
+    "dataDiskInventoryUnchanged": true,
+    "defenderRealTimeProtection": true,
+    "rebootPerformed": false,
+    "newAzureDiskAllocation": false,
+    "nestedVmCreated": false
+  },
+  "tunnelProcessClosed": true,
+  "localSocketAbsent": true,
+  "finishedAtSast": "2026-10-27T13:17:36.237689+02:00"
+}
