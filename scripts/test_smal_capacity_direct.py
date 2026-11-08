@@ -301,6 +301,16 @@ class DirectTests(unittest.TestCase):
         self.assertNotIn(b'Start-Process', data)
         self.assertIn(b'snapshot=(Read-ComputeSnapshot)', data)
 
+    def test_large_source_compression_preserves_hash_and_executes_exact_bytes(self):
+        transport = runpy.run_path(str(ROOT / 'scripts/smal-private-powershell.py'), run_name='compression_only_test')
+        source = ("# Unicode test £\n" * 10000 + "Write-Output 'exact-reviewed-bytes'\n").encode()
+        compressed = transport['compressed_source'](source)
+        self.assertLess(len(compressed), 16 * 1024)
+        encoded = __import__('base64').b64encode(compressed.decode().encode('utf-16-le')).decode()
+        result = subprocess.run(['pwsh', '-NoLogo', '-NoProfile', '-NonInteractive', '-EncodedCommand', encoded], capture_output=True, text=True, timeout=30)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.stdout.strip(), 'exact-reviewed-bytes')
+
     def test_no_autostart_policy_is_a_precondition_not_a_configuration_change(self):
         p=copy.deepcopy(self.plan);p['baseline']['guestsStatic'][1]['automaticStart']='Start'
         with self.assertRaisesRegex(ValueError,'no-autostart'):D['validate'](p,False)

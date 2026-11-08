@@ -5,6 +5,7 @@ Never put secrets in a script, argument or output. The private key stays local.
 """
 import argparse
 import base64
+import gzip
 import json
 import hashlib
 import os
@@ -48,6 +49,16 @@ def stdin_loader(source):
     # exact pinned byte length instead of waiting for ReadToEnd().
     loader = "$ErrorActionPreference='Stop';try{$n=" + str(len(source)) + ";[byte[]]$b=New-Object byte[] $n;$i=[Console]::OpenStandardInput();$o=0;while($o -lt $n){$c=$i.Read($b,$o,$n-$o);if($c -le 0){throw 'Truncated reviewed source'};$o+=$c};$h=[Security.Cryptography.SHA256]::Create().ComputeHash($b);if([BitConverter]::ToString($h).Replace('-','') -cne '" + expected + "'){throw 'Reviewed script hash differs'};$s=[Text.UTF8Encoding]::new($false,$true).GetString($b);& ([ScriptBlock]::Create($s));exit 0}catch{[Console]::Error.WriteLine('ReviewedSourceFailure:'+ $_.Exception.GetType().Name + ':' + $_.InvocationInfo.ScriptLineNumber);exit 1}"
     return base64.b64encode(loader.encode('utf-16-le')).decode('ascii')
+
+
+def compressed_source(source):
+    if len(source) > 2 * 1024**2:
+        raise RuntimeError('Reviewed script exceeds the source transport byte cap')
+    packed = base64.b64encode(gzip.compress(source, mtime=0)).decode()
+    expected = hashlib.sha256(source).hexdigest().upper()
+    code = "$ErrorActionPreference='Stop';$__input=[IO.MemoryStream]::new([Convert]::FromBase64String('" + packed + "'));$__gzip=[IO.Compression.GZipStream]::new($__input,[IO.Compression.CompressionMode]::Decompress);$__output=[IO.MemoryStream]::new();try{$__gzip.CopyTo($__output);$__bytes=$__output.ToArray()}finally{$__gzip.Dispose();$__input.Dispose();$__output.Dispose()};"
+    code += "if($__bytes.Length -ne " + str(len(source)) + "){throw 'Unpacked reviewed source length differs'};$__hash=[Security.Cryptography.SHA256]::Create();try{$__digest=[BitConverter]::ToString($__hash.ComputeHash($__bytes)).Replace('-','')}finally{$__hash.Dispose()};if($__digest -cne '" + expected + "'){throw 'Unpacked reviewed source hash differs'};& ([ScriptBlock]::Create([Text.UTF8Encoding]::new($false,$true).GetString($__bytes)))"
+    return code.encode()
 
 
 def legacy_loader_for_hash(expected):
@@ -454,6 +465,10 @@ def main(script, name, envelope_key=None, three_node_context=None, capacity_cont
     with socket.socket() as reserve:
         reserve.bind(('127.0.0.1', 0))
         port = reserve.getsockname()[1]
+    unpacked_source_sha256 = hashlib.sha256(source).hexdigest()
+    unpacked_source_length = len(source)
+    if relative in ('scripts/smal-capacity-dispatch-r2.ps1', 'scripts/start-smal-existing-guests.ps1') and len(source) > 64 * 1024:
+        source = compressed_source(source)
     encoded = base64.b64encode(source.decode('utf-8').encode('utf-16-le')).decode('ascii')
     stream_source = len(encoded) > 16000 or relative == 'scripts/read-smal-node03-job.ps1'
     original_encoded_length = len(encoded)
@@ -466,6 +481,8 @@ def main(script, name, envelope_key=None, three_node_context=None, capacity_cont
     record['scriptTransport'] = 'sha256-length-framed-utf8-stdin' if stream_source else 'encoded-command'
     record['renderedSourceSha256'] = hashlib.sha256(source).hexdigest()
     record['renderedSourceByteLength'] = len(source)
+    record['unpackedSourceSha256'] = unpacked_source_sha256
+    record['unpackedSourceByteLength'] = unpacked_source_length
     record['unstreamedEncodedLength'] = original_encoded_length
     guest_timeout = {'scripts/prepare-smal-host-hyperv.ps1': 600,
                      'scripts/start-smal-existing-guests.ps1': 360,

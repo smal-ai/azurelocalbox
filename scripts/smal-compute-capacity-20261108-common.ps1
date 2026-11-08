@@ -216,7 +216,7 @@ function Read-ComputeSnapshot([bool]$readCluster = $true) {
                     $offline = @($resource | Get-ClusterParameter -Name OfflineAction -ErrorAction SilentlyContinue)
                     # Expose missing/unknown values. Never infer the documented default,
                     # coerce an unknown value to TurnOff, or write a resource parameter.
-                    @{ resourceId = $resource.Id.ToString(); vmIds = @($identity | ForEach-Object { [string]$_.Value })
+                    @{ resourceId = $resource.Id.ToString(); vmIds = @($identity | ForEach-Object { ([string]$_.Value).ToLowerInvariant() })
                        offlineAction = $(if ($offline.Count -eq 1) { $offline[0].Value } else { $null }) }
                 })
                 @{ static = @{ name = $c.Name; poolId = $pool.UniqueId; poolSize = $pool.Size
