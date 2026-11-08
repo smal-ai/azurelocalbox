@@ -67,7 +67,7 @@ function Read-ComputeGuestStatic($vm) {
         })
     }
 }
-function New-ComputeSession([string]$name) {
+function New-ComputeSession([string]$name, [scriptblock]$Read = $null) {
     $id = $plan.guestIds.PSObject.Properties[$name].Value
     $vm = Get-VM -Id $id
     Assert-Compute ($vm.Name -ceq $name -and $vm.State.ToString() -ceq 'Running') 'Exact Running node required'
@@ -84,6 +84,19 @@ function New-ComputeSession([string]$name) {
     $secure = Read-LabGuestSecureSecret -SecretDirectory $store -Role 'cluster-node-admin'
     try {
         # Exactly one authentication attempt. No old account-name fallback.
+        if ($null -ne $Read) {
+            # New read-only callers retain ownership through the complete invocation.
+            # The callback is committed observer code, never a public input or result.
+            $session = $null
+            try {
+                $session = New-PSSession -VMId $vm.Id -Credential ([pscredential]::new(($name + '\ASBuiltInAdmin'), $secure)) -ErrorAction Stop
+                & $Read $session
+            } finally {
+                if ($null -ne $session) { Remove-PSSession -Session $session }
+            }
+            return
+        }
+        # Legacy callers retain their original return contract and behaviour.
         return New-PSSession -VMId $vm.Id -Credential ([pscredential]::new(($name + '\ASBuiltInAdmin'), $secure)) -ErrorAction Stop
     } finally { $secure.Dispose() }
 }

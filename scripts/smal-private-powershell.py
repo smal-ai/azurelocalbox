@@ -27,7 +27,8 @@ OUT = H['OUT']
 VM_ID = f"/subscriptions/{BASE['SUB']}/resourceGroups/{BASE['RG']}/providers/Microsoft.Compute/virtualMachines/{BASE['VM']}"
 INITIAL_READS = {'scripts/read-smal-initial-host-20261108.ps1', 'scripts/read-smal-initial-storage-20261108.ps1',
                  'scripts/read-smal-initial-discovery-20261108.ps1', 'scripts/read-smal-initial-routes-20261108.ps1'}
-GUEST_TRANSPORT_READS = {'scripts/read-smal-guest-transport-metadata-20261108.ps1'}
+GUEST_TRANSPORT_READS = {'scripts/read-smal-guest-transport-metadata-20261108.ps1',
+                       'scripts/read-smal-guest-transport-probe-20261108.ps1'}
 
 
 def initial_read_binding(script=None):
@@ -216,7 +217,7 @@ def main(script, name, envelope_key=None, three_node_context=None, capacity_cont
     if relative in INITIAL_READS or relative in GUEST_TRANSPORT_READS:
         initial_binding_sha = initial_read_binding(relative)
         helpers = ['scripts/smal-initial-read-functions.ps1']
-        if relative in INITIAL_READS and relative != 'scripts/read-smal-initial-host-20261108.ps1':
+        if (relative in INITIAL_READS and relative != 'scripts/read-smal-initial-host-20261108.ps1') or relative == 'scripts/read-smal-guest-transport-probe-20261108.ps1':
             helpers.insert(0, 'scripts/smal-compute-capacity-20261108-common.ps1')
         prefix = "$ComputeCapacityLibraryOnly=$true\n"
         for helper in helpers:
