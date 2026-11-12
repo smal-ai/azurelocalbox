@@ -81,9 +81,14 @@ semantics. The scripts use elapsed-time bounds rather than fixed calendar cut-of
 ## Verification
 
 ```bash
-python3 -B scripts/test_smal_canonical.py
+BICEP_CLI="$HOME/.azure/bin/bicep" python3 -B scripts/canonical_ci.py
 git diff --check
 ```
+
+The repository's separate `Offline canonical operations` CI job runs source/credential
+exclusions, Python/JSON and PowerShell syntax checks, pinned Bicep compilation and mocked
+startup, disk and file-service regressions. It has read-only repository permission and no
+Azure login or native deployment step. Live lab acceptance remains a separate operation.
 
 Startup heartbeat, cluster health and workload readiness are separate checks. Retain the
 normal shutdown schedule and read an uncertain command's actual result before retrying it.
