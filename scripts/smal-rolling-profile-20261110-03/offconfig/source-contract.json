@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed-limited-off-state-source-contract",
+  "sourceContractSha256": "91611a689e6123e0f3697f2269c592fb66bfb50daa406d1802fad6fee4fcc93a",
+  "sourceFiles": {
+    "compile.py": "aa221b982145b26c0e19aa3766b1dc008a5f138be986176be2f66f491c54d9ce",
+    "offconfig-v03.ps1.in": "6e63d78bf1eda10a88451ccf3e8152a006bc4923941475a4ad3fe8edebd1627d",
+    "offconfig-nodes-v03.ps1": "9b184c44e9d07175699d4bf55fb371c2a00543ddfd1546d1f115ac01aa3c8fac",
+    "offconfig-membership-v02.ps1": "cf768a97f0866f75e939429d9e42ad60f35c9711111d868cc1c85353722b02ef",
+    "execution.py": "bae4bd55c6ff206ca029b802ed6eeeb1ecf44d3c746f93cbbdfeeb726a1eba4a",
+    "operator03.py": "0a2f39ecc4c2461ad94e0ac3de3e481b6d9de995a8edff0572be7fe97a72ed9f"
+  },
+  "privateInputSha256": {
+    "unresolved-storage-identities.json": "ff88eb7ee7f8227d7744cb514e5bd19f0c17be3caa3aabfcd205af9f7ef7cb4c",
+    "reference/plan.json": "7ad5e7418dc707dc69d3f48f5330d0aa0ca15125bce7d8fa46a41b99070d338c",
+    "parent-qualification": "0ec7150bd3d1bba859bce60eb2ac0a2d06a2c3964311e390b722eb6181c3ec54",
+    "reservation-reconciliation": "394a3c953f2ae3add3b6ce7c7023e2ede5e0953e78db54d47008e94767e70ac6"
+  },
+  "stages": ["cpu-LB-NODE02", "memory-LB-NODE02", "guest-start-LB-NODE02"],
+  "review": "Coordinator reviewed exact new worker, request, supervision and observer bindings. Original business commands, plan, history and stage keys remain. Current offline disk ownership and exact storage-identity flags remain false. Startup must restore all original VPD identities before original resume and MOC-add.",
+  "executionLocation": "Use the private operator directory with its independently hash-verified original inputs. Published code copies alone are not a runnable or admitted native operation.",
+  "nativeAdmissionGranted": false,
+  "hardStopSast": "2026-11-10T23:30:00+02:00"
+}

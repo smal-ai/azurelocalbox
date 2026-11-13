@@ -1,0 +1,50 @@
+# Exactly one independent full after-read. Boot readiness uses compact native GETs only.
+if($env:COMPUTERNAME -cne 'LocalBox-Client' -or [DateTimeOffset]::UtcNow -ge [DateTimeOffset]::Parse('2026-11-11T15:20:00+02:00')){throw 'Wrong host/closed new-day read window'}
+$worker=Get-Content (Join-Path $root ('worker-'+$stage+'.state.json')) -Raw|ConvertFrom-Json
+$request=Get-Content (Join-Path $root ('request-'+$stage+'.json')) -Raw|ConvertFrom-Json
+$actualSource=(Get-FileHash (Join-Path $root ('worker-'+$stage+'.scriptblock.ps1'))).Hash.ToLowerInvariant()
+Assert-Compute ($worker.planSha256 -ceq $planSha -and $worker.stage -ceq $stage -and $worker.key -ceq $stage -and $worker.sourceCommit -ceq $sourceCommit -and $worker.sourceSha256 -ceq $expectedWorkerSha -and $actualSource -ceq $expectedWorkerSha -and $request.workerScriptBlockSha256 -ceq $expectedWorkerSha) 'Actual original new-day ScriptBlock/request/state identity differs'
+$process=Get-Process -Id $worker.pid -ErrorAction SilentlyContinue
+$alive=$null -ne $process -and $process.StartTime.ToUniversalTime().ToString('o') -ceq $worker.processStartedUtc
+Assert-Compute (-not $alive -and $worker.phase -ceq 'returned' -and $worker.rpcReturned -eq $true -and $worker.outcome -ceq 'rpc-returned-await-independent-observation') 'Original synchronous effect remains alive/unknown; never replay'
+$readyPolls=0
+if($entry.effect -ceq 'guest-start'){
+    $peer=if($entry.node -ceq 'LB-NODE01'){'LB-NODE02'}else{'LB-NODE01'}
+    $until=[DateTimeOffset]::UtcNow.AddSeconds(150);$session=$null
+    try{
+        $session=New-ComputeSession $peer
+        do{
+            $readyPolls++
+            $ready=Invoke-Command -Session $session -ArgumentList $entry.node,$plan.baseline.clusterStatic.poolId,$plan.transitionContract.deviceOwners -ErrorAction Stop -ScriptBlock {
+                param($node,$poolId,$owners)
+                $c=Get-Cluster -Name smal-localbox01;$selected=@(Get-ClusterNode -Cluster $c|Where-Object Name -CEQ $node)
+                $pool=@(Get-StoragePool|Where-Object IsPrimordial -EQ $false)
+                if($selected.Count -ne 1 -or $selected[0].State.ToString() -cnotin @('Up','Paused') -or $pool.Count -ne 1 -or $pool[0].UniqueId -cne $poolId){return $false}
+                $members=@($pool[0]|Get-PhysicalDisk)
+                if($members.Count -ne 24 -or @($members|Where-Object {$_.UniqueId -cnotin @($owners.PSObject.Properties.Name)}).Count){return $false}
+                $seen=[Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
+                foreach($sn in @(Get-StorageNode)){
+                    $n=([string]$sn.Name).Split('.')[0].ToUpperInvariant();if($n -cnotin @('LB-NODE01','LB-NODE02','LB-NODE03')){continue}
+                    foreach($d in @(Get-PhysicalDisk -StorageNode $sn -PhysicallyConnected)){if($d.UniqueId -cin @($owners.PSObject.Properties.Name)){if($owners.PSObject.Properties[$d.UniqueId].Value -cne $n -or -not $seen.Add([string]$d.UniqueId)){return $false}}}
+                }
+                return $seen.Count -eq 24
+            }
+            if($ready -eq $true){break}
+            if([DateTimeOffset]::UtcNow -ge $until -or [DateTimeOffset]::UtcNow -ge [DateTimeOffset]::Parse($plan.maximumExecutionDeadline)){throw 'Started guest has not restored current original24 identities/owners; no retry/start/identity inference'}
+            Start-Sleep -Seconds 10
+        }while($true)
+    }finally{if($session){Remove-PSSession $session}}
+}
+$snapshot=Read-ComputeSnapshot $true
+$peer=if($entry.node -ceq 'LB-NODE01'){'LB-NODE02'}else{'LB-NODE01'}
+$moc=Read-ProfileMoc $peer
+Assert-DayMoc $moc $entry.afterMocMembers $peer $snapshot
+$drain=$null
+if($entry.effect -ceq 'drain'){
+    $selected=@($snapshot.clusterHealth.nodeStates|Where-Object name -CEQ $entry.node)
+    $devices=@($snapshot.clusterHealth.devices|Where-Object owner -CEQ $entry.node)
+    Assert-Compute ($selected.Count -eq 1 -and $selected[0].state -ceq 'Paused' -and $devices.Count -eq 8 -and @($devices|Where-Object maintenance -NE $true).Count -eq 0) 'Actual new drain has not independently established Paused/eight current maintenance'
+    $drain=@{selectedNode=$entry.node;rpcReturned=$true;eightDevicesMaintenanceVerified=$true;deviceIds=@($devices.id|Sort-Object);planSha256=$planSha;sourceCommit=$sourceCommit;key=$stage;actualReturnedWorkerScriptBlockSha256=$expectedWorkerSha;actualObservedAtUtc=$snapshot.atUtc}
+}
+if([DateTimeOffset]::UtcNow -ge [DateTimeOffset]::Parse($plan.maximumExecutionDeadline)){throw 'New-day read bound closed'}
+@{status='complete-new-day-independent-observation';operationId=$plan.operationId;planSha256=$planSha;sourceCommit=$sourceCommit;stage=$stage;key=$stage;mutationPerformed=$false;worker=$worker;workerAlive=$alive;workerSourceVerified=$true;actualWorkerScriptBlockSha256=$actualSource;snapshot=$snapshot;mocObservation=$moc;actualDrainProof=$drain;fullSnapshotsPerformed=1;compactStartReadinessPolls=$readyPolls;effectIndependentlySettled=$false;atUtc=[datetime]::UtcNow.ToString('o')}|ConvertTo-Json -Depth 60 -Compress

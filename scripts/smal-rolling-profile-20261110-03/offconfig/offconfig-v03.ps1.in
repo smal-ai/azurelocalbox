@@ -1,0 +1,112 @@
+# Explicit limited qualification. GUID identities remain unresolved; the generic owner guard is unchanged.
+$OffconfigParentDecisionSha256='0ec7150bd3d1bba859bce60eb2ac0a2d06a2c3964311e390b722eb6181c3ec54'
+$OffconfigUnresolved=ConvertFrom-Json '@@UNRESOLVED_JSON@@'
+function Read-OffconfigEvidence([string]$requestedStage){
+ $allowed=@('cpu-LB-NODE02','memory-LB-NODE02','guest-start-LB-NODE02')
+ Assert-Compute ($requestedStage -cin $allowed) 'OFFCONFIG: outside the three exact Off effects'
+ $entry=$plan.transitionContract.stages.PSObject.Properties[$requestedStage].Value
+ Assert-Compute ($entry.node -ceq 'LB-NODE02' -and $entry.effect -cin @('cpu','memory','guest-start')) 'OFFCONFIG: target/effect differs'
+ Assert-Compute ($plan.operationId -ceq 'smal-foundation-profile-20261110-03' -and $plan.maximumExecutionDeadline -ceq '2026-11-10T23:30:00+02:00' -and $plan.executionApproval.parentGo -eq $true -and [DateTimeOffset]::UtcNow -lt [DateTimeOffset]::Parse($plan.executionApproval.expiresAt)) 'OFFCONFIG: original authority/bound closed'
+ $oldHandoff=Read-Remaining02Handoff $plan.predecessorHandoff.recordSha256
+ $drainRef=$oldHandoff.retainedOriginalDrainProof
+ $drain=Read-RemainingControl ('C:\ProgramData\AzureLocalBox\FoundationProfile-20261110-02\'+$drainRef.file) $drainRef.sha256
+ Assert-Compute ($drain.rpcReturned -eq $true -and $drain.eightDevicesMaintenanceVerified -eq $true -and $drain.selectedNode -ceq 'LB-NODE02' -and $drain.planSha256 -ceq $oldHandoff.fromPlanSha256 -and $drain.sourceCommit -ceq $oldHandoff.fromSourceCommit) 'OFFCONFIG: original qualified drain binding differs'
+ $root='C:\ProgramData\AzureLocalBox\FoundationProfile-20261110-03'
+ $op=Get-Content (Join-Path $root 'operation.json') -Raw -ErrorAction Stop|ConvertFrom-Json
+ Assert-Compute ($op.operationId -ceq $plan.operationId -and $op.planSha256 -ceq $planSha -and $op.sourceCommit -ceq '9fb0f334744cece48974107fdf664591c0451df0' -and $op.active -eq $true -and $op.predecessorHandoffSha256 -ceq $plan.predecessorHandoff.recordSha256) 'OFFCONFIG: immutable original03 operation identity differs'
+ $history=@();$files=@(Get-ChildItem -LiteralPath $root -Filter 'worker-*.state.json' -File -ErrorAction Stop)
+ Assert-Compute ($files.Count -le 64) 'OFFCONFIG: native control history bound exceeded'
+ foreach($f in $files){
+  Assert-Compute ($f.Length -le 524288 -and -not($f.Attributes -band [IO.FileAttributes]::ReparsePoint)) 'OFFCONFIG: native state path/bound differs'
+  $s=Get-Content -LiteralPath $f.FullName -Raw -ErrorAction Stop|ConvertFrom-Json
+  Assert-Compute ($s.operationId -ceq $plan.operationId -and $s.planSha256 -ceq $planSha -and $s.sourceCommit -ceq $op.sourceCommit -and $s.pid -gt 0 -and $s.processStartedUtc) 'OFFCONFIG: original native state identity differs'
+  $p=Get-Process -Id $s.pid -ErrorAction SilentlyContinue
+  $alive=$null -ne $p -and $p.StartTime.ToUniversalTime().ToString('o') -ceq $s.processStartedUtc
+  Assert-Compute (-not $alive -and $s.phase -ceq 'returned' -and $s.rpcReturned -eq $true -and $s.outcome -cin @('rpc-returned-await-independent-observation','rpc-returned-postread-failed-await-independent-observation')) 'OFFCONFIG: active/unknown/unreturned native effect'
+  $history+=@{file=$f.Name;sha256=(Get-FileHash -LiteralPath $f.FullName).Hash.ToLowerInvariant();record=$s;originalProcessAlive=$alive}
+ }
+ $stop=@($history|Where-Object {$_.record.stage -ceq 'guest-stop-LB-NODE02'})
+ Assert-Compute ($stop.Count -eq 1 -and $stop[0].record.pid -eq 5960 -and $stop[0].sha256 -ceq '0cde7a4c99966a8b2e560a46ffd195ce700fdeb6d03f22f649f2c6d5f6a8237c') 'OFFCONFIG: exact original Stop5960 changed or absent'
+ foreach($file in @(Get-ChildItem -LiteralPath $root -Filter 'request-*.json' -File -ErrorAction Stop)){
+  Assert-Compute (Test-Path -LiteralPath (Join-Path $root ($file.Name.Replace('request-','worker-').Replace('.json','.state.json')))) 'OFFCONFIG: original native request without known worker'
+ }
+ foreach($file in @(Get-ChildItem -LiteralPath $root -Filter 'startup-*.state.json' -File -ErrorAction Stop)){
+  $s=Get-Content -LiteralPath $file.FullName -Raw -ErrorAction Stop|ConvertFrom-Json;$p=Get-Process -Id $s.pid -ErrorAction SilentlyContinue
+  Assert-Compute ($s.pid -gt 0 -and $s.processStartedUtc -and $s.phase -ceq 'returned' -and -not($p -and $p.StartTime.ToUniversalTime().ToString('o') -ceq $s.processStartedUtc)) 'OFFCONFIG: original startup remains unresolved'
+ }
+ $requestedArtifacts=@(Get-ChildItem -LiteralPath $root -File -ErrorAction Stop|Where-Object {$_.Name -cmatch [regex]::Escape($requestedStage)})
+ Assert-Compute ($requestedArtifacts.Count -eq 0) 'OFFCONFIG: requested stage already has native history; no replay/rekey'
+ # Original host-only pass. No nested-node network, ARP or repeated full inventory.
+ $snapshot=Read-ComputeSnapshot $false
+ Assert-Compute ($snapshot.states['LB-NODE02'] -ceq 'Off') 'OFFCONFIG: selected VM is not Off'
+ Assert-ComputeEqual $snapshot.hostStatic $plan.baseline.hostStatic 'OFFCONFIG: outer host/storage/network drift'
+ Assert-ComputeEqual $snapshot.volumesStatic $plan.baseline.volumesStatic 'OFFCONFIG: outer volume identity drift'
+ Assert-Compute ($snapshot.guestsStatic.Count -eq 4) 'OFFCONFIG: exact four original VMs required'
+ foreach($g in $snapshot.guestsStatic){
+  $expected=$entry.beforeProfiles.PSObject.Properties[$g.name].Value
+  Assert-Compute ($null -ne $expected -and $g.cpu -eq $expected.cpu -and $g.memory -eq $expected.memory -and $snapshot.states[$g.name] -ceq $entry.beforeStates.PSObject.Properties[$g.name].Value) 'OFFCONFIG: exact unused stage profile/power differs'
+  $old=@($plan.baseline.guestsStatic|Where-Object name -CEQ $g.name)
+  Assert-Compute ($old.Count -eq 1) 'OFFCONFIG: original VM identity absent'
+  $copy=@{};foreach($k in $g.Keys){$copy[$k]=$g[$k]};$copy.cpu=$old[0].cpu;$copy.memory=$old[0].memory
+  Assert-ComputeEqual $copy $old[0] 'OFFCONFIG: original VM/VHD/TPM/NIC/security/configuration drift'
+ }
+ $cap=$snapshot.hostCapacity
+ Assert-Compute ($cap.logicalProcessors -eq 64 -and $cap.physicalCores -eq 32 -and $cap.memoryBytes -ge 500GB -and $cap.freeMemoryBytes -ge 32GB -and $cap.numa.Count -gt 0 -and ($cap.numa|ForEach-Object {[int]$_.logicalProcessors}|Measure-Object -Sum).Sum -eq 64 -and (Get-VMHost).NumaSpanningEnabled) 'OFFCONFIG: actual E64/NUMA/outer memory reserve failed'
+ if($entry.effect -ceq 'guest-start'){Assert-Compute ($cap.freeMemoryBytes -ge $entry.targetMemoryBytes+32GB) 'OFFCONFIG: start memory plus outer reserve failed'}
+ foreach($volume in $snapshot.volumes){$b=$plan.admission.volumeBudgets.PSObject.Properties[$volume.letter].Value;Assert-Compute ($null -ne $b -and $volume.health -ceq 'Healthy' -and $volume.free -ge $b.freeFloorBytes -and $b.maximumVhdBytes+$b.runtimeBytes+$b.metadataBytes+$b.freeFloorBytes -le $volume.size) 'OFFCONFIG: unchanged volume/runtime/growth reserve failed'}
+ $guest=@($snapshot.guestsStatic|Where-Object name -CEQ 'LB-NODE02')[0]
+ Assert-Compute ($guest.id -ieq $plan.guestIds.'LB-NODE02' -and $guest.generation -eq 2 -and $guest.version -ceq '12.0' -and -not $guest.dynamicMemory -and $guest.processorSettings.nested -and $guest.processorSettings.maximumNumaProcessors -ge 20 -and $guest.memorySettings.minimum -le 96GB -and $guest.memorySettings.maximum -ge 96GB -and $guest.disks.Count -eq 9) 'OFFCONFIG: exact Off VM/target support/boot plus8 data attachments missing'
+ $session=New-ComputeSession 'LB-NODE01'
+ try{
+  $cluster=Invoke-Command -Session $session -ArgumentList $plan.transitionContract.deviceOwners,$OffconfigUnresolved,$ProfileMocRead.ToString(),$plan.mocContract.membershipIdentity -ErrorAction Stop -ScriptBlock {
+   param($FrozenOwners,$Unresolved,$MocReadSource,$MembershipIdentity)
+   $ErrorActionPreference='Stop'
+   $admin=Get-LocalUser -Name ASBuiltInAdmin
+   if($env:COMPUTERNAME -cne 'LB-NODE01' -or -not $admin.Enabled -or -not $admin.SID.Value.EndsWith('-500') -or [Security.Principal.WindowsIdentity]::GetCurrent().User.Value -cne $admin.SID.Value){throw 'OFFCONFIG: exact survivor/RID500 differs'}
+   $c=Get-Cluster -Name smal-localbox01 -ErrorAction Stop;$q=Get-ClusterQuorum -Cluster $c -ErrorAction Stop
+   $pools=@(Get-StoragePool|Where-Object IsPrimordial -EQ $false);if($pools.Count -ne 1){throw 'OFFCONFIG: one original pool required'}
+   $pool=$pools[0];$members=@($pool|Get-PhysicalDisk -ErrorAction Stop);$vd=@(Get-VirtualDisk -ErrorAction Stop);$csv=@(Get-ClusterSharedVolume -Cluster $c -ErrorAction Stop);$nodes=@(Get-ClusterNode -Cluster $c -ErrorAction Stop)
+   if($members.Count -ne 24 -or $vd.Count -ne 5 -or $csv.Count -ne 4 -or $nodes.Count -ne 3){throw 'OFFCONFIG: original bounded pool/mirror/CSV/node topology differs'}
+   $ownerMap=@{};$storageQueries=@()
+   foreach($sn in @(Get-StorageNode -ErrorAction Stop)){
+    $name=([string]$sn.Name).Split('.')[0].ToUpperInvariant();if($name -cnotin @('LB-NODE01','LB-NODE03')){continue}
+    $connected=@(Get-PhysicalDisk -StorageNode $sn -PhysicallyConnected -ErrorAction Stop)
+    $inPool=@($connected|Where-Object {$_.UniqueId -cin @($members.UniqueId)})
+    $storageQueries+=@{storageNodeName=$sn.Name;storageNodeUniqueId=$sn.UniqueId;physicallyConnectedCount=$connected.Count;poolConnectedIds=@($inPool.UniqueId)}
+    foreach($d in $inPool){if($ownerMap.ContainsKey($d.UniqueId) -or $FrozenOwners.PSObject.Properties[$d.UniqueId].Value -cne $name){throw 'OFFCONFIG: ambiguous/unknown survivor ownership'};$ownerMap[$d.UniqueId]=$name}
+   }
+   if($ownerMap.Count -ne 16){throw 'OFFCONFIG: exact16 known survivor owners unproved'}
+   $unresolvedActual=@()
+   foreach($d in $members){
+    if($ownerMap.ContainsKey($d.UniqueId)){if($d.HealthStatus.ToString() -cne 'Healthy' -or (@($d.OperationalStatus|ForEach-Object ToString)-join '|') -cne 'OK'){throw 'OFFCONFIG: survivor device not Healthy/OK'};continue}
+    $ref=@($Unresolved|Where-Object UniqueId -CEQ $d.UniqueId)
+    if($ref.Count -ne 1){throw 'OFFCONFIG: unrecognised offline GUID; no alias inference'}
+    $actual=@{UniqueId=$d.UniqueId;UniqueIdFormat=[string]$d.UniqueIdFormat;ObjectId=$d.ObjectId;DeviceId=$d.DeviceId;SerialNumber=$d.SerialNumber;FriendlyName=$d.FriendlyName;PhysicalLocation=$d.PhysicalLocation;Size=$d.Size;HealthStatus=$d.HealthStatus.ToString();OperationalStatus=(@($d.OperationalStatus|ForEach-Object ToString)-join '|')}
+    foreach($key in $actual.Keys){if($actual[$key] -cne $ref[0].PSObject.Properties[$key].Value){throw 'OFFCONFIG: actual unresolved offline scalar record changed'}}
+    if($actual.HealthStatus -cne 'Warning' -or $actual.OperationalStatus -cne 'Lost Communication'){throw 'OFFCONFIG: unresolved state outside known offline shape'}
+    $unresolvedActual+=,$actual
+   }
+   if($unresolvedActual.Count -ne 8){throw 'OFFCONFIG: exact unresolved native GUID set missing'}
+   $moc=& ([ScriptBlock]::Create($MocReadSource)) 'LB-NODE01' $false $MembershipIdentity
+   $bridge=@(Get-VM -Id '4c6ca5cc-8c9a-499b-8ffe-c029bbfd3522' -ErrorAction Stop)
+   if($bridge.Count -ne 1 -or $bridge[0].State.ToString() -cne 'Running'){throw 'OFFCONFIG: original protected infrastructure not Running on survivor'}
+   @{static=@{name=$c.Name;poolId=$pool.UniqueId;poolSize=$pool.Size;virtualDisks=@($vd|Sort-Object UniqueId|ForEach-Object {@{id=$_.UniqueId;size=$_.Size;copies=$_.NumberOfDataCopies;resiliency=$_.ResiliencySettingName}});csv=@($csv|Sort-Object Name|ForEach-Object {@{name=$_.Name;id=$_.Id.ToString();volumes=@($_.SharedVolumeInfo|ForEach-Object {@{path=$_.FriendlyVolumeName;size=$_.Partition.Size}})}})};health=@{nodeStates=@($nodes|Sort-Object Name|ForEach-Object {@{name=$_.Name;state=$_.State.ToString()}});devices=@($members|Sort-Object UniqueId|ForEach-Object {@{id=$_.UniqueId;size=$_.Size;owner=$ownerMap[$_.UniqueId];health=$_.HealthStatus.ToString();operational=@($_.OperationalStatus|ForEach-Object ToString);maintenance=@($_.OperationalStatus|Where-Object { $_.ToString() -cin @('In Maintenance Mode','InMaintenanceMode','Starting Maintenance Mode','StartingMaintenanceMode')}).Count -gt 0}});poolHealth=$pool.HealthStatus.ToString();poolOperational=@($pool.OperationalStatus|ForEach-Object ToString);virtualDiskStates=@($vd|Sort-Object UniqueId|ForEach-Object {@{id=$_.UniqueId;health=$_.HealthStatus.ToString();operational=@($_.OperationalStatus|ForEach-Object ToString);copies=$_.NumberOfDataCopies}});csvStates=@($csv|Sort-Object Name|ForEach-Object {@{id=$_.Id.ToString();state=$_.State.ToString();accessible=@($_.SharedVolumeInfo|Where-Object {-not(Test-Path -LiteralPath $_.FriendlyVolumeName)}).Count -eq 0}});quorumType=$q.QuorumType.ToString();witness=$(if($q.QuorumResource){$q.QuorumResource.Name}else{$null});activeStorageJobs=@(Get-StorageJob|Where-Object JobState -NE Completed|ForEach-Object {$job=$_;$av=@(Get-CimAssociatedInstance -InputObject $job -ResultClassName MSFT_VirtualDisk -ErrorAction Stop);$ap=@(Get-CimAssociatedInstance -InputObject $job -ResultClassName MSFT_PhysicalDisk -ErrorAction Stop);$poolAssoc=@(Get-CimAssociatedInstance -InputObject $job -ResultClassName MSFT_StoragePool -ErrorAction Stop);@{name=$job.Name;state=[string]$job.JobState;poolId=$(if($poolAssoc.Count -eq 1){$poolAssoc[0].UniqueId}else{$null});affectedVirtualDiskIds=@($av.UniqueId);affectedDeviceIds=@($ap.UniqueId)}});physicalFreeBytes=$pool.Size-$pool.AllocatedSize};unresolvedStorageIdentities=$unresolvedActual;survivorStorageQueries=$storageQueries;mocObservation=$moc;protectedInfrastructure=@{id=$bridge[0].Id.ToString();state=$bridge[0].State.ToString();hciNode=$env:COMPUTERNAME};atUtc=[datetime]::UtcNow.ToString('o')}
+  }
+ }finally{Remove-PSSession $session}
+ $expectedStatic=@{};foreach($key in @('name','poolId','poolSize','virtualDisks','csv')){$expectedStatic[$key]=$plan.baseline.clusterStatic.PSObject.Properties[$key].Value}
+ Assert-ComputeEqual $cluster.static $expectedStatic 'OFFCONFIG: pool/mirror/CSV static identity drift'
+ $h=$cluster.health
+ foreach($device in @($h.devices|Where-Object {$null -ne $_.owner})){
+  $original=@($plan.baseline.clusterStatic.members|Where-Object id -CEQ $device.id)
+  Assert-Compute ($original.Count -eq 1 -and $original[0].size -eq $device.size -and $plan.transitionContract.deviceOwners.PSObject.Properties[$device.id].Value -ceq $device.owner -and $device.owner -cin @('LB-NODE01','LB-NODE03')) 'OFFCONFIG: known survivor device identity/size/owner drift'
+ }
+ Assert-OffconfigNodeStatesV03 $h.nodeStates
+ Assert-Compute ($h.quorumType -ceq 'Majority' -and $null -eq $h.witness -and @($h.csvStates|Where-Object {$_.state -cne 'Online' -or $_.accessible -ne $true}).Count -eq 0) 'OFFCONFIG: quorum/CSV accessibility failure'
+ $allowed=@('OK','Degraded','Incomplete','InService','In Service')
+ Assert-Compute ($h.poolHealth -cin @('Healthy','Warning') -and $h.poolOperational.Count -gt 0 -and @($h.poolOperational|Where-Object {$_ -cnotin $allowed}).Count -eq 0) 'OFFCONFIG: pool state outside planned offline degradation'
+ foreach($vd in $h.virtualDiskStates){Assert-Compute ($vd.copies -eq 3 -and $vd.health -cin @('Healthy','Warning') -and $vd.operational.Count -gt 0 -and @($vd.operational|Where-Object {$_ -cnotin $allowed}).Count -eq 0) 'OFFCONFIG: mirror state outside planned offline degradation'}
+ Assert-QualifiedMirrorJobs $h ($entry.effect -ceq 'guest-start')
+ Assert-OffconfigMocMembershipV02 $cluster.mocObservation
+ Assert-Compute ([DateTimeOffset]::UtcNow -lt [DateTimeOffset]::Parse($plan.executionApproval.expiresAt)) 'OFFCONFIG: original bound expired after reads'
+ return @{qualification='limited-Off-VM-config-and-compensating-start-only';parentQualificationDecisionSha256=$OffconfigParentDecisionSha256;policyRecordIsNotFreshNativeHealth=$true;requestedStage=$requestedStage;currentOfflineOwnerProven=$false;exactStorageIdentities=$false;unresolvedStorageIdentities=$cluster.unresolvedStorageIdentities;hostSnapshot=$snapshot;cluster=$cluster;originalNativeHistory=$history;originalDrainProof=$drain;nativeRequestedStageHistoryAbsent=$true;hostStaticPasses=1;survivorClusterPasses=1;inventoryInsideMocReader=0;readStartedAtUtc=$snapshot.atUtc;atUtc=[datetime]::UtcNow.ToString('o')}
+}

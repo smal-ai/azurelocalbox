@@ -1,0 +1,12 @@
+{
+  "status": "accepted-qv2-derived03-scope-requires-actual-handoff-parent-acceptance",
+  "finalQv2FactorySha256": "078ed38adf171a18dd53c46720b8933f0a3849182624f740ecbb54a686136837",
+  "baseQv2JobsSha256": "363b261eec83c2e9ea9f4308c2a3e1f1c2614cab421777b2686b583cea632255",
+  "qualified03JobsSourceSha256": "26c317fedb46c4932be5b5af5d06f91c11cb51562b78ac5689ca25ffa3cfbfef",
+  "qualified03JobsSourceFile": "qualified-mirror-jobs03.ps1",
+  "parent03ScopeDecisionSha256": null,
+  "parentScopeDecisionBinding": "Exact actual handoff record hash; record must explicitly accept this accepted qv2 for03",
+  "supervisionTemplateSha256": "88c233e72684bf4e1a4425870b57c20e724e1338a8bf935f512ed2ccca2219eb",
+  "supervisionTemplateFile": "supervision.ps1.in",
+  "latestAcceptedPrivateHelperSha256": "456d86c94fba7653f38165f32e5056dff49f586be9adaedfb957c86314726e3b"
+}

@@ -1,0 +1,86 @@
+# Independent current postcondition evidence only. No Suspend/Resume/MOC/VM effect.
+$ErrorActionPreference = 'Stop'
+$executingEvidenceSource = $MyInvocation.MyCommand.ScriptBlock.ToString()
+$executingEvidenceHash = [Security.Cryptography.SHA256]::Create()
+try { $executingEvidenceSha256 = [BitConverter]::ToString($executingEvidenceHash.ComputeHash([Text.Encoding]::UTF8.GetBytes($executingEvidenceSource))).Replace('-', '').ToLowerInvariant() } finally { $executingEvidenceHash.Dispose() }
+if ($env:COMPUTERNAME -cne 'LocalBox-Client') { throw 'Wrong qualification host' }
+$deadline = [DateTimeOffset]::Parse('2026-11-10T20:00:00+02:00')
+$root = 'C:\ProgramData\AzureLocalBox\FoundationProfile-20261110-02'
+$proofPath = Join-Path $root 'drain-proof-LB-NODE02.json'
+$mutex = [Threading.Mutex]::new($false, 'Global\AzureLocalBoxComputeCapacityR2')
+$held = $false
+@@PURE_HELPERS@@
+@@QUALIFIED_MAINTENANCE@@
+$plan = [Text.Encoding]::UTF8.GetString([Convert]::FromBase64String('@@PLAN_BASE64@@')) | ConvertFrom-Json
+try {
+    if ([DateTimeOffset]::UtcNow -ge $deadline) { throw 'Original authority expired' }
+    try { $held = $mutex.WaitOne(0) } catch [Threading.AbandonedMutexException] { $held = $true; throw 'Abandoned original capacity mutex; inspect originals' }
+    if (-not $held) { throw 'Original dispatcher/worker still active' }
+    if (Test-Path -LiteralPath $proofPath) { throw 'Original drain proof already exists. No overwrite/replay.' }
+    $observerBytes = [Convert]::FromBase64String('@@OBSERVER_BASE64@@')
+    $hash = [Security.Cryptography.SHA256]::Create()
+    try { $observerSha = [BitConverter]::ToString($hash.ComputeHash($observerBytes)).Replace('-', '').ToLowerInvariant() } finally { $hash.Dispose() }
+    if ($observerSha -cne '7ad2f3fae4dcf9005fb2d0714a167926fb11220a3881d481ce0cd69064c85821') { throw 'Exact original corrected observer differs' }
+@@OBJECT_PROJECTION@@
+    $w = $o.worker
+    Assert-Compute ($o.status -ceq 'complete' -and $o.operationId -ceq $plan.operationId -and $o.planSha256 -ceq '@@PLAN_SHA@@' -and $o.sourceCommit -ceq '@@BASE_COMMIT@@' -and $o.stage -ceq 'drain-LB-NODE02' -and $o.key -ceq 'drain-LB-NODE02' -and $o.mutationPerformed -eq $false -and $o.effectSettled -eq $false -and $o.workerAlive -eq $false -and $o.dispatcherAlive -eq $false -and $o.workerIdentityVerified -eq $true -and $o.workerSourceVerified -eq $true) 'Original observed operation/dead worker identity unresolved'
+    Assert-Compute ($w.pid -eq 4172 -and $w.processStartedUtc -ceq '2026-11-10T16:07:44.0115814Z' -and $w.sourceSha256.ToLowerInvariant() -ceq 'dd52edc8dfe226082aeb9f2f6fe1249052fb191c18353d3163114ec54ccf379c' -and $w.phase -ceq 'returned' -and $w.rpcInvoked -eq $true -and $w.rpcReturned -eq $true -and $w.postReadSucceeded -eq $false -and $w.sequence -eq 8 -and $w.outcome -ceq 'rpc-returned-postread-failed-await-independent-observation' -and $w.journalCorrectionFactorySha256 -ceq '@@JOURNAL_SHA@@' -and $w.preRpcAdjudicationSha256 -ceq '@@JOURNAL_PARENT_SHA@@' -and $w.invocationAttempt -ceq 'journal-fix-drain-lb-node02-01') 'Exact known returned original RPC/journal lineage differs'
+    Assert-Compute (@($o.remoteStartup | Where-Object alive -NE $false).Count -eq 0) 'Original startup process unresolved'
+    $statePath = Join-Path $root 'worker-drain-LB-NODE02.state.json'
+    $stateBytes = [IO.File]::ReadAllBytes($statePath)
+    $stateRead = [Text.Encoding]::UTF8.GetString($stateBytes) | ConvertFrom-Json
+    Assert-ComputeEqual $stateRead $w 'Original state changed during independent observation'
+    $hash = [Security.Cryptography.SHA256]::Create()
+    try { $stateSha = [BitConverter]::ToString($hash.ComputeHash($stateBytes)).Replace('-', '').ToLowerInvariant() } finally { $hash.Dispose() }
+    foreach ($at in @($o.atUtc, $o.snapshot.atUtc, $o.mocObservation.atUtc)) {
+        $age = ([DateTimeOffset]::UtcNow - [DateTimeOffset]::Parse($at)).TotalSeconds
+        Assert-Compute ($age -ge 0 -and $age -le 300) 'Actual original observation stale/future'
+    }
+    $expected = $plan.transitionContract.stages.'moc-remove-LB-NODE02'
+    Assert-ComputeEqual $o.snapshot.hostStatic $plan.baseline.hostStatic 'Outer host identity drift'
+    Assert-ComputeEqual $o.snapshot.volumesStatic $plan.baseline.volumesStatic 'Outer volume identity drift'
+    Assert-ComputeEqual $o.snapshot.clusterStatic $plan.baseline.clusterStatic 'Cluster/storage/infrastructure identity drift'
+    Assert-ComputeEqual $o.snapshot.states $expected.beforeStates 'Actual initial states differ'
+    Assert-Compute (@($o.snapshot.guestsStatic).Count -eq 4) 'Exact four guests required'
+    foreach ($g in $o.snapshot.guestsStatic) {
+        $old = @($plan.baseline.guestsStatic | Where-Object name -CEQ $g.name)
+        Assert-Compute ($old.Count -eq 1) 'Unlisted guest'
+        Assert-ComputeEqual $g $old[0] 'Initial guest profile/non-profile identity drift'
+    }
+    Assert-Compute (@($o.snapshot.volumes).Count -eq 4) 'Exact four volumes missing'
+    foreach ($v in $o.snapshot.volumes) {
+        $b = $plan.admission.volumeBudgets.PSObject.Properties[$v.letter].Value
+        Assert-Compute ($b -and $v.health -ceq 'Healthy' -and $v.free -ge $b.freeFloorBytes -and ($b.maximumVhdBytes + $b.runtimeBytes + $b.metadataBytes + $b.freeFloorBytes) -le $v.size) 'Actual volume free/growth reserve failed'
+    }
+    Assert-Compute ($o.snapshot.hostCapacity.logicalProcessors -eq 64 -and $o.snapshot.hostCapacity.physicalCores -eq 32) 'Actual E64 host differs'
+    $capacities = if ($o.snapshot.nodeCapacity -is [Collections.IDictionary]) { @($o.snapshot.nodeCapacity.Values) } else { @($o.snapshot.nodeCapacity.PSObject.Properties | ForEach-Object Value) }
+    $placements = @($capacities | ForEach-Object { $_.bridgePlacement } | Where-Object id -IEQ '4c6ca5cc-8c9a-499b-8ffe-c029bbfd3522')
+    Assert-Compute ($placements.Count -eq 1 -and $placements[0].state -ceq 'Running' -and $placements[0].hciNode -ceq 'LB-NODE01') 'Actual protected infrastructure placement differs'
+    $m = $o.mocObservation
+    Assert-Compute ($m.qualified -eq $true -and $m.membershipObserved -eq $true -and $m.observerNode -cin @('LB-NODE01','LB-NODE02','LB-NODE03')) 'Actual MOC observer unqualified'
+    Assert-ComputeEqual $m.commands $plan.mocContract.nodes.PSObject.Properties[$m.observerNode].Value.commands 'Installed MOC binding drift'
+    Assert-ComputeEqual @($m.members | Sort-Object) @('LB-NODE01','LB-NODE02','LB-NODE03') 'Actual original MOC membership differs'
+    $ids = @($plan.transitionContract.deviceOwners.PSObject.Properties | Where-Object Value -CEQ 'LB-NODE02' | ForEach-Object Name)
+    $proof = @{ selectedNode='LB-NODE02'; rpcReturned=$true; eightDevicesMaintenanceVerified=$true; deviceIds=$ids
+        planSha256='@@PLAN_SHA@@'; sourceCommit='@@BASE_COMMIT@@'; key='drain-LB-NODE02'
+        qualificationKind='independent-current-postcondition-of-original-drain'; maintenanceQualificationFactorySha256='@@FACTORY_SHA@@'
+        parentMaintenanceQualificationSha256='@@PARENT_QUALIFICATION_SHA@@'
+        qualificationSourceReceiptSha256='@@OBSERVED_RECEIPT_SHA@@'; originalCorrectedObserverSha256=$observerSha
+        originalRpcBinding=@{pid=$w.pid;processStartedUtc=$w.processStartedUtc;sourceSha256=$w.sourceSha256;stage=$w.stage;key=$w.key;planSha256=$w.planSha256;sourceCommit=$w.sourceCommit;rpcReturned=$w.rpcReturned;outcome=$w.outcome;postReadSucceeded=$w.postReadSucceeded;stateSha256=$stateSha;workerJournalAtUtc=$w.atUtc}
+        postconditionSnapshotAtUtc=$o.snapshot.atUtc; postconditionMocAtUtc=$m.atUtc; actualMirrorJobs=@($o.snapshot.clusterHealth.activeStorageJobs)
+        attributionBasis='Exact known same-pool whole-mirror/name/state association. Null native device IDs do not attribute repair to physical devices.' }
+    Assert-Compute (@($o.snapshot.clusterHealth.activeStorageJobs).Count -eq 5) 'First supplemental proof requires the exact five observed suspended repairs'
+    $currentNode = @($o.snapshot.clusterHealth.nodeStates | Where-Object name -CEQ 'LB-NODE02')
+    Assert-Compute ($currentNode.Count -eq 1 -and $currentNode[0].state -ceq 'Paused') 'Original drain current postcondition requires NODE02 Paused'
+    Assert-ComputeMaintenanceHealth $o.snapshot 'LB-NODE02' $proof $false
+    $selected = @($o.snapshot.clusterHealth.devices | Where-Object owner -CEQ 'LB-NODE02')
+    Assert-Compute (@($selected | Where-Object { @($_.operational | Where-Object { $_ -cin @('In Maintenance Mode','InMaintenanceMode') }).Count -eq 0 }).Count -eq 0) 'Actual exact selected devices not in maintenance mode'
+    if ([DateTimeOffset]::UtcNow -ge $deadline) { throw 'Original authority expired after independent reads' }
+    if ((Get-FileHash -LiteralPath $statePath).Hash.ToLowerInvariant() -cne $stateSha) { throw 'Original state changed before evidence creation' }
+    $proof.evidenceScriptSha256 = $executingEvidenceSha256
+    $bytes = [Text.UTF8Encoding]::new($false).GetBytes(($proof | ConvertTo-Json -Depth 20 -Compress))
+    if ([DateTimeOffset]::UtcNow -ge $deadline) { throw 'Original authority expired before evidence write' }
+    $stream = [IO.File]::Open($proofPath, [IO.FileMode]::CreateNew, [IO.FileAccess]::Write, [IO.FileShare]::Read)
+    try { $stream.Write($bytes,0,$bytes.Length);$stream.Flush($true) } finally { $stream.Dispose() }
+    @{status='independent-current-drain-proof-created';resourceMutationPerformed=$false;evidenceFileCreated=$true;effectSettled=$false;originalNativeObservation=$o;supplementalDrainProof=$proof;supplementalDrainProofSha256=(Get-FileHash -LiteralPath $proofPath).Hash.ToLowerInvariant();atUtc=[datetime]::UtcNow.ToString('o')} | ConvertTo-Json -Depth 40 -Compress
+} finally { if ($held) { $mutex.ReleaseMutex() }; $mutex.Dispose() }

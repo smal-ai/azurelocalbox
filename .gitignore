@@ -15,3 +15,14 @@ infra/bicep/**/*.json
 # accreditation evidence screenshots — contain tenant, subscription and
 # workstation detail; kept locally, never committed
 docs/accreditation/evidence/
+
+# Runtime captures and retired per-attempt source stay local.
+local/
+**/receipts/
+docs/deployment-*/
+docs/guest-inventory-*/
+docs/readiness-*/
+scripts/*20[0-9][0-9][0-9][0-9][0-9][0-9]*/
+scripts/*20[0-9][0-9][0-9][0-9][0-9][0-9]*.ps1
+scripts/*20[0-9][0-9][0-9][0-9][0-9][0-9]*.py
+scripts/*20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]*

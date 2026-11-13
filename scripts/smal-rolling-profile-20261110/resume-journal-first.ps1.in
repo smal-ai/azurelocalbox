@@ -1,0 +1,58 @@
+$ErrorActionPreference='Stop'
+if($env:COMPUTERNAME -cne 'LocalBox-Client'){throw 'Wrong outer host'}
+$root='C:\ProgramData\AzureLocalBox\FoundationProfile-20261110-02'
+$old=Join-Path $root 'worker-drain-LB-NODE02.ps1'
+$path=Join-Path $root '@@WORKER_NAME@@'
+$marker=Join-Path $root 'journal-correction-invocation-drain-LB-NODE02-01.json'
+$returned=Join-Path $root 'journal-correction-returned-drain-LB-NODE02-01.json'
+$deadline=[DateTimeOffset]::Parse('2026-11-10T20:00:00+02:00')
+$pins=([Text.Encoding]::UTF8.GetString([Convert]::FromBase64String('@@PINS_BASE64@@'))|ConvertFrom-Json)
+$created=$false;$invoked=$false;$phase='exact-original-guards'
+function New-JournalFile($file,[byte[]]$bytes){$s=[IO.File]::Open($file,[IO.FileMode]::CreateNew,[IO.FileAccess]::Write,[IO.FileShare]::Read);try{$s.Write($bytes,0,$bytes.Length);$s.Flush($true)}finally{$s.Dispose()}}
+function New-JournalJson($file,$value){New-JournalFile $file ([Text.Encoding]::UTF8.GetBytes(($value|ConvertTo-Json -Depth 15 -Compress)))}
+function Guard-JournalOriginal([bool]$owned=$false){
+ if([DateTimeOffset]::UtcNow -ge $deadline){throw 'Original approval expired'}
+ $dir=Get-Item -LiteralPath $root;if(-not $dir.PSIsContainer -or ($dir.Attributes -band [IO.FileAttributes]::ReparsePoint)){throw 'Original root path differs'}
+ if(-not $owned -and (@(Get-ChildItem $root -Filter 'journal-correction-invocation-drain-LB-NODE02-*.json' -File|Select-Object -First 1).Count -or (Test-Path -LiteralPath $path) -or (Test-Path -LiteralPath $returned))){throw 'Correction attempt already exists; no replay'}
+ foreach($pin in $pins.PSObject.Properties){
+  $p=Join-Path $root $pin.Name;$f=Get-Item -LiteralPath $p
+  if($f.Length -gt 65536 -or ($f.Attributes -band [IO.FileAttributes]::ReparsePoint) -or (Get-FileHash -LiteralPath $p -Algorithm SHA256).Hash.ToLowerInvariant() -cne $pin.Value){throw 'Adjudicated original evidence changed'}
+ }
+ $f=Get-Item -LiteralPath $old
+ if($f.Length -gt 1048576 -or ($f.Attributes -band [IO.FileAttributes]::ReparsePoint) -or (Get-FileHash -LiteralPath $old).Hash.ToLowerInvariant() -cne 'fd02e48b96d93b2631687808e92642d6a4d5ec44a0e2f2e8fc6e685ef95f4998'){throw 'Original source differs'}
+ if(@(Get-ChildItem $root -Filter 'worker-drain-LB-NODE02-event-*.json' -File).Count -ne 3 -or (Test-Path (Join-Path $root 'drain-proof-LB-NODE02.json'))){throw 'Unadjudicated worker evidence exists'}
+ $last=Get-Content (Join-Path $root 'worker-drain-LB-NODE02-event-3.json') -Raw|ConvertFrom-Json
+ if($last.sequence -ne 3 -or $last.phase -cne 'rpc-pending' -or $last.rpcInvoked -ne $true -or $last.rpcReturned -eq $true -or $last.errorLine -ne 616 -or $last.errorType -cne 'MethodInvocationException'){throw 'Original no-RPC adjudication no longer applies'}
+ $all=@(Get-CimInstance Win32_Process -Filter "Name='powershell.exe' OR ProcessId=10264 OR ProcessId=10804 OR ProcessId=3448" -OperationTimeoutSec 5 -ErrorAction Stop)
+ if($all.Count -gt 128 -or @($all|Where-Object {$_.Name -ieq 'powershell.exe' -and -not $_.CommandLine}).Count){throw 'Incomplete process scan'}
+ foreach($p in $all){if($p.ProcessId -in @(10264,10804,3448) -or $p.CommandLine -match ('(?i)-File\s+"?'+[regex]::Escape($old)+'"?(?:\s|$)') -or $p.CommandLine -match ('(?i)-File\s+"?'+[regex]::Escape($path)+'"?(?:\s|$)')){throw 'Original/corrected worker process exists'}}
+ $v=Get-VM -Id '12a44e0c-cc08-4c4c-a812-fa0b56efdbc3' -ErrorAction Stop
+ if($v.Name -cne 'LB-NODE02' -or $v.State.ToString() -cne 'Running' -or $v.ProcessorCount -ne 8 -or $v.MemoryStartup -ne 64GB){throw 'NODE02 profile/state changed'}
+}
+$r=@{status='refused';key='drain-LB-NODE02';planSha256='c6b4dfdfb3e1170129c8d578d3a87794d9ec41142275ed69c5decc2fb6006d53';originalWorkerSha256='fd02e48b96d93b2631687808e92642d6a4d5ec44a0e2f2e8fc6e685ef95f4998';correctedWorkerSha256='@@WORKER_SHA@@';factorySha256='@@FACTORY_SHA@@';parentReconciliationSha256='@@PARENT_SHA@@';effectSettled=$false;retryAllowed=$false}
+try{
+ Guard-JournalOriginal
+ New-JournalJson $marker @{pid=$PID;atUtc=[datetime]::UtcNow.ToString('o');correctedWorkerSha256='@@WORKER_SHA@@';factorySha256='@@FACTORY_SHA@@';parentReconciliationSha256='@@PARENT_SHA@@';invocationAttempt='@@ATTEMPT@@';startAfterSequence=3;originalLatestSequence=1;originalLatestSha256='b14b0cb751a8de7cefa27b37dc011166093668ec4beb3bda9125597242487740'}
+ $created=$true
+ $bytes=[Convert]::FromBase64String('@@WORKER_BASE64@@')
+ New-JournalFile $path $bytes
+ if((Get-FileHash -LiteralPath $path).Hash.ToLowerInvariant() -cne '@@WORKER_SHA@@'){throw 'Corrected source hash differs'}
+ $t=$null;$e=$null;$null=[Management.Automation.Language.Parser]::ParseFile($path,[ref]$t,[ref]$e);if($e.Count){throw 'Corrected source parse failed'}
+ Guard-JournalOriginal $true
+ if([DateTimeOffset]::UtcNow -ge $deadline){throw 'Original approval expired'}
+ $phase='corrected-original-invocation';$invoked=$true
+ & $path *>&1|ForEach-Object {if($_ -is [Management.Automation.ErrorRecord]){$r.workerErrorType=$_.Exception.GetType().FullName}}
+ $r.status='corrected-call-returned-await-independent-observation'
+}catch{$r.errorType=$_.Exception.GetType().FullName;$r.failedPhase=$phase;if($created){$r.status='correction-held-no-retry'}}
+$r.markerCreated=$created;$r.workerInvoked=$invoked;$r.atUtc=[datetime]::UtcNow.ToString('o')
+if($created){
+ try{
+  $state=Join-Path $root 'worker-drain-LB-NODE02.state.json'
+  if((Get-Item $state).Length -gt 65536){throw 'State bound exceeded'}
+  $v=Get-Content $state -Raw|ConvertFrom-Json;$m=@{}
+  foreach($p in $v.PSObject.Properties){$x=$p.Value;if($null -eq $x -or $x -is [bool] -or $x -is [int] -or $x -is [long]){$m[$p.Name]=$x}elseif($x -is [string] -and $x -cmatch '^[A-Za-z0-9_.:+-]{0,256}$' -and $x -notmatch 'eyJ|(?i:password|access_token|refresh_token|client_secret|authorization)'){$m[$p.Name]=$x}}
+  $r.workerState=$m;$r.workerStateSha256=(Get-FileHash $state).Hash.ToLowerInvariant()
+ }catch{$r.stateReadErrorType=$_.Exception.GetType().FullName}
+ try{New-JournalJson $returned $r}catch{$r.returnRecordErrorType=$_.Exception.GetType().FullName}
+}
+$r|ConvertTo-Json -Depth 15 -Compress

@@ -1,0 +1,16 @@
+{
+  "tenantId": "c6e67968-af25-4557-ab8b-06b693048d3b",
+  "subscriptionId": "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+  "hostId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+  "hostSize": "Standard_E64s_v6",
+  "capacityOperationId": "92490377-59ca-4f7c-b553-d65330495cde",
+  "premiumSupportSource": "https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/memory-optimized/esv6-series",
+  "conversionSource": "https://learn.microsoft.com/en-us/azure/virtual-machines/disks-convert-types",
+  "disks": [
+    {"lun": 8, "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-Node03-SSD-20261029", "uniqueId": "eab2d4b3-d41d-44b3-99b4-d6c1c928c97b", "sizeGiB": 2048, "sku": "Premium_LRS", "iops": 7500, "mbps": 250},
+    {"lun": 9, "id": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/disks/LocalBox-Client-Capacity-20261030", "uniqueId": "db6882f9-8c4a-4923-b1a3-6b73dbbb9109", "sizeGiB": 4096, "sku": "Premium_LRS", "iops": 7500, "mbps": 250}
+  ],
+  "nestedVmIds": ["4c6ca5cc-8c9a-499b-8ffe-c029bbfd3522", "dd71fef8-06d0-46ef-a062-191762cb6cd7", "53be60df-af37-4a76-a316-6e7dbf2d18e9", "7deb3788-0d92-4b8d-a1e3-66c7ceb4fad7", "25b52e27-12e0-4a28-adb8-4a0a964f82a2"],
+  "shutdownOrder": ["7deb3788-0d92-4b8d-a1e3-66c7ceb4fad7", "53be60df-af37-4a76-a316-6e7dbf2d18e9", "25b52e27-12e0-4a28-adb8-4a0a964f82a2", "dd71fef8-06d0-46ef-a062-191762cb6cd7", "4c6ca5cc-8c9a-499b-8ffe-c029bbfd3522"],
+  "startupOrder": ["4c6ca5cc-8c9a-499b-8ffe-c029bbfd3522", "dd71fef8-06d0-46ef-a062-191762cb6cd7", "7deb3788-0d92-4b8d-a1e3-66c7ceb4fad7", "53be60df-af37-4a76-a316-6e7dbf2d18e9", "25b52e27-12e0-4a28-adb8-4a0a964f82a2"]
+}

@@ -1,0 +1,16 @@
+{
+  "resourceGroup": "rg-smal-aks-weu-1",
+  "location": "westeurope",
+  "name": "smal-smb01",
+  "armVmId": "556d5d78-02b0-45e7-af73-7730238c0ca3",
+  "hyperVVmId": "25b52e27-12e0-4a28-adb8-4a0a964f82a2",
+  "address": "10.64.0.190",
+  "workloadAddresses": ["10.64.0.101", "10.64.0.103"],
+  "customLocationId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.ExtendedLocation/customLocations/cl-localbox-smal-weu-1",
+  "storageContainerId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.AzureStackHCI/storageContainers/UserStorage3-174bf825e17a4352992a21b292a7342a",
+  "vmStorageContainerId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-platform-weu-1/providers/Microsoft.AzureStackHCI/storageContainers/UserStorage1-a0c959f5b11340a98251977a107de6c9",
+  "sourceDirectory": "C:\\ClusterStorage\\UserStorage_3\\SMAL-FileService-Image",
+  "evaluationMediaUrl": "https://software-static.download.prss.microsoft.com/dbazure/998969d5-f34g-4e03-ac9d-1f9786c66749/26100.32230.260111-0550.lt_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso",
+  "evaluationMediaSha256": "7B052573BA7894C9924E3E87BA732CCD354D18CB75A883EFA9B900EA125BFD51",
+  "evaluationMediaLength": 8152356864
+}

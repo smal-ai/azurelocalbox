@@ -11,7 +11,7 @@ not included in this delivery and no mapping repair was applied.
   `deploy/smal-host-20261027` branch. No merge or force push.
 - Deterministic unsigned candidate digest:
   `dcdabe1106f42767ed030908347b3476f1dc94f86eafbf92d4147d37bb4225a5`.
-- [Candidate reference](candidate-reference.json) binds the retained local receipts by
+- [Candidate reference](https://github.com/quintindk/azurelocalbox/blob/63036d03fbdb3a3f433a5dfa71de36aa902fbf05/docs/deployment-2026-11-08-capacity/candidate-reference.json) binds the retained local receipts by
   SHA256 and capture-time source revisions. `build_candidate` assembles the exact
   baseline/proposed admission without writing files or approving execution.
 - The candidate leaves `maintenanceConflictChecked=false` and `executionApproval=null`.

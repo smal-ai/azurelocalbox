@@ -1,0 +1,33 @@
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+jobs:
+  canonical-operations:
+    name: Offline canonical operations
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.12.16'
+      - name: Install checksum-pinned offline Bicep compiler
+        run: |
+          curl -fsSL --retry 3 https://github.com/Azure/bicep/releases/download/v0.45.15/bicep-linux-x64 -o "$RUNNER_TEMP/bicep"
+          echo "ff5b194b042c220df4a50d6768ed1d6c39a32894bfdc4ff83d62b115d966a7ce  $RUNNER_TEMP/bicep" | sha256sum --check
+          chmod +x "$RUNNER_TEMP/bicep"
+          echo "BICEP_CLI=$RUNNER_TEMP/bicep" >> "$GITHUB_ENV"
+      - name: Validate source, syntax and mocked operation boundaries
+        run: |
+          mkdir -p /tmp/opencode
+          python -B scripts/canonical_ci.py

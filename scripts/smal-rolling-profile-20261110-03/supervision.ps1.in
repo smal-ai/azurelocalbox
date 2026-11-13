@@ -1,0 +1,88 @@
+# Source wrapper only. Original dispatcher bytes and business identities stay intact.
+$ErrorActionPreference = 'Stop'
+$supervisionSourceHashAlgorithm = [Security.Cryptography.SHA256]::Create()
+try { $supervisionSourceSha256 = [BitConverter]::ToString($supervisionSourceHashAlgorithm.ComputeHash([Text.Encoding]::UTF8.GetBytes($MyInvocation.MyCommand.ScriptBlock.ToString()))).Replace('-', '').ToLowerInvariant() } finally { $supervisionSourceHashAlgorithm.Dispose() }
+if ($env:COMPUTERNAME -cne 'LocalBox-Client') { throw 'Wrong supervision host' }
+$supervisionBinding = ConvertFrom-Json '@@BINDING_JSON@@'
+$supervisionAuthorityEnd = [DateTimeOffset]::Parse('2026-11-10T20:00:00+02:00')
+$supervisionStarted = [DateTimeOffset]::UtcNow
+$supervisionWaitEnd = $supervisionStarted.AddSeconds(570)
+if ($supervisionAuthorityEnd -lt $supervisionWaitEnd) { $supervisionWaitEnd = $supervisionAuthorityEnd }
+if ($supervisionStarted -ge $supervisionAuthorityEnd) { throw 'Original authority expired before dispatch' }
+$supervisionBytes = [Convert]::FromBase64String('@@DISPATCH_BASE64@@')
+$supervisionHash = [Security.Cryptography.SHA256]::Create()
+try { $supervisionActual = [BitConverter]::ToString($supervisionHash.ComputeHash($supervisionBytes)).Replace('-', '').ToLowerInvariant() } finally { $supervisionHash.Dispose() }
+if ($supervisionActual -cne $supervisionBinding.dispatcherSha256) { throw 'Original dispatcher bytes differ' }
+function Read-SupervisionJson([string]$path) { Get-Content -LiteralPath $path -Raw -ErrorAction Stop | ConvertFrom-Json }
+function Assert-SupervisionRecord($record, [bool]$requireSource = $true) {
+    if ($record.operationId -cne $supervisionBinding.operationId -or $record.planSha256 -cne $supervisionBinding.planSha256 -or $record.stage -cne $supervisionBinding.stage -or $record.key -cne $supervisionBinding.stage) { throw 'Original launch/request/worker identity differs' }
+    if ($requireSource -and $record.sourceCommit -cne $supervisionBinding.sourceCommit) { throw 'Original source checkpoint differs' }
+}
+function Assert-SupervisionCorrection($record) {
+    foreach ($field in $supervisionBinding.correction.PSObject.Properties) {
+        $actual = $record.PSObject.Properties[$field.Name]
+        if ($null -eq $actual -or $actual.Value -cne $field.Value) { throw ('Corrected worker provenance differs: ' + $field.Name) }
+    }
+}
+# BEGIN_EXACT_DISPATCH
+# Invocation returns only after the original dispatcher's finally releases its mutex.
+$supervisionOutput = @(& ([ScriptBlock]::Create([Text.Encoding]::UTF8.GetString($supervisionBytes))))
+# BEGIN_POST_DISPATCH_SUPERVISION
+if ($supervisionOutput.Count -ne 1 -or $supervisionOutput[0] -isnot [string]) { throw 'Original dispatcher did not return one exact JSON launch result. Observe original; never replay.' }
+$supervisionLaunch = $supervisionOutput[0] | ConvertFrom-Json
+Assert-SupervisionRecord $supervisionLaunch
+if ($supervisionLaunch.status -cne 'complete' -or $supervisionLaunch.launchReturned -ne $true -or $supervisionLaunch.effectSettled -ne $false -or $supervisionLaunch.closingSshSettlesRpc -ne $false -or $supervisionLaunch.workerPid -le 0) { throw 'Original exact launch return missing. Observe original; never replay.' }
+$supervisionRoot = 'C:\ProgramData\AzureLocalBox\FoundationProfile-20261110-02'
+if ($supervisionBinding.remoteWorkerName -cne ('worker-' + $supervisionBinding.stage + '.journal-fixed-01.ps1')) { throw 'Corrected native worker filename differs' }
+$supervisionWorkerPath = Join-Path $supervisionRoot $supervisionBinding.remoteWorkerName
+$supervisionStatePath = Join-Path $supervisionRoot ('worker-' + $supervisionBinding.stage + '.state.json')
+$supervisionOperation = Read-SupervisionJson (Join-Path $supervisionRoot 'operation.json')
+if ($supervisionOperation.operationId -cne $supervisionBinding.operationId -or $supervisionOperation.planSha256 -cne $supervisionBinding.planSha256 -or $supervisionOperation.sourceCommit -cne $supervisionBinding.sourceCommit) { throw 'Original operation identity differs' }
+$supervisionRequest = Read-SupervisionJson (Join-Path $supervisionRoot ('request-' + $supervisionBinding.stage + '.json'))
+Assert-SupervisionRecord $supervisionRequest
+if ($supervisionRequest.independentProofSha256 -cne $supervisionBinding.independentProofSha256) { throw 'Original proof envelope differs' }
+$supervisionLaunchRecord = Read-SupervisionJson (Join-Path $supervisionRoot ('launch-' + $supervisionBinding.stage + '-returned.json'))
+if ($supervisionLaunchRecord.stage -cne $supervisionBinding.stage -or $supervisionLaunchRecord.key -cne $supervisionBinding.stage -or $supervisionLaunchRecord.planSha256 -cne $supervisionBinding.planSha256 -or $supervisionLaunchRecord.pid -ne $supervisionLaunch.workerPid -or $supervisionLaunchRecord.phase -cne 'launch-returned') { throw 'Original durable launch record differs' }
+if ((Get-FileHash -LiteralPath $supervisionWorkerPath -Algorithm SHA256 -ErrorAction Stop).Hash.ToLowerInvariant() -cne $supervisionBinding.workerSha256) { throw 'Original native worker bytes differ' }
+$supervisionProcess = Get-Process -Id $supervisionLaunch.workerPid -ErrorAction SilentlyContinue
+$supervisionProcessStart = $null
+$supervisionExited = $null -eq $supervisionProcess
+if ($supervisionProcess) {
+    # Pin this process object/OS handle, not a repeatedly looked-up reusable PID.
+    $null = $supervisionProcess.Handle
+    $supervisionProcessStart = $supervisionProcess.StartTime.ToUniversalTime().ToString('o')
+    $supervisionCim = @(Get-CimInstance Win32_Process -Filter ('ProcessId=' + $supervisionLaunch.workerPid) -ErrorAction Stop)
+    $supervisionPathPattern = '(?i)\s-File\s+["'']?' + [regex]::Escape($supervisionWorkerPath) + '["'']?\s*$'
+    $supervisionConfirmProcess = Get-Process -Id $supervisionLaunch.workerPid -ErrorAction SilentlyContinue
+    try {
+        if ($supervisionCim.Count -ne 1 -or $supervisionCim[0].ProcessId -ne $supervisionLaunch.workerPid -or [string]::IsNullOrWhiteSpace($supervisionCim[0].CommandLine) -or $supervisionCim[0].Name -ine 'powershell.exe' -or $supervisionCim[0].CommandLine -notmatch $supervisionPathPattern -or $null -eq $supervisionConfirmProcess -or $supervisionConfirmProcess.StartTime.ToUniversalTime().ToString('o') -cne $supervisionProcessStart) { throw 'Original live process identity/path/start time unproved. Observe original; never replay.' }
+    } finally { if ($supervisionConfirmProcess) { $supervisionConfirmProcess.Dispose() } }
+    try {
+        while (-not $supervisionExited -and [DateTimeOffset]::UtcNow -lt $supervisionWaitEnd) {
+            $supervisionRemaining = [int][Math]::Max(1, [Math]::Min(1000, ($supervisionWaitEnd - [DateTimeOffset]::UtcNow).TotalMilliseconds))
+            $supervisionExited = $supervisionProcess.WaitForExit($supervisionRemaining)
+        }
+    } finally { $supervisionProcess.Dispose() }
+}
+$supervisionTerminal = $null
+$supervisionTerminalSha = $null
+if (Test-Path -LiteralPath $supervisionStatePath) {
+    $supervisionTerminalBytes = [IO.File]::ReadAllBytes($supervisionStatePath)
+    $supervisionTerminal = [Text.Encoding]::UTF8.GetString($supervisionTerminalBytes) | ConvertFrom-Json
+    Assert-SupervisionRecord $supervisionTerminal
+    Assert-SupervisionCorrection $supervisionTerminal
+    if ($supervisionTerminal.sourceSha256.ToLowerInvariant() -cne $supervisionBinding.workerSha256 -or $supervisionTerminal.pid -ne $supervisionLaunch.workerPid -or ($supervisionProcessStart -and $supervisionTerminal.processStartedUtc -cne $supervisionProcessStart)) { throw 'Original terminal worker identity differs. Observe original; never replay.' }
+    $supervisionHash = [Security.Cryptography.SHA256]::Create()
+    try { $supervisionTerminalSha = [BitConverter]::ToString($supervisionHash.ComputeHash($supervisionTerminalBytes)).Replace('-', '').ToLowerInvariant() } finally { $supervisionHash.Dispose() }
+}
+# Exit or a returned journal is NOT independent business-effect settlement.
+@{ status = 'complete'; originalLaunchResult = $supervisionLaunch; operationId = $supervisionBinding.operationId; planSha256 = $supervisionBinding.planSha256
+   sourceCommit = $supervisionBinding.sourceCommit; stage = $supervisionBinding.stage; key = $supervisionBinding.stage
+   effectSettled = $false; closingSshSettlesRpc = $false; waitTimedOut = (-not $supervisionExited); originalWorkerExited = $supervisionExited
+   workerPid = $supervisionLaunch.workerPid; workerSha256 = $supervisionBinding.workerSha256; originalDispatcherSha256 = $supervisionActual
+   workerPath = $supervisionWorkerPath; correctionFactorySha256 = $supervisionBinding.correction.journalCorrectionFactorySha256
+   originalWorkerSha256 = $supervisionBinding.correction.originalWorkerSha256; invocationAttempt = $supervisionBinding.correction.invocationAttempt
+   terminalOriginalState = $supervisionTerminal; terminalOriginalStateSha256 = $supervisionTerminalSha
+   terminalJournalPresent = ($null -ne $supervisionTerminal); atUtc = [datetime]::UtcNow.ToString('o'); waitEnd = $supervisionWaitEnd.ToString('o')
+   wrapperSourceSha256 = $supervisionSourceSha256
+   nextAction = 'Independently observe the retained exact original operation. No automatic replay, kill or retry.' } | ConvertTo-Json -Depth 30 -Compress

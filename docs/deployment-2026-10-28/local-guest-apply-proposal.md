@@ -122,7 +122,7 @@ Azure NIC forwarding or replacement outer default route.
   `c41222188470a39b99d8538cdac98e34834bc94eb30c8d56f691f84abdc2b660`.
   Supports internal NAT, PowerShell Direct, Gen2/vTPM, nested virtualisation and
   two/four adapter lab examples. It does not certify this unfinished topology.
-- Entlz [factual review](network-review-receipt.json), including one WinNAT prefix,
+- Entlz [factual review](https://github.com/quintindk/azurelocalbox/blob/63036d03fbdb3a3f433a5dfa71de36aa902fbf05/docs/deployment-2026-10-28/network-review-receipt.json), including one WinNAT prefix,
   all off-lab source translation and domain DNS corrections.
 - Microsoft virtual deployments are educational demonstrations, **not supported
   production deployments**. User acceptance of that boundary is already recorded.

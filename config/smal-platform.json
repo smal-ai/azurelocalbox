@@ -1,0 +1,24 @@
+{
+  "tenantId": "c6e67968-af25-4557-ab8b-06b693048d3b",
+  "subscriptionId": "8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea",
+  "hostId": "/subscriptions/8d3c4bb2-fdf8-4bca-bb92-e387bd4766ea/resourceGroups/rg-localbox-nodes-san-1/providers/Microsoft.Compute/virtualMachines/LocalBox-Client",
+  "hostName": "LocalBox-Client",
+  "resolverIp": "10.204.0.4",
+  "bastion": {
+    "subscriptionId": "702382d0-3722-4630-8983-5580b92f0c1a",
+    "resourceGroup": "rg-bastion-san-1",
+    "name": "bas-test-san-1"
+  },
+  "clusterName": "smal-localbox01",
+  "guestIds": {
+    "LB-DC01": "f94c71f1-6854-48b9-a9f1-8238c99366d0",
+    "LB-NODE01": "3adff629-2f67-449b-ab32-8a8748c46f34",
+    "LB-NODE02": "12a44e0c-cc08-4c4c-a812-fa0b56efdbc3",
+    "LB-NODE03": "5b6eba15-fa82-4e12-9e45-5ffbcd48c8a9"
+  },
+  "guestHelperDirectory": "C:\\ProgramData\\AzureLocalBox\\Bootstrap\\guest-bootstrap-20261028-01",
+  "credentialDirectory": "C:\\ProgramData\\AzureLocalBox\\Bootstrap\\cluster-prereqs-20261028-01",
+  "mocLocation": "MocLocation",
+  "bridgeKubectlRelativePath": "smal-bridge-kubectl-20261110-01\\kubectl.exe",
+  "bridgeKubectlSha256": "1691938f7de0e931969f9968c3601cf32d6b0d573573afb4ce471f3d28f51984"
+}

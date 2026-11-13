@@ -1,0 +1,65 @@
+# Exact variable settled-prefix handoff. Original02 records/flags are never edited.
+function Read-RemainingControl([string]$path,[string]$sha){
+ $f=Get-Item -LiteralPath $path
+ if($f.PSIsContainer -or $f.Length -gt 524288 -or ($f.Attributes -band [IO.FileAttributes]::ReparsePoint)){throw 'Evidence path/bound differs'}
+ $b=[IO.File]::ReadAllBytes($path);$hash=[Security.Cryptography.SHA256]::Create()
+ try{$actual=[BitConverter]::ToString($hash.ComputeHash($b)).Replace('-','').ToLowerInvariant()}finally{$hash.Dispose()}
+ if($actual -cne $sha){throw 'Exact retained evidence hash differs'}
+ [Text.Encoding]::UTF8.GetString($b)|ConvertFrom-Json
+}
+function Assert-Remaining02Evidence($h){
+ $oldRoot='C:\ProgramData\AzureLocalBox\FoundationProfile-20261110-02';$dir=Get-Item $oldRoot
+ if(-not $dir.PSIsContainer -or ($dir.Attributes -band [IO.FileAttributes]::ReparsePoint)){throw 'Retained02 missing/redirected'}
+ if($h.schemaVersion -ne 2 -or $h.templateOnly -ne $false -or $h.acceptedByParent -ne $true -or $h.unfinishedOrAmbiguousPrefix -ne $false -or $h.fromOperationId -cne 'smal-foundation-profile-20261110-02' -or $h.fromPlanSha256 -cne 'c6b4dfdfb3e1170129c8d578d3a87794d9ec41142275ed69c5decc2fb6006d53' -or $h.fromSourceCommit -cne 'b8c4203c968c195786bef0f53f8d36e20f1ee8bd' -or $h.toOperationId -cne 'smal-foundation-profile-20261110-03' -or $h.toRoot -cne 'C:\ProgramData\AzureLocalBox\FoundationProfile-20261110-03' -or $h.qualificationScopeAcceptedByParent -ne $true -or $h.qualificationFactorySha256 -cne '078ed38adf171a18dd53c46720b8933f0a3849182624f740ecbb54a686136837'){throw 'Exact new suffix authority/scope missing'}
+ $op=Read-RemainingControl (Join-Path $oldRoot 'operation.json') 'a24e4946070b235be182a4e65767eef662902a30b9abde6431f2d6ffd5387ea5'
+ if($op.operationId -cne $h.fromOperationId -or $op.planSha256 -cne $h.fromPlanSha256 -or $op.sourceCommit -cne $h.fromSourceCommit){throw 'Original operation identity differs'}
+ $all=ConvertFrom-Json '@@ALL_KEYS_JSON@@';$rows=([Text.Encoding]::UTF8.GetString([Convert]::FromBase64String('@@ROWS_BASE64@@'))|ConvertFrom-Json)
+ $count=@($h.completedPrefix).Count
+ if($count -lt 1 -or $count -gt 8 -or (@($h.completedPrefix)-join '|') -cne (@($all|Select-Object -First $count)-join '|') -or (@($h.unexecutedSuffix)-join '|') -cne (@($all|Select-Object -Skip $count)-join '|') -or @($h.stageEvidence.PSObject.Properties).Count -ne $count){throw 'Not the exact contiguous accepted prefix/suffix'}
+ $f=$h.mocFailureAdjudication
+ if($null -eq $f -or $f.stage -cne 'moc-remove-LB-NODE02' -or $f.originalWorkerPid -ne 7164 -or $f.disposition -cne 'refused-before-node-offboarding-by-mandatory-same-node-guard' -or $f.parentDecisionSha256 -cne '15ece71929d9e409bcb7c4b8177f05d38aa5038bfcb3df047d5422a9d86567ac' -or $f.sourceOrLogEvidenceSha256 -cne '5632b5841b09ad0db0a9d9e586c4ec6c5ea6aa6dfb11a1f53d23926669a439ad' -or $f.acceptedByParent -ne $true -or $f.originalRpcFlagsPreserved -ne $true -or $f.originalProcessAbsent -ne $true -or $f.noActiveOriginalRpc -ne $true){throw 'Unknown/unfinished original MOC7164 blocks03'}
+ foreach($k in @('parentDecisionSha256','originalReceiptSha256','sourceOrLogEvidenceSha256','independentReadbackReceiptSha256')){if($f.PSObject.Properties[$k].Value -cnotmatch '^[a-f0-9]{64}$'){throw 'Actual no-effect/closure adjudication hash missing'}}
+ if(@($f.retainedFiles.PSObject.Properties).Count -lt 1){throw 'Exact failed original artifact set missing'}
+ foreach($item in $f.retainedFiles.PSObject.Properties){
+  if($item.Name -cnotmatch '^[A-Za-z0-9._-]+$' -or -not $item.Name.Contains('moc-remove-LB-NODE02')){throw 'Failure artifact path outside exact stage'}
+  $p=Join-Path $oldRoot $item.Name;$info=Get-Item $p
+  if($info.PSIsContainer -or $info.Length -gt 2097152 -or ($info.Attributes -band [IO.FileAttributes]::ReparsePoint) -or (Get-FileHash $p).Hash.ToLowerInvariant() -cne $item.Value){throw 'Retained failure artifact changed'}
+ }
+ $failed=Read-RemainingControl (Join-Path $oldRoot $f.failedStateFile) $f.retainedFiles.PSObject.Properties[$f.failedStateFile].Value
+ if($failed.pid -ne 7164 -or -not $failed.processStartedUtc -or $failed.operationId -cne $h.fromOperationId -or $failed.sourceCommit -cne $h.fromSourceCommit -or $failed.planSha256 -cne $h.fromPlanSha256 -or $failed.stage -cne 'moc-remove-LB-NODE02' -or $failed.key -cne 'moc-remove-LB-NODE02'){throw 'Wrong original failure identity'}
+ foreach($record in @($failed)){$p=Get-Process -Id $record.pid -ErrorAction SilentlyContinue;if($p -and $p.StartTime.ToUniversalTime().ToString('o') -ceq $record.processStartedUtc){throw 'Original failed MOC process remains active'}}
+ foreach($stage in $h.completedPrefix){
+  $e=$h.stageEvidence.PSObject.Properties[$stage].Value
+  if($e.stage -cne $stage -or $e.key -cne $stage -or $e.rpcReturned -ne $true -or $e.independentlySettled -ne $true -or $e.acceptedByParent -ne $true -or $e.outcome -cnotin @('rpc-returned-await-independent-observation','rpc-returned-postread-failed-await-independent-observation') -or $e.requestFile -cne ('request-'+$stage+'.json') -or $e.stateFile -cne ('worker-'+$stage+'.state.json') -or $e.workerFile -cnotmatch ('^worker-'+[regex]::Escape($stage)+'\.[A-Za-z0-9._-]+\.ps1$') -or $e.acceptedObserveReceiptSha256 -cnotmatch '^[a-f0-9]{64}$'){throw 'Successful original stage is not known/settled'}
+  $request=Read-RemainingControl (Join-Path $oldRoot $e.requestFile) $e.requestSha256;$state=Read-RemainingControl (Join-Path $oldRoot $e.stateFile) $e.stateSha256
+  foreach($record in @($request,$state)){
+   if($record.operationId -cne $h.fromOperationId -or $record.planSha256 -cne $h.fromPlanSha256 -or $record.sourceCommit -cne $h.fromSourceCommit -or $record.stage -cne $stage -or $record.key -cne $stage -or -not $record.pid -or -not $record.processStartedUtc){throw 'Original prefix identity differs'}
+   $p=Get-Process -Id $record.pid -ErrorAction SilentlyContinue;if($p -and $p.StartTime.ToUniversalTime().ToString('o') -ceq $record.processStartedUtc){throw 'Original prefix process active'}
+  }
+  if($state.phase -cne 'returned' -or $state.rpcReturned -ne $true -or $state.outcome -cne $e.outcome -or $state.sourceSha256.ToLowerInvariant() -cne $e.workerSha256 -or (Get-FileHash (Join-Path $oldRoot $e.workerFile)).Hash.ToLowerInvariant() -cne $e.workerSha256){throw 'Original successful RPC/source not established'}
+ }
+ foreach($stage in $h.unexecutedSuffix){foreach($file in @(Get-ChildItem $oldRoot -File|Where-Object {$_.Name -cmatch [regex]::Escape($stage)})){
+  $allowed=$f.retainedFiles.PSObject.Properties[$file.Name]
+  if($stage -cne 'moc-remove-LB-NODE02' -or $null -eq $allowed -or (Get-FileHash $file.FullName).Hash.ToLowerInvariant() -cne $allowed.Value){throw 'Unadjudicated remaining02 artifact exists'}
+ }}
+ $next=$rows.PSObject.Properties[@($h.unexecutedSuffix)[0]].Value;$a=$h.postconditions
+ if($null -eq $a -or $a.acceptedObserveReceiptSha256 -cnotmatch '^[a-f0-9]{64}$' -or (@($a.mocMembers)-join '|') -cne (@($next.beforeMocMembers)-join '|')){throw 'Actual suffix membership/observation missing'}
+ foreach($key in $next.beforeProfiles.PSObject.Properties){$g=$a.profiles.PSObject.Properties[$key.Name].Value;if($g.cpu -ne $key.Value.cpu -or $g.memory -ne $key.Value.memory -or $a.states.PSObject.Properties[$key.Name].Value -cne $next.beforeStates.PSObject.Properties[$key.Name].Value){throw 'Actual profile/power does not match suffix boundary'}}
+ foreach($k in @('allCsvOnlineAccessible','noActiveWorker','noUnadjudicatedRemainingRequestOrWorker','actualCapacityQualified')){if($a.PSObject.Properties[$k].Value -ne $true){throw 'Actual handoff qualification missing'}}
+ if($next.healthProfile -ceq 'strict'){
+  if($a.allHealthyAndOk -ne $true -or @($a.activeStorageJobs).Count -ne 0){throw 'Later drain/completion requires full convergence'}
+  foreach($node in @('LB-NODE01','LB-NODE02','LB-NODE03')){if($a.clusterNodes.PSObject.Properties[$node].Value -cne 'Up'){throw 'Strict boundary is not all-Up'}}
+ }else{
+  if($a.twoHealthySurvivors -ne $true -or $a.selectedQualifiedPosture -ne $true -or $a.clusterNodes.'LB-NODE01' -cne 'Up' -or $a.clusterNodes.'LB-NODE03' -cne 'Up'){throw 'Selected posture/two survivors unqualified'}
+  $proof=$h.retainedOriginalDrainProof
+  if($proof.file -cne 'drain-proof-LB-NODE02.json' -or $proof.planSha256 -cne $h.fromPlanSha256 -or $proof.sourceCommit -cne $h.fromSourceCommit){throw 'Retained original drain association missing'}
+  $original=Read-RemainingControl (Join-Path $oldRoot $proof.file) $proof.sha256
+  if($original.planSha256 -cne $proof.planSha256 -or $original.sourceCommit -cne $proof.sourceCommit -or $original.selectedNode -cne 'LB-NODE02' -or $original.rpcReturned -ne $true -or $original.eightDevicesMaintenanceVerified -ne $true){throw 'Original drain proof identity/qualification differs'}
+ }
+}
+function Read-Remaining02Handoff([string]$sha){
+ if($sha -cnotmatch '^[a-f0-9]{64}$'){throw 'Actual exact handoff unbound'}
+ $h=Read-RemainingControl 'C:\ProgramData\AzureLocalBox\FoundationProfile-20261110-02\handoff-to-FoundationProfile-20261110-03.json' $sha
+ Assert-Remaining02Evidence $h
+ return $h
+}

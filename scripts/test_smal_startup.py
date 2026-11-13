@@ -196,7 +196,9 @@ class StartupTests(unittest.TestCase):
         source = path.read_text()
         for forbidden in ['Set-VM', 'Restart-VM', 'Remove-Item', 'Invoke-AzStackHciArcInitialization', 'New-VM']:
             self.assertNotIn(forbidden, source)
-        self.assertIn("if ($before -ne 'Running') { Start-VM", source)
+        self.assertIn("if ($before -ne 'Running') {", source)
+        self.assertLess(source.index("Set-CapacityStartupPhase $capacityGate 'rpc-pending'"), source.index('Start-VM -VM $vm'))
+        self.assertIn("Global\\AzureLocalBoxComputeCapacityR2", source)
         self.assertLess(source.index("name = 'LB-DC01'"), source.index("name = 'LB-NODE01'"))
         self.assertIn('AddSeconds(240)', source)
         for vm_id in self.h['GUESTS'].values():

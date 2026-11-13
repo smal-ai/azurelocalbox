@@ -1,0 +1,29 @@
+{
+  "nodeName": "LB-NODE03",
+  "nodeId": "5b6eba15-fa82-4e12-9e45-5ffbcd48c8a9",
+  "cpu": 20,
+  "memoryGiB": 96,
+  "outerCpuReserve": 12,
+  "outerMemoryReserveGiB": 64,
+  "physicalRepairReserveGiB": 510,
+  "physicalMetadataReserveGiB": 16,
+  "csvGrowth": {
+    "name": "UserStorage_1",
+    "virtualDiskId": "D82EEC019A25474789543A1796B552BB",
+    "partitionGuid": "{590e2d2d-b52b-47c7-b7f8-4ecea19ed67b}",
+    "volumeId": "\\\\?\\Volume{58592f9e-d29a-409a-9f05-fb354c5e58c7}\\",
+    "csvId": "0590f6c7-bec3-4141-bfff-d8a3c820d4df",
+    "originalVirtualSizeBytes": 304942678016,
+    "originalPartitionSizeBytes": 304924852224,
+    "growthGiB": 32,
+    "minimumFreeGiB": 220,
+    "additionalOsDiskGiB": 200
+  },
+  "observedSmbVmId": "25b52e27-12e0-4a28-adb8-4a0a964f82a2",
+  "knownNestedVmIds": [
+    "4c6ca5cc-8c9a-499b-8ffe-c029bbfd3522",
+    "dd71fef8-06d0-46ef-a062-191762cb6cd7",
+    "53be60df-af37-4a76-a316-6e7dbf2d18e9",
+    "7deb3788-0d92-4b8d-a1e3-66c7ceb4fad7"
+  ]
+}

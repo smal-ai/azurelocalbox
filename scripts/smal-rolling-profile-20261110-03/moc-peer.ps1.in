@@ -1,0 +1,13 @@
+# Operation03 correction: executing MOC peer is not its offboarding/onboarding target.
+function Get-ProfileMocPeer([string]$target,$snapshot){
+ $peers=@{'LB-NODE02'='LB-NODE01';'LB-NODE03'='LB-NODE01';'LB-NODE01'='LB-NODE02'}
+ $peer=$peers[$target]
+ Assert-Compute ($null -ne $peer -and $peer -cne $target) 'Exact MOC peer/target pair required; no fallback'
+ if($null -ne $snapshot){
+  Assert-Compute ($snapshot.states[$peer] -ceq 'Running') 'MOC executing peer guest is not Running'
+  $node=@($snapshot.clusterHealth.nodeStates|Where-Object name -CEQ $peer)
+  $devices=@($snapshot.clusterHealth.devices|Where-Object owner -CEQ $peer)
+  Assert-Compute ($node.Count -eq 1 -and $node[0].state -ceq 'Up' -and $devices.Count -eq 8 -and @($devices|Where-Object {$_.health -cne 'Healthy' -or ($_.operational -join '|') -cne 'OK' -or $_.maintenance}).Count -eq 0) 'MOC executing peer is not the exact healthy Up survivor'
+ }
+ return $peer
+}

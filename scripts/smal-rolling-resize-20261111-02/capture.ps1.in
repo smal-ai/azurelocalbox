@@ -1,0 +1,82 @@
+# New-day GET only. Do not execute until the coordinator transfers the private lane after MOC3.
+if($env:COMPUTERNAME -cne 'LocalBox-Client'){throw 'Wrong existing host'}
+$began=[DateTimeOffset]::UtcNow
+$deadline=[DateTimeOffset]::Parse('2026-11-11T15:20:00+02:00')
+if($began -ge $deadline){throw '11 November programme bound closed'}
+$snapshot=Read-ComputeSnapshot $true
+$wanted=@{'LB-DC01'=@{cpu=2;memory=4GB};'LB-NODE01'=@{cpu=8;memory=64GB};'LB-NODE02'=@{cpu=20;memory=96GB};'LB-NODE03'=@{cpu=8;memory=64GB}}
+foreach($g in $snapshot.guestsStatic){
+    $p=$wanted[$g.name]
+    Assert-Compute ($null -ne $p -and $snapshot.states[$g.name] -ceq 'Running' -and $g.cpu -eq $p.cpu -and $g.memory -eq $p.memory) 'Actual new-day four-VM starting profiles/power differ; never replay NODE02'
+    $old=@($plan.baseline.guestsStatic|Where-Object name -CEQ $g.name)
+    Assert-Compute ($old.Count -eq 1) 'Original guest identity absent'
+    foreach($key in @(Get-ComputeKeys $old[0])){
+        if($key -cin @('cpu','memory','protectorHash')){continue}
+        Assert-ComputeEqual (Get-ComputeField $g $key) (Get-ComputeField $old[0] $key) ('Original non-profile field drift: '+$g.name+'.'+$key)
+    }
+    Assert-Compute ($g.tpm -eq $true -and $g.secureBoot -ceq 'On') 'Actual current TPM/SecureBoot posture differs'
+}
+foreach($key in @('hostStatic','volumesStatic','clusterStatic')){Assert-ComputeEqual $snapshot[$key] $plan.baseline.PSObject.Properties[$key].Value ('Original storage/network/cluster identity drift: '+$key)}
+$h=$snapshot.clusterHealth
+Assert-Compute ($h.allNodesUp -and $h.allCsvOnline -and $h.allMirrorsHealthy -and $h.poolHealthy -and @($h.activeStorageJobs).Count -eq 0 -and $h.quorumType -ceq 'Majority' -and $null -eq $h.witness) 'Strict all-three Up/Healthy/zero-jobs required before another outage'
+Assert-Compute ($h.physicalFreeBytes -ge ($plan.admission.requiredPhysicalFreeBytes+$plan.admission.repairReserveBytes)) 'Unchanged S2D repair reserve failed'
+foreach($vol in $snapshot.volumes){$b=$plan.admission.volumeBudgets.PSObject.Properties[$vol.letter].Value;Assert-Compute ($null -ne $b -and $vol.health -ceq 'Healthy' -and $vol.free -ge $b.freeFloorBytes -and ($b.maximumVhdBytes+$b.runtimeBytes+$b.metadataBytes+$b.freeFloorBytes) -le $vol.size) 'Unchanged volume/runtime reserve failed'}
+$cap=$snapshot.hostCapacity
+Assert-Compute ($cap.logicalProcessors -eq 64 -and $cap.physicalCores -eq 32 -and $cap.memoryBytes -ge 500GB -and $cap.freeMemoryBytes -ge 32GB -and (Get-VMHost).NumaSpanningEnabled) 'E64/NUMA/outer reserve failed'
+$moc=Read-ProfileMoc 'LB-NODE01'
+Assert-Compute ($moc.qualified -eq $true -and $moc.membershipObserved -eq $true -and $moc.observerNode -ceq 'LB-NODE01') 'Exact qualified current MOC peer required'
+Assert-ComputeEqual $moc.commands $plan.mocContract.nodes.'LB-NODE01'.commands 'Installed MOC source/signature changed'
+$seen=[Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
+foreach($member in @($moc.members)){
+    $native=$member;if($native -is [Management.Automation.PSObject]){$native=$native.PSObject.BaseObject}
+    Assert-Compute ($native -is [string] -and $native -cin @('LB-NODE01','LB-NODE02','LB-NODE03') -and $seen.Add([string]$native)) 'MOC must report unique canonical native strings, not value/Value wrappers'
+}
+Assert-Compute ($seen.Count -eq 3) 'Hardware writer has not established MOC3; no continuation'
+foreach($n in @('LB-NODE01','LB-NODE02','LB-NODE03')){Assert-Compute (@($h.nodeStates|Where-Object {$_.name -ceq $n -and $_.state -ceq 'Up'}).Count -eq 1) 'Canonical MOC member is not currently Up'}
+$session=$null
+try{
+    $session=New-ComputeSession 'LB-NODE01'
+    $identity=Invoke-Command -Session $session -ArgumentList $plan.baseline.clusterStatic.poolId,$plan.transitionContract.deviceOwners -ErrorAction Stop -ScriptBlock {
+        param($poolId,$owners)
+        $ErrorActionPreference='Stop'
+        $admin=Get-LocalUser ASBuiltInAdmin
+        if($env:COMPUTERNAME -cne 'LB-NODE01' -or -not $admin.Enabled -or -not $admin.SID.Value.EndsWith('-500') -or [Security.Principal.WindowsIdentity]::GetCurrent().User.Value -cne $admin.SID.Value){throw 'Exact peer/RID500 binding differs'}
+        $cluster=Get-Cluster -Name smal-localbox01
+        $nodes=@(Get-ClusterNode -Cluster $cluster);$vd=@(Get-VirtualDisk);$csv=@(Get-ClusterSharedVolume -Cluster $cluster)
+        if($nodes.Count -ne 3 -or @($nodes|Where-Object State -NE Up).Count -or $vd.Count -ne 5 -or @($vd|Where-Object {$_.HealthStatus.ToString() -cne 'Healthy' -or $_.NumberOfDataCopies -ne 3 -or (@($_.OperationalStatus|ForEach-Object ToString)-join '|') -cne 'OK'}).Count -or $csv.Count -ne 4 -or @($csv|Where-Object State -NE Online).Count -or @(Get-StorageJob|Where-Object JobState -NE Completed).Count){throw 'Current bounded all-Up/healthy/zero-jobs gate failed'}
+        $pool=@(Get-StoragePool|Where-Object IsPrimordial -EQ $false)
+        if($pool.Count -ne 1 -or $pool[0].UniqueId -cne $poolId){throw 'Original pool changed'}
+        $members=@($pool[0]|Get-PhysicalDisk);$links=@()
+        if($members.Count -ne 24){throw 'Exact original24 required'}
+        foreach($sn in @(Get-StorageNode)){
+            $node=([string]$sn.Name).Split('.')[0].ToUpperInvariant();if($node -cnotin @('LB-NODE01','LB-NODE02','LB-NODE03')){continue}
+            foreach($d in @(Get-PhysicalDisk -StorageNode $sn -PhysicallyConnected)){
+                $match=@($members|Where-Object ObjectId -CEQ $d.ObjectId);if($match.Count -eq 0){continue}
+                if($match.Count -ne 1 -or $d.UniqueId -cne $match[0].UniqueId -or $owners.PSObject.Properties[$d.UniqueId].Value -cne $node){throw 'Exact observed ObjectId/UniqueId/direct-owner link differs'}
+                $links+=@{objectId=[string]$d.ObjectId;uniqueId=[string]$d.UniqueId;owner=$node}
+            }
+        }
+        $ids=[Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal);$objects=[Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
+        $rows=@($members|Sort-Object UniqueId|ForEach-Object {
+            $d=$_;$link=@($links|Where-Object objectId -CEQ $d.ObjectId)
+            if([string]::IsNullOrWhiteSpace($d.ObjectId) -or -not $ids.Add([string]$d.UniqueId) -or -not $objects.Add([string]$d.ObjectId) -or $link.Count -ne 1 -or $d.HealthStatus.ToString() -cne 'Healthy' -or (@($d.OperationalStatus|ForEach-Object ToString)-join '|') -cne 'OK'){throw 'Unique healthy24 actual ObjectId bijection/direct ownership missing'}
+            @{uniqueId=[string]$d.UniqueId;objectId=[string]$d.ObjectId;uniqueIdFormat=[string]$d.UniqueIdFormat;size=$d.Size;owner=$link[0].owner;ownerLinkBasis='Get-PhysicalDisk -StorageNode -PhysicallyConnected; exact ObjectId and UniqueId'}
+        })
+        if($links.Count -ne 24 -or @(Get-StorageJob|Where-Object JobState -NE Completed).Count){throw 'Exact24 owner links/zero jobs changed during capture'}
+        @{poolId=$poolId;members=$rows;ownerLinks=$links;observedAtUtc=[datetime]::UtcNow.ToString('o')}
+    }
+}finally{if($session){Remove-PSSession $session}}
+$getter=@(Get-Command Get-HgsGuardian -All -ErrorAction Stop)
+Assert-Compute ($getter.Count -eq 1 -and $getter[0].ModuleName -ceq 'HgsClient') 'Unique installed HGS public GET binding required'
+$guardian=& $getter[0] -Name 'LB-LocalGuardian' -ErrorAction Stop
+$public=@();foreach($name in @('SigningCertificate','EncryptionCertificate')){
+    $cert=$guardian.PSObject.Properties[$name].Value
+    Assert-Compute ($cert -is [Security.Cryptography.X509Certificates.X509Certificate2] -and $cert.NotBefore.ToUniversalTime() -le [datetime]::UtcNow -and [datetime]::UtcNow -le $cert.NotAfter.ToUniversalTime()) 'Current guardian public certificate absent/invalid'
+    $public+=@{property=$name;thumbprint=$cert.Thumbprint;notBeforeUtc=$cert.NotBefore.ToUniversalTime().ToString('o');notAfterUtc=$cert.NotAfter.ToUniversalTime().ToString('o');privateKeyAccessed=$false}
+}
+$guestSecurity=@(foreach($vm in @(Get-VM|Sort-Object Name)){
+    $s=Get-VMSecurity -VM $vm;$f=Get-VMFirmware -VM $vm
+    @{name=$vm.Name;id=$vm.Id.ToString();tpmEnabled=$s.TpmEnabled;shielded=$s.Shielded;encryptStateAndVmMigrationTraffic=$s.EncryptStateAndVmMigrationTraffic;bindToHostTpm=$s.BindToHostTpm;virtualizationBasedSecurityOptOut=$s.VirtualizationBasedSecurityOptOut;secureBoot=$f.SecureBoot.ToString();secureBootTemplate=$f.SecureBootTemplate;secureBootTemplateId=$f.SecureBootTemplateId.ToString()}
+})
+if([DateTimeOffset]::UtcNow -ge $deadline){throw 'Programme bound closed after read'}
+@{status='complete-new-day-healthy-identity-capture';operationId=$plan.operationId;mutationPerformed=$false;snapshot=$snapshot;mocObservation=$moc;identity=$identity;publicProtection=@{guardianName=$guardian.Name;publicCertificates=$public;guests=$guestSecurity;command=@{name=$getter[0].Name;moduleName=$getter[0].ModuleName;moduleVersion=$getter[0].Module.Version.ToString();moduleSha256=(Get-FileHash -LiteralPath $getter[0].Module.Path).Hash.ToLowerInvariant()};causeEstablished=$false;securityProjectionAccepted=$false};captureBeganAtUtc=$began.ToString('o');atUtc=[datetime]::UtcNow.ToString('o');fullSnapshotsPerformed=1;nativeGoIssued=$false}|ConvertTo-Json -Depth 60 -Compress

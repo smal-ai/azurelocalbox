@@ -51,8 +51,8 @@ platform gates are retained rather than falsely marked passed.
 ARM validation and what-if of this exact host template succeeded. The preview proposes
 only the private VM and NIC creates, with nine implicit managed disks, no existing
 resource modifications/deletions and no shared-network or role-assignment changes.
-Evidence: [host-validation.json](host-validation.json), [host-what-if.json](host-what-if.json),
-[host-prepare.json](host-prepare.json). The deployment helper sends secure parameters on
+Evidence: [host-validation.json](https://github.com/quintindk/azurelocalbox/blob/63036d03fbdb3a3f433a5dfa71de36aa902fbf05/docs/deployment-2026-10-27/host-validation.json), [host-what-if.json](https://github.com/quintindk/azurelocalbox/blob/63036d03fbdb3a3f433a5dfa71de36aa902fbf05/docs/deployment-2026-10-27/host-what-if.json),
+[host-prepare.json](https://github.com/quintindk/azurelocalbox/blob/63036d03fbdb3a3f433a5dfa71de36aa902fbf05/docs/deployment-2026-10-27/host-prepare.json). The deployment helper sends secure parameters on
 stdin and redacts secure fields and literal credential values before retaining results.
 
 A fresh VM-local admin credential is generated, not reused from old lab configuration.
@@ -69,7 +69,7 @@ readiness before creating the bare host. No platform/security/network gate is wa
 
 Quintin subsequently approved the host costs and use of the currently logged-in identity.
 Tenant/subscription and principal `82f494a8-b9f5-46fc-b0f7-c70be0572a63` were rechecked.
-These two decisions are closed, recorded in [owner-approvals.json](owner-approvals.json).
+These two decisions are closed, recorded in [owner-approvals.json](https://github.com/quintindk/azurelocalbox/blob/63036d03fbdb3a3f433a5dfa71de36aa902fbf05/docs/deployment-2026-10-27/owner-approvals.json).
 Use the existing session only for the task's scoped host-RG operations and exact subnet
 join. No new or broader grant follows. The initial-preflight pending statements below
 are historical for those two inputs, not a request for repeat approval.
@@ -78,7 +78,7 @@ Egress/nested design, bootstrap version pins, resource-specific security/governa
 admission, secure guest-access bootstrap, cost-centre/review date and operating window
 remain separate. No VM is deployed merely to wait while incurring approved-but-idle costs.
 
-Further read-only source checks are in [bootstrap-audit.json](bootstrap-audit.json).
+Further read-only source checks are in [bootstrap-audit.json](https://github.com/quintindk/azurelocalbox/blob/63036d03fbdb3a3f433a5dfa71de36aa902fbf05/docs/deployment-2026-10-27/bootstrap-audit.json).
 The legacy source enables wildcard TrustedHosts/CredSSP, persists the lab password in
 configuration, optionally stores a Winlogon password, rewrites its transcript and adds
 broad Defender exclusions. It must not be replayed unchanged under the cost approval.
@@ -116,9 +116,9 @@ Compilation does not make it deployable approval or establish platform readiness
 
 ## Fresh observations
 
-Sources: [preflight.json](preflight.json), [supplemental.json](supplemental.json),
-[policy-definitions.json](policy-definitions.json), [address-overlap.json](address-overlap.json),
-[dns-probe.json](dns-probe.json). Commands use explicit ARM subscriptions and the current
+Sources: [preflight.json](https://github.com/quintindk/azurelocalbox/blob/63036d03fbdb3a3f433a5dfa71de36aa902fbf05/docs/deployment-2026-10-27/preflight.json), [supplemental.json](https://github.com/quintindk/azurelocalbox/blob/63036d03fbdb3a3f433a5dfa71de36aa902fbf05/docs/deployment-2026-10-27/supplemental.json),
+[policy-definitions.json](https://github.com/quintindk/azurelocalbox/blob/63036d03fbdb3a3f433a5dfa71de36aa902fbf05/docs/deployment-2026-10-27/policy-definitions.json), [address-overlap.json](https://github.com/quintindk/azurelocalbox/blob/63036d03fbdb3a3f433a5dfa71de36aa902fbf05/docs/deployment-2026-10-27/address-overlap.json),
+[dns-probe.json](https://github.com/quintindk/azurelocalbox/blob/63036d03fbdb3a3f433a5dfa71de36aa902fbf05/docs/deployment-2026-10-27/dns-probe.json). Commands use explicit ARM subscriptions and the current
 owner-authorised CLI sign-in in place. No `.env`, `.envrc`, credential cache, VPN key or
 historic environment was read or copied.
 
@@ -190,7 +190,7 @@ claims cannot be made from private NICs or private endpoints.
 
 ## Network and platform-version review
 
-[network-request.json](network-request.json) is a draft sent to Entlz for review, not a
+[network-request.json](https://github.com/quintindk/azurelocalbox/blob/63036d03fbdb3a3f433a5dfa71de36aa902fbf05/docs/deployment-2026-10-27/network-request.json) is a draft sent to Entlz for review, not a
 firewall-rule change or reservation. Candidate nested ranges are `10.64.0.0/20` for
 infrastructure, `10.65.0.0/16` for pods and `10.66.0.0/24` for services. The infrastructure
 subdivision is included in the draft. Read-only VNet/hub inventories across all three
@@ -236,8 +236,8 @@ Retrieval limitation: rendered/source Spider results omitted the consolidated re
 endpoint sections, one links request timed out and one HTML extraction returned only a
 doctype. The official GitHub **source API** subsequently recovered the missing catalogue
 link and complete source, rather than treating missing extraction as empty requirements.
-[egress-regional-source.json](egress-regional-source.json) preserves the public source
-with its immutable blob SHA and SHA-256. [egress-review-baseline.json](egress-review-baseline.json)
+[egress-regional-source.json](https://github.com/quintindk/azurelocalbox/blob/63036d03fbdb3a3f433a5dfa71de36aa902fbf05/docs/deployment-2026-10-27/egress-regional-source.json) preserves the public source
+with its immutable blob SHA and SHA-256. [egress-review-baseline.json](https://github.com/quintindk/azurelocalbox/blob/63036d03fbdb3a3f433a5dfa71de36aa902fbf05/docs/deployment-2026-10-27/egress-review-baseline.json)
 projects all **82 West Europe endpoint rows**. Its published update is **2025-11-27**,
 so this is a dated regional baseline, not a version-matched approved rule set.
 
@@ -252,7 +252,7 @@ Exact version-specific network support remains open. Scratch results are under
 ## Cost proposal, not spend approval
 
 Read-only official [Azure Retail Prices API](https://prices.azure.com/api/retail/prices)
-results are in [pricing.json](pricing.json), queried for South Africa North in USD.
+results are in [pricing.json](https://github.com/quintindk/azurelocalbox/blob/63036d03fbdb3a3f433a5dfa71de36aa902fbf05/docs/deployment-2026-10-27/pricing.json), queried for South Africa North in USD.
 Public retail, not an EA/MCA contract, tax or billing-currency quote:
 
 | Proposed item | Public retail benchmark |

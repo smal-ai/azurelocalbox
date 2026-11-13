@@ -1,0 +1,18 @@
+# Compact current convergence GET only. No repeated whole-node inventory or CUD.
+if($env:COMPUTERNAME -cne 'LocalBox-Client' -or [DateTimeOffset]::UtcNow -ge [DateTimeOffset]::Parse('2026-11-11T15:20:00+02:00')){throw 'Wrong host/closed new-day read window'}
+$session=$null
+try{
+    $session=New-ComputeSession 'LB-NODE02'
+    $current=Invoke-Command -Session $session -ArgumentList $plan.baseline.clusterStatic.poolId,$plan.transitionContract.deviceOwners -ErrorAction Stop -ScriptBlock {
+        param($poolId,$owners)
+        $ErrorActionPreference='Stop'
+        $admin=Get-LocalUser ASBuiltInAdmin
+        if($env:COMPUTERNAME -cne 'LB-NODE02' -or -not $admin.Enabled -or [Security.Principal.WindowsIdentity]::GetCurrent().User.Value -cne $admin.SID.Value){throw 'Exact known running peer/RID500 required'}
+        $cluster=Get-Cluster -Name smal-localbox01;$nodes=@(Get-ClusterNode -Cluster $cluster);$pools=@(Get-StoragePool|Where-Object IsPrimordial -EQ $false)
+        if($pools.Count -ne 1 -or $pools[0].UniqueId -cne $poolId){throw 'Original pool changed'}
+        $pool=$pools[0];$members=@($pool|Get-PhysicalDisk);$jobs=@(Get-StorageJob|Where-Object JobState -NE Completed);$vd=@(Get-VirtualDisk);$csv=@(Get-ClusterSharedVolume -Cluster $cluster);$q=Get-ClusterQuorum -Cluster $cluster
+        $healthy=$nodes.Count -eq 3 -and @($nodes|Where-Object State -NE Up).Count -eq 0 -and $members.Count -eq 24 -and @($members|Where-Object {$_.UniqueId -cnotin @($owners.PSObject.Properties.Name) -or $_.HealthStatus.ToString() -cne 'Healthy' -or (@($_.OperationalStatus|ForEach-Object ToString)-join '|') -cne 'OK'}).Count -eq 0 -and $pool.HealthStatus.ToString() -ceq 'Healthy' -and (@($pool.OperationalStatus|ForEach-Object ToString)-join '|') -ceq 'OK' -and $jobs.Count -eq 0 -and $vd.Count -eq 5 -and @($vd|Where-Object {$_.HealthStatus.ToString() -cne 'Healthy' -or $_.NumberOfDataCopies -ne 3 -or (@($_.OperationalStatus|ForEach-Object ToString)-join '|') -cne 'OK'}).Count -eq 0 -and $csv.Count -eq 4 -and @($csv|Where-Object {$_.State.ToString() -cne 'Online' -or @($_.SharedVolumeInfo|Where-Object {-not(Test-Path -LiteralPath $_.FriendlyVolumeName)}).Count}).Count -eq 0 -and $q.QuorumType.ToString() -ceq 'Majority' -and $null -eq $q.QuorumResource
+        @{converged=$healthy;poolId=$pool.UniqueId;nodeStates=@($nodes|Sort-Object Name|ForEach-Object {@{name=$_.Name;state=$_.State.ToString()}});physicalMemberCount=$members.Count;activeStorageJobs=@($jobs|ForEach-Object {@{name=$_.Name;state=$_.JobState.ToString()}});physicalFreeBytes=$pool.Size-$pool.AllocatedSize;atUtc=[datetime]::UtcNow.ToString('o')}
+    }
+}finally{if($session){Remove-PSSession $session}}
+@{status='complete-compact-new-day-convergence';operationId=$plan.operationId;mutationPerformed=$false;fullSnapshotsPerformed=0;current=$current;atUtc=[datetime]::UtcNow.ToString('o')}|ConvertTo-Json -Depth 20 -Compress
