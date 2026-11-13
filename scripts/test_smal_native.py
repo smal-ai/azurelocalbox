@@ -1,11 +1,13 @@
 """Authored native-resource shapes and mocked commands. No live Azure or guest effects."""
 from contextlib import redirect_stdout
+import base64
 from copy import deepcopy
 import importlib.util
 import io
 import json
 from pathlib import Path
 import re
+import subprocess
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -22,6 +24,7 @@ def load(name):
 
 performance = load('smal-disk-performance')
 files = load('smal-files')
+platform = load('smal-platform')
 
 
 def host():
@@ -85,6 +88,16 @@ class DiskBoundaryTests(unittest.TestCase):
 
 
 class FileServiceBoundaryTests(unittest.TestCase):
+    def test_explicit_probe_ids_are_node_bound_repeatable_and_bounded(self):
+        name = files.probe_job_name('moc-new-worker', 'startup-abcd')
+        self.assertEqual(name, files.probe_job_name('moc-new-worker', 'startup-abcd'))
+        self.assertNotEqual(name, files.probe_job_name('moc-other-worker', 'startup-abcd'))
+        self.assertNotEqual(name, files.probe_job_name('moc-new-worker', 'startup-efgh'))
+        for node, identity in [('moc-new-worker', '../escape'), ('foreign/node', 'startup'),
+                               ('moc-new-worker', 'x' * 21), ('x' * 63, 'startup')]:
+            with self.subTest(node=node, identity=identity), self.assertRaises(ValueError):
+                files.probe_job_name(node, identity)
+
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory(dir='/tmp/opencode')
         self.addCleanup(self.temp.cleanup)
@@ -125,6 +138,74 @@ class FileServiceBoundaryTests(unittest.TestCase):
             self.assertEqual(azure.call_args.args[:3], ('rest', '--method', 'get'))
             write.assert_not_called()
         self.assertEqual(path.read_bytes(), original)
+
+
+class RecoveryPlanTests(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory(dir='/tmp/opencode')
+        self.addCleanup(self.temp.cleanup)
+        self.path = Path(self.temp.name) / 'plan.json'
+        self.plan = {'operationId': 'aks-os-recovery-' + 'a' * 32, 'hciNode': 'LB-NODE03',
+                     'vmId': '11111111-1111-4111-8111-111111111111', 'biosGuid': '22222222-2222-4222-8222-222222222222',
+                     'clusterName': 'synthetic-aks', 'vmName': 'synthetic-aks-workload-example',
+                     'osDiskPath': 'C:\\ClusterStorage\\UserStorage_1\\synthetic\\synthetic-aks-OSDisk-deadbeef.vhdx',
+                     'osDiskId': '33333333-3333-4333-8333-333333333333', 'osDiskBytes': 200 * 1024**3,
+                     'expiresAtUtc': '2030-01-01T10:00:00+00:00'}
+
+    def write(self, value):
+        self.path.write_text(json.dumps(value))
+        self.path.chmod(0o600)
+
+    def test_exact_private_plan_round_trips_without_material_or_field_changes(self):
+        self.write(self.plan)
+        self.assertEqual(base64.b64decode(platform.recovery_plan(self.path)), self.path.read_bytes())
+
+    def test_foreign_disk_node_and_credential_overlays_fail_before_transport(self):
+        cases = [self.plan | {'osDiskPath': self.plan['osDiskPath'].replace('OSDisk', 'data')},
+                 self.plan | {'osDiskPath': self.plan['osDiskPath'].replace('synthetic\\', '..\\')},
+                 self.plan | {'hciNode': 'FOREIGN-NODE'}, self.plan | {'vmName': 'foreign-workload'},
+                 self.plan | {'vmId': 'not-a-guid'}, self.plan | {'osDiskBytes': True},
+                 self.plan | {'expiresAtUtc': '2030-01-01T10:00:00'},
+                 self.plan | {'password': 'synthetic-unselected-material'}]
+        for value in cases:
+            with self.subTest(value=value):
+                self.write(value)
+                with self.assertRaises(ValueError):
+                    platform.recovery_plan(self.path)
+
+    def test_shared_or_linked_plan_is_rejected(self):
+        self.write(self.plan)
+        self.path.chmod(0o644)
+        with self.assertRaises(ValueError):
+            platform.recovery_plan(self.path)
+        self.path.chmod(0o600)
+        linked = self.path.with_name('linked.json')
+        linked.symlink_to(self.path)
+        with self.assertRaises(ValueError):
+            platform.recovery_plan(linked)
+
+    def test_actual_powershell_journal_replaces_existing_state_without_a_backup_path(self):
+        script = r'''param([string]$Source,[string]$Directory)
+$ErrorActionPreference='Stop'
+$tokens=$null; $errors=$null
+$tree=[System.Management.Automation.Language.Parser]::ParseFile($Source,[ref]$tokens,[ref]$errors)
+if($errors.Count) { throw 'Source parse failed' }
+foreach($name in @('Save-Operation')) {
+    $function=@($tree.FindAll({param($node) $node -is [System.Management.Automation.Language.FunctionDefinitionAst] -and $node.Name -eq $name},$true))
+    if($function.Count -ne 1) { throw 'Expected the actual canonical journal function' }
+    . ([scriptblock]::Create($function[0].Extent.Text))
+}
+$path=Join-Path $Directory 'operation.json'
+Save-Operation $path @{id='fixed';step=1}
+Save-Operation $path @{id='fixed';step=2}
+$observed=Get-Content $path -Raw | ConvertFrom-Json
+if($observed.id -cne 'fixed' -or $observed.step -ne 2) { throw 'Atomic operation replacement failed' }
+'''
+        fixture = self.path.with_name('journal-fixture.ps1')
+        fixture.write_text(script)
+        subprocess.run(['pwsh', '-NoLogo', '-NoProfile', '-NonInteractive', '-File', str(fixture),
+                        '-Source', str(ROOT / 'scripts/smal-platform.ps1'), '-Directory', self.temp.name],
+                       check=True, capture_output=True, text=True, timeout=30)
 
 
 class WorkflowBoundaryTests(unittest.TestCase):

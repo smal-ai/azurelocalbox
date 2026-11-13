@@ -1,5 +1,5 @@
 param(
-    [ValidateSet('Inspect', 'InspectMoc', 'InspectAks', 'InspectAksNode', 'InspectAccess', 'InspectPerformance', 'InspectBridge', 'StopNodeInspection', 'RepairMoc')][string]$Action = 'Inspect',
+    [ValidateSet('Inspect', 'InspectMoc', 'InspectAks', 'InspectAksNode', 'InspectAccess', 'InspectPerformance', 'InspectBridge', 'StopNodeInspection', 'RepairMoc', 'InspectAksRecovery')][string]$Action = 'Inspect',
     [Parameter(Mandatory = $true)][string]$ConfigurationBase64,
     [string]$DiagnosticEndpointsBase64 = 'W10=',
     [string]$AksVmId,
@@ -8,7 +8,8 @@ param(
     [string]$AksClusterName,
     [string]$SshPrivateKeyBase64,
     [string]$BridgeKubeconfigBase64,
-    [ValidateSet('Basic', 'Bootstrap', 'Performance', 'ControlPlane', 'Kubernetes')][string]$NodeInspection = 'Basic',
+    [string]$RecoveryPlanBase64,
+    [ValidateSet('Basic', 'Bootstrap', 'Performance', 'ControlPlane', 'Kubernetes', 'Console')][string]$NodeInspection = 'Basic',
     [int]$ExpectedSshProcessId,
     [string]$ExpectedSshStartedAt
 )
@@ -59,7 +60,7 @@ function Read-Membership($session) {
 function Save-Operation([string]$path, $value) {
     $temporary = $path + '.' + [guid]::NewGuid().ToString('N') + '.tmp'
     [IO.File]::WriteAllText($temporary, ($value | ConvertTo-Json -Depth 10), [Text.UTF8Encoding]::new($false))
-    if (Test-Path $path) { [IO.File]::Replace($temporary, $path, $null) }
+    if (Test-Path $path) { [IO.File]::Replace($temporary, $path, [NullString]::Value) }
     else { [IO.File]::Move($temporary, $path) }
 }
 
@@ -103,9 +104,9 @@ try {
             }
             $results = @{}
             foreach ($kind in @('machines', 'machinedeployments', 'clusters')) {
-                $list = Read-Bridge ('get --raw=/apis/cluster.x-k8s.io/v1beta1/' + $kind)
+                $list = Read-Bridge ('get --raw=/apis/cluster.x-k8s.io/v1beta1/namespaces/default/' + $kind)
                 $results[$kind] = @($list.items | Where-Object { $_.metadata.name.StartsWith($AksClusterName + '-') } | ForEach-Object {
-                    @{ name = $_.metadata.name; namespace = $_.metadata.namespace; status = $_.status;
+                    @{ name = $_.metadata.name; namespace = $_.metadata.namespace; createdAt = $_.metadata.creationTimestamp; status = $_.status;
                        infrastructureRef = $_.spec.infrastructureRef; bootstrapRef = $_.spec.bootstrap.configRef }
                 })
             }
@@ -157,6 +158,36 @@ try {
     })
     $peer = Open-NodeSession $nodes[0]
     try {
+        if ($Action -ceq 'InspectAksRecovery') {
+            $rawPlan = [Convert]::FromBase64String($RecoveryPlanBase64)
+            $plan = [Text.Encoding]::UTF8.GetString($rawPlan) | ConvertFrom-Json
+            if ($plan.hciNode -cnotin $nodes -or $plan.operationId -notmatch '^aks-os-recovery-[a-f0-9]{32}$') { throw 'Exact recovery operation/node required' }
+            $hash = [BitConverter]::ToString([Security.Cryptography.SHA256]::Create().ComputeHash($rawPlan)).Replace('-', '').ToLowerInvariant()
+            $session = Open-NodeSession $plan.hciNode
+            try {
+                $recovery = Invoke-Command -Session $session -ArgumentList $RecoveryPlanBase64, $hash, $config.clusterName -ScriptBlock {
+                    param($encodedPlan, $planHash, $clusterName)
+                    $ErrorActionPreference = 'Stop'
+                    $p = [Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($encodedPlan)) | ConvertFrom-Json
+                    if ($p.hciNode -cne $env:COMPUTERNAME -or (Get-Cluster).Name -ine $clusterName -or
+                        $p.operationId -notmatch '^aks-os-recovery-[a-f0-9]{32}$') { throw 'Wrong recovery host/operation' }
+                    $root = Join-Path 'C:\ClusterStorage\UserStorage_1\SMAL-Recovery' $p.operationId
+                    $statePath = Join-Path $root 'operation.json'
+                    $copyPath = Join-Path $root 'original-os.vhdx'
+                    $state = if (Test-Path $statePath) { Get-Content $statePath -Raw | ConvertFrom-Json } else { $null }
+                    if ($state -and $state.planSha256 -cne $planHash) { throw 'Original recovery plan cannot be replaced' }
+                    $currentVm = Get-VM -Id ([guid]$p.vmId) -ErrorAction SilentlyContinue
+                    return @{ vmId = $p.vmId; registeredHere = [bool]$currentVm;
+                              vmState = $(if ($currentVm) { $currentVm.State.ToString() } else { 'NotRegistered' });
+                              operation = $state; directory = $root; originalDiskExists = Test-Path $p.osDiskPath;
+                              clusterGroups = @(Get-ClusterGroup -VMId ([guid]$p.vmId) -ErrorAction SilentlyContinue | ForEach-Object {
+                                  @{ name = $_.Name; state = $_.State.ToString(); owner = $_.OwnerNode.Name }
+                              }); originalCopyExists = Test-Path $copyPath; observedAt = [datetime]::UtcNow.ToString('o') }
+                }
+                @{ action = $Action; result = $recovery; observedAt = [datetime]::UtcNow.ToString('o') } | ConvertTo-Json -Depth 15 -Compress
+            } finally { Remove-PSSession $session }
+            return
+        }
         if ($Action -ceq 'InspectPerformance') {
             $samples = @(foreach ($node in $nodes) {
                 $session = Open-NodeSession $node
@@ -167,7 +198,18 @@ try {
                         })
                         @{ node = $env:COMPUTERNAME; processors = $processors;
                            vms = @(Get-VM | ForEach-Object { @{ name = $_.Name; id = $_.Id.ToString(); cpuCount = $_.ProcessorCount;
-                               cpuUsagePercent = $_.CPUUsage; state = $_.State.ToString() } }) }
+                               cpuUsagePercent = $_.CPUUsage; state = $_.State.ToString(); uptimeSeconds = $_.Uptime.TotalSeconds;
+                               heartbeat = $_.Heartbeat.ToString();
+                               integrationServices = @($_ | Get-VMIntegrationService | ForEach-Object {
+                                   @{ name = $_.Name; enabled = $_.Enabled; primaryStatus = $_.PrimaryStatusDescription; secondaryStatus = $_.SecondaryStatusDescription }
+                               });
+                               adapters = @($_ | Get-VMNetworkAdapter | ForEach-Object {
+                                   @{ name = $_.Name; status = @($_.Status | ForEach-Object { $_.ToString() }); switch = $_.SwitchName;
+                                      connected = $_.Connected; macAddress = $_.MacAddress; ipAddresses = @($_.IPAddresses);
+                                      vlan = @($_ | Get-VMNetworkAdapterVlan | ForEach-Object {
+                                          @{ mode = $_.OperationMode.ToString(); accessVlanId = $_.AccessVlanId; nativeVlanId = $_.NativeVlanId }
+                                      }) }
+                               }) } }) }
                     }
                 } finally { Remove-PSSession $session }
             })
@@ -175,16 +217,17 @@ try {
             return
         }
         if ($Action -ceq 'InspectAksNode') {
-            if ($AksClusterName -notmatch '^[a-z][a-z0-9-]{2,62}$' -or $AksVmIp -notmatch '^10\.64\.0\.\d{1,3}$') { throw 'Exact nested AKS cluster and node address required' }
+            if ($AksClusterName -notmatch '^[a-z][a-z0-9-]{2,62}$' -or
+                ($NodeInspection -cne 'Console' -and $AksVmIp -notmatch '^10\.64\.0\.\d{1,3}$')) { throw 'Exact nested AKS cluster and node address required' }
             $placements = @(foreach ($node in $nodes) {
                 $session = Open-NodeSession $node
                 try {
-                    Invoke-Command -Session $session -ArgumentList $AksVmId, $AksVmIp, $AksClusterName -ScriptBlock {
-                        param($id, $address, $clusterName)
+                    Invoke-Command -Session $session -ArgumentList $AksVmId, $AksVmIp, $AksClusterName, ($NodeInspection -cne 'Console') -ScriptBlock {
+                        param($id, $address, $clusterName, $networkRequired)
                         $vm = Get-VM -Id ([guid]$id) -ErrorAction SilentlyContinue
                         if (-not $vm) { return }
                         $addresses = @($vm | Get-VMNetworkAdapter | ForEach-Object IPAddresses)
-                        if ($vm.State.ToString() -cne 'Running' -or -not $vm.Name.StartsWith($clusterName + '-') -or $address -notin $addresses) {
+                        if ($vm.State.ToString() -cne 'Running' -or -not $vm.Name.StartsWith($clusterName + '-') -or ($networkRequired -and $address -notin $addresses)) {
                             throw 'Current VM identity/address differs from the requested AKS node'
                         }
                         @{ id = $vm.Id.ToString(); name = $vm.Name; address = $address; hostNode = $env:COMPUTERNAME }
@@ -193,6 +236,47 @@ try {
             })
             if ($placements.Count -ne 1) { throw 'Expected the exact AKS VM on one configured HCI node' }
             $identity = $placements[0]
+            if ($NodeInspection -ceq 'Console') {
+                $session = Open-NodeSession $identity.hostNode
+                try {
+                    $console = Invoke-Command -Session $session -ArgumentList $identity.id, $identity.name -ScriptBlock {
+                        param($id, $name)
+                        $vm = Get-VM -Id ([guid]$id)
+                        if ($vm.Name -cne $name -or $vm.State.ToString() -cne 'Running') { throw 'Console VM identity/state changed' }
+                        $settings = @(Get-CimInstance -Namespace root/virtualization/v2 -ClassName Msvm_VirtualSystemSettingData |
+                            Where-Object { $_.VirtualSystemIdentifier -eq $id -and $_.VirtualSystemType -eq 'Microsoft:Hyper-V:System:Realized' })
+                        if ($settings.Count -ne 1) { throw 'Expected one realised VM, never a snapshot' }
+                        $firmware = Get-VMFirmware -VM $vm
+                        $disks = @($vm | Get-VMHardDiskDrive | ForEach-Object {
+                            $drive = $_
+                            $vhd = Get-VHD -Path $drive.Path
+                            @{ path = $drive.Path; controllerType = $drive.ControllerType.ToString(); controllerNumber = $drive.ControllerNumber;
+                               controllerLocation = $drive.ControllerLocation; type = $vhd.VhdType.ToString(); virtualBytes = $vhd.Size;
+                               fileBytes = $vhd.FileSize; parentPath = $vhd.ParentPath; diskIdentifier = $vhd.DiskIdentifier.ToString() }
+                        })
+                        $recoveryVolume = Get-Volume -FilePath 'C:\ClusterStorage\UserStorage_1\'
+                        $service = Get-CimInstance -Namespace root/virtualization/v2 -ClassName Msvm_VirtualSystemManagementService
+                        # Documented read-only Hyper-V API. Its output is raw RGB 565.
+                        # https://learn.microsoft.com/windows/win32/hyperv_v2/getvirtualsystemthumbnailimage-msvm-virtualsystemmanagementservice
+                        $image = Invoke-CimMethod -InputObject $service -MethodName GetVirtualSystemThumbnailImage -Arguments @{
+                            TargetSystem = $settings[0]; WidthPixels = [uint16]800; HeightPixels = [uint16]600
+                        }
+                        if ($image.ReturnValue -ne 0 -or $image.ImageData.Length -notin @(960000, 960004)) {
+                            throw ('Console capture failed: returnCode=' + $image.ReturnValue + ', bytes=' + $image.ImageData.Length)
+                        }
+                        # This installed Hyper-V provider can return four additional bytes.
+                        # Preserve its complete original buffer in the private receipt.
+                        @{ width = 800; height = 600; format = 'RGB565'; nativeByteLength = $image.ImageData.Length;
+                           biosGuid = $settings[0].BIOSGUID; disks = $disks;
+                           bootOrder = @($firmware.BootOrder | ForEach-Object { @{ type = $_.BootType.ToString(); path = $_.Device.Path; description = $_.Description } });
+                           recoveryVolume = @{ path = 'C:\ClusterStorage\UserStorage_1\'; freeBytes = $recoveryVolume.SizeRemaining; health = $recoveryVolume.HealthStatus.ToString() };
+                           imageBase64 = [Convert]::ToBase64String($image.ImageData) }
+                    }
+                    @{ action = $Action; inspection = $NodeInspection; node = $identity; console = $console;
+                       observedAt = [datetime]::UtcNow.ToString('o') } | ConvertTo-Json -Depth 10 -Compress
+                } finally { Remove-PSSession $session }
+                return
+            }
             $directory = Join-Path 'C:\ProgramData\AzureLocalBox\Operations' ('aks-node-' + $identity.id)
             if (-not (Test-Path $directory)) {
                 $null = New-Item $directory -ItemType Directory

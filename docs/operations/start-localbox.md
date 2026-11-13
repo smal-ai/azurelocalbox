@@ -92,3 +92,30 @@ Azure login or native deployment step. Live lab acceptance remains a separate op
 
 Startup heartbeat, cluster health and workload readiness are separate checks. Retain the
 normal shutdown schedule and read an uncertain command's actual result before retrying it.
+
+## Diagnose a worker that has not rejoined
+
+`smal-platform.py inspect-performance` includes each VM's uptime, integration services,
+virtual adapter state, addresses and VLAN. Bind further inspection to its currently observed
+Hyper-V UUID and cluster name. A read-only console capture also works when guest networking
+is unavailable:
+
+```bash
+python3 -B scripts/smal-platform.py inspect-node \
+  --vm-id "$VM_ID" --cluster-name aks-smal-weu-1 --node-inspection Console
+```
+
+The private receipt retains the original bounded RGB565 buffer, BIOS identity, boot-disk
+bindings and storage metadata. Managed replacement can remove a failed VM and its OS disk
+while investigation is underway. Reconcile the original UUID, operation and current node
+inventory before another maintenance request. `inspect-recovery --recovery-plan` reads an
+existing private operation record even when its original VM is gone.
+
+For fresh SMB verification after startup or replacement, give each verification an explicit
+identity and use the current workload node name:
+
+```bash
+python3 -B scripts/smal-files.py probe --node "$WORKLOAD_NODE" --probe-id "$PROBE_ID"
+```
+
+Reusing that identity observes the original Job. A new verification needs a new identity.

@@ -5,6 +5,7 @@ import importlib.util
 import json
 import os
 from pathlib import Path
+import re
 import secrets
 import subprocess
 import uuid
@@ -147,7 +148,22 @@ def refresh(config):
     return 0
 
 
-def probe(config, node_name='moc-lot89khy1qp'):
+def probe_job_name(node_name, probe_id=None):
+    if not re.fullmatch(r'[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?', node_name):
+        raise ValueError('Concrete workload node name required')
+    if probe_id is not None:
+        if not re.fullmatch(r'[a-z0-9][a-z0-9-]{0,19}', probe_id):
+            raise ValueError('Probe identity must be 1–20 lower-case name characters')
+        name = 'smal-smb-write-read-' + probe_id + '-' + node_name
+    else:
+        name = 'smal-smb-write-read' if node_name == 'moc-lot89khy1qp' else 'smal-smb-write-read-' + node_name
+    if len(name) > 63:
+        raise ValueError('Bounded probe job name required')
+    return name
+
+
+def probe(config, node_name='moc-lot89khy1qp', probe_id=None):
+    job_name = probe_job_name(node_name, probe_id)
     command = ['kubectl', '--kubeconfig', str(Path.home() / '.local/state/smal/infra/kubernetes/proxy-kubeconfig'),
                '--context', 'smal-aks', '--request-timeout=30s']
 
@@ -165,7 +181,6 @@ def probe(config, node_name='moc-lot89khy1qp'):
     if not any(row['type'] == 'Ready' and row['status'] == 'True' for row in node['status']['conditions']):
         raise ValueError('Workload node is not Ready')
     namespace = 'smal-smb-probe'
-    job_name = 'smal-smb-write-read' if node_name == 'moc-lot89khy1qp' else 'smal-smb-write-read-' + node_name
     resources = [{'apiVersion': 'v1', 'kind': 'Namespace', 'metadata': {'name': namespace, 'labels': {
         'smal.ai/owner': 'smb-deployment', 'pod-security.kubernetes.io/enforce': 'restricted'}}}]
     for role, account, share, size in (('evidence', 'smal_evidence_writer', 'smal-evidence', '32Gi'),
@@ -235,10 +250,11 @@ def main():
                                          'network', 'image', 'vm', 'refresh', 'inspect-arm', 'probe'))
     parser.add_argument('--timeout', type=int, default=300)
     parser.add_argument('--node', default='moc-lot89khy1qp', help='Ready workload-pool node for the SMB acceptance probe')
+    parser.add_argument('--probe-id', help='Fresh bounded verification identity. Reuse it only to observe the original Job.')
     args = parser.parse_args()
     config = json.loads((ROOT / 'config/smal-files.json').read_bytes())
     if args.action == 'probe':
-        return probe(config, args.node)
+        return probe(config, args.node, args.probe_id)
     if args.action == 'refresh':
         return refresh(config)
     if args.action in ('network', 'image', 'vm'):
