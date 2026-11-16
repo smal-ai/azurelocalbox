@@ -1,121 +1,30 @@
-# Operate the existing SMAL lab
+# SMAL LocalBox operations moved to `smal-ai-infra`
 
-## Start after the nightly shutdown
+Date: 2026-11-16.
 
-```bash
-python3 -B /home/quintin/play/azurelocalbox/scripts/start-smal-localbox.py
-```
+The canonical SMAL LocalBox startup, private Bastion/SSH PowerShell transport, platform/MOC
+inspection and repair, capacity, disk-performance and dedicated SMB file-service tooling moved
+into the canonical SMAL repository (`smal-ai/smal-project`) under `solution/infra/localbox/`.
 
-This command restores the existing private VPN connection when required, starts the
-configured outer host, then starts the four existing guests. Running machines are no-ops.
-It checks guest identity, power state and heartbeat. The cluster-wide operation mutex
-prevents overlap with an active platform operation.
+## Canonical location and commands
 
-Use the existing Azure CLI sign-in and `entlz-san-cert` VPN profile. Azure RBAC checks the
-current caller's permissions. Private SSH uses the existing owner-only key and pinned host
-key. An unavailable credential, failed permission check or changed host key needs repair
-at that dependency.
-
-## Inspect or repair MOC membership
-
-The reusable source is `scripts/smal-platform.ps1`. Its `Action` parameter is `Inspect` or
-`RepairMoc`. Supply `ConfigurationBase64` from the public `config/smal-platform.json`.
-Pass the resulting public parameter object to:
+Run from `/home/quintin/play/smal-ai-infra`:
 
 ```bash
-python3 -B scripts/smal-private-powershell.py \
-  --script scripts/smal-platform.ps1 \
-  --parameters /path/to/public-parameters.json \
-  --timeout 900
+python3 -B solution/infra/localbox/scripts/start-smal-localbox.py
+python3 -B solution/infra/localbox/scripts/smal-platform.py inspect --timeout 600
+python3 -B solution/infra/localbox/scripts/smal-platform.py inspect-performance --timeout 300
 ```
 
-Inspection reads current HCI nodes, MOC membership, S2D/CSV health and actual CPU/memory
-allocation. Repair adds a missing MOC member from a surviving peer. Existing members are
-no-ops. It records an intent before the request and verifies membership after the return.
-An unresolved intent requires a current-state read before another request.
+Read `/home/quintin/play/smal-ai-infra/solution/infra/localbox/README.md` for full operating
+and diagnostic instructions. Do not recreate duplicate copies in `azurelocalbox`.
 
-Initial workload deployment uses actual available capacity. Historical resize plans,
-per-attempt approval hashes and expired capture windows are not current-state requirements.
+## Retained scope in `azurelocalbox`
 
-## Canonical source and state
-
-Maintain these operational files:
-
-- `config/smal-platform.json`
-- `scripts/start-smal-localbox.py`
-- `scripts/start-smal-existing-guests.ps1`
-- `scripts/smal-platform.ps1`
-- `scripts/smal-platform.py`
-- `scripts/smal-private-powershell.py`
-- `config/smal-capacity.json` and `scripts/smal-capacity.py` / `.ps1`
-- `config/smal-disk-performance.json` and `scripts/smal-disk-performance.py` / `.ps1`
-- `config/smal-files.json` and `scripts/smal-files.py` / `.ps1`
-- `scripts/test_smal_canonical.py`
-
-The capacity commands inspect or continue the exact existing NODE03 operation and the
-selected 32-GiB user-volume expansion. Disk-performance commands reconcile the approved
-two-disk Premium SSD conversion and its controlled shutdown/restart. Completed operations
-are observed rather than repeated. Read current state before any new maintenance action.
-
-The file-service commands operate only `smal-smb01` and its dedicated evidence/workflow
-disks, shares and accounts. Use read-only inspection for an installed service:
-
-```bash
-python3 -B scripts/smal-capacity.py inspect
-python3 -B scripts/smal-files.py guest-inspect
-```
-
-The installed SMB CSI driver is `smb.csi.akshci.com`. Both workload-node probes verified
-encrypted SMB 3.1.1 and authenticated write/read access. The Windows evaluation licence is
-time-limited. Protected service credentials and BitLocker recovery material are runtime state.
-
-Receipts live in `~/.local/state/azurelocalbox/receipts/`. Each records the executed source
-hash, invocation ID, result and observation times. Current source can run from the working
-tree under the operator's instruction. A Git publication or a new dated copy is not a
-runtime dependency.
-
-Existing guest-helper and credential-store paths are durable bindings in configuration.
-Their historical date suffixes identify real existing directories and have no expiry
-semantics. The scripts use elapsed-time bounds rather than fixed calendar cut-offs.
-
-## Verification
+This repository retains the outer-host and initial brownfield Jumpstart LocalBox Bicep
+templates (`infra/bicep/`) and historical deployment/bootstrap records (`docs/deployment-*/`).
 
 ```bash
 BICEP_CLI="$HOME/.azure/bin/bicep" python3 -B scripts/canonical_ci.py
 git diff --check
 ```
-
-The repository's separate `Offline canonical operations` CI job runs source/credential
-exclusions, Python/JSON and PowerShell syntax checks, pinned Bicep compilation and mocked
-startup, disk and file-service regressions. It has read-only repository permission and no
-Azure login or native deployment step. Live lab acceptance remains a separate operation.
-
-Startup heartbeat, cluster health and workload readiness are separate checks. Retain the
-normal shutdown schedule and read an uncertain command's actual result before retrying it.
-
-## Diagnose a worker that has not rejoined
-
-`smal-platform.py inspect-performance` includes each VM's uptime, integration services,
-virtual adapter state, addresses and VLAN. Bind further inspection to its currently observed
-Hyper-V UUID and cluster name. A read-only console capture also works when guest networking
-is unavailable:
-
-```bash
-python3 -B scripts/smal-platform.py inspect-node \
-  --vm-id "$VM_ID" --cluster-name aks-smal-weu-1 --node-inspection Console
-```
-
-The private receipt retains the original bounded RGB565 buffer, BIOS identity, boot-disk
-bindings and storage metadata. Managed replacement can remove a failed VM and its OS disk
-while investigation is underway. Reconcile the original UUID, operation and current node
-inventory before another maintenance request. `inspect-recovery --recovery-plan` reads an
-existing private operation record even when its original VM is gone.
-
-For fresh SMB verification after startup or replacement, give each verification an explicit
-identity and use the current workload node name:
-
-```bash
-python3 -B scripts/smal-files.py probe --node "$WORKLOAD_NODE" --probe-id "$PROBE_ID"
-```
-
-Reusing that identity observes the original Job. A new verification needs a new identity.
