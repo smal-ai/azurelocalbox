@@ -2,26 +2,18 @@
 
 ## Current operations
 
-Use the [canonical operations guide](docs/operations/start-localbox.md) for the existing
-three-node SMAL lab. Stable configuration lives in `config/`; reusable startup, inspection,
-capacity, disk-performance and SMB file-service commands live in `scripts/`.
-
-The completed infrastructure increment uses the existing E64s_v6 host, HCI guest profiles
-8/64, 20/96 and 20/96 vCPU/GiB, two Premium SSD backing disks and the dedicated encrypted
-SMB file VM. Workload AKS, SQL and observability source belongs to the separate SMAL repository.
-Runtime captures and credentials remain outside source control.
-
-### Daily startup
-
-Start the existing outer host and all four nested guests (DC plus three nodes) after the nightly shutdown:
+Canonical SMAL LocalBox day-two operations (startup after nightly shutdown, platform/MOC
+inspection and repair, capacity, disk-performance and dedicated SMB file-service tooling)
+live in the SMAL repository (`smal-ai/smal-project`) under `solution/infra/localbox/`:
 
 ```bash
-python3 -B scripts/start-smal-localbox.py
+python3 -B /home/quintin/play/smal-ai-infra/solution/infra/localbox/scripts/start-smal-localbox.py
 ```
 
-Requires existing Azure sign-in/PIM access and the private VPN. Safe to rerun after
-success. Waits for the host agent and guest heartbeats, without rerunning bootstrap
-or changing the shutdown automation. [Startup and recovery details](docs/operations/start-localbox.md).
+See [migration note](docs/operations/start-localbox.md) and
+`/home/quintin/play/smal-ai-infra/solution/infra/localbox/README.md`. Do not recreate
+duplicate operational scripts in this repository; runtime captures and credentials remain
+outside source control in `~/.local/state/azurelocalbox/`.
 
 ## Historical deployment: shared SMAL landing zone, 2026-10-27
 
